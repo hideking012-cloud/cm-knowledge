@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CM知識一覧</title>
+<meta name="description" content="建設CMの実務資料。防火、定期報告、外装改修のスライドと詳細レポート。">
+<style>
+:root{color-scheme:light;--paper:#f7f5ef;--ink:#192e2d;--muted:#4e625e;--line:#c9d2c8;--green:#25564a;--cream:#edf0e7}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Yu Gothic UI",Meiryo,sans-serif;line-height:1.65}
+a{color:inherit;text-underline-offset:.23em}
+a:focus-visible{outline:3px solid #a44a32;outline-offset:5px}
+.shell{width:min(1060px,calc(100% - 56px));margin:auto}
+.header{border-bottom:1px solid var(--line)}
+.brand{min-height:66px;display:flex;align-items:center;gap:.7rem;font-size:.88rem;font-weight:700;letter-spacing:.06em}
+.mark{display:grid;grid-template-columns:repeat(2,5px);gap:3px;padding:6px;border:1px solid var(--green);border-radius:5px}
+.mark i{width:5px;height:5px;background:var(--green)}.mark i:nth-child(2){opacity:.42}
+.intro{padding:clamp(2.7rem,8vw,5.5rem) 0 clamp(2rem,5vw,3.65rem)}
+h1,h2,p{margin:0}h1{font-size:clamp(2.65rem,8vw,5rem);line-height:1.1;letter-spacing:-.06em}
+.intro p{margin-top:1rem;color:var(--muted);font-size:clamp(.97rem,2vw,1.12rem)}
+.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.35rem;padding-bottom:clamp(2.6rem,7vw,5rem)}
+.topic{background:#fffefb;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.topic-main{display:block;text-decoration:none;flex:1}
+.topic-main:focus-visible{outline-offset:-4px}
+.canvas{position:relative;height:clamp(140px,23vw,216px);display:grid;place-items:center;overflow:hidden;background-color:var(--art-bg);color:var(--art-ink);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px;background-position:center}
+.equipment{--art-bg:#f4e6dc;--art-ink:#9d4a32;--grid:#a650361a}
+.compartment{--art-bg:#dce8de;--art-ink:#265b4e;--grid:#326a5820}
+.canvas::before{content:"";position:absolute;width:132px;height:132px;border-radius:50%;border:1px solid currentColor;opacity:.22}
+.canvas::after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;border:1px dashed currentColor;opacity:.24}
+.icon{position:relative;width:88px;height:88px;z-index:1;transition:transform .2s ease}
+.door-frame{position:absolute;inset:4px 16px 8px;border:3px solid currentColor;border-bottom:0;border-radius:3px 3px 0 0}
+.door-leaf{position:absolute;top:13px;left:26px;width:42px;height:65px;border:3px solid currentColor;background:var(--art-bg);transform:skewY(-10deg);border-radius:2px}
+.door-leaf::after{content:"";position:absolute;right:6px;top:31px;width:7px;height:3px;background:currentColor;border-radius:2px}
+.door-base{position:absolute;bottom:6px;left:8px;right:8px;border-bottom:3px solid currentColor;border-radius:2px}
+.plan{position:absolute;inset:8px;border:3px solid currentColor;border-radius:3px;background:var(--art-bg)}
+.plan::before{content:"";position:absolute;top:0;bottom:0;left:34px;border-left:3px dashed currentColor}
+.plan::after{content:"";position:absolute;top:30px;left:0;right:0;border-top:3px solid currentColor}
+.plan i{position:absolute;bottom:0;left:0;right:50%;height:30px;background:currentColor;opacity:.2}
+.topic-main:hover .icon{transform:scale(1.08)}
+.topic-main:hover .arrow{transform:translateX(3px)}
+.entry{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:1rem;padding:1.3rem 1.45rem 1.25rem}
+h2{font-size:clamp(1.55rem,3vw,2.05rem);letter-spacing:-.04em;line-height:1.3}
+.entry p{margin-top:.48rem;color:var(--muted);font-size:.95rem}
+.arrow{width:39px;height:39px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--green);transition:transform .2s ease}
+.actions{margin:0 1.45rem;padding:.85rem 0 1.05rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:.55rem 1.25rem;font-size:.9rem}
+.actions a{color:var(--green);font-weight:700}
+.actions a:hover{color:#963e28}
+.foot{border-top:1px solid var(--line);color:var(--muted);padding:1.05rem 0;font-size:.82rem}
+@media(max-width:680px){.shell{width:calc(100% - 36px)}.topics{grid-template-columns:1fr;gap:1rem}.entry{padding:1rem 1.15rem}.actions{margin:0 1.15rem}.intro{padding-top:2.5rem}}
+@media(prefers-reduced-motion:reduce){.icon,.arrow{transition:none}}
+.firefighting{--art-bg:#e3e9f2;--art-ink:#3b537d;--grid:#435d8824}
+.alarm-body{position:absolute;inset:14px 21px 23px;border:3px solid currentColor;border-radius:28px 28px 9px 9px;background:var(--art-bg)}
+.alarm-body::after{content:"";position:absolute;inset:15px 13px 17px;border:1px solid currentColor;border-radius:50%}
+.alarm-base{position:absolute;left:14px;right:14px;bottom:20px;border-bottom:4px solid currentColor;border-radius:3px}
+.alarm-base::after{content:"";position:absolute;bottom:-14px;left:calc(50% - 5px);width:10px;height:7px;background:currentColor;border-radius:0 0 10px 10px}
+.alarm-waves{position:absolute;inset:11px 4px 29px;border-inline:2px solid currentColor;border-radius:18px;transform:rotate(7deg)}
+@media(min-width:940px){.topics{grid-template-columns:repeat(3,minmax(0,1fr))}.entry{padding-inline:1.2rem}.actions{margin-inline:1.2rem}}
+
+.inspection{--art-bg:#efe8d7;--art-ink:#67552e;--grid:#6d5e3222}
+.facade{--art-bg:#e9e3ec;--art-ink:#5d4c70;--grid:#6b4d7924}
+.roof{--art-bg:#dfedf0;--art-ink:#315f6b;--grid:#3d6b7924}
+.asbestos{--art-bg:#f2e3df;--art-ink:#884e45;--grid:#843d3d22}
+.maintenance-icon{position:absolute;inset:10px;display:grid;place-items:center;border:3px solid currentColor;border-radius:7px;background:var(--art-bg)}
+.maintenance-icon::before,.maintenance-icon::after{content:"";position:absolute}
+.inspection .maintenance-icon::before{top:-8px;width:30px;height:12px;border:2px solid currentColor;background:var(--art-bg);border-radius:4px}
+.inspection .maintenance-icon::after{inset:20px 13px 12px;background:repeating-linear-gradient(to bottom,currentColor 0 2px,transparent 2px 11px)}
+.facade .maintenance-icon{inset:8px 15px 8px;background-image:linear-gradient(currentColor 2px,transparent 2px),linear-gradient(90deg,currentColor 2px,transparent 2px);background-size:14px 15px;background-position:5px 5px}
+.facade .maintenance-icon::after{width:27px;height:20px;right:-7px;bottom:7px;background:var(--art-bg);border:3px solid currentColor;transform:rotate(-16deg)}
+.roof .maintenance-icon{inset:43px 8px 14px;border-width:0 3px 3px;border-radius:0 0 7px 7px;background:transparent}
+.roof .maintenance-icon::before{width:33px;height:33px;top:-26px;left:calc(50% - 16px);border:3px solid currentColor;border-radius:2px 60% 60% 60%;transform:rotate(45deg);background:var(--art-bg)}
+.roof .maintenance-icon::after{width:calc(100% - 10px);bottom:6px;border-top:2px dashed currentColor}
+.asbestos .maintenance-icon{inset:14px 20px 16px;border-radius:50% 50% 46% 46%}
+.asbestos .maintenance-icon::before{width:20px;height:20px;border:3px double currentColor;border-radius:50%;background:var(--art-bg)}
+.asbestos .maintenance-icon::after{left:-10px;right:-10px;top:46%;border-top:2px solid currentColor;z-index:-1}
+
+.new-topic-icon{font-style:normal;font-size:2.65rem;line-height:1}
+.topic-group{grid-column:1/-1;margin:1.3rem 0 .1rem;font-size:clamp(1.4rem,3vw,2rem)}.topic-group:target{scroll-margin-top:2rem}.topic-shortcut{margin:.7rem 0 0}.topic-shortcut a{color:inherit;text-underline-offset:3px}.card-phrase{white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="header"><div class="shell brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>建設CM 実務資料</div></header>
+<main class="shell">
+  <div class="intro"><h1>CM知識一覧</h1><p>テーマを選んで、図と比較表から学べます。</p><p class="topic-shortcut"><a href="#topic-group">ホテル改修のCM実務へ ↓</a></p></div>
+  <section class="topics" aria-label="テーマを選ぶ">
+    <article class="topic equipment">
+      <a class="topic-main" href="fire-safety-cm-slides.html" aria-labelledby="equipment-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="door-frame"></i><i class="door-leaf"></i><i class="door-base"></i></div></div>
+        <div class="entry"><div><h2 id="equipment-title">防火設備</h2><p>防火戸・シャッターの仕様選定から、連動試験と定期報告まで。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="fire-safety-cm-slides.html" aria-label="防火設備のスライド、13枚">スライド（13枚）</a><a href="fire-safety-cm-report.html" aria-label="防火設備の詳細レポート">詳細レポート</a></div>
+    </article>
+    <article class="topic compartment">
+      <a class="topic-main" href="fire-compartment-slides.html" aria-labelledby="compartment-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><div class="plan"><i></i></div></div></div>
+        <div class="entry"><div><h2 id="compartment-title">防火区画</h2><p>区画の4類型と、ホテル改修で確認する天井裏・梁際・設備貫通部。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="fire-compartment-slides.html" aria-label="防火区画のスライド、13枚">スライド（13枚）</a><a href="fire-compartment-report.html" aria-label="防火区画の詳細レポート">詳細レポート</a></div>
+    </article>
+    <article class="topic firefighting">
+      <a class="topic-main" href="firefighting-equipment-slides.html" aria-labelledby="firefighting-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="alarm-waves"></i><i class="alarm-body"></i><i class="alarm-base"></i></div></div>
+        <div class="entry"><div><h2 id="firefighting-title">消防設備</h2><p>自火報・スプリンクラーの設置判断から、消防検査と維持管理まで。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="firefighting-equipment-slides.html" aria-label="消防設備のスライド、13枚">スライド（13枚）</a><a href="firefighting-equipment-report.html" aria-label="消防設備の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic inspection">
+      <a class="topic-main" href="article-8-12-slides.html" aria-labelledby="inspection-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon"></i></div></div>
+        <div class="entry"><div><h2 id="inspection-title">建築基準法8条・12条</h2><p>日常の維持保全から、定期調査・検査、是正の完了確認まで。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="article-8-12-slides.html" aria-label="建築基準法8条・12条のスライド、12枚">スライド（12枚）</a><a href="article-8-12-report.html" aria-label="建築基準法8条・12条の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic facade">
+      <a class="topic-main" href="facade-maintenance-slides.html" aria-labelledby="facade-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon"></i></div></div>
+        <div class="entry"><div><h2 id="facade-title">外壁点検・外壁補修</h2><p>外壁の落下リスクを見つけ、診断結果を補修範囲と発注条件に反映。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="facade-maintenance-slides.html" aria-label="外壁点検・外壁補修のスライド、12枚">スライド（12枚）</a><a href="facade-maintenance-report.html" aria-label="外壁点検・外壁補修の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic roof">
+      <a class="topic-main" href="roof-waterproofing-slides.html" aria-labelledby="roof-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon"></i></div></div>
+        <div class="entry"><div><h2 id="roof-title">屋上防水補修</h2><p>漏水調査から、局部補修・かぶせ・撤去更新の比較と検査まで。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="roof-waterproofing-slides.html" aria-label="屋上防水補修のスライド、12枚">スライド（12枚）</a><a href="roof-waterproofing-report.html" aria-label="屋上防水補修の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic asbestos">
+      <a class="topic-main" href="asbestos-maintenance-slides.html" aria-labelledby="asbestos-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon"></i></div></div>
+        <div class="entry"><div><h2 id="asbestos-title">石綿（アスベスト）</h2><p>事前調査、発注者と元請の手続、追加発見時の対応、完了確認。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="asbestos-maintenance-slides.html" aria-label="石綿（アスベスト）のスライド、12枚">スライド（12枚）</a><a href="asbestos-maintenance-report.html" aria-label="石綿（アスベスト）の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#ddebf2;--art-ink:#315e73;--grid:#315e7326">
+      <a class="topic-main" href="smoke-control-slides.html" aria-labelledby="smoke-control-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">⇡</i></div></div>
+        <div class="entry"><div><h2 id="smoke-control-title">排煙</h2><p>自然排煙・機械排煙の選定から、天井との取合い、連動試験まで。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="smoke-control-slides.html" aria-label="排煙のスライド、8枚">スライド（8枚）</a><a href="smoke-control-report.html" aria-label="排煙の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#eee6d9;--art-ink:#735832;--grid:#73583226">
+      <a class="topic-main" href="interior-fire-limits-slides.html" aria-labelledby="interior-fire-limits-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">▤</i></div></div>
+        <div class="entry"><div><h2 id="interior-fire-limits-title">内装制限</h2><p>用途・室・避難経路から、壁と天井の仕上げ仕様を確認。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="interior-fire-limits-slides.html" aria-label="内装制限のスライド、8枚">スライド（8枚）</a><a href="interior-fire-limits-report.html" aria-label="内装制限の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#f0e1db;--art-ink:#8a4f3e;--grid:#8a4f3e26">
+      <a class="topic-main" href="fire-resistance-slides.html" aria-labelledby="fire-resistance-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">▦</i></div></div>
+        <div class="entry"><div><h2 id="fire-resistance-title">耐火</h2><p>建物に求められる性能を、部材・被覆・接合部の検査につなぐ。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="fire-resistance-slides.html" aria-label="耐火のスライド、8枚">スライド（8枚）</a><a href="fire-resistance-report.html" aria-label="耐火の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#dcebdd;--art-ink:#305e47;--grid:#305e4726">
+      <a class="topic-main" href="natural-parks-slides.html" aria-labelledby="natural-parks-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">⛰</i></div></div>
+        <div class="entry"><div><h2 id="natural-parks-title">自然公園法</h2><p>区域・地種区分と工事範囲を重ね、許可・届出と事業工程を組み立てる。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="natural-parks-slides.html" aria-label="自然公園法のスライド、8枚">スライド（8枚）</a><a href="natural-parks-report.html" aria-label="自然公園法の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#ede5d8;--art-ink:#765636;--grid:#76563626">
+      <a class="topic-main" href="landscape-ordinance-slides.html" aria-labelledby="landscape-ordinance-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">▧</i></div></div>
+        <div class="entry"><div><h2 id="landscape-ordinance-title">景観条例</h2><p>対象地区と外観変更を確認し、事前協議・届出・着手日を逆算する。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="landscape-ordinance-slides.html" aria-label="景観条例のスライド、8枚">スライド（8枚）</a><a href="landscape-ordinance-report.html" aria-label="景観条例の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#e7e2ef;--art-ink:#624b75;--grid:#624b7526">
+      <a class="topic-main" href="cliff-ordinance-slides.html" aria-labelledby="cliff-ordinance-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">◩</i></div></div>
+        <div class="entry"><div><h2 id="cliff-ordinance-title">崖地条例</h2><p>崖の現況断面、既存擁壁、造成・防災の指定から建物配置を比較する。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="cliff-ordinance-slides.html" aria-label="崖地条例のスライド、8枚">スライド（8枚）</a><a href="cliff-ordinance-report.html" aria-label="崖地条例の詳細レポート">詳細レポート</a></div>
+    </article>
+<h2 id="topic-group" class="topic-group">ホテル改修のCM実務</h2>
+
+    <article class="topic" style="--art-bg:#e9e3f2;--art-ink:#5c4b78;--grid:#5c4b7826">
+      <a class="topic-main" href="existing-building-conversion-slides.html" aria-labelledby="existing-building-conversion-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">↻</i></div></div>
+        <div class="entry"><div><h2 id="existing-building-conversion-title"><span class="card-phrase">既存不適格・</span><wbr><span class="card-phrase">用途変更</span></h2><p>建物の履歴を裏付け、用途変更に必要な手続と改修範囲を見極める。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="existing-building-conversion-slides.html" aria-label="既存不適格・用途変更のスライド、8枚">スライド（8枚）</a><a href="existing-building-conversion-report.html" aria-label="既存不適格・用途変更の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#dcebea;--art-ink:#285d63;--grid:#285d6326">
+      <a class="topic-main" href="live-hotel-renovation-slides.html" aria-labelledby="live-hotel-renovation-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">◫</i></div></div>
+        <div class="entry"><div><h2 id="live-hotel-renovation-title"><span class="card-phrase">営業しながらの</span><wbr><span class="card-phrase">ホテル改修</span></h2><p>休館・部分営業を比較し、宿泊者の安全と工事の進め方を計画する。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="live-hotel-renovation-slides.html" aria-label="営業しながらのホテル改修のスライド、8枚">スライド（8枚）</a><a href="live-hotel-renovation-report.html" aria-label="営業しながらのホテル改修の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#ede5d3;--art-ink:#75592a;--grid:#75592a26">
+      <a class="topic-main" href="renovation-cost-changes-slides.html" aria-labelledby="renovation-cost-changes-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">≋</i></div></div>
+        <div class="entry"><div><h2 id="renovation-cost-changes-title"><span class="card-phrase">改修工事の</span><wbr><span class="card-phrase">見積比較・</span><wbr><span class="card-phrase">追加工事</span></h2><p>見積の前提をそろえ、追加工事の工事費と工期を着手前に判断する。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="renovation-cost-changes-slides.html" aria-label="改修工事の見積比較・追加工事のスライド、8枚">スライド（8枚）</a><a href="renovation-cost-changes-report.html" aria-label="改修工事の見積比較・追加工事の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#eee5d6;--art-ink:#6e5535;--grid:#6e553526">
+      <a class="topic-main" href="earthworks-development-slides.html" aria-labelledby="earthworks-development-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">▰</i></div></div>
+        <div class="entry"><div><h2 id="earthworks-development-title"><span class="card-phrase">盛土規制法・</span><wbr><span class="card-phrase">開発許可</span></h2><p>造成断面と規制区域を照合し、許可、検査、建築着工の順序を組み立てる。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="earthworks-development-slides.html" aria-label="盛土規制法・開発許可のスライド、8枚">スライド（8枚）</a><a href="earthworks-development-report.html" aria-label="盛土規制法・開発許可の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#e4e8f0;--art-ink:#405575;--grid:#40557526">
+      <a class="topic-main" href="seismic-retrofit-slides.html" aria-labelledby="seismic-retrofit-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">⟐</i></div></div>
+        <div class="entry"><div><h2 id="seismic-retrofit-title"><span class="card-phrase">耐震診断・</span><wbr><span class="card-phrase">耐震改修</span></h2><p>耐震診断の結果を読み、補強・段階改修・建替えを比較する。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="seismic-retrofit-slides.html" aria-label="耐震診断・耐震改修のスライド、8枚">スライド（8枚）</a><a href="seismic-retrofit-report.html" aria-label="耐震診断・耐震改修の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#dfebf1;--art-ink:#365b6d;--grid:#365b6d26">
+      <a class="topic-main" href="building-services-renewal-slides.html" aria-labelledby="building-services-renewal-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">⏻</i></div></div>
+        <div class="entry"><div><h2 id="building-services-renewal-title"><span class="card-phrase">空調・</span><wbr><span class="card-phrase">給排水・</span><wbr><span class="card-phrase">受変電設備の更新</span></h2><p>設備の状態と故障時の影響から更新順位を決め、停止と切替を管理する。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="building-services-renewal-slides.html" aria-label="空調・給排水・受変電設備の更新のスライド、8枚">スライド（8枚）</a><a href="building-services-renewal-report.html" aria-label="空調・給排水・受変電設備の更新の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#deece3;--art-ink:#305d46;--grid:#305d4626">
+      <a class="topic-main" href="accessibility-renovation-slides.html" aria-labelledby="accessibility-renovation-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">♿</i></div></div>
+        <div class="entry"><div><h2 id="accessibility-renovation-title"><span class="card-phrase">バリアフリー</span><wbr><span class="card-phrase">改修</span></h2><p>入口から客室・浴室・便所まで、途切れず利用できる動線をつくる。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="accessibility-renovation-slides.html" aria-label="バリアフリー改修のスライド、8枚">スライド（8枚）</a><a href="accessibility-renovation-report.html" aria-label="バリアフリー改修の詳細レポート">詳細レポート</a></div>
+    </article>
+
+    <article class="topic" style="--art-bg:#eee4e0;--art-ink:#765349;--grid:#76534926">
+      <a class="topic-main" href="long-term-repair-budget-slides.html" aria-labelledby="long-term-repair-budget-title">
+        <div class="canvas" aria-hidden="true"><div class="icon"><i class="maintenance-icon new-topic-icon">▥</i></div></div>
+        <div class="entry"><div><h2 id="long-term-repair-budget-title"><span class="card-phrase">長期修繕計画と</span><wbr><span class="card-phrase">予算配分</span></h2><p>安全性と営業への影響で修繕を優先し、工事と資金を年度ごとに組む。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </a>
+      <div class="actions"><a href="long-term-repair-budget-slides.html" aria-label="長期修繕計画と予算配分のスライド、8枚">スライド（8枚）</a><a href="long-term-repair-budget-report.html" aria-label="長期修繕計画と予算配分の詳細レポート">詳細レポート</a></div>
+    </article>
+  </section>
+</main>
+<footer class="foot"><div class="shell">発注者を支援するコンストラクション・マネジメント</div></footer>
+</body>
+</html>

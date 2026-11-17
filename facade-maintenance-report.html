@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>外壁点検と外壁補修のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 外壁点検・外壁補修</div>
+    <nav class="nav" aria-label="サイト内リンク">
+      <a href="index.html">CM知識一覧へ戻る</a>
+      <a href="facade-maintenance-slides.html">音声・図解スライド</a>
+      <a href="article-8-12-slides.html">関連：建築基準法8条・12条</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero"><span class="badge">詳細レポート</span>
+<h1>外壁点検と外壁補修のCM実務</h1>
+<p class="lead">建設CMの立場で、定期調査の法的要件（告示282号）と、公共建築改修工事標準仕様書（建築工事編）令和7年版 第4章に沿った補修・数量管理・検査を整理する。条項番号は同仕様書による。</p></div>
+<nav aria-label="目次" class="toc">
+  <h2>目次</h2>
+  <ol><li><a href="#cm-visual-summary">図と比較表</a></li>
+    <li><a href="#law">法的根拠</a></li>
+    <li><a href="#scope">対象材料</a></li>
+    <li><a href="#hazard">危害範囲</a></li>
+    <li><a href="#timing">おおむね10年と条件</a></li>
+    <li><a href="#methods">調査手法と同等精度</a></li>
+    <li><a href="#infrared">赤外線調査と補完調査</a></li>
+    <li><a href="#emergency">落下のおそれがある場合の応急措置</a></li>
+    <li><a href="#repair">原因別の補修工法</a></li>
+    <li><a href="#quantity">数量変更と施工検査</a></li>
+    <li><a href="#case">仮想ホテル例</a></li>
+    <li><a href="#decision">判断表</a></li>
+    <li><a href="#sources">一次資料</a></li>
+  </ol>
+</nav>
+
+
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">外壁のどこを、どの順で見る？</h2><div class="cm-visual-term"><p><strong>外壁の浮き</strong> タイルやモルタルなどが下地から離れ、落下につながることがある状態です。</p>
+    <p><span>最初に開く資料</span> <b>外壁立面図</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="外壁の立面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:16%;top:14.583333333333334%;width:63%;height:58.333333333333336%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:25%;top:25%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:55%;top:25%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:25%;top:47.91666666666667%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:55%;top:47.91666666666667%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:47%;top:18.75%;width:7.615773105863909%;transform:rotate(1.9756881130799802rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:44%;top:33.33333333333333%;width:8.06225774829855%;transform:rotate(1.0516502125483738rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:48%;top:47.91666666666667%;width:7.615773105863909%;transform:rotate(1.9756881130799802rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:35%;top:66.66666666666666%;width:28%;height:6.25%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:7%;top:79.16666666666666%;width:87%;transform:rotate(0rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:46%;--field-y:39.58333333333333%" data-point aria-pressed="false" aria-label="1 ひび・浮き">1</button><button type="button" class="cm-field-marker" style="--field-x:65%;--field-y:54.166666666666664%" data-point aria-pressed="false" aria-label="2 窓・目地">2</button><button type="button" class="cm-field-marker" style="--field-x:52%;--field-y:81.25%" data-point aria-pressed="false" aria-label="3 出入口・通路">3</button>
+    </div>
+    <figcaption>外壁の立面図（模式図） · 高さと通行状況を重ねます。見つかった異常箇所は立面図に記録します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>ひび・浮き</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>窓・目地</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>出入口・通路</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 ひび・浮き</strong> 高さと範囲を立面図に記録します。</p><p data-point-note><strong>2 窓・目地</strong> 窓まわりや目地に隙間がないかを見ます。</p><p data-point-note><strong>3 出入口・通路</strong> 異常箇所の下を誰が通るか確認します。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">ひび割れ</th><td>位置、幅、長さ、漏水との関係</td></tr>
+<tr><th scope="row">浮き・はく離</th><td>範囲と落下時に影響する場所</td></tr>
+<tr><th scope="row">目地の劣化</th><td>切れや隙間、雨水の通り道</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:27%;--spot-y:39%">●</span></div><figcaption>窓・バルコニーの周りと、下に人が通る入口や通路を一緒に見ます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>出入口の真上に外壁の浮きが疑われます。最初にどうしますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>落下のおそれを確認し、人が立ち入る範囲への対応を検討する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>外壁全面の工事見積が出るまでそのままにする</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>落下のおそれを確認し、人が立ち入る範囲への対応を検討する</strong></p><p>通行への影響を先に確かめ、必要な安全措置と専門調査を進めます。補修範囲は調査結果を立面図に落として決めます。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>外壁立面図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>外壁の異常を見つけた時点</dd></div>
+        <div><dt>誰と確認するか</dt><dd>施設管理者・外壁の調査者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 異常箇所の立面図・通行範囲・調査記録</p>
+    </details>
+  </div>
+  </aside>
+<section id="law" class="sec">
+  <h2>1. 法的根拠</h2>
+  <table class="tbl">
+    <thead><tr><th>根拠</th><th>内容</th><th>CMとしての確認事項</th></tr></thead>
+    <tbody>
+      <tr><td data-label="根拠">建築基準法 第8条</td><td data-label="内容">所有者・管理者・占有者は建築物を常時適法な状態に維持するよう努める</td><td data-label="CMとしての確認事項">定期報告対象外の建物・部位も点検計画に含める</td></tr>
+      <tr><td data-label="根拠">建築基準法 第12条</td><td data-label="内容">特定建築物の定期調査を有資格者が行い、特定行政庁へ報告</td><td data-label="CMとしての確認事項">報告周期（特定行政庁が定める）と前回報告の指摘事項</td></tr>
+      <tr><td data-label="根拠">平成20年国土交通省告示第282号</td><td data-label="内容">外装仕上げ材等の調査項目・方法・判定基準。令和4年1月改正で無人航空機による赤外線調査を明確化</td><td data-label="CMとしての確認事項">全面打診等の実施履歴（竣工・外壁改修・前回全面打診の時期）</td></tr>
+      <tr><td data-label="根拠">民法 第717条</td><td data-label="内容">工作物の設置・保存の瑕疵で損害が生じた場合の占有者・所有者の責任を規定</td><td data-label="CMとしての確認事項">異常発見から措置までの記録を残す</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="scope" class="sec">
+  <h2>2. 対象材料</h2>
+  <p>告示の調査項目は「タイル、石貼り等（乾式工法によるものを除く。）、モルタル等の劣化及び損傷の状況」。判定基準は「剥落等があること又は著しい白華、ひび割れ、浮き等があること」。</p>
+  <table class="tbl">
+    <thead><tr><th>区分</th><th>具体例</th></tr></thead>
+    <tbody>
+      <tr><td data-label="区分">対象</td><td data-label="具体例">コンクリート・PCパネル・ALC等にモルタルまたは接着剤で張ったタイル・石／躯体と同時に打ち込んだタイル・石／モルタル塗り（不陸調整の薄塗りを除く）</td></tr>
+      <tr><td data-label="区分">対象外</td><td data-label="具体例">金物で留め付けた乾式工法のタイル・石、塗装のみの仕上げ、金属・押出成形パネル等</td></tr>
+    </tbody>
+  </table>
+  <p class="note">対象外の仕上げでも、第8条の維持保全や事故時の責任は残るため、目視点検は継続する。</p>
+</section>
+
+<section id="hazard" class="sec">
+  <h2>3. 危害範囲</h2>
+  <p>「落下により歩行者等に危害を加えるおそれのある部分」は、技術的助言（平成20年4月 国住指第2号）で次のように示されている。</p>
+  <ul>
+    <li><b>該当：</b>当該壁面の前面かつ壁面高さのおおむね1/2の水平面内に、公道、不特定または多数の人が通行する私道、構内通路、広場を有するもの</li>
+    <li><b>除外：</b>壁面直下にRC造・S造等の強固な落下物防御施設（屋根・庇等）がある、または植込み等により影響角（縦2：横1の勾配で引き下ろした斜線と壁面のなす角）が完全に遮られ、被災の危険がないと判断される部分</li>
+  </ul>
+  <p class="note">除外判断は調査者の所見として報告書に根拠を残す。庇の上に落ちた剥落片が二次落下しないか、庇自体の健全性も確認する。</p>
+</section>
+
+<section id="timing" class="sec">
+  <h2>4. おおむね10年と条件</h2>
+  <table class="tbl">
+    <thead><tr><th>場面</th><th>告示上の方法</th></tr></thead>
+    <tbody>
+      <tr><td data-label="場面">毎回の定期調査（おおむね6月〜3年）</td><td data-label="告示上の方法">開口隅部・水平打継部・斜壁部等の手の届く範囲を打診等、その他は必要に応じ双眼鏡等で目視</td></tr>
+      <tr><td data-label="場面">上記で異常あり</td><td data-label="告示上の方法">危害範囲を全面打診等で確認</td></tr>
+      <tr><td data-label="場面">10年超</td><td data-label="告示上の方法">竣工後・外壁改修後・全面打診等実施後のいずれかから10年を超え、かつ3年以内に全面打診等を実施していない場合、危害範囲を全面打診等で確認</td></tr>
+      <tr><td data-label="場面">除外</td><td data-label="告示上の方法">3年以内に外壁改修等が行われることが確実な場合、または別途歩行者等の安全を確保するための対策を講じている場合</td></tr>
+    </tbody>
+  </table>
+  <p class="note">「別途の安全対策」には、防護ネットや仮設庇のほか、ステンレス鋼線・レール・突起等の落下防止措置付き外壁タイルが含まれ得る。取扱いは令和7年6月の技術的助言と令和8年7月の事務連絡（性能検証方法）を確認する。</p>
+</section>
+
+<section id="methods" class="sec">
+  <h2>5. 調査手法と同等精度</h2>
+  <table class="tbl">
+    <thead><tr><th>手法</th><th>位置づけ</th><th>強み</th><th>限界</th></tr></thead>
+    <tbody>
+      <tr><td data-label="手法">目視（双眼鏡等）</td><td data-label="位置づけ">毎回の調査で全体を確認</td><td data-label="強み">ひび割れ・白華・欠損・シーリング劣化の把握</td><td data-label="限界">浮きの確定はできない</td></tr>
+      <tr><td data-label="手法">テストハンマー打診</td><td data-label="位置づけ">告示の基準となる方法</td><td data-label="強み">接触による直接判定、マーキングが即時</td><td data-label="限界">足場・ゴンドラ・ロープ等の接近手段と費用・工期</td></tr>
+      <tr><td data-label="手法">赤外線（地上設置）</td><td data-label="位置づけ">打診と同等以上の精度が条件</td><td data-label="強み">非接触・広範囲・短期間</td><td data-label="限界">仰角・離隔距離・気象条件の影響が大きい</td></tr>
+      <tr><td data-label="手法">赤外線（無人航空機）</td><td data-label="位置づけ">令和4年改正で明確化、同等以上の精度が条件</td><td data-label="強み">正対・近接撮影で高所の精度を確保</td><td data-label="限界">航空法等の手続き、飛行の安全管理、天候</td></tr>
+      <tr><td data-label="手法">引張接着試験</td><td data-label="位置づけ">有機系接着剤張りタイルで認められた方法（平成30年技術的助言）</td><td data-label="強み">技術的助言に沿って所定の位置で確認</td><td data-label="限界">施工記録で下地・接着剤の該当を確認できることが前提</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="infrared" class="sec">
+  <h2>6. 赤外線調査と補完調査</h2>
+  <p>「定期報告制度における赤外線調査（無人航空機による赤外線調査を含む）による外壁調査ガイドライン」の流れは次のとおり。</p>
+  <ol>
+    <li>適用条件の把握：天候・気温・風速、タイルの種類、撮影角度・離隔距離、軒裏・出隅・入隅等の困難箇所、周辺建物からの放射熱</li>
+    <li>事前調査：日射、調査可能時間帯、構造・仕上げ材、装置の設置位置</li>
+    <li>調査計画書：実施体制、装置、調査箇所・除外箇所、打診併用箇所を記載し、外壁調査実施者が確認</li>
+    <li>本調査前に同一部位で打診と赤外線調査を行い、浮きを検出できるか確認。検出が難しい部位は測定条件を変えるか打診で調査</li>
+    <li>外乱を除いて熱画像を分析し浮きを判定。熱画像は全て保存</li>
+    <li>赤外線調査実施者が報告書を作成し、外壁調査実施者が外壁調査結果報告書にまとめて所有者へ提出</li>
+  </ol>
+  <p class="note">見積もり比較では、打診併用（補完）範囲と除外箇所が計画書に明記されているかを必ず確認する。赤外線の単価だけで比較すると補完調査の欠落を見落とす。</p>
+</section>
+
+<section id="emergency" class="sec">
+  <h2>7. 落下のおそれがある場合の応急措置</h2>
+  <table class="tbl">
+    <thead><tr><th>段階</th><th>措置</th><th>記録</th></tr></thead>
+    <tbody>
+      <tr><td data-label="段階">発見直後</td><td data-label="措置">直下の立入禁止区画、出入口・車寄せ等の動線切替え</td><td data-label="記録">位置・範囲・写真・時刻</td></tr>
+      <tr><td data-label="段階">当日〜数日</td><td data-label="措置">安全に撤去できる浮き・欠損部の除去、防護ネット・養生シートの設置</td><td data-label="記録">撤去範囲と残置部の状態</td></tr>
+      <tr><td data-label="段階">本補修まで</td><td data-label="措置">仮設庇・朝顔等で落下物を受ける、措置範囲の定期巡回</td><td data-label="記録">巡回記録、範囲拡大の有無</td></tr>
+      <tr><td data-label="段階">本補修</td><td data-label="措置">工法・数量・時期を決め、発注・施工</td><td data-label="記録">定期報告書への反映</td></tr>
+    </tbody>
+  </table>
+  <p class="note">応急措置は告示の「別途安全確保の対策」として扱える場合があるが、恒久補修の計画とセットで所有者に説明する。</p>
+</section>
+
+<section id="repair" class="sec">
+  <h2>8. 原因別の補修工法</h2>
+  <h3>浮き・欠損</h3>
+  <table class="tbl">
+    <thead><tr><th>現象</th><th>主な原因</th><th>工法</th><th>要点</th><th>条項</th></tr></thead>
+    <tbody>
+      <tr><td data-label="現象">モルタル・タイルの浮き（部分）</td><td data-label="主な原因">温度変化・乾燥収縮による界面の接着低下</td><td data-label="工法">アンカーピンニング部分エポキシ樹脂注入</td><td data-label="要点">一般部16本/㎡、指定部（見上げ面・ひさしのはな等）25本/㎡、注入量は既定で1孔25mL。穿孔がタイル陶片にかかる場合は近傍の目地へ移動</td><td data-label="条項">4.3.11 / 4.4.9</td></tr>
+      <tr><td data-label="現象">浮き（広範囲）</td><td data-label="主な原因">同上の面的進行</td><td data-label="工法">アンカーピンニング全面エポキシ樹脂注入</td><td data-label="要点">一般部13本/㎡、指定部20本/㎡</td><td data-label="条項">4.3.12 / 4.4.10</td></tr>
+      <tr><td data-label="現象">浮き（注入口付）</td><td data-label="主な原因">同上</td><td data-label="工法">注入口付アンカーピンニング部分エポキシ樹脂注入ほか</td><td data-label="要点">既定は一般部9本/㎡、指定部16本/㎡</td><td data-label="条項">4.3.14〜4.3.16 / 4.4.12〜4.4.14</td></tr>
+      <tr><td data-label="現象">タイル陶片の浮き</td><td data-label="主な原因">張付けモルタルとタイルの界面剥離</td><td data-label="工法">注入口付アンカーピン エポキシ樹脂注入タイル固定</td><td data-label="要点">タイル中央を穿孔、孔は化粧キャップ等でふさぐ。小口平以上が目安、本数は特記</td><td data-label="条項">4.4.15</td></tr>
+      <tr><td data-label="現象">欠損・鉄筋露出</td><td data-label="主な原因">中性化・塩害による鉄筋腐食と爆裂</td><td data-label="工法">充填工法（エポキシ樹脂モルタル、ポリマーセメントモルタル）</td><td data-label="要点">鉄筋の防錆処理を先行。モルタル面は1か所約0.25㎡以下で充填、超える場合は塗替え</td><td data-label="条項">4.2.8 / 4.3.9 / 4.3.10</td></tr>
+      <tr><td data-label="現象">タイルの割れ・欠落</td><td data-label="主な原因">下地挙動・衝撃・浮きの進行</td><td data-label="工法">タイル部分張替え／タイル張替え</td><td data-label="要点">部分張替えは下地を撤去せず1か所0.25㎡程度以下。張替えは下地モルタルから撤去し伸縮調整目地を配置</td><td data-label="条項">4.4.7 / 4.4.8</td></tr>
+    </tbody>
+  </table>
+  <h3>ひび割れ・シーリング</h3>
+  <table class="tbl">
+    <thead><tr><th>対象</th><th>工法</th><th>要点</th><th>条項</th></tr></thead>
+    <tbody>
+      <tr><td data-label="対象">ひび割れ（挙動小）</td><td data-label="工法">樹脂注入工法</td><td data-label="要点">自動式低圧が既定、注入圧0.4N/mm²以下、注入量を測定・報告</td><td data-label="条項">4.2.5 / 4.4.6</td></tr>
+      <tr><td data-label="対象">ひび割れ（挙動あり）</td><td data-label="工法">Uカットシール材充填工法</td><td data-label="要点">溝を設けシール材等を充填</td><td data-label="条項">4.2.6</td></tr>
+      <tr><td data-label="対象">微細なひび割れ</td><td data-label="工法">シール工法</td><td data-label="要点">表面を被覆して閉塞</td><td data-label="条項">4.2.7</td></tr>
+      <tr><td data-label="対象">タイル目地</td><td data-label="工法">目地改修工法</td><td data-label="要点">既存目地材を除去し再充填。伸縮調整目地の新設は位置・寸法を特記し、切込み時の浮きに注意して協議</td><td data-label="条項">4.4.16</td></tr>
+      <tr><td data-label="対象">シーリング目地</td><td data-label="工法">シーリング充填・再充填・拡幅再充填・ブリッジ</td><td data-label="要点">第3章7節で施工。簡易接着性試験が既定、引張接着性試験はJIS A 1439</td><td data-label="条項">表3.1.2 / 3.7.8</td></tr>
+    </tbody>
+  </table>
+  <p class="note">共通：降雨・降雪時は避け、気温5℃以下では原則施工しない（4.1.3）。石綿・鉛等を発見した場合は監督職員と協議（4.1.6）。</p>
+</section>
+
+<section id="quantity" class="sec">
+  <h2>9. 数量変更と施工検査</h2>
+  <h3>数量変更</h3>
+  <ul>
+    <li>設計時の補修数量は調査結果からの推定値。足場等の架設後、施工に先立つ施工数量調査（1.6.2）で全面打診・マーキングを行い実数量を把握する</li>
+    <li>調査結果が設計図書と異なる場合は監督職員と協議し、補修範囲を決定する</li>
+    <li>発注時に工法別単価と精算方法（実数精算、増減の上限、協議手順）を契約で取り決める。総価一式では数量増の協議が難航しやすい</li>
+  </ul>
+  <h3>施工検査</h3>
+  <table class="tbl">
+    <thead><tr><th>工種</th><th>検査・試験</th><th>条項</th></tr></thead>
+    <tbody>
+      <tr><td data-label="工種">アンカーピンニング</td><td data-label="検査・試験">施工後、全数をテストハンマーで打診確認し報告</td><td data-label="条項">4.3.11 / 4.3.12</td></tr>
+      <tr><td data-label="工種">樹脂注入</td><td data-label="検査・試験">注入量の記録、コア抜取りによる注入状況確認（既定：長さ500mごとに1個）</td><td data-label="条項">4.2.5</td></tr>
+      <tr><td data-label="工種">タイル張替え</td><td data-label="検査・試験">外観確認、全面打診、引張接着試験（100㎡ごとに1個以上かつ全体で3個以上、セメントモルタル張りは0.4N/mm²以上かつコンクリート界面破壊率50%以下）</td><td data-label="条項">4.4.8</td></tr>
+      <tr><td data-label="工種">シーリング</td><td data-label="検査・試験">接着性試験</td><td data-label="条項">3.7.8</td></tr>
+      <tr><td data-label="工種">共通</td><td data-label="検査・試験">施工の検査、試験</td><td data-label="条項">1.7.5 / 1.4.5</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="case" class="sec">
+  <h2>10. 仮想ホテル例</h2>
+  <p class="note">以下は説明用の仮想条件であり、実在の施設・案件ではない。</p>
+  <table class="tbl">
+    <thead><tr><th>項目</th><th>条件</th></tr></thead>
+    <tbody>
+      <tr><td data-label="項目">建物</td><td data-label="条件">RC造10階建てホテル、築12年、外壁はモルタル張りタイル</td></tr>
+      <tr><td data-label="項目">履歴</td><td data-label="条件">外壁改修・全面打診等は未実施、定期調査で部分打診のみ</td></tr>
+      <tr><td data-label="項目">周辺</td><td data-label="条件">正面は車寄せ（RC庇あり）、東面は公道歩道、北面は植栽帯、西面は従業員通路</td></tr>
+    </tbody>
+  </table>
+  <table class="tbl">
+    <thead><tr><th>論点</th><th>判断</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td data-label="論点">全面打診等</td><td data-label="判断">次回定期報告までに実施</td><td data-label="理由">竣工後10年超、3年以内に全面打診等なし、3年以内の外壁改修予定なし</td></tr>
+      <tr><td data-label="論点">範囲</td><td data-label="判断">東面・西面・正面庇より下部</td><td data-label="理由">歩道・構内通路が危害範囲。正面庇上部と北面は除外の可否を所見で判断</td></tr>
+      <tr><td data-label="論点">手法</td><td data-label="判断">無人航空機赤外線＋打診補完</td><td data-label="理由">営業中の足場を避ける。軒裏・入隅・庇取合いは打診で補完</td></tr>
+      <tr><td data-label="論点">異常時</td><td data-label="判断">即日区画、除去、ネット設置</td><td data-label="理由">車寄せ直上は宿泊客動線</td></tr>
+      <tr><td data-label="論点">補修発注</td><td data-label="判断">工法別単価契約＋実数精算</td><td data-label="理由">赤外線結果は推定値で、施工数量調査で増減が出る</td></tr>
+      <tr><td data-label="論点">営業配慮</td><td data-label="判断">客室販売ブロック、作業時間帯の限定</td><td data-label="理由">騒音・臭気・眺望への影響を抑える</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="decision" class="sec">
+  <h2>11. 判断表</h2>
+  <table class="tbl">
+    <thead><tr><th>状況</th><th>判断</th><th>次の行動</th><th>根拠</th></tr></thead>
+    <tbody>
+      <tr><td data-label="状況">仕上げが乾式工法のみ</td><td data-label="判断">告示の全面打診等は対象外</td><td data-label="次の行動">金物・目地の目視点検を継続</td><td data-label="根拠">告示282号、建基法第8条</td></tr>
+      <tr><td data-label="状況">部分打診・目視で異常あり</td><td data-label="判断">全面打診等が必要</td><td data-label="次の行動">危害範囲を全面打診等で確認</td><td data-label="根拠">告示282号</td></tr>
+      <tr><td data-label="状況">竣工・改修・全面打診から10年超、直近3年未実施</td><td data-label="判断">全面打診等が必要</td><td data-label="次の行動">次回定期報告までに実施計画</td><td data-label="根拠">告示282号</td></tr>
+      <tr><td data-label="状況">3年以内の外壁改修が確実</td><td data-label="判断">全面打診等は除外可</td><td data-label="次の行動">改修計画の確実性を記録</td><td data-label="根拠">告示282号</td></tr>
+      <tr><td data-label="状況">直下に強固な庇・植込みで影響角を遮断</td><td data-label="判断">危害範囲から除外可</td><td data-label="次の行動">庇の健全性と除外根拠を報告書に記載</td><td data-label="根拠">国住指第2号</td></tr>
+      <tr><td data-label="状況">赤外線の適用条件を満たさない部位</td><td data-label="判断">赤外線のみでは不可</td><td data-label="次の行動">条件変更または打診で補完</td><td data-label="根拠">赤外線調査ガイドライン</td></tr>
+      <tr><td data-label="状況">落下のおそれがある浮き・欠損</td><td data-label="判断">応急措置を先行</td><td data-label="次の行動">区画・除去・ネット、本補修計画</td><td data-label="根拠">建基法第8条、民法第717条</td></tr>
+      <tr><td data-label="状況">施工数量調査で数量が設計と相違</td><td data-label="判断">協議事項</td><td data-label="次の行動">監督職員と協議し実数で精算</td><td data-label="根拠">標準仕様書 1.6.2</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="sources" class="sec">
+  <h2>12. 一次資料</h2>
+  <ul>
+    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000161.html">国土交通省：定期報告制度における外壁のタイル等の調査について</a></li>
+    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001474153.pdf">令和4年3月29日 建築基準法施行規則の一部を改正する省令等の施行について（技術的助言）</a></li>
+    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001474154.pdf">定期報告制度における赤外線調査（無人航空機による赤外線調査を含む）による外壁調査ガイドライン</a></li>
+    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001758797.pdf">平成30年5月23日 外壁の外装仕上げ材等の調査方法について（技術的助言）</a></li>
+    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001758798.pdf">令和3年6月30日 外壁の外装仕上げ材等の調査方法について（技術的助言）</a></li>
+    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001758799.pdf">令和7年6月30日 落下防止措置付き外壁タイルの取扱いについて（技術的助言）</a></li>
+    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/002011948.pdf">令和8年7月21日 落下防止措置付き外壁タイルの性能検証方法について（事務連絡）</a></li>
+    <li><a href="https://www.mlit.go.jp/gobuild/gobuild_tk6_000074.html">国土交通省：公共建築改修工事標準仕様書（建築工事編）令和7年版</a></li>
+    <li><a href="https://www.mlit.go.jp/gobuild/content/001888823.pdf">公共建築改修工事標準仕様書（建築工事編）令和7年版 本文PDF</a></li>
+  </ul>
+  <p class="note">危害範囲の定義は平成20年4月1日 国住指第2号（技術的助言）による。条項番号・数値は令和7年版本文で確認し、特記仕様が優先する。</p>
+</section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="facade-maintenance-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

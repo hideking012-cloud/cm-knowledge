@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>長期修繕計画と予算配分のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 長期修繕計画と予算配分</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="long-term-repair-budget-slides.html">音声・図解スライド</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero"><span class="badge">詳細レポート</span><h1>長期修繕計画と予算配分のCM実務</h1><p>安全性と営業への影響で修繕を優先し、工事と資金を年度ごとに組む。</p></div>
+  <nav class="toc" aria-label="目次"><h2>目次</h2><ul><li><a href="#cm-visual-summary">図と比較表</a></li><li><a href="#part-1">長期計画とその年の予算を別に管理</a></li><li><a href="#part-2">資産台帳に費用の根拠をつなぐ</a></li><li><a href="#part-3">先送りの条件を決める</a></li><li><a href="#part-4">架空事例｜外壁、防水、給湯の予算を配分</a></li><li><a href="#part-5">年度別の資金需要を複数案で表示</a></li><li><a href="#part-6">毎年の更新に使う手順を固定</a></li><li><a href="#part-7">工事の実績を次の計画へ戻す</a></li><li><a href="#check">発注者チェック表</a></li><li><a href="#sources">一次資料</a></li></ul></nav>
+  
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">安全・営業・工事費から予算を並べる</h2><div class="cm-visual-term"><p><strong>長期修繕計画</strong> 建物を長く使うため、必要な修繕と予算を年度ごとに見通す計画です。</p>
+    <p><span>最初に開く資料</span> <b>既存の長期修繕計画書</b></p></div>
+    <figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="年度別の修繕工程例">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-line cm-shape-line" style="left:24%;top:16.666666666666664%;width:33%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:47%;top:16.666666666666664%;width:33%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:70%;top:16.666666666666664%;width:33%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:93%;top:16.666666666666664%;width:33%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:25%;top:22.916666666666664%;width:11%;height:12.5%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:48%;top:22.916666666666664%;width:18%;height:12.5%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:28%;top:45.83333333333333%;width:17%;height:12.5%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:55%;top:45.83333333333333%;width:13%;height:12.5%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:72%;top:68.75%;width:19%;height:12.5%"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:30%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="1 危険箇所への対応">1</button><button type="button" class="cm-field-marker" style="--field-x:57%;--field-y:52.083333333333336%" data-point aria-pressed="false" aria-label="2 早めの設備更新">2</button><button type="button" class="cm-field-marker" style="--field-x:81%;--field-y:75%" data-point aria-pressed="false" aria-label="3 まとめ施工">3</button>
+    </div>
+    <figcaption>年度別の修繕工程例（模式図） · 修繕時期は、点検結果や営業への影響で調整します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>危険箇所への対応</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>早めの設備更新</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>まとめ施工</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 危険箇所への対応</strong> 先送りできない箇所は応急措置と恒久対策を分けます。</p><p data-point-note><strong>2 早めの設備更新</strong> 故障すると全館に影響するか、部品が入手できるか調べます。</p><p data-point-note><strong>3 まとめ施工</strong> 足場や営業停止の都合と、年度予算を合わせて考えます。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">すぐ対応</th><td>落下等の危険に対する保全と確認</td></tr>
+<tr><th scope="row">早めに計画</th><td>故障が全館停止につながる設備</td></tr>
+<tr><th scope="row">まとめて施工</th><td>足場や工事区画を共用できる改修</td></tr>
+  </tbody></table>
+    <div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>外壁の危険箇所と、部品調達が難しい給湯設備があります。一つの工事にまとめる前に何をしますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>危険箇所に必要な対応と設備停止リスクを優先度別に整理する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>総工費が安くなる年度まで両方とも待つ</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>危険箇所に必要な対応と設備停止リスクを優先度別に整理する</strong></p><p>安全上急ぐ対策と故障時の影響を先に把握し、工事をまとめる案と年度を分ける案を比べます。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>既存の長期修繕計画書</dd></div>
+        <div><dt>いつ確認するか</dt><dd>年度予算の編成前。重大故障や点検後も見直し</dd></div>
+        <div><dt>誰と確認するか</dt><dd>発注者・施設管理者・経理担当</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 資産台帳・点検報告・年度別修繕計画</p>
+    </details>
+  </div>
+  </aside>
+<section class="sec" id="part-1"><h2>長期計画とその年の予算を別に管理</h2><p><strong>劣化と事業計画から、いつ調査し、いつ工事するかを決めます。</strong></p><ul><li>資産と修繕履歴、点検結果を棚卸し</li><li>安全・事業継続・快適性で優先順位を整理</li><li>年ごとの資金と発注時期を照合</li></ul><p>現地調査、法定点検、運転・故障履歴から工事候補を作ります。長期計画は金額と工事の順番を更新する台帳として管理します。公共施設やマンションの標準様式は帳票の参考とし、ホテルの営業・投資方針に合わせます。</p></section>
+<section class="sec" id="part-2"><h2>資産台帳に費用の根拠をつなぐ</h2><p><strong>数量・前回工事・劣化状態と、更新費用を関連付けます。</strong></p><table class="tbl"><thead><tr><th scope="col">記入項目</th><th scope="col">例</th></tr></thead><tbody><tr><td data-label="記入項目">資産と数量</td><td data-label="例">外壁面積、屋上面積、系統、機器台数</td></tr><tr><td data-label="記入項目">劣化と点検</td><td data-label="例">前回施工、事故・苦情、法定点検、対象エリア</td></tr><tr><td data-label="記入項目">費用の根拠</td><td data-label="例">見積時点、単価、工事範囲、仮設・休業</td></tr><tr><td data-label="記入項目">担当・実施時期</td><td data-label="例">責任者、判断日、調査と改修予定</td></tr></tbody></table><p>金額は調査・設計・工事・試運転や予備費を含むか確認して記載します。状態が把握できない部位は調査の予定と仮の金額を入れ、確度の高い見積と混在しないようにします。</p></section>
+<section class="sec" id="part-3"><h2>先送りの条件を決める</h2><p><strong>安全や法令対応、事業継続への影響で判断します。</strong></p><table class="tbl"><thead><tr><th scope="col">優先の例</th><th scope="col">判断すること</th></tr></thead><tbody><tr><td data-label="優先の例">直ちに対応</td><td data-label="判断すること">危険箇所の隔離、点検結果への応急・恒久対策</td></tr><tr><td data-label="優先の例">早期に計画</td><td data-label="判断すること">故障で全館停止、部品調達が困難、漏水進行</td></tr><tr><td data-label="優先の例">まとめ施工を検討</td><td data-label="判断すること">足場の共用、設備停止の同時化、客室再販</td></tr></tbody></table><p>周期を目安にしつつ、状態、故障の兆候、停止時の影響、復旧できる見込みで順位を見直します。工事を延期する場合は、代替措置、点検頻度、延期できる期限、再判断条件を残します。</p></section>
+<section class="sec" id="part-4"><h2>架空事例｜外壁、防水、給湯の予算を配分</h2><p><strong>同時に行う利点と単年度予算、営業停止日を比較します。</strong></p><table class="tbl"><thead><tr><th scope="col">案</th><th scope="col">費用・工程の特徴</th></tr></thead><tbody><tr><td data-label="案">外壁と防水をまとめる</td><td data-label="費用・工程の特徴">仮設や現場管理の共用、年度支出の集中</td></tr><tr><td data-label="案">給湯を先行</td><td data-label="費用・工程の特徴">故障時の長期停止を防ぎやすい、複数回の工事調整</td></tr><tr><td data-label="案">外壁は危険箇所を先行</td><td data-label="費用・工程の特徴">先行対策と全面改修を分け、重複費を確認</td></tr></tbody></table><p>丘の上ホテルで外壁に危険箇所があり、給湯設備の保守部品も入手しにくい想定です。危険箇所への対応と恒久改修を分け、設備更新を先行した場合の故障リスク、資金、営業を比較します。</p></section>
+<section class="sec" id="part-5"><h2>年度別の資金需要を複数案で表示</h2><p><strong>工事前の設計費と、工事中の支払を実際の時期に置きます。</strong></p><table class="tbl"><thead><tr><th scope="col">比較軸</th><th scope="col">予算表への入れ方</th></tr></thead><tbody><tr><td data-label="比較軸">基準案</td><td data-label="予算表への入れ方">想定した工法と日程、費用の根拠</td></tr><tr><td data-label="比較軸">予算・工期変動</td><td data-label="予算表への入れ方">物価、数量変動、営業制約と代替案</td></tr><tr><td data-label="比較軸">実施を繰り延べる案</td><td data-label="予算表への入れ方">翌期の支出、故障や維持費の増加、次の判断日</td></tr></tbody></table><p>年度配分では、調査や設計が施工より前に必要なこと、支払時期が年度をまたぐことを反映します。工事を延期する際は、性能や安全を維持するための費用も比較対象に入れます。</p></section>
+<section class="sec" id="part-6"><h2>毎年の更新に使う手順を固定</h2><p><strong>見積、実績、故障、新たな点検結果で計画を見直します。</strong></p><ul><li>点検結果と実績金額を入力</li><li>状態・緊急度と費用を再評価</li><li>翌年度予算と発注順を確認</li></ul><p>毎年の予算編成だけでなく、重大故障や点検結果が出た時点でも計画を更新します。見送った工事や仕様変更の理由と根拠を残し、引き続き追うリスクに担当者を決めます。</p></section>
+<section class="sec" id="part-7"><h2>工事の実績を次の計画へ戻す</h2><p><strong>完了した工事の仕様と実額を、次回更新の根拠にします。</strong></p><table class="tbl"><thead><tr><th scope="col">更新先</th><th scope="col">反映する事項</th></tr></thead><tbody><tr><td data-label="更新先">資産台帳</td><td data-label="反映する事項">機器・工法・保証、工事範囲と施工年</td></tr><tr><td data-label="更新先">長期費用表</td><td data-label="反映する事項">実績、数量差、予備費使用、次回費用の想定</td></tr><tr><td data-label="更新先">年度保全計画</td><td data-label="反映する事項">点検時期、運用上の注意、業者・責任者</td></tr></tbody></table><p>実績額を見積の前提と突き合わせ、外壁や設備などの工事項目ごとに費用を記録します。年度途中に完成した工事も保全台帳に入れ、保証点検と次回診断を工程化します。</p></section>
+  <section class="sec" id="check"><h2>発注者チェック表</h2><table class="tbl"><thead><tr><th scope="col">段階</th><th scope="col">発注者の確認</th><th scope="col">残す成果物</th></tr></thead><tbody><tr><td data-label="段階">候補地・企画</td><td data-label="発注者の確認">台帳・点検と費用を棚卸し</td><td data-label="残す成果物">区域図、地番、現況、窓口一覧</td></tr><tr><td data-label="段階">基本設計</td><td data-label="発注者の確認">緊急度と工事の組合せを判断</td><td data-label="残す成果物">配置比較、判定の根拠、協議記録</td></tr><tr><td data-label="段階">発注・着工前</td><td data-label="発注者の確認">資金計画を毎年更新</td><td data-label="残す成果物">承認図面、見積・工程、着手条件</td></tr><tr><td data-label="段階">施工変更・引渡し</td><td data-label="発注者の確認">変更時の再照会と条件の履行を確認</td><td data-label="残す成果物">竣工図、行政提出記録、維持管理台帳</td></tr></tbody></table><p>架空の「丘の上ホテル」は地上6階、延べ6,000㎡、100室。旧館の一部に事務所があります。 中長期の資金支出を単年度の予算枠と照合し、事故対応・営業回復・更新準備で予備の使い道を決めます。</p><p>判定結果には根拠条項、窓口、回答日、対象図面の版、残っている条件を添えます。</p></section>
+  <section class="sec" id="sources"><h2>一次資料</h2><ul><li><a href="https://www.mlit.go.jp/gobuild/gobuild_tk2_000007.html">国土交通省 官庁施設の長寿命化・老朽化対策</a></li><li><a href="https://www.mlit.go.jp/gobuild/gobuild_tk3_000002.html">国土交通省 保全台帳及び保全計画書の様式</a></li><li><a href="https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk5_000052.html">国土交通省 マンション管理・長期修繕計画標準様式</a></li></ul><p>案件で適用する法令、条例、経過措置や申請の扱いは、設計者と所管に確認してください。</p></section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ</a><a href="long-term-repair-budget-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

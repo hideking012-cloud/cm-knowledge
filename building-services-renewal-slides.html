@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>空調・給排水・受変電設備の更新のCM実務 | 音声・図解スライド</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red:#9b3b2f;--red-l:#f7e6e2;
+  --r:14px;--gap:16px;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+/* header */
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+/* controls */
+.controls{background:var(--paper);border-bottom:1px solid var(--line)}
+.controls .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ctl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.ctl select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);max-width:220px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:5px 14px;cursor:pointer;min-height:36px}
+.btn:hover{background:var(--green-l)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d)}
+.btn[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.note-voice{font-size:12.5px;color:var(--sub);width:100%;margin:0}
+/* deck */
+main{max-width:1180px;margin:0 auto;padding:18px 16px 120px}
+.slide{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px 22px;min-height:620px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.slide.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.list .slide{display:block;margin-bottom:22px;animation:none}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--sub);margin-bottom:6px}
+.cat{display:inline-block;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:1px 12px;font-weight:700;letter-spacing:.03em}
+.slide h1,.slide h2{color:var(--green-d);margin:4px 0 14px;line-height:1.4}
+.slide h1{font-size:34px}
+.slide h2{font-size:26px;border-left:6px solid var(--green);padding-left:12px}
+.lead{font-size:17px;color:var(--sub);margin:0 0 16px}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--green-d)}
+.card p{margin:0;font-size:15px}
+.card ul{margin:4px 0 0;padding-left:1.2em;font-size:15px}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h3{color:#fff}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.r{background:var(--red-l);border-color:#e6c2ba}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.small{font-size:13px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--green-m);color:var(--green-d);border-radius:6px;padding:0 6px;margin:0 2px 2px 0;background:#fff}
+.tag.cond{border-color:var(--amber);color:#7a4f10;background:var(--amber-l)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff;font-weight:700}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);white-space:nowrap}
+.tbl td.c{text-align:center}
+.dot{color:var(--green);font-weight:700}
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.flow.h{grid-template-columns:repeat(4,minmax(0,1fr))}
+.flow.h7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow .step{position:relative;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;transition:border-color .3s,background .3s,transform .3s,opacity .3s;cursor:pointer}
+.flow .step b{display:block;color:var(--green-d);font-size:15px;margin-bottom:2px}
+.flow .step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px;vertical-align:1px}
+.flow.playing .step{opacity:.45}
+.flow.playing .step.done{opacity:.8;border-color:var(--green-m)}
+.flow.playing .step.on{opacity:1;border-color:var(--amber);background:var(--amber-l);transform:translateY(-3px);box-shadow:0 4px 10px rgba(183,121,31,.18)}
+.flow .step .who{display:block;font-size:12.5px;color:var(--sub);margin-top:4px}
+.flow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.flow-bar .status{font-size:13px;color:var(--sub)}
+.layers{display:grid;gap:8px}
+.layer{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:8px 12px;font-size:14.5px}
+.layer:nth-child(2){margin-left:18px}.layer:nth-child(3){margin-left:36px}.layer:nth-child(4){margin-left:54px}
+.layer b{color:var(--green-d)}
+.cover{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;min-height:520px}
+.cover .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:3px 14px;font-size:14px;letter-spacing:.06em}
+.cover-fig{background:var(--green);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover-fig div{background:var(--cream);border-radius:12px;padding:16px 10px;text-align:center;font-weight:700;color:var(--green-d)}
+.cover-fig div span{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+/* script */
+details.script{margin-top:18px;border-top:1px dashed var(--line);padding-top:8px}
+details.script summary{cursor:pointer;color:var(--green);font-size:14px;font-weight:700}
+details.script p{font-size:15px;margin:8px 0 0;color:var(--ink)}
+/* caption + pager */
+.caption{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);max-width:min(92vw,960px);background:rgba(27,64,55,.94);color:#fff;font-size:17px;line-height:1.6;padding:10px 16px;border-radius:10px;z-index:30;display:none}
+.caption.show{display:block}
+.pager{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:25}
+.pager .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}
+body.list .pager{display:none}
+.foot{margin-top:14px;font-size:12.5px;color:var(--sub)}
+.srcs{font-size:13.5px;margin:6px 0 0;padding-left:1.2em}
+/* reduced motion */
+body.reduce *, body.reduce *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce .flow.playing .step.on{transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  .slide{padding:18px 16px;min-height:0}
+  .slide h1{font-size:26px}.slide h2{font-size:21px}
+  .g2,.g4{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:1fr}
+  .layer:nth-child(n){margin-left:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl tbody th{white-space:normal}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .tbl td.c{text-align:left}
+  .caption{bottom:68px;font-size:15px}
+  .ctl select{max-width:150px}
+}
+@media print{
+  .topbar,.controls,.pager,.caption{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:0;box-shadow:none}
+  body{background:#fff}
+}
+
+.caption{width:max-content;max-height:24dvh;overflow:auto}
+.pager .in{justify-content:center;gap:16px}
+@media screen and (max-width:900px){
+ body>iframe#nl-badge-frame{position:relative!important;display:block;inset:auto!important;margin-inline-start:auto!important;max-width:100%;z-index:1!important}
+}
+@media screen and (max-width:700px){
+ body{font-size:16px}
+ .slide h2{font-size:clamp(23px,5.8vw,28px)}
+ .tbl th,.tbl td{font-size:15px}
+ .pager button,.controls button,.controls select{min-height:44px}
+}
+@media print{#nl-badge-frame,.slide .script{display:none!important}.slide:last-child{page-break-after:auto}}
+</style>
+<link rel="stylesheet" href="cm-slide-theme.css">
+<style>
+.land-figure{margin:1rem 0}
+.land-figure figcaption{margin-top:.5rem;color:var(--sub);font-size:.88rem}
+.land-figure .overview{margin:.4rem 0}
+.slope-profile{position:relative;isolation:isolate;min-height:137px;border:1px solid var(--line);border-radius:12px;overflow:hidden;color:var(--ink);background:var(--panel)}
+.slope-profile::before{content:"";position:absolute;inset:0;z-index:-1;background:#427c70;clip-path:polygon(0 39%,calc(54% - 63px) 39%,54% 83%,100% 83%,100% 100%,0 100%)}
+.slope-profile::after{content:"";position:absolute;z-index:-1;left:54%;right:13%;top:63%;height:8%;border:1px solid var(--green);border-width:0 1px 1px}
+.slope-profile b,.slope-profile span{position:absolute;padding:.16rem .4rem;background:#102c2b;color:#eefaf7;border-radius:4px;font-size:.8rem}
+.slope-profile .slope-up{top:15%;left:10%}
+.slope-profile .slope-down{top:76%;left:54%;transform:translateX(-50%)}
+.slope-profile .slope-h{top:48%;right:52%}
+.slope-profile .slope-site{top:14%;right:4%}
+.slope-profile .slope-d{top:46%;left:57%;white-space:nowrap}
+</style><link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#deck">スライド本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 空調・給排水・受変電設備の更新</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="building-services-renewal-report.html">詳細レポート</a></nav>
+  </div>
+</header>
+
+<div class="controls" role="region" aria-label="表示と音声の操作">
+  <div class="in">
+    <button class="btn primary" id="play" type="button">▶ 読み上げ開始</button>
+    <button class="btn" id="stop" type="button">■ 停止</button>
+    <label class="ctl">話者
+      <select id="voice" aria-label="読み上げ音声（端末の日本語音声）"><option value="">端末の標準（日本語）</option></select>
+    </label>
+    <label class="ctl">速度
+      <select id="rate" aria-label="読み上げ速度">
+        <option value="0.8">ゆっくり</option>
+        <option value="1" selected>標準</option>
+        <option value="1.2">やや速い</option>
+        <option value="1.4">速い</option>
+      </select>
+    </label>
+    <div class="toggles">
+      <button class="btn" id="tCap" type="button" aria-pressed="true">字幕</button>
+      <button class="btn" id="tAuto" type="button" aria-pressed="false">自動送り</button>
+      <button class="btn" id="tMotion" type="button" aria-pressed="false">動きを減らす</button>
+      <button class="btn" id="tList" type="button" aria-pressed="false">一覧表示</button>
+    </div>
+    <p class="note-voice" id="voiceNote">読み上げはボタンを押したときだけ始まります。音声は端末に入っている日本語音声を使います。</p>
+  </div>
+</div>
+
+<main id="deck">
+<p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
+<section class="slide" id="s1" aria-label="スライド1">
+  <div class="meta"><span class="cat">CM実務</span><span>1 / 8</span></div>
+  <h1>空調・給排水・受変電設備の更新のCM実務</h1>
+<aside class="cm-visual" aria-labelledby="cm-visual-title">
+    <h2 id="cm-visual-title" class="cm-visual-heading">設備を止めるとどの部屋に影響する？</h2><div class="cm-visual-term"><p><strong>設備系統</strong> 屋上機器や機械室から、各階の客室などへ設備がどうつながるかを示す関係です。</p>
+    <p><span>最初に開く資料</span> <b>設備系統図</b></p></div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="設備がつながる建物断面">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:13%;top:27.083333333333332%;width:74%;height:58.333333333333336%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:38%;top:10.416666666666668%;width:25%;height:16.666666666666664%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:51%;top:27.083333333333332%;width:8%;height:58.333333333333336%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:13%;top:45.83333333333333%;width:74%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:13%;top:64.58333333333334%;width:74%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:55%;top:37.5%;width:24%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:55%;top:54.166666666666664%;width:31%;transform:rotate(3.141592653589793rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line cm-shape-arrow" style="left:55%;top:72.91666666666666%;width:24%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:20%;top:68.75%;width:20%;height:14.583333333333334%"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:49%;--field-y:18.75%" data-point aria-pressed="false" aria-label="1 屋上機器">1</button><button type="button" class="cm-field-marker" style="--field-x:55%;--field-y:54.166666666666664%" data-point aria-pressed="false" aria-label="2 縦の設備経路">2</button><button type="button" class="cm-field-marker" style="--field-x:78%;--field-y:72.91666666666666%" data-point aria-pressed="false" aria-label="3 厨房・客室への影響">3</button>
+    </div>
+    <figcaption>設備がつながる建物断面（模式図） · 機器だけを見ず、系統と利用者への影響をたどって切替・復旧を計画します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>屋上機器</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>縦の設備経路</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>厨房・客室への影響</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 屋上機器</strong> 更新する空調等の機器。既存制御や搬入経路も見ます。</p><p data-point-note><strong>2 縦の設備経路</strong> どのフロア・部屋につながるかを系統図で追います。</p><p data-point-note><strong>3 厨房・客室への影響</strong> 設備停止と復旧試験を営業計画に反映します。</p></div>
+  </figure>
+    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="building-services-renewal-report.html#cm-visual-summary">図と表のまとめ</a></p>
+  </aside>
+
+  <p class="lead">設備の状態と故障時の影響から更新順位を決め、停止と切替を管理する。</p>
+  <ol class="overview" aria-label="判断の流れ"><li><b>設備台帳と稼働実績を確認</b></li><li><b>更新案と停止を比較</b></li><li><b>試運転・引渡しを計画</b></li></ol>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">設備の状態と故障時の影響から更新順位を決め、停止と切替を管理する。発注者が決める時期と、設計者に求める資料を順に確認します。</p></details>
+</section>
+<section class="slide" id="s2" aria-label="スライド2">
+  <div class="meta"><span class="cat">計画と確認</span><span>2 / 8</span></div>
+  <h2>機器・系統・運転の記録をそろえる</h2>
+<aside class="cm-visual" aria-labelledby="cm-visual-table-title">
+    <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">空調</th><td>系統に属する客室・共用部と季節負荷</td></tr>
+<tr><th scope="row">給排水</th><td>断水・給湯停止範囲、衛生確認</td></tr>
+<tr><th scope="row">受変電</th><td>停電範囲、非常電源、復電時の確認</td></tr>
+  </tbody></table><div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>給湯の更新でホテルの一部を止めます。予約調整に何が必要ですか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>停止する客室・厨房等の範囲と、復旧試験までの時間</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>交換する機器の名称だけ</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>停止する客室・厨房等の範囲と、復旧試験までの時間</strong></p><p>系統図で影響先をたどり、止める時間・戻せない場合の代替運用・営業再開条件を決めます。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>設備系統図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>停止日を決める前と切替直前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>設備担当・施設運営者・保守担当</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 設備系統図・停止計画・試運転記録</p>
+    </details>
+  </div>
+    <details class="cm-visual-extra"><summary>建物のイラストで位置を見る</summary><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:60%;--spot-y:47%">●</span></div><figcaption>屋上の機器と各階をつなぐ縦の設備経路を追い、停止の影響範囲を見ます。 イラストは位置関係の説明用です。</figcaption></figure></details>
+  </aside>
+
+  <p class="lead">建物を止めずに維持するため、単独故障で止まる範囲を把握します。</p>
+  <ol id="land-flow-2" class="flow h"><li class="step"><b>機器一覧、設置年、系統図を確認</b></li><li class="step"><b>点検・故障・部品供給の記録を整理</b></li><li class="step"><b>故障時に止まる部屋と営業機能を確認</b></li></ol>
+  <button type="button" class="flow-next" data-flow="land-flow-2">順に見る</button><span id="land-flow-2-status" role="status"></span>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">設備を設置年だけで評価せず、故障の頻度、復旧日数、部品の入手、予備機の有無を記録します。運転中のデータやピーク時負荷を調べ、過不足のある容量や不要な系統を見直します。</p></details>
+</section>
+<section class="slide" id="s3" aria-label="スライド3">
+  <div class="meta"><span class="cat">計画と確認</span><span>3 / 8</span></div>
+  <h2>空調・給排水・受変電の優先をつける</h2>
+  <p class="lead">故障時のサービス停止と復旧の難しさで比べます。</p>
+  <table class="tbl"><thead><tr><th scope="col">設備</th><th scope="col">主な指標・確認材料</th></tr></thead><tbody><tr><td data-label="設備">空調</td><td data-label="主な指標・確認材料">負荷・季節、温湿度、故障履歴、保守部品</td></tr><tr><td data-label="設備">給排水・給湯</td><td data-label="主な指標・確認材料">漏水・腐食、圧力、給湯の状態、水質、排水能力</td></tr><tr><td data-label="設備">受変電</td><td data-label="主な指標・確認材料">実需要、保護機器、機器状態、非常電源と予備系統</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">法定点検上の不具合や長期停止につながる設備を先に処理します。建築物衛生法の特定建築物に該当する場合は、空調・給水の衛生管理基準や維持管理記録との整合も確認します。</p></details>
+</section>
+<section class="slide" id="s4" aria-label="スライド4">
+  <div class="meta"><span class="cat">計画と確認</span><span>4 / 8</span></div>
+  <h2>部分更新と一括更新の見積条件</h2>
+  <p class="lead">初期費と運用・保守を同じ評価期間で比較します。</p>
+  <table class="tbl"><thead><tr><th scope="col">方式</th><th scope="col">比較ポイント</th></tr></thead><tbody><tr><td data-label="方式">機器単位で更新</td><td data-label="比較ポイント">工事しやすさ、既存制御との互換、停止回数</td></tr><tr><td data-label="方式">系統単位で更新</td><td data-label="比較ポイント">設計調整と仮設、故障影響範囲、保守費</td></tr><tr><td data-label="方式">一括更新</td><td data-label="比較ポイント">長時間停止、施工体制、運転の効率化</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">更新費に設備搬入、制御の改修、天井や区画の復旧、試運転を含めます。光熱費は実際の稼働率と将来想定、保守や交換コストも合わせて試算します。営業停止の時期と回数を経営側が比較できる形にします。</p></details>
+</section>
+<section class="slide" id="s5" aria-label="スライド5">
+  <div class="meta"><span class="cat">計画と確認</span><span>5 / 8</span></div>
+  <h2>停電・断水・空調停止を工程に見せる</h2>
+  <p class="lead">停止時間には試験と予備時間も含めます。</p>
+  <ol id="land-flow-5" class="flow h"><li class="step"><b>系統と影響先を図で確認</b></li><li class="step"><b>代替運転と戻せる状態を計画</b></li><li class="step"><b>切替の承認、通知、立会い</b></li><li class="step"><b>復旧後の測定と営業確認</b></li></ol>
+  <button type="button" class="flow-next" data-flow="land-flow-5">順に見る</button><span id="land-flow-5-status" role="status"></span>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">電気設備の切替は電気主任技術者などと実施計画を確認し、設備変更に伴う届出・検査の該当性を確認します。宿泊者対応では、停止する客室、設備、フロント連絡と、復旧不可の場合の代替策を共有します。</p></details>
+</section>
+<section class="slide" id="s6" aria-label="スライド6">
+  <div class="meta"><span class="cat">計画と確認</span><span>6 / 8</span></div>
+  <h2>架空事例｜給湯を止められる時間は短い</h2>
+  <p class="lead">先行施工と一時的な代替供給を比較します。</p>
+  <table class="tbl"><thead><tr><th scope="col">案</th><th scope="col">発注者が比較する条件</th></tr></thead><tbody><tr><td data-label="案">低稼働日にまとめて切替</td><td data-label="発注者が比較する条件">休止範囲、復旧試験、予約の調整</td></tr><tr><td data-label="案">先行配管＋短時間切替</td><td data-label="発注者が比較する条件">仮設スペース、切替回数、既存との接続</td></tr><tr><td data-label="案">工区分割で営業継続</td><td data-label="発注者が比較する条件">営業範囲、停止告知、工期と費用</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">丘の上ホテルで老朽化した給湯系統を更新する想定です。厨房・大浴場・客室を同時に止める必要があるか系統図で確認し、切替できないときの復旧手順と営業判断の期限を決めます。</p></details>
+</section>
+<section class="slide" id="s7" aria-label="スライド7">
+  <div class="meta"><span class="cat">計画と確認</span><span>7 / 8</span></div>
+  <h2>試運転は単体・連動・異常時を押さえる</h2>
+  <p class="lead">通常の運用に戻せる状態か、施設の担当者と確認します。</p>
+  <table class="tbl"><thead><tr><th scope="col">試験</th><th scope="col">確認と記録</th></tr></thead><tbody><tr><td data-label="試験">空調・給排水</td><td data-label="確認と記録">運転条件、風量・水量や温度、漏れ、必要な水質確認</td></tr><tr><td data-label="試験">停復電・非常電源</td><td data-label="確認と記録">復電時起動順序、警報、関係設備の動作</td></tr><tr><td data-label="試験">中央監視・消防との連動</td><td data-label="確認と記録">設定、運転表示、警報、連絡先</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">試験の合格条件と測定方法を工事契約時に決めます。夜間の運転切替、警報や復旧、季節によって確認できない性能の扱いも事前に取り決めます。</p></details>
+</section>
+<section class="slide" id="s8" aria-label="スライド8">
+  <div class="meta"><span class="cat">計画と確認</span><span>8 / 8</span></div>
+  <h2>引渡し後の保全と季節試験を計画</h2>
+  <p class="lead">運用者が操作・保守できる資料と日程を残します。</p>
+  <ol id="land-flow-8" class="flow h"><li class="step"><b>系統図・機器一覧・保守部品を更新</b></li><li class="step"><b>操作と緊急対応を施設担当へ訓練</b></li><li class="step"><b>季節試験と初年度点検を予定に入れる</b></li></ol>
+  <button type="button" class="flow-next" data-flow="land-flow-8">順に見る</button><span id="land-flow-8-status" role="status"></span>
+<p class="small"><a href="building-services-renewal-report.html#sources">詳細レポートと一次資料</a></p>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">既設の流用機器と更新した機器を識別できる竣工図を用意します。保守契約、保証、消耗品、連絡先をまとめ、試運転後に確認した不具合の是正期限も管理台帳へ載せます。</p></details>
+</section>
+</main>
+
+<div class="caption" id="caption" role="status" aria-live="polite"></div>
+
+<nav class="pager" aria-label="スライド送り">
+  <div class="in">
+    <button class="btn" id="prev" type="button">← 前</button>
+    <span class="count" id="count">1 / 8</span>
+    <button class="btn primary" id="next" type="button">次 →</button>
+  </div>
+</nav>
+
+<script src="cm-slide-controls.js"></script>
+</body>
+</html>

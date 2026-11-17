@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>外壁点検・外壁補修のCM実務 | 音声・図解スライド</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red:#9b3b2f;--red-l:#f7e6e2;
+  --r:14px;--gap:16px;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+/* header */
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+/* controls */
+.controls{background:var(--paper);border-bottom:1px solid var(--line)}
+.controls .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ctl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.ctl select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);max-width:220px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:5px 14px;cursor:pointer;min-height:36px}
+.btn:hover{background:var(--green-l)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d)}
+.btn[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.note-voice{font-size:12.5px;color:var(--sub);width:100%;margin:0}
+/* deck */
+main{max-width:1180px;margin:0 auto;padding:18px 16px 120px}
+.slide{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px 22px;min-height:620px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.slide.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.list .slide{display:block;margin-bottom:22px;animation:none}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--sub);margin-bottom:6px}
+.cat{display:inline-block;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:1px 12px;font-weight:700;letter-spacing:.03em}
+.slide h1,.slide h2{color:var(--green-d);margin:4px 0 14px;line-height:1.4}
+.slide h1{font-size:34px}
+.slide h2{font-size:26px;border-left:6px solid var(--green);padding-left:12px}
+.lead{font-size:17px;color:var(--sub);margin:0 0 16px}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--green-d)}
+.card p{margin:0;font-size:15px}
+.card ul{margin:4px 0 0;padding-left:1.2em;font-size:15px}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h3{color:#fff}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.r{background:var(--red-l);border-color:#e6c2ba}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.small{font-size:13px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--green-m);color:var(--green-d);border-radius:6px;padding:0 6px;margin:0 2px 2px 0;background:#fff}
+.tag.cond{border-color:var(--amber);color:#7a4f10;background:var(--amber-l)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff;font-weight:700}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);white-space:nowrap}
+.tbl td.c{text-align:center}
+.dot{color:var(--green);font-weight:700}
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.flow.h{grid-template-columns:repeat(4,minmax(0,1fr))}
+.flow.h7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow .step{position:relative;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;transition:border-color .3s,background .3s,transform .3s,opacity .3s;cursor:pointer}
+.flow .step b{display:block;color:var(--green-d);font-size:15px;margin-bottom:2px}
+.flow .step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px;vertical-align:1px}
+.flow.playing .step{opacity:.45}
+.flow.playing .step.done{opacity:.8;border-color:var(--green-m)}
+.flow.playing .step.on{opacity:1;border-color:var(--amber);background:var(--amber-l);transform:translateY(-3px);box-shadow:0 4px 10px rgba(183,121,31,.18)}
+.flow .step .who{display:block;font-size:12.5px;color:var(--sub);margin-top:4px}
+.flow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.flow-bar .status{font-size:13px;color:var(--sub)}
+.layers{display:grid;gap:8px}
+.layer{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:8px 12px;font-size:14.5px}
+.layer:nth-child(2){margin-left:18px}.layer:nth-child(3){margin-left:36px}.layer:nth-child(4){margin-left:54px}
+.layer b{color:var(--green-d)}
+.cover{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;min-height:520px}
+.cover .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:3px 14px;font-size:14px;letter-spacing:.06em}
+.cover-fig{background:var(--green);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover-fig div{background:var(--cream);border-radius:12px;padding:16px 10px;text-align:center;font-weight:700;color:var(--green-d)}
+.cover-fig div span{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+/* script */
+details.script{margin-top:18px;border-top:1px dashed var(--line);padding-top:8px}
+details.script summary{cursor:pointer;color:var(--green);font-size:14px;font-weight:700}
+details.script p{font-size:15px;margin:8px 0 0;color:var(--ink)}
+/* caption + pager */
+.caption{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);max-width:min(92vw,960px);background:rgba(27,64,55,.94);color:#fff;font-size:17px;line-height:1.6;padding:10px 16px;border-radius:10px;z-index:30;display:none}
+.caption.show{display:block}
+.pager{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:25}
+.pager .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}
+body.list .pager{display:none}
+.foot{margin-top:14px;font-size:12.5px;color:var(--sub)}
+.srcs{font-size:13.5px;margin:6px 0 0;padding-left:1.2em}
+/* reduced motion */
+body.reduce *, body.reduce *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce .flow.playing .step.on{transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  .slide{padding:18px 16px;min-height:0}
+  .slide h1{font-size:26px}.slide h2{font-size:21px}
+  .g2,.g4{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:1fr}
+  .layer:nth-child(n){margin-left:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl tbody th{white-space:normal}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .tbl td.c{text-align:left}
+  .caption{bottom:68px;font-size:15px}
+  .ctl select{max-width:150px}
+}
+@media print{
+  .topbar,.controls,.pager,.caption{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:0;box-shadow:none}
+  body{background:#fff}
+}
+
+.caption{width:max-content;max-height:24dvh;overflow:auto}
+.pager .in{justify-content:center;gap:16px}
+@media screen and (max-width:900px){
+ body>iframe#nl-badge-frame{position:relative!important;display:block;inset:auto!important;margin-inline-start:auto!important;max-width:100%;z-index:1!important}
+}
+@media screen and (max-width:700px){
+ body{font-size:16px}
+ .slide h2{font-size:clamp(23px,5.8vw,28px)}
+ .tbl th,.tbl td{font-size:15px}
+ .pager button,.controls button,.controls select{min-height:44px}
+}
+@media print{#nl-badge-frame,.slide .script{display:none!important}.slide:last-child{page-break-after:auto}}
+</style>
+<link rel="stylesheet" href="cm-slide-theme.css">
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#deck">スライド本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 外壁点検・外壁補修</div>
+    <nav class="nav" aria-label="サイト内リンク">
+      <a href="index.html">CM知識一覧へ戻る</a>
+      <a href="facade-maintenance-report.html">詳細レポート</a>
+      <a href="article-8-12-slides.html">関連：建築基準法8条・12条</a>
+    </nav>
+  </div>
+</header>
+
+<div class="controls" role="region" aria-label="表示と音声の操作">
+  <div class="in">
+    <button class="btn primary" id="play" type="button">▶ 読み上げ開始</button>
+    <button class="btn" id="stop" type="button">■ 停止</button>
+    <label class="ctl">話者
+      <select id="voice" aria-label="読み上げ音声（端末の日本語音声）"><option value="">端末の標準（日本語）</option></select>
+    </label>
+    <label class="ctl">速度
+      <select id="rate" aria-label="読み上げ速度">
+        <option value="0.8">ゆっくり</option>
+        <option value="1" selected>標準</option>
+        <option value="1.2">やや速い</option>
+        <option value="1.4">速い</option>
+      </select>
+    </label>
+    <div class="toggles">
+      <button class="btn" id="tCap" type="button" aria-pressed="true">字幕</button>
+      <button class="btn" id="tAuto" type="button" aria-pressed="false">自動送り</button>
+      <button class="btn" id="tMotion" type="button" aria-pressed="false">動きを減らす</button>
+      <button class="btn" id="tList" type="button" aria-pressed="false">一覧表示</button>
+    </div>
+    <p class="note-voice" id="voiceNote">読み上げはボタンを押したときだけ始まります。音声は端末に入っている日本語音声を使います。</p>
+  </div>
+</div>
+
+<main id="deck">
+<p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
+
+<section class="slide cover" id="s1" aria-label="スライド1">
+  <div class="meta"><span class="cat">導入</span><span>01 / 12</span></div>
+  <h1>外壁点検・外壁補修</h1>
+<aside class="cm-visual" aria-labelledby="cm-visual-title">
+    <h2 id="cm-visual-title" class="cm-visual-heading">外壁のどこを、どの順で見る？</h2><div class="cm-visual-term"><p><strong>外壁の浮き</strong> タイルやモルタルなどが下地から離れ、落下につながることがある状態です。</p>
+    <p><span>最初に開く資料</span> <b>外壁立面図</b></p></div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="外壁の立面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:16%;top:14.583333333333334%;width:63%;height:58.333333333333336%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:25%;top:25%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:55%;top:25%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:25%;top:47.91666666666667%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:55%;top:47.91666666666667%;width:14%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:47%;top:18.75%;width:7.615773105863909%;transform:rotate(1.9756881130799802rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:44%;top:33.33333333333333%;width:8.06225774829855%;transform:rotate(1.0516502125483738rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:48%;top:47.91666666666667%;width:7.615773105863909%;transform:rotate(1.9756881130799802rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:35%;top:66.66666666666666%;width:28%;height:6.25%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:7%;top:79.16666666666666%;width:87%;transform:rotate(0rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:46%;--field-y:39.58333333333333%" data-point aria-pressed="false" aria-label="1 ひび・浮き">1</button><button type="button" class="cm-field-marker" style="--field-x:65%;--field-y:54.166666666666664%" data-point aria-pressed="false" aria-label="2 窓・目地">2</button><button type="button" class="cm-field-marker" style="--field-x:52%;--field-y:81.25%" data-point aria-pressed="false" aria-label="3 出入口・通路">3</button>
+    </div>
+    <figcaption>外壁の立面図（模式図） · 高さと通行状況を重ねます。見つかった異常箇所は立面図に記録します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>ひび・浮き</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>窓・目地</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>出入口・通路</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 ひび・浮き</strong> 高さと範囲を立面図に記録します。</p><p data-point-note><strong>2 窓・目地</strong> 窓まわりや目地に隙間がないかを見ます。</p><p data-point-note><strong>3 出入口・通路</strong> 異常箇所の下を誰が通るか確認します。</p></div>
+  </figure>
+    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="facade-maintenance-report.html#cm-visual-summary">図と表のまとめ</a></p>
+  </aside>
+
+<ol class="overview"><li><b>落下リスク</b><span>仕上げ材と歩行者が通る範囲</span></li><li><b>調査と診断</b><span>打診・赤外線・補完調査</span></li><li><b>補修と検査</b><span>原因、数量、施工記録</span></li></ol>
+  <p class="lead">定期調査の法的要件から、原因別の補修工法・数量管理・施工検査までを一連で整理する</p>
+  <div class="grid g3">
+    <div class="card"><h3>調べる</h3><p>告示282号に基づく目視・打診・赤外線調査</p></div>
+    <div class="card"><h3>守る</h3><p>落下のおそれがある部分の応急措置</p></div>
+    <div class="card"><h3>直す</h3><p>公共建築改修工事標準仕様書 第4章による原因別補修</p></div>
+  </div>
+  <details class="script"><summary>原稿</summary><p class="say">本日は外壁の点検と補修を扱います。法定の定期調査で何を求められるか、落下のおそれがある場合の初動、そして標準仕様書に沿った原因別の補修と検査までを、一連の流れとして確認します。</p></details>
+</section>
+<section class="slide" id="s2" aria-label="スライド2">
+  <div class="meta"><span class="cat">法的根拠</span><span>02 / 12</span></div>
+  <h2>外壁調査を支える4つの根拠</h2>
+<aside class="cm-visual" aria-labelledby="cm-visual-table-title">
+    <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">ひび割れ</th><td>位置、幅、長さ、漏水との関係</td></tr>
+<tr><th scope="row">浮き・はく離</th><td>範囲と落下時に影響する場所</td></tr>
+<tr><th scope="row">目地の劣化</th><td>切れや隙間、雨水の通り道</td></tr>
+  </tbody></table><div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>出入口の真上に外壁の浮きが疑われます。最初にどうしますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>落下のおそれを確認し、人が立ち入る範囲への対応を検討する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>外壁全面の工事見積が出るまでそのままにする</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>落下のおそれを確認し、人が立ち入る範囲への対応を検討する</strong></p><p>通行への影響を先に確かめ、必要な安全措置と専門調査を進めます。補修範囲は調査結果を立面図に落として決めます。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>外壁立面図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>外壁の異常を見つけた時点</dd></div>
+        <div><dt>誰と確認するか</dt><dd>施設管理者・外壁の調査者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 異常箇所の立面図・通行範囲・調査記録</p>
+    </details>
+  </div>
+    <details class="cm-visual-extra"><summary>建物のイラストで位置を見る</summary><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:27%;--spot-y:39%">●</span></div><figcaption>窓・バルコニーの周りと、下に人が通る入口や通路を一緒に見ます。 イラストは位置関係の説明用です。</figcaption></figure></details>
+  </aside>
+
+  <table class="tbl">
+    <thead><tr><th>根拠</th><th>求めること</th><th>実務上の意味</th></tr></thead>
+    <tbody>
+      <tr><td data-label="根拠">建築基準法 第8条</td><td data-label="求めること">所有者等による常時適法な維持保全（努力義務）</td><td data-label="実務上の意味">定期報告の対象外でも点検・補修の責任は残る</td></tr>
+      <tr><td data-label="根拠">建築基準法 第12条</td><td data-label="求めること">特定建築物の定期調査と特定行政庁への報告</td><td data-label="実務上の意味">ホテル等は有資格者が調査し報告する</td></tr>
+      <tr><td data-label="根拠">平成20年国交省告示第282号</td><td data-label="求めること">外装仕上げ材等の調査項目・方法・判定基準</td><td data-label="実務上の意味">全面打診等の時期と範囲を規定</td></tr>
+      <tr><td data-label="根拠">民法 第717条</td><td data-label="求めること">工作物の設置・保存の瑕疵による損害の賠償</td><td data-label="実務上の意味">落下事故時は占有者・所有者が責任を負う</td></tr>
+    </tbody>
+  </table>
+  <details class="script"><summary>原稿</summary><p class="say">外壁調査は報告のための手続きにとどまりません。第12条の定期報告と告示282号が方法を定め、第8条が日常の維持保全を求めます。事故が起きれば民法717条で所有者の賠償責任が問われます。</p></details>
+</section>
+<section class="slide" id="s3" aria-label="スライド3">
+  <div class="meta"><span class="cat">告示282号</span><span>03 / 12</span></div>
+  <h2>対象となる外装仕上げ材</h2>
+  <div class="grid g2">
+    <div class="card"><h3>対象</h3><ul>
+      <li>タイル・石貼り等（モルタルや接着剤で張ったもの、躯体と同時に打ち込んだもの）</li>
+      <li>モルタル等（不陸調整の薄塗りを除く）</li>
+    </ul></div>
+    <div class="card"><h3>対象外</h3><ul>
+      <li>乾式工法（金物で留め付けたタイル・石）</li>
+      <li>塗装のみの仕上げ、金属パネル等</li>
+    </ul></div>
+  </div>
+  <p class="callout">告示の表記は「タイル、石貼り等（乾式工法によるものを除く。）、モルタル等の劣化及び損傷の状況」。判定基準は剥落等、または著しい白華・ひび割れ・浮き等があること。</p>
+  <details class="script"><summary>原稿</summary><p class="say">告示の対象は湿式のタイル・石貼りとモルタルです。乾式工法の金物留めは対象外です。判定は剥落、または著しい白華・ひび割れ・浮きがあるかどうかで行います。</p></details>
+</section>
+<section class="slide" id="s4" aria-label="スライド4">
+  <div class="meta"><span class="cat">告示282号</span><span>04 / 12</span></div>
+  <h2>危害範囲：落下で歩行者等に危害を加えるおそれのある部分</h2>
+<figure class="facade-diagram" aria-label="外壁と人が通る場所の関係を示す模式図"><div class="wall-face"><span>外壁</span><i></i><i></i><i></i></div><div class="drop-zone"><div>落下の影響範囲</div><div>歩道・車寄せ・出入口</div></div><figcaption>外壁から落下のおそれがある範囲と、人が通る場所を立面図・配置図で照合する。</figcaption></figure>
+  <div class="grid g2">
+    <div class="card"><h3>該当する壁面</h3><p>壁面の前面で、<b>壁面高さのおおむね1/2</b>の水平距離内に、公道・不特定多数が通る私道・構内通路・広場があるもの</p></div>
+    <div class="card"><h3>除外できる部分</h3><p>直下にRC造・S造等の<b>強固な屋根・庇</b>がある、または植込み等で<b>影響角（縦2：横1の勾配）</b>が完全に遮られ、被災の危険がないと判断される部分</p></div>
+  </div>
+  <p class="callout">ホテルでは車寄せ・エントランス・歩道沿い・テラス席が典型的な危害範囲。庇の上部壁面は除外になり得るが、庇自体の強度確認が前提。</p>
+  <details class="script"><summary>原稿</summary><p class="say">全面打診の範囲は壁面高さのおおむね半分の距離内に通路や広場がある壁面です。強固な庇や植込みで落下物が確実に遮られる部分は除外できます。ホテルでは車寄せや歩道沿いが中心です。</p></details>
+</section>
+<section class="slide" id="s5" aria-label="スライド5">
+  <div class="meta"><span class="cat">告示282号</span><span>05 / 12</span></div>
+  <h2>「おおむね10年」の全面打診等と条件</h2>
+  <table class="tbl">
+    <thead><tr><th>区分</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td data-label="区分">毎回の定期調査</td><td data-label="内容">開口隅部・水平打継部・斜壁部等の手の届く範囲を打診等、その他は双眼鏡等で目視（報告周期は特定行政庁が定める、おおむね6月〜3年）</td></tr>
+      <tr><td data-label="区分">異常があった場合</td><td data-label="内容">危害範囲を全面打診等で確認</td></tr>
+      <tr><td data-label="区分">10年経過時</td><td data-label="内容">竣工・外壁改修・全面打診等のいずれかから10年を超え、かつ3年以内に全面打診等を実施していない場合は、危害範囲の全面打診等</td></tr>
+      <tr><td data-label="区分">適用除外</td><td data-label="内容">3年以内に外壁改修等が確実な場合、または別途歩行者等の安全確保の対策を講じている場合</td></tr>
+    </tbody>
+  </table>
+  <details class="script"><summary>原稿</summary><p class="say">毎回の調査は手の届く範囲の打診と目視です。竣工や外壁改修から10年を超え、直近3年に全面打診がなければ全面打診等が必要です。3年以内の改修が確実か、安全対策済みなら除外されます。</p></details>
+</section>
+<section class="slide" id="s6" aria-label="スライド6">
+  <div class="meta"><span class="cat">調査手法</span><span>06 / 12</span></div>
+  <h2>目視・打診・赤外線：同等以上の精度が条件</h2>
+  <div class="grid g3">
+    <div class="card"><h3>目視</h3><p>双眼鏡等で全体を確認。ひび割れ・白華・欠損・シーリング劣化を把握。浮きの確定はできない</p></div>
+    <div class="card"><h3>打診</h3><p>テストハンマーで直接判定。告示の基準となる方法。足場・ゴンドラ・ロープ等の接近手段が必要</p></div>
+    <div class="card"><h3>赤外線</h3><p>地上設置・無人航空機の双方。令和4年改正で<b>打診と同等以上の精度</b>を有するものに限り明確化</p></div>
+  </div>
+  <p class="callout">有機系接着剤張りタイルは、下地・接着剤と施工記録が技術的助言の条件を満たす場合、引張接着試験で確認する方法がある（平成30年技術的助言）。</p>
+  <details class="script"><summary>原稿</summary><p class="say">打診が基準で、赤外線は打診と同等以上の精度を確保できる場合に限り認められます。目視は傾向把握に使い、浮きの確定には打診か条件を満たした赤外線を使います。</p></details>
+</section>
+<section class="slide" id="s7" aria-label="スライド7">
+  <div class="meta"><span class="cat">調査手法</span><span>07 / 12</span></div>
+  <h2>赤外線調査の進め方と打診による補完</h2>
+  <ol id="f1" class="flow h">
+    <li class="step"><b>適用条件の把握</b>天候・気温・風速、撮影角度と離隔距離、軒裏・出隅・入隅、周辺建物の放射熱</li>
+    <li class="step"><b>事前調査</b>日射と調査可能時間帯、仕上げ材、装置の設置位置を確認</li>
+    <li class="step"><b>調査計画書</b>調査箇所・除外箇所・打診併用箇所を明記し外壁調査実施者が確認</li>
+    <li class="step"><b>同一部位で比較</b>本調査前に打診と赤外線を同じ部位で行い、浮きを検出できるか確かめる</li>
+    <li class="step"><b>本調査・判定</b>外乱を除いて熱画像を分析し、全画像を保存</li>
+    <li class="step"><b>打診で補完</b>検出困難・適用外の部位は条件を変えるか打診で調査</li>
+  </ol>
+  <button type="button" class="flow-next" data-flow="f1">順に見る</button>
+  <span id="f1-status" role="status"></span>
+  <details class="script"><summary>原稿</summary><p class="say">赤外線は条件確認と計画が要です。本調査の前に同じ部位で打診と比べて検出性を確かめ、軒裏や入隅など検出が難しい部位は打診で補完します。熱画像はすべて保存します。</p></details>
+</section>
+<section class="slide" id="s8" aria-label="スライド8">
+  <div class="meta"><span class="cat">応急措置</span><span>08 / 12</span></div>
+  <h2>落下のおそれがある場合は「先に守る」</h2>
+  <div class="grid g2">
+    <div class="card"><h3>即日行う措置</h3><ul>
+      <li>直下の立入禁止区画（コーン・バー・誘導員）</li>
+      <li>浮き・欠損部の除去（安全に撤去できる範囲）</li>
+      <li>防護ネット・養生シートの設置</li>
+      <li>動線の切替え（出入口・車寄せの変更）</li>
+    </ul></div>
+    <div class="card"><h3>本補修までの管理</h3><ul>
+      <li>仮設庇・朝顔等で落下物を受ける</li>
+      <li>位置・範囲・写真を記録し所有者へ報告</li>
+      <li>措置範囲の定期巡回と拡大確認</li>
+      <li>本補修の仕様・数量・時期を決定</li>
+    </ul></div>
+  </div>
+  <p class="callout">応急措置は本補修の代わりではない。告示の「別途安全確保の対策」として扱う場合も、恒久的な措置計画とセットで説明する。</p>
+  <details class="script"><summary>原稿</summary><p class="say">落下のおそれを見つけたら、まず直下を立入禁止にし、撤去できる浮きは除去し、ネットや仮設庇で受けます。記録と報告を残し、本補修の計画につなげることが大切です。</p></details>
+</section>
+<section class="slide" id="s9" aria-label="スライド9">
+  <div class="meta"><span class="cat">原因別補修</span><span>09 / 12</span></div>
+  <h2>浮き・欠損の補修（標準仕様書 第4章）</h2>
+  <table class="tbl">
+    <thead><tr><th>現象</th><th>主な原因</th><th>標準工法</th><th>条項</th></tr></thead>
+    <tbody>
+      <tr><td data-label="現象">モルタル・タイルの浮き（部分）</td><td data-label="主な原因">温度・乾燥収縮による界面の接着低下</td><td data-label="標準工法">アンカーピンニング部分エポキシ樹脂注入（一般部16本/㎡、指定部25本/㎡）</td><td data-label="条項">4.3.11 / 4.4.9</td></tr>
+      <tr><td data-label="現象">浮き（広範囲）</td><td data-label="主な原因">同上が面的に進行</td><td data-label="標準工法">アンカーピンニング全面エポキシ樹脂注入（一般部13本/㎡、指定部20本/㎡）</td><td data-label="条項">4.3.12 / 4.4.10</td></tr>
+      <tr><td data-label="現象">タイル陶片の浮き</td><td data-label="主な原因">張付けモルタルとタイルの界面剥離</td><td data-label="標準工法">注入口付アンカーピン エポキシ樹脂注入タイル固定</td><td data-label="条項">4.4.15</td></tr>
+      <tr><td data-label="現象">欠損・鉄筋露出</td><td data-label="主な原因">中性化・塩害による鉄筋腐食と爆裂</td><td data-label="標準工法">はつり・防錆処理後、ポリマーセメントモルタル等で充填</td><td data-label="条項">4.2.8 / 4.3.9</td></tr>
+      <tr><td data-label="現象">タイルの割れ・欠落</td><td data-label="主な原因">下地挙動・衝撃・浮きの進行</td><td data-label="標準工法">タイル部分張替え（1か所0.25㎡程度以下）またはタイル張替え</td><td data-label="条項">4.4.7 / 4.4.8</td></tr>
+    </tbody>
+  </table>
+  <details class="script"><summary>原稿</summary><p class="say">浮きは範囲に応じて部分注入か全面注入を選び、ピン本数は一般部と見上げ面などの指定部で変わります。欠損は鉄筋の防錆処理をしてから充填し、割れたタイルは張替えます。</p></details>
+</section>
+<section class="slide" id="s10" aria-label="スライド10">
+  <div class="meta"><span class="cat">原因別補修</span><span>10 / 12</span></div>
+  <h2>ひび割れ・シーリングの補修</h2>
+  <table class="tbl">
+    <thead><tr><th>対象</th><th>工法</th><th>要点</th><th>条項</th></tr></thead>
+    <tbody>
+      <tr><td data-label="対象">ひび割れ（挙動小）</td><td data-label="工法">樹脂注入工法</td><td data-label="要点">自動式低圧が標準、注入圧0.4N/mm²以下、注入量を記録</td><td data-label="条項">4.2.5 / 4.4.6</td></tr>
+      <tr><td data-label="対象">ひび割れ（挙動あり）</td><td data-label="工法">Uカットシール材充填工法</td><td data-label="要点">溝を設けて可とう性材料を充填</td><td data-label="条項">4.2.6</td></tr>
+      <tr><td data-label="対象">微細なひび割れ</td><td data-label="工法">シール工法</td><td data-label="要点">表面に可とう性エポキシ樹脂等を塗付</td><td data-label="条項">4.2.7</td></tr>
+      <tr><td data-label="対象">タイル目地のひび割れ</td><td data-label="工法">目地改修工法</td><td data-label="要点">既存目地材を除去し再充填。伸縮調整目地の新設は協議</td><td data-label="条項">4.4.16</td></tr>
+      <tr><td data-label="対象">シーリング</td><td data-label="工法">再充填・拡幅再充填・ブリッジ</td><td data-label="要点">第3章7節で施工、接着性試験を実施</td><td data-label="条項">表3.1.2 / 3.7.8</td></tr>
+    </tbody>
+  </table>
+  <details class="script"><summary>原稿</summary><p class="say">ひび割れは幅と挙動で工法を分けます。挙動が小さければ低圧樹脂注入、挙動があればUカットシール材充填です。シーリングは第3章の防水改修側に規定があり、接着性試験も行います。</p></details>
+</section>
+<section class="slide" id="s11" aria-label="スライド11">
+  <div class="meta"><span class="cat">施工管理</span><span>11 / 12</span></div>
+  <h2>数量変更と施工検査</h2>
+  <div class="grid g2">
+    <div class="card"><h3>数量は「施工数量調査」で確定</h3><ul>
+      <li>足場架設後に全面打診とマーキングで実数量を把握（1.6.2）</li>
+      <li>設計図書と異なれば監督職員と協議し補修範囲を決定</li>
+      <li>契約時に単価と精算方法（実数精算）を取り決めておく</li>
+    </ul></div>
+    <div class="card"><h3>検査で品質を数値化</h3><ul>
+      <li>ピンニング：全数をテストハンマーで確認（4.3.11）</li>
+      <li>樹脂注入：コア抜取りで注入状況を確認（4.2.5）</li>
+      <li>張替えタイル：全面打診＋引張接着試験 100㎡ごと1個以上かつ3個以上、0.4N/mm²以上（4.4.8）</li>
+      <li>シーリング：接着性試験（3.7.8）</li>
+    </ul></div>
+  </div>
+  <details class="script"><summary>原稿</summary><p class="say">補修数量は調査段階では推定値です。足場架設後の施工数量調査で実数を確定し、協議して精算します。検査はピンの全数打診、コア抜取り、張替えタイルの引張接着試験で数値化します。</p></details>
+</section>
+<section class="slide" id="s12" aria-label="スライド12">
+  <div class="meta"><span class="cat">事例</span><span>12 / 12</span></div>
+  <h2>仮想ホテル例：判断と打ち手</h2>
+  <p class="lead">仮想条件：RC造10階・築12年、外壁はモルタル張りタイル、全面打診等は未実施。正面に車寄せ庇、東面は歩道沿い、北面は植栽帯。</p>
+  <table class="tbl">
+    <thead><tr><th>論点</th><th>判断</th></tr></thead>
+    <tbody>
+      <tr><td data-label="論点">全面打診等の要否</td><td data-label="判断">竣工後10年超・直近3年未実施のため必要</td></tr>
+      <tr><td data-label="論点">範囲</td><td data-label="判断">東面・正面が危害範囲。車寄せ庇上部と植栽で遮られる北面は除外を検討</td></tr>
+      <tr><td data-label="論点">手法</td><td data-label="判断">無人航空機赤外線を主とし、軒裏・入隅・庇周りは打診で補完</td></tr>
+      <tr><td data-label="論点">異常時</td><td data-label="判断">車寄せ直上で浮きを確認したら即日区画・除去・ネット設置</td></tr>
+      <tr><td data-label="論点">補修発注</td><td data-label="判断">工法別単価で契約し、施工数量調査の実数で精算</td></tr>
+    </tbody>
+  </table>
+  <details class="script"><summary>原稿</summary><p class="say">仮想ホテルでは築12年で全面打診が未実施のため調査が必要です。歩道沿いと正面を対象に赤外線を主とし打診で補完します。異常は即日に区画し、補修は単価契約と実数精算で進めます。</p></details>
+</section>
+
+</main>
+
+<div class="caption" id="caption" role="status" aria-live="polite"></div>
+
+<nav class="pager" aria-label="スライド送り">
+  <div class="in">
+    <button class="btn" id="prev" type="button">← 前</button>
+    <span class="count" id="count">1 / 12</span>
+    <button class="btn primary" id="next" type="button">次 →</button>
+  </div>
+</nav>
+
+<script src="cm-slide-controls.js"></script>
+</body>
+</html>

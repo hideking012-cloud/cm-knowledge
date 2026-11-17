@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>盛土規制法・開発許可のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 盛土規制法・開発許可</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="earthworks-development-slides.html">音声・図解スライド</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero"><span class="badge">詳細レポート</span><h1>盛土規制法・開発許可のCM実務</h1><p>造成断面と規制区域を照合し、許可、検査、建築着工の順序を組み立てる。</p></div>
+  <nav class="toc" aria-label="目次"><h2>目次</h2><ul><li><a href="#cm-visual-summary">図と比較表</a></li><li><a href="#part-1">所在地の規制区域と指定日を確認</a></li><li><a href="#part-2">二つの制度は対象行為が違う</a></li><li><a href="#part-3">盛土・切土・仮置きを数量表で確認</a></li><li><a href="#part-4">みなし許可と残る手続を切り分ける</a></li><li><a href="#part-5">架空事例｜ホテル駐車場の拡張</a></li><li><a href="#part-6">施工中に必須の検査・報告を管理</a></li><li><a href="#part-7">完了後の造成・排水を運営側へ引継ぐ</a></li><li><a href="#check">発注者チェック表</a></li><li><a href="#sources">一次資料</a></li></ul></nav>
+  
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">現況地盤と工事後の地盤を重ねる</h2><div class="cm-visual-term"><p><strong>造成</strong> 土を削る、盛るなどして敷地の形を変える工事です。水が流れる先も確認します。</p>
+    <p><span>最初に開く資料</span> <b>現況と計画の断面図</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="切土・盛土の断面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-green cm-shape-ground" style="clip-path:polygon(4% 41.66666666666667%,24% 41.66666666666667%,42% 20.833333333333336%,68% 64.58333333333334%,96% 72.91666666666666%,96% 93.75%,4% 93.75%)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:5%;top:41.66666666666667%;width:19%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:24%;top:41.66666666666667%;width:20.591260281974%;transform:rotate(-0.507098504392337rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:42%;top:20.833333333333336%;width:33.421549934136806%;transform:rotate(0.6794138054078485rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:68%;top:64.58333333333334%;width:28.284271247461902%;transform:rotate(0.1418970546041639rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:29%;top:43.75%;width:48%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-warn cm-shape-ground" style="clip-path:polygon(29% 43.75%,42% 20.833333333333336%,56% 43.75%)"></i><i class="cm-shape cm-shape-route cm-shape-ground" style="clip-path:polygon(56% 43.75%,77% 43.75%,77% 66.66666666666666%,68% 64.58333333333334%)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:77%;top:43.75%;width:15%;transform:rotate(1.5707963267948966rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:42%;--field-y:33.33333333333333%" data-point aria-pressed="false" aria-label="1 切土">1</button><button type="button" class="cm-field-marker" style="--field-x:68%;--field-y:52.083333333333336%" data-point aria-pressed="false" aria-label="2 盛土">2</button><button type="button" class="cm-field-marker" style="--field-x:82%;--field-y:70.83333333333334%" data-point aria-pressed="false" aria-label="3 排水先">3</button>
+    </div>
+    <figcaption>切土・盛土の断面図（模式図） · 工事計画断面に造成の高さ、範囲、排水を入れ、規制区域と手続を確認します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>切土</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>盛土</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>排水先</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 切土</strong> 今ある地盤を削る側です。高さ・範囲を示します。</p><p data-point-note><strong>2 盛土</strong> 土を積む側です。計画高さ、擁壁、排水を示します。</p><p data-point-note><strong>3 排水先</strong> 雨水がどこを流れ、どこに排出されるかを確認します。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">切土</th><td>地盤を削る位置と高さ、斜面の安全</td></tr>
+<tr><th scope="row">盛土</th><td>土を積む位置、造成後の高さ、排水</td></tr>
+<tr><th scope="row">仮置き</th><td>位置、期間、規模と工事との関係</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:86%;--spot-y:72%">●</span></div><figcaption>道路や建物のために地盤が変わる範囲と、擁壁・排水の位置を見ます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>駐車場を増やす案で盛土が必要になりました。手続の判断に何をそろえますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>現況と計画の断面、規制区域図、造成・仮置きの数量</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>完成予想図と駐車台数だけ</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>現況と計画の断面、規制区域図、造成・仮置きの数量</strong></p><p>地形がどう変わるかと工事規模を数値と図で示します。開発許可との関係、工事中に必要な検査なども確認します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>現況と計画の断面図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>駐車場などの配置と地盤高さを決める前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>設計者・造成担当・所管窓口</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 造成図・現況断面・規制区域図</p>
+    </details>
+  </div>
+  </aside>
+<section class="sec" id="part-1"><h2>所在地の規制区域と指定日を確認</h2><p><strong>敷地地番と工事範囲を、自治体の地図と照合します。</strong></p><ul><li>宅地造成等工事規制区域、特定盛土等規制区域を調べる</li><li>都市計画区域と線引きを確認</li><li>周辺の崖、土砂災害指定、公園区域を重ねる</li></ul><p>区域の指定日、規制の窓口、工事範囲を押さえます。許可の判定には盛土・切土の高さや面積等が必要なので、現況と計画の平面・断面図をセットで作ります。仮置き場は工事敷地とは別に対象を確認します。</p></section>
+<section class="sec" id="part-2"><h2>二つの制度は対象行為が違う</h2><p><strong>造成の安全と、建築を目的とする土地利用の両方を確認します。</strong></p><table class="tbl"><thead><tr><th scope="col">制度</th><th scope="col">判断材料</th></tr></thead><tbody><tr><td data-label="制度">盛土規制法</td><td data-label="判断材料">規制区域、盛土・切土・土石堆積の規模と例外</td></tr><tr><td data-label="制度">都市計画法29条</td><td data-label="判断材料">主に建築等を目的とする土地の区画形質の変更、区域・規模・適用除外</td></tr><tr><td data-label="制度">都市計画法33・34条等</td><td data-label="判断材料">技術基準と、市街化調整区域における立地要件等</td></tr></tbody></table><p>開発許可は建物の配置だけでなく、道路、排水、地盤、擁壁に関わります。市街化調整区域では立地の可否も早期に確認します。別工事の搬入路や仮置きがあるときは、区域と工事主体を整理して窓口に相談します。</p></section>
+<section class="sec" id="part-3"><h2>盛土・切土・仮置きを数量表で確認</h2><p><strong>対象の面積と高さを、許可図と現場で共通に使います。</strong></p><table class="tbl"><thead><tr><th scope="col">図面・資料</th><th scope="col">記載する事項</th></tr></thead><tbody><tr><td data-label="図面・資料">現況平面・断面</td><td data-label="記載する事項">標高、崖、構造物、集水と排水先</td></tr><tr><td data-label="図面・資料">造成平面・断面</td><td data-label="記載する事項">面積、盛土・切土の範囲、擁壁、排水系統</td></tr><tr><td data-label="図面・資料">仮設計画</td><td data-label="記載する事項">土石堆積の位置・規模・期間、搬出土の行先</td></tr></tbody></table><p>工事に付随する仮置きには対象外となる場合があります。規模や位置と工事の関係を示して所管に確認します。改修に伴い既存擁壁を利用する場合も、追加荷重、排水と現況を専門家に評価してもらいます。</p></section>
+<section class="sec" id="part-4"><h2>みなし許可と残る手続を切り分ける</h2><p><strong>開発許可と盛土規制法の手続を一枚の工程に記載します。</strong></p><ul><li>事前相談で適用条項を確認</li><li>許可図・排水協議・関係者同意を整理</li><li>標識・定期報告・検査の要否を確認</li><li>工事開始と建築着工に必要な条件を確認</li></ul><p>所定の場合、都市計画法の開発許可により盛土規制法の許可を受けたものとみなされます。工事中の標識、定期報告、中間検査などは適用条件に応じて残ります。開発許可後の建築着工の制限や例外についても行政と確認してから日程を決めます。</p></section>
+<section class="sec" id="part-5"><h2>架空事例｜ホテル駐車場の拡張</h2><p><strong>駐車台数と造成規模を、複数の配置で比較します。</strong></p><table class="tbl"><thead><tr><th scope="col">案</th><th scope="col">比較する点</th></tr></thead><tbody><tr><td data-label="案">低地側に拡張</td><td data-label="比較する点">盛土・擁壁、排水先、施工中の動線</td></tr><tr><td data-label="案">段状に整備</td><td data-label="比較する点">造成量、車路勾配、バリアフリー動線</td></tr><tr><td data-label="案">既存区画の再配置</td><td data-label="比較する点">造成削減、客数に対する駐車台数</td></tr></tbody></table><p>丘の上ホテルの駐車場不足を解消する想定です。擁壁工事費だけでなく、工事中の駐車台数、雨天時の排水、隣地影響、許可・検査の日数を見積条件に入れます。</p></section>
+<section class="sec" id="part-6"><h2>施工中に必須の検査・報告を管理</h2><p><strong>施工後に見えなくなる工程は、立会い前提で工程化します。</strong></p><table class="tbl"><thead><tr><th scope="col">対象</th><th scope="col">記録・判断</th></tr></thead><tbody><tr><td data-label="対象">排水・擁壁背面</td><td data-label="記録・判断">隠蔽前写真、材料、立会い、試験</td></tr><tr><td data-label="対象">造成高さ・工区の変更</td><td data-label="記録・判断">変更図面、事前協議、必要な変更手続</td></tr><tr><td data-label="対象">荒天・湧水</td><td data-label="記録・判断">作業停止、現場保全、再開判断の記録</td></tr></tbody></table><p>検査の前に工程を進めて隠蔽しないよう、立会い日、測量確認、提出期限を現場と共有します。造成の施工条件が変わった場合、許可・設計・費用への影響を確認してから変更を指示します。</p></section>
+<section class="sec" id="part-7"><h2>完了後の造成・排水を運営側へ引継ぐ</h2><p><strong>造成の竣工断面と点検対象を施設台帳に載せます。</strong></p><ul><li>工程に必要な完了検査・公告等を確認</li><li>排水先と維持管理者を記録</li><li>豪雨後の点検箇所と連絡先を渡す</li></ul><p>造成の許可書、検査記録、竣工断面、点検箇所を保管します。関係する法令と検査・公告の手順は案件で異なるため、建築や外構の引渡しに影響する条件を所管と確認します。</p></section>
+  <section class="sec" id="check"><h2>発注者チェック表</h2><table class="tbl"><thead><tr><th scope="col">段階</th><th scope="col">発注者の確認</th><th scope="col">残す成果物</th></tr></thead><tbody><tr><td data-label="段階">候補地・企画</td><td data-label="発注者の確認">規制区域を特定</td><td data-label="残す成果物">区域図、地番、現況、窓口一覧</td></tr><tr><td data-label="段階">基本設計</td><td data-label="発注者の確認">造成と開発を判定</td><td data-label="残す成果物">配置比較、判定の根拠、協議記録</td></tr><tr><td data-label="段階">発注・着工前</td><td data-label="発注者の確認">許可条件と検査を工程へ</td><td data-label="残す成果物">承認図面、見積・工程、着手条件</td></tr><tr><td data-label="段階">施工変更・引渡し</td><td data-label="発注者の確認">変更時の再照会と条件の履行を確認</td><td data-label="残す成果物">竣工図、行政提出記録、維持管理台帳</td></tr></tbody></table><p>架空の「丘の上ホテル」は地上6階、延べ6,000㎡、100室。旧館の一部に事務所があります。 別棟や駐車場計画では、ごく小さい修正に見える造成範囲や排水先の変更も、所管と申請への影響を確認します。</p><p>判定結果には根拠条項、窓口、回答日、対象図面の版、残っている条件を添えます。</p></section>
+  <section class="sec" id="sources"><h2>一次資料</h2><ul><li><a href="https://www.mlit.go.jp/toshi/morido-gaiyou.html">国土交通省 盛土規制法の概要</a></li><li><a href="https://www.mlit.go.jp/toshi/web/content/001603831.pdf">国土交通省 盛土規制法の事業者向け資料</a></li><li><a href="https://www.mlit.go.jp/toshi/city_plan/toshi_city_plan_fr_000046.html">国土交通省 開発許可制度の概要</a></li><li><a href="https://laws.e-gov.go.jp/law/343AC0000000100">e-Gov 都市計画法</a></li></ul><p>案件で適用する法令、条例、経過措置や申請の扱いは、設計者と所管に確認してください。</p></section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ</a><a href="earthworks-development-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

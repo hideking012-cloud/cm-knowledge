@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>崖地条例のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 崖地条例</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="cliff-ordinance-slides.html">音声・図解スライド</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero"><span class="badge">詳細レポート</span><h1>崖地条例のCM実務</h1><p>崖の現況断面、既存擁壁、造成・防災の指定から建物配置を比較する。</p></div>
+  <nav class="toc" aria-label="目次"><h2>目次</h2><ul><li><a href="#cm-visual-summary">図と比較表</a></li><li><a href="#part-1">崖の高さ・勾配・下端を測量する</a></li><li><a href="#part-2">東京都と横浜市で高さの条件が異なる</a></li><li><a href="#part-3">既存擁壁の資料と現況を照合する</a></li><li><a href="#part-4">崖条例・盛土規制・土砂災害の指定を照合</a></li><li><a href="#part-5">架空事例｜ホテル別棟の敷地に崖がある</a></li><li><a href="#part-6">相談から施工までの判断順</a></li><li><a href="#part-7">工事中の安全管理と維持点検を引き継ぐ</a></li><li><a href="#check">発注者チェック表</a></li><li><a href="#sources">一次資料</a></li></ul></nav>
+  
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">崖の上・下・建物の位置関係</h2><div class="cm-visual-term"><p><strong>擁壁</strong> 土の高さが違う場所で、土が崩れないよう支える壁です。壁の状態や排水も調べます。</p>
+    <p><span>最初に開く資料</span> <b>現況測量図</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="崖と建物の断面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-green cm-shape-ground" style="clip-path:polygon(4% 29.166666666666668%,32% 29.166666666666668%,59% 75%,96% 75%,96% 93.75%,4% 93.75%)"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:71%;top:39.58333333333333%;width:19%;height:35.41666666666667%"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:32%;top:29.166666666666668%;width:34.828149534536%;transform:rotate(0.6837093116343712rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:32%;top:29.166666666666668%;width:22%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:60%;top:85.41666666666666%;width:14%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:58%;top:75%;width:6%;transform:rotate(1.5707963267948966rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:31%;--field-y:31.25%" data-point aria-pressed="false" aria-label="1 崖の上端">1</button><button type="button" class="cm-field-marker" style="--field-x:59%;--field-y:75%" data-point aria-pressed="false" aria-label="2 崖の下端">2</button><button type="button" class="cm-field-marker" style="--field-x:78%;--field-y:52.083333333333336%" data-point aria-pressed="false" aria-label="3 建物の位置">3</button>
+    </div>
+    <figcaption>崖と建物の断面図（模式図） · 断面に上端・下端・建物を描き、自治体の定義による測定方法を確認します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>崖の上端</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>崖の下端</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>建物の位置</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 崖の上端</strong> 斜面の上側。条例に沿って崖高の測り方を確認します。</p><p data-point-note><strong>2 崖の下端</strong> 水平距離の起点など、自治体で扱いを確認します。</p><p data-point-note><strong>3 建物の位置</strong> 崖との上下関係、距離と擁壁・排水の条件を調べます。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">崖の上で建てる</th><td>基礎の荷重、擁壁、排水</td></tr>
+<tr><th scope="row">崖の下で建てる</th><td>崩れた場合の影響と建物の構造</td></tr>
+<tr><th scope="row">既存擁壁を使う</th><td>許可図と現況、劣化と排水</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:83%;--spot-y:76%">●</span></div><figcaption>斜面、擁壁、建物の距離と高さを、一枚の現況断面に示します。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>擁壁が敷地の外にあります。計画のどこに入れますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>斜面・擁壁・計画建物を同じ断面に描き、影響を確認する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>敷地境界外なので調査図から外す</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>斜面・擁壁・計画建物を同じ断面に描き、影響を確認する</strong></p><p>崖が隣地でも影響が及ぶ場合があります。既存の許可図、排水、現況、調査できる範囲を確認します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>現況測量図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>建物の配置を決める前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>設計者・地盤の技術者・所管窓口</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 現況測量図・代表断面・擁壁資料</p>
+    </details>
+  </div>
+  </aside>
+<section class="sec" id="part-1"><h2>崖の高さ・勾配・下端を測量する</h2><p><strong>敷地境界を越える斜面も含め、建物と崖の上下関係を断面で示します。</strong></p><ul><li>現況測量と複数の代表断面</li><li>崖上・崖下の建物、擁壁、排水、敷地境界</li><li>隣地の調査権限と維持管理の責任</li></ul><p>現況図に崖の上端・下端、建物外周、境界、擁壁の天端・下端、排水経路を示します。自治体の定義に従い、がけ高の測り方や段状の斜面が一体と扱われるかを確認します。崖が隣地でも、計画建物への影響がある場合は窓口協議と調査の範囲に含めます。</p></section>
+<section class="sec" id="part-2"><h2>東京都と横浜市で高さの条件が異なる</h2><p><strong>数値のほか、測定起点・崖の定義・例外まで確認します。</strong></p><table class="tbl"><thead><tr><th scope="col">条例の例</th><th scope="col">高さ・距離の条件</th><th scope="col">原則となる対応</th></tr></thead><tbody><tr><td data-label="条例の例">東京都建築安全条例6条</td><td data-label="高さ・距離の条件">高さ2m超、下端から水平距離ががけ高の2倍以内</td><td data-label="原則となる対応">高さ2mを超える擁壁。条例の例外あり</td></tr><tr><td data-label="条例の例">横浜市建築基準条例3条</td><td data-label="高さ・距離の条件">主要部分の勾配が30度を超える一体の崖で、高さ3m超、下端から水平距離が崖高の2倍以内</td><td data-label="原則となる対応">所定の擁壁または防土堤。条例の例外あり</td></tr></tbody></table><p>東京都のがけ高には、下端を通る二分の一こう配の斜線を用いる定義があります。横浜市では一体の傾斜地の主要部分の勾配を確認し、所定の場合は崖上の排水措置も必要です。地形の測定と安全上の例外は、所在地の条例、施行細則、解説と所管の運用を参照します。</p></section>
+<section class="sec" id="part-3"><h2>既存擁壁の資料と現況を照合する</h2><p><strong>資料の有無と、現在の安全性をそれぞれ確認します。</strong></p><table class="tbl"><thead><tr><th scope="col">確認資料</th><th scope="col">現地調査・設計につなぐこと</th></tr></thead><tbody><tr><td data-label="確認資料">許可・確認資料、検査書類</td><td data-label="現地調査・設計につなぐこと">築造時の範囲、仕様、増積み等の履歴</td></tr><tr><td data-label="確認資料">構造図・地盤資料</td><td data-label="現地調査・設計につなぐこと">断面、基礎、背面土、設計時荷重と今回荷重</td></tr><tr><td data-label="確認資料">現地所見</td><td data-label="現地調査・設計につなぐこと">変位・ひび割れ、水抜きの状態、湧水、排水先</td></tr></tbody></table><p>許可図と現況が合うかを見て、地盤や壁体の調査が必要か専門家に確認します。見た目や検査書類だけで現時点の健全性を確定できないため、記録の欠落、建物の追加荷重、地下水、局部・全体の安定などの論点を調査計画に落とします。</p></section>
+<section class="sec" id="part-4"><h2>崖条例・盛土規制・土砂災害の指定を照合</h2><p><strong>建築と造成、災害防止の各窓口の判断を一枚にまとめます。</strong></p><table class="tbl"><thead><tr><th scope="col">制度・指定</th><th scope="col">確認すること</th></tr></thead><tbody><tr><td data-label="制度・指定">建築基準条例・安全条例</td><td data-label="確認すること">崖上・崖下、配置、安全性の例外、建築確認との関係</td></tr><tr><td data-label="制度・指定">盛土規制法</td><td data-label="確認すること">規制区域、盛土・切土・一時堆積の規模、許可・届出等</td></tr><tr><td data-label="制度・指定">土砂災害特別警戒区域</td><td data-label="確認すること">令80条の3等による居室を有する建築物の構造要件と、特定開発行為の対象</td></tr><tr><td data-label="制度・指定">開発許可等</td><td data-label="確認すること">都市計画法の該当、独自の造成基準、手続順</td></tr></tbody></table><p>土砂災害警戒区域と特別警戒区域の指定図は、崖条例の断面判定に加えて照合します。盛土規制法の区域と対象工事規模、開発許可との関係は自治体の現行資料と窓口で確認します。災害指定に応じた構造条件や用途に関わる手続は、条件を専門家に確認して設計に反映します。</p></section>
+<section class="sec" id="part-5"><h2>架空事例｜ホテル別棟の敷地に崖がある</h2><p><strong>客室数と整備費用に加え、隣地条件と維持管理を比較します。</strong></p><table class="tbl"><thead><tr><th scope="col">案</th><th scope="col">利点</th><th scope="col">見積・工程の条件</th></tr></thead><tbody><tr><td data-label="案">建物を後退</td><td data-label="利点">擁壁工事と隣地影響を抑えやすい</td><td data-label="見積・工程の条件">床面積、駐車・消防動線</td></tr><tr><td data-label="案">既存擁壁を活用</td><td data-label="利点">撤去と再施工を抑えられる可能性</td><td data-label="見積・工程の条件">調査結果、安定、補修・監視の費用</td></tr><tr><td data-label="案">擁壁を更新・配置を変更</td><td data-label="利点">新計画に合わせて安全性を検討できる</td><td data-label="見積・工程の条件">仮設、排水、工事ヤード、施工中の隣地影響</td></tr></tbody></table><p>崖高が2.6メートルという情報だけで計画を確定せず、条例上の測定方法、現況と造成後の断面、建物位置、既存擁壁、土砂災害指定を照合します。CMは未確認の条件を見積前提に書き、後退案と対策案の判断日を発注者と決めます。</p></section>
+<section class="sec" id="part-6"><h2>相談から施工までの判断順</h2><p><strong>安全性の確認が済む時点を、土地取得と工事発注の判断につなげます。</strong></p><ul><li>測量・既存資料を照会</li><li>地盤・擁壁を専門家が調査</li><li>条例・造成・防災の窓口へ相談</li><li>配置と工法を決定し条件を記録</li></ul><p>設計者、地盤・構造技術者、行政で前提断面をそろえ、適用条項、例外を用いる根拠、申請の順序、調査の残りを議事録にします。隣地協議が必要な場合は、立入り・排水・工事中の確認・将来の維持区分を工程と見積条件に反映します。</p></section>
+<section class="sec" id="part-7"><h2>工事中の安全管理と維持点検を引き継ぐ</h2><p><strong>仮設と排水変更を含め、施工前に再確認する条件を決めます。</strong></p><ul><li>施工時の荷重・掘削順序と監視条件を確認</li><li>基礎・配筋・裏込め・排水の隠蔽前記録</li><li>排水施設と擁壁の点検項目、連絡先を引渡し</li></ul><p>大雨時の作業中止と連絡の条件、施工中の排水経路、変位や湧水が増えた時の対応を施工計画に記録します。引渡し時には竣工断面と排水系統、維持管理の担当、異常時の連絡先を施設台帳にまとめます。</p></section>
+  <section class="sec" id="check"><h2>発注者チェック表</h2><table class="tbl"><thead><tr><th scope="col">段階</th><th scope="col">発注者の確認</th><th scope="col">残す成果物</th></tr></thead><tbody><tr><td data-label="段階">候補地・企画</td><td data-label="発注者の確認">測量で崖断面を確定</td><td data-label="残す成果物">区域図、地番、現況、窓口一覧</td></tr><tr><td data-label="段階">基本設計</td><td data-label="発注者の確認">条例と指定区域を照合</td><td data-label="残す成果物">配置比較、判定の根拠、協議記録</td></tr><tr><td data-label="段階">発注・着工前</td><td data-label="発注者の確認">配置・対策案を比較</td><td data-label="残す成果物">申請図版、許可・届出条件、着手可能日</td></tr><tr><td data-label="段階">施工変更・引渡し</td><td data-label="発注者の確認">変更時の再照会と条件の履行を確認</td><td data-label="残す成果物">竣工図、行政提出記録、維持管理台帳</td></tr></tbody></table><p>崖上では建物基礎から斜面・既設擁壁に伝わる荷重、崖下では崩壊時に影響を受ける建物部分を整理します。例外の根拠は条例ごとに照合します。都市計画法の開発許可により盛土規制法の許可を受けたとみなされる場合も、標識、定期報告、中間検査等の要否を工事の工程と規模に応じて確認します。</p><p>判定結果には根拠条項、窓口、回答日、対象図面の版、残っている条件を添えます。</p></section>
+  <section class="sec" id="sources"><h2>一次資料</h2><ul><li><a href="https://laws.e-gov.go.jp/law/325AC0000000201">e-Gov 建築基準法（第19・40条等）</a></li><li><a href="https://www.reiki.metro.tokyo.lg.jp/reiki/reiki_honbun/g101RG00001306.html?id=j19_k5">東京都建築安全条例（第6条・第6条の2）</a></li><li><a href="https://cgi.city.yokohama.lg.jp/somu/reiki/reiki_honbun/g202RG00000906.html">横浜市建築基準条例（第3条）</a></li><li><a href="https://www.city.yokohama.lg.jp/business/bunyabetsu/kenchiku/takuchi/toiawase/kiseiho/q3-5.html">横浜市 隣接地の崖の取扱い</a></li><li><a href="https://www.mlit.go.jp/toshi/morido-gaiyou.html">国土交通省 盛土規制法の概要</a></li><li><a href="https://www.mlit.go.jp/toshi/web/content/001603831.pdf">国土交通省 盛土規制法の事業者向け資料</a></li><li><a href="https://www.mlit.go.jp/policy/shingikai/content/001348242.pdf">国土交通省 災害に対する建築物の敷地・構造の基準</a></li></ul><p>案件で適用する条例、計画図、施行日、経過措置は計画地の所管と確認してください。</p></section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ</a><a href="cliff-ordinance-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

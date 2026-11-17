@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>バリアフリー改修のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ バリアフリー改修</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="accessibility-renovation-slides.html">音声・図解スライド</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero"><span class="badge">詳細レポート</span><h1>バリアフリー改修のCM実務</h1><p>入口から客室・浴室・便所まで、途切れず利用できる動線をつくる。</p></div>
+  <nav class="toc" aria-label="目次"><h2>目次</h2><ul><li><a href="#cm-visual-summary">図と比較表</a></li><li><a href="#part-1">適用範囲と設計上の目標を整理</a></li><li><a href="#part-2">道路・車寄せから客室までたどる</a></li><li><a href="#part-3">客室の寸法と設備の位置を実測</a></li><li><a href="#part-4">架空事例｜旧館の客室を使いやすく</a></li><li><a href="#part-5">設備・安全・運営の取合いを設計で調整</a></li><li><a href="#part-6">先行モックアップと完成確認</a></li><li><a href="#part-7">情報公開とスタッフ対応を引き継ぐ</a></li><li><a href="#check">発注者チェック表</a></li><li><a href="#sources">一次資料</a></li></ul></nav>
+  
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">道路から客室、浴室までたどる</h2><div class="cm-visual-term"><p><strong>連続した利用経路</strong> 入口から客室や便所まで、段差や使いにくい扉で途切れず移動できる道筋です。</p>
+    <p><span>最初に開く資料</span> <b>利用者の動線図</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="道路から客室までの平面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:17%;top:14.583333333333334%;width:75%;height:66.66666666666666%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:17%;top:56.25%;width:75%;height:16.666666666666664%"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:67%;top:18.75%;width:22%;height:33.33333333333333%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:44%;top:20.833333333333336%;width:13%;height:33.33333333333333%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:67%;top:16.666666666666664%;width:18%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:6%;top:64.58333333333334%;width:44%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:50%;top:64.58333333333334%;width:31%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:81%;top:64.58333333333334%;width:15%;transform:rotate(-1.5707963267948966rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:19%;--field-y:64.58333333333334%" data-point aria-pressed="false" aria-label="1 入口">1</button><button type="button" class="cm-field-marker" style="--field-x:49%;--field-y:45.83333333333333%" data-point aria-pressed="false" aria-label="2 昇降機">2</button><button type="button" class="cm-field-marker" style="--field-x:81%;--field-y:35.41666666666667%" data-point aria-pressed="false" aria-label="3 客室・浴室">3</button>
+    </div>
+    <figcaption>道路から客室までの平面図（模式図） · 一連の利用経路を実際に歩いて、移動や扉の操作、案内を確認します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>入口</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>昇降機</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>客室・浴室</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 入口</strong> 道路・車寄せから段差や扉の操作を確認します。</p><p data-point-note><strong>2 昇降機</strong> 入口から目的階の廊下に連続して移動できるかを見ます。</p><p data-point-note><strong>3 客室・浴室</strong> 完成後の有効幅、方向転換、手すりを確かめます。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">移動する</th><td>段差、傾斜、有効幅、案内</td></tr>
+<tr><th scope="row">扉を使う</th><td>開口幅と開閉する力、前後のスペース</td></tr>
+<tr><th scope="row">設備を使う</th><td>手すりや機器の位置、移乗する場所</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:33%;--spot-y:78%">●</span></div><figcaption>道路から入口、受付、昇降機、客室までの道筋を続けて確認します。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="1">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>客室の浴室を改修しますが、道路から客室までの動線を調べていません。次に何をしますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>浴室の図面だけで利用しやすいと判断する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>車寄せから受付・客室・浴室まで実際にたどる</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>車寄せから受付・客室・浴室まで実際にたどる</strong></p><p>途中の段差や扉の使いにくさで経路が途切れます。施設スタッフと現場を歩き、案内と運用も確認します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>利用者の動線図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>設計時と家具を置いた完成時</dd></div>
+        <div><dt>誰と確認するか</dt><dd>設計者・施設スタッフ・当事者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 動線図・現場実測・客室の利用案内</p>
+    </details>
+  </div>
+  </aside>
+<section class="sec" id="part-1"><h2>適用範囲と設計上の目標を整理</h2><p><strong>用途、工事種別、規模、客室数、条例をそろえて判定します。</strong></p><ul><li>バリアフリー法・施行令と条例を照合</li><li>新築・増改築・用途変更と対象部分を確認</li><li>法令基準と施設独自の目標を記録</li></ul><p>ホテル・旅館では用途や建築等の規模により適合義務が関係し、自治体条例が対象規模や内容を追加する場合があります。便所、駐車場、劇場等の客席の基準は令和7年6月に見直されました。客室を含め、基準を工事範囲と施行日に照らして確認し、推奨事項も設計条件にします。</p></section>
+<section class="sec" id="part-2"><h2>道路・車寄せから客室までたどる</h2><p><strong>一カ所の段差や狭い扉でも、経路全体が使いにくくなります。</strong></p><ul><li>道路・駐車場・車寄せから入口</li><li>受付・昇降機を経て客室へ</li><li>浴室・便所、食事会場や非常時の案内も確認</li></ul><p>寸法だけでなく、扉の開閉力、仕上げの滑り、傾斜や実際の有効幅、手すり、視認性、家具配置を確認します。スタッフの移動補助が必要になる箇所を図面に記録します。</p></section>
+<section class="sec" id="part-3"><h2>客室の寸法と設備の位置を実測</h2><p><strong>図面と家具配置で使い勝手を具体的に確認します。</strong></p><table class="tbl"><thead><tr><th scope="col">場所</th><th scope="col">見るポイント</th></tr></thead><tbody><tr><td data-label="場所">客室入口・廊下</td><td data-label="見るポイント">開口、敷居、扉開閉時の有効寸法</td></tr><tr><td data-label="場所">ベッド周辺</td><td data-label="見るポイント">移乗空間、スイッチ、電話や緊急連絡</td></tr><tr><td data-label="場所">浴室・便所</td><td data-label="見るポイント">段差、手すり、回転・移乗、床の排水</td></tr><tr><td data-label="場所">情報・案内</td><td data-label="見るポイント">文字・音声・視覚の案内、予約時の設備情報</td></tr></tbody></table><p>プラン検討では、客室に入って扉を閉める、方向転換する、ベッドや便器に移る動作を想定します。聴覚・視覚への案内やスタッフの連絡方法を加え、設備の有無を予約サイトでも正確に説明できるようにします。</p></section>
+<section class="sec" id="part-4"><h2>架空事例｜旧館の客室を使いやすく</h2><p><strong>部屋の広さだけでなく、利用経路と営業条件を比較します。</strong></p><table class="tbl"><thead><tr><th scope="col">案</th><th scope="col">先に比較すること</th></tr></thead><tbody><tr><td data-label="案">入口に近い客室を改修</td><td data-label="先に比較すること">受付からの経路、客室単価、共用便所との距離</td></tr><tr><td data-label="案">隣の客室と一体化</td><td data-label="先に比較すること">販売客室数、区画・設備と工費</td></tr><tr><td data-label="案">客室と共用部を同時に改修</td><td data-label="先に比較すること">工期、休止範囲、動線の連続性</td></tr></tbody></table><p>丘の上ホテルの旧館を改修する想定です。客室単独の工事費だけでなく、車寄せ、受付、食事会場、共用便所まで移動できるか確認します。改修案ごとに利用可能な客室タイプと販売方針を整理します。</p></section>
+<section class="sec" id="part-5"><h2>設備・安全・運営の取合いを設計で調整</h2><p><strong>扉やスロープの変更は、他の基準や維持管理と確認します。</strong></p><table class="tbl"><thead><tr><th scope="col">変更</th><th scope="col">照合先</th></tr></thead><tbody><tr><td data-label="変更">出入口の拡幅や扉変更</td><td data-label="照合先">防火区画、避難、扉の動作と見付け</td></tr><tr><td data-label="変更">浴室・便所の改修</td><td data-label="照合先">床高さ、防水、給排水、清掃と保守</td></tr><tr><td data-label="変更">昇降設備・段差解消</td><td data-label="照合先">耐荷重、避難、動線確保、保守契約</td></tr></tbody></table><p>使いやすさを高める変更が防火や排水に影響する場合は、設計者と各担当者が同じ断面・詳細図で確認します。既存制約のために採用できない仕様は、代替案と適用法令の判断を記録します。</p></section>
+<section class="sec" id="part-6"><h2>先行モックアップと完成確認</h2><p><strong>内法寸法と運用を、実際の利用シーンで確認します。</strong></p><ul><li>実物または実寸サンプルで確認</li><li>扉と家具・備品を含む完成内法を測る</li><li>利用者案内と緊急連絡を運営と確認</li></ul><p>図面の芯寸法だけでなく、仕上げ後や扉を開けた状態で測ります。現場では利用者の意見も参考にして、設備の使い方、気付きにくい段差、案内表示を修正します。</p></section>
+<section class="sec" id="part-7"><h2>情報公開とスタッフ対応を引き継ぐ</h2><p><strong>予約からチェックアウトまで、設備と案内を一致させます。</strong></p><table class="tbl"><thead><tr><th scope="col">引渡すもの</th><th scope="col">使う場面</th></tr></thead><tbody><tr><td data-label="引渡すもの">客室・経路の情報</td><td data-label="使う場面">予約案内、到着前の相談</td></tr><tr><td data-label="引渡すもの">機器と備品の使い方</td><td data-label="使う場面">案内・清掃・初期トラブル</td></tr><tr><td data-label="引渡すもの">緊急時の連絡と支援</td><td data-label="使う場面">夜間や災害時の対応</td></tr></tbody></table><p>部屋、共用部、駐車場の写真や寸法を予約担当が使えるようにします。備品変更や家具の移動で使えるスペースが狭まらないよう、施設側の点検項目にも反映します。</p></section>
+  <section class="sec" id="check"><h2>発注者チェック表</h2><table class="tbl"><thead><tr><th scope="col">段階</th><th scope="col">発注者の確認</th><th scope="col">残す成果物</th></tr></thead><tbody><tr><td data-label="段階">候補地・企画</td><td data-label="発注者の確認">適用法令と利用者像を確認</td><td data-label="残す成果物">区域図、地番、現況、窓口一覧</td></tr><tr><td data-label="段階">基本設計</td><td data-label="発注者の確認">入口から目的地まで実測</td><td data-label="残す成果物">配置比較、判定の根拠、協議記録</td></tr><tr><td data-label="段階">発注・着工前</td><td data-label="発注者の確認">使い勝手を現場で確認</td><td data-label="残す成果物">承認図面、見積・工程、着手条件</td></tr><tr><td data-label="段階">施工変更・引渡し</td><td data-label="発注者の確認">変更時の再照会と条件の履行を確認</td><td data-label="残す成果物">竣工図、行政提出記録、維持管理台帳</td></tr></tbody></table><p>架空の「丘の上ホテル」は地上6階、延べ6,000㎡、100室。旧館の一部に事務所があります。 道路や車寄せから客室までを実際にたどり、床の段差、扉の操作、案内、備品までを一つの利用経路として検証します。</p><p>判定結果には根拠条項、窓口、回答日、対象図面の版、残っている条件を添えます。</p></section>
+  <section class="sec" id="sources"><h2>一次資料</h2><ul><li><a href="https://laws.e-gov.go.jp/law/418AC0000000091">e-Gov バリアフリー法</a></li><li><a href="https://www.mlit.go.jp/jutakukentiku/jutakukentiku_house_fr_000049.html">国土交通省 建築物におけるバリアフリー・建築設計標準</a></li><li><a href="https://www.mlit.go.jp/kankocho/seisaku_seido/kokorono_barrier-free/index.html">観光庁 観光施設における心のバリアフリー認定制度</a></li></ul><p>案件で適用する法令、条例、経過措置や申請の扱いは、設計者と所管に確認してください。</p></section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ</a><a href="accessibility-renovation-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

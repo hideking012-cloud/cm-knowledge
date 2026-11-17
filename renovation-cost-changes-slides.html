@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>改修工事の見積比較・追加工事のCM実務 | 音声・図解スライド</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red:#9b3b2f;--red-l:#f7e6e2;
+  --r:14px;--gap:16px;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+/* header */
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+/* controls */
+.controls{background:var(--paper);border-bottom:1px solid var(--line)}
+.controls .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ctl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.ctl select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);max-width:220px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:5px 14px;cursor:pointer;min-height:36px}
+.btn:hover{background:var(--green-l)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d)}
+.btn[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.note-voice{font-size:12.5px;color:var(--sub);width:100%;margin:0}
+/* deck */
+main{max-width:1180px;margin:0 auto;padding:18px 16px 120px}
+.slide{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px 22px;min-height:620px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.slide.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.list .slide{display:block;margin-bottom:22px;animation:none}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--sub);margin-bottom:6px}
+.cat{display:inline-block;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:1px 12px;font-weight:700;letter-spacing:.03em}
+.slide h1,.slide h2{color:var(--green-d);margin:4px 0 14px;line-height:1.4}
+.slide h1{font-size:34px}
+.slide h2{font-size:26px;border-left:6px solid var(--green);padding-left:12px}
+.lead{font-size:17px;color:var(--sub);margin:0 0 16px}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--green-d)}
+.card p{margin:0;font-size:15px}
+.card ul{margin:4px 0 0;padding-left:1.2em;font-size:15px}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h3{color:#fff}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.r{background:var(--red-l);border-color:#e6c2ba}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.small{font-size:13px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--green-m);color:var(--green-d);border-radius:6px;padding:0 6px;margin:0 2px 2px 0;background:#fff}
+.tag.cond{border-color:var(--amber);color:#7a4f10;background:var(--amber-l)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff;font-weight:700}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);white-space:nowrap}
+.tbl td.c{text-align:center}
+.dot{color:var(--green);font-weight:700}
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.flow.h{grid-template-columns:repeat(4,minmax(0,1fr))}
+.flow.h7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow .step{position:relative;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;transition:border-color .3s,background .3s,transform .3s,opacity .3s;cursor:pointer}
+.flow .step b{display:block;color:var(--green-d);font-size:15px;margin-bottom:2px}
+.flow .step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px;vertical-align:1px}
+.flow.playing .step{opacity:.45}
+.flow.playing .step.done{opacity:.8;border-color:var(--green-m)}
+.flow.playing .step.on{opacity:1;border-color:var(--amber);background:var(--amber-l);transform:translateY(-3px);box-shadow:0 4px 10px rgba(183,121,31,.18)}
+.flow .step .who{display:block;font-size:12.5px;color:var(--sub);margin-top:4px}
+.flow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.flow-bar .status{font-size:13px;color:var(--sub)}
+.layers{display:grid;gap:8px}
+.layer{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:8px 12px;font-size:14.5px}
+.layer:nth-child(2){margin-left:18px}.layer:nth-child(3){margin-left:36px}.layer:nth-child(4){margin-left:54px}
+.layer b{color:var(--green-d)}
+.cover{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;min-height:520px}
+.cover .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:3px 14px;font-size:14px;letter-spacing:.06em}
+.cover-fig{background:var(--green);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover-fig div{background:var(--cream);border-radius:12px;padding:16px 10px;text-align:center;font-weight:700;color:var(--green-d)}
+.cover-fig div span{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+/* script */
+details.script{margin-top:18px;border-top:1px dashed var(--line);padding-top:8px}
+details.script summary{cursor:pointer;color:var(--green);font-size:14px;font-weight:700}
+details.script p{font-size:15px;margin:8px 0 0;color:var(--ink)}
+/* caption + pager */
+.caption{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);max-width:min(92vw,960px);background:rgba(27,64,55,.94);color:#fff;font-size:17px;line-height:1.6;padding:10px 16px;border-radius:10px;z-index:30;display:none}
+.caption.show{display:block}
+.pager{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:25}
+.pager .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}
+body.list .pager{display:none}
+.foot{margin-top:14px;font-size:12.5px;color:var(--sub)}
+.srcs{font-size:13.5px;margin:6px 0 0;padding-left:1.2em}
+/* reduced motion */
+body.reduce *, body.reduce *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce .flow.playing .step.on{transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  .slide{padding:18px 16px;min-height:0}
+  .slide h1{font-size:26px}.slide h2{font-size:21px}
+  .g2,.g4{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:1fr}
+  .layer:nth-child(n){margin-left:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl tbody th{white-space:normal}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .tbl td.c{text-align:left}
+  .caption{bottom:68px;font-size:15px}
+  .ctl select{max-width:150px}
+}
+@media print{
+  .topbar,.controls,.pager,.caption{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:0;box-shadow:none}
+  body{background:#fff}
+}
+
+.caption{width:max-content;max-height:24dvh;overflow:auto}
+.pager .in{justify-content:center;gap:16px}
+@media screen and (max-width:900px){
+ body>iframe#nl-badge-frame{position:relative!important;display:block;inset:auto!important;margin-inline-start:auto!important;max-width:100%;z-index:1!important}
+}
+@media screen and (max-width:700px){
+ body{font-size:16px}
+ .slide h2{font-size:clamp(23px,5.8vw,28px)}
+ .tbl th,.tbl td{font-size:15px}
+ .pager button,.controls button,.controls select{min-height:44px}
+}
+@media print{#nl-badge-frame,.slide .script{display:none!important}.slide:last-child{page-break-after:auto}}
+</style>
+<link rel="stylesheet" href="cm-slide-theme.css">
+<style>
+.land-figure{margin:1rem 0}
+.land-figure figcaption{margin-top:.5rem;color:var(--sub);font-size:.88rem}
+.land-figure .overview{margin:.4rem 0}
+.slope-profile{position:relative;isolation:isolate;min-height:137px;border:1px solid var(--line);border-radius:12px;overflow:hidden;color:var(--ink);background:var(--panel)}
+.slope-profile::before{content:"";position:absolute;inset:0;z-index:-1;background:#427c70;clip-path:polygon(0 39%,calc(54% - 63px) 39%,54% 83%,100% 83%,100% 100%,0 100%)}
+.slope-profile::after{content:"";position:absolute;z-index:-1;left:54%;right:13%;top:63%;height:8%;border:1px solid var(--green);border-width:0 1px 1px}
+.slope-profile b,.slope-profile span{position:absolute;padding:.16rem .4rem;background:#102c2b;color:#eefaf7;border-radius:4px;font-size:.8rem}
+.slope-profile .slope-up{top:15%;left:10%}
+.slope-profile .slope-down{top:76%;left:54%;transform:translateX(-50%)}
+.slope-profile .slope-h{top:48%;right:52%}
+.slope-profile .slope-site{top:14%;right:4%}
+.slope-profile .slope-d{top:46%;left:57%;white-space:nowrap}
+</style><link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#deck">スライド本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 改修工事の見積比較・追加工事</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="renovation-cost-changes-report.html">詳細レポート</a></nav>
+  </div>
+</header>
+
+<div class="controls" role="region" aria-label="表示と音声の操作">
+  <div class="in">
+    <button class="btn primary" id="play" type="button">▶ 読み上げ開始</button>
+    <button class="btn" id="stop" type="button">■ 停止</button>
+    <label class="ctl">話者
+      <select id="voice" aria-label="読み上げ音声（端末の日本語音声）"><option value="">端末の標準（日本語）</option></select>
+    </label>
+    <label class="ctl">速度
+      <select id="rate" aria-label="読み上げ速度">
+        <option value="0.8">ゆっくり</option>
+        <option value="1" selected>標準</option>
+        <option value="1.2">やや速い</option>
+        <option value="1.4">速い</option>
+      </select>
+    </label>
+    <div class="toggles">
+      <button class="btn" id="tCap" type="button" aria-pressed="true">字幕</button>
+      <button class="btn" id="tAuto" type="button" aria-pressed="false">自動送り</button>
+      <button class="btn" id="tMotion" type="button" aria-pressed="false">動きを減らす</button>
+      <button class="btn" id="tList" type="button" aria-pressed="false">一覧表示</button>
+    </div>
+    <p class="note-voice" id="voiceNote">読み上げはボタンを押したときだけ始まります。音声は端末に入っている日本語音声を使います。</p>
+  </div>
+</div>
+
+<main id="deck">
+<p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
+<section class="slide" id="s1" aria-label="スライド1">
+  <div class="meta"><span class="cat">CM実務</span><span>1 / 8</span></div>
+  <h1>改修工事の見積比較・追加工事のCM実務</h1>
+<aside class="cm-visual" aria-labelledby="cm-visual-title">
+    <h2 id="cm-visual-title" class="cm-visual-heading">見積額に含まれない費用をそろえる</h2><div class="cm-visual-term"><p><strong>同条件比較</strong> 見積ごとの工事範囲や別途費をそろえ、同じ作業を頼んだ場合の額を比較することです。</p>
+    <p><span>最初に開く資料</span> <b>見積比較表</b></p></div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="見積の内訳比較">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:10%;top:20.833333333333336%;width:53%;height:18.75%"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:63%;top:20.833333333333336%;width:15%;height:18.75%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:10%;top:58.333333333333336%;width:67%;height:18.75%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:81%;top:12.5%;width:35%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:10%;top:85.41666666666666%;width:71%;transform:rotate(0rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:32%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="1 A社の提示額">1</button><button type="button" class="cm-field-marker" style="--field-x:71%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="2 A社の別途分">2</button><button type="button" class="cm-field-marker" style="--field-x:54%;--field-y:66.66666666666666%" data-point aria-pressed="false" aria-label="3 B社の総額">3</button>
+    </div>
+    <figcaption>見積の内訳比較（模式図） · 比較のための評価額は、同じ工事条件で見た数字です。契約は再見積で範囲を確定してから進めます。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>A社の提示額</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>A社の別途分</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>B社の総額</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 A社の提示額</strong> 数量・仕様・提出範囲を確認します。</p><p data-point-note><strong>2 A社の別途分</strong> 仮設や試験を同じ条件に補正した例です。</p><p data-point-note><strong>3 B社の総額</strong> 含まれている項目を照合します。棒の長さは架空の例です。</p></div>
+  </figure>
+    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="renovation-cost-changes-report.html#cm-visual-summary">図と表のまとめ</a></p>
+  </aside>
+
+  <p class="lead">見積の前提をそろえ、追加工事の工事費と工期を着手前に判断する。</p>
+  <ol class="overview" aria-label="判断の流れ"><li><b>見積条件を統一</b></li><li><b>差額を根拠へ分解</b></li><li><b>変更を書面で管理</b></li></ol>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">見積の前提をそろえ、追加工事の工事費と工期を着手前に判断する。発注者が決める時期と、設計者に求める資料を順に確認します。</p></details>
+</section>
+<section class="slide" id="s2" aria-label="スライド2">
+  <div class="meta"><span class="cat">計画と確認</span><span>2 / 8</span></div>
+  <h2>比較の前に工事範囲と前提をそろえる</h2>
+<aside class="cm-visual" aria-labelledby="cm-visual-table-title">
+    <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">同じ仕様・数量か</th><td>見積内訳と図面を突合</td></tr>
+<tr><th scope="row">別途費はあるか</th><td>養生、復旧、試験、処分などを照合</td></tr>
+<tr><th scope="row">追加が出たら</th><td>根拠・代替案・工期を確認して書面で変更</td></tr>
+  </tbody></table><div class="cm-field-case" data-answer="1">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>A社の提示額が安い一方、A社の見積に仮設と試験が含まれていません。どう比較しますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>提示総額だけで決める</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>同じ範囲にそろえた比較額を作り、改めて見積を取る</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>同じ範囲にそろえた比較額を作り、改めて見積を取る</strong></p><p>補正した比較額は比較用です。採用範囲・金額・工期を契約書類で確認し、追加が出れば着手前に変更手続を進めます。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>見積比較表</dd></div>
+        <div><dt>いつ確認するか</dt><dd>施工者を決める前。追加工事は着手前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>発注者・見積担当・施工予定者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 見積比較表・別途工事一覧・変更台帳</p>
+    </details>
+  </div>
+    
+  </aside>
+
+  <p class="lead">図面の版、数量、営業条件、除外項目を共通化します。</p>
+  <ol id="land-flow-2" class="flow h"><li class="step"><b>見積依頼の図面と工区を確定</b></li><li class="step"><b>質疑回答を全社に共通化</b></li><li class="step"><b>本体・仮設・調査と別途費を照合</b></li></ol>
+  <button type="button" class="flow-next" data-flow="land-flow-2">順に見る</button><span id="land-flow-2-status" role="status"></span>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">見積依頼に撤去・処分、養生、夜間対応、消防設備の停止と試験、原状復旧の範囲を記載します。書き方が異なる仮設費や諸経費は分類をそろえ、金額を比較する前に抜けや重複を探します。</p></details>
+</section>
+<section class="slide" id="s3" aria-label="スライド3">
+  <div class="meta"><span class="cat">計画と確認</span><span>3 / 8</span></div>
+  <h2>見積差を数量・単価・除外に分解</h2>
+  <p class="lead">未計上項目を補正し、比較評価額と契約額を分けます。</p>
+  <table class="tbl"><thead><tr><th scope="col">差の原因</th><th scope="col">確認の例</th></tr></thead><tbody><tr><td data-label="差の原因">数量</td><td data-label="確認の例">施工範囲、見積数量、実測精算の扱い</td></tr><tr><td data-label="差の原因">単価</td><td data-label="確認の例">材質・施工条件・作業時間、処分費の含み方</td></tr><tr><td data-label="差の原因">除外・別途</td><td data-label="確認の例">養生、試験、仮設電源、復旧の分担</td></tr><tr><td data-label="差の原因">共通費</td><td data-label="確認の例">工区分割、夜間、搬入管理、現場管理費</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">見積比較表にメーカー、仕様、数量、単位、含有・除外の根拠を記入します。比較のための補正額は暫定値で、契約時にどの費用を含めるかは再見積と見積条件の確認で固めます。</p></details>
+</section>
+<section class="slide" id="s4" aria-label="スライド4">
+  <div class="meta"><span class="cat">計画と確認</span><span>4 / 8</span></div>
+  <h2>架空事例｜総額8400万円と8850万円</h2>
+  <p class="lead">仮設と試験の別途分を加えると比較の順が変わります。</p>
+  <table class="tbl"><thead><tr><th scope="col">項目（架空・税別）</th><th scope="col">A社</th><th scope="col">B社</th></tr></thead><tbody><tr><td data-label="項目（架空・税別）">提出総額</td><td data-label="A社">8,400万円</td><td data-label="B社">8,850万円</td></tr><tr><td data-label="項目（架空・税別）">同等条件への補正</td><td data-label="A社">仮設400万円＋試験120万円</td><td data-label="B社">見積内に含む</td></tr><tr><td data-label="項目（架空・税別）">比較評価額</td><td data-label="A社">8,920万円</td><td data-label="B社">8,850万円</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">架空の金額です。B社の見積範囲を契約書類で確認し、A社にも追加範囲の再見積を求めます。価格差に加え、停電回数、工期、既存不良の実測条件、復旧範囲、営業への影響を比較します。</p></details>
+</section>
+<section class="slide" id="s5" aria-label="スライド5">
+  <div class="meta"><span class="cat">計画と確認</span><span>5 / 8</span></div>
+  <h2>追加が出たら事実と契約範囲を確認</h2>
+  <p class="lead">写真、数量、図面と契約の前提で根拠をそろえます。</p>
+  <ol id="land-flow-5" class="flow h"><li class="step"><b>現況と発見日を記録</b></li><li class="step"><b>契約内外と責任分界を確認</b></li><li class="step"><b>費用・工期と代替案を見積</b></li><li class="step"><b>書面で変更し着手条件を確認</b></li></ol>
+  <button type="button" class="flow-next" data-flow="land-flow-5">順に見る</button><span id="land-flow-5-status" role="status"></span>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">隠蔽部を開けて判明した漏水や腐食は、場所、範囲、原因、写真を残します。元の工事内容との差を確認し、減工事も反映します。建設業法19条に照らして原則として変更工事の着工前に書面で契約変更します。やむを得ない場合の取扱いはガイドラインと契約で確認します。</p></details>
+</section>
+<section class="slide" id="s6" aria-label="スライド6">
+  <div class="meta"><span class="cat">計画と確認</span><span>6 / 8</span></div>
+  <h2>予備費に使用条件と決裁者を置く</h2>
+  <p class="lead">発生の見込みと最大影響を、承認済みの変更と区別します。</p>
+  <table class="tbl"><thead><tr><th scope="col">区分</th><th scope="col">台帳に残すこと</th></tr></thead><tbody><tr><td data-label="区分">見込み</td><td data-label="台帳に残すこと">発生条件、概算額、工期影響、調査予定</td></tr><tr><td data-label="区分">見積済・未承認</td><td data-label="台帳に残すこと">見積書、代替案、回答期限、決裁者</td></tr><tr><td data-label="区分">承認済</td><td data-label="台帳に残すこと">書面変更、金額・工期、引渡しへの影響</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">予備費に一律の割合を当てはめず、隠蔽部や営業制約など案件固有のリスクから組み立てます。毎週、契約額、承認済変更、未決事項、残予備費を更新し、予算超過のおそれがある段階で発注者に判断を求めます。</p></details>
+</section>
+<section class="slide" id="s7" aria-label="スライド7">
+  <div class="meta"><span class="cat">計画と確認</span><span>7 / 8</span></div>
+  <h2>追加工事を減らす先行調査</h2>
+  <p class="lead">早く分かるほど設計変更と再手配の余裕ができます。</p>
+  <table class="tbl"><thead><tr><th scope="col">調査</th><th scope="col">見積条件へ反映すること</th></tr></thead><tbody><tr><td data-label="調査">先行開口</td><td data-label="見積条件へ反映すること">下地や配管の劣化、復旧の要否</td></tr><tr><td data-label="調査">試験施工</td><td data-label="見積条件へ反映すること">養生と工期、既存材との相性</td></tr><tr><td data-label="調査">夜間運転・切替試験</td><td data-label="見積条件へ反映すること">停止対象、仮設、代替運用</td></tr></tbody></table>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">調査で想定した範囲と未確認の範囲を区別します。数量が確定できない項目は、測定単位、実測や精算の手順、承認点を見積依頼と契約図書に書きます。</p></details>
+</section>
+<section class="slide" id="s8" aria-label="スライド8">
+  <div class="meta"><span class="cat">計画と確認</span><span>8 / 8</span></div>
+  <h2>引渡しは契約変更と出来高を照合</h2>
+  <p class="lead">施工の記録と請求、竣工図、保証の範囲を突合します。</p>
+  <ol id="land-flow-8" class="flow h"><li class="step"><b>増減額と証拠資料を照合</b></li><li class="step"><b>変更事項を竣工図・設備台帳へ反映</b></li><li class="step"><b>保留項目と最終精算を閉じる</b></li></ol>
+  <button type="button" class="flow-next" data-flow="land-flow-8">順に見る</button><span id="land-flow-8-status" role="status"></span>
+<p class="small"><a href="renovation-cost-changes-report.html#sources">詳細レポートと一次資料</a></p>
+  <details class="script"><summary>音声解説の原稿</summary><p class="say">変更台帳を使って、承認した内容が実際に施工され、減工事が精算されているかを確認します。後日対応の条件がある項目には期限と責任者を付け、保証・点検の対象範囲を引渡し資料に記載します。</p></details>
+</section>
+</main>
+
+<div class="caption" id="caption" role="status" aria-live="polite"></div>
+
+<nav class="pager" aria-label="スライド送り">
+  <div class="in">
+    <button class="btn" id="prev" type="button">← 前</button>
+    <span class="count" id="count">1 / 8</span>
+    <button class="btn primary" id="next" type="button">次 →</button>
+  </div>
+</nav>
+
+<script src="cm-slide-controls.js"></script>
+</body>
+</html>

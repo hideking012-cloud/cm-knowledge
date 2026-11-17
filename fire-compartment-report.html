@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>防火区画のCM実務 詳細レポート</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2430;--mute:#5a6575;--line:#d5dae2;--accent:#0b4f8a;
+--r112:#c62828;--b114:#1565c0;--pen:#e65100;--ok:#2e7d32;--warn:#fff4d6;--warnb:#e0a800;}
+*{box-sizing:border-box}
+.cols>*,.wrap>*,.slide,.deck,article,section{min-width:0}
+body{overflow-x:hidden}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","Meiryo",sans-serif;line-height:1.75;font-size:16px}
+a{color:var(--accent)}
+h1,h2,h3{line-height:1.35;margin:0 0 .5em}
+table{border-collapse:collapse;width:100%;font-size:.88em;background:#fff}
+th,td{border:1px solid var(--line);padding:.45em .6em;text-align:left;vertical-align:top}
+th{background:#eaf0f7}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.6em 0}
+.tw table{min-width:640px}
+.tag{display:inline-block;font-size:.75em;padding:0 .5em;border-radius:3px;color:#fff;margin-right:.3em;vertical-align:1px}
+.t112{background:var(--r112)}.t114{background:var(--b114)}.tpen{background:var(--pen)}
+.chk{background:var(--warn);border:1px solid var(--warnb);border-radius:6px;padding:.5em .8em;margin:.7em 0;font-size:.9em}
+.chk b{color:#8a5a00}
+.fig{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6em;margin:.8em 0}
+.fig .sv{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fig svg{display:block;width:100%;min-width:600px;height:auto}
+.fig figcaption,.cap{font-size:.82em;color:var(--mute);margin-top:.4em}
+.lg{display:flex;flex-wrap:wrap;gap:.3em 1.2em;font-size:.84em;margin:.4em 0}
+.lg span{display:inline-flex;align-items:center;gap:.4em}
+.lg i{display:inline-block;width:28px;height:0;border-top:5px solid}
+.lg .l112{border-color:var(--r112);border-top-width:6px}
+.lg .l114{border-color:var(--b114);border-top-style:dashed}
+.lg .lpen{width:16px;height:16px;border-radius:50%;background:var(--pen);border:0}
+small,.note{color:var(--mute);font-size:.84em}
+.nb{font-weight:700;color:var(--pen)}
+@media print{
+ body{background:#fff;font-size:10.5pt}
+ .noprint{display:none!important}
+ a{color:inherit;text-decoration:none}
+ .fig,table,tr{break-inside:avoid}
+ .fig svg{min-width:0}
+ .tw table{min-width:0}
+}
+
+.wrap{max-width:1080px;margin:0 auto;padding:1em;display:grid;grid-template-columns:230px 1fr;gap:2em}
+header.top{background:#0b2b4a;color:#fff;padding:1.4em 1em}
+header.top .in{max-width:1080px;margin:0 auto}
+header.top a{color:#cfe6ff}
+header.top h1{font-size:1.8em;margin:0 0 .2em}
+nav.toc{position:sticky;top:1em;align-self:start;font-size:.85em;max-height:calc(100vh - 2em);overflow:auto}
+nav.toc ol{padding-left:1.2em;margin:0}
+nav.toc li{margin:.3em 0}
+article section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1.2em 1.4em;margin-bottom:1.2em}
+article h2{font-size:1.35em;border-bottom:2px solid var(--accent);padding-bottom:.2em}
+article h3{font-size:1.07em;margin-top:1.1em}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}nav.toc{position:static;max-height:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6em}article section{padding:1em}}
+@media print{
+ @page{size:A4;margin:14mm}
+ header.top{background:#fff;color:#000;border-bottom:2px solid #000;padding:0 0 .6em}
+ header.top a{color:#000}
+ .wrap{display:block;padding:0}
+ nav.toc{display:none}
+ article section{border:0;padding:0;margin-bottom:1em}
+ article h2{break-after:avoid}
+ .fig{break-inside:avoid}
+ .srcs a[href]:after{content:" (" attr(href) ")";font-size:8pt;word-break:break-all}
+}
+</style><link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head><body>
+<header class="top"><div class="in"><h1>防火区画のCM実務 — 詳細レポート</h1>
+<p><a href="index.html" class="noprint">← CM知識一覧</a> ／ 発注者を支援する建設CM向け ／ <a href="fire-compartment-slides.html" class="noprint">スライド版を開く →</a> ／ <a href="fire-safety-cm-report.html" class="noprint">防火設備のレポート</a></p>
+<p><small style="color:#cfe6ff">一般的な整理です。個別案件の適用は設計者・確認検査機関・特定行政庁・所管消防で確認してください。</small></p></div></header>
+<div class="wrap"><nav class="toc noprint" aria-label="目次"><b>目次</b><ol><li><a href="#cm-visual-summary">図と比較表</a></li><li><a href="#s0">本書の位置づけ</a></li><li><a href="#s1">4類型の比較</a></li><li><a href="#s2">平面</a></li><li><a href="#s3">断面</a></li><li><a href="#s4">貫通部</a></li><li><a href="#s5">ダンパーと点検口</a></li><li><a href="#s6">分担</a></li><li><a href="#s7">ライフサイクル</a></li><li><a href="#s8">チェックリスト</a></li><li><a href="#s9">要確認事項</a></li><li><a href="#s10">出典</a></li></ol><p><a href="fire-compartment-slides.html">スライド版</a></p></nav>
+<article>
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">フロアを区切る壁・床・開口部</h2><div class="cm-visual-term"><p><strong>防火区画</strong> 壁や床などで建物を区切り、火災が他の範囲へ広がるのを抑えます。</p>
+    <p><span>最初に開く資料</span> <b>防火区画図</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="建物断面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:9%;top:12.5%;width:82%;height:66.66666666666666%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:57%;top:12.5%;width:13%;height:66.66666666666666%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:9%;top:45.83333333333333%;width:82%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:43%;top:45.83333333333333%;width:16%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:43%;top:45.83333333333333%;width:16%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:23%;top:64.58333333333334%;width:33%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:63%;top:68.75%;width:23%;transform:rotate(-1.5707963267948966rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:34%;--field-y:45.83333333333333%" data-point aria-pressed="false" aria-label="1 床">1</button><button type="button" class="cm-field-marker" style="--field-x:43%;--field-y:64.58333333333334%" data-point aria-pressed="false" aria-label="2 貫通部">2</button><button type="button" class="cm-field-marker" style="--field-x:66%;--field-y:27.083333333333332%" data-point aria-pressed="false" aria-label="3 設備の縦穴">3</button>
+    </div>
+    <figcaption>建物断面図（模式図） · 火元と隣の部屋の境は、壁・床と開口部の処理をつないで見ます。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>床</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>貫通部</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>設備の縦穴</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 床</strong> 上下の階を区切る境を確認します。</p><p data-point-note><strong>2 貫通部</strong> 配管が壁を通る穴の処理を、設計と隠れる前の写真で照合します。</p><p data-point-note><strong>3 設備の縦穴</strong> 上下階をつなぐ空間。周囲の壁・床・開口の扱いを確かめます。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">壁・床</th><td>区画線がどこからどこまで続くか</td></tr>
+<tr><th scope="row">戸・シャッター</th><td>開口部の仕様と閉鎖動作</td></tr>
+<tr><th scope="row">配管やダクト</th><td>壁・床を通る穴の処理と施工記録</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-interior-illustration.png" alt="架空のホテルの客室・廊下・階段を切り開いたイラスト。天井裏にダクトと配管が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:44%;--spot-y:52%">●</span></div><figcaption>設備の縦穴や階段の周りで、各階を区切る壁と床のつながりを見ます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>区画壁に新しい配管を通します。天井を閉じる前に何をしますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>位置・壁・配管に対応する処理を確認し記録する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>天井を閉じ、完成後に廊下から見る</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>位置・壁・配管に対応する処理を確認し記録する</strong></p><p>区画線と貫通箇所を特定し、設計・仕様と施工状態を照合します。隠蔽前の位置入り写真は、完成後の点検にも使えます。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>防火区画図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>配管施工後、天井を閉じる前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>設計者・設備施工者・工事監理者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 区画図・貫通部詳細・隠蔽前写真</p>
+    </details>
+  </div>
+  </aside>
+<section id="s0"><h2>1. 本書の位置づけと限界</h2><p>本書は、発注者を支援する建設CMが、防火区画を「図面の線」ではなく「施工・試験・維持管理まで続く管理対象」として扱うための実務整理である。設計者が適用規定と必要性能を整理し、必要に応じて確認検査機関・特定行政庁・所管消防と協議する。CMは協議結果を図面・仕様・費用・工程に反映できているか確認する。</p>
+<ul><li>令112条の各項の数値・項番号・緩和は、最新の原文で確認する。代表例と例外・緩和を区別する。</li>
+<li>正確に裏づけられない数値は書かず、「要確認」として第10章に集約している。</li>
+<li>個別案件の名称・既存図書の内容は含めていない。</li></ul></section><section id="s1"><h2>2. 防火区画4類型の比較</h2><p>面積・高層・竪穴・異種用途の4類型を、守る対象、適用の入口、壁・床、開口、遮煙・閉鎖、設計者に確認する条件で比べる。</p><div class="tw"><table class="types"><thead><tr><th>比較項目</th><th>面積区画</th><th>高層区画</th><th>竪穴区画</th><th>異種用途区画</th></tr></thead><tbody><tr><th scope="row">守る対象</th><td>火災・煙の水平方向の拡大を、面積で区切って制限する</td><td>高層階の在館者の避難と消防活動の安全。上階への拡大も抑える</td><td>階段・吹抜け・EV・シャフトなど竪穴を通じた上階への延焼・煙の拡大</td><td>用途が異なる部分の火災危険・利用者特性の違いを相互に遮る</td></tr><tr><th scope="row">適用の入口</th><td>建築物の構造・規模に応じた面積の上限(令112条の代表例と、例外・読替えを区別して確認)</td><td>11階以上の部分で各階の床面積の合計が100㎡を超える場合。第10項等の例外も確認する</td><td>竪穴部分があり、構造・階数・居室の位置などの条文条件に該当すること</td><td>法に基づく特殊建築物等の用途部分と他の部分が同一建築物内にあること</td></tr><tr><th scope="row">壁・床</th><td>耐火構造等の壁・床(建築物の構造に応じて要確認)</td><td>耐火構造の壁・床が基本。区分ごとの条件は条文で確認</td><td>準耐火構造以上など、条文が求める構造の壁・床</td><td>耐火構造等の壁・床など、条文が求める構造</td></tr><tr><th scope="row">開口</th><td>代表例では特定防火設備。例外・緩和は条文で個別に確認</td><td>第7項の基本は100㎡以内ごとで、防火設備を使用。第8・9項の内装条件による200㎡・500㎡の緩和では、開口部に特定防火設備を使用する</td><td>防火設備が基本。階段・EVなどで遮煙性能の要否を確認</td><td>特定防火設備が代表例。窓・開口部の取扱いも要確認</td></tr><tr><th scope="row">遮煙・閉鎖</th><td>常時閉鎖か、煙・熱感知による閉鎖か。連動表と扉の運用で確認</td><td>基本区分と緩和区分で内装の条件が異なる。令和7年11月1日施行の改正で、内装制限に準ずる措置が関係告示に定められた</td><td>遮煙性能の要否、扉の閉鎖方式、階段の避難経路との関係を確認</td><td>扉の閉鎖方式、常時閉鎖が運用上維持されるかを確認</td></tr><tr><th scope="row">設計者に確認する条件</th><td>適用する条文の項、緩和の有無、区画図上の区画線の根拠</td><td>基本区分か緩和区分か、内装の措置が告示のどれに当たるか</td><td>竪穴の範囲(吹抜け・シャフトの端部まで)と開口の仕様</td><td>どの用途の組合せか、区画線が用途境界と一致しているか</td></tr></tbody></table></div>
+<h3>読み方の注意</h3>
+<ul>
+<li><b>面積区画</b>: 令112条の代表例(構造・規模に応じた面積の上限)と、例外・読替えを区別して確認する。</li>
+<li><b>高層区画</b>: 面積の基本区分と、緩和区分(面積が広がる代わりに内装などの条件が付く区分)が別にある。<b>基本区分と緩和区分の開口部性能を混同しない</b>。必要な数値は、設計者の条文対応表で確認する。</li>
+<li><b>令和7年11月施行の改正</b>: 令和7年11月1日施行の改正令等で、防火区画等の内装制限の見直し(令112条関係)が行われ、準不燃材料等に「準ずる措置」の基準が関係告示に定められた。具体の仕様は関係告示とその技術的助言を確認する(出典2)。</li>
+<li><b>竪穴・異種用途</b>: 区画線が実際の竪穴・用途境界と一致しているか、開口の仕様と遮煙の要否を設計者に確認する。</li></ul></section><section id="s2"><h2>3. 平面: ホテル改修での区画線の読み方</h2><p>ホテル改修では、<span class="tag t114">令114条2項</span>の防火上主要な間仕切壁と、<span class="tag t112">令112条</span>の防火区画を、図面上で別の線として確認する。</p>
+<div class="fig"><div class="sv">
+<svg viewBox="0 0 780 450" role="img" aria-label="ホテル客室階の平面模式図。赤の太実線が防火区画、青の破線が防火上主要な間仕切壁、橙の丸が貫通部。" xmlns="http://www.w3.org/2000/svg" font-family="Hiragino Sans,Yu Gothic,Noto Sans JP,sans-serif">
+<rect x="0" y="0" width="780" height="450" fill="#fff"/>
+<rect x="40" y="70" width="680" height="270" fill="#f3f5f8" stroke="#8a93a1" stroke-width="2"/>
+<rect x="40" y="170" width="680" height="70" fill="#fff"/>
+<text x="260" y="211" font-size="15" fill="#5a6575" text-anchor="middle">廊下</text>
+<g font-size="14" fill="#1d2430" text-anchor="middle">
+<text x="100" y="125">客室1</text><text x="220" y="125">客室2</text><text x="340" y="125">客室3</text><text x="460" y="125">客室4</text>
+<text x="100" y="295">客室5</text><text x="220" y="295">客室6</text><text x="340" y="295">客室7</text><text x="460" y="295">客室8</text>
+<text x="570" y="115">階段</text><text x="570" y="134" font-size="11" fill="#c62828">竪穴区画</text>
+<text x="670" y="115">EV</text><text x="670" y="134" font-size="11" fill="#c62828">竪穴区画</text>
+<text x="570" y="290">PS・DS</text><text x="670" y="290">リネン</text>
+</g>
+<!-- 114条2項: 防火上主要な間仕切壁（青破線） -->
+<g stroke="#1565c0" stroke-width="5" stroke-dasharray="9 4" fill="none" stroke-linecap="butt">
+<path d="M160 70V170M280 70V170M400 70V170M160 240V340M280 240V340M400 240V340"/>
+<path d="M40 170H85M115 170H205M235 170H325M355 170H445M475 170H520"/>
+<path d="M40 240H85M115 240H205M235 240H325M355 240H445M475 240H520"/>
+</g>
+<!-- 112条: 防火区画（赤太実線） -->
+<g stroke="#c62828" stroke-width="7" fill="none" stroke-linecap="butt">
+<path d="M520 70V170M520 240V340"/>
+<path d="M520 170V188M520 222V240"/>
+<path d="M520 70H620V170H555M590 170H620"/>
+<path d="M620 70H720V170H655M690 170H720"/>
+<path d="M520 340H720M720 240V340M620 240V340M520 240H555M590 240H720"/>
+</g>
+<g stroke="#c62828" stroke-width="3" fill="none">
+<path d="M555 170h35M655 170h35M555 240h35" stroke-dasharray="3 3"/>
+</g>
+<!-- 扉 -->
+<g fill="#fff" stroke="#1d2430" stroke-width="2">
+<path d="M520 190L550 205" /><path d="M520 220L550 205" opacity="0"/>
+<path d="M556 170l0 -20" stroke="#c62828"/><path d="M655 170l0 -20" stroke="#c62828"/><path d="M556 240l0 20" stroke="#c62828"/>
+<path d="M85 170l0 -20M205 170l0 -20M325 170l0 -20M445 170l0 -20"/>
+<path d="M85 240l0 20M205 240l0 20M325 240l0 20M445 240l0 20"/>
+</g>
+<g font-size="12" font-weight="700" fill="#c62828"><text x="528" y="204">防</text></g>
+<!-- 貫通部 -->
+<g>
+<circle cx="250" cy="170" r="11" fill="#e65100"/><text x="250" y="175" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">1</text>
+<circle cx="520" cy="122" r="11" fill="#e65100"/><text x="520" y="127" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">2</text>
+<circle cx="535" cy="240" r="11" fill="#e65100"/><text x="535" y="245" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+</g>
+<!-- 断面位置 -->
+<g stroke="#6a1b9a" stroke-width="2.5" stroke-dasharray="14 5 3 5"><path d="M370 48V362"/></g>
+<g font-size="15" font-weight="700" fill="#6a1b9a" text-anchor="middle"><text x="370" y="42">A</text><text x="370" y="380">A'</text></g>
+<text x="378" y="62" font-size="12" fill="#6a1b9a">断面図の切断位置</text>
+<!-- 注記 -->
+<g font-size="12" fill="#1d2430">
+<text x="40" y="402">※ 扉(●の位置)で、防火設備・避難経路・排煙・感知連動の要求が重ならないかを区画ごとに確認する</text>
+<text x="40" y="424">※ 模式図。実際の区画線・扉・壁種別は設計図書(区画図・建具表)で確認する</text>
+</g>
+</svg>
+</div><div class="lg"><span><i class="l112"></i>令112条の防火区画(面積・竪穴など)</span><span><i class="l114"></i>令114条2項の防火上主要な間仕切壁</span><span><i class="lpen"></i>貫通部(番号は下表)</span></div><div class="cap">図1 客室階の平面模式図(実際の区画線・扉は設計図書で確認)。破線は線種の違いを示すための表現で、実際の壁の位置を示すものではない。</div></div>
+<div class="tw"><table><thead><tr><th>番号</th><th>平面での見どころ</th><th>断面で追うこと</th></tr></thead><tbody>
+<tr><td>1</td><td>客室間仕切壁・廊下壁を貫く風道・配管(青破線の壁)</td><td>貫通部が壁種別(114条2項)の対象か。風道は114条5項の対象貫通部か</td></tr>
+<tr><td>2</td><td>赤線(竪穴・面積区画)を貫く貫通部</td><td>112条の貫通部規定に適合する認定・告示仕様か</td></tr>
+<tr><td>3</td><td>PS・DSから廊下側壁へ出る配管・ケーブル</td><td>区画壁の天井裏部分と、PS内の床貫通の両方を確認</td></tr></tbody></table></div>
+<h3>確認の手順</h3>
+<ol>
+<li>区画図で、令112条の区画線と令114条2項の壁線を、別の凡例で色分けしてもらう。</li>
+<li>各線に、適用条文と壁・開口の仕様(構造種別、扉の性能)を付ける。</li>
+<li><b>扉の位置</b>で、防火設備の要否、避難経路(歩行距離・重複距離など)、排煙区画、感知器・連動の取合いが重ならないか、建具表と突き合わせる。</li>
+<li>強化天井やスプリンクラー設備等の検討は、令114条2項と令112条で<b>別の条件</b>になる。同じ緩和が自動的に両方に及ぶと扱わず、設計者に根拠を示してもらう。</li></ol>
+<div class="chk"><b>要確認:</b> 令114条2項の対象用途・規模、緩和条件の適用可否。</div></section><section id="s3"><h2>4. 断面: 梁際・天井裏・床・貫通部</h2><p>平面で決めた区画線は、断面で連続していなければ機能しない。次の図は、天井裏・梁際・床・貫通部を一つの断面に並べた模式図である。</p>
+<div class="fig"><div class="sv">
+<svg viewBox="0 0 780 470" role="img" aria-label="断面模式図。上階床スラブと梁、天井裏、間仕切壁、配管・風道の貫通部、ダンパーと点検口、床スラブの貫通部を示す。" xmlns="http://www.w3.org/2000/svg" font-family="Hiragino Sans,Yu Gothic,Noto Sans JP,sans-serif">
+<defs>
+<pattern id="conc" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#dfe3e8"/><path d="M0 10L10 0" stroke="#9aa3af" stroke-width="1"/></pattern>
+<pattern id="fs" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#ffcc99"/><path d="M0 0L6 6" stroke="#e65100" stroke-width="1.2"/></pattern>
+<pattern id="wall" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#eef1f5"/><path d="M0 8L8 0" stroke="#b5bcc7" stroke-width="1"/></pattern>
+</defs>
+<rect width="780" height="470" fill="#fff"/>
+<!-- 上階スラブ・梁 -->
+<rect x="40" y="30" width="700" height="30" fill="url(#conc)" stroke="#6b7480" stroke-width="1.5"/>
+<rect x="382" y="60" width="150" height="55" fill="url(#conc)" stroke="#6b7480" stroke-width="1.5"/>
+<text x="707" y="50" font-size="12" fill="#1d2430" text-anchor="end">上階 床スラブ</text>
+<text x="457" y="92" font-size="12" fill="#1d2430" text-anchor="middle">梁</text>
+<!-- 天井 -->
+<rect x="40" y="212" width="700" height="6" fill="#9aa3af"/>
+<text x="705" y="236" font-size="12" fill="#5a6575" text-anchor="end">天井（仕上げ）</text>
+<text x="60" y="98" font-size="13" fill="#5a6575">天井裏（防火区画の壁が通り抜ける空間）</text>
+<text x="60" y="320" font-size="13" fill="#5a6575">客室側</text><text x="590" y="320" font-size="13" fill="#5a6575">廊下側</text>
+<!-- 下階床 -->
+<rect x="40" y="390" width="700" height="32" fill="url(#conc)" stroke="#6b7480" stroke-width="1.5"/>
+<text x="60" y="410" font-size="12" fill="#1d2430">床スラブ（当該階の床）</text>
+<!-- 壁 -->
+<rect x="370" y="60" width="12" height="330" fill="url(#wall)" stroke="#1565c0" stroke-width="2" stroke-dasharray="8 3"/>
+<text x="376" y="450" font-size="12" fill="#1565c0" text-anchor="middle" font-weight="700">間仕切壁 (床スラブ〜上階スラブ下端まで連続)</text>
+<!-- 梁際目地 -->
+<rect x="381" y="60" width="4" height="55" fill="url(#fs)" stroke="#e65100"/>
+<rect x="364" y="56" width="24" height="8" fill="url(#fs)" stroke="#e65100"/>
+<!-- 風道 + ダンパー -->
+<rect x="130" y="125" width="196" height="38" fill="#fff" stroke="#3a4350" stroke-width="2"/>
+<rect x="326" y="120" width="40" height="48" fill="#fff" stroke="#c62828" stroke-width="2.5"/>
+<path d="M330 124L362 164M330 164L362 124" stroke="#c62828" stroke-width="1.5"/>
+<text x="346" y="184" font-size="11" fill="#c62828" text-anchor="middle">ダンパー</text>
+<rect x="366" y="122" width="20" height="44" fill="url(#fs)" stroke="#e65100"/>
+<rect x="386" y="125" width="200" height="38" fill="#fff" stroke="#3a4350" stroke-width="2"/>
+<text x="228" y="149" font-size="12" fill="#1d2430" text-anchor="middle">風道（ダクト）</text>
+<!-- 点検口 -->
+<rect x="316" y="211" width="62" height="8" fill="#fff" stroke="#2e7d32" stroke-width="2.5" stroke-dasharray="5 3"/>
+<!-- 配管 -->
+<rect x="190" y="190" width="270" height="12" fill="#c9d3df" stroke="#3a4350" stroke-width="1.5"/>
+<rect x="364" y="185" width="24" height="22" fill="url(#fs)" stroke="#e65100"/>
+<text x="230" y="186" font-size="12" fill="#1d2430" text-anchor="middle">配管（保温材含む）</text>
+<!-- 床貫通 -->
+<rect x="615" y="300" width="14" height="150" fill="#c9d3df" stroke="#3a4350" stroke-width="1.5"/>
+<rect x="650" y="300" width="14" height="150" fill="#c9d3df" stroke="#3a4350" stroke-width="1.5"/>
+<rect x="606" y="384" width="66" height="44" fill="url(#fs)" stroke="#e65100" stroke-width="1.5" opacity=".85"/>
+<rect x="615" y="300" width="14" height="150" fill="#c9d3df" stroke="#3a4350" stroke-width="1.5" opacity=".9"/>
+<rect x="650" y="300" width="14" height="150" fill="#c9d3df" stroke="#3a4350" stroke-width="1.5" opacity=".9"/>
+<text x="640" y="296" font-size="12" fill="#1d2430" text-anchor="middle">配管・配線</text>
+<!-- 番号 -->
+<g font-size="13" font-weight="700" fill="#fff" text-anchor="middle">
+<circle cx="376" cy="196" r="11" fill="#e65100"/><text x="376" y="201">1</text>
+<circle cx="394" cy="104" r="11" fill="#e65100"/><text x="394" y="109">2</text>
+<circle cx="350" cy="248" r="11" fill="#2e7d32"/><text x="350" y="253">3</text>
+<circle cx="338" cy="94" r="11" fill="#e65100"/><text x="338" y="99">4</text>
+<circle cx="590" cy="408" r="11" fill="#e65100"/><text x="590" y="413">5</text>
+<circle cx="376" cy="30" r="11" fill="#e65100"/><text x="376" y="35">6</text>
+</g>
+<text x="350" y="272" font-size="11" fill="#2e7d32" text-anchor="middle">点検口</text>
+<text x="350" y="286" font-size="11" fill="#2e7d32" text-anchor="middle">(下から操作できること)</text>
+<g stroke="#6a1b9a" fill="none" stroke-width="2"><circle cx="722" cy="130" r="14"/><path d="M714 127h16v10h-16zM719 127l2-3h4l2 3"/></g>
+<text x="722" y="162" font-size="11" fill="#6a1b9a" text-anchor="middle">隠蔽前写真</text>
+<text x="722" y="176" font-size="11" fill="#6a1b9a" text-anchor="middle">(天井閉鎖前)</text>
+</svg>
+</div><div class="cap">図2 断面模式図(寸法は示さない)。壁は床スラブから上階スラブ下端まで連続させる。</div></div>
+<div class="tw"><table><thead><tr><th>番号</th><th>場所</th><th>CMが図面・現場で見ること</th></tr></thead><tbody>
+<tr><td>1</td><td>配管の壁貫通</td><td>配管材質・径・保温の有無に合う認定または告示仕様。スリーブとの隙間の処理</td></tr>
+<tr><td>2</td><td>梁際</td><td>壁と梁側面の取合い目地まで連続しているか(壁の天端だけで完結させない)</td></tr>
+<tr><td>3</td><td>点検口</td><td>ダンパーの点検・復旧・交換が下から可能か。寸法は採用仕様・所管基準・点検交換経路で決める</td></tr>
+<tr><td>4</td><td>ダンパー</td><td>対象貫通部で必要な性能・取付位置・ヒューズ/感知連動の仕様。電気・空調の取合い</td></tr>
+<tr><td>5</td><td>床貫通</td><td>床スラブの貫通部の認定仕様、充填材の厚さ、下地。将来の増設余地</td></tr>
+<tr><td>6</td><td>壁上端</td><td>壁天端と上階スラブ下端の隙間。天井裏まで達する(114条2項)確認</td></tr></tbody></table></div>
+<h3>施工段階の確認の要点</h3>
+<ul><li>天井仕上げの位置で壁を止めない。天井裏部分の壁・取合いこそ隠蔽前に確認する。</li>
+<li>梁際は、壁天端だけでなく梁側面との目地・隙間の処理を確認する。</li>
+<li>隠蔽前の写真は、ID・位置・材料・厚さが分かる形で撮影し、台帳と紐づける。</li></ul></section><section id="s4"><h2>5. 貫通部(配管・配線・風道)</h2><p>区画を貫通する配管・配線・風道は、貫通する物の種類・径、貫通される壁・床の種別に合う<b>認定または告示仕様</b>で施工する。仕様は貫通部ごとに特定し、リストで管理する。</p>
+<ul>
+<li><span class="tag tpen">風道</span>令114条5項では、対象となる壁を換気・暖房・冷房の風道が貫通する場合に、令112条21項を読み替える。適用箇所と45分遮炎に加え、必要な閉鎖・遮煙の条件を設備設計者と確認する。</li>
+<li>令112条の区画では、貫通部に関する規定(貫通する配管等の仕様、隙間の処理)を条文で確認する。</li>
+<li>設計変更・テナント工事で貫通が増える。貫通リストの更新を変更承認ルールに組み込む。</li></ul>
+<h3>貫通リストの項目例</h3><div class="tw"><table><thead><tr><th>列</th><th>記載内容</th></tr></thead><tbody><tr><td>ID・位置</td><td>階・通り芯・区画線の別(例:3F-X5/Y2、112条/114条2項)</td></tr><tr><td>貫通物</td><td>配管の材質・径・保温の有無、ケーブル種別・本数、風道寸法</td></tr><tr><td>貫通する構造</td><td>壁・床・梁際・天井裏</td></tr><tr><td>採用仕様</td><td>認定番号・告示仕様の別、メーカー・施工要領書の版</td></tr><tr><td>隠蔽前確認</td><td>写真ID、確認者、日付、不適合・是正の有無</td></tr><tr><td>将来対応</td><td>余裕の有無、増設時の仕様と連絡先</td></tr></tbody></table></div></section><section id="s5"><h2>6. ダンパーと点検口</h2><ul>
+<li>防火ダンパーは、対象となる貫通部の仕様に合う製品を選定する。ヒューズ型・感知連動型など、作動方式と電気設備の取合いを確認する。</li>
+<li><b>点検口</b>: 寸法は全国一律の値(例えば450mm)にしない。採用する製品の点検要領・認定条件、所管の基準、点検・交換・復旧の経路から決める。天井下から手が届くか、機器を交換できるかを実際の経路で確認する。</li>
+<li>ダンパーの点検は、用途・設備の種別・設置状況を基に適用制度と確認項目を整理する。施設管理者へ点検時期・担当・復旧手順を引き継ぐ。</li>
+<li>引渡し時に、ダンパーの位置図・型番・点検要領を台帳に残す。</li></ul>
+<div class="chk"><b>要確認:</b> 採用製品の点検要領、特定行政庁の定期報告の運用、所管消防の基準。</div></section><section id="s6"><h2>7. 空調・電気・建築・消防設備の分担</h2><div class="tw"><table><thead><tr><th>担当</th><th>主な図書・作業</th><th>CMが確認する取合い</th></tr></thead><tbody><tr><th scope="row">建築(設計・施工)</th><td>区画図、壁の種別・取り合い、天井裏までの壁、梁際、床貫通の充填、建具表</td><td>区画線と壁の連続性、扉位置の整合、隠蔽前写真の撮影者の指定</td></tr><tr><th scope="row">空調設備</th><td>風道の経路、ダンパーの選定・取付位置・点検口の要否、貫通部の風道仕様</td><td>ダンパー種別(ヒューズ/感知連動)、風道の貫通リスト、点検交換経路</td></tr><tr><th scope="row">電気設備</th><td>ケーブル・ケーブルラックの貫通部、防火ダンパー・扉の連動配線、感知器の取合い</td><td>連動表との整合、電線貫通部の認定仕様、盤・配線ルートの区画越え</td></tr><tr><th scope="row">消防設備</th><td>スプリンクラー・感知・排煙・誘導・防火戸連動の設計と所管消防との協議</td><td>消防法令上の設備と建築基準法上の防火設備を混同しない。所管基準の確認</td></tr><tr><th scope="row">CM(発注者支援)</th><td>全体の調整、台帳の仕組み、変更・取合いの見える化、確認のタイミング設定</td><td>誰の責任範囲か分からない取合い(梁際・貫通部・点検口)を工事区分で拾う</td></tr></tbody></table></div>
+<p>区画に関する取合いは、一つの工種で完結しない。発注段階で工事区分表と責任分担を明記し、隠蔽前確認の立会いと記録の担当も決める。</p></section><section id="s7"><h2>8. 企画から維持管理まで: いつ・誰と・何を・何に記録するか</h2><div class="tw"><table><thead><tr><th>時期</th><th>何を</th><th>誰と</th><th>何を確認するか</th><th>何に記録するか</th></tr></thead><tbody><tr><th scope="row">企画</th><td>適用範囲の整理、既存図書の確認</td><td>設計者、確認検査機関、所管消防</td><td>既存図書の有無、既存区画の根拠、用途・規模</td><td>区画方針メモ、要確認リスト</td></tr><tr><th scope="row">設計</th><td>区画図・建具表・断面詳細・貫通リスト・連動表の作成</td><td>設計者、設備設計者、施工者(早期参画の場合)</td><td>区画線の根拠条文、扉位置、梁際・天井裏の断面、貫通の種別</td><td>区画図、貫通リストv1、連動表</td></tr><tr><th scope="row">発注</th><td>工事区分、納期、変更承認ルールの確定</td><td>発注者、設計者、施工者</td><td>貫通部・ダンパー・点検口の担当区分、承認が要る変更の範囲</td><td>工事区分表、変更承認フロー</td></tr><tr><th scope="row">施工</th><td>隠蔽前の取合い確認、貫通部施工、ダンパー据付</td><td>施工者、設備施工者、CM</td><td>天井・壁の閉鎖前に、梁際、壁天端、貫通部の仕様・写真</td><td>隠蔽前チェックシート、写真台帳(ID付き)</td></tr><tr><th scope="row">試験</th><td>仕様に応じた作動と復旧の確認</td><td>設備施工者、メーカー、CM</td><td>ダンパー・防火戸の作動、連動、復旧操作</td><td>試験成績書、不具合・是正記録</td></tr><tr><th scope="row">引渡し</th><td>台帳・是正記録の整理、管理者への引継ぎ</td><td>施工者、CM、管理者</td><td>最終貫通リスト、点検口の位置、点検要領</td><td>区画台帳、貫通台帳、点検要領書</td></tr><tr><th scope="row">維持管理</th><td>将来の貫通追加やテナント改修の管理</td><td>管理者、テナント、工事業者</td><td>開口を新設する前の事前確認、仕様の再現性</td><td>改修工事の届出・台帳更新、点検記録</td></tr></tbody></table></div>
+<p>台帳(区画台帳・貫通台帳)を中心に、変更のたびに更新する。引渡し後は、テナント改修や設備増設で貫通が追加されるため、管理者向けに「開口を新設する前の確認」手順を渡す。</p></section><section id="s8"><h2>9. CMチェックリスト</h2><h3>設計段階</h3><ul>
+<li>区画図に、令112条・令114条2項の線が別凡例で示されている</li>
+<li>各区画線に根拠条文と壁・開口の仕様が付いている(条文対応表)</li>
+<li>建具表に防火設備の性能・閉鎖方式、連動表が整合している</li>
+<li>断面詳細に梁際・壁天端・床貫通がある</li>
+<li>貫通リストの様式が合意されている</li></ul>
+<h3>発注・施工段階</h3><ul>
+<li>梁際・貫通部の充填・ダンパー・点検口の工事区分が決まっている</li>
+<li>隠蔽前確認の時期が工程に入っている</li>
+<li>貫通部ごとの写真・仕様の台帳が更新されている</li>
+<li>設計変更時に貫通リストと区画図が更新される</li></ul>
+<h3>試験・引渡し</h3><ul>
+<li>ダンパー・防火戸の作動と復旧を仕様に応じて確認した記録がある</li>
+<li>点検口から点検・交換が可能であることを現場で確認した</li>
+<li>台帳・是正記録・点検要領書を管理者に引き継いだ</li></ul></section><section id="s9"><h2>10. 要確認事項</h2><ol><li>令112条第7〜9項の高層区画は基本と緩和で開口部の性能が異なる。個別案件では第10項等の例外や他の区画規定との重複も含め、設計者の条文対応表で確認する。</li><li>令和7年11月1日施行の改正に係る高層区画等の内装制限の「準ずる措置」の具体的な仕様は、関係告示とその解説で確認する。</li><li>令114条2項の対象用途・規模、強化天井やスプリンクラー設備等による緩和の適用可否は、別の条件で個別に確認する。</li><li>令114条5項の風道の45分遮炎が、対象貫通部のどれに及ぶかは条文で確認する。全ダクトに一律に求められるものではない。</li><li>点検口の寸法・位置は、採用するダンパーの仕様・所管基準・点検交換経路で決める。450mmなど全国一律の寸法として扱わない。</li><li>ダンパー単体が建築基準法の防火設備定期検査と消防法の点検の両方で対象になるかは、特定行政庁・設備の種別・所管消防で確認する。</li><li>個別案件の既存図書、確認申請の経緯、所管消防・特定行政庁の運用は本稿に含めていない。</li><li>調査にはGemini Deep Researchを使い、Google Driveの調査資料と公的資料を参照した。HTML原稿はClaudeが調査要約を基に作成し、Codexが公的資料と照合して修正した。</li></ol></section><section id="s10"><h2>11. 出典</h2><ol class="srcs"><li><a href="https://laws.e-gov.go.jp/law/325CO0000000338" target="_blank" rel="noopener noreferrer">建築基準法施行令(e-Gov法令検索)</a><br><small>令112条・令114条などの条文原文。項番号・緩和条件は必ず最新の原文で確認する。</small></li><li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001967213.pdf" target="_blank" rel="noopener noreferrer">国土交通省住宅局建築指導課長通知「建築基準法施行令の一部を改正する政令等の施行について(技術的助言)」(令和7年10月31日)</a><br><small>令和7年政令第310号等の令和7年11月1日施行分。防火区画等の内装制限の見直し(令112条関係)で、準不燃材料等に「準ずる措置」を関係告示で定める旨が示されている。</small></li><li><a href="https://www.mlit.go.jp/gobuild/content/001512318.pdf" target="_blank" rel="noopener noreferrer">国土交通省 資料「災害に備えるにあたっての関係法令等の解説」(第Ⅲ章、令和4年2月1日現在の法令に基づく)</a><br><small>火災に関係する事項や定期調査・点検の関係法令の要約。作成時点が古く、要約である旨が資料内に明記されているため、最新の法令・告示・条例で確認する。</small></li><li><a href="https://laws.e-gov.go.jp/law/325CO0000000338/20251101_507CO0000000310?tab=compare" target="_blank" rel="noopener noreferrer">e-Gov 法令検索　2025年11月改正の新旧対照条文</a><br><small>令112条第7〜9項の高層区画。</small></li><li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001902550.pdf" target="_blank" rel="noopener noreferrer">国土交通省　防火上主要な間仕切壁の代替措置となる強化天井</a><br><small>強化天井の適用範囲と区画の考え方。</small></li></ol><p class="note">リンク先は2026年11月時点で参照できたものです。出典2は令和7年10月31日付の通知で、防火区画等の内装制限の見直しなどを含みます。出典3は令和4年2月時点の法令に基づく要約のため、最新の法令・告示・条例で確認してください。</p></section></article></div></body></html>

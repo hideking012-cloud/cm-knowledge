@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>内装制限のCM実務 | 音声・図解スライド</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red:#9b3b2f;--red-l:#f7e6e2;
+  --r:14px;--gap:16px;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+/* header */
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+/* controls */
+.controls{background:var(--paper);border-bottom:1px solid var(--line)}
+.controls .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ctl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.ctl select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);max-width:220px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:5px 14px;cursor:pointer;min-height:36px}
+.btn:hover{background:var(--green-l)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d)}
+.btn[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.note-voice{font-size:12.5px;color:var(--sub);width:100%;margin:0}
+/* deck */
+main{max-width:1180px;margin:0 auto;padding:18px 16px 120px}
+.slide{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px 22px;min-height:620px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.slide.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.list .slide{display:block;margin-bottom:22px;animation:none}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--sub);margin-bottom:6px}
+.cat{display:inline-block;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:1px 12px;font-weight:700;letter-spacing:.03em}
+.slide h1,.slide h2{color:var(--green-d);margin:4px 0 14px;line-height:1.4}
+.slide h1{font-size:34px}
+.slide h2{font-size:26px;border-left:6px solid var(--green);padding-left:12px}
+.lead{font-size:17px;color:var(--sub);margin:0 0 16px}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--green-d)}
+.card p{margin:0;font-size:15px}
+.card ul{margin:4px 0 0;padding-left:1.2em;font-size:15px}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h3{color:#fff}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.r{background:var(--red-l);border-color:#e6c2ba}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.small{font-size:13px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--green-m);color:var(--green-d);border-radius:6px;padding:0 6px;margin:0 2px 2px 0;background:#fff}
+.tag.cond{border-color:var(--amber);color:#7a4f10;background:var(--amber-l)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff;font-weight:700}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);white-space:nowrap}
+.tbl td.c{text-align:center}
+.dot{color:var(--green);font-weight:700}
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.flow.h{grid-template-columns:repeat(4,minmax(0,1fr))}
+.flow.h7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow .step{position:relative;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;transition:border-color .3s,background .3s,transform .3s,opacity .3s;cursor:pointer}
+.flow .step b{display:block;color:var(--green-d);font-size:15px;margin-bottom:2px}
+.flow .step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px;vertical-align:1px}
+.flow.playing .step{opacity:.45}
+.flow.playing .step.done{opacity:.8;border-color:var(--green-m)}
+.flow.playing .step.on{opacity:1;border-color:var(--amber);background:var(--amber-l);transform:translateY(-3px);box-shadow:0 4px 10px rgba(183,121,31,.18)}
+.flow .step .who{display:block;font-size:12.5px;color:var(--sub);margin-top:4px}
+.flow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.flow-bar .status{font-size:13px;color:var(--sub)}
+.layers{display:grid;gap:8px}
+.layer{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:8px 12px;font-size:14.5px}
+.layer:nth-child(2){margin-left:18px}.layer:nth-child(3){margin-left:36px}.layer:nth-child(4){margin-left:54px}
+.layer b{color:var(--green-d)}
+.cover{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;min-height:520px}
+.cover .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:3px 14px;font-size:14px;letter-spacing:.06em}
+.cover-fig{background:var(--green);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover-fig div{background:var(--cream);border-radius:12px;padding:16px 10px;text-align:center;font-weight:700;color:var(--green-d)}
+.cover-fig div span{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+/* script */
+details.script{margin-top:18px;border-top:1px dashed var(--line);padding-top:8px}
+details.script summary{cursor:pointer;color:var(--green);font-size:14px;font-weight:700}
+details.script p{font-size:15px;margin:8px 0 0;color:var(--ink)}
+/* caption + pager */
+.caption{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);max-width:min(92vw,960px);background:rgba(27,64,55,.94);color:#fff;font-size:17px;line-height:1.6;padding:10px 16px;border-radius:10px;z-index:30;display:none}
+.caption.show{display:block}
+.pager{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:25}
+.pager .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}
+body.list .pager{display:none}
+.foot{margin-top:14px;font-size:12.5px;color:var(--sub)}
+.srcs{font-size:13.5px;margin:6px 0 0;padding-left:1.2em}
+/* reduced motion */
+body.reduce *, body.reduce *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce .flow.playing .step.on{transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  .slide{padding:18px 16px;min-height:0}
+  .slide h1{font-size:26px}.slide h2{font-size:21px}
+  .g2,.g4{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:1fr}
+  .layer:nth-child(n){margin-left:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl tbody th{white-space:normal}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .tbl td.c{text-align:left}
+  .caption{bottom:68px;font-size:15px}
+  .ctl select{max-width:150px}
+}
+@media print{
+  .topbar,.controls,.pager,.caption{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:0;box-shadow:none}
+  body{background:#fff}
+}
+
+.caption{width:max-content;max-height:24dvh;overflow:auto}
+.pager .in{justify-content:center;gap:16px}
+@media screen and (max-width:900px){
+ body>iframe#nl-badge-frame{position:relative!important;display:block;inset:auto!important;margin-inline-start:auto!important;max-width:100%;z-index:1!important}
+}
+@media screen and (max-width:700px){
+ body{font-size:16px}
+ .slide h2{font-size:clamp(23px,5.8vw,28px)}
+ .tbl th,.tbl td{font-size:15px}
+ .pager button,.controls button,.controls select{min-height:44px}
+}
+@media print{#nl-badge-frame,.slide .script{display:none!important}.slide:last-child{page-break-after:auto}}
+</style>
+<link rel="stylesheet" href="cm-slide-theme.css">
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#deck">スライド本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 内装制限</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ戻る</a><a href="interior-fire-limits-report.html">詳細レポート</a><a href="fire-compartment-slides.html">関連：防火区画</a></nav>
+  </div>
+</header>
+
+<div class="controls" role="region" aria-label="表示と音声の操作">
+  <div class="in">
+    <button class="btn primary" id="play" type="button">▶ 読み上げ開始</button>
+    <button class="btn" id="stop" type="button">■ 停止</button>
+    <label class="ctl">話者
+      <select id="voice" aria-label="読み上げ音声（端末の日本語音声）"><option value="">端末の標準（日本語）</option></select>
+    </label>
+    <label class="ctl">速度
+      <select id="rate" aria-label="読み上げ速度">
+        <option value="0.8">ゆっくり</option>
+        <option value="1" selected>標準</option>
+        <option value="1.2">やや速い</option>
+        <option value="1.4">速い</option>
+      </select>
+    </label>
+    <div class="toggles">
+      <button class="btn" id="tCap" type="button" aria-pressed="true">字幕</button>
+      <button class="btn" id="tAuto" type="button" aria-pressed="false">自動送り</button>
+      <button class="btn" id="tMotion" type="button" aria-pressed="false">動きを減らす</button>
+      <button class="btn" id="tList" type="button" aria-pressed="false">一覧表示</button>
+    </div>
+    <p class="note-voice" id="voiceNote">読み上げはボタンを押したときだけ始まります。音声は端末に入っている日本語音声を使います。</p>
+  </div>
+</div>
+
+<main id="deck">
+<p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
+<section class="slide" id="s1" aria-label="スライド1">
+<div class="meta"><span class="cat">全体像</span><span>01 / 08</span></div>
+<h1>内装制限と防炎 ― 「建物の仕上げ」と「持ち込む物品」は別制度</h1>
+<aside class="cm-visual" aria-labelledby="cm-visual-title">
+    <h2 id="cm-visual-title" class="cm-visual-heading">居室と廊下で、仕上げを見る場所</h2><div class="cm-visual-term"><p><strong>内装制限</strong> 火災が広がるのを抑えるため、対象となる壁・天井の仕上げなどに求められる規定です。</p>
+    <p><span>最初に開く資料</span> <b>内部仕上表</b></p></div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="居室と廊下の平面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:12.5%;width:58%;height:50%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:8%;top:62.5%;width:85%;height:25%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:77%;top:12.5%;width:16%;height:50%"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:13%;top:18.75%;width:46%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:10%;top:68.75%;width:63%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:17%;top:77.08333333333334%;width:68%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:66%;top:12.5%;width:24%;transform:rotate(1.5707963267948966rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:30%;--field-y:25%" data-point aria-pressed="false" aria-label="1 居室の壁・天井">1</button><button type="button" class="cm-field-marker" style="--field-x:46%;--field-y:70.83333333333334%" data-point aria-pressed="false" aria-label="2 避難経路側の仕上げ">2</button><button type="button" class="cm-field-marker" style="--field-x:85%;--field-y:35.41666666666667%" data-point aria-pressed="false" aria-label="3 階段">3</button>
+    </div>
+    <figcaption>居室と廊下の平面図（模式図） · 室名と経路で要求が変わります。図面の範囲とメーカーの認定資料を照合します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>居室の壁・天井</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>避難経路側の仕上げ</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>階段</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 居室の壁・天井</strong> 室ごとに対象範囲と必要な仕上げの性能を確認します。</p><p data-point-note><strong>2 避難経路側の仕上げ</strong> 廊下などを居室と区分して色分けし、仕上表と照合します。</p><p data-point-note><strong>3 階段</strong> 避難経路としての要求を設計者が個別に確認します。</p></div>
+  </figure>
+    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="interior-fire-limits-report.html#cm-visual-summary">図と表のまとめ</a></p>
+  </aside>
+<ol class="overview" aria-label="確認の流れ"><li><b>対象を確認</b><span>用途・規模・階・開口条件</span></li><li><b>部位を区分</b><span>居室／通路、壁／天井</span></li><li><b>仕様を照合</b><span>仕上げ・下地・認定別添</span></li></ol>
+<ul>
+<li>内装制限：建築基準法35条の2、令128条の3の2〜129条。壁・天井の<b>固定された仕上げ</b>が対象</li>
+<li>目的は火災初期の燃え広がりとフラッシュオーバーを遅らせ、避難時間を確保すること</li>
+<li>防炎規制：消防法8条の3。カーテン・じゅうたん等の<b>防炎対象物品</b>が対象</li>
+<li>材料は不燃（NM）・準不燃（QM）・難燃（RM）。防炎ラベルとは別物</li>
+<li>CMの論点は、意匠材の採用可否と、テナント・備品調達まで含めた管理</li>
+</ul>
+<details class="script"><summary>原稿</summary><p class="say">二つ目は内装制限です。よく混同されるのが、建築基準法の内装制限と消防法の防炎規制です。内装制限は壁や天井の仕上げ、つまり建物に固定されたものが対象で、材料は不燃・準不燃・難燃の三区分です。防炎はカーテンやじゅうたんのような、後から持ち込む物品が対象で、防炎ラベルで確認します。制度も所管も確認方法も違うので、まずこの二つを分けて考えてください。</p></details>
+</section>
+<section class="slide" id="s2" aria-label="スライド2">
+<div class="meta"><span class="cat">対象の決め方</span><span>02 / 08</span></div>
+<h2>令128条の4：どの建物・どの室が対象か</h2>
+<aside class="cm-visual" aria-labelledby="cm-visual-table-title">
+    <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">内装の仕上げ</th><td>壁・天井の材料と、下地を含む仕様を確認</td></tr>
+<tr><th scope="row">カーテン・じゅうたん等</th><td>防炎規制の対象かと表示を確認</td></tr>
+<tr><th scope="row">仕様を変えるとき</th><td>色や品番だけでなく認定条件も確認</td></tr>
+  </tbody></table><div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>承認済みの壁材を、似た色の別品番に替えたいと連絡が来ました。何を確認しますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>認定根拠・下地・施工条件を差し替え案と照合する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>色が同じならそのまま承認する</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>認定根拠・下地・施工条件を差し替え案と照合する</strong></p><p>防火材料等の性能は仕上げ単体だけで評価できない場合があります。品番や下地、施工条件を資料で照合します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>内部仕上表</dd></div>
+        <div><dt>いつ確認するか</dt><dd>材料を承認・発注する前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>設計者・施工者・材料供給者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 仕上表・認定書・材料承認記録</p>
+    </details>
+  </div>
+    <details class="cm-visual-extra"><summary>建物のイラストで位置を見る</summary><figure><div class="cm-visual-media"><img src="cm-hotel-interior-illustration.png" alt="架空のホテルの客室・廊下・階段を切り開いたイラスト。天井裏にダクトと配管が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:49%;--spot-y:37%">●</span></div><figcaption>室の壁・天井と、共用部の壁・天井を室名と仕上表で対応させます。 イラストは位置関係の説明用です。</figcaption></figure></details>
+  </aside>
+
+<table class="tbl">
+<thead><tr><th>区分</th><th>ホテル（別表(2)項）の条件</th></tr></thead>
+<tbody>
+<tr><td data-label="区分">耐火建築物等</td><td data-label="ホテル（別表(2)項）の条件">3階以上の部分の床面積合計300㎡以上</td></tr>
+<tr><td data-label="区分">準耐火建築物等</td><td data-label="ホテル（別表(2)項）の条件">2階部分の床面積合計300㎡以上</td></tr>
+<tr><td data-label="区分">その他の建築物</td><td data-label="ホテル（別表(2)項）の条件">床面積合計200㎡以上</td></tr>
+<tr><td data-label="区分">大規模建築物</td><td data-label="ホテル（別表(2)項）の条件">階数3以上で延べ500㎡超／階数2で1,000㎡超／階数1で3,000㎡超</td></tr>
+<tr><td data-label="区分">室単位で判定</td><td data-label="ホテル（別表(2)項）の条件">対象用途の地階居室、無窓居室（令128条の3の2）、火気使用室、自動車車庫</td></tr>
+</tbody>
+</table>
+<ul><li>主要構造部を耐火構造とした建築物の火気使用室は火気使用室規定の対象外（特殊建築物・大規模建築物としての制限は別途かかる）</li></ul>
+<details class="script"><summary>原稿</summary><p class="say">対象の決め方です。ホテルは特殊建築物なので、建物の耐火性能に応じて面積の基準が変わります。耐火建築物なら3階以上のホテル部分が合計300平方メートル以上、準耐火建築物なら2階部分が300平方メートル以上、それ以外は200平方メートル以上です。建物規模による判定に加え、地階の用途や無窓居室の面積、火気使用室の条件も確認します。なお、耐火構造の建物の厨房は火気使用室の規定からは外れますが、ホテルの居室としての制限はかかるので、ここは混同しないようにしてください。</p></details>
+</section>
+<section class="slide" id="s3" aria-label="スライド3">
+<div class="meta"><span class="cat">部位別の要求</span><span>03 / 08</span></div>
+<h2>令128条の5：居室・通路、仕上げ・下地</h2>
+<table class="tbl">
+<thead><tr><th>部位</th><th>壁</th><th>天井</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td data-label="部位">特殊建築物の居室</td><td data-label="壁">難燃以上（床から1.2m以下は除外）</td><td data-label="天井">難燃以上／3階以上に居室がある場合は準不燃以上</td><td data-label="備考">告示1439号の組合せも可</td></tr>
+<tr><td data-label="部位">居室から地上へ通じる廊下・階段等</td><td data-label="壁">準不燃以上</td><td data-label="天井">準不燃以上</td><td data-label="備考">1.2m緩和なし</td></tr>
+<tr><td data-label="部位">地階の居室・無窓居室</td><td data-label="壁">準不燃以上（腰壁含む）</td><td data-label="天井">準不燃以上</td><td data-label="備考">1.2m緩和なし</td></tr>
+<tr><td data-label="部位">火気使用室</td><td data-label="壁">準不燃以上</td><td data-label="天井">準不燃以上</td><td data-label="備考">告示225号は所定の住宅が対象</td></tr>
+<tr><td data-label="部位">避難階段・特別避難階段</td><td colspan="2" data-label="壁">仕上げ・下地とも不燃材料（令123条）</td><td data-label="天井">下地まで確認</td></tr>
+</tbody>
+</table>
+<ul><li>廻縁・窓枠・巾木等の小部材は対象外。床は内装制限の対象外（防炎は床敷物も対象）</li></ul>
+<details class="script"><summary>原稿</summary><p class="say">部位ごとの要求です。ホテルの居室は壁と天井を難燃以上、3階以上に居室があれば天井は準不燃以上になります。床から1.2メートル以下の腰壁は居室に限って除外されます。一方、居室から外へ逃げる廊下や階段は準不燃以上で、1.2メートルの緩和はありません。地階や無窓の居室も同じく緩和なしです。避難階段は下地まで不燃です。仕上げだけ見て下地を見落とす、廊下に居室と同じ材料を使ってしまう、この二つが典型的なミスです。</p></details>
+</section>
+<section class="slide" id="s4" aria-label="スライド4">
+<div class="meta"><span class="cat">材料区分</span><span>04 / 08</span></div>
+<h2>NM・QM・RM：時間で決まる防火材料</h2>
+<table class="tbl">
+<thead><tr><th>区分</th><th>加熱時間</th><th>告示の例示</th><th>認定番号</th></tr></thead>
+<tbody>
+<tr><td data-label="区分">不燃材料</td><td data-label="加熱時間">20分</td><td data-label="告示の例示">平12建告1400号（コンクリート、鉄鋼、ガラス、厚さ12mm以上のせっこうボード等）</td><td data-label="認定番号">NM-</td></tr>
+<tr><td data-label="区分">準不燃材料</td><td data-label="加熱時間">10分</td><td data-label="告示の例示">平12建告1401号（厚さ9mm以上のせっこうボード等）</td><td data-label="認定番号">QM-</td></tr>
+<tr><td data-label="区分">難燃材料</td><td data-label="加熱時間">5分</td><td data-label="告示の例示">平12建告1402号（難燃合板5.5mm以上、せっこうボード7mm以上等）</td><td data-label="認定番号">RM-</td></tr>
+</tbody>
+</table>
+<ul>
+<li>要件は「燃焼しない」「防火上有害な損傷を生じない」「避難上有害な煙・ガスを出さない」（令108条の2）</li>
+<li>上位材料は下位を兼ねる（不燃は準不燃・難燃としても使える）</li>
+<li>壁紙・塗装は<b>下地との組合せ</b>で認定されることが多い。下地が変われば認定外</li>
+</ul>
+<details class="script"><summary>原稿</summary><p class="say">材料区分です。不燃が20分、準不燃が10分、難燃が5分、加熱してもこの時間は燃えず、有害な煙も出さないという性能で決まっています。告示で例示された材料と、大臣認定を受けた材料があり、認定品にはNM、QM、RMの番号が付きます。注意したいのは壁紙や塗装で、多くは下地との組み合わせで認定されています。同じ壁紙でも、下地をせっこうボードから合板に変えると認定から外れることがあるので、仕上げ表には下地もセットで書いてもらってください。</p></details>
+</section>
+<section class="slide" id="s5" aria-label="スライド5">
+<div class="meta"><span class="cat">防炎との違い</span><span>05 / 08</span></div>
+<h2>内装制限と防炎規制の比較</h2>
+<table class="tbl">
+<thead><tr><th>項目</th><th>内装制限（建築基準法）</th><th>防炎規制（消防法）</th></tr></thead>
+<tbody>
+<tr><td data-label="項目">根拠</td><td data-label="内装制限（建築基準法）">法35条の2、令128条の3の2〜129条</td><td data-label="防炎規制（消防法）">消防法8条の3、消防令4条の3</td></tr>
+<tr><td data-label="項目">対象</td><td data-label="内装制限（建築基準法）">壁・天井の固定された仕上げ</td><td data-label="防炎規制（消防法）">カーテン、布製ブラインド、暗幕、じゅうたん等、展示用合板、舞台幕、工事用シート</td></tr>
+<tr><td data-label="項目">対象施設</td><td data-label="内装制限（建築基準法）">用途・規模・室の種類で判定</td><td data-label="防炎規制（消防法）">高さ31m超の建築物、地下街、ホテル・劇場・病院等の防炎防火対象物</td></tr>
+<tr><td data-label="項目">性能</td><td data-label="内装制限（建築基準法）">不燃・準不燃・難燃（時間）</td><td data-label="防炎規制（消防法）">防炎性能（着火・燃え広がりにくさ）</td></tr>
+<tr><td data-label="項目">証明</td><td data-label="内装制限（建築基準法）">告示仕様または大臣認定（NM/QM/RM）</td><td data-label="防炎規制（消防法）">防炎表示（防炎ラベル）</td></tr>
+<tr><td data-label="項目">管理者</td><td data-label="内装制限（建築基準法）">設計者・施工者・建物所有者</td><td data-label="防炎規制（消防法）">管理権原者・防火管理者（購入・洗濯・更新）</td></tr>
+</tbody>
+</table>
+<details class="script"><summary>原稿</summary><p class="say">内装制限と防炎を表で比べました。ホテルは消防法の防炎防火対象物に当たるので、客室のカーテンやじゅうたんは防炎物品でなければなりません。高さ31メートルを超える建物なら全階が対象です。防炎は工事で完結せず、運営側が買い替えたり洗濯したりするたびに性能が問題になります。工事の引渡し時に防炎物品の一覧とラベルの写真を渡し、購買仕様に防炎ラベル付きと明記してもらうところまでがCMの仕事だと考えてください。</p></details>
+</section>
+<section class="slide" id="s6" aria-label="スライド6">
+<div class="meta"><span class="cat">条件付き緩和</span><span>06 / 08</span></div>
+<h2>木材・意匠材を使うための主な緩和ルート</h2>
+<table class="tbl">
+<thead><tr><th>ルート</th><th>条件の概要</th><th>崩れる典型例</th></tr></thead>
+<tbody>
+<tr><td data-label="ルート">腰壁1.2m以下</td><td data-label="条件の概要">特殊建築物等の居室に限り除外</td><td data-label="崩れる典型例">廊下・地階・無窓居室に適用してしまう</td></tr>
+<tr><td data-label="ルート">天井準不燃＋壁木材（平12建告1439号）</td><td data-label="条件の概要">天井を準不燃とし、壁を告示の木材等とする</td><td data-label="崩れる典型例">天井の一部を木質化</td></tr>
+<tr><td data-label="ルート">消火設備＋排煙（令2国交告251号）</td><td data-label="条件の概要">スプリンクラー等と排煙設備を設けた部分は適用除外の場合あり</td><td data-label="崩れる典型例">改修で排煙・SPを撤去</td></tr>
+<tr><td data-label="ルート">区画（令128条の5第1項等）</td><td data-label="条件の概要">準耐火構造の床・壁・防火設備で一定面積以内に区画</td><td data-label="崩れる典型例">間仕切りの撤去・開口追加</td></tr>
+<tr><td data-label="ルート">住宅の火気使用室（平21国交告225号）</td><td data-label="条件の概要">こんろ等の周囲を不燃化すれば他の部分に木材等可</td><td data-label="崩れる典型例">機器の位置変更</td></tr>
+<tr><td data-label="ルート">避難安全検証法</td><td data-label="条件の概要">検証により内装制限の一部を適用除外</td><td data-label="崩れる典型例">用途・在館者数の変更</td></tr>
+</tbody>
+</table>
+<details class="script"><summary>原稿</summary><p class="say">木を見せたい、意匠性の高い壁紙を使いたいという要望はよくあります。そのための緩和ルートがいくつかあります。腰壁の1.2メートル、天井を準不燃にして壁に木材を使う告示、スプリンクラーと排煙を設けた場合の適用除外、区画による除外、火気使用室の告示、それと避難安全検証法です。どれも条件付きで、改修で排煙を外したり、天井を木にしたりすると前提が崩れます。採用したルートは仕上げ表と竣工図に書いておき、将来の改修担当者が見て分かるようにしてください。</p></details>
+</section>
+<section class="slide" id="s7" aria-label="スライド7">
+<div class="meta"><span class="cat">仮想ホテル例と発注者判断</span><span>07 / 08</span></div>
+<h2>仮想ホテルA（耐火建築物・地上10階地下1階）の当てはめと決定順序</h2>
+<table class="tbl">
+<thead><tr><th>部分</th><th>壁</th><th>天井</th></tr></thead>
+<tbody>
+<tr><td data-label="部分">客室（3階以上）</td><td data-label="壁">難燃以上（腰壁1.2m以下は除外）</td><td data-label="天井">準不燃以上</td></tr>
+<tr><td data-label="部分">客室階廊下</td><td data-label="壁">準不燃以上</td><td data-label="天井">準不燃以上</td></tr>
+<tr><td data-label="部分">地下1階宴会場</td><td data-label="壁">準不燃以上（腰壁含む）</td><td data-label="天井">準不燃以上</td></tr>
+<tr><td data-label="部分">ロビー（木質化希望）</td><td colspan="2" data-label="壁">告示1439号または令2国交告251号ルートを比較検討</td></tr>
+</tbody>
+</table>
+<ol id="f1" class="flow h">
+<li class="step"><b>対象判定</b>用途・規模・室種別で部位ごとの要求を表にする</li>
+<li class="step"><b>意匠要望の整理</b>木質化・特殊仕上げの範囲を決める</li>
+<li class="step"><b>ルート選択</b>告示・設備・区画・検証のどれで成立させるか決める</li>
+<li class="step"><b>仕上げ表確定</b>仕上げ・下地・認定番号を一行ずつ記載</li>
+<li class="step"><b>調達仕様</b>防炎物品をラベル付きで発注する仕様に反映</li>
+</ol>
+<button type="button" class="flow-next" data-flow="f1">順に見る</button><span id="f1-status" role="status"></span>
+<details class="script"><summary>原稿</summary><p class="say">仮想ホテルで当てはめます。3階以上の客室は壁が難燃以上、天井が準不燃以上です。廊下は壁も天井も準不燃以上、地下の宴会場は腰壁も含めて準不燃以上です。ロビーを木質化したい場合は、告示1439号か、スプリンクラーと排煙による適用除外かを比べます。進め方は、対象判定、意匠要望の整理、成立ルートの選択、仕上げ表の確定、そして防炎物品の調達仕様、の順です。仕上げ表に認定番号まで書かせることで、施工段階の材料差し替えを防げます。</p></details>
+</section>
+<section class="slide" id="s8" aria-label="スライド8">
+<div class="meta"><span class="cat">試験・引渡し</span><span>08 / 08</span></div>
+<h2>施工確認・引渡し・運用</h2>
+<table class="tbl">
+<thead><tr><th>段階</th><th>確認内容</th><th>記録</th></tr></thead>
+<tbody>
+<tr><td data-label="段階">材料承認</td><td data-label="確認内容">認定書の写し、認定の下地条件、告示仕様の該当号</td><td data-label="記録">材料承認書</td></tr>
+<tr><td data-label="段階">施工中</td><td data-label="確認内容">下地施工時と仕上げ施工時の写真、出荷証明</td><td data-label="記録">施工写真・出荷証明</td></tr>
+<tr><td data-label="段階">完了検査</td><td data-label="確認内容">仕上げ表と現場の一致、認定表示の確認</td><td data-label="記録">検査記録</td></tr>
+<tr><td data-label="段階">引渡し</td><td data-label="確認内容">部位別仕上げ表（認定番号付き）、防炎物品一覧・ラベル写真</td><td data-label="記録">引渡し書類</td></tr>
+<tr><td data-label="段階">運用</td><td data-label="確認内容">テナント工事・模様替えの事前審査、防炎物品の更新・再加工</td><td data-label="記録">工事申請・防炎台帳</td></tr>
+</tbody>
+</table>
+<p class="small"><a href="https://laws.e-gov.go.jp/law/325AC0000000201">建築基準法</a> ／ <a href="https://laws.e-gov.go.jp/law/325CO0000000338">建築基準法施行令</a> ／ <a href="https://www.mlit.go.jp/jutakukentiku/house/content/001876987.pdf">国土交通省 木材と内装の制限</a> ／ <a href="https://www.fdma.go.jp/about/organization/post-12.html">消防庁 防炎規制</a> ／ <a href="interior-fire-limits-report.html">詳細レポート</a></p><details class="script"><summary>原稿</summary><p class="say">最後に施工確認と引渡しです。材料承認で認定書と下地条件を確認し、施工中は下地と仕上げの両方を写真に残します。引渡しでは認定番号付きの仕上げ表と、防炎物品の一覧を渡します。竣工後に問題になるのはテナント工事や模様替えです。運営側に、仕上げを変えるときは事前に図面と材料を出してもらうルールをつくっておくと、知らないうちに不適合になるのを防げます。</p></details>
+</section>
+</main>
+
+<div class="caption" id="caption" role="status" aria-live="polite"></div>
+
+<nav class="pager" aria-label="スライド送り">
+  <div class="in">
+    <button class="btn" id="prev" type="button">← 前</button>
+    <span class="count" id="count">1 / 8</span>
+    <button class="btn primary" id="next" type="button">次 →</button>
+  </div>
+</nav>
+
+<script src="cm-slide-controls.js"></script>
+</body>
+</html>

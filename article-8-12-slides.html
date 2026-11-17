@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>建築基準法8条・12条のCM実務 | 音声・図解スライド</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red:#9b3b2f;--red-l:#f7e6e2;
+  --r:14px;--gap:16px;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+/* header */
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+/* controls */
+.controls{background:var(--paper);border-bottom:1px solid var(--line)}
+.controls .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ctl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.ctl select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);max-width:220px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:5px 14px;cursor:pointer;min-height:36px}
+.btn:hover{background:var(--green-l)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d)}
+.btn[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.note-voice{font-size:12.5px;color:var(--sub);width:100%;margin:0}
+/* deck */
+main{max-width:1180px;margin:0 auto;padding:18px 16px 120px}
+.slide{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px 22px;min-height:620px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.slide.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.list .slide{display:block;margin-bottom:22px;animation:none}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--sub);margin-bottom:6px}
+.cat{display:inline-block;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:1px 12px;font-weight:700;letter-spacing:.03em}
+.slide h1,.slide h2{color:var(--green-d);margin:4px 0 14px;line-height:1.4}
+.slide h1{font-size:34px}
+.slide h2{font-size:26px;border-left:6px solid var(--green);padding-left:12px}
+.lead{font-size:17px;color:var(--sub);margin:0 0 16px}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--green-d)}
+.card p{margin:0;font-size:15px}
+.card ul{margin:4px 0 0;padding-left:1.2em;font-size:15px}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h3{color:#fff}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.r{background:var(--red-l);border-color:#e6c2ba}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.small{font-size:13px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--green-m);color:var(--green-d);border-radius:6px;padding:0 6px;margin:0 2px 2px 0;background:#fff}
+.tag.cond{border-color:var(--amber);color:#7a4f10;background:var(--amber-l)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff;font-weight:700}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);white-space:nowrap}
+.tbl td.c{text-align:center}
+.dot{color:var(--green);font-weight:700}
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.flow.h{grid-template-columns:repeat(4,minmax(0,1fr))}
+.flow.h7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow .step{position:relative;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;transition:border-color .3s,background .3s,transform .3s,opacity .3s;cursor:pointer}
+.flow .step b{display:block;color:var(--green-d);font-size:15px;margin-bottom:2px}
+.flow .step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px;vertical-align:1px}
+.flow.playing .step{opacity:.45}
+.flow.playing .step.done{opacity:.8;border-color:var(--green-m)}
+.flow.playing .step.on{opacity:1;border-color:var(--amber);background:var(--amber-l);transform:translateY(-3px);box-shadow:0 4px 10px rgba(183,121,31,.18)}
+.flow .step .who{display:block;font-size:12.5px;color:var(--sub);margin-top:4px}
+.flow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.flow-bar .status{font-size:13px;color:var(--sub)}
+.layers{display:grid;gap:8px}
+.layer{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:8px 12px;font-size:14.5px}
+.layer:nth-child(2){margin-left:18px}.layer:nth-child(3){margin-left:36px}.layer:nth-child(4){margin-left:54px}
+.layer b{color:var(--green-d)}
+.cover{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;min-height:520px}
+.cover .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:3px 14px;font-size:14px;letter-spacing:.06em}
+.cover-fig{background:var(--green);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover-fig div{background:var(--cream);border-radius:12px;padding:16px 10px;text-align:center;font-weight:700;color:var(--green-d)}
+.cover-fig div span{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+/* script */
+details.script{margin-top:18px;border-top:1px dashed var(--line);padding-top:8px}
+details.script summary{cursor:pointer;color:var(--green);font-size:14px;font-weight:700}
+details.script p{font-size:15px;margin:8px 0 0;color:var(--ink)}
+/* caption + pager */
+.caption{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);max-width:min(92vw,960px);background:rgba(27,64,55,.94);color:#fff;font-size:17px;line-height:1.6;padding:10px 16px;border-radius:10px;z-index:30;display:none}
+.caption.show{display:block}
+.pager{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:25}
+.pager .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}
+body.list .pager{display:none}
+.foot{margin-top:14px;font-size:12.5px;color:var(--sub)}
+.srcs{font-size:13.5px;margin:6px 0 0;padding-left:1.2em}
+/* reduced motion */
+body.reduce *, body.reduce *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce .flow.playing .step.on{transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  .slide{padding:18px 16px;min-height:0}
+  .slide h1{font-size:26px}.slide h2{font-size:21px}
+  .g2,.g4{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:1fr}
+  .layer:nth-child(n){margin-left:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl tbody th{white-space:normal}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .tbl td.c{text-align:left}
+  .caption{bottom:68px;font-size:15px}
+  .ctl select{max-width:150px}
+}
+@media print{
+  .topbar,.controls,.pager,.caption{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:0;box-shadow:none}
+  body{background:#fff}
+}
+
+.caption{width:max-content;max-height:24dvh;overflow:auto}
+.pager .in{justify-content:center;gap:16px}
+@media screen and (max-width:900px){
+ body>iframe#nl-badge-frame{position:relative!important;display:block;inset:auto!important;margin-inline-start:auto!important;max-width:100%;z-index:1!important}
+}
+@media screen and (max-width:700px){
+ body{font-size:16px}
+ .slide h2{font-size:clamp(23px,5.8vw,28px)}
+ .tbl th,.tbl td{font-size:15px}
+ .pager button,.controls button,.controls select{min-height:44px}
+}
+@media print{#nl-badge-frame,.slide .script{display:none!important}.slide:last-child{page-break-after:auto}}
+</style>
+<link rel="stylesheet" href="cm-slide-theme.css">
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#deck">スライド本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 建築基準法8条・12条</div>
+    <nav class="nav" aria-label="サイト内リンク">
+      <a href="index.html">CM知識一覧へ戻る</a>
+      <a href="article-8-12-report.html">詳細レポート</a>
+      <a href="firefighting-equipment-slides.html">関連：消防設備</a>
+    </nav>
+  </div>
+</header>
+
+<div class="controls" role="region" aria-label="表示と音声の操作">
+  <div class="in">
+    <button class="btn primary" id="play" type="button">▶ 読み上げ開始</button>
+    <button class="btn" id="stop" type="button">■ 停止</button>
+    <label class="ctl">話者
+      <select id="voice" aria-label="読み上げ音声（端末の日本語音声）"><option value="">端末の標準（日本語）</option></select>
+    </label>
+    <label class="ctl">速度
+      <select id="rate" aria-label="読み上げ速度">
+        <option value="0.8">ゆっくり</option>
+        <option value="1" selected>標準</option>
+        <option value="1.2">やや速い</option>
+        <option value="1.4">速い</option>
+      </select>
+    </label>
+    <div class="toggles">
+      <button class="btn" id="tCap" type="button" aria-pressed="true">字幕</button>
+      <button class="btn" id="tAuto" type="button" aria-pressed="false">自動送り</button>
+      <button class="btn" id="tMotion" type="button" aria-pressed="false">動きを減らす</button>
+      <button class="btn" id="tList" type="button" aria-pressed="false">一覧表示</button>
+    </div>
+    <p class="note-voice" id="voiceNote">読み上げはボタンを押したときだけ始まります。音声は端末に入っている日本語音声を使います。</p>
+  </div>
+</div>
+
+<main id="deck">
+<p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
+
+<section class="slide cover" id="s1" aria-label="スライド1">
+  <div class="meta"><span class="cat">導入</span><span>01 / 12</span></div>
+  <h1>建築基準法8条・12条<br>維持保全と定期報告 ― 建設CMの実務整理</h1>
+<aside class="cm-visual" aria-labelledby="cm-visual-title">
+    <h2 id="cm-visual-title" class="cm-visual-heading">日々の保全から、調査・報告・是正へ</h2><div class="cm-visual-term"><p><strong>定期報告</strong> 対象となる建物や設備を調査・検査し、結果を所管に報告する制度です。</p>
+    <p><span>最初に開く資料</span> <b>直近の定期調査報告書</b></p></div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="保全と報告の流れ">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:16.666666666666664%;width:25%;height:22.916666666666664%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:38%;top:16.666666666666664%;width:25%;height:22.916666666666664%"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:68%;top:16.666666666666664%;width:25%;height:22.916666666666664%"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:33%;top:27.083333333333332%;width:5%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:63%;top:27.083333333333332%;width:5%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:80%;top:41.66666666666667%;width:15%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:80%;top:72.91666666666666%;width:56%;transform:rotate(3.141592653589793rad)"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:60.416666666666664%;width:17%;height:22.916666666666664%"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:20%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="1 日常の管理">1</button><button type="button" class="cm-field-marker" style="--field-x:50%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="2 定期報告">2</button><button type="button" class="cm-field-marker" style="--field-x:80%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="3 是正">3</button>
+    </div>
+    <figcaption>保全と報告の流れ（模式図） · 日常の管理と、対象建物に求められる定期報告は、担当・期限・記録を明確にしてつなぎます。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>日常の管理</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>定期報告</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>是正</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 日常の管理</strong> 異常や修繕の履歴を残し、建物を維持します。</p><p data-point-note><strong>2 定期報告</strong> 対象・報告時期・区分を所管の案内と照合します。</p><p data-point-note><strong>3 是正</strong> 不具合ごとに応急対応、担当、改善後の確認を記録します。</p></div>
+  </figure>
+    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="article-8-12-report.html#cm-visual-summary">図と表のまとめ</a></p>
+  </aside>
+
+<ol class="overview"><li><b>日常の維持保全</b><span>第8条の体制・点検・修繕</span></li><li><b>定期調査・検査</b><span>第12条の対象・資格・報告</span></li><li><b>是正と再確認</b><span>指摘の優先順位・記録・次回点検</span></li></ol>
+  <div class="grid g3">
+    <div class="card"><h3>8条</h3>維持保全の努力義務と、準則・計画の作成</div>
+    <div class="card"><h3>12条</h3>調査・検査と特定行政庁への報告</div>
+    <div class="card"><h3>CMrの役割</h3>対象・周期・是正・台帳を発注者側で管理</div>
+  </div>
+  <div class="callout">対象・周期・様式・資格区分は特定行政庁ごとに異なります。本資料の数値・区分は全国一律の断定ではありません。</div>
+  <details class="script"><summary>原稿</summary><p class="say">本日は建築基準法第8条と第12条を、建設CMの立場で整理します。維持保全の義務、定期報告の仕組み、自治体差の確認手順、是正対応と台帳管理までを順に見ていきます。</p></details>
+</section>
+<section class="slide" id="s2" aria-label="スライド2">
+  <div class="meta"><span class="cat">第8条</span><span>02 / 12</span></div>
+  <h2>第8条：維持保全は「常時適法な状態」を保つ責務</h2>
+<aside class="cm-visual" aria-labelledby="cm-visual-table-title">
+    <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">法8条の維持保全</th><td>点検・修繕を日常管理に組み込む</td></tr>
+<tr><th scope="row">法12条の定期報告</th><td>所管で対象・区分・期間を確認</td></tr>
+<tr><th scope="row">不具合が出た後</th><td>応急、改修、再確認を台帳で追う</td></tr>
+  </tbody></table><div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>定期報告で外壁の指摘が出ました。報告書を提出した次は？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>危険の有無を確認し、是正担当と期限を決める</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>次の定期報告まで書類だけ保管する</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>危険の有無を確認し、是正担当と期限を決める</strong></p><p>報告書は不具合を見つける手掛かりです。必要な安全措置を検討し、修繕後の確認まで台帳で追います。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>直近の定期調査報告書</dd></div>
+        <div><dt>いつ確認するか</dt><dd>指摘事項を受け取った時点</dd></div>
+        <div><dt>誰と確認するか</dt><dd>所有者・施設管理者・調査者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 報告書・修繕台帳・是正後の写真</p>
+    </details>
+  </div>
+    
+  </aside>
+
+  <div class="grid g2">
+    <div class="card"><h3>1項：努力義務</h3>所有者・管理者・占有者は、建築物の敷地・構造・建築設備を常時適法な状態に維持するよう努める。</div>
+    <div class="card"><h3>2項：準則・計画</h3>12条1項の対象建築物などの所有者・管理者は、必要に応じ維持保全に関する準則または計画を作成し、その他適切な措置を講じる。</div>
+  </div>
+  <div class="callout">準則・計画の作り方は国交省の「建築物の維持保全に関する準則又は計画の作成に関し必要な指針」が拠り所です。</div>
+  <details class="script"><summary>原稿</summary><p class="say">第8条1項は所有者、管理者、占有者に対する努力義務です。2項は12条1項の対象となる建築物の所有者と管理者に、必要に応じて維持保全の準則や計画を作り、適切な措置を取ることを求めています。</p></details>
+</section>
+<section class="slide" id="s3" aria-label="スライド3">
+  <div class="meta"><span class="cat">第12条</span><span>03 / 12</span></div>
+  <h2>第12条：調査・検査と報告の4つの柱</h2>
+  <table class="tbl">
+    <thead><tr><th>項</th><th>対象</th><th>内容</th><th>報告</th></tr></thead><tbody>
+    <tr><td data-label="項">1項</td><td data-label="対象">政令・特定行政庁指定の建築物</td><td data-label="内容">敷地・構造・避難施設等の定期調査</td><td data-label="報告">特定行政庁へ報告</td></tr>
+    <tr><td data-label="項">3項</td><td data-label="対象">建築設備／昇降機等／防火設備</td><td data-label="内容">各設備の定期検査</td><td data-label="報告">特定行政庁へ報告</td></tr>
+    <tr><td data-label="項">2項・4項</td><td data-label="対象">国・都道府県・建築主事を置く市町村の建築物等</td><td data-label="内容">定期点検</td><td data-label="報告">対象・周期を別途確認</td></tr>
+  </tbody></table>
+  <div class="callout">報告義務者は所有者。所有者と管理者が異なる場合は管理者です。</div>
+  <details class="script"><summary>原稿</summary><p class="say">12条1項は建築物の調査、3項は建築設備、昇降機等、防火設備の検査で、いずれも特定行政庁へ報告します。義務者は所有者ですが、管理者が別にいれば管理者です。国等の建築物は2項と4項で別に確認します。</p></details>
+</section>
+<section class="slide" id="s4" aria-label="スライド4">
+  <div class="meta"><span class="cat">確認手順</span><span>04 / 12</span></div>
+  <h2>対象・周期・様式・資格を確認する手順</h2>
+  <ol id="f1" class="flow h">
+    <li class="step"><b>政令対象</b>用途・規模・階で国の指定に当たるか</li>
+    <li class="step"><b>追加指定</b>特定行政庁の規則・告示による上乗せ</li>
+    <li class="step"><b>周期</b>調査・各検査の報告時期を所管庁で確認</li>
+    <li class="step"><b>様式</b>最新の報告書・概要書・添付書類</li>
+    <li class="step"><b>資格区分</b>建築士または各調査員・検査員</li>
+    <li class="step"><b>台帳登録</b>年間計画と是正履歴に反映</li>
+  </ol>
+  <button type="button" class="flow-next" data-flow="f1">順に見る</button>
+  <span id="f1-status" role="status"></span>
+  <details class="script"><summary>原稿</summary><p class="say">まず政令の対象かを見て、次に特定行政庁の追加指定を確認します。周期、様式、資格区分は所管庁の最新情報で確かめ、結果を年間台帳に登録します。前例や他県の数値で判断しないことが要点です。</p></details>
+</section>
+<section class="slide" id="s5" aria-label="スライド5">
+  <div class="meta"><span class="cat">制度改正</span><span>05 / 12</span></div>
+  <h2>告示見直しと自治体差：全国一律で扱わない</h2>
+  <div class="grid g2">
+    <div class="card"><h3>令和7年7月施行 告示53号</h3>調査・検査項目の見直し。業者の調査票・検査票が改正後の様式に対応しているか確認。</div>
+    <div class="card"><h3>常時閉鎖式防火扉など</h3>どの報告で扱うかは自治体の取扱いと既存指定を確認。東京都では特定建築物の調査項目として扱う場合がある。</div>
+  </div>
+  <div class="callout">複数の自治体に施設を持つ場合、同じ設備でも計上先（調査か検査か）が変わりうる前提で台帳を作ります。</div>
+  <details class="script"><summary>原稿</summary><p class="say">令和7年7月施行の告示見直しで調査・検査項目が改められました。常時閉鎖式防火扉などの扱いは自治体の取扱いと既存指定で変わり、東京都のように特定建築物調査で扱う例もあります。</p></details>
+</section>
+<section class="slide" id="s6" aria-label="スライド6">
+  <div class="meta"><span class="cat">消防法との違い</span><span>06 / 12</span></div>
+  <h2>12条報告と消防用設備等点検は別制度</h2>
+  <table class="tbl">
+    <thead><tr><th>項目</th><th>建築基準法12条</th><th>消防法17条の3の3</th></tr></thead><tbody>
+    <tr><td data-label="項目">主眼</td><td data-label="建築基準法12条">建築物・設備の安全、在館者の避難</td><td data-label="消防法17条の3の3">消防用設備等の機能、消防活動</td></tr>
+    <tr><td data-label="項目">報告先</td><td data-label="建築基準法12条">特定行政庁</td><td data-label="消防法17条の3の3">消防長または消防署長</td></tr>
+    <tr><td data-label="項目">実施者</td><td data-label="建築基準法12条">建築士、各調査員・検査員</td><td data-label="消防法17条の3の3">消防設備士、消防設備点検資格者</td></tr>
+    <tr><td data-label="項目">重なる例</td><td data-label="建築基準法12条">防火戸本体・閉鎖機構、排煙設備</td><td data-label="消防法17条の3の3">連動する感知器・制御盤、消防法上の排煙</td></tr>
+  </tbody></table>
+  <details class="script"><summary>原稿</summary><p class="say">12条報告と消防法の点検は、根拠、目的、報告先、資格者がすべて異なります。防火戸や排煙は両方にまたがるため、片方の点検済みをもう片方の代わりにしないよう、両方の記録を突き合わせます。</p></details>
+</section>
+<section class="slide" id="s7" aria-label="スライド7">
+  <div class="meta"><span class="cat">技術論点</span><span>07 / 12</span></div>
+  <h2>現場で指摘が集中する3領域</h2>
+  <div class="grid g3">
+    <div class="card"><h3>防火設備</h3>閉鎖障害の物品、感知器連動、予備電源、シャッターの危害防止装置、くぐり戸の自閉。</div>
+    <div class="card"><h3>排煙設備</h3>排煙口・手動開放装置前の障害物、表示、機械排煙の連動と非常電源、防煙区画の改修による変化。</div>
+    <div class="card"><h3>建築物本体</h3>外壁の浮き・剥落、屋上・パラペット、避難経路と階段の物品、防火区画の貫通処理。</div>
+  </div>
+  <div class="callout">改修で間仕切り・天井・用途が変わると、防火区画や排煙の前提が崩れていないかを再確認します。</div>
+  <details class="script"><summary>原稿</summary><p class="say">指摘が多いのは防火設備、排煙設備、建築物本体の三つです。物品による閉鎖障害、連動や非常電源、外壁や避難経路の状態が典型です。改修後は区画や排煙の前提が変わっていないかを確認します。</p></details>
+</section>
+<section class="slide" id="s8" aria-label="スライド8">
+  <div class="meta"><span class="cat">判定</span><span>08 / 12</span></div>
+  <h2>判定区分と「既存不適格」の扱い</h2>
+  <table class="tbl">
+    <thead><tr><th>区分</th><th>意味</th><th>発注者の対応</th></tr></thead><tbody>
+    <tr><td data-label="区分">指摘なし</td><td data-label="意味">基準に適合し状態良好</td><td data-label="発注者の対応">記録保存</td></tr>
+    <tr><td data-label="区分">要重点点検</td><td data-label="意味">次回までに不具合のおそれ</td><td data-label="発注者の対応">日常点検・巡回を強化</td></tr>
+    <tr><td data-label="区分">要是正</td><td data-label="意味">基準不適合・機能低下</td><td data-label="発注者の対応">安全措置と是正工事</td></tr>
+    <tr><td data-label="区分">既存不適格</td><td data-label="意味">設置時適法、現行基準に不適合</td><td data-label="発注者の対応">改修計画へ組み込み</td></tr>
+  </tbody></table>
+  <div class="callout">区分名・記載方法は所管庁の様式と作成要領で確認します。</div>
+  <details class="script"><summary>原稿</summary><p class="say">判定は指摘なし、要重点点検、要是正、既存不適格に整理されます。要是正は維持管理の不備や基準不適合で、放置すると行政指導の対象です。既存不適格は改修時に現行基準へ合わせる計画を立てます。</p></details>
+</section>
+<section class="slide" id="s9" aria-label="スライド9">
+  <div class="meta"><span class="cat">是正対応</span><span>09 / 12</span></div>
+  <h2>要是正の優先順位・安全措置・再確認</h2>
+  <div class="grid g3">
+    <div class="card"><h3>優先A：人命直結</h3>避難経路の閉塞、防火戸の閉鎖障害、連動不作動、排煙不作動。即日の安全措置。</div>
+    <div class="card"><h3>優先B：機能低下</h3>部品劣化、表示不良、予備電源の容量不足。期限を決めて修繕。</div>
+    <div class="card"><h3>優先C：計画改善</h3>既存不適格、更新時期の設備。中長期の改修計画へ。</div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>安全措置</h3>物品撤去、立入制限、巡回強化、防火管理者・運営部門への周知。</div>
+    <div class="card"><h3>再確認</h3>是正後の作動確認と写真記録。次回報告で是正状況を説明できる状態に。</div>
+  </div>
+  <details class="script"><summary>原稿</summary><p class="say">要是正は三段階で優先順位を付けます。人命に直結するものは即日に安全措置を取り、機能低下は期限付きで修繕、既存不適格は改修計画に入れます。是正後は作動確認と写真で再確認します。</p></details>
+</section>
+<section class="slide" id="s10" aria-label="スライド10">
+  <div class="meta"><span class="cat">台帳・引渡し</span><span>10 / 12</span></div>
+  <h2>年間台帳と引渡し書類</h2>
+  <table class="tbl">
+    <thead><tr><th>台帳の列</th><th>記載内容</th></tr></thead><tbody>
+    <tr><td data-label="台帳の列">区分</td><td data-label="記載内容">12条1項／3項（建築設備・昇降機等・防火設備）／消防法点検</td></tr>
+    <tr><td data-label="台帳の列">根拠・所管</td><td data-label="記載内容">政令／追加指定、特定行政庁・消防署</td></tr>
+    <tr><td data-label="台帳の列">時期</td><td data-label="記載内容">所管庁で確認した報告時期と提出期限</td></tr>
+    <tr><td data-label="台帳の列">実施者・資格</td><td data-label="記載内容">委託先と資格区分</td></tr>
+    <tr><td data-label="台帳の列">判定・是正</td><td data-label="記載内容">指摘、優先度、措置、完了確認日</td></tr>
+  </tbody></table>
+  <div class="callout">引渡し時は確認済証・検査済証、竣工図、前回報告書副本、消防点検報告、是正履歴、防火設備の認定情報を一式で受け渡します。</div>
+  <details class="script"><summary>原稿</summary><p class="say">年間台帳には区分、根拠と所管、時期、実施者と資格、判定と是正を一行で管理します。改修や担当交代の引渡しでは、確認済証や竣工図、前回報告書、是正履歴をまとめて渡します。</p></details>
+</section>
+<section class="slide" id="s11" aria-label="スライド11">
+  <div class="meta"><span class="cat">ケース</span><span>11 / 12</span></div>
+  <h2>仮想ホテルで考える（架空事例）</h2>
+  <div class="grid g2">
+    <div class="card"><h3>前提</h3>客室・宴会場・レストランを持つ中層ホテル。機械排煙、随時閉鎖式防火シャッター、常時閉鎖式防火扉、エレベーターあり。</div>
+    <div class="card"><h3>区分の整理</h3>建物本体は12条1項、機械排煙・非常照明等は建築設備、シャッターは防火設備、エレベーターは昇降機等。自火報・連動感知器は消防法点検。</div>
+    <div class="card"><h3>指摘例</h3>宴会場シャッター下に備品、排煙の手動開放装置前に什器、常閉扉にドアストッパー。</div>
+    <div class="card"><h3>対応</h3>即日撤去と運営ルール化、宴会設営図に禁止範囲を明示、是正後に作動確認し台帳更新。</div>
+  </div>
+  <details class="script"><summary>原稿</summary><p class="say">架空のホテルで考えます。建物本体、建築設備、防火設備、昇降機等を区分し、消防法点検と並べます。宴会場の備品によるシャッター閉鎖障害は即日撤去し、設営図に禁止範囲を入れて再発を防ぎます。</p></details>
+</section>
+<section class="slide" id="s12" aria-label="スライド12">
+  <div class="meta"><span class="cat">まとめ</span><span>12 / 12</span></div>
+  <h2>発注者側CMが押さえる5点</h2>
+  <div class="grid g2">
+    <div class="card">① 義務者（所有者／管理者）を明確化</div>
+    <div class="card">② 政令対象と追加指定を所管庁で確認</div>
+    <div class="card">③ 告示改正・自治体の取扱いを反映</div>
+    <div class="card">④ 消防法点検と突き合わせて漏れ防止</div>
+    <div class="card">⑤ 要是正は優先順位・安全措置・再確認</div>
+  </div>
+  <p class="src">出典：<a href="https://laws.e-gov.go.jp/law/325AC0000000201">e-Gov 建築基準法</a>／<a href="https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000039.html">国交省 定期報告制度</a>／<a href="https://www.mlit.go.jp/notice/noticedata/pdf/201703/00006633.pdf">国交省 維持保全指針</a>／<a href="https://www.toshiseibi.metro.tokyo.lg.jp/kenchiku_kaihatsu/kenchiku_kakunin/chousa-houkoku/2">東京都 定期報告</a></p>
+  <details class="script"><summary>原稿</summary><p class="say">まとめです。義務者を明確にし、対象は所管庁で確認、告示改正と自治体の取扱いを反映し、消防法点検と突き合わせます。要是正は優先順位、安全措置、再確認の流れで管理してください。</p></details>
+</section>
+
+</main>
+
+<div class="caption" id="caption" role="status" aria-live="polite"></div>
+
+<nav class="pager" aria-label="スライド送り">
+  <div class="in">
+    <button class="btn" id="prev" type="button">← 前</button>
+    <span class="count" id="count">1 / 12</span>
+    <button class="btn primary" id="next" type="button">次 →</button>
+  </div>
+</nav>
+
+<script src="cm-slide-controls.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>耐火構造・耐火建築物のCM実務 | 音声・図解スライド</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red:#9b3b2f;--red-l:#f7e6e2;
+  --r:14px;--gap:16px;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+/* header */
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+/* controls */
+.controls{background:var(--paper);border-bottom:1px solid var(--line)}
+.controls .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ctl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.ctl select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);max-width:220px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:5px 14px;cursor:pointer;min-height:36px}
+.btn:hover{background:var(--green-l)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d)}
+.btn[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.note-voice{font-size:12.5px;color:var(--sub);width:100%;margin:0}
+/* deck */
+main{max-width:1180px;margin:0 auto;padding:18px 16px 120px}
+.slide{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px 22px;min-height:620px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.slide.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.list .slide{display:block;margin-bottom:22px;animation:none}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--sub);margin-bottom:6px}
+.cat{display:inline-block;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:1px 12px;font-weight:700;letter-spacing:.03em}
+.slide h1,.slide h2{color:var(--green-d);margin:4px 0 14px;line-height:1.4}
+.slide h1{font-size:34px}
+.slide h2{font-size:26px;border-left:6px solid var(--green);padding-left:12px}
+.lead{font-size:17px;color:var(--sub);margin:0 0 16px}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--green-d)}
+.card p{margin:0;font-size:15px}
+.card ul{margin:4px 0 0;padding-left:1.2em;font-size:15px}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h3{color:#fff}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.r{background:var(--red-l);border-color:#e6c2ba}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.small{font-size:13px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--green-m);color:var(--green-d);border-radius:6px;padding:0 6px;margin:0 2px 2px 0;background:#fff}
+.tag.cond{border-color:var(--amber);color:#7a4f10;background:var(--amber-l)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff;font-weight:700}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);white-space:nowrap}
+.tbl td.c{text-align:center}
+.dot{color:var(--green);font-weight:700}
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.flow.h{grid-template-columns:repeat(4,minmax(0,1fr))}
+.flow.h7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow .step{position:relative;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;transition:border-color .3s,background .3s,transform .3s,opacity .3s;cursor:pointer}
+.flow .step b{display:block;color:var(--green-d);font-size:15px;margin-bottom:2px}
+.flow .step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px;vertical-align:1px}
+.flow.playing .step{opacity:.45}
+.flow.playing .step.done{opacity:.8;border-color:var(--green-m)}
+.flow.playing .step.on{opacity:1;border-color:var(--amber);background:var(--amber-l);transform:translateY(-3px);box-shadow:0 4px 10px rgba(183,121,31,.18)}
+.flow .step .who{display:block;font-size:12.5px;color:var(--sub);margin-top:4px}
+.flow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.flow-bar .status{font-size:13px;color:var(--sub)}
+.layers{display:grid;gap:8px}
+.layer{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:8px 12px;font-size:14.5px}
+.layer:nth-child(2){margin-left:18px}.layer:nth-child(3){margin-left:36px}.layer:nth-child(4){margin-left:54px}
+.layer b{color:var(--green-d)}
+.cover{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;min-height:520px}
+.cover .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:3px 14px;font-size:14px;letter-spacing:.06em}
+.cover-fig{background:var(--green);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover-fig div{background:var(--cream);border-radius:12px;padding:16px 10px;text-align:center;font-weight:700;color:var(--green-d)}
+.cover-fig div span{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+/* script */
+details.script{margin-top:18px;border-top:1px dashed var(--line);padding-top:8px}
+details.script summary{cursor:pointer;color:var(--green);font-size:14px;font-weight:700}
+details.script p{font-size:15px;margin:8px 0 0;color:var(--ink)}
+/* caption + pager */
+.caption{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);max-width:min(92vw,960px);background:rgba(27,64,55,.94);color:#fff;font-size:17px;line-height:1.6;padding:10px 16px;border-radius:10px;z-index:30;display:none}
+.caption.show{display:block}
+.pager{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:25}
+.pager .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}
+body.list .pager{display:none}
+.foot{margin-top:14px;font-size:12.5px;color:var(--sub)}
+.srcs{font-size:13.5px;margin:6px 0 0;padding-left:1.2em}
+/* reduced motion */
+body.reduce *, body.reduce *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce .flow.playing .step.on{transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  .slide{padding:18px 16px;min-height:0}
+  .slide h1{font-size:26px}.slide h2{font-size:21px}
+  .g2,.g4{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:1fr}
+  .layer:nth-child(n){margin-left:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl tbody th{white-space:normal}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .tbl td.c{text-align:left}
+  .caption{bottom:68px;font-size:15px}
+  .ctl select{max-width:150px}
+}
+@media print{
+  .topbar,.controls,.pager,.caption{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:0;box-shadow:none}
+  body{background:#fff}
+}
+
+.caption{width:max-content;max-height:24dvh;overflow:auto}
+.pager .in{justify-content:center;gap:16px}
+@media screen and (max-width:900px){
+ body>iframe#nl-badge-frame{position:relative!important;display:block;inset:auto!important;margin-inline-start:auto!important;max-width:100%;z-index:1!important}
+}
+@media screen and (max-width:700px){
+ body{font-size:16px}
+ .slide h2{font-size:clamp(23px,5.8vw,28px)}
+ .tbl th,.tbl td{font-size:15px}
+ .pager button,.controls button,.controls select{min-height:44px}
+}
+@media print{#nl-badge-frame,.slide .script{display:none!important}.slide:last-child{page-break-after:auto}}
+</style>
+<link rel="stylesheet" href="cm-slide-theme.css">
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#deck">スライド本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 耐火</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ戻る</a><a href="fire-resistance-report.html">詳細レポート</a><a href="fire-compartment-slides.html">関連：防火区画</a></nav>
+  </div>
+</header>
+
+<div class="controls" role="region" aria-label="表示と音声の操作">
+  <div class="in">
+    <button class="btn primary" id="play" type="button">▶ 読み上げ開始</button>
+    <button class="btn" id="stop" type="button">■ 停止</button>
+    <label class="ctl">話者
+      <select id="voice" aria-label="読み上げ音声（端末の日本語音声）"><option value="">端末の標準（日本語）</option></select>
+    </label>
+    <label class="ctl">速度
+      <select id="rate" aria-label="読み上げ速度">
+        <option value="0.8">ゆっくり</option>
+        <option value="1" selected>標準</option>
+        <option value="1.2">やや速い</option>
+        <option value="1.4">速い</option>
+      </select>
+    </label>
+    <div class="toggles">
+      <button class="btn" id="tCap" type="button" aria-pressed="true">字幕</button>
+      <button class="btn" id="tAuto" type="button" aria-pressed="false">自動送り</button>
+      <button class="btn" id="tMotion" type="button" aria-pressed="false">動きを減らす</button>
+      <button class="btn" id="tList" type="button" aria-pressed="false">一覧表示</button>
+    </div>
+    <p class="note-voice" id="voiceNote">読み上げはボタンを押したときだけ始まります。音声は端末に入っている日本語音声を使います。</p>
+  </div>
+</div>
+
+<main id="deck">
+<p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
+<section class="slide" id="s1" aria-label="スライド1">
+<div class="meta"><span class="cat">全体像</span><span>01 / 08</span></div>
+<h1>耐火構造と耐火建築物 ― 「部材の性能」と「建物の要求」を分ける</h1>
+<aside class="cm-visual" aria-labelledby="cm-visual-title">
+    <h2 id="cm-visual-title" class="cm-visual-heading">床・梁・柱のつながり</h2><div class="cm-visual-term"><p><strong>耐火被覆</strong> 火災の熱から柱や梁などを守る被覆です。厚さや継ぎ目などを仕様と照合します。</p>
+    <p><span>最初に開く資料</span> <b>構造図</b></p></div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="柱と梁の断面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:10%;top:18.75%;width:80%;height:14.583333333333334%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:22%;top:33.33333333333333%;width:11%;height:52.083333333333336%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:67%;top:33.33333333333333%;width:11%;height:52.083333333333336%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:13%;top:33.33333333333333%;width:74%;height:12.5%"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:20%;top:33.33333333333333%;width:25%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:35%;top:45.83333333333333%;width:19%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:12%;top:50%;width:75%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:62%;top:31.25%;width:12%;height:18.75%"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:48%;--field-y:41.66666666666667%" data-point aria-pressed="false" aria-label="1 梁">1</button><button type="button" class="cm-field-marker" style="--field-x:28%;--field-y:66.66666666666666%" data-point aria-pressed="false" aria-label="2 柱と耐火被覆">2</button><button type="button" class="cm-field-marker" style="--field-x:70%;--field-y:39.58333333333333%" data-point aria-pressed="false" aria-label="3 接合部">3</button>
+    </div>
+    <figcaption>柱と梁の断面図（模式図） · 仕上げで隠れる箇所は施工中に検査し、認定仕様との照合結果を残します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>梁</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>柱と耐火被覆</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>接合部</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 梁</strong> 床からの荷重を柱等へ伝える部材です。要求性能と仕様を照合します。</p><p data-point-note><strong>2 柱と耐火被覆</strong> 鉄骨を覆う材料等を、厚さ・範囲・継ぎ目から確かめます。</p><p data-point-note><strong>3 接合部</strong> 梁と柱が接する位置。被覆の切れや施工の取り合いを確認します。</p></div>
+  </figure>
+    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="fire-resistance-report.html#cm-visual-summary">図と表のまとめ</a></p>
+  </aside>
+<ol class="overview" aria-label="確認の流れ"><li><b>建物の条件</b><span>規模・用途・地域（法21・27・61条など）</span></li><li><b>部材の要求性能</b><span>柱・梁・壁・床などの区分と時間</span></li><li><b>施工の根拠</b><span>告示・認定別添と隠蔽前の記録</span></li></ol>
+<ul>
+<li>部材の性能：耐火構造（法2条7号）・準耐火構造（同7号の2）・防火構造（同8号）</li>
+<li>建物の区分：耐火建築物（法2条9号の2）・準耐火建築物（同9号の3）</li>
+<li>要求の入口：用途で法27条、地域で法61条、規模で法21条</li>
+<li>性能の中身：令107条（耐火）・令107条の2（準耐火）の非損傷性の時間と3つの性能</li>
+<li>CMの論点は、告示仕様と大臣認定の使い分け、被覆・接合部・貫通部の施工品質</li>
+</ul>
+<details class="script"><summary>原稿</summary><p class="say">三つ目は耐火です。ここでの混乱の多くは、部材の話と建物の話が混ざることから生まれます。耐火構造や準耐火構造は柱や梁などの部材の性能、耐火建築物や準耐火建築物は建物全体の区分です。建物にどの区分が要るかは、用途なら法27条、地域なら法61条、規模なら法21条から決まり、その建物の部材にどれだけの時間の性能が要るかを令107条などで決める、という二段構えで考えてください。</p></details>
+</section>
+<section class="slide" id="s2" aria-label="スライド2">
+<div class="meta"><span class="cat">部材と建物の区分</span><span>02 / 08</span></div>
+<h2>部材の区分と建物の区分</h2>
+<aside class="cm-visual" aria-labelledby="cm-visual-table-title">
+    <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">建物に求められる性能</th><td>用途、規模、地域などから確認</td></tr>
+<tr><th scope="row">部材に求められる性能</th><td>柱・梁・壁・床などの部位ごとに確認</td></tr>
+<tr><th scope="row">施工の確認</th><td>被覆の範囲・継ぎ目・取合い</td></tr>
+  </tbody></table><div class="cm-field-case" data-answer="1">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>天井が閉じる前の耐火被覆検査で、梁端部の施工が見えます。何を記録しますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>仕上げ後の廊下の写真を残す</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>被覆の厚さ・範囲・接合部と写真の位置を残す</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>被覆の厚さ・範囲・接合部と写真の位置を残す</strong></p><p>後から見えなくなる部位は、認定仕様等に照らし、その部材と確認結果が一致する形で記録します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>構造図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>被覆が天井や壁で隠れる前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>構造設計者・工事監理者・施工者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 構造図・被覆仕様・施工検査表</p>
+    </details>
+  </div>
+    <details class="cm-visual-extra"><summary>建物のイラストで位置を見る</summary><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:56%;--spot-y:49%">●</span></div><figcaption>上下階を支える柱・梁・床がどこで接するかを構造図で見ます。 イラストは位置関係の説明用です。</figcaption></figure></details>
+  </aside>
+
+<table class="tbl">
+<thead><tr><th>階層</th><th>区分</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td rowspan="3" data-label="階層">部材</td><td data-label="区分">耐火構造</td><td data-label="内容">火災終了まで倒壊・延焼を防止（令107条）</td></tr>
+<tr><td data-label="階層">準耐火構造</td><td data-label="区分">一定時間（原則45分）延焼を抑制（令107条の2）</td></tr>
+<tr><td data-label="階層">防火構造</td><td data-label="区分">外壁・軒裏で周囲の火災からの延焼を抑制</td></tr>
+<tr><td rowspan="2" data-label="階層">建物</td><td data-label="区分">耐火建築物</td><td data-label="内容">特定主要構造部が耐火構造等＋外壁の延焼のおそれのある部分の開口部に防火設備</td></tr>
+<tr><td data-label="階層">準耐火建築物</td><td data-label="区分">主要構造部が準耐火構造等＋同様の防火設備</td></tr>
+</tbody>
+</table>
+<ul>
+<li>主要構造部：壁・柱・床・はり・屋根・階段（間仕切壁、間柱、小ばり、屋外階段等は除く）</li>
+<li>令和6年4月から「特定主要構造部」の考え方を導入。防火上区画された部分の構造を合理化できる</li>
+</ul>
+<details class="script"><summary>原稿</summary><p class="say">部材と建物の区分を整理しました。部材には耐火構造、準耐火構造、防火構造があり、建物には耐火建築物と準耐火建築物があります。耐火建築物は、主要な構造部が耐火構造で、外壁の延焼ラインにある開口部に防火設備が付いている建物です。令和6年4月からは特定主要構造部という考え方が入り、適切に区画すれば、建物の倒壊に影響しない部分の構造を合理化できるようになりました。木質化の相談が来たときに使える論点です。</p></details>
+</section>
+<section class="slide" id="s3" aria-label="スライド3">
+<div class="meta"><span class="cat">要求の入口</span><span>03 / 08</span></div>
+<h2>法27条（用途）と法61条（地域）の要求</h2>
+<table class="tbl">
+<thead><tr><th>根拠</th><th>条件</th><th>要求</th></tr></thead>
+<tbody>
+<tr><td data-label="根拠">法27条（ホテル）</td><td data-label="条件">3階以上の階をホテル用途に供する等</td><td data-label="要求">耐火建築物等（令110条の基準に適合する特殊建築物）</td></tr>
+<tr><td data-label="根拠">法27条（ホテル）</td><td data-label="条件">一定の床面積以上をホテル用途に供する</td><td data-label="要求">別表第一の数値に応じ準耐火建築物等以上</td></tr>
+<tr><td data-label="根拠">法61条・防火地域</td><td data-label="条件">階数3以上または延べ100㎡超</td><td data-label="要求">耐火建築物等</td></tr>
+<tr><td data-label="根拠">法61条・防火地域</td><td data-label="条件">上記以外</td><td data-label="要求">準耐火建築物等</td></tr>
+<tr><td data-label="根拠">法61条・準防火地域</td><td data-label="条件">地上4階以上または延べ1,500㎡超</td><td data-label="要求">耐火建築物等</td></tr>
+<tr><td data-label="根拠">法61条・準防火地域</td><td data-label="条件">地上3階、または延べ500㎡超1,500㎡以下</td><td data-label="要求">準耐火建築物等以上</td></tr>
+</tbody>
+</table>
+<ul><li>複数の要求がかかる場合は最も厳しいものに合わせる。地域をまたぐ建物は原則として厳しい地域の規定（法65条）</li></ul>
+<details class="script"><summary>原稿</summary><p class="say">どの建物に何が要るかの入口です。ホテルは特殊建築物なので、3階以上をホテルに使えば法27条で耐火建築物等が求められます。地域でいえば、防火地域では3階以上か100平方メートル超で耐火建築物等、準防火地域では4階以上か1,500平方メートル超で耐火建築物等です。複数の条件がかかる場合は一番厳しいものに合わせます。用途変更で既存の建物をホテルにする場合、この法27条の要求を満たせるかどうかが成立性の分かれ目になります。</p></details>
+</section>
+<section class="slide" id="s4" aria-label="スライド4">
+<div class="meta"><span class="cat">要求時間</span><span>04 / 08</span></div>
+<h2>令107条・令107条の2：非損傷性の時間と3つの性能</h2>
+<table class="tbl">
+<thead><tr><th>最上階から数えた階数</th><th>柱・はり</th><th>耐力壁・床</th></tr></thead>
+<tbody>
+<tr><td data-label="最上階から数えた階数">1〜4</td><td data-label="柱・はり">1時間</td><td data-label="耐力壁・床">1時間</td></tr>
+<tr><td data-label="最上階から数えた階数">5〜9</td><td data-label="柱・はり">1.5時間</td><td data-label="耐力壁・床">1.5時間</td></tr>
+<tr><td data-label="最上階から数えた階数">10〜14</td><td data-label="柱・はり">2時間</td><td data-label="耐力壁・床">2時間</td></tr>
+<tr><td data-label="最上階から数えた階数">15〜19</td><td data-label="柱・はり">2.5時間</td><td data-label="耐力壁・床">2時間</td></tr>
+<tr><td data-label="最上階から数えた階数">20以上</td><td data-label="柱・はり">3時間</td><td data-label="耐力壁・床">2時間</td></tr>
+</tbody>
+</table>
+<ul>
+<li>屋根・階段は30分。非損傷性・遮熱性・遮炎性の3性能で規定</li>
+<li>準耐火構造は原則45分（屋根・階段30分）。区画等で1時間準耐火が求められる場面あり</li>
+<li>1.5時間・2.5時間区分は令和5年4月施行の改正で新設（従来は1時間刻み）</li>
+</ul>
+<details class="script"><summary>原稿</summary><p class="say">要求される時間です。耐火構造の時間は、最上階から数えて何階目かで決まります。上から4つ目までは1時間、5から9は1.5時間、10から14は2時間、柱と梁はさらに上の区分で2.5時間、3時間になります。1.5時間と2.5時間は令和5年の改正で新しくできた区分です。性能は、壊れないこと、裏面が熱くならないこと、火炎を通さないこと、の三つで、部位ごとにどれが要るかが決まっています。地階も対象となる部位については、最上階から地階まで順に数えます。</p></details>
+</section>
+<section class="slide" id="s5" aria-label="スライド5">
+<div class="meta"><span class="cat">告示仕様と認定</span><span>05 / 08</span></div>
+<h2>告示仕様・大臣認定・検証法の使い分け</h2>
+<table class="tbl">
+<thead><tr><th>方法</th><th>内容</th><th>確認書類</th><th>向く場面</th></tr></thead>
+<tbody>
+<tr><td data-label="方法">告示仕様</td><td data-label="内容">平12建告1399号（耐火）・1358号（準耐火）の例示構造</td><td data-label="確認書類">告示の該当号と寸法</td><td data-label="向く場面">RC造、一般的な被覆</td></tr>
+<tr><td data-label="方法">大臣認定</td><td data-label="内容">指定性能評価機関の評価を経て個別に認定（FP＝耐火、QF＝準耐火）</td><td data-label="確認書類">認定書（別添の仕様・施工方法）</td><td data-label="向く場面">吹付けロックウール、耐火塗料、木質耐火部材等</td></tr>
+<tr><td data-label="方法">耐火性能検証法</td><td data-label="内容">火災荷重と部材温度を計算で検証</td><td data-label="確認書類">検証書</td><td data-label="向く場面">大空間・アトリウム等で被覆を合理化</td></tr>
+</tbody>
+</table>
+<ul>
+<li>防火設備は特定防火設備（60分・EA）と防火設備（20分・EB）。遮煙性能の要否は区画の種類・位置ごとに確認する</li>
+<li>認定は「仕様の束」。認定書の別添と異なる施工は認定外になる</li>
+</ul>
+<details class="script"><summary>原稿</summary><p class="say">性能を満たす方法は三つあります。告示に例示された仕様を使う方法、大臣認定を受けた製品や工法を使う方法、それと耐火性能検証法で計算する方法です。鉄骨の吹付けロックウールや耐火塗料の多くは大臣認定品で、FPで始まる認定番号が付いています。認定は、材料、厚さ、下地、施工方法までまとめて一つの仕様として認められているものです。現場で少しでも変えると認定外になるので、施工要領書と認定書の別添を突き合わせる確認を必ず入れてください。</p></details>
+</section>
+<section class="slide" id="s6" aria-label="スライド6">
+<div class="meta"><span class="cat">被覆・接合部・貫通</span><span>06 / 08</span></div>
+<h2>施工品質の要所と検査の流れ</h2>
+<ul>
+<li><b>被覆</b>：吹付け厚さ・密度、成形板の目地・ビス間隔。設備吊りボルトや後施工アンカーでの欠損に注意</li>
+<li><b>接合部</b>：柱梁接合部、ブレース、デッキ谷部、梁貫通スリーブ周り。部材と被覆の連続性を確保</li>
+<li><b>区画貫通</b>：配管・ケーブルの隙間充填は認定工法、ダクトは防火ダンパー（令114条区画は45分遮炎）</li>
+<li><b>区画壁の到達</b>：耐火・準耐火の壁を床スラブ下・小屋裏まで到達。強化天井で代替する場合は告示・認定の範囲</li>
+</ul>
+<ol id="f1" class="flow h">
+<li class="step"><b>仕様照合</b>認定書・告示と施工要領書を照合</li>
+<li class="step"><b>先行確認</b>下地処理・錆止めとの適合を確認</li>
+<li class="step"><b>施工・自主検査</b>厚さ・密度を測定し記録</li>
+<li class="step"><b>後工程管理</b>設備・内装工事による欠損を補修</li>
+<li class="step"><b>立会検査</b>天井閉鎖前に監理者・CMが確認</li>
+</ol>
+<button type="button" class="flow-next" data-flow="f1">順に見る</button><span id="f1-status" role="status"></span>
+<details class="script"><summary>原稿</summary><p class="say">耐火の品質は、図面より現場で決まります。被覆は厚さと密度、接合部は被覆が途切れていないか、貫通部は認定工法どおりに埋めているか、区画壁はスラブ下まで届いているか。特に多いのが、耐火被覆を吹いた後に設備業者が吊りボルトを打って被覆を剥がしてしまうケースです。そこで流れのように、仕様の照合、先行確認、施工と自主検査、後工程の管理、そして天井を閉じる前の立会検査という順番で管理します。天井を閉じたら見えなくなるので、閉鎖前検査を工程表に入れておくことが大事です。</p></details>
+</section>
+<section class="slide" id="s7" aria-label="スライド7">
+<div class="meta"><span class="cat">仮想ホテル例と発注者判断</span><span>07 / 08</span></div>
+<h2>仮想ホテルA（S造・準防火地域・地上10階地下1階）の要求時間</h2>
+<table class="tbl">
+<thead><tr><th>階</th><th>最上階から</th><th>柱・はり</th><th>床</th></tr></thead>
+<tbody>
+<tr><td data-label="階">7〜10階</td><td data-label="最上階から">1〜4</td><td data-label="柱・はり">1時間</td><td data-label="床">1時間</td></tr>
+<tr><td data-label="階">2〜6階</td><td data-label="最上階から">5〜9</td><td data-label="柱・はり">1.5時間</td><td data-label="床">1.5時間</td></tr>
+<tr><td data-label="階">1階・地下1階</td><td data-label="最上階から">10〜11</td><td data-label="柱・はり">2時間</td><td data-label="床">2時間</td></tr>
+</tbody>
+</table>
+<ul>
+<li>耐火建築物の要求：法27条（3階以上をホテル）と法61条（準防火地域・4階以上）の双方</li>
+<li>発注者判断①：被覆工法（吹付け／成形板／耐火塗料）を意匠露出部・工期・LCCで選ぶ</li>
+<li>発注者判断②：ロビー大空間の被覆合理化に検証法を使うか（将来の用途変更で再検証が要る）</li>
+<li>発注者判断③：木質化・低層部の構造合理化（特定主要構造部・別棟みなし）の採否</li>
+</ul>
+<details class="script"><summary>原稿</summary><p class="say">仮想ホテルで時間を出してみます。地上10階、地下1階なので、7階から上は1時間、2階から6階は1.5時間、1階と地下は2時間です。以前なら2階から6階も2時間でしたので、改正の恩恵が出るところです。発注者として決めることは三つです。被覆の工法、大空間で検証法を使うかどうか、そして木質化や区画による合理化を採るかどうかです。検証法や合理化は工事費を下げられますが、将来の用途変更で前提が崩れると再検証が必要になる、条件付きの判断だということを押さえておいてください。</p></details>
+</section>
+<section class="slide" id="s8" aria-label="スライド8">
+<div class="meta"><span class="cat">試験・引渡し</span><span>08 / 08</span></div>
+<h2>検査・引渡し・維持管理</h2>
+<table class="tbl">
+<thead><tr><th>段階</th><th>確認内容</th><th>記録</th></tr></thead>
+<tbody>
+<tr><td data-label="段階">材料・工法承認</td><td data-label="確認内容">認定書（別添含む）・告示該当号、施工要領書</td><td data-label="記録">承認書</td></tr>
+<tr><td data-label="段階">施工中検査</td><td data-label="確認内容">被覆厚さ（測定ピン等）・密度の抜取、成形板の留付け</td><td data-label="記録">測定記録・写真</td></tr>
+<tr><td data-label="段階">閉鎖前検査</td><td data-label="確認内容">接合部・貫通部・区画壁の到達、欠損補修</td><td data-label="記録">立会記録</td></tr>
+<tr><td data-label="段階">防火設備</td><td data-label="確認内容">EA/EBの表示、閉鎖・連動・遮煙仕様</td><td data-label="記録">作動試験記録</td></tr>
+<tr><td data-label="段階">引渡し</td><td data-label="確認内容">耐火時間区分図、区画図、貫通処理一覧、認定書一式</td><td data-label="記録">引渡し書類</td></tr>
+<tr><td data-label="段階">維持</td><td data-label="確認内容">改修時の被覆・区画の復旧、防火設備の定期検査（法12条）</td><td data-label="記録">改修記録・定期報告</td></tr>
+</tbody>
+</table>
+<p class="small"><a href="https://laws.e-gov.go.jp/law/325AC0000000201">建築基準法</a> ／ <a href="https://laws.e-gov.go.jp/law/325CO0000000338">建築基準法施行令</a> ／ <a href="https://www.mlit.go.jp/jutakukentiku/build/content/001600652.pdf">国土交通省 令107条の技術的助言</a> ／ <a href="https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000042.html">国土交通省 構造方法等の認定</a> ／ <a href="fire-resistance-report.html">詳細レポート</a></p><details class="script"><summary>原稿</summary><p class="say">最後に検査と引渡しです。被覆は厚さと密度を測定して記録し、天井を閉じる前に接合部、貫通部、区画壁の到達を立ち会いで確認します。防火設備は認定の表示と作動を確認します。引渡しで特に渡してほしいのが、階ごとの耐火時間の区分図と、区画図、貫通処理の一覧です。竣工後の改修で設備を更新するとき、どこが何時間の区画なのかが分からないと、被覆や区画を壊したまま元に戻らないことがあるからです。</p></details>
+</section>
+</main>
+
+<div class="caption" id="caption" role="status" aria-live="polite"></div>
+
+<nav class="pager" aria-label="スライド送り">
+  <div class="in">
+    <button class="btn" id="prev" type="button">← 前</button>
+    <span class="count" id="count">1 / 8</span>
+    <button class="btn primary" id="next" type="button">次 →</button>
+  </div>
+</nav>
+
+<script src="cm-slide-controls.js"></script>
+</body>
+</html>

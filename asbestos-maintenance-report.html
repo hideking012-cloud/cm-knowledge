@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>石綿（アスベスト）対策のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 石綿（アスベスト）</div>
+    <nav class="nav" aria-label="サイト内リンク">
+      <a href="index.html">CM知識一覧へ戻る</a>
+      <a href="asbestos-maintenance-slides.html">音声・図解スライド</a>
+      <a href="facade-maintenance-slides.html">関連：外壁点検・外壁補修</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero"><span class="badge">詳細レポート</span>
+<h1>石綿（アスベスト）対策のCM実務</h1>
+<p class="lead">発注者の側に立つCMrが、既存建築物・工作物の改修・解体で押さえる石綿対策の手続を、「誰が・いつ・どこへ・何を」の形で整理します。除去作業の具体的手順は扱いません。作業は資格者・専門業者が法令とマニュアルに基づき計画・実施するものです。</p>
+<p class="note">本レポートは一般的な整理です。個別工事の判断は、最新の法令・告示と所管行政（都道府県・政令市、労働基準監督署）の案内で確認してください。自治体の条例で上乗せの手続がある場合があります。</p></div>
+<nav class="toc" aria-label="目次">
+  <h2>目次</h2>
+  <ol><li><a href="#cm-visual-summary">図と比較表</a></li>
+    <li><a href="#framework">1. 法体系の全体像</a></li>
+    <li><a href="#survey">2. 事前調査と結果報告</a></li>
+    <li><a href="#qualification">3. 調査者の資格</a></li>
+    <li><a href="#owner">4. 発注者の協力</a></li>
+    <li><a href="#notice">5. 説明・報告・届出の違い</a></li>
+    <li><a href="#works">6. 作業計画とばく露・飛散防止</a></li>
+    <li><a href="#change">7. 未確認箇所・追加発見時の対応</a></li>
+    <li><a href="#completion">8. 完了確認・記録・廃棄物処理</a></li>
+    <li><a href="#decision">9. 判断表</a></li>
+    <li><a href="#case">10. 仮想改修例</a></li>
+    <li><a href="#sources">11. 一次資料</a></li>
+  </ol>
+</nav>
+
+
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">撤去の前に、調査範囲を図面に置く</h2><div class="cm-visual-term"><p><strong>石綿の事前調査</strong> 改修や解体で触れる建材に、石綿が含まれるかどうかを着工前に確認します。</p>
+    <p><span>最初に開く資料</span> <b>石綿事前調査報告書</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="解体前の室内断面">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:12%;top:18.75%;width:75%;height:52.083333333333336%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:12%;top:18.75%;width:75%;height:16.666666666666664%"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:12%;top:70.83333333333334%;width:75%;height:10.416666666666668%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:24%;top:20.833333333333336%;width:24%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:30%;top:27.083333333333332%;width:46%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:17%;top:43.75%;width:7%;height:25%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:12%;top:81.25%;width:75%;transform:rotate(0rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:55%;--field-y:25%" data-point aria-pressed="false" aria-label="1 天井裏・配管">1</button><button type="button" class="cm-field-marker" style="--field-x:20%;--field-y:52.083333333333336%" data-point aria-pressed="false" aria-label="2 壁の仕上げ">2</button><button type="button" class="cm-field-marker" style="--field-x:68%;--field-y:77.08333333333334%" data-point aria-pressed="false" aria-label="3 床下地">3</button>
+    </div>
+    <figcaption>解体前の室内断面（模式図） · 材質は見た目で判定しません。建材の調査と記録から、作業前に適切な対応を決めます。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>天井裏・配管</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>壁の仕上げ</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>床下地</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 天井裏・配管</strong> 工事で開ける範囲を事前調査に含めます。</p><p data-point-note><strong>2 壁の仕上げ</strong> 見た目だけでは判断せず、記録、調査、必要な分析で確かめます。</p><p data-point-note><strong>3 床下地</strong> 仕上げを剥がすと出てくる建材も調査範囲に入れます。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">図面で分かること</th><td>工事範囲と過去の改修履歴</td></tr>
+<tr><th scope="row">現場で確かめること</th><td>該当部位と材質。必要に応じ分析</td></tr>
+<tr><th scope="row">判断が残るとき</th><td>未確認箇所の扱いを調査者と決める</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-interior-illustration.png" alt="架空のホテルの客室・廊下・階段を切り開いたイラスト。天井裏にダクトと配管が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:70%;--spot-y:18%">●</span></div><figcaption>天井裏や設備の縦穴など、工事で開ける範囲を事前調査の図面に入れます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>工事中、図面になかった古い板が出ました。次に何をしますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>対象部分の作業を止め、調査結果と施工計画を見直す</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>見た目で問題がないと判断し、そのまま撤去する</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>対象部分の作業を止め、調査結果と施工計画を見直す</strong></p><p>未確認の建材に関係する作業を進める前に、調査者・施工者と対象材や工法を確認します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>石綿事前調査報告書</dd></div>
+        <div><dt>いつ確認するか</dt><dd>解体のお見積りと着工前。未確認材が出たときも再確認</dd></div>
+        <div><dt>誰と確認するか</dt><dd>調査者・元請施工者・発注者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 調査報告書・工事範囲図・追加確認記録</p>
+    </details>
+  </div>
+  </aside>
+<section id="framework" class="sec">
+  <h2>1. 法体系の全体像</h2>
+  <p>石綿対策は単一の法律ではなく、保護の対象が異なる複数の法令が同じ工事に重なってかかります。</p>
+  <table class="tbl">
+    <thead><tr><th>法令</th><th>所管</th><th>守る対象</th><th>工事で効く主な義務</th></tr></thead>
+    <tbody>
+      <tr><td data-label="法令">大気汚染防止法</td><td data-label="所管">環境省</td><td data-label="守る対象">周辺の住民・環境（飛散）</td><td data-label="工事で効く主な義務">事前調査・発注者への説明・結果報告・掲示、届出対象特定工事の届出、作業基準、作業結果の報告と記録</td></tr>
+      <tr><td data-label="法令">労働安全衛生法・石綿障害予防規則</td><td data-label="所管">厚生労働省</td><td data-label="守る対象">作業する労働者（ばく露）</td><td data-label="工事で効く主な義務">事前調査、作業計画、計画届・作業届、作業主任者の選任、特別教育、保護具、作業記録</td></tr>
+      <tr><td data-label="法令">廃棄物処理法</td><td data-label="所管">環境省</td><td data-label="守る対象">生活環境（処理工程）</td><td data-label="工事で効く主な義務">廃石綿等／石綿含有産業廃棄物の区分、許可業者への委託、マニフェスト</td></tr>
+      <tr><td data-label="法令">建築基準法</td><td data-label="所管">国土交通省</td><td data-label="守る対象">建築物の利用者</td><td data-label="工事で効く主な義務">吹付け石綿等の使用禁止、増改築等の際の除去等</td></tr>
+    </tbody>
+  </table>
+  <p>法令上の「石綿等」は、石綿をその重量の0.1％を超えて含有するものです。過去に使われた含有建材が残ることがあります。施工時期に関する書類の確認と、適用法令に基づく事前調査で判定します。</p>
+</section>
+
+<section id="survey" class="sec">
+  <h2>2. 事前調査と結果報告</h2>
+  <h3>事前調査は規模を問わない</h3>
+  <p>解体・改修工事では、原則として規模・金額を問わず、元請事業者（自主施工者）が着工前に石綿含有建材の有無を調査します。調査は書面調査、現地での目視調査、判定できない建材の分析調査の順に行い、分析しない場合は含有とみなして対策を講じます。木材・金属・ガラスのみの作業や、既存塗膜を傷つけない重ね塗りなど、調査不要となる場合は限定的です。</p>
+  <p>調査結果は、石綿の有無にかかわらず現場に掲示し、記録を作成して保存します（大防法上3年）。</p>
+  <h3>結果報告は一定規模から</h3>
+  <table class="tbl">
+    <thead><tr><th>工事の種類</th><th>報告が必要な規模</th><th>報告先</th></tr></thead>
+    <tbody>
+      <tr><td data-label="工事の種類">建築物の解体</td><td data-label="報告が必要な規模">解体部分の床面積の合計80㎡以上</td><td data-label="報告先">労基署・都道府県等（電子システムで一括）</td></tr>
+      <tr><td data-label="工事の種類">建築物の改修（改造・補修）</td><td data-label="報告が必要な規模">請負代金の合計額100万円以上（税込）</td><td data-label="報告先">同上</td></tr>
+      <tr><td data-label="工事の種類">指定工作物の解体・改修</td><td data-label="報告が必要な規模">請負代金の合計額100万円以上（税込）</td><td data-label="報告先">同上</td></tr>
+      <tr><td data-label="工事の種類">鋼製船舶の解体・改修</td><td data-label="報告が必要な規模">総トン数20トン以上</td><td data-label="報告先">労基署（石綿則）</td></tr>
+    </tbody>
+  </table>
+  <p>報告は元請事業者が「石綿事前調査結果報告システム」から着工前に行い、GビズIDが必要です。指定工作物は、反応槽、加熱炉、ボイラー・圧力容器、配管設備（建築物に設ける建築設備を除く）、焼却設備、貯蔵設備、発電・変電・配電・送電設備などが告示で定められています。建築物の給排水・空調・換気配管は建築物として判定します。</p>
+  <div class="callout"><p><b>CMの確認：</b>報告対象外の小規模工事でも、調査記録・掲示・発注者への書面説明が揃っているか。分割発注は一体の工事として請負代金を見るべきでないか。</p></div>
+</section>
+
+<section id="qualification" class="sec">
+  <h2>3. 調査者の資格</h2>
+  <table class="tbl">
+    <thead><tr><th>対象</th><th>資格者による調査が必要な工事</th><th>主な資格</th></tr></thead>
+    <tbody>
+      <tr><td data-label="対象">建築物</td><td data-label="資格者による調査が必要な工事">令和5年10月1日以降に着工</td><td data-label="主な資格">特定建築物石綿含有建材調査者、一般建築物石綿含有建材調査者、一戸建て等石綿含有建材調査者（一戸建て・共同住宅の住戸内部に限る）等</td></tr>
+      <tr><td data-label="対象">特定工作物（告示指定）</td><td data-label="資格者による調査が必要な工事">令和8年1月1日以降に着工</td><td data-label="主な資格">工作物石綿事前調査者（工作物の種類により建築物調査者も可）</td></tr>
+      <tr><td data-label="対象">特定工作物以外の工作物での塗料等の除去</td><td data-label="資格者による調査が必要な工事">令和8年1月1日以降に着工</td><td data-label="主な資格">工作物石綿事前調査者、一般・特定建築物石綿含有建材調査者 等</td></tr>
+    </tbody>
+  </table>
+  <p>判定基準は契約日ではなく着工日です。工作物の調査では、調査者の氏名と資格を証する書類の写しの保存も求められます。分析は、所定の講習修了者など分析に必要な知識・技能を有する者が行います。</p>
+</section>
+
+<section id="owner" class="sec">
+  <h2>4. 発注者の協力</h2>
+  <p>事前調査の実施義務は元請側にありますが、発注者には調査と対策が適正に行われるよう協力・配慮する責務があります。</p>
+  <ul>
+    <li><b>情報提供：</b>設計図書、建築確認申請の副本、過去の改修記録、既存の調査結果を提供する。</li>
+    <li><b>費用負担：</b>事前調査費（書面・現地・分析・報告書・諸経費）と除去等費用を適正に負担する。見積もりへの計上を確認する。</li>
+    <li><b>工期・発注条件：</b>分析期間、14日前届出、隔離・養生に必要な期間を確保し、法令を守れない工期・方法を求めない。</li>
+    <li><b>記録への協力：</b>作業状況の写真撮影を許可し、記録の提出を求める。</li>
+  </ul>
+  <div class="callout"><p><b>CMの確認：</b>見積もり段階で「事前調査費」「分析費」「みなし判定時の除去費」がどう扱われているか。分析待ち・届出待ちの期間が工程表に入っているか。</p></div>
+</section>
+
+<section id="notice" class="sec">
+  <h2>5. 説明・報告・届出の違い</h2>
+  <table class="tbl">
+    <thead><tr><th>手続</th><th>誰が</th><th>宛先</th><th>期限</th><th>対象</th></tr></thead>
+    <tbody>
+      <tr><td data-label="手続">事前調査結果の説明</td><td data-label="誰が">元請業者</td><td data-label="宛先">発注者（書面）</td><td data-label="期限">着工前</td><td data-label="対象">全ての解体・改修工事。届出対象特定工事なら届出事項も説明</td></tr>
+      <tr><td data-label="手続">事前調査結果報告</td><td data-label="誰が">元請業者</td><td data-label="宛先">労基署・都道府県等（電子）</td><td data-label="期限">着工前</td><td data-label="対象">一定規模以上（第2章）</td></tr>
+      <tr><td data-label="手続">特定粉じん排出等作業実施届出（大防法）</td><td data-label="誰が">発注者（自主施工者）</td><td data-label="宛先">都道府県・大防法政令市</td><td data-label="期限">作業開始の14日前まで</td><td data-label="対象">吹付け石綿、石綿含有の断熱材・保温材・耐火被覆材の除去等</td></tr>
+      <tr><td data-label="手続">建設工事計画届／建築物解体等作業届（安衛法・石綿則）</td><td data-label="誰が">元請事業者</td><td data-label="宛先">労働基準監督署</td><td data-label="期限">計画届・作業届で条件と期限が異なる。所轄労働基準監督署に確認</td><td data-label="対象">同上の建材の除去等</td></tr>
+      <tr><td data-label="手続">自治体条例の届出</td><td data-label="誰が">条例による</td><td data-label="宛先">自治体</td><td data-label="期限">条例による</td><td data-label="対象">成形板等（レベル3相当）を対象とする自治体あり</td></tr>
+    </tbody>
+  </table>
+  <p>「元請から説明を受けた」ことは、発注者が行う届出の代わりにはなりません。大防法の届出は発注者名義の義務で、元請が書類を作成する場合でも、提出日と提出控えを発注者側で管理します。発注者は、元請に労基署へ提出した計画届等の写しの提出を求めておくと、両系統の整合を確認できます。</p>
+</section>
+
+<section id="works" class="sec">
+  <h2>6. 作業計画とばく露・飛散防止</h2>
+  <p>石綿含有建材の除去等は、レベル1〜3相当の全ての区分で作業計画の作成が必要です。作業計画は専門業者が作成し、CMは内容が揃っているかを確認します。工法の数値基準をCMが一律に決めることはせず、計画書とマニュアル、行政窓口の指導に基づかせます。</p>
+  <div class="grid g2">
+    <div class="card"><h3>労働者ばく露（石綿則）</h3><ul><li>石綿作業主任者の選任、従事者への特別教育</li><li>建材区分に応じた呼吸用保護具・保護衣</li><li>立入禁止・掲示、湿潤化、除じん性能のある電動工具の使用</li><li>作業記録・健康診断（長期保存）</li></ul></div>
+    <div class="card"><h3>周辺飛散（大防法）</h3><ul><li>作業の種類ごとの作業基準（隔離・負圧化、湿潤化、原形での取り外し等）</li><li>作業内容の掲示</li><li>元請・下請負人とも作業基準の遵守義務</li><li>隔離等を怠る作業基準違反は直接罰の対象</li></ul></div>
+  </div>
+  <h3>作業計画書の確認観点</h3>
+  <table class="tbl">
+    <thead><tr><th>観点</th><th>確認すること</th></tr></thead>
+    <tbody>
+      <tr><td data-label="観点">対象建材</td><td data-label="確認すること">事前調査結果の建材リストと計画の対象が一致しているか（みなし含む）</td></tr>
+      <tr><td data-label="観点">工法・養生</td><td data-label="確認すること">建材区分ごとの工法、隔離・養生範囲、利用者動線との分離</td></tr>
+      <tr><td data-label="観点">体制</td><td data-label="確認すること">作業主任者、特別教育修了者、下請の範囲</td></tr>
+      <tr><td data-label="観点">確認方法</td><td data-label="確認すること">作業中の点検、隔離解除前の確認、完了確認者</td></tr>
+      <tr><td data-label="観点">施設運営</td><td data-label="確認すること">営業中施設では空調停止・区画・告知など運営側との調整</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="change" class="sec">
+  <h2>7. 未確認箇所・追加発見時の対応</h2>
+  <p>天井裏、壁内、設備内部など着工前に調査できない部位は、事前調査結果に「未調査」として明記させ、解体で露出した時点で調査する段取りを契約と工程に入れておきます。</p>
+  <ol>
+    <li><b>停止：</b>想定外の吹付け材・保温材等が見つかったら、その部位の作業を止め、立入を制限する。</li>
+    <li><b>再調査：</b>資格者が調査し、必要なら分析する。分析しない場合は含有とみなす。</li>
+    <li><b>手続の更新：</b>発注者への説明、結果報告、掲示を更新し、届出の要否を再判定する。新たに届出対象となる場合は、所管行政へ相談し、法定手続と再開可能な時期を確認する。</li>
+    <li><b>計画・契約の更新：</b>作業計画を見直し、工期・費用の変更を協議する。</li>
+  </ol>
+  <div class="callout warn"><p>工程の遅れを理由に、追加発見部位を通常の解体として進めさせないこと。CMは停止判断と再調査の記録を残し、発注者へ速やかに報告します。</p></div>
+</section>
+
+<section id="completion" class="sec">
+  <h2>8. 完了確認・記録・廃棄物処理</h2>
+  <table class="tbl">
+    <thead><tr><th>項目</th><th>主体</th><th>内容</th><th>保存・確認</th></tr></thead>
+    <tbody>
+      <tr><td data-label="項目">除去完了の確認</td><td data-label="主体">元請（知識を有する者）</td><td data-label="内容">調査者・石綿作業主任者等が取り残しの有無を目視確認</td><td data-label="保存・確認">確認者・資格・日付を書面で受領</td></tr>
+      <tr><td data-label="項目">作業結果の報告</td><td data-label="主体">元請→発注者</td><td data-label="内容">作業の実施状況を書面で報告</td><td data-label="保存・確認">元請は記録を3年保存。発注者も写しを保管</td></tr>
+      <tr><td data-label="項目">事前調査の記録</td><td data-label="主体">元請</td><td data-label="内容">調査結果・調査者の資格</td><td data-label="保存・確認">3年保存</td></tr>
+      <tr><td data-label="項目">作業記録・健康診断</td><td data-label="主体">事業者</td><td data-label="内容">従事労働者の作業記録、石綿健康診断</td><td data-label="保存・確認">40年保存</td></tr>
+      <tr><td data-label="項目">廃石綿等</td><td data-label="主体">排出事業者</td><td data-label="内容">吹付け材・保温材等。特別管理産業廃棄物として梱包・表示し、特管の許可業者へ委託</td><td data-label="保存・確認">許可品目・期限、委託契約書の石綿記載</td></tr>
+      <tr><td data-label="項目">石綿含有産業廃棄物</td><td data-label="主体">排出事業者</td><td data-label="内容">成形板等。破砕せず他の廃棄物と区分して運搬・処分</td><td data-label="保存・確認">混合・破砕がないこと</td></tr>
+      <tr><td data-label="項目">マニフェスト</td><td data-label="主体">排出事業者（建設工事では原則元請）</td><td data-label="内容">交付し、運搬・処分終了を返送で確認</td><td data-label="保存・確認">5年保存。最終処分までの確認</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="decision" class="sec">
+  <h2>9. 判断表</h2>
+  <table class="tbl decision">
+    <thead><tr><th>問い</th><th>はい</th><th>いいえ</th></tr></thead>
+    <tbody>
+      <tr><td data-label="問い">解体・改造・補修を伴う工事か</td><td data-label="はい">事前調査が必要（原則全件）</td><td data-label="いいえ">石綿対策の手続は不要（材料を傷つけない作業か確認）</td></tr>
+      <tr><td data-label="問い">対象は木材・金属・ガラス等のみ、または極めて軽微な損傷か</td><td data-label="はい">調査不要となりうる。根拠を記録</td><td data-label="いいえ">資格者による書面・現地・分析（またはみなし）</td></tr>
+      <tr><td data-label="問い">建築物解体80㎡以上／改修・指定工作物で税込100万円以上か</td><td data-label="はい">元請が着工前に電子報告</td><td data-label="いいえ">報告不要。調査・記録・掲示・説明は必要</td></tr>
+      <tr><td data-label="問い">指定工作物、または工作物の塗料等除去で令和8年1月1日以降着工か</td><td data-label="はい">工作物石綿事前調査者等が調査</td><td data-label="いいえ">建築物は建築物調査者等が調査</td></tr>
+      <tr><td data-label="問い">吹付け石綿、石綿含有の断熱材・保温材・耐火被覆材を除去等するか</td><td data-label="はい">発注者が14日前届（大防法）、元請が労基署へ届出</td><td data-label="いいえ">成形板等は作業計画・作業基準。条例の届出を確認</td></tr>
+      <tr><td data-label="問い">工事中に未確認建材が露出・発見されたか</td><td data-label="はい">停止→再調査→説明・報告・届出の再判定→計画と契約の更新</td><td data-label="いいえ">計画どおり施工し点検を継続</td></tr>
+      <tr><td data-label="問い">除去等が終わったか</td><td data-label="はい">完了確認・作業結果報告・マニフェスト確認・記録保存</td><td data-label="いいえ">隔離・養生を解除させない</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="case" class="sec">
+  <h2>10. 仮想改修例</h2>
+  <p class="note">以下は説明用の仮想例で、実在の施設・案件ではありません。</p>
+  <p><b>条件：</b>1980年代竣工のRC造宿泊施設。客室階の天井張替えと、機械室の空調・給湯配管の更新。請負代金は税込約2,000万円。営業を続けながら施工。</p>
+  <table class="tbl">
+    <thead><tr><th>局面</th><th>判断と対応</th></tr></thead>
+    <tbody>
+      <tr><td data-label="局面">報告の要否</td><td data-label="判断と対応">建築物の改修で税込100万円以上 → 元請が着工前に電子報告。機械室配管は建築設備のため建築物として扱う</td></tr>
+      <tr><td data-label="局面">調査</td><td data-label="判断と対応">書面調査で天井ボードと配管保温材を抽出。現地調査・分析で、天井ボードは成形板（レベル3相当）、配管保温材は含有（レベル2相当）と判定</td></tr>
+      <tr><td data-label="局面">説明・届出</td><td data-label="判断と対応">元請が発注者へ書面説明。保温材の除去等があるため、発注者が作業開始14日前までに大防法の届出、元請が労基署へ届出。工程に分析期間と届出期間を確保</td></tr>
+      <tr><td data-label="局面">作業計画</td><td data-label="判断と対応">専門業者の作業計画で、保温材部の隔離・養生、天井ボードの取り外し方法、客室動線と空調系統の分離、施設側への告知を確認</td></tr>
+      <tr><td data-label="局面">追加発見</td><td data-label="判断と対応">天井解体で梁に吹付け材が露出 → 当該範囲を停止し立入制限。資格者が再調査、報告・掲示を更新、届出の要否を再判定し、作業計画・工期・費用を協議</td></tr>
+      <tr><td data-label="局面">完了</td><td data-label="判断と対応">資格者の完了確認書、作業結果報告、廃石綿等と石綿含有産業廃棄物それぞれのマニフェスト写しを受領し、竣工書類として保管</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="sources" class="sec">
+  <h2>11. 一次資料</h2>
+  <ul class="sources">
+    <li><a href="https://www.ishiwata.mhlw.go.jp/customer/">厚生労働省 石綿総合情報ポータルサイト「発注者の方へ」</a></li>
+    <li><a href="https://www.ishiwata.mhlw.go.jp/procedures/">厚生労働省 石綿総合情報ポータルサイト「事前の手続き」</a></li>
+    <li><a href="https://www.env.go.jp/air/asbestos/litter_ctrl/">環境省「建築物等の解体等に係る石綿飛散防止対策」</a></li>
+    <li><a href="https://laws.e-gov.go.jp/law/417M60000100021">e-Gov法令検索「石綿障害予防規則」</a></li>
+    <li><a href="https://www.env.go.jp/recycle/misc/asbestos-dw/index.html">環境省「石綿含有廃棄物等処理マニュアル」</a></li>
+  </ul>
+  <p class="note">環境省ページには「建築物等の解体等に係る石綿ばく露防止及び石綿飛散漏えい防止対策徹底マニュアル」などのマニュアル・届出様式が掲載されています。最終確認日：2026年11月。</p>
+</section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="asbestos-maintenance-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

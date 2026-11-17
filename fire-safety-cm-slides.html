@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>防火設備のCM実務 | 音声・図解スライド</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red:#9b3b2f;--red-l:#f7e6e2;
+  --r:14px;--gap:16px;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+/* header */
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+/* controls */
+.controls{background:var(--paper);border-bottom:1px solid var(--line)}
+.controls .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.ctl{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.ctl select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);max-width:220px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:5px 14px;cursor:pointer;min-height:36px}
+.btn:hover{background:var(--green-l)}
+.btn.primary{background:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-d)}
+.btn[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.note-voice{font-size:12.5px;color:var(--sub);width:100%;margin:0}
+/* deck */
+main{max-width:1180px;margin:0 auto;padding:18px 16px 120px}
+.slide{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px 22px;min-height:620px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.slide.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.list .slide{display:block;margin-bottom:22px;animation:none}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--sub);margin-bottom:6px}
+.cat{display:inline-block;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:1px 12px;font-weight:700;letter-spacing:.03em}
+.slide h1,.slide h2{color:var(--green-d);margin:4px 0 14px;line-height:1.4}
+.slide h1{font-size:34px}
+.slide h2{font-size:26px;border-left:6px solid var(--green);padding-left:12px}
+.lead{font-size:17px;color:var(--sub);margin:0 0 16px}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--green-d)}
+.card p{margin:0;font-size:15px}
+.card ul{margin:4px 0 0;padding-left:1.2em;font-size:15px}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h3{color:#fff}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.r{background:var(--red-l);border-color:#e6c2ba}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.small{font-size:13px;color:var(--sub)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--green-m);color:var(--green-d);border-radius:6px;padding:0 6px;margin:0 2px 2px 0;background:#fff}
+.tag.cond{border-color:var(--amber);color:#7a4f10;background:var(--amber-l)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff;font-weight:700}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);white-space:nowrap}
+.tbl td.c{text-align:center}
+.dot{color:var(--green);font-weight:700}
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.flow.h{grid-template-columns:repeat(4,minmax(0,1fr))}
+.flow.h7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow .step{position:relative;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;transition:border-color .3s,background .3s,transform .3s,opacity .3s;cursor:pointer}
+.flow .step b{display:block;color:var(--green-d);font-size:15px;margin-bottom:2px}
+.flow .step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px;vertical-align:1px}
+.flow.playing .step{opacity:.45}
+.flow.playing .step.done{opacity:.8;border-color:var(--green-m)}
+.flow.playing .step.on{opacity:1;border-color:var(--amber);background:var(--amber-l);transform:translateY(-3px);box-shadow:0 4px 10px rgba(183,121,31,.18)}
+.flow .step .who{display:block;font-size:12.5px;color:var(--sub);margin-top:4px}
+.flow-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.flow-bar .status{font-size:13px;color:var(--sub)}
+.layers{display:grid;gap:8px}
+.layer{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:8px 12px;font-size:14.5px}
+.layer:nth-child(2){margin-left:18px}.layer:nth-child(3){margin-left:36px}.layer:nth-child(4){margin-left:54px}
+.layer b{color:var(--green-d)}
+.cover{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;min-height:520px}
+.cover .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:3px 14px;font-size:14px;letter-spacing:.06em}
+.cover-fig{background:var(--green);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cover-fig div{background:var(--cream);border-radius:12px;padding:16px 10px;text-align:center;font-weight:700;color:var(--green-d)}
+.cover-fig div span{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+/* script */
+details.script{margin-top:18px;border-top:1px dashed var(--line);padding-top:8px}
+details.script summary{cursor:pointer;color:var(--green);font-size:14px;font-weight:700}
+details.script p{font-size:15px;margin:8px 0 0;color:var(--ink)}
+/* caption + pager */
+.caption{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);max-width:min(92vw,960px);background:rgba(27,64,55,.94);color:#fff;font-size:17px;line-height:1.6;padding:10px 16px;border-radius:10px;z-index:30;display:none}
+.caption.show{display:block}
+.pager{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:25}
+.pager .in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.count{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}
+body.list .pager{display:none}
+.foot{margin-top:14px;font-size:12.5px;color:var(--sub)}
+.srcs{font-size:13.5px;margin:6px 0 0;padding-left:1.2em}
+/* reduced motion */
+body.reduce *, body.reduce *::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.reduce .flow.playing .step.on{transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cover{grid-template-columns:1fr;min-height:0}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  .slide{padding:18px 16px;min-height:0}
+  .slide h1{font-size:26px}.slide h2{font-size:21px}
+  .g2,.g4{grid-template-columns:1fr}
+  .flow.h,.flow.h7{grid-template-columns:1fr}
+  .layer:nth-child(n){margin-left:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl tbody th{white-space:normal}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .tbl td.c{text-align:left}
+  .caption{bottom:68px;font-size:15px}
+  .ctl select{max-width:150px}
+}
+@media print{
+  .topbar,.controls,.pager,.caption{display:none}
+  .slide{display:block!important;page-break-after:always;min-height:0;box-shadow:none}
+  body{background:#fff}
+}
+
+.caption{width:max-content;max-height:24dvh;overflow:auto}
+.pager .in{justify-content:center;gap:16px}
+@media screen and (max-width:900px){
+ body>iframe#nl-badge-frame{position:relative!important;display:block;inset:auto!important;margin-inline-start:auto!important;max-width:100%;z-index:1!important}
+}
+@media screen and (max-width:700px){
+ body{font-size:16px}
+ .slide h2{font-size:clamp(23px,5.8vw,28px)}
+ .tbl th,.tbl td{font-size:15px}
+ .pager button,.controls button,.controls select{min-height:44px}
+}
+@media print{#nl-badge-frame,.slide .script{display:none!important}.slide:last-child{page-break-after:auto}}
+</style>
+<link rel="stylesheet" href="cm-slide-theme.css">
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#deck">スライド本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 防火設備</div>
+    <nav class="nav" aria-label="サイト内リンク">
+      <a href="index.html">CM知識一覧へ戻る</a>
+      <a href="fire-safety-cm-report.html">詳細レポート</a>
+      <a href="fire-compartment-slides.html">関連：防火区画</a>
+    </nav>
+  </div>
+</header>
+
+<div class="controls" role="region" aria-label="表示と音声の操作">
+  <div class="in">
+    <button class="btn primary" id="play" type="button">▶ 読み上げ開始</button>
+    <button class="btn" id="stop" type="button">■ 停止</button>
+    <label class="ctl">話者
+      <select id="voice" aria-label="読み上げ音声（端末の日本語音声）"><option value="">端末の標準（日本語）</option></select>
+    </label>
+    <label class="ctl">速度
+      <select id="rate" aria-label="読み上げ速度">
+        <option value="0.8">ゆっくり</option>
+        <option value="1" selected>標準</option>
+        <option value="1.2">やや速い</option>
+        <option value="1.4">速い</option>
+      </select>
+    </label>
+    <div class="toggles">
+      <button class="btn" id="tCap" type="button" aria-pressed="true">字幕</button>
+      <button class="btn" id="tAuto" type="button" aria-pressed="false">自動送り</button>
+      <button class="btn" id="tMotion" type="button" aria-pressed="false">動きを減らす</button>
+      <button class="btn" id="tList" type="button" aria-pressed="false">一覧表示</button>
+    </div>
+    <p class="note-voice" id="voiceNote">読み上げはボタンを押したときだけ始まります。音声は端末に入っている日本語音声を使います。</p>
+  </div>
+</div>
+
+<main id="deck">
+<p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
+<section class="slide cover" id="s1" aria-label="スライド1">
+<div class="meta"><span class="cat">発注者側CM</span><span>01 / 13</span></div>
+  <div class="row">
+    <div>
+      <span class="tag a" style="--d:0">発注者側CM向け</span>
+      <h1 class="a" style="--d:1;margin-top:1vh">防火設備の<br><span style="color:var(--fire)">CM実務ガイド</span></h1>
+<aside class="cm-visual" aria-labelledby="cm-visual-title">
+    <h2 id="cm-visual-title" class="cm-visual-heading">防火戸はどこで働く？</h2><div class="cm-visual-term"><p><strong>防火戸</strong> 壁の開口部を閉じて延焼を抑える戸です。閉鎖方式や遮煙性能は建具ごとに確認します。</p>
+    <p><span>最初に開く資料</span> <b>建具表</b></p></div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="平面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:14.583333333333334%;width:34%;height:47.91666666666667%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:8%;top:62.5%;width:83%;height:20.833333333333336%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:70%;top:14.583333333333334%;width:21%;height:47.91666666666667%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:42%;top:14.583333333333334%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:70%;top:14.583333333333334%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:29%;top:62.5%;width:13%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:17%;top:72.91666666666666%;width:62%;transform:rotate(0rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:34%;--field-y:60.416666666666664%" data-point aria-pressed="false" aria-label="1 防火戸">1</button><button type="button" class="cm-field-marker" style="--field-x:55%;--field-y:72.91666666666666%" data-point aria-pressed="false" aria-label="2 廊下">2</button><button type="button" class="cm-field-marker" style="--field-x:80%;--field-y:35.41666666666667%" data-point aria-pressed="false" aria-label="3 階段">3</button>
+    </div>
+    <figcaption>平面図（模式図） · 壁の開口部で防火戸が閉まり、火や煙の広がりを抑えます。通行や避難の条件も一緒に確認します。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>防火戸</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>廊下</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>階段</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 防火戸</strong> 壁の開口部に取り付く戸です。建具表で種類を確認します。</p><p data-point-note><strong>2 廊下</strong> 通行物が閉鎖を妨げていないか、戸の動く範囲を見ます。</p><p data-point-note><strong>3 階段</strong> 戸の閉鎖後も、避難上必要な経路と運用を確認します。</p></div>
+  </figure>
+    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="fire-safety-cm-report.html#cm-visual-summary">図と表のまとめ</a></p>
+  </aside>
+
+      <p class="a sub" style="--d:2;margin-top:1.5vh">設計 → 発注 → 施工 → 連動試験 → 引渡し → 定期報告<br><b>いつ・誰と・何を</b>確認するか</p>
+    </div>
+    <svg viewBox="0 0 320 260" class="a" style="--d:2" aria-label="防火戸が閉まるイラスト">
+      <rect x="20" y="30" width="280" height="210" rx="10" fill="#1b2547" stroke="#2e3a66"/>
+      <g class="tfire"><path class="flame" d="M160 210c-40 0-55-30-45-60 8-22 25-30 22-55 25 15 30 35 28 50 10-8 12-20 10-32 25 20 35 50 25 72-6 15-20 25-40 25z" fill="#ff6b2c"/></g>
+      <rect class="tdoorL" x="40" y="40" width="120" height="190" fill="#4cc3ff" opacity=".9" stroke="#fff" stroke-width="2"/>
+      <rect class="tdoorR" x="160" y="40" width="120" height="190" fill="#4cc3ff" opacity=".9" stroke="#fff" stroke-width="2"/>
+    </svg>
+  </div>
+  <p class="a sub small" style="--d:3">法令の照合日：2026年11月15日（e-Gov法令検索・国土交通省・消防庁の公開資料）。未確認事項は各スライドと詳細レポートに「要確認」と明記。</p>
+<details class="script"><summary>原稿</summary><p class="say">発注者側CMのための、防火設備の実務ガイドです。設計、発注、施工、連動試験、引渡し、定期報告の六つの段階で、いつ、誰と、何を確認するかを整理しました。法令上の判断は設計者や行政が行い、CMはその判断が最後まで途切れずにつながっているかを確認する立場です。</p></details></section>
+<section class="slide" id="s2" aria-label="スライド2">
+<div class="meta"><span class="cat">役割分担</span><span>02 / 13</span></div>
+  <h2 class="a">CMは「判断する人」ではなく「つなぐ人」</h2>
+<aside class="cm-visual" aria-labelledby="cm-visual-table-title">
+    <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">閉まる位置</th><td>区画図で、床・壁と開口部の境界を確認</td></tr>
+<tr><th scope="row">閉まるきっかけ</th><td>連動図で、感知器からの信号を確認</td></tr>
+<tr><th scope="row">最後まで閉まるか</th><td>現場で障害物や、閉鎖後の状態を確認</td></tr>
+  </tbody></table><div class="cm-field-case" data-answer="1">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>廊下の防火戸の近くに、清掃ワゴンを置く案が出ました。最初に何を確認しますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>通行できる幅だけを見る</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>戸の動く範囲と避難経路を照合する</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>戸の動く範囲と避難経路を照合する</strong></p><p>閉鎖の妨げになる位置を図面と現場で確かめます。閉鎖試験や清掃ワゴンの置き場所も管理側と決めます。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>建具表</dd></div>
+        <div><dt>いつ確認するか</dt><dd>建具の発注前と閉鎖試験時</dd></div>
+        <div><dt>誰と確認するか</dt><dd>設計者・建具担当・施設管理者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 建具表・区画図・連動試験記録</p>
+    </details>
+  </div>
+    <details class="cm-visual-extra"><summary>建物のイラストで位置を見る</summary><figure><div class="cm-visual-media"><img src="cm-hotel-interior-illustration.png" alt="架空のホテルの客室・廊下・階段を切り開いたイラスト。天井裏にダクトと配管が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:88%;--spot-y:45%">●</span></div><figcaption>階段や廊下につながる開口部に注目します。防火戸かどうかは建具表などで確かめます。 イラストは位置関係の説明用です。</figcaption></figure></details>
+  </aside>
+
+  <svg viewBox="0 0 800 170" class="a" style="--d:1" aria-label="判断の流れとCMの確認位置">
+    <g font-size="14" text-anchor="middle">
+      <g class="pop" style="--d:1"><rect x="5" y="40" width="140" height="70" rx="12" fill="#1b2547" stroke="#ffb02e" stroke-width="2"/><text x="75" y="70">設計者</text><text x="75" y="92" font-size="11" fill="#a3adc8">必要性能を決める</text></g>
+      <g class="pop" style="--d:2"><rect x="165" y="40" width="140" height="70" rx="12" fill="#1b2547" stroke="#ffb02e" stroke-width="2"/><text x="235" y="70">確認検査・行政</text><text x="235" y="92" font-size="11" fill="#a3adc8">適合を判断</text></g>
+      <g class="pop" style="--d:3"><rect x="325" y="40" width="140" height="70" rx="12" fill="#1b2547" stroke="#4cc3ff" stroke-width="2"/><text x="395" y="70">施工者・専門業者</text><text x="395" y="92" font-size="11" fill="#a3adc8">製作・取付・試験</text></g>
+      <g class="pop" style="--d:4"><rect x="485" y="40" width="140" height="70" rx="12" fill="#1b2547" stroke="#4cc3ff" stroke-width="2"/><text x="555" y="70">オーナー・BM</text><text x="555" y="92" font-size="11" fill="#a3adc8">維持管理・報告</text></g>
+      <g class="pop" style="--d:5"><rect x="645" y="40" width="150" height="70" rx="12" fill="#0f3a2c" stroke="#3ddc97" stroke-width="2"/><text x="720" y="70">検査者・行政</text><text x="720" y="92" font-size="11" fill="#a3adc8">定期報告</text></g>
+    </g>
+    <line class="flow" x1="20" y1="140" x2="790" y2="140" stroke="#3ddc97" stroke-width="4"/>
+    <text x="400" y="163" text-anchor="middle" font-size="14" fill="#3ddc97" font-weight="700">CM：図面・発注品・現場・試験記録・報告が一致しているかを確認し、記録をつなぐ</text>
+  </svg>
+  <div class="grid">
+    <div class="card a" style="--d:6"><h3>CMがやること</h3><p class="small">確認の<b>時期</b>を工程に入れる／<b>担当</b>と<b>工事区分</b>を決める／<b>記録</b>を次の段階へ渡す／変更を追跡する</p></div>
+    <div class="card a" style="--d:7"><h3>CMがやらないこと</h3><p class="small">法適合の<b>最終判断</b>／認定内容の<b>独自解釈</b>（必ず設計者・行政に確認）</p></div>
+  </div>
+<details class="script"><summary>原稿</summary><p class="say">最初に、CMの立ち位置です。どの扉にどの性能が必要かを決めるのは設計者で、適合を判断するのは確認検査機関や特定行政庁です。CMは、その判断が図面、発注品、現場、試験記録、そして定期報告まで一致しているかを確認し、関係者の調整と記録の受け渡しを管理します。</p></details></section>
+<section class="slide" id="s3" aria-label="スライド3">
+<div class="meta"><span class="cat">全体工程</span><span>03 / 13</span></div>
+  <h2 class="a">6段階と3つの重要確認時期</h2>
+  <svg viewBox="0 0 800 100" class="a" style="--d:1" aria-label="6段階の工程">
+    <g font-size="15" font-weight="700" text-anchor="middle">
+      <g class="pop" style="--d:1"><polygon points="0,10 115,10 135,40 115,70 0,70" fill="#ff6b2c"/><text x="62" y="46" fill="#1a0d00">設計</text></g>
+      <g class="pop" style="--d:2"><polygon points="130,10 245,10 265,40 245,70 130,70 150,40" fill="#ff8a3d"/><text x="200" y="46" fill="#1a0d00">発注</text></g>
+      <g class="pop" style="--d:3"><polygon points="260,10 375,10 395,40 375,70 260,70 280,40" fill="#ffb02e"/><text x="330" y="46" fill="#1a0d00">施工</text></g>
+      <g class="pop" style="--d:4"><polygon points="390,10 505,10 525,40 505,70 390,70 410,40" fill="#4cc3ff"/><text x="460" y="46" fill="#0d1326">連動試験</text></g>
+      <g class="pop" style="--d:5"><polygon points="520,10 635,10 655,40 635,70 520,70 540,40" fill="#38b2e0"/><text x="590" y="46" fill="#0d1326">引渡し</text></g>
+      <g class="pop" style="--d:6"><polygon points="650,10 780,10 800,40 780,70 650,70 670,40" fill="#3ddc97"/><text x="728" y="46" fill="#0d1326">定期報告</text></g>
+    </g>
+    <g font-size="12" fill="#ff4d6d" text-anchor="middle"><text x="200" y="92">▲発注前</text><text x="380" y="92">▲天井を閉じる前</text><text x="590" y="92">▲引渡し前</text></g>
+  </svg>
+  <table class="a" style="--d:7">
+    <thead><tr><th>段階</th><th>いつ</th><th>誰と</th><th>残す記録</th></tr></thead><tbody>
+    <tr><td class="hl" data-label="段階">設計</td><td data-label="いつ">基本設計〜実施設計</td><td data-label="誰と">設計者（意匠・設備）・確認検査機関・消防</td><td data-label="残す記録">区画図・建具表・連動図</td></tr>
+    <tr><td class="hl" data-label="段階">発注</td><td data-label="いつ">見積〜発注前</td><td data-label="誰と">施工者・建具／シャッター業者・電気・消防設備</td><td data-label="残す記録">承認図・認定書等・工事区分表</td></tr>
+    <tr><td class="hl" data-label="段階">施工</td><td data-label="いつ">取付時〜天井を閉じる前</td><td data-label="誰と">施工者・工事監理者・専門業者</td><td data-label="残す記録">検査記録・隠蔽前写真</td></tr>
+    <tr><td class="hl" data-label="段階">連動試験</td><td data-label="いつ">竣工前（消防検査等の前）</td><td data-label="誰と">施工者・各専門業者・工事監理者</td><td data-label="残す記録">試験記録・是正・再試験記録</td></tr>
+    <tr><td class="hl" data-label="段階">引渡し</td><td data-label="いつ">引渡し時</td><td data-label="誰と">オーナー・BM・施工者</td><td data-label="残す記録">管理台帳・取扱説明書</td></tr>
+    <tr><td class="hl" data-label="段階">定期報告</td><td data-label="いつ">運用開始後</td><td data-label="誰と">オーナー・BM・検査者・特定行政庁</td><td data-label="残す記録">報告書・是正履歴</td></tr>
+  </tbody></table>
+<details class="script"><summary>原稿</summary><p class="say">全体の流れです。六つの段階それぞれに、確認の場と、残す記録があります。特に重要な確認時期は、発注前、天井を閉じる前、そして引渡し前の三つです。</p></details></section>
+<section class="slide" id="s4" aria-label="スライド4">
+<div class="meta"><span class="cat">設計</span><span>04 / 13</span></div>
+  <h2 class="a">区画図・建具表・連動図をそろえる</h2>
+  <div class="row">
+    <div>
+      <p class="a sub small" style="--d:0">いつ：基本設計〜実施設計 ／ 誰と：設計者（意匠・設備）、必要に応じ確認検査機関・消防へ事前相談</p>
+      <ul>
+        <li class="a" style="--d:1"><b>区画図</b>：区画の種類（面積・高層・竪穴・異種用途）と範囲</li>
+        <li class="a" style="--d:2"><b>建具表</b>：扉ごとに<b>遮炎時間・遮煙の要否・閉鎖方式・適合根拠</b>（告示仕様／大臣認定）</li>
+        <li class="a" style="--d:3"><b>連動図</b>：随時閉鎖式は感知器・連動制御器・自動閉鎖装置・予備電源の系統</li>
+        <li class="a" style="--d:4"><b>貫通部</b>：配管・ダクトの区画貫通と防火ダンパーの位置</li>
+        <li class="a" style="--d:5"><b>点検性</b>：点検口・点検スペース、将来の定期検査の対象</li>
+      </ul>
+    </div>
+    <div class="card fire a" style="--d:6"><h3>⚠️ 宿泊用途など</h3><p class="small">ホテル・病院等は令114条2項の<b>防火上主要な間仕切壁</b>（準耐火構造で小屋裏・天井裏まで）が加わり、天井裏の設備と干渉しやすい。スプリンクラー等・強化天井による緩和の可否を<b>基本設計で</b>決める。</p></div>
+  </div>
+  <div class="card a cmact" style="--d:7"><p>👷 <b>CMアクション</b>：区画図・建具表・連動図の3点が<b>同じ版で一致</b>していることを設計レビューで確認</p></div>
+<details class="script"><summary>原稿</summary><p class="say">設計段階です。設計者と一緒に、どの区画のどの扉に、どの性能が必要かを、区画図と建具表に落とし込みます。確認する項目は、炎を止める時間、遮煙の要否、閉まり方、そして告示仕様か大臣認定かという根拠です。随時閉鎖式なら、感知器、連動制御器、自動閉鎖装置、予備電源の連動図も必要です。点検口や点検スペース、将来の定期検査の対象もここで見ておきます。</p></details></section>
+<section class="slide" id="s5" aria-label="スライド5">
+<div class="meta"><span class="cat">区画と要求性能</span><span>05 / 13</span></div>
+  <h2 class="a">区画ごとの代表的な仕様（令112条と照合）</h2>
+  <table class="a" style="--d:1">
+    <thead><tr><th>区画（施行令112条）</th><th>壁・床</th><th>開口部</th><th>閉鎖の要件（19項）</th></tr></thead><tbody>
+    <tr><td class="hl" data-label="区画（施行令112条）">面積区画（1項）<br><span class="small sub">原則1,500㎡以内ごと</span></td><td data-label="壁・床">1時間準耐火</td><td data-label="開口部">特定防火設備（60分）</td><td data-label="閉鎖の要件（19項）">常時閉鎖、または煙・急激な温度上昇で自動閉鎖</td></tr>
+    <tr><td class="hl" data-label="区画（施行令112条）">高層区画（7〜9項）<br><span class="small sub">11階以上</span></td><td data-label="壁・床">耐火構造</td><td data-label="開口部">100㎡区画：防火設備（20分）<br>200㎡・500㎡区画（内装条件）：特定防火設備</td><td data-label="閉鎖の要件（19項）">同上（7項の防火設備）</td></tr>
+    <tr><td class="hl" data-label="区画（施行令112条）">竪穴区画（11項）</td><td data-label="壁・床">準耐火構造</td><td data-label="開口部">防火設備（20分）</td><td data-label="閉鎖の要件（19項）"><b>遮煙性能</b>＋<b>煙で</b>自動閉鎖（常時閉鎖式を除く）</td></tr>
+    <tr><td class="hl" data-label="区画（施行令112条）">異種用途区画（18項）<br><span class="small sub">法27条該当部分</span></td><td data-label="壁・床">1時間準耐火</td><td data-label="開口部">特定防火設備（60分）</td><td data-label="閉鎖の要件（19項）"><b>遮煙性能</b>＋<b>煙で</b>自動閉鎖</td></tr>
+  </tbody></table>
+  <div class="card a" style="--d:2"><p class="small"><b>貫通部（20・21項）</b>：管は隙間をモルタル等の不燃材料で埋める／風道は煙・熱で自動閉鎖し遮煙性能をもつダンパー　<b>令114条</b>：防火上主要な間仕切壁を貫通する風道は45分遮炎（5項の読替え）</p></div>
+  <p class="a sub small" style="--d:4">要確認：各項のただし書・緩和（スプリンクラー等による面積算定、警報設備による異種用途区画の緩和、令和7年11月施行改正の内装「準ずる措置」告示等）は案件ごとに設計者・行政へ確認。</p>
+<details class="script"><summary>原稿</summary><p class="say">区画ごとの代表的な仕様を、施行令百十二条の条文と照合して整理しました。面積区画と異種用途区画は一時間の特定防火設備、竪穴区画は二十分の防火設備です。竪穴区画と異種用途区画の扉には、遮煙性能と、煙で自動的に閉まることが求められます。高層区画は、基本の百平方メートル区画は防火設備ですが、内装の条件で二百、五百平方メートルに広げる場合は特定防火設備になります。</p></details></section>
+<section class="slide" id="s6" aria-label="スライド6">
+<div class="meta"><span class="cat">発注</span><span>06 / 13</span></div>
+  <h2 class="a">承認図・仕様根拠・工事区分を照合する</h2>
+  <p class="a sub small" style="--d:0">いつ：見積〜発注前 ／ 誰と：施工者、建具・シャッター業者、電気・消防設備業者、設計者</p>
+  <div class="grid">
+    <div class="card pop" style="--d:1"><h3>📑 仕様の根拠</h3><p class="small">告示仕様か大臣認定か。認定品は<b>認定書と別添仕様</b>の範囲（寸法・ガラス・金物・取付下地）に収まっているか</p></div>
+    <div class="card pop" style="--d:2"><h3>⚡ 工事区分</h3><p class="small">随時閉鎖式に必要な<b>煙感知器（または熱煙複合式）・連動制御器・自動閉鎖装置・予備電源</b>（告示2563号）を、どの工事が担うか</p></div>
+    <div class="card pop" style="--d:3"><h3>🚪 避難経路上のシャッター等</h3><p class="small">主たる通路の随時閉鎖式は、近接して常時閉鎖式防火戸がない限り<b>くぐり戸</b>（幅75cm以上・高さ1.8m以上・下端15cm以下）</p></div>
+    <div class="card pop" style="--d:4"><h3>🔄 変更管理</h3><p class="small">減額提案・金物変更・現場加工は<b>発注前に再確認</b>。製品名だけで防火性能を判断しない</p></div>
+  </div>
+  <div class="card a cmact" style="--d:5"><p>👷 <b>CMアクション</b>：建具表 × 承認図 × 工事区分表 の3点照合を発注の条件にする</p></div>
+<details class="script"><summary>原稿</summary><p class="say">発注段階です。施工者や建具、シャッターの専門業者、電気、消防設備の業者と、承認図と認定書などの仕様資料を照合します。煙で閉鎖する方式では、採用仕様に応じて、感知器、連動制御器、自動閉鎖装置、予備電源などを確認します。これらがどの工事に含まれるか、工事区分表で明確にします。減額提案や金物変更などの仕様変更は、発注前に設計者に再確認します。</p></details></section>
+<section class="slide" id="s7" aria-label="スライド7">
+<div class="meta"><span class="cat">施工</span><span>07 / 13</span></div>
+  <h2 class="a">「仕様どおり・連続・点検できる」を隠れる前に</h2>
+  <div class="row">
+    <svg viewBox="0 0 300 250" class="a" style="--d:1" aria-label="区画壁の確認箇所">
+      <rect x="0" y="10" width="300" height="20" fill="#a3adc8"/><text x="150" y="25" text-anchor="middle" font-size="11" fill="#0d1326">上階スラブ</text>
+      <rect x="135" y="30" width="30" height="210" fill="#3ddc97" opacity=".85"/>
+      <rect x="20" y="80" width="260" height="22" fill="#ffb02e" opacity=".85"/><text x="60" y="96" font-size="11" fill="#1a0d00">ダクト</text>
+      <rect x="128" y="74" width="44" height="34" fill="none" stroke="#ff4d6d" stroke-width="3" class="shake" style="transform-origin:150px 91px"/>
+      <rect x="20" y="150" width="260" height="10" fill="#4cc3ff"/><text x="40" y="146" font-size="11">配管</text>
+      <circle cx="150" cy="155" r="16" fill="none" stroke="#ff4d6d" stroke-width="3"/>
+      <rect x="130" y="28" width="40" height="8" fill="none" stroke="#ff4d6d" stroke-width="3"/>
+      <text x="200" y="55" font-size="12" fill="#ff4d6d">壁上端のすき間</text>
+      <text x="185" y="125" font-size="12" fill="#ff4d6d">ダンパー・点検口</text>
+      <text x="185" y="185" font-size="12" fill="#ff4d6d">貫通部の処理</text>
+      <rect x="0" y="240" width="300" height="6" fill="#a3adc8"/>
+    </svg>
+    <div>
+      <p class="a sub small" style="--d:0">いつ：取付時〜天井を閉じる前 ／ 誰と：施工者、工事監理者、専門業者</p>
+      <ol style="padding-left:1.4em;display:grid;gap:.6vh">
+        <li class="a" style="--d:1">製品・寸法・金物・取付下地が<b>承認仕様どおり</b></li>
+        <li class="a" style="--d:2">貫通部が<b>令112条20・21項</b>と採用工法の条件どおり</li>
+        <li class="a" style="--d:3">壁上端・梁際・デッキの谷で<b>区画が途切れていない</b></li>
+        <li class="a" style="--d:4">ダンパー・閉鎖装置に<b>届き、点検・復旧できる</b></li>
+        <li class="a" style="--d:5">常時閉鎖式は<b>3㎡以内・手で開き自動で閉まる</b>。人の通行部は閉鎖時の安全基準（告示2563号）</li>
+      </ol>
+    </div>
+  </div>
+  <div class="card a cmact" style="--d:6"><p>👷 <b>CMアクション</b>：隠蔽前検査を工程に組み込み、<b>位置がわかる写真</b>を記録として受け取る</p></div>
+<details class="script"><summary>原稿</summary><p class="say">施工段階です。施工者、工事監理者、専門業者と、製品と取付けが承認仕様どおりか、貫通部の処理が条件どおりか、壁の上端や梁際で区画が途切れていないかを、天井を閉じる前に確認します。常時閉鎖式の防火戸は、面積三平方メートル以内で、手で開けられ、自動で閉まるものです。人が通る部分では、閉まるときの安全性の基準もあります。</p></details></section>
+<section class="slide" id="s8" aria-label="スライド8">
+<div class="meta"><span class="cat">連動試験</span><span>08 / 13</span></div>
+  <h2 class="a">感知から閉鎖完了までを一連で確認</h2>
+  <svg viewBox="0 0 800 150" class="a" style="--d:1" aria-label="感知器から閉鎖までの連動の流れ">
+    <g font-size="14" text-anchor="middle">
+      <g class="pop" style="--d:1"><rect x="5" y="30" width="150" height="70" rx="12" fill="#1b2547" stroke="#ff6b2c" stroke-width="2"/><circle class="sensor" cx="35" cy="65" r="10" fill="#555"/><text x="95" y="62">煙感知器</text><text x="95" y="84" font-size="11" fill="#a3adc8">または熱煙複合式</text></g>
+      <g class="pop" style="--d:2"><rect x="215" y="30" width="150" height="70" rx="12" fill="#1b2547" stroke="#ffb02e" stroke-width="2"/><text x="290" y="70">連動制御器</text></g>
+      <g class="pop" style="--d:3"><rect x="425" y="30" width="150" height="70" rx="12" fill="#1b2547" stroke="#4cc3ff" stroke-width="2"/><text x="500" y="70">自動閉鎖装置</text></g>
+      <g class="pop" style="--d:4"><rect x="635" y="30" width="160" height="70" rx="12" fill="#0f3a2c" stroke="#3ddc97" stroke-width="2"/><text x="715" y="62">閉鎖完了</text><text x="715" y="84" font-size="11" fill="#a3adc8">すき間・ラッチ</text></g>
+      <line class="flow" x1="158" y1="65" x2="210" y2="65" stroke="#ffb02e" stroke-width="4"/>
+      <line class="flow" x1="368" y1="65" x2="420" y2="65" stroke="#4cc3ff" stroke-width="4"/>
+      <line class="flow" x1="578" y1="65" x2="630" y2="65" stroke="#3ddc97" stroke-width="4"/>
+      <rect x="215" y="112" width="150" height="30" rx="8" fill="none" stroke="#a3adc8" stroke-dasharray="4 3"/><text x="290" y="132" font-size="12" fill="#a3adc8">予備電源</text>
+      <line x1="290" y1="112" x2="290" y2="102" stroke="#a3adc8"/>
+    </g>
+  </svg>
+  <div class="grid">
+    <div class="card a" style="--d:5"><h3>誰と・いつ</h3><p class="small">施工者・建具／シャッター業者・消防設備・電気・工事監理者。<b>竣工前</b>（行政・消防の検査より前に社内試験）</p></div>
+    <div class="card a" style="--d:6"><h3>何を</h3><p class="small">一連の作動／<b>予備電源</b>切替／人の通行部の<b>危害防止装置</b>／くぐり戸／<b>復旧操作</b></p></div>
+    <div class="card a" style="--d:7"><h3>記録</h3><p class="small">試験記録 → 是正 → <b>再試験記録</b>。消防設備の試験記録との<b>整合</b>も確認</p></div>
+  </div>
+<details class="script"><summary>原稿</summary><p class="say">連動試験です。竣工前に、施工者、建具やシャッターの業者、消防設備、電気の業者、工事監理者がそろって、感知器の作動から、連動制御器、自動閉鎖装置、閉鎖完了までを一連で確認します。予備電源への切り替え、人が通る部分の危害防止装置、くぐり戸、そして復旧操作も確認します。不具合は是正して再試験し、記録を残します。</p></details></section>
+<section class="slide" id="s9" aria-label="スライド9">
+<div class="meta"><span class="cat">引渡し</span><span>09 / 13</span></div>
+  <h2 class="a">書類と「管理の担当」をセットで渡す</h2>
+  <div class="row">
+    <div class="card a" style="--d:1"><h3>📁 引渡し書類</h3>
+      <ul class="small" style="list-style:none;padding-left:0">
+        <li>☑ 完成区画図（防火区画を明示）</li><li>☑ 建具表</li><li>☑ 告示・認定の仕様資料</li><li>☑ 連動図</li><li>☑ 隠蔽前写真</li><li>☑ 試験・是正・再試験記録</li><li>☑ 取扱説明書・復旧手順</li><li>☑ 保守・管理の連絡先</li>
+      </ul></div>
+    <div>
+      <div class="card a" style="--d:2"><h3>📋 管理台帳に書くこと</h3><p class="small">定期報告の<b>対象か</b>／区分（特定建築物調査・防火設備検査）／<b>初回時期</b>／報告義務者（所有者等）／委託先／是正費用の扱い／消防用設備等点検の予定</p></div>
+      <p class="a sub small" style="--d:3;margin-top:1vh">施行規則5条・6条：検査済証の交付を受けた直後の報告時期は除く。具体的な初回時期は<b>所在地の特定行政庁の規則で確認</b>。</p>
+    </div>
+  </div>
+  <div class="card a cmact" style="--d:4"><p>👷 <b>CMアクション</b>：完成区画図を、将来の定期調査・検査で使える形で渡す（R7年7月の告示見直しで、特定建築物定期調査の調査結果図に防火区画を明示）</p></div>
+<details class="script"><summary>原稿</summary><p class="say">引渡しです。オーナーやビル管理者に、完成区画図、建具表、認定書などの仕様資料、連動図、試験と是正の記録、取扱説明書、保守の連絡先を渡します。さらに、この建物が定期報告の対象かどうか、初回の時期、担当者と委託先を管理台帳にまとめます。なお、施行規則では、検査済証を受けた直後の報告時期は除くとされています。</p></details></section>
+<section class="slide" id="s10" aria-label="スライド10">
+<div class="meta"><span class="cat">建築基準法の定期報告</span><span>10 / 13</span></div>
+  <h2 class="a">建築基準法12条の区分と令和7年の見直し</h2>
+  <table class="a" style="--d:1">
+    <thead><tr><th>区分</th><th>根拠</th><th>間隔（特定行政庁が定める）</th><th>実施者</th></tr></thead><tbody>
+    <tr><td class="hl" data-label="区分">特定建築物定期調査</td><td data-label="根拠">法12条1項・規則5条</td><td data-label="間隔（特定行政庁が定める）">おおむね6月〜3年</td><td data-label="実施者">一級・二級建築士、特定建築物調査員</td></tr>
+    <tr><td class="hl" data-label="区分">防火設備定期検査</td><td data-label="根拠">法12条3項・規則6条</td><td data-label="間隔（特定行政庁が定める）">おおむね6月〜1年（大臣が定める項目は1〜3年）</td><td data-label="実施者">一級・二級建築士、建築設備等検査員（防火設備）</td></tr>
+  </tbody></table>
+  <div class="card a" style="--d:2"><h3>令和7年7月1日施行の告示見直し（国交省資料）</h3>
+    <ul class="small">
+      <li><b>常時閉鎖式防火扉</b>：特定建築物定期調査で行っていた確認を<b>防火設備定期検査</b>へ。対象は<b>各階の主要なもの</b>（避難経路、吹抜けに面するもの、通行が多いもの等）。周期は従前どおりおおむね1〜3年</li>
+      <li>特定行政庁が規則で特定建築物定期調査に付加した場合は、防火設備定期検査を<b>省略可能</b></li>
+      <li>国の常閉防火扉の検査対象建築物は、特定建築物定期調査の対象と同じ。所在地の指定も確認する</li>
+      <li>危害防止装置の検査は<b>人の通行の用に供する部分に限る</b>ことを明確化</li>
+    </ul></div>
+  <p class="a sub small" style="--d:3">報告をしない・虚偽の報告：100万円以下の罰金（法101条）。<b>要確認</b>：所在地の特定行政庁の規則（対象・時期・付加項目）。</p>
+<details class="script"><summary>原稿</summary><p class="say">定期報告です。建築基準法十二条で、特定建築物の調査は、おおむね六か月から三年の間隔、防火設備を含む建築設備等の検査は、おおむね六か月から一年の間隔で、特定行政庁が時期を定めます。報告義務者は所有者等で、検査は一級、二級建築士または検査員が行います。令和七年七月の告示見直しで、常時閉鎖式の防火扉は、各階の主要なものを防火設備定期検査で確認することになりました。ただし、特定行政庁が規則で特定建築物調査に加えた場合は、そちらで実施できます。</p></details></section>
+<section class="slide" id="s11" aria-label="スライド11">
+<div class="meta"><span class="cat">消防法の点検報告</span><span>11 / 13</span></div>
+  <h2 class="a">消防法の点検とは別制度として並行管理</h2>
+  <table class="a" style="--d:1">
+    <thead><tr><th></th><th>建築基準法 12条</th><th>消防法 消防用設備等点検</th></tr></thead><tbody>
+    <tr><td>主な対象</td><td data-label="建築基準法 12条">防火扉・防火シャッター・耐火クロススクリーン・ドレンチャー等（感知〜閉鎖の連動を含む）</td><td data-label="消防法 消防用設備等点検">自動火災報知設備・スプリンクラー・誘導灯など消防用設備等</td></tr>
+    <tr><td>周期</td><td data-label="建築基準法 12条">特定行政庁が定める（上記）</td><td data-label="消防法 消防用設備等点検">点検：原則6か月（機器）／原則1年（対象設備の総合）<br>報告：特定防火対象物 1年／非特定防火対象物 3年</td></tr>
+    <tr><td>報告先</td><td data-label="建築基準法 12条">特定行政庁</td><td data-label="消防法 消防用設備等点検">消防長または消防署長</td></tr>
+  </tbody></table>
+  <div class="card a cmact" style="--d:2"><p>👷 <b>CMアクション</b>：2制度の<b>予定・委託先・報告先</b>を1つの管理台帳にまとめて引き継ぐ。感知器が共用される場合は点検結果を相互に共有</p></div>
+<details class="script"><summary>原稿</summary><p class="say">消防法の点検も並行して必要です。設備ごとに適用を確認します。機器点検は原則六か月ごと、対象設備の総合点検は原則一年ごとです。報告は特定防火対象物が一年ごと、非特定防火対象物が三年ごとです。建築基準法の防火設備検査とは、根拠、検査者、報告先が別の制度なので、管理台帳で両方を管理します。</p></details></section>
+<section class="slide" id="s12" aria-label="スライド12">
+<div class="meta"><span class="cat">契約と担当</span><span>12 / 13</span></div>
+  <h2 class="a">役割分担の目安</h2>
+  <table class="a" style="--d:1">
+    <thead><tr><th>項目</th><th>オーナー</th><th>CM</th><th>設計者・監理者</th><th>施工者・専門業者</th><th>BM・検査者</th></tr></thead><tbody>
+    <tr><td data-label="項目">必要性能の決定</td><td data-label="オーナー">承認</td><td data-label="CM">確認</td><td class="hl" data-label="設計者・監理者">実施</td><td data-label="施工者・専門業者">相談</td><td data-label="BM・検査者">—</td></tr>
+    <tr><td data-label="項目">承認図・工事区分</td><td data-label="オーナー">—</td><td class="hl" data-label="CM">調整</td><td data-label="設計者・監理者">承認</td><td class="hl" data-label="施工者・専門業者">作成</td><td data-label="BM・検査者">—</td></tr>
+    <tr><td data-label="項目">隠蔽前検査</td><td data-label="オーナー">—</td><td data-label="CM">確認</td><td class="hl" data-label="設計者・監理者">監理</td><td class="hl" data-label="施工者・専門業者">実施</td><td data-label="BM・検査者">—</td></tr>
+    <tr><td data-label="項目">連動試験</td><td data-label="オーナー">報告受</td><td class="hl" data-label="CM">日程・立会調整</td><td data-label="設計者・監理者">立会</td><td class="hl" data-label="施工者・専門業者">実施</td><td data-label="BM・検査者">相談</td></tr>
+    <tr><td data-label="項目">引渡し・台帳</td><td class="hl" data-label="オーナー">受領</td><td class="hl" data-label="CM">取りまとめ</td><td data-label="設計者・監理者">資料提供</td><td data-label="施工者・専門業者">資料提供</td><td data-label="BM・検査者">受領</td></tr>
+    <tr><td data-label="項目">定期報告</td><td class="hl" data-label="オーナー">報告義務</td><td data-label="CM">初回まで支援</td><td data-label="設計者・監理者">—</td><td data-label="施工者・専門業者">是正対応</td><td class="hl" data-label="BM・検査者">検査実施</td></tr>
+  </tbody></table>
+  <p class="a sub small" style="--d:2">※目安。CMの業務範囲（引渡し後の支援の有無など）は契約で定める。</p>
+<details class="script"><summary>原稿</summary><p class="say">段階ごとの役割分担の目安です。実施する人、責任を持つ人、相談を受ける人、報告を受ける人を、案件の契約に合わせて調整してください。</p></details></section>
+<section class="slide" id="s13" aria-label="スライド13">
+<div class="meta"><span class="cat">管理台帳</span><span>13 / 13</span></div>
+  <h2 class="a">6段階で「記録をつなぐ」</h2>
+  <div class="grid">
+    <div class="card safe pop" style="--d:1"><h3>① 設計</h3><p class="small">区画図・建具表・連動図を一致させる</p></div>
+    <div class="card safe pop" style="--d:2"><h3>② 発注</h3><p class="small">仕様根拠と工事区分を照合</p></div>
+    <div class="card safe pop" style="--d:3"><h3>③ 施工</h3><p class="small">隠れる前に確認・写真</p></div>
+    <div class="card safe pop" style="--d:4"><h3>④ 連動試験</h3><p class="small">感知→閉鎖を一連で、再試験まで</p></div>
+    <div class="card safe pop" style="--d:5"><h3>⑤ 引渡し</h3><p class="small">書類＋管理台帳＋担当</p></div>
+    <div class="card safe pop" style="--d:6"><h3>⑥ 定期報告</h3><p class="small">建基法と消防法を並行管理</p></div>
+  </div>
+  <p class="a sub small" style="--d:7">根拠：建築基準法12条・101条、同施行令112条・114条、同施行規則5条・6条、昭和48年建設省告示2563号、国交省「定期報告告示の見直し」（令和7年7月1日施行）、消防庁資料（消防用設備等点検報告）。個別案件は最新の法令と所管行政庁・専門家に確認。</p>
+<details class="script"><summary>原稿</summary><p class="say">まとめです。設計で必要性能を三つの図書にそろえ、発注で仕様根拠と工事区分を照合し、施工で隠れる前に確認し、連動試験で感知から閉鎖までを確かめ、引渡しで台帳と担当を渡し、定期報告を軌道に乗せる。CMは、この流れの記録をつなぐことで、手戻りと運用リスクを減らします。未確認の事項は、詳細レポートの確認事項リストを使って、設計者と行政に確認してください。</p></details></section>
+</main>
+
+<div class="caption" id="caption" role="status" aria-live="polite"></div>
+
+<nav class="pager" aria-label="スライド送り">
+  <div class="in">
+    <button class="btn" id="prev" type="button">← 前</button>
+    <span class="count" id="count">1 / 13</span>
+    <button class="btn primary" id="next" type="button">次 →</button>
+  </div>
+</nav>
+
+<script src="cm-slide-controls.js"></script>
+</body>
+</html>

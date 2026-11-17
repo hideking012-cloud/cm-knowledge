@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>耐震診断・耐震改修のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 耐震診断・耐震改修</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="seismic-retrofit-slides.html">音声・図解スライド</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero"><span class="badge">詳細レポート</span><h1>耐震診断・耐震改修のCM実務</h1><p>耐震診断の結果を読み、補強・段階改修・建替えを比較する。</p></div>
+  <nav class="toc" aria-label="目次"><h2>目次</h2><ul><li><a href="#cm-visual-summary">図と比較表</a></li><li><a href="#part-1">建物の構造・建設時期・増改築履歴を調べる</a></li><li><a href="#part-2">診断数値を建物全体の平均で読まない</a></li><li><a href="#part-3">目標性能と営業上の優先を決める</a></li><li><a href="#part-4">架空事例｜低層部の弱点を補強</a></li><li><a href="#part-5">診断から設計・発注へつなぐ</a></li><li><a href="#part-6">施工中の仮設と隠蔽前の検査</a></li><li><a href="#part-7">診断・補強・維持管理の履歴を渡す</a></li><li><a href="#check">発注者チェック表</a></li><li><a href="#sources">一次資料</a></li></ul></nav>
+  
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">弱い階と方向を見つけて補強案を比較</h2><div class="cm-visual-term"><p><strong>耐震補強</strong> 地震の揺れに弱い部分を補い、安全性を高める工事です。どこを補うかは診断から検討します。</p>
+    <p><span>最初に開く資料</span> <b>耐震診断書</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="補強位置の立面図">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:19%;top:10.416666666666668%;width:64%;height:70.83333333333334%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:19%;top:33.33333333333333%;width:64%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:19%;top:56.25%;width:64%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:40%;top:10.416666666666668%;width:34%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:61%;top:10.416666666666668%;width:34%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:19%;top:81.25%;width:24.186773244895647%;transform:rotate(-0.5191461142465229rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:19%;top:56.25%;width:24.186773244895647%;transform:rotate(0.5191461142465229rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:3%;top:62.5%;width:13%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:13%;top:83.33333333333334%;width:76%;transform:rotate(0rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:30%;--field-y:68.75%" data-point aria-pressed="false" aria-label="1 弱点の出た階">1</button><button type="button" class="cm-field-marker" style="--field-x:50%;--field-y:16.666666666666664%" data-point aria-pressed="false" aria-label="2 柱・梁など">2</button><button type="button" class="cm-field-marker" style="--field-x:68%;--field-y:56.25%" data-point aria-pressed="false" aria-label="3 補強案の取合い">3</button>
+    </div>
+    <figcaption>補強位置の立面図（模式図） · 診断数値を階・方向ごとに読み、弱点と対策の場所を結びつけます。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>弱点の出た階</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>柱・梁など</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>補強案の取合い</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 弱点の出た階</strong> 診断結果を階と方向ごとに見ます。図では低層部の例です。</p><p data-point-note><strong>2 柱・梁など</strong> 人命安全を支える構造体と、落下対策等は分けて検討します。</p><p data-point-note><strong>3 補強案の取合い</strong> 補強位置と客室・入口・設備の移設を比較します。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">構造体</th><td>地震力を支える柱・梁・壁など</td></tr>
+<tr><th scope="row">非構造部材</th><td>天井、外壁、間仕切りなどの落下対策</td></tr>
+<tr><th scope="row">設備</th><td>機器の固定や配管、復旧と運転</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:58%;--spot-y:72%">●</span></div><figcaption>どの階・向きに弱点があるかを読み、補強位置と客室・通路への影響を重ねます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="1">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>全体平均は悪くありませんが、低層階の一方向で弱点が出ました。どう読みますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>平均値を使って改修不要と決める</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>階・方向・診断条件を確認し、弱点に対する補強案を比較する</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>階・方向・診断条件を確認し、弱点に対する補強案を比較する</strong></p><p>診断結果の数値だけで建物の判断を完結させず、診断方法・補強の条件・工事の営業影響を構造技術者と確認します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>耐震診断書</dd></div>
+        <div><dt>いつ確認するか</dt><dd>補強案や休館期間を選ぶ前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>構造技術者・発注者・施設運営者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 耐震診断書・補強計画・工区図</p>
+    </details>
+  </div>
+  </aside>
+<section class="sec" id="part-1"><h2>建物の構造・建設時期・増改築履歴を調べる</h2><p><strong>診断対象と、診断で確かめたいことを整理します。</strong></p><ul><li>建設・確認時期、構造図、増改築履歴を確認</li><li>用途・規模・指定路線等から法の対象を照合</li><li>現況調査と診断を構造技術者へ依頼</li></ul><p>建設時期から旧耐震の可能性を調べますが、確認時期や増築の履歴も見ます。耐震改修促進法上の診断義務は、対象の用途・規模、自治体の計画への記載等により判断します。指定や報告状況を所管に確認します。</p></section>
+<section class="sec" id="part-2"><h2>診断数値を建物全体の平均で読まない</h2><p><strong>階と方向の組み合わせで、弱点と根拠を見ます。</strong></p><table class="tbl"><thead><tr><th scope="col">確認欄</th><th scope="col">読み方</th></tr></thead><tbody><tr><td data-label="確認欄">階・方向別の診断結果</td><td data-label="読み方">低い箇所がどこに集中するか</td></tr><tr><td data-label="確認欄">判定指標と基準</td><td data-label="読み方">構造種別と診断方法ごとの判定条件を確認</td></tr><tr><td data-label="確認欄">調査前提・未確認範囲</td><td data-label="読み方">材料強度、劣化、増築接合部、基礎の扱い</td></tr></tbody></table><p>構造耐震指標Isなどの数値だけで判断せず、適用した診断法と判定基準、強度指標等の条件を確認します。計算上の弱点と現況のひび割れや腐食、材料調査の結果を合わせ、追加調査が必要か判断します。</p></section>
+<section class="sec" id="part-3"><h2>目標性能と営業上の優先を決める</h2><p><strong>人命安全、被災後の復旧と運営再開を設計者と整理します。</strong></p><table class="tbl"><thead><tr><th scope="col">目的</th><th scope="col">確認する範囲</th></tr></thead><tbody><tr><td data-label="目的">人命安全</td><td data-label="確認する範囲">倒壊の防止、避難経路、落下対策</td></tr><tr><td data-label="目的">被災後の運営</td><td data-label="確認する範囲">給水・電源・空調、機器固定、復旧条件</td></tr><tr><td data-label="目的">工事中の事業継続</td><td data-label="確認する範囲">工区、客室閉鎖、仮設、構造安全</td></tr></tbody></table><p>構造体と設備・非構造部材の性能は別々に確認します。天井、外装、設備機器の落下・転倒、配管損傷などが復旧を妨げるため、施設の運用を想定して対策の優先順位を決めます。</p></section>
+<section class="sec" id="part-4"><h2>架空事例｜低層部の弱点を補強</h2><p><strong>構造設計案を客室、入口、景観、営業と一緒に比べます。</strong></p><table class="tbl"><thead><tr><th scope="col">案の例</th><th scope="col">主な検討事項</th></tr></thead><tbody><tr><td data-label="案の例">内部に補強を配置</td><td data-label="主な検討事項">営業階や通路の改修、設備・仕上げの復旧</td></tr><tr><td data-label="案の例">外側に補強を配置</td><td data-label="主な検討事項">敷地余裕、基礎、景観、搬入</td></tr><tr><td data-label="案の例">建替えを比較</td><td data-label="主な検討事項">休業期間、許認可、更新による機能と収支</td></tr></tbody></table><p>丘の上ホテルの旧館に低層部の弱点が見つかった想定です。補強を優先するエリアと仮設、設備移設、補強後の動線を計画し、設備更新と同時に工事する場合のメリットと停止時間を比較します。</p></section>
+<section class="sec" id="part-5"><h2>診断から設計・発注へつなぐ</h2><p><strong>調査条件と補強目標を、設計・見積の前提に共有します。</strong></p><ul><li>既存図・調査範囲と判定を確定</li><li>補強目標・営業条件・手続を整理</li><li>採用案の検査計画と工区を見積へ</li></ul><p>認定や補助を利用する場合は、制度の対象、受付時期、契約・着工より前に必要な手続を自治体に確認します。認定を見込む案と通常の申請案の所要期間を比較します。</p></section>
+<section class="sec" id="part-6"><h2>施工中の仮設と隠蔽前の検査</h2><p><strong>補強部材だけでなく既存部との取り合いを確認します。</strong></p><table class="tbl"><thead><tr><th scope="col">検査対象</th><th scope="col">残す記録</th></tr></thead><tbody><tr><td data-label="検査対象">既存部との接合</td><td data-label="残す記録">下地調査、施工状況、検査結果</td></tr><tr><td data-label="検査対象">補強部材・基礎</td><td data-label="残す記録">製作承認図、材料、施工写真と試験</td></tr><tr><td data-label="検査対象">仕上げ・設備復旧</td><td data-label="残す記録">区画、避難、設備の再試験</td></tr></tbody></table><p>既存の構造を切り欠いたり荷重条件を変えたりする工事では、施工中の安全条件を設計者と確認します。現況が設計前提と違う場合は、現場で仕様が確定する前に構造技術者へ照会します。</p></section>
+<section class="sec" id="part-7"><h2>診断・補強・維持管理の履歴を渡す</h2><p><strong>次回改修に使える資料を工事完了時にそろえます。</strong></p><ul><li>診断報告と構造計算を保管</li><li>補強位置と検査を竣工図に記録</li><li>損傷の確認と地震後の運用判断を共有</li></ul><p>地震後に建物を使い続ける判断は専門家による評価などが必要です。担当者が最初に確認する範囲と、施設閉鎖や相談の連絡ルートを平時に決めておきます。</p></section>
+  <section class="sec" id="check"><h2>発注者チェック表</h2><table class="tbl"><thead><tr><th scope="col">段階</th><th scope="col">発注者の確認</th><th scope="col">残す成果物</th></tr></thead><tbody><tr><td data-label="段階">候補地・企画</td><td data-label="発注者の確認">診断の要否と対象を確認</td><td data-label="残す成果物">区域図、地番、現況、窓口一覧</td></tr><tr><td data-label="段階">基本設計</td><td data-label="発注者の確認">弱点を位置と方向で読む</td><td data-label="残す成果物">配置比較、判定の根拠、協議記録</td></tr><tr><td data-label="段階">発注・着工前</td><td data-label="発注者の確認">補強案と営業影響を比較</td><td data-label="残す成果物">承認図面、見積・工程、着手条件</td></tr><tr><td data-label="段階">施工変更・引渡し</td><td data-label="発注者の確認">変更時の再照会と条件の履行を確認</td><td data-label="残す成果物">竣工図、行政提出記録、維持管理台帳</td></tr></tbody></table><p>架空の「丘の上ホテル」は地上6階、延べ6,000㎡、100室。旧館の一部に事務所があります。 構造の改修費と併せて、客室停止・設備移設・内外装復旧・確認検査の費用を見積もります。</p><p>判定結果には根拠条項、窓口、回答日、対象図面の版、残っている条件を添えます。</p></section>
+  <section class="sec" id="sources"><h2>一次資料</h2><ul><li><a href="https://www.mlit.go.jp/jutakukentiku/build/taishin/taishin.htm">国土交通省 住宅・建築物の耐震化</a></li><li><a href="https://laws.e-gov.go.jp/law/407AC0000000123">e-Gov 建築物の耐震改修の促進に関する法律</a></li><li><a href="https://laws.e-gov.go.jp/law/325AC0000000201">e-Gov 建築基準法</a></li></ul><p>案件で適用する法令、条例、経過措置や申請の扱いは、設計者と所管に確認してください。</p></section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ</a><a href="seismic-retrofit-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

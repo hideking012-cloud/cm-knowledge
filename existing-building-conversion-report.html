@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>既存不適格・用途変更のCM実務 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 既存不適格・用途変更</div>
+    <nav class="nav" aria-label="サイト内リンク"><a href="index.html">CM知識一覧へ</a><a href="existing-building-conversion-slides.html">音声・図解スライド</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero"><span class="badge">詳細レポート</span><h1>既存不適格・用途変更のCM実務</h1><p>建物の履歴を裏付け、用途変更に必要な手続と改修範囲を見極める。</p></div>
+  <nav class="toc" aria-label="目次"><h2>目次</h2><ul><li><a href="#cm-visual-summary">図と比較表</a></li><li><a href="#part-1">まず当時の適合と変更履歴を調べる</a></li><li><a href="#part-2">検査済証が見つからない場合の資料</a></li><li><a href="#part-3">用途変更の確認申請と実体基準を分ける</a></li><li><a href="#part-4">現行基準の適用範囲を条項ごとに記録</a></li><li><a href="#part-5">架空事例｜旧館事務所を客室へ</a></li><li><a href="#part-6">購入・発注前に未確定事項を見える化</a></li><li><a href="#part-7">検査・営業開始・引渡しをつなぐ</a></li><li><a href="#check">発注者チェック表</a></li><li><a href="#sources">一次資料</a></li></ul></nav>
+  
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">当時の記録・現況・改修案を照合</h2><div class="cm-visual-term"><p><strong>用途変更</strong> 事務所を客室にするなど、建物やその一部の使い方を変えることです。</p>
+    <p><span>最初に開く資料</span> <b>確認申請図または既存の竣工図</b></p></div>
+    <div class="cm-visual-with-image"><div><figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="改修前後の平面比較">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:5%;top:16.666666666666664%;width:40%;height:58.333333333333336%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:5%;top:64.58333333333334%;width:40%;height:10.416666666666668%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:19%;top:16.666666666666664%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:32%;top:16.666666666666664%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:55%;top:16.666666666666664%;width:40%;height:58.333333333333336%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:55%;top:64.58333333333334%;width:40%;height:10.416666666666668%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:69%;top:16.666666666666664%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:82%;top:16.666666666666664%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:70%;top:18.75%;width:11%;height:43.75%"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:44%;top:41.66666666666667%;width:11%;transform:rotate(0rad)"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:24%;--field-y:39.58333333333333%" data-point aria-pressed="false" aria-label="1 確認図・現況">1</button><button type="button" class="cm-field-marker" style="--field-x:75%;--field-y:39.58333333333333%" data-point aria-pressed="false" aria-label="2 転用予定の区画">2</button><button type="button" class="cm-field-marker" style="--field-x:86%;--field-y:68.75%" data-point aria-pressed="false" aria-label="3 共用部・避難経路">3</button>
+    </div>
+    <figcaption>改修前後の平面比較（模式図） · 既存図と現況の相違を図面に記録し、用途変更と工事の手続を個別に確かめます。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>確認図・現況</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>転用予定の区画</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>共用部・避難経路</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 確認図・現況</strong> 元の用途、面積、実際の使い方を照合します。</p><p data-point-note><strong>2 転用予定の区画</strong> 変更部分の用途と面積を記録します。</p><p data-point-note><strong>3 共用部・避難経路</strong> 変更区画の外に波及する改修も調べます。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">当時</th><td>確認図にある用途・面積・避難</td></tr>
+<tr><th scope="row">現在</th><td>実測と現況の用途。増改築の記録</td></tr>
+<tr><th scope="row">計画</th><td>変更区画、避難経路、営業開始の条件</td></tr>
+  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:42%;--spot-y:41%">●</span></div><figcaption>変更する室から階段や屋外までを追い、変更区画の外への影響も見ます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
+    <div class="cm-field-case" data-answer="1">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>事務所を客室にしたいのですが、竣工図と実際の間仕切りが違います。先に何をしますか？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>古い図面のまま客室数を確定する</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>現況を実測し、手続と影響する範囲を建築士と整理する</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>現況を実測し、手続と影響する範囲を建築士と整理する</strong></p><p>確認・検査記録を集め、現況の用途・区画・避難を調べます。既存不適格の扱いは適用条項と根拠資料を分けて確認します。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>確認申請図または既存の竣工図</dd></div>
+        <div><dt>いつ確認するか</dt><dd>物件取得や新しい用途の確定前</dd></div>
+        <div><dt>誰と確認するか</dt><dd>建築士・確認窓口・施設運営者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 既存図・現況実測図・行政との協議記録</p>
+    </details>
+  </div>
+  </aside>
+<section class="sec" id="part-1"><h2>まず当時の適合と変更履歴を調べる</h2><p><strong>既存不適格と判断するには、基準時の状態と当時の法令を確認します。</strong></p><ul><li>確認・検査履歴を収集</li><li>用途と改修の履歴を時系列に並べる</li><li>法令の改正時点と現況を照合</li></ul><p>建設時や基準時に適法だった建物が、その後の法令改正等で既存不適格になることがあります。無断増築や当時からの不適合の疑いは、根拠を確認して個別に扱います。確認済証や検査済証の有無だけで適法性を結論付けず、現況と図面の差を調べます。</p></section>
+<section class="sec" id="part-2"><h2>検査済証が見つからない場合の資料</h2><p><strong>不足する証拠ごとに、調査方法と限界を記録します。</strong></p><table class="tbl"><thead><tr><th scope="col">資料</th><th scope="col">確認点</th></tr></thead><tbody><tr><td data-label="資料">行政の台帳記載事項・建築計画概要書</td><td data-label="確認点">確認・検査履歴と計画用途</td></tr><tr><td data-label="資料">確認図・竣工図・改修図</td><td data-label="確認点">増築面積、用途、区画・避難経路</td></tr><tr><td data-label="資料">現況調査</td><td data-label="確認点">実測、隠蔽部、設備、図面との差分</td></tr></tbody></table><p>国交省の既存建築物の現況調査ガイドラインをもとに、建築士と調査範囲を決めます。必要に応じて調査報告の扱いを確認審査機関に確認します。調査の限界、見えない部分、代替資料の出所を記録して、購入条件や工事費の幅に反映します。</p></section>
+<section class="sec" id="part-3"><h2>用途変更の確認申請と実体基準を分ける</h2><p><strong>法87条と法6条を照合し、用途・面積・類似用途の条件を確認します。</strong></p><table class="tbl"><thead><tr><th scope="col">判定</th><th scope="col">確認点</th></tr></thead><tbody><tr><td data-label="判定">用途をどう扱うか</td><td data-label="確認点">変更前後の実態、用途区分、類似用途の扱い</td></tr><tr><td data-label="判定">確認申請の要否</td><td data-label="確認点">対象特殊建築物、用途変更部分の床面積合計が200㎡を超えるか等</td></tr><tr><td data-label="判定">計画の基準適合</td><td data-label="確認点">用途地域、避難、防火、区画、採光・換気、条例</td></tr></tbody></table><p>確認申請が不要な場合でも、適用される建築基準・条例への適合は必要です。200平方メートルの判定に含める範囲、既存部分と新用途との関係は計画図で確認します。増築や大規模の修繕・模様替を伴う場合は、その工事に関する確認の要否も判定します。消防、保健所の旅館業、バリアフリー等は別途窓口と手続を整理します。</p></section>
+<section class="sec" id="part-4"><h2>現行基準の適用範囲を条項ごとに記録</h2><p><strong>緩和を使うときは、対象部位と成立条件を図面に残します。</strong></p><ul><li>工事の種類・範囲を確定</li><li>用途変更に関係する規定を照合</li><li>既存建築物の緩和条件を協議</li><li>追加改修の範囲と予算を更新</li></ul><p>法86条の7、87条と施行令等の適用を、用途変更や工事種別と対象規定に応じて設計者が確認します。既存不適格の継続を検討できる範囲と、是正・更新が必要な箇所を表にします。行政協議で使った図面の版と前提条件も添えます。</p></section>
+<section class="sec" id="part-5"><h2>架空事例｜旧館事務所を客室へ</h2><p><strong>事務所部分260㎡の転用案を、現用途で使う案と比較します。</strong></p><table class="tbl"><thead><tr><th scope="col">案</th><th scope="col">先に確認する点</th></tr></thead><tbody><tr><td data-label="案">260㎡を客室に変更</td><td data-label="先に確認する点">確認申請、区画と避難、旅館業手続</td></tr><tr><td data-label="案">事務所として改修・活用</td><td data-label="先に確認する点">工事種別、用途の実態、設備の再利用</td></tr><tr><td data-label="案">転用を見送って別区画を改修</td><td data-label="先に確認する点">客室数、既存動線、事業収支</td></tr></tbody></table><p>変更部分だけで収支を作ると、共用廊下や竪穴区画、避難階段、消防設備の改修費が漏れることがあります。変更部分と影響範囲を平面図・断面図に示し、代替案と比較して発注者が判断します。</p></section>
+<section class="sec" id="part-6"><h2>購入・発注前に未確定事項を見える化</h2><p><strong>追加調査と協議の結果を、事業判断の日程に結び付けます。</strong></p><table class="tbl"><thead><tr><th scope="col">残る論点</th><th scope="col">発注者が押さえる判断</th></tr></thead><tbody><tr><td data-label="残る論点">隠蔽部の構造・区画</td><td data-label="発注者が押さえる判断">先行開口の範囲と費用、復旧の要否</td></tr><tr><td data-label="残る論点">図面と現況の相違</td><td data-label="発注者が押さえる判断">調査・是正後の面積と用途を収支に反映</td></tr><tr><td data-label="残る論点">手続の成立が未確定</td><td data-label="発注者が押さえる判断">購入・発注の条件、見送りの判断日</td></tr></tbody></table><p>資料不足で単価や工期が決まらない箇所は、暫定条件と追加調査期限を明記します。手続の可否、許容する改修費、営業開始日を同じ比較表に入れ、前提が変わった場合の判断者を決めます。</p></section>
+<section class="sec" id="part-7"><h2>検査・営業開始・引渡しをつなぐ</h2><p><strong>申請図、実際の施工、運営時の使い方を照合します。</strong></p><ul><li>変更図と行政協議記録を保存</li><li>必要な検査・消防・営業手続を完了</li><li>工事後の用途・管理条件を運営に伝達</li></ul><p>竣工図に部屋用途、区画、避難経路を記載します。申請・協議の記録、点検・試験結果と未解決事項の一覧を管理者へ渡し、次の用途変更や改修にも使える建物履歴を作ります。</p></section>
+  <section class="sec" id="check"><h2>発注者チェック表</h2><table class="tbl"><thead><tr><th scope="col">段階</th><th scope="col">発注者の確認</th><th scope="col">残す成果物</th></tr></thead><tbody><tr><td data-label="段階">候補地・企画</td><td data-label="発注者の確認">建物履歴をそろえる</td><td data-label="残す成果物">区域図、地番、現況、窓口一覧</td></tr><tr><td data-label="段階">基本設計</td><td data-label="発注者の確認">条文ごとに適用を判定</td><td data-label="残す成果物">配置比較、判定の根拠、協議記録</td></tr><tr><td data-label="段階">発注・着工前</td><td data-label="発注者の確認">調査と改修費を確定</td><td data-label="残す成果物">承認図面、見積・工程、着手条件</td></tr><tr><td data-label="段階">施工変更・引渡し</td><td data-label="発注者の確認">変更時の再照会と条件の履行を確認</td><td data-label="残す成果物">竣工図、行政提出記録、維持管理台帳</td></tr></tbody></table><p>架空の「丘の上ホテル」は地上6階、延べ6,000㎡、100室。旧館の一部に事務所があります。 調査できない部位ごとに、追加調査の時期、代替資料、使用範囲の変更、価格・日程への影響を記録します。</p><p>判定結果には根拠条項、窓口、回答日、対象図面の版、残っている条件を添えます。</p></section>
+  <section class="sec" id="sources"><h2>一次資料</h2><ul><li><a href="https://laws.e-gov.go.jp/law/325AC0000000201">e-Gov 建築基準法</a></li><li><a href="https://www.mlit.go.jp/jutakukentiku/jutakukentiku_house_fr_000061.html">国土交通省 既存建築物の活用の促進</a></li><li><a href="https://www.mlit.go.jp/jutakukentiku/content/001911323.pdf">国土交通省 既存建築物の現況調査ガイドライン</a></li><li><a href="https://www.mlit.go.jp/jutakukentiku/content/001911324.pdf">国土交通省 既存不適格と緩和の解説</a></li><li><a href="https://laws.e-gov.go.jp/law/323AC0000000138">e-Gov 旅館業法</a></li></ul><p>案件で適用する法令、条例、経過措置や申請の扱いは、設計者と所管に確認してください。</p></section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ</a><a href="existing-building-conversion-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>

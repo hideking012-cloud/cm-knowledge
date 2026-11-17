@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>建築基準法8条・12条の維持保全と定期報告 | 詳細レポート</title>
+<style>
+:root{
+  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
+  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
+  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
+  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--green)}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
+.skip:focus{left:8px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.15)}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
+h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
+.hero p{margin:6px 0;color:var(--sub)}
+section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
+h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
+h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em}
+li{margin:3px 0}
+.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
+.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
+.toc li{break-inside:avoid}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
+.card p,.card ul{font-size:15px;margin:0}
+.card.a{background:var(--amber-l);border-color:#e7cf9f}
+.card.g{background:var(--green);color:#fff;border-color:var(--green)}
+.card.g h4{color:#fff}
+.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
+.callout.g{border-color:var(--green);background:var(--green-l)}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+.small{font-size:13.5px;color:var(--sub)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
+.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.tbl thead th{background:var(--green);color:#fff}
+.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
+.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.flow li b{display:block;color:var(--green-d)}
+.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
+.check td.box{width:2.4em;text-align:center}
+.check input{width:18px;height:18px;accent-color:var(--green)}
+.srclist li{margin:6px 0}
+.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
+.back{display:inline-block;margin-top:8px;font-size:14px}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc ol{columns:1}
+}
+@media (max-width:700px){
+  .topbar{position:static}
+  body{font-size:15px}
+  h1{font-size:24px}h2{font-size:20px}
+  .hero,section.sec{padding:18px 16px}
+  .flow{grid-template-columns:1fr}
+  .tbl-wrap{overflow:visible}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
+  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
+  .check td.box{width:100%;text-align:left}
+}
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
+  a{color:var(--ink)}
+}
+</style>
+<link rel="stylesheet" href="cm-visual-lessons.css">
+<script src="cm-field-cases.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar">
+  <div class="in">
+    <div class="brand">CM知識一覧 ｜ 建築基準法8条・12条</div>
+    <nav class="nav" aria-label="サイト内リンク">
+      <a href="index.html">CM知識一覧へ戻る</a>
+      <a href="article-8-12-slides.html">音声・図解スライド</a>
+      <a href="firefighting-equipment-slides.html">関連：消防設備</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero"><span class="badge">詳細レポート</span>
+<h1>建築基準法8条・12条の維持保全と定期報告</h1>
+<p class="callout">国の法令・告示を確認し、所在地の特定行政庁で追加指定、報告時期、提出様式を照合します。調査・検査の資格は区分ごとに確認します。</p></div>
+<nav aria-label="目次" class="toc">
+<h2 id="toc">目次</h2>
+<ol><li><a href="#cm-visual-summary">図と比較表</a></li>
+<li><a href="#art8">第8条：維持保全の義務</a></li>
+<li><a href="#art12">第12条：定期調査・検査と報告</a></li>
+<li><a href="#scope">対象・周期を確認する手順</a></li>
+<li><a href="#revision">告示見直しと自治体差</a></li>
+<li><a href="#fire-law">消防法点検との違い</a></li>
+<li><a href="#tech">技術論点：防火設備・排煙・建物本体</a></li>
+<li><a href="#correction">判定と要是正への対応</a></li>
+<li><a href="#ledger">年間台帳と引渡し</a></li>
+<li><a href="#case">仮想ホテルの例</a></li>
+<li><a href="#checklist">発注者チェック表</a></li>
+<li><a href="#sources">一次資料</a></li>
+</ol>
+</nav>
+
+
+<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
+    <h2 id="cm-visual-report-title" class="cm-visual-heading">日々の保全から、調査・報告・是正へ</h2><div class="cm-visual-term"><p><strong>定期報告</strong> 対象となる建物や設備を調査・検査し、結果を所管に報告する制度です。</p>
+    <p><span>最初に開く資料</span> <b>直近の定期調査報告書</b></p></div>
+    <figure class="cm-field">
+    <div class="cm-field-drawing" aria-label="保全と報告の流れ">
+      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:16.666666666666664%;width:25%;height:22.916666666666664%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:38%;top:16.666666666666664%;width:25%;height:22.916666666666664%"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:68%;top:16.666666666666664%;width:25%;height:22.916666666666664%"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:33%;top:27.083333333333332%;width:5%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:63%;top:27.083333333333332%;width:5%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:80%;top:41.66666666666667%;width:15%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:80%;top:72.91666666666666%;width:56%;transform:rotate(3.141592653589793rad)"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:60.416666666666664%;width:17%;height:22.916666666666664%"></i></div>
+      <button type="button" class="cm-field-marker" style="--field-x:20%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="1 日常の管理">1</button><button type="button" class="cm-field-marker" style="--field-x:50%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="2 定期報告">2</button><button type="button" class="cm-field-marker" style="--field-x:80%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="3 是正">3</button>
+    </div>
+    <figcaption>保全と報告の流れ（模式図） · 日常の管理と、対象建物に求められる定期報告は、担当・期限・記録を明確にしてつなぎます。</figcaption>
+    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>日常の管理</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>定期報告</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>是正</button></div>
+    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 日常の管理</strong> 異常や修繕の履歴を残し、建物を維持します。</p><p data-point-note><strong>2 定期報告</strong> 対象・報告時期・区分を所管の案内と照合します。</p><p data-point-note><strong>3 是正</strong> 不具合ごとに応急対応、担当、改善後の確認を記録します。</p></div>
+  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
+  <tr><th scope="row">法8条の維持保全</th><td>点検・修繕を日常管理に組み込む</td></tr>
+<tr><th scope="row">法12条の定期報告</th><td>所管で対象・区分・期間を確認</td></tr>
+<tr><th scope="row">不具合が出た後</th><td>応急、改修、再確認を台帳で追う</td></tr>
+  </tbody></table>
+    <div class="cm-field-case" data-answer="0">
+    <h3 class="cm-visual-heading">事例で考える</h3>
+    <p>定期報告で外壁の指摘が出ました。報告書を提出した次は？</p>
+    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
+      <button type="button" data-case-choice aria-pressed="false"><b>A</b>危険の有無を確認し、是正担当と期限を決める</button>
+      <button type="button" data-case-choice aria-pressed="false"><b>B</b>次の定期報告まで書類だけ保管する</button>
+    </div>
+    <p class="cm-case-result" data-case-result aria-live="polite"></p>
+    <details><summary>解説と、確認に使う資料</summary>
+      <p><strong>危険の有無を確認し、是正担当と期限を決める</strong></p><p>報告書は不具合を見つける手掛かりです。必要な安全措置を検討し、修繕後の確認まで台帳で追います。</p>
+      <dl class="cm-case-guide">
+        <div><dt>最初に開く資料</dt><dd>直近の定期調査報告書</dd></div>
+        <div><dt>いつ確認するか</dt><dd>指摘事項を受け取った時点</dd></div>
+        <div><dt>誰と確認するか</dt><dd>所有者・施設管理者・調査者</dd></div>
+      </dl>
+      <p class="cm-case-docs"><strong>関連資料</strong> 報告書・修繕台帳・是正後の写真</p>
+    </details>
+  </div>
+  </aside>
+<section id="art8" class="sec">
+<h2>1. 第8条：維持保全の義務</h2>
+<p><strong>1項</strong>は、建築物の所有者・管理者・占有者に対し、敷地・構造・建築設備を常時適法な状態に維持するよう努める努力義務を定めています。</p>
+<p><strong>2項</strong>は、12条1項に規定する建築物の所有者・管理者に、必要に応じて維持保全に関する準則または計画を作成し、その他適切な措置を講じることを求めています。準則・計画の内容は国交省の維持保全指針を基に、組織体制、点検・修繕の方法、記録の保存などを定めます。</p>
+</section>
+
+<section id="art12" class="sec">
+<h2>2. 第12条：定期調査・検査と報告</h2>
+<table class="tbl">
+<thead><tr><th>項</th><th>対象</th><th>行為</th><th>報告先</th></tr></thead><tbody>
+<tr><td data-label="項">1項</td><td data-label="対象">政令で定める建築物、特定行政庁が指定する建築物</td><td data-label="行為">建築物の定期調査</td><td data-label="報告先">特定行政庁</td></tr>
+<tr><td data-label="項">3項</td><td data-label="対象">建築設備、昇降機等、防火設備</td><td data-label="行為">定期検査</td><td data-label="報告先">特定行政庁</td></tr>
+<tr><td data-label="項">2項・4項</td><td data-label="対象">国・都道府県・建築主事を置く市町村の建築物等</td><td data-label="行為">定期点検</td><td data-label="報告先">対象・周期を別途確認</td></tr>
+</tbody></table>
+<p>報告義務者は所有者ですが、所有者と管理者が異なる場合は管理者です。信託物件やPM・CM受託物件では、誰が報告者欄に記載されるかを契約と実態で確認します。調査・検査は建築士または各区分の調査員・検査員が行います。</p>
+</section>
+
+<section id="scope" class="sec">
+<h2>3. 対象・周期を確認する手順</h2>
+<ol>
+<li>国が政令で定める対象（用途・規模・階）に該当するか確認する。</li>
+<li>特定行政庁の規則・告示による追加指定を確認する。</li>
+<li>建築物調査と各設備検査の報告周期・時期を所管庁で確認する。</li>
+<li>最新の報告書・概要書・添付書類の様式を入手する。</li>
+<li>委託先の資格区分が報告の種類に合っているか確認する。</li>
+<li>結果を年間台帳に登録し、次回時期と是正状況を管理する。</li>
+</ol>
+<p>他の自治体の周期や過去の慣例を流用せず、施設ごとに所管庁の最新情報で判断します。</p>
+</section>
+
+<section id="revision" class="sec">
+<h2>4. 告示見直しと自治体差</h2>
+<p>令和7年7月施行の国交省告示（令和7年告示第53号）で調査・検査項目が見直されました。委託先の調査票・検査票が改正後の項目に対応しているかを発注時に確認します。</p>
+<p>国の告示では各階の主要な常時閉鎖式防火扉を、防火設備定期検査の項目に移しました。実際にどの報告で扱うかは、特定行政庁の指定と最新の調査票・検査票を確認します。東京都では特定建築物の調査項目として扱う場合があり、全国一律とはなりません。複数自治体に施設がある場合は、施設ごとに計上先を台帳へ記録します。</p>
+</section>
+
+<section id="fire-law" class="sec">
+<h2>5. 消防法点検との違い</h2>
+<table class="tbl">
+<thead><tr><th>項目</th><th>建築基準法12条</th><th>消防法（消防用設備等点検）</th></tr></thead><tbody>
+<tr><td data-label="項目">主眼</td><td data-label="建築基準法12条">建築物・設備の安全、在館者の避難</td><td data-label="消防法（消防用設備等点検）">消防用設備等の機能、消防活動の支援</td></tr>
+<tr><td data-label="項目">報告先</td><td data-label="建築基準法12条">特定行政庁</td><td data-label="消防法（消防用設備等点検）">消防長または消防署長</td></tr>
+<tr><td data-label="項目">実施者</td><td data-label="建築基準法12条">建築士、各調査員・検査員</td><td data-label="消防法（消防用設備等点検）">消防設備士、消防設備点検資格者</td></tr>
+<tr><td data-label="項目">重なる領域</td><td data-label="建築基準法12条">防火戸本体・閉鎖機構、建築基準法上の排煙</td><td data-label="消防法（消防用設備等点検）">連動する感知器・制御盤、消防法上の排煙</td></tr>
+</tbody></table>
+<p>防火戸や排煙は両制度にまたがります。一方の点検で他方を代替せず、両方の報告書を突き合わせて漏れや矛盾を確認します。</p>
+</section>
+
+<section id="tech" class="sec">
+<h2>6. 技術論点：防火設備・排煙・建物本体</h2>
+<h3 id="tech-fire-door">防火設備</h3>
+<ul>
+<li>扉の可動範囲やシャッター直下への物品放置（閉鎖障害）。</li>
+<li>随時閉鎖式の感知器連動、制御器、予備電源の状態。</li>
+<li>シャッターの危害防止装置、くぐり戸の自閉。</li>
+<li>常時閉鎖式扉へのドアストッパー設置など運用上の不備。</li>
+</ul>
+<h3 id="tech-smoke">排煙設備</h3>
+<ul>
+<li>排煙口・手動開放装置の前の障害物、使用方法の表示。</li>
+<li>機械排煙の連動、非常電源への切替。</li>
+<li>改修による間仕切り・天井変更で防煙区画や排煙の前提が崩れていないか。</li>
+</ul>
+<h3 id="tech-building">建物本体</h3>
+<ul>
+<li>外壁の浮き・剥落、屋上・パラペットの劣化。</li>
+<li>避難経路・階段の物品、防火区画の貫通部処理。</li>
+</ul>
+</section>
+
+<section id="correction" class="sec">
+<h2>7. 判定と要是正への対応</h2>
+<table class="tbl">
+<thead><tr><th>区分</th><th>意味</th><th>対応</th></tr></thead><tbody>
+<tr><td data-label="区分">指摘なし</td><td data-label="意味">基準に適合し状態良好</td><td data-label="対応">記録保存</td></tr>
+<tr><td data-label="区分">要重点点検</td><td data-label="意味">次回までに不具合のおそれ</td><td data-label="対応">日常点検・巡回強化</td></tr>
+<tr><td data-label="区分">要是正</td><td data-label="意味">基準不適合・機能低下</td><td data-label="対応">安全措置と是正工事</td></tr>
+<tr><td data-label="区分">既存不適格</td><td data-label="意味">設置時適法、現行基準に不適合</td><td data-label="対応">改修計画へ組み込み</td></tr>
+</tbody></table>
+<p>区分名や記載方法は所管庁の様式・作成要領で確認します。</p>
+<h3 id="priority">優先順位</h3>
+<ol>
+<li><strong>人命直結</strong>：避難経路の閉塞、防火戸の閉鎖障害、連動・排煙の不作動。即日に安全措置。</li>
+<li><strong>機能低下</strong>：部品劣化、表示不良、予備電源の不足。期限を決めて修繕。</li>
+<li><strong>計画改善</strong>：既存不適格、更新時期の設備。中長期の改修計画へ。</li>
+</ol>
+<h3 id="safety">安全措置と再確認</h3>
+<p>物品撤去、立入制限、巡回強化、防火管理者・運営部門への周知を行います。是正後は作動確認と写真で記録し、次回報告で是正状況を説明できる状態にします。</p>
+</section>
+
+<section id="ledger" class="sec">
+<h2>8. 年間台帳と引渡し</h2>
+<table class="tbl">
+<thead><tr><th>列</th><th>内容</th></tr></thead><tbody>
+<tr><td data-label="列">区分</td><td data-label="内容">12条1項／3項（建築設備・昇降機等・防火設備）／消防法点検</td></tr>
+<tr><td data-label="列">根拠・所管</td><td data-label="内容">政令／追加指定、特定行政庁・消防署</td></tr>
+<tr><td data-label="列">時期</td><td data-label="内容">所管庁で確認した報告時期・提出期限</td></tr>
+<tr><td data-label="列">実施者・資格</td><td data-label="内容">委託先と資格区分</td></tr>
+<tr><td data-label="列">判定・是正</td><td data-label="内容">指摘、優先度、措置、完了確認日</td></tr>
+</tbody></table>
+<p>改修工事の完了時や担当交代時は、確認済証・検査済証、竣工図、前回報告書副本、消防点検報告書、是正履歴、防火設備の認定情報を一式で引き渡します。改修で区画・設備が変わった場合は、次回調査・検査の委託先へ変更点を伝えます。</p>
+</section>
+
+<section id="case" class="sec">
+<h2>9. 仮想ホテルの例（架空事例）</h2>
+<p><strong>前提：</strong>客室・宴会場・レストランを持つ中層ホテル。機械排煙、随時閉鎖式防火シャッター、常時閉鎖式防火扉、エレベーターを備える。</p>
+<p><strong>区分：</strong>建物本体は12条1項の調査、機械排煙・非常照明等は建築設備、シャッターは防火設備、エレベーターは昇降機等の検査。常時閉鎖式防火扉の扱いは所管庁の取扱いを確認。自動火災報知設備や連動感知器は消防法点検。</p>
+<p><strong>指摘例と対応：</strong>宴会場シャッター下の備品は即日撤去し、宴会設営図に禁止範囲を明示。排煙の手動開放装置前の什器は配置替え。常閉扉のドアストッパーは撤去し、運営部門に理由を周知。是正後に作動確認し台帳を更新します。</p>
+</section>
+
+<section id="checklist" class="sec">
+<h2>10. 発注者チェック表</h2>
+<table class="tbl">
+<thead><tr><th>No.</th><th>確認項目</th><th>確認先</th><th>可否</th></tr></thead><tbody>
+<tr><td data-label="No.">1</td><td data-label="確認項目">報告義務者（所有者／管理者）が明確か</td><td data-label="確認先">契約書・管理委託書</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">2</td><td data-label="確認項目">政令対象・追加指定を確認したか</td><td data-label="確認先">特定行政庁</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">3</td><td data-label="確認項目">報告周期・時期・様式が最新か</td><td data-label="確認先">特定行政庁・受付機関</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">4</td><td data-label="確認項目">告示改正後の調査・検査項目に対応しているか</td><td data-label="確認先">委託先</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">5</td><td data-label="確認項目">常時閉鎖式防火扉などの計上先を確認したか</td><td data-label="確認先">特定行政庁</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">6</td><td data-label="確認項目">委託先の資格区分が報告種類に合うか</td><td data-label="確認先">委託先</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">7</td><td data-label="確認項目">消防法点検の結果と突き合わせたか</td><td data-label="確認先">消防設備点検報告</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">8</td><td data-label="確認項目">要是正に優先度・安全措置・期限を付けたか</td><td data-label="確認先">年間台帳</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">9</td><td data-label="確認項目">是正後の作動確認・写真記録があるか</td><td data-label="確認先">是正報告</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">10</td><td data-label="確認項目">8条2項の準則・計画が整備されているか</td><td data-label="確認先">維持保全計画</td><td data-label="可否">□</td></tr>
+<tr><td data-label="No.">11</td><td data-label="確認項目">改修による区画・設備の変更を次回委託先へ伝えたか</td><td data-label="確認先">引渡し書類</td><td data-label="可否">□</td></tr>
+</tbody></table>
+</section>
+
+<section id="sources" class="sec">
+<h2>11. 一次資料</h2>
+<ul>
+<li><a href="https://laws.e-gov.go.jp/law/325AC0000000201">e-Gov法令検索：建築基準法</a></li>
+<li><a href="https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000039.html">国土交通省：建築基準法に基づく定期報告制度について</a></li>
+<li><a href="https://www.mlit.go.jp/notice/noticedata/pdf/201703/00006633.pdf">国土交通省：建築物の維持保全に関する準則又は計画の作成に関し必要な指針</a></li>
+<li><a href="https://www.toshiseibi.metro.tokyo.lg.jp/kenchiku_kaihatsu/kenchiku_kakunin/chousa-houkoku/2">東京都都市整備局：定期報告制度（自治体の取扱い例）</a></li>
+</ul>
+</section>
+</main>
+<footer><p><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="article-8-12-slides.html">音声・図解スライド</a></p></footer>
+</body>
+</html>
