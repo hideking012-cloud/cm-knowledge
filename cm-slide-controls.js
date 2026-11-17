@@ -10,7 +10,7 @@
     if(i<0||i>=slides.length)return;
     idx=i;
     slides.forEach(function(s,k){s.classList.toggle('active',k===i)});
-    if(!document.body.classList.contains('list'))slides[i].scrollTop=0;
+    requestSlideFit();
     $('count').textContent=(i+1)+' / '+slides.length;
     $('prev').disabled=(i===0);$('next').disabled=(i===slides.length-1);
     if(history.replaceState)history.replaceState(null,'','#s'+(i+1));
@@ -84,7 +84,7 @@
   $('next').addEventListener('click',function(){show(idx+1)});
   document.addEventListener('keydown',function(e){
     if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.target.classList.contains('diagram'))return;
-    if((e.key==='PageUp'||e.key==='PageDown')&&!document.body.classList.contains('list')&&e.target.closest('#deck > .slide'))return;
+    if(e.key==='Escape'&&document.body.classList.contains('cm-fullscreen')&&!document.fullscreenElement){setFullscreen(false);return;}
     if(e.key==='ArrowRight'||e.key==='PageDown'){show(idx+1);e.preventDefault()}
     if(e.key==='ArrowLeft'||e.key==='PageUp'){show(idx-1);e.preventDefault()}
   });
@@ -134,6 +134,79 @@
   document.querySelectorAll('[data-jump]').forEach(function(link){
     link.addEventListener('click',function(e){e.preventDefault();show(Number(link.dataset.jump)-1)})
   });
+
+  /* --- Fit one 16:9 frame and keep the reading view unscaled --- */
+  var deck = $('deck');
+  var pager = document.querySelector('.pager');
+  var controls = document.querySelector('.controls');
+  var format = deck.querySelector('.cm-slide-format span');
+  if(format)format.textContent='一覧表示で本文を大きく読めます';
+  var fullscreenButton=document.createElement('button');
+  fullscreenButton.type='button';
+  fullscreenButton.className='btn';
+  fullscreenButton.id='tFullscreen';
+  fullscreenButton.setAttribute('aria-pressed','false');
+  fullscreenButton.textContent='フル画面';
+  pager.querySelector('.in').appendChild(fullscreenButton);
+
+  var sheets=slides.map(function(slide){
+    var sheet=document.createElement('div');
+    sheet.className='cm-slide-sheet';
+    while(slide.firstChild)sheet.appendChild(slide.firstChild);
+    slide.appendChild(sheet);
+    return sheet;
+  });
+  document.body.classList.add('cm-fit-ready');
+
+  function setFullscreen(on){
+    document.body.classList.toggle('cm-fullscreen',on);
+    fullscreenButton.setAttribute('aria-pressed',String(on));
+    fullscreenButton.textContent=on?'フル画面を終了':'フル画面';
+    window.scrollTo(0,0);
+    requestSlideFit();
+  }
+  fullscreenButton.addEventListener('click',function(){
+    if(document.body.classList.contains('cm-fullscreen')){
+      setFullscreen(false);
+      if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});
+      return;
+    }
+    if(document.body.classList.contains('list'))toggleList(false);
+    setFullscreen(true);
+    if(document.documentElement.requestFullscreen&&!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(function(){});
+    }
+  });
+  document.addEventListener('fullscreenchange',function(){setFullscreen(!!document.fullscreenElement);});
+
+  var fitFrame=0;
+  function requestSlideFit(){
+    cancelAnimationFrame(fitFrame);
+    fitFrame=requestAnimationFrame(fitSlide);
+  }
+  function fitSlide(){
+    if(document.body.classList.contains('list'))return;
+    var slide=slides[idx],sheet=sheets[idx];
+    var deckStyle=getComputedStyle(deck);
+    var availableWidth=deck.clientWidth-parseFloat(deckStyle.paddingLeft)-parseFloat(deckStyle.paddingRight);
+    var availableHeight=pager.getBoundingClientRect().top-slide.getBoundingClientRect().top-8;
+    var width=Math.min(availableWidth,Math.max(100,availableHeight)*16/9);
+    deck.style.setProperty('--cm-fitted-width',Math.floor(width)+'px');
+    var maxWidth=slide.clientWidth;
+    sheet.style.width=Math.max(maxWidth,Math.min(740,maxWidth*1.28))+'px';
+    var scale=Math.min(1,(maxWidth-2)/Math.max(sheet.offsetWidth,sheet.scrollWidth),
+      (slide.clientHeight-2)/Math.max(sheet.offsetHeight,sheet.scrollHeight));
+    sheet.style.setProperty('--cm-sheet-scale',String(Math.max(.025,scale)));
+  }
+  if(window.ResizeObserver){
+    var fitObserver=new ResizeObserver(requestSlideFit);
+    sheets.forEach(function(sheet){fitObserver.observe(sheet);});
+    fitObserver.observe(pager);
+    if(controls)fitObserver.observe(controls);
+  }
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(requestSlideFit);
+  window.addEventListener('resize',requestSlideFit);
+  deck.addEventListener('toggle',requestSlideFit,true);
 
   /* --- start --- */
   slides.forEach(function(slide){slide.tabIndex=0;});
