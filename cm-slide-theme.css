@@ -76,10 +76,23 @@ a { color: var(--green); text-underline-offset: .23em; }
     overflow:auto;
     overscroll-behavior:contain;
     scrollbar-gutter:stable;
+    padding:clamp(.7rem,1.7vw,1.4rem);
   }
+  body:not(.list) #deck > .slide.active h1 {font-size:clamp(1.32rem,3.3vw,2.8rem)}
+  body:not(.list) #deck > .slide.active .cm-field {max-width:35rem}
   body:not(.list) #deck > .slide.active:focus-visible {
     outline:2px solid var(--green);
     outline-offset:3px;
+  }
+}
+@media screen and (min-width:701px) {
+  body:not(.list) #deck {
+    --cm-stage-width:min(100%,max(30rem,calc((100svh - 17rem) * 16 / 9)));
+  }
+  body:not(.list) #deck > .slide.active,
+  body:not(.list) #deck > .cm-slide-format {
+    width:var(--cm-stage-width);
+    margin-inline:auto;
   }
 }
 .slide.active { animation: cm-slide-in 240ms ease-out both; }
