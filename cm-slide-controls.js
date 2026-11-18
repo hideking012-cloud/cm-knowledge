@@ -2,9 +2,19 @@
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var idx=0, playing=false, token=0;
-  var synth=('speechSynthesis' in window)?window.speechSynthesis:null;
+  var synth=('speechSynthesis' in window&&typeof SpeechSynthesisUtterance!=='undefined')?window.speechSynthesis:null;
   var $=function(id){return document.getElementById(id)};
-  var cap=$('caption'), capOn=true, auto=false;
+  var cap=$('caption'), auto=false, captionTimer=0, currentCaption='';
+  function readPreference(key){
+    try{return localStorage.getItem(key)}catch(e){return null}
+  }
+  function savePreference(key,value){
+    try{localStorage.setItem(key,value)}catch(e){}
+  }
+  var capOn=readPreference('cmKnowledgeCaptions')!=='off';
+  cap.removeAttribute('role');
+  cap.setAttribute('aria-live','off');
+  cap.setAttribute('aria-label','ナレーション字幕');
 
   function show(i,keepSpeech){
     if(i<0||i>=slides.length)return;
@@ -16,10 +26,14 @@
     if(history.replaceState)history.replaceState(null,'','#s'+(i+1));
     if(!document.body.classList.contains('list'))window.scrollTo(0,0);
     if(playing&&!keepSpeech){speakSlide(i)}
+    else if(!playing){startSilentCaptions(i)}
   }
   /* --- speech --- */
-  var voices=[], preferredVoice='';
-  try{preferredVoice=localStorage.getItem('cmKnowledgeJapaneseVoice')||''}catch(e){}
+  var voices=[], preferredVoice=readPreference('cmKnowledgeJapaneseVoice')||'';
+  var rate=$('rate'), rates=['0.75','1','1.25','1.5','2'];
+  rate.replaceChildren(...rates.map(function(value){return new Option(value+'倍',value)}));
+  var savedRate=readPreference('cmKnowledgeNarrationRate');
+  rate.value=rates.includes(savedRate)?savedRate:'1';
   function loadVoices(){
     if(!synth)return;
     var sel=$('voice');
@@ -39,43 +53,75 @@
   else{$('play').disabled=true;$('voiceNote').textContent='このブラウザーは音声読み上げに対応していません。各スライドの「原稿」をご覧ください。';}
 
   function sentences(i){
-    var el=slides[i].querySelector('.say');var t=el?el.textContent.replace(/\s+/g,''):'';
+    var el=slides[i].querySelector('.say');var t=el?el.textContent.replace(/\s+/g,' ').trim():'';
     return (t.match(/[^。！？]+[。！？]?/g)||[]).filter(function(s){return s.length});
+  }
+  function startSilentCaptions(i){
+    clearTimeout(captionTimer);
+    currentCaption='';
+    if(!capOn||document.body.classList.contains('list')){renderCaption();return}
+    var list=sentences(i), n=0;
+    function next(){
+      currentCaption=list[n]||'';
+      renderCaption();
+      if(n<list.length-1){
+        captionTimer=setTimeout(next,Math.max(2200,list[n].length*135));
+        n++;
+      }
+    }
+    next();
   }
   function speakSlide(i){
     if(!synth)return;
+    clearTimeout(captionTimer);
     var my=++token;synth.cancel();
     var list=sentences(i), n=0;
+    currentCaption=list[0]||'';renderCaption();
     function next(){
       if(my!==token)return;
       if(n>=list.length){
-        hideCap();
         if(auto&&idx<slides.length-1){show(idx+1,true);speakSlide(idx);}
         else{setPlaying(false);}
         return;
       }
       var u=new SpeechSynthesisUtterance(list[n]);
-      u.lang='ja-JP';u.rate=parseFloat($('rate').value)||1;
+      u.lang='ja-JP';u.rate=Number(rate.value);
       var selected=voices.find(function(v){return v.voiceURI===preferredVoice})||voices.find(function(v){return v.default})||voices[0];if(selected)u.voice=selected;
       u.onend=function(){n++;next()};
-      u.onerror=function(){if(my!==token)return;setPlaying(false);hideCap();$('voiceNote').textContent='再生できませんでした。端末の音声設定を確認してください。'};
-      if(capOn){cap.textContent=list[n];cap.classList.add('show')}
+      u.onerror=function(){if(my!==token)return;setPlaying(false);startSilentCaptions(idx);$('voiceNote').textContent='再生できませんでした。端末の音声設定を確認してください。'};
+      u.onstart=function(){if(my===token){currentCaption=u.text;renderCaption()}};
       synth.speak(u);
     }
     next();
   }
-  function hideCap(){cap.classList.remove('show');cap.textContent=''}
+  function renderCaption(){
+    var line=capOn&&!document.body.classList.contains('list')?currentCaption:'';
+    cap.textContent=line;
+    cap.classList.toggle('show',Boolean(line));
+    requestSlideFit();
+  }
   function setPlaying(p){playing=p;$('play').textContent=p?'▶ 読み上げ中':'▶ 読み上げ開始';$('play').setAttribute('aria-pressed',p?'true':'false')}
   $('play').addEventListener('click',function(){if(!synth)return;loadVoices();if(document.body.classList.contains('list'))toggleList(false);setPlaying(true);speakSlide(idx)});
-  $('stop').addEventListener('click',function(){token++;if(synth)synth.cancel();setPlaying(false);hideCap()});
-  $('rate').addEventListener('change',function(){if(playing)speakSlide(idx)});
-  $('voice').addEventListener('change',function(){preferredVoice=this.value;try{localStorage.setItem('cmKnowledgeJapaneseVoice',preferredVoice)}catch(e){}if(playing)speakSlide(idx)});
+  $('stop').addEventListener('click',function(){token++;if(synth)synth.cancel();setPlaying(false);startSilentCaptions(idx)});
+  rate.addEventListener('change',function(){savePreference('cmKnowledgeNarrationRate',rate.value);if(playing)speakSlide(idx)});
+  $('voice').addEventListener('change',function(){preferredVoice=this.value;savePreference('cmKnowledgeJapaneseVoice',preferredVoice);if(playing)speakSlide(idx)});
 
   function bindToggle(id,fn){var b=$(id);b.addEventListener('click',function(){var v=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(v));fn(v)})}
-  bindToggle('tCap',function(v){capOn=v;if(!v)hideCap()});
+  var capToggle=$('tCap');
+  function labelCaptions(){
+    capToggle.textContent=capOn?'字幕 ON':'字幕 OFF';
+    capToggle.setAttribute('aria-pressed',String(capOn));
+  }
+  labelCaptions();
+  bindToggle('tCap',function(v){
+    capOn=v;
+    savePreference('cmKnowledgeCaptions',v?'on':'off');
+    labelCaptions();
+    if(playing){renderCaption()}else{startSilentCaptions(idx)}
+  });
   bindToggle('tAuto',function(v){auto=v});
   bindToggle('tMotion',function(v){document.body.classList.toggle('reduce',v)});
-  function toggleList(v){$('tList').setAttribute('aria-pressed',String(v));document.body.classList.toggle('list',v);if(!v)show(idx,true);else{token++;if(synth)synth.cancel();setPlaying(false);hideCap()}}
+  function toggleList(v){$('tList').setAttribute('aria-pressed',String(v));document.body.classList.toggle('list',v);if(!v)show(idx,true);else{token++;if(synth)synth.cancel();setPlaying(false);startSilentCaptions(idx)}}
   bindToggle('tList',function(v){toggleList(v)});
   var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
   if(mq&&mq.matches){document.body.classList.add('reduce');$('tMotion').setAttribute('aria-pressed','true')}
@@ -189,7 +235,9 @@
     var slide=slides[idx],sheet=sheets[idx];
     var deckStyle=getComputedStyle(deck);
     var availableWidth=deck.clientWidth-parseFloat(deckStyle.paddingLeft)-parseFloat(deckStyle.paddingRight);
-    var availableHeight=pager.getBoundingClientRect().top-slide.getBoundingClientRect().top-8;
+    cap.style.setProperty('--cm-caption-bottom',pager.offsetHeight+'px');
+    var captionHeight=cap.classList.contains('show')?cap.offsetHeight+8:0;
+    var availableHeight=pager.getBoundingClientRect().top-slide.getBoundingClientRect().top-8-captionHeight;
     var width=Math.min(availableWidth,Math.max(100,availableHeight)*16/9);
     deck.style.setProperty('--cm-fitted-width',Math.floor(width)+'px');
     var maxWidth=slide.clientWidth;

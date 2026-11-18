@@ -120,7 +120,14 @@ a { color: var(--green); text-underline-offset: .23em; }
   }
   body.cm-fullscreen > .topbar,body.cm-fullscreen > .controls {display:none}
   body.cm-fullscreen #deck {max-width:none;padding-top:8px}
-  body.cm-fullscreen .caption {max-width:85vw}
+  body.cm-fit-ready .caption {
+    bottom:var(--cm-caption-bottom,74px);
+    width:min(92vw,52rem);
+    padding:.35rem .75rem;
+    font-size:clamp(.85rem,1.45vw,1.1rem);
+    line-height:1.45;
+    text-align:center;
+  }
   #tFullscreen {white-space:nowrap}
 }
 .slide.active { animation: cm-slide-in 240ms ease-out both; }
