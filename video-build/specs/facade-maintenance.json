@@ -1,0 +1,86 @@
+{
+  "kicker": "外壁点検・外壁補修",
+  "footnote": "仮想ホテルの説明用モデル。範囲・工法は調査結果と特記仕様で確定します。",
+  "steps": [
+    {
+      "label": "危害範囲",
+      "title": "人が通る範囲を確かめる",
+      "say": "まず、外壁の高さのおおむね半分の範囲に、人が通る場所があるかを確かめます。",
+      "checks": [
+        [
+          "危害範囲を図面で照合",
+          "壁面高さのおおむね1/2の水平距離"
+        ],
+        [
+          "歩道・車寄せ・出入口",
+          "不特定多数が通る場所"
+        ],
+        [
+          "強固な庇の下は除外を検討",
+          "庇自体の強度確認が前提"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><rect x='40' y='30' width='130' height='370' fill='#3b4d7c' stroke='#8ea3cf' stroke-width='3'/><rect x='60' y='50' width='26' height='24' fill='#1d3a74'/><rect x='100' y='50' width='26' height='24' fill='#1d3a74'/><rect x='140' y='50' width='26' height='24' fill='#1d3a74'/><rect x='60' y='92' width='26' height='24' fill='#1d3a74'/><rect x='100' y='92' width='26' height='24' fill='#1d3a74'/><rect x='140' y='92' width='26' height='24' fill='#1d3a74'/><rect x='60' y='134' width='26' height='24' fill='#1d3a74'/><rect x='100' y='134' width='26' height='24' fill='#1d3a74'/><rect x='140' y='134' width='26' height='24' fill='#1d3a74'/><rect x='60' y='176' width='26' height='24' fill='#1d3a74'/><rect x='100' y='176' width='26' height='24' fill='#1d3a74'/><rect x='140' y='176' width='26' height='24' fill='#1d3a74'/><rect x='60' y='218' width='26' height='24' fill='#1d3a74'/><rect x='100' y='218' width='26' height='24' fill='#1d3a74'/><rect x='140' y='218' width='26' height='24' fill='#1d3a74'/><rect x='60' y='260' width='26' height='24' fill='#1d3a74'/><rect x='100' y='260' width='26' height='24' fill='#1d3a74'/><rect x='140' y='260' width='26' height='24' fill='#1d3a74'/><rect x='60' y='302' width='26' height='24' fill='#1d3a74'/><rect x='100' y='302' width='26' height='24' fill='#1d3a74'/><rect x='140' y='302' width='26' height='24' fill='#1d3a74'/><rect x='60' y='344' width='26' height='24' fill='#1d3a74'/><rect x='100' y='344' width='26' height='24' fill='#1d3a74'/><rect x='140' y='344' width='26' height='24' fill='#1d3a74'/><line x1='0' y1='400' x2='540' y2='400' stroke='#8ea3cf' stroke-width='4'/><g data-in='0.1'><line x1='20' y1='30' x2='20' y2='400' stroke='#f5b942' stroke-width='3'/><text x='28' y='20' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>H</text></g><g data-in='0.25'><path d='M170 30 L355 400 L170 400 z' fill='#ff6b6b' opacity='.18'/><path d='M170 30 L355 400' stroke='#ff6b6b' stroke-width='3' stroke-dasharray='10 6'/></g><g data-in='0.35'><line x1='170' y1='420' x2='355' y2='420' stroke='#ff6b6b' stroke-width='3'/><text x='262' y='440' fill='#ff6b6b' font-size='20' font-weight='700' text-anchor='middle'>おおむね H/2</text></g><g data-in='0.45'><g fill='#eef3ff'><circle cx='260' cy='355' r='9'/><rect x='252' y='367' width='16' height='30' rx='6'/></g><g fill='#eef3ff'><circle cx='300' cy='355' r='9'/><rect x='292' y='367' width='16' height='30' rx='6'/></g><text x='420' y='380' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>歩道</text></g><circle data-pulse='0.5' cx='280' cy='375' r='42' fill='none' stroke='#ff6b6b' stroke-width='4'/><g data-in='0.7'><rect x='170' y='300' width='80' height='10' fill='#cfd9f5'/><text x='210' y='290' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>庇</text></g></svg>"
+    },
+    {
+      "label": "全面打診",
+      "title": "10年ごとに全面打診等",
+      "say": "竣工や外壁改修から10年を超えたら、危害範囲の全面打診等を計画します。",
+      "checks": [
+        [
+          "竣工・改修・全面打診から10年超",
+          "直近3年以内に未実施なら対象"
+        ],
+        [
+          "赤外線は打診と同等以上の精度",
+          "同じ部位で打診と比べて確認"
+        ],
+        [
+          "検出が難しい部位は打診で補完",
+          "軒裏・入隅・庇周り"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><line x1='30' y1='110' x2='510' y2='110' stroke='#6f86bb' stroke-width='6'/><g font-size='20' font-weight='700' text-anchor='middle'><g data-in='0.05'><circle cx='50' cy='110' r='12' fill='#5ad17b'/><text x='50' y='80' fill='#5ad17b'>竣工</text></g><g data-in='0.15'><circle cx='230' cy='110' r='10' fill='#8ea3cf'/><text x='230' y='80' fill='#a9b9de'>定期調査</text></g><g data-in='0.25'><circle cx='470' cy='110' r='14' fill='#f5b942'/><text x='470' y='80' fill='#f5b942'>10年超</text></g></g><g data-in='0.3'><path d='M50 140 H470' stroke='#f5b942' stroke-width='3' stroke-dasharray='8 6'/><text x='260' y='168' fill='#f5b942' font-size='19' font-weight='700' text-anchor='middle'>全面打診等をしていない期間</text></g><g data-in='0.45'><rect x='40' y='210' width='220' height='200' rx='14' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='150' y='245' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>打診</text><g transform='translate(110 270) rotate(-30)'><rect x='0' y='0' width='14' height='100' rx='4' fill='#cfd9f5'/><rect x='-22' y='-14' width='58' height='26' rx='6' fill='#f5b942'/></g></g><g data-in='0.58'><rect x='280' y='210' width='220' height='200' rx='14' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='390' y='245' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>赤外線</text><rect x='310' y='265' width='160' height='120' rx='6' fill='#1d1b4a'/><rect x='330' y='285' width='60' height='40' fill='#ff6b6b' opacity='.75'/><rect x='395' y='300' width='55' height='55' fill='#f5b942' opacity='.55'/><rect x='320' y='335' width='70' height='40' fill='#3b6fd1' opacity='.7'/></g><text data-in='0.7' x='270' y='318' fill='#f5b942' font-size='30' font-weight='900' text-anchor='middle'>＝</text></svg>"
+    },
+    {
+      "label": "応急措置",
+      "title": "落ちそうなら先に守る",
+      "say": "落下のおそれがあれば、本補修の前に、立入禁止と防護ネットで先に守ります。",
+      "checks": [
+        [
+          "直下を立入禁止にする",
+          "コーン・バー・誘導員"
+        ],
+        [
+          "浮き・欠損部の除去",
+          "安全に撤去できる範囲"
+        ],
+        [
+          "防護ネット・仮設庇",
+          "位置・範囲・写真を所有者へ報告"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><rect x='40' y='20' width='170' height='380' fill='#3b4d7c' stroke='#8ea3cf' stroke-width='3'/><rect x='56' y='36' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='36' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='36' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='36' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='66' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='66' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='66' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='66' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='96' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='96' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='96' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='96' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='126' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='126' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='126' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='126' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='156' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='156' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='156' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='156' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='186' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='186' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='186' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='186' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='216' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='216' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='216' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='216' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='246' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='246' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='246' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='246' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='276' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='276' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='276' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='276' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='306' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='306' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='306' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='306' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='336' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='336' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='336' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='336' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='56' y='366' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='94' y='366' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='132' y='366' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><rect x='170' y='366' width='34' height='26' fill='#5a6c9a' stroke='#3b4d7c'/><g data-move='0.05,0.3,0,0'><rect data-pulse='0.05' x='132' y='126' width='34' height='26' fill='#ff6b6b'/></g><line x1='0' y1='400' x2='540' y2='400' stroke='#8ea3cf' stroke-width='4'/><g data-in='0.3'><path d='M210 160 L330 200' stroke='#cfd9f5' stroke-width='4'/><path d='M210 160 L210 210 L330 200 z' fill='#8ec5ff' opacity='.25'/><path d='M216 168 L322 200 M216 184 L322 202 M216 200 L322 204' stroke='#8ec5ff' stroke-width='2'/><text x='300' y='180' fill='#8ec5ff' font-size='19' font-weight='700'>防護ネット・朝顔</text></g><g data-in='0.5'><path d='M230 400 L242 368 L254 400 z' fill='#f5b942'/><path d='M300 400 L312 368 L324 400 z' fill='#f5b942'/><path d='M370 400 L382 368 L394 400 z' fill='#f5b942'/><path d='M440 400 L452 368 L464 400 z' fill='#f5b942'/><path d='M236 380 H460' stroke='#ff6b6b' stroke-width='6'/><text x='345' y='352' fill='#ff6b6b' font-size='22' font-weight='900' text-anchor='middle'>立入禁止</text></g><g data-in='0.65'><g fill='#a9b9de'><circle cx='500' cy='355' r='9'/><rect x='492' y='367' width='16' height='30' rx='6'/></g><path d='M480 330 C430 300 430 300 470 270' fill='none' stroke='#a9b9de' stroke-width='3' stroke-dasharray='6 5'/><text x='480' y='255' fill='#a9b9de' font-size='17' text-anchor='middle'>動線を切替え</text></g></svg>"
+    },
+    {
+      "label": "補修",
+      "title": "原因別に直し実数で精算",
+      "say": "補修は原因別の工法で行い、足場をかけてからの実数量で精算します。",
+      "checks": [
+        [
+          "浮きはアンカーピンニング",
+          "エポキシ樹脂注入（標準仕様書 第4章）"
+        ],
+        [
+          "施工数量調査で数量を確定",
+          "足場架設後に全面打診・マーキング"
+        ],
+        [
+          "検査で品質を確かめる",
+          "張替えタイルは引張接着試験"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.05'><rect x='30' y='40' width='60' height='300' fill='#5a6c9a'/><text x='60' y='368' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>躯体</text><rect x='90' y='40' width='30' height='300' fill='#8b7a5a'/><text x='105' y='394' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>モルタル</text><rect x='126' y='40' width='16' height='300' fill='#d9cdb4'/><text x='150' y='420' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>タイル</text></g><path d='M120 120 Q123 180 120 240' stroke='#ff6b6b' stroke-width='5' fill='none' data-pulse='0.12'/><g data-in='0.25'><rect x='40' y='150' width='120' height='8' fill='#cfd9f5'/><rect x='40' y='200' width='120' height='8' fill='#cfd9f5'/><circle cx='162' cy='154' r='7' fill='#f5b942'/><circle cx='162' cy='204' r='7' fill='#f5b942'/><text x='40' y='30' fill='#f5b942' font-size='18' font-weight='700'>アンカーピン＋樹脂注入</text></g><g data-in='0.45'><rect x='240' y='60' width='280' height='220' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='380' y='95' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>施工数量調査</text><rect x='262' y='115' width='44' height='32' fill='#2a3b66'/><rect x='310' y='115' width='44' height='32' fill='#2a3b66'/><rect x='358' y='115' width='44' height='32' fill='#2a3b66'/><rect x='406' y='115' width='44' height='32' fill='#2a3b66'/><rect x='454' y='115' width='44' height='32' fill='#2a3b66'/><rect x='262' y='151' width='44' height='32' fill='#2a3b66'/><rect x='310' y='151' width='44' height='32' fill='#2a3b66'/><rect x='358' y='151' width='44' height='32' fill='#2a3b66'/><rect x='406' y='151' width='44' height='32' fill='#2a3b66'/><rect x='454' y='151' width='44' height='32' fill='#2a3b66'/><rect x='262' y='187' width='44' height='32' fill='#2a3b66'/><rect x='310' y='187' width='44' height='32' fill='#2a3b66'/><rect x='358' y='187' width='44' height='32' fill='#2a3b66'/><rect x='406' y='187' width='44' height='32' fill='#2a3b66'/><rect x='454' y='187' width='44' height='32' fill='#2a3b66'/><rect x='262' y='223' width='44' height='32' fill='#2a3b66'/><rect x='310' y='223' width='44' height='32' fill='#2a3b66'/><rect x='358' y='223' width='44' height='32' fill='#2a3b66'/><rect x='406' y='223' width='44' height='32' fill='#2a3b66'/><rect x='454' y='223' width='44' height='32' fill='#2a3b66'/><g fill='none' stroke='#ff6b6b' stroke-width='4'><circle cx='332' cy='167' r='18'/><circle cx='428' cy='203' r='18'/><circle cx='380' cy='131' r='18'/></g></g><g data-in='0.65'><rect x='240' y='300' width='280' height='100' rx='10' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text x='380' y='340' fill='#5ad17b' font-size='22' font-weight='900' text-anchor='middle'>実数で精算</text><text x='380' y='375' fill='#cfd9f5' font-size='18' text-anchor='middle'>契約時に単価と精算方法を決める</text></g></svg>"
+    }
+  ]
+}
