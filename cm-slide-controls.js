@@ -20,6 +20,7 @@
     if(i<0||i>=slides.length)return;
     idx=i;
     slides.forEach(function(s,k){s.classList.toggle('active',k===i)});
+    pauseVideos(i);
     requestSlideFit();
     $('count').textContent=(i+1)+' / '+slides.length;
     $('prev').disabled=(i===0);$('next').disabled=(i===slides.length-1);
@@ -59,7 +60,7 @@
   function startSilentCaptions(i){
     clearTimeout(captionTimer);
     currentCaption='';
-    if(!capOn||document.body.classList.contains('list')){renderCaption();return}
+    if(!capOn||document.body.classList.contains('list')||slides[i].querySelector('video')){renderCaption();return}
     var list=sentences(i), n=0;
     function next(){
       currentCaption=list[n]||'';
@@ -72,6 +73,8 @@
     next();
   }
   function speakSlide(i){
+    var vid=slides[i].querySelector('video');
+    if(vid){playVideoSlide(i,vid);return;}
     if(!synth)return;
     clearTimeout(captionTimer);
     var my=++token;synth.cancel();
@@ -94,6 +97,45 @@
     }
     next();
   }
+  /* --- video slides --- */
+  function pauseVideos(keep){
+    slides.forEach(function(s,k){if(k===keep)return;s.querySelectorAll('video').forEach(function(v){try{v.pause()}catch(e){}})});
+  }
+  function playVideoSlide(i,vid){
+    var my=++token;if(synth)synth.cancel();clearTimeout(captionTimer);
+    currentCaption='';renderCaption();
+    vid.muted=false;
+    vid.onended=function(){
+      if(my!==token)return;
+      if(auto&&idx<slides.length-1){show(idx+1,true);speakSlide(idx);}
+      else{setPlaying(false);}
+    };
+    if(vid.ended)vid.currentTime=0;
+    var p=vid.play();if(p&&p.catch)p.catch(function(){if(my===token)setPlaying(false)});
+  }
+  [].forEach.call(document.querySelectorAll('.cm-video'),function(box){
+    var vid=box.querySelector('video'),frame=box.querySelector('.cm-video-frame');
+    var btns=[].slice.call(box.querySelectorAll('[data-seek]'));
+    vid.addEventListener('error',function(){frame.classList.add('failed')});
+    var src=vid.querySelector('source');if(src)src.addEventListener('error',function(){frame.classList.add('failed')});
+    btns.forEach(function(b){b.addEventListener('click',function(){vid.currentTime=parseFloat(b.dataset.seek)+0.05;vid.muted=false;var p=vid.play();if(p&&p.catch)p.catch(function(){});})});
+    vid.addEventListener('timeupdate',function(){
+      var t=vid.currentTime;
+      btns.forEach(function(b){b.setAttribute('aria-current',String(t>=parseFloat(b.dataset.seek)&&t<parseFloat(b.dataset.end)))});
+    });
+    var tr=vid.querySelector('track');
+    function useInlineCues(){
+      if(box.inlineCues||!window.VTTCue||!vid.dataset.cues)return;box.inlineCues=true;
+      if(tr)tr.remove();
+      var t=vid.addTextTrack('subtitles','日本語','ja');
+      JSON.parse(vid.dataset.cues).forEach(function(c){t.addCue(new VTTCue(c[0],c[1],c[2]))});
+      syncTrack();
+    }
+    if(tr)tr.addEventListener('error',useInlineCues);
+    if(location.protocol==='file:')useInlineCues();
+    function syncTrack(){for(var k=0;k<vid.textTracks.length;k++)vid.textTracks[k].mode=capOn?'showing':'hidden'}
+    vid.addEventListener('loadedmetadata',syncTrack);box.syncTrack=syncTrack;syncTrack();
+  });
   function renderCaption(){
     var line=capOn&&!document.body.classList.contains('list')?currentCaption:'';
     cap.textContent=line;
@@ -102,7 +144,7 @@
   }
   function setPlaying(p){playing=p;$('play').textContent=p?'▶ 読み上げ中':'▶ 読み上げ開始';$('play').setAttribute('aria-pressed',p?'true':'false')}
   $('play').addEventListener('click',function(){if(!synth)return;loadVoices();if(document.body.classList.contains('list'))toggleList(false);setPlaying(true);speakSlide(idx)});
-  $('stop').addEventListener('click',function(){token++;if(synth)synth.cancel();setPlaying(false);startSilentCaptions(idx)});
+  $('stop').addEventListener('click',function(){token++;if(synth)synth.cancel();pauseVideos(-1);setPlaying(false);startSilentCaptions(idx)});
   rate.addEventListener('change',function(){savePreference('cmKnowledgeNarrationRate',rate.value);if(playing)speakSlide(idx)});
   $('voice').addEventListener('change',function(){preferredVoice=this.value;savePreference('cmKnowledgeJapaneseVoice',preferredVoice);if(playing)speakSlide(idx)});
 
@@ -117,11 +159,12 @@
     capOn=v;
     savePreference('cmKnowledgeCaptions',v?'on':'off');
     labelCaptions();
+    [].forEach.call(document.querySelectorAll('.cm-video'),function(b){b.syncTrack&&b.syncTrack()});
     if(playing){renderCaption()}else{startSilentCaptions(idx)}
   });
   bindToggle('tAuto',function(v){auto=v});
   bindToggle('tMotion',function(v){document.body.classList.toggle('reduce',v)});
-  function toggleList(v){$('tList').setAttribute('aria-pressed',String(v));document.body.classList.toggle('list',v);if(!v)show(idx,true);else{token++;if(synth)synth.cancel();setPlaying(false);startSilentCaptions(idx)}}
+  function toggleList(v){$('tList').setAttribute('aria-pressed',String(v));document.body.classList.toggle('list',v);if(!v)show(idx,true);else{token++;if(synth)synth.cancel();pauseVideos(-1);setPlaying(false);startSilentCaptions(idx)}}
   bindToggle('tList',function(v){toggleList(v)});
   var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
   if(mq&&mq.matches){document.body.classList.add('reduce');$('tMotion').setAttribute('aria-pressed','true')}

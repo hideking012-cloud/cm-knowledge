@@ -242,3 +242,17 @@ a { color: var(--green); text-underline-offset: .23em; }
   .slide th, .slide td, .slide tbody tr:nth-child(even) td, .slide thead th, .slide tbody th { color: #15262a; background: #edf2f1; }
   .slide .focus-controls, .slide .flow-next, .slide .flow-reset { display: none !important; }
 }
+
+/* --- 動画スライド（video-build で作成した図解動画） --- */
+.cm-video{display:flex;gap:1.2rem;align-items:flex-start;margin-top:.6rem}
+.cm-video-frame{flex:1 1 66%;min-width:0;position:relative;aspect-ratio:16/9;background:#050e24;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cm-video-frame video{width:100%;height:100%;display:block;background:#050e24}
+.cm-video-fail{display:none;position:absolute;inset:0;align-items:center;justify-content:center;text-align:center;padding:1rem;color:var(--sub);font-size:.9rem}
+.cm-video-frame.failed .cm-video-fail{display:flex}
+.cm-video-steps{flex:1 1 34%;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.cm-video-steps button{width:100%;text-align:left;font:inherit;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.55rem .75rem;min-height:44px;cursor:pointer;display:flex;gap:.6rem;align-items:baseline}
+.cm-video-steps button span{color:var(--sub);font-weight:400;font-size:.8rem;font-variant-numeric:tabular-nums;flex:none}
+.cm-video-steps button:hover{border-color:var(--green)}
+.cm-video-steps button[aria-current=true]{border-color:var(--amber);background:var(--amber-l)}
+.cm-video-note{color:var(--sub);font-size:.8rem;margin:.4rem 0 0}
+@media (max-width:760px){.cm-video{flex-direction:column}.cm-video-frame,.cm-video-steps{flex:none;width:100%}}
