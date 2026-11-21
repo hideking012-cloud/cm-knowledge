@@ -1,0 +1,86 @@
+{
+  "kicker": "石綿（アスベスト）対策",
+  "footnote": "仮想改修例の説明用モデル。手続は最新の法令と所管行政に確認します。",
+  "steps": [
+    {
+      "label": "事前調査",
+      "title": "資格者が事前に調べる",
+      "say": "改修や解体の前に、資格者が、規模を問わず石綿の事前調査を行います。",
+      "checks": [
+        [
+          "書面調査と現地調査",
+          "設計図書・改修履歴・天井裏や壁内"
+        ],
+        [
+          "判定できない建材は分析",
+          "または含有とみなして対策"
+        ],
+        [
+          "調査者の資格を確認",
+          "建築物は令和5年10月以降の着工から"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='20' y='30' width='170' height='200' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='105.0' y='68' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>設計図書</text><line x1='38' y1='92' x2='172' y2='92' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='118' x2='172' y2='118' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='144' x2='172' y2='144' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='170' x2='142' y2='170' stroke='#6f86bb' stroke-width='3'/></g><g data-in='0.12'><rect x='20' y='250' width='170' height='170' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='105.0' y='288' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>改修履歴</text><line x1='38' y1='312' x2='172' y2='312' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='338' x2='172' y2='338' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='364' x2='142' y2='364' stroke='#6f86bb' stroke-width='3'/></g><g data-in='0.22'><path d='M200 220 H236' stroke='#f5b942' stroke-width='5'/><path d='M232 210 L232 230 L250 220 z' fill='#f5b942'/></g><g data-in='0.3'><rect x='270' y='60' width='250' height='300' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><line x1='270' y1='130' x2='520' y2='130' stroke='#8ea3cf' stroke-width='4' stroke-dasharray='12 6'/><text  x='395' y='110' fill='#a9b9de' font-size='19' font-weight='700' text-anchor='middle'>天井裏</text><rect x='300' y='160' width='190' height='26' fill='#8ec5ff' opacity='.5'/><text  x='395' y='215' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>配管の保温材</text></g><g data-in='0.45'><circle cx='420' cy='300' r='44' fill='none' stroke='#eef3ff' stroke-width='6'/><line x1='452' y1='332' x2='490' y2='370' stroke='#eef3ff' stroke-width='10' stroke-linecap='round'/></g><circle data-pulse='0.55' cx='395' cy='173' r='30' fill='none' stroke='#ff6b6b' stroke-width='4'/><text data-in='0.6' x='395' y='400' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>資格者が目視で確認</text></svg>"
+    },
+    {
+      "label": "説明・報告",
+      "title": "説明・報告・届出を分ける",
+      "say": "着工前に、発注者への書面説明と、一定規模以上の電子報告を確かめます。",
+      "checks": [
+        [
+          "発注者へ書面で説明",
+          "全ての工事・元請業者が行う"
+        ],
+        [
+          "事前調査結果の電子報告",
+          "解体80㎡以上・改修100万円以上（税込）"
+        ],
+        [
+          "届出対象の作業は発注者が届出",
+          "作業開始の14日前まで"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='20' y='40' width='160' height='80' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='100.0' y='88.4' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>元請業者</text></g><g data-in='0.15'><path d='M185 80 H231' stroke='#f5b942' stroke-width='5'/><path d='M227 70 L227 90 L245 80 z' fill='#f5b942'/></g><g data-in='0.18'><rect x='250' y='40' width='270' height='80' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='385.0' y='76.0' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>発注者</text><text x='385.0' y='104.0' fill='#a9b9de' font-size='17' text-anchor='middle'>書面で説明</text></g><g data-in='0.3'><path d='M100 124 V158' stroke='#f5b942' stroke-width='5'/><path d='M90 154 L110 154 L100 170 z' fill='#f5b942'/></g><g data-in='0.33'><rect x='20' y='176' width='500' height='80' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='270.0' y='212.0' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>労基署＋都道府県等</text><text x='270.0' y='240.0' fill='#a9b9de' font-size='17' text-anchor='middle'>結果報告（電子）・一定規模以上</text></g><g data-in='0.55'><rect x='20' y='300' width='500' height='90' rx='12' fill='#13285e' stroke='#f5b942' stroke-width='3'/><text x='270.0' y='341.0' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>特定粉じん排出等作業の届出</text><text x='270.0' y='369.0' fill='#a9b9de' font-size='17' text-anchor='middle'>発注者 → 都道府県等・14日前まで</text></g></svg>"
+    },
+    {
+      "label": "追加発見",
+      "title": "出たら止めて調べ直す",
+      "say": "想定外の建材が出たら、その部位の作業を止めて、資格者が調べ直します。",
+      "checks": [
+        [
+          "その部位の作業を停止",
+          "立入を制限する"
+        ],
+        [
+          "資格者が再調査・分析",
+          "報告・説明・掲示を更新"
+        ],
+        [
+          "届出要否と工期・費用を協議",
+          "作業計画を見直す"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.02'><rect x='20' y='60' width='500' height='40' fill='#5a6c9a'/><line x1='20' y1='230' x2='520' y2='230' stroke='#8ea3cf' stroke-width='4' stroke-dasharray='12 6'/><text  x='30' y='260' fill='#a9b9de' font-size='18' font-weight='700' text-anchor='start'>天井を解体中</text></g><g data-in='0.12'><path d='M240 100 q30 40 0 80 q-30 40 0 50' fill='none' stroke='#e8e2d0' stroke-width='22' opacity='.8'/><text  x='300' y='160' fill='#ff6b6b' font-size='20' font-weight='700' text-anchor='start'>想定外の吹付け材？</text></g><g data-in='0.3'><polygon points='172.5,347.6 147.6,372.5 112.4,372.5 87.5,347.6 87.5,312.4 112.4,287.5 147.6,287.5 172.5,312.4' fill='#d64545' stroke='#fff' stroke-width='4'/><text x='130' y='339' fill='#fff' font-size='26' font-weight='900' text-anchor='middle'>停止</text></g><g data-in='0.45'><path d='M220 300 H500' stroke='#f5b942' stroke-width='6' stroke-dasharray='16 10'/><text  x='360' y='290' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>立入制限</text></g><g data-in='0.6'><rect x='230' y='330' width='290' height='80' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='375.0' y='366.0' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>資格者が再調査</text><text x='375.0' y='394.0' fill='#a9b9de' font-size='17' text-anchor='middle'>必要に応じ分析</text></g></svg>"
+    },
+    {
+      "label": "完了",
+      "title": "取り残しと処理まで確認",
+      "say": "完了時は、取り残しがないかの確認と、廃棄物の処理まで、記録で受け取ります。",
+      "checks": [
+        [
+          "取り残しの目視確認",
+          "確認者・資格・確認日を書面で"
+        ],
+        [
+          "作業結果の報告",
+          "写真記録付きで受領・保管"
+        ],
+        [
+          "廃石綿等の処理を確認",
+          "特別管理産業廃棄物・マニフェスト"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='20' y='40' width='240' height='200' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text  x='140' y='80' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>除去後の確認</text><rect x='45' y='100' width='190' height='110' fill='#2a3b66'/></g><g data-in='0.18'><circle cx='140' cy='155' r='36' fill='none' stroke='#eef3ff' stroke-width='6'/><line x1='166' y1='181' x2='196' y2='211' stroke='#eef3ff' stroke-width='9' stroke-linecap='round'/></g><g data-in='0.35' transform='translate(300 60)'><rect x='0' y='12' width='110' height='74' rx='12' fill='#13285e' stroke='#eef3ff' stroke-width='4'/><rect x='34' y='0' width='42' height='16' rx='4' fill='#eef3ff'/><circle cx='55' cy='49' r='22' fill='none' stroke='#eef3ff' stroke-width='5'/><circle cx='55' cy='49' r='8' fill='#f5b942'/></g><text data-in='0.38' x='355' y='190' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>写真記録</text><g data-in='0.55'><rect x='60' y='290' width='120' height='110' rx='8' fill='#8b7a5a' stroke='#e8e2d0' stroke-width='3'/><text  x='120' y='355' fill='#fff' font-size='20' font-weight='700' text-anchor='middle'>廃石綿等</text></g><g data-in='0.62'><path d='M190 345 H236' stroke='#f5b942' stroke-width='5'/><path d='M232 335 L232 355 L250 345 z' fill='#f5b942'/></g><g data-in='0.7'><rect x='260' y='300' width='260' height='90' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text x='390.0' y='352.7' fill='#5ad17b' font-size='22' font-weight='700' text-anchor='middle'>処理完了を確認</text></g></svg>"
+    }
+  ]
+}
