@@ -1,0 +1,83 @@
+{
+  "kicker": "景観条例",
+  "footnote": "架空事例の説明用モデル。地区と基準は景観行政団体に確認します。",
+  "steps": [
+    {
+      "label": "対象",
+      "title": "地区と対象行為を確かめる",
+      "say": "まず、景観計画の地区と、外壁の塗り替えも含めた対象行為を確かめます。",
+      "checks": [
+        [
+          "景観計画区域・重点地区",
+          "景観行政団体の窓口で確認"
+        ],
+        [
+          "新築・増築・改築",
+          "高さ・延べ面積"
+        ],
+        [
+          "外観の修繕・色彩の変更",
+          "変更面積・変更率"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='20' y='30' width='500' height='300' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><path d='M20 80 H520' stroke='#24407e' stroke-width='2'/><path d='M20 140 H520' stroke='#24407e' stroke-width='2'/><path d='M20 200 H520' stroke='#24407e' stroke-width='2'/><path d='M20 260 H520' stroke='#24407e' stroke-width='2'/><path d='M80 30 V330' stroke='#24407e' stroke-width='2'/><path d='M170 30 V330' stroke='#24407e' stroke-width='2'/><path d='M260 30 V330' stroke='#24407e' stroke-width='2'/><path d='M350 30 V330' stroke='#24407e' stroke-width='2'/><path d='M440 30 V330' stroke='#24407e' stroke-width='2'/></g><g data-in='0.18'><path d='M120 70 L380 60 L420 260 L150 290 z' fill='#f5b942' opacity='.22' stroke='#f5b942' stroke-width='3' stroke-dasharray='10 6'/><text  x='270' y='110' fill='#f5b942' font-size='22' font-weight='700' text-anchor='middle'>重点地区</text></g><g data-in='0.32'><rect x='240' y='160' width='70' height='60' fill='#cfd9f5'/><text  x='275' y='250' fill='#eef3ff' font-size='18' font-weight='700' text-anchor='middle'>ホテル</text></g><circle data-pulse='0.4' cx='275' cy='190' r='52' fill='none' stroke='#ff6b6b' stroke-width='4'/><g data-in='0.55'><rect x='60' y='350' width='420' height='70' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text  x='270' y='393' fill='#5ad17b' font-size='22' font-weight='700' text-anchor='middle'>外壁の塗り替えも対象か確認</text></g></svg>"
+    },
+    {
+      "label": "見え方",
+      "title": "同じ視点・画角で比べる",
+      "say": "道路などの視点場から、現況と計画を、同じ画角で比べます。",
+      "checks": [
+        [
+          "視点場をそろえる",
+          "道路・広場・眺望点"
+        ],
+        [
+          "配色面積と合成画像",
+          "周辺の街並みと比べる"
+        ],
+        [
+          "屋上設備・サインも",
+          "道路からの見え方"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='10' y='40' width='255' height='260' rx='8' fill='#0e2250' stroke='#6f86bb' stroke-width='3'/><text  x='137' y='30' fill='#a9b9de' font-size='20' font-weight='700' text-anchor='middle'>現況</text><rect x='80' y='120' width='110' height='180' fill='#8a8f99'/></g><g data-in='0.2'><rect x='275' y='40' width='255' height='260' rx='8' fill='#0e2250' stroke='#f5b942' stroke-width='3'/><text  x='402' y='30' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>計画</text><rect x='345' y='120' width='110' height='180' fill='#b8a58a'/><rect x='375' y='100' width='50' height='20' fill='#cfd9f5'/><text  x='470' y='96' fill='#cfd9f5' font-size='15' font-weight='700' text-anchor='end'>屋上設備</text></g><g data-in='0.42'><path d='M270 420 L137 300 M270 420 L402 300' stroke='#5ad17b' stroke-width='3' stroke-dasharray='8 6'/><g fill='#5ad17b'><circle cx='270' cy='370' r='9'/><rect x='262' y='382' width='16' height='30' rx='6'/></g><text  x='300' y='420' fill='#5ad17b' font-size='19' font-weight='700' text-anchor='start'>視点場（道路）</text></g></svg>"
+    },
+    {
+      "label": "逆算",
+      "title": "協議・届出から着手日を逆算",
+      "say": "事前協議と届出の受理、そして制限期間から、着手できる日を逆算します。",
+      "checks": [
+        [
+          "景観窓口に事前相談"
+        ],
+        [
+          "条例の協議と必要な修正"
+        ],
+        [
+          "法の届出と制限期間",
+          "着手できる日を工程に入れる"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><line x1='20' y1='200' x2='520' y2='200' stroke='#6f86bb' stroke-width='6'/><g data-in='0.04'><circle cx='50' cy='200' r='14' fill='#8ea3cf'/><text  x='50' y='170' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>事前相談</text></g><g data-in='0.16'><circle cx='170' cy='200' r='14' fill='#8ea3cf'/><text  x='170' y='170' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>協議・修正</text></g><g data-in='0.28'><circle cx='300' cy='200' r='14' fill='#8ec5ff'/><text  x='300' y='170' fill='#8ec5ff' font-size='18' font-weight='700' text-anchor='middle'>届出受理</text></g><g data-in='0.4'><rect x='300' y='220' width='150' height='26' fill='#ff6b6b' opacity='.4'/><text  x='375' y='275' fill='#ff6b6b' font-size='19' font-weight='700' text-anchor='middle'>制限期間</text></g><g data-in='0.52'><circle cx='470' cy='200' r='18' fill='#5ad17b'/><text  x='470' y='165' fill='#5ad17b' font-size='22' font-weight='900' text-anchor='middle'>着手</text></g><g data-in='0.65'><path d='M470 320 H60' stroke='#f5b942' stroke-width='5'/><path d='M64 310 L64 330 L44 320 z' fill='#f5b942'/><text  x='270' y='360' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>着手日から逆算して工程に入れる</text></g></svg>"
+    },
+    {
+      "label": "記録",
+      "title": "完成外観の記録を渡す",
+      "say": "代替品などの変更は事前に根拠をそろえ、完成写真と色の記録を引き渡します。",
+      "checks": [
+        [
+          "代替品は新旧を比べて確認",
+          "色番号・光沢・位置と面積"
+        ],
+        [
+          "届出時と同じ視点で完成写真"
+        ],
+        [
+          "維持補修用の色・素材を記録",
+          "施設管理者へ渡す"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='30' y='50' width='64' height='90' rx='6' fill='#b8a58a' stroke='#cfd9f5' stroke-width='2'/><rect x='110' y='50' width='64' height='90' rx='6' fill='#a8957a' stroke='#cfd9f5' stroke-width='2'/><rect x='190' y='50' width='64' height='90' rx='6' fill='#8a8f99' stroke='#cfd9f5' stroke-width='2'/><text  x='140' y='170' fill='#cfd9f5' font-size='19' font-weight='700' text-anchor='middle'>色見本・材料見本</text></g><g data-in='0.2'><path d='M95 95 H175' stroke='#f5b942' stroke-width='4'/><text  x='330' y='95' fill='#f5b942' font-size='20' font-weight='700' text-anchor='start'>新旧を比較</text></g><g data-in='0.4' transform='translate(60 230)'><rect x='0' y='12' width='110' height='74' rx='12' fill='#13285e' stroke='#eef3ff' stroke-width='4'/><rect x='34' y='0' width='42' height='16' rx='4' fill='#eef3ff'/><circle cx='55' cy='49' r='22' fill='none' stroke='#eef3ff' stroke-width='5'/><circle cx='55' cy='49' r='8' fill='#f5b942'/></g><text data-in='0.45' x='115' y='360' fill='#eef3ff' font-size='19' font-weight='700' text-anchor='middle'>同じ視点で撮影</text><g data-in='0.6'><rect x='280' y='210' width='240' height='200' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='400.0' y='248' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>維持補修の記録</text><line x1='298' y1='272' x2='502' y2='272' stroke='#6f86bb' stroke-width='3'/><line x1='298' y1='298' x2='502' y2='298' stroke='#6f86bb' stroke-width='3'/><line x1='298' y1='324' x2='502' y2='324' stroke='#6f86bb' stroke-width='3'/><line x1='298' y1='350' x2='472' y2='350' stroke='#6f86bb' stroke-width='3'/></g></svg>"
+    }
+  ]
+}
