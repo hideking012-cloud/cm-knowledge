@@ -1,0 +1,82 @@
+{
+  "kicker": "営業しながらのホテル改修",
+  "footnote": "架空事例の説明用モデル。運用条件は施設側・消防と協議して決めます。",
+  "steps": [
+    {
+      "label": "方式",
+      "title": "休館と部分営業を比べる",
+      "say": "全館休館と部分営業を、休業損失、仮設費、工期を含めて、同じ前提で比べます。",
+      "checks": [
+        [
+          "全館休館",
+          "集中施工・休業日数と再開日"
+        ],
+        [
+          "階別・工区別の営業",
+          "階間の音・仮設区画・避難動線"
+        ],
+        [
+          "工事費＋休業損失＋仮設費で比較",
+          "期間もそろえる"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='30' y='40' width='200' height='52' fill='#24407e'/><rect x='30' y='96' width='200' height='52' fill='#24407e'/><rect x='30' y='152' width='200' height='52' fill='#24407e'/><rect x='30' y='208' width='200' height='52' fill='#24407e'/><rect x='30' y='264' width='200' height='52' fill='#24407e'/><rect x='30' y='320' width='200' height='52' fill='#24407e'/><text  x='130' y='380' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>全館休館</text></g><g data-in='0.12'><rect x='30' y='40' width='200' height='332' fill='#8ea3cf' opacity='.35'/></g><g data-in='0.25'><rect x='310' y='40' width='200' height='52' fill='#24407e'/><rect x='310' y='96' width='200' height='52' fill='#24407e'/><rect x='310' y='152' width='200' height='52' fill='#24407e'/><rect x='310' y='208' width='200' height='52' fill='#24407e'/><rect x='310' y='264' width='200' height='52' fill='#24407e'/><rect x='310' y='320' width='200' height='52' fill='#24407e'/><rect x='310' y='152' width='200' height='52' fill='#f5b942' opacity='.75'/><text  x='410' y='184' fill='#0a1636' font-size='20' font-weight='700' text-anchor='middle'>工事階</text><text  x='410' y='380' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>階別に営業</text></g><g data-in='0.45'><rect x='20' y='400' width='500' height='36' rx='8' fill='#13285e' stroke='#5ad17b' stroke-width='2'/><text  x='270' y='425' fill='#5ad17b' font-size='19' font-weight='700' text-anchor='middle'>工事費 ＋ 休業損失 ＋ 仮設費 ＋ 期間</text></g></svg>"
+    },
+    {
+      "label": "動線",
+      "title": "人の動線を分ける",
+      "say": "宿泊者、従業員、工事の動線を分け、避難口と階段が使えることを確かめます。",
+      "checks": [
+        [
+          "営業区画と工事区画を図示"
+        ],
+        [
+          "避難口・階段・集合場所",
+          "工区を切り替えた直後も"
+        ],
+        [
+          "搬出入と客の動線を交差させない"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='20' y='60' width='500' height='300' fill='#13285e' stroke='#8ea3cf' stroke-width='4'/><rect x='20' y='60' width='240' height='300' fill='#1d3a74'/><text  x='140' y='110' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>営業区画</text><rect x='260' y='60' width='260' height='300' fill='#3a2f1d'/><text  x='390' y='110' fill='#f5b942' font-size='22' font-weight='700' text-anchor='middle'>工事区画</text><path d='M260 60 V360' stroke='#f5b942' stroke-width='6' stroke-dasharray='14 8'/></g><g data-in='0.2'><path d='M40 300 H200 V200' stroke='#8ec5ff' stroke-width='6' fill='none'/><g fill='#8ec5ff'><circle cx='60' cy='250' r='9'/><rect x='52' y='262' width='16' height='30' rx='6'/></g><text  x='120' y='340' fill='#8ec5ff' font-size='18' font-weight='700' text-anchor='middle'>宿泊者</text></g><g data-in='0.35'><path d='M500 330 H300 V160' stroke='#f5b942' stroke-width='6' fill='none' stroke-dasharray='12 6'/><text  x='420' y='350' fill='#f5b942' font-size='18' font-weight='700' text-anchor='middle'>搬出入</text></g><g data-in='0.5'><rect x='40' y='20' width='90' height='40' rx='6' fill='#1d7a46'/><text  x='85' y='47' fill='#fff' font-size='18' font-weight='700' text-anchor='middle'>非常口</text><path d='M85 64 V170' stroke='#5ad17b' stroke-width='5' stroke-dasharray='8 6'/></g></svg>"
+    },
+    {
+      "label": "消防",
+      "title": "消防設備を止めるとき",
+      "say": "消防用設備を止める工事は、停止範囲と時間、代わりの監視、復旧の試験を決めます。",
+      "checks": [
+        [
+          "停止する範囲と時間",
+          "感知器・警報・消火・排煙"
+        ],
+        [
+          "代わりの監視と関係者連絡"
+        ],
+        [
+          "復旧時の試験と記録"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='20' y='40' width='240' height='220' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text  x='140' y='78' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>受信機</text><circle cx='60' cy='110' r='10' fill='#5ad17b'/><text  x='85' y='117' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='start'>客室 3F</text><circle cx='60' cy='150' r='10' fill='#f5b942'/><text  x='85' y='157' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='start'>工事 4F（停止）</text><circle cx='60' cy='190' r='10' fill='#5ad17b'/><text  x='85' y='197' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='start'>客室 5F</text></g><g data-in='0.25'><rect x='290' y='40' width='230' height='100' rx='12' fill='#13285e' stroke='#f5b942' stroke-width='3'/><text  x='405' y='80' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>停止 22:00〜5:00</text><text  x='405' y='115' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>範囲：4F 東側</text></g><g data-in='0.42'><g fill='#8ec5ff'><circle cx='340' cy='190' r='9'/><rect x='332' y='202' width='16' height='30' rx='6'/></g><text  x='400' y='215' fill='#8ec5ff' font-size='20' font-weight='700' text-anchor='start'>巡回で監視</text></g><g data-in='0.6'><rect x='80' y='300' width='380' height='90' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text x='270.0' y='353.4' fill='#5ad17b' font-size='24' font-weight='700' text-anchor='middle'>復旧後に作動試験</text></g></svg>"
+    },
+    {
+      "label": "再開",
+      "title": "再開は試験と記録で判断",
+      "say": "引渡し日と販売再開日を分け、試験と記録で再開を判断します。",
+      "checks": [
+        [
+          "区画・避難・消防",
+          "立会い・試験と復旧記録"
+        ],
+        [
+          "客室の機能",
+          "施錠・給湯・換気・漏れ・清掃"
+        ],
+        [
+          "運営への引継ぎ",
+          "夜勤訓練・緊急連絡・販売許可"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><line x1='20' y1='140' x2='520' y2='140' stroke='#6f86bb' stroke-width='6'/><g data-in='0.05'><circle cx='80' cy='140' r='12' fill='#8ec5ff'/><text  x='80' y='116' fill='#8ec5ff' font-size='17' font-weight='700' text-anchor='middle'>引渡し</text></g><g data-in='0.2'><rect x='80' y='160' width='300' height='30' fill='#f5b942' opacity='.4'/><text  x='230' y='220' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>是正と確認の期間</text></g><g data-in='0.35'><circle cx='440' cy='140' r='12' fill='#5ad17b'/><text  x='440' y='116' fill='#5ad17b' font-size='17' font-weight='700' text-anchor='middle'>販売再開</text></g><g data-in='0.5'><rect x='30' y='260' width='150' height='160' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='105.0' y='298' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>試験記録</text><line x1='48' y1='322' x2='162' y2='322' stroke='#6f86bb' stroke-width='3'/><line x1='48' y1='348' x2='132' y2='348' stroke='#6f86bb' stroke-width='3'/></g><g data-in='0.58'><rect x='195' y='260' width='150' height='160' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='270.0' y='298' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>客室点検</text><line x1='213' y1='322' x2='327' y2='322' stroke='#6f86bb' stroke-width='3'/><line x1='213' y1='348' x2='297' y2='348' stroke='#6f86bb' stroke-width='3'/></g><g data-in='0.66'><rect x='360' y='260' width='150' height='160' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='435.0' y='298' fill='#eef3ff' font-size='19' font-weight='700' text-anchor='middle'>運営引継ぎ</text><line x1='378' y1='322' x2='492' y2='322' stroke='#6f86bb' stroke-width='3'/><line x1='378' y1='348' x2='462' y2='348' stroke='#6f86bb' stroke-width='3'/></g></svg>"
+    }
+  ]
+}
