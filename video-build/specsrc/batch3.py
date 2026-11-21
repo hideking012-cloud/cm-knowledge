@@ -1,0 +1,87 @@
+import sys; import os; sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+from common import *
+tree=lambda x,y,s=1:f"<g transform='translate({x} {y}) scale({s})'><rect x='-4' y='0' width='8' height='22' fill='#8b6a3a'/><path d='M0 -40 L22 4 L-22 4 z' fill='#3f9e6a'/><path d='M0 -56 L17 -20 L-17 -20 z' fill='#4fb87d'/></g>"
+mtn="<path d='M0 300 L120 150 L200 230 L300 110 L420 240 L540 170 V440 H0 z' fill='#1d3a54'/>"
+save('natural-parks',{"kicker":"自然公園法","footnote":"架空事例の説明用モデル。区域と手続は所管に確認します。","steps":[
+{"label":"区域","title":"3枚の図を重ねる","say":"まず、公園計画図、測量図、配置図を重ねて、区域と地種の境界を確かめます。",
+ "checks":[["公園計画図","国立・国定・都道府県立と地種区分"],["測量図","地番・敷地境界"],["配置図","道路・仮設を含む工事範囲"]],
+ "svg":svg("<g><g data-in='0.04'><rect x='30' y='20' width='300' height='220' rx='8' fill='#1d4a3a' stroke='#5ad17b' stroke-width='3' opacity='.9'/><path d='M30 140 Q150 90 330 160' stroke='#5ad17b' stroke-width='4' fill='none' stroke-dasharray='10 6'/>"+txt(50,55,'公園計画図',None,'#cfeedd',20)+txt(60,200,'第2種特別地域',None,'#cfeedd',17)+"</g></g>",
+  "<g><g data-in='0.15'><rect x='90' y='70' width='300' height='220' rx='8' fill='#2a3b66' stroke='#8ea3cf' stroke-width='3' opacity='.85'/><path d='M140 120 L340 110 L360 250 L130 260 z' fill='none' stroke='#eef3ff' stroke-width='3'/>"+txt(110,100,'測量図',None,'#eef3ff',20)+"</g></g>",
+  "<g data-in='0.28'><rect x='150' y='120' width='300' height='220' rx='8' fill='#13285e' stroke='#f5b942' stroke-width='3' opacity='.9'/><rect x='220' y='190' width='110' height='70' fill='#f5b942' opacity='.6'/><path d='M330 225 H440' stroke='#f5b942' stroke-width='8' stroke-dasharray='14 8'/>"+txt(170,150,'配置図',None,'#f5b942',20)+txt(380,215,'仮設道路',None,'#f5b942',16)+"</g>",
+  txt(270,420,'手続が変わる境界を所管に確認','0.72','#5ad17b',22,'middle'))},
+{"label":"手続","title":"区域と行為で手続が決まる","say":"特別地域は許可、普通地域は対象行為の事前届出と、区域と行為の組み合わせで判定します。",
+ "checks":[["特別保護地区","対象行為の許可（法21条）"],["第1〜3種特別地域","対象行為の許可（法20条）"],["普通地域","所定の行為を事前届出（法33条）"]],
+ "svg":svg(box(20,30,500,90,'特別保護地区','0.04',fs=24,fill='#1d4a3a',stroke='#5ad17b',sub='許可'),box(20,140,500,90,'第1〜3種 特別地域','0.18',fs=24,fill='#1d3f4a',stroke='#5ad17b',sub='許可'),box(20,250,500,90,'普通地域','0.32',fs=24,sub='事前届出'),
+  "<g data-in='0.5'><rect x='20' y='360' width='500' height='60' rx='12' fill='none' stroke='#f5b942' stroke-width='3' stroke-dasharray='10 6'/>"+txt(270,398,'仮設道路・伐採も行為に含めて判定',None,'#f5b942',20,'middle')+"</g>")},
+{"label":"協議","title":"行為一覧で早めに協議","say":"建物、造成、仮設を一枚の行為一覧にし、計画を固める前に所管と協議します。",
+ "checks":[["建物・擁壁・照明","位置・高さ・色彩・眺望"],["切土・盛土・伐採","断面と保全する樹木"],["仮設道路・ヤード","設置期間と撤去・復旧"]],
+ "svg":svg("<g data-in='0.03'>"+mtn+"</g>",tree(80,300),tree(120,290,1.2),tree(470,280),tree(500,300,1.1),
+  "<g data-in='0.18'><rect x='230' y='230' width='110' height='70' fill='#cfd9f5'/><path d='M222 232 L285 200 L348 232 z' fill='#8ea3cf'/>"+txt(285,272,'建物',None,'#0a1636',20,'middle')+"</g>",
+  "<g data-in='0.32'><path d='M340 300 Q400 320 460 360' stroke='#f5b942' stroke-width='10' stroke-dasharray='16 8' fill='none'/>"+txt(420,400,'仮設道路',None,'#f5b942',19,'middle')+"</g>",
+  "<g data-in='0.46'><path d='M150 340 L230 300' stroke='#ff6b6b' stroke-width='4' stroke-dasharray='8 6'/>"+txt(100,380,'切土・盛土',None,'#ff6b6b',19)+"</g>",
+  doc(20,20,190,170,'行為一覧','0.6',lines=4))},
+{"label":"施工","title":"許可条件を現場へ渡す","say":"許可条件を施工者に渡し、変更は実施前に照会して、記録を台帳に残します。",
+ "checks":[["保全樹木と立入範囲を共有","排水・濁水対策も"],["変更は実施前に照会","仮設の移設・範囲・仕様"],["写真と復旧・植栽を台帳へ","管理条件も保存"]],
+ "svg":svg("<g data-in='0.03'><rect x='0' y='300' width='540' height='140' fill='#1d3a54'/></g>",tree(90,280,1.4),tree(150,285,1.2),
+  "<g data-in='0.15'><path d='M40 310 H210' stroke='#f5b942' stroke-width='5'/>"+''.join(f"<rect x='{x}' y='285' width='6' height='30' fill='#f5b942'/>" for x in (40,95,150,205))+txt(125,350,'保全樹木・立入禁止',None,'#f5b942',18,'middle')+"</g>",
+  "<g data-in='0.35'><rect x='280' y='60' width='240' height='120' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/>"+txt(400,105,'変更の前に',None,'#eef3ff',22,'middle')+txt(400,145,'所管へ照会',None,'#f5b942',26,'middle',900)+"</g>",
+  camera(330,250,'0.55'),txt(385,380,'施工写真・復旧','0.6','#eef3ff',19,'middle'))}]})
+
+city="<g fill='#24407e'><rect x='20' y='200' width='70' height='160'/><rect x='420' y='180' width='100' height='180'/><rect x='95' y='240' width='50' height='120'/></g>"
+save('landscape-ordinance',{"kicker":"景観条例","footnote":"架空事例の説明用モデル。地区と基準は景観行政団体に確認します。","steps":[
+{"label":"対象","title":"地区と対象行為を確かめる","say":"まず、景観計画の地区と、外壁の塗り替えも含めた対象行為を確かめます。",
+ "checks":[["景観計画区域・重点地区","景観行政団体の窓口で確認"],["新築・増築・改築","高さ・延べ面積"],["外観の修繕・色彩の変更","変更面積・変更率"]],
+ "svg":svg("<g data-in='0.03'><rect x='20' y='30' width='500' height='300' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/>"+''.join(f"<path d='M20 {80+i*60} H520' stroke='#24407e' stroke-width='2'/>" for i in range(4))+''.join(f"<path d='M{80+i*90} 30 V330' stroke='#24407e' stroke-width='2'/>" for i in range(5))+"</g>",
+  "<g data-in='0.18'><path d='M120 70 L380 60 L420 260 L150 290 z' fill='#f5b942' opacity='.22' stroke='#f5b942' stroke-width='3' stroke-dasharray='10 6'/>"+txt(270,110,'重点地区',None,'#f5b942',22,'middle')+"</g>",
+  "<g data-in='0.32'><rect x='240' y='160' width='70' height='60' fill='#cfd9f5'/>"+txt(275,250,'ホテル',None,'#eef3ff',18,'middle')+"</g>","<circle data-pulse='0.4' cx='275' cy='190' r='52' fill='none' stroke='#ff6b6b' stroke-width='4'/>",
+  "<g data-in='0.55'><rect x='60' y='350' width='420' height='70' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/>"+txt(270,393,'外壁の塗り替えも対象か確認',None,'#5ad17b',22,'middle')+"</g>")},
+{"label":"見え方","title":"同じ視点・画角で比べる","say":"道路などの視点場から、現況と計画を、同じ画角で比べます。",
+ "checks":[["視点場をそろえる","道路・広場・眺望点"],["配色面積と合成画像","周辺の街並みと比べる"],["屋上設備・サインも","道路からの見え方"]],
+ "svg":svg("<g data-in='0.03'><rect x='10' y='40' width='255' height='260' rx='8' fill='#0e2250' stroke='#6f86bb' stroke-width='3'/>"+txt(137,30,'現況',None,'#a9b9de',20,'middle')+"<rect x='80' y='120' width='110' height='180' fill='#8a8f99'/></g>",
+  "<g data-in='0.2'><rect x='275' y='40' width='255' height='260' rx='8' fill='#0e2250' stroke='#f5b942' stroke-width='3'/>"+txt(402,30,'計画',None,'#f5b942',20,'middle')+"<rect x='345' y='120' width='110' height='180' fill='#b8a58a'/><rect x='375' y='100' width='50' height='20' fill='#cfd9f5'/>"+txt(470,96,'屋上設備',None,'#cfd9f5',15,'end')+"</g>",
+  "<g data-in='0.42'><path d='M270 420 L137 300 M270 420 L402 300' stroke='#5ad17b' stroke-width='3' stroke-dasharray='8 6'/>"+person(270,370,'#5ad17b')+txt(300,420,'視点場（道路）',None,'#5ad17b',19)+"</g>")},
+{"label":"逆算","title":"協議・届出から着手日を逆算","say":"事前協議と届出の受理、そして制限期間から、着手できる日を逆算します。",
+ "checks":[["景観窓口に事前相談"],["条例の協議と必要な修正"],["法の届出と制限期間","着手できる日を工程に入れる"]],
+ "svg":svg("<line x1='20' y1='200' x2='520' y2='200' stroke='#6f86bb' stroke-width='6'/>",
+  "<g data-in='0.04'><circle cx='50' cy='200' r='14' fill='#8ea3cf'/>"+txt(50,170,'事前相談',None,'#cfd9f5',18,'middle')+"</g>",
+  "<g data-in='0.16'><circle cx='170' cy='200' r='14' fill='#8ea3cf'/>"+txt(170,170,'協議・修正',None,'#cfd9f5',18,'middle')+"</g>",
+  "<g data-in='0.28'><circle cx='300' cy='200' r='14' fill='#8ec5ff'/>"+txt(300,170,'届出受理',None,'#8ec5ff',18,'middle')+"</g>",
+  "<g data-in='0.4'><rect x='300' y='220' width='150' height='26' fill='#ff6b6b' opacity='.4'/>"+txt(375,275,'制限期間',None,'#ff6b6b',19,'middle')+"</g>",
+  "<g data-in='0.52'><circle cx='470' cy='200' r='18' fill='#5ad17b'/>"+txt(470,165,'着手',None,'#5ad17b',22,'middle',900)+"</g>",
+  "<g data-in='0.65'><path d='M470 320 H60' stroke='#f5b942' stroke-width='5'/><path d='M64 310 L64 330 L44 320 z' fill='#f5b942'/>"+txt(270,360,'着手日から逆算して工程に入れる',None,'#f5b942',20,'middle')+"</g>")},
+{"label":"記録","title":"完成外観の記録を渡す","say":"代替品などの変更は事前に根拠をそろえ、完成写真と色の記録を引き渡します。",
+ "checks":[["代替品は新旧を比べて確認","色番号・光沢・位置と面積"],["届出時と同じ視点で完成写真"],["維持補修用の色・素材を記録","施設管理者へ渡す"]],
+ "svg":svg("<g data-in='0.04'>"+''.join(f"<rect x='{30+i*80}' y='50' width='64' height='90' rx='6' fill='{c}' stroke='#cfd9f5' stroke-width='2'/>" for i,c in enumerate(['#b8a58a','#a8957a','#8a8f99']))+txt(140,170,'色見本・材料見本',None,'#cfd9f5',19,'middle')+"</g>",
+  "<g data-in='0.2'><path d='M95 95 H175' stroke='#f5b942' stroke-width='4'/>"+txt(330,95,'新旧を比較',None,'#f5b942',20)+"</g>",
+  camera(60,230,'0.4'),txt(115,360,'同じ視点で撮影','0.45','#eef3ff',19,'middle'),
+  doc(280,210,240,200,'維持補修の記録','0.6',lines=4,fs=20))}]})
+
+def cliff_section(d='0.03'):
+    return f"<g data-in='{d}'><path d='M0 120 H220 L330 330 H540 V440 H0 z' fill='#5a4a3a'/><path d='M0 120 H220 L330 330 H540' fill='none' stroke='#c9b28a' stroke-width='4'/></g>"
+save('cliff-ordinance',{"kicker":"崖地条例","footnote":"架空事例の説明用モデル。条件は所在地の条例と窓口で確認します。","steps":[
+{"label":"測量","title":"崖の断面を測量で確定","say":"まず、測量で、崖の高さ、勾配、下端を、代表断面で確定します。",
+ "checks":[["崖の高さHと下端","測り方は条例で確認"],["建物までの水平距離D"],["隣地にかかる斜面も","調査の権限と管理の責任"]],
+ "svg":svg(cliff_section(),"<g data-in='0.15'><path d='M350 120 V330' stroke='#f5b942' stroke-width='4'/><path d='M340 120 H360 M340 330 H360' stroke='#f5b942' stroke-width='4'/>"+txt(365,232,'崖高 H',None,'#f5b942',22)+"</g>",
+  "<circle data-pulse='0.3' cx='330' cy='330' r='16' fill='none' stroke='#ff6b6b' stroke-width='4'/>"+txt(330,370,'下端','0.3','#ff6b6b',19,'middle'),
+  "<g data-in='0.42'><rect x='430' y='250' width='90' height='80' fill='#cfd9f5'/>"+txt(475,240,'建物',None,'#cfd9f5',19,'middle')+"</g>",
+  "<g data-in='0.55'><path d='M330 300 H430' stroke='#8ec5ff' stroke-width='4'/><path d='M330 290 V310 M430 290 V310' stroke='#8ec5ff' stroke-width='4'/>"+txt(380,290,'D',None,'#8ec5ff',22,'middle',900)+"</g>",
+  "<g data-in='0.68'><path d='M180 60 V440' stroke='#eef3ff' stroke-width='3' stroke-dasharray='8 6'/>"+txt(170,60,'敷地境界',None,'#eef3ff',18,'end')+"</g>")},
+{"label":"条例","title":"高さと距離の条件を照合","say":"高さと距離の条件は自治体で違います。東京都では、高さ2m超で、距離が高さの2倍以内です。",
+ "checks":[["東京都建築安全条例6条","高さ2m超・下端から水平距離2H以内"],["横浜市建築基準条例3条","勾配30度超・高さ3m超など"],["例外と測定の起点も確認","窓口で判断を記録"]],
+ "svg":svg(cliff_section(),"<g data-in='0.12'><path d='M350 120 V330' stroke='#f5b942' stroke-width='4'/>"+txt(360,232,'H＞2m',None,'#f5b942',22)+"</g>",
+  "<g data-in='0.28'><rect x='330' y='300' width='200' height='30' fill='#ff6b6b' opacity='.35'/><path d='M330 350 H530' stroke='#ff6b6b' stroke-width='4'/><path d='M330 340 V360 M530 340 V360' stroke='#ff6b6b' stroke-width='4'/>"+txt(430,385,'水平距離 2H 以内',None,'#ff6b6b',20,'middle')+"</g>",
+  "<g data-in='0.45'><rect x='10' y='20' width='200' height='76' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/>"+txt(110,52,'東京都',None,'#eef3ff',20,'middle')+txt(110,82,'2m超・2H以内',None,'#f5b942',18,'middle')+"</g>",
+  "<g data-in='0.6'><rect x='230' y='20' width='200' height='76' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/>"+txt(330,52,'横浜市',None,'#eef3ff',20,'middle')+txt(330,82,'30度超・3m超',None,'#f5b942',18,'middle')+"</g>")},
+{"label":"擁壁","title":"既存擁壁は資料と現況で","say":"既存の擁壁は、許可や検査の資料と、ひび割れや水抜きなどの現況を照合します。",
+ "checks":[["許可・検査の資料","築造時の範囲・仕様・増積みの履歴"],["構造図・地盤資料","今回の荷重と比べる"],["変位・ひび割れ・水抜き","湧水と排水先"]],
+ "svg":svg("<g data-in='0.03'><path d='M0 100 H260 V380 H0 z' fill='#5a4a3a'/><path d='M260 90 L300 90 L320 380 L250 380 z' fill='#8a8f99' stroke='#cfd9f5' stroke-width='3'/><path d='M0 380 H540' stroke='#c9b28a' stroke-width='4'/></g>",
+  "<g data-in='0.18'><path d='M285 160 l8 30 l-6 26 l10 30' stroke='#ff6b6b' stroke-width='4' fill='none'/>"+txt(318,250,'ひび割れ',None,'#ff6b6b',19)+"</g>",
+  "<g data-in='0.32'><circle cx='298' cy='300' r='8' fill='#0b1a40' stroke='#cfd9f5' stroke-width='3'/><path d='M304 304 q20 10 22 40' stroke='#8ec5ff' stroke-width='4' fill='none'/>"+txt(340,310,'水抜き・湧水',None,'#8ec5ff',19)+"</g>",
+  "<g data-in='0.45'><path d='M300 70 L330 40' stroke='#f5b942' stroke-width='4'/><path d='M300 90 L300 60' stroke='#f5b942' stroke-width='3'/>"+txt(340,45,'変位・傾き',None,'#f5b942',19)+"</g>",
+  doc(410,100,120,130,'検査資料','0.6',lines=2,fs=19))},
+{"label":"引継ぎ","title":"配置を決め、点検を引き継ぐ","say":"配置と工法を決めたら、施工中の監視条件と、擁壁の点検項目を引き継ぎます。",
+ "checks":[["配置案を比べて決める","後退・既存活用・更新"],["掘削順序と監視条件","基礎・裏込め・排水の隠蔽前記録"],["排水と擁壁の点検項目","連絡先とあわせて引渡し"]],
+ "svg":svg(box(20,30,155,100,'建物を後退','0.04',fs=21),box(192,30,155,100,'既存を活用','0.14',fs=21),box(364,30,156,100,'擁壁を更新','0.24',fs=21),
+  arrowdown(270,140,'0.34',44),okbox(120,195,300,70,'配置と工法を決定','0.4',fs=24),
+  doc(60,290,200,140,'監視条件','0.55',lines=2,fs=20),doc(280,290,200,140,'点検項目','0.65',lines=2,fs=20))}]})
+print('ok')

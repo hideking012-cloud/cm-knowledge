@@ -200,7 +200,7 @@ body.reduce .flow.playing .step.on{transform:none}
 <main id="deck">
 <p class="cm-slide-format">16:9 <span>長い内容は枠内でスクロールできます</span></p>
 <section class="slide" id="s1" aria-label="スライド1">
-<div class="meta"><span class="cat">全体像</span><span>01 / 08</span></div>
+<div class="meta"><span class="cat">全体像</span><span>01 / 9</span></div>
 <h1>耐火構造と耐火建築物 ― 「部材の性能」と「建物の要求」を分ける</h1>
 <aside class="cm-visual" aria-labelledby="cm-visual-title">
     <h2 id="cm-visual-title" class="cm-visual-heading">床・梁・柱のつながり</h2><div class="cm-visual-term"><p><strong>耐火被覆</strong> 火災の熱から柱や梁などを守る被覆です。厚さや継ぎ目などを仕様と照合します。</p>
@@ -213,7 +213,7 @@ body.reduce .flow.playing .step.on{transform:none}
     <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>梁</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>柱と耐火被覆</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>接合部</button></div>
     <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 梁</strong> 床からの荷重を柱等へ伝える部材です。要求性能と仕様を照合します。</p><p data-point-note><strong>2 柱と耐火被覆</strong> 鉄骨を覆う材料等を、厚さ・範囲・継ぎ目から確かめます。</p><p data-point-note><strong>3 接合部</strong> 梁と柱が接する位置。被覆の切れや施工の取り合いを確認します。</p></div>
   </figure>
-    <p class="cm-visual-pager-link"><a href="#s2" data-jump="2">次のスライドで確認表を見る</a> · <a href="fire-resistance-report.html#cm-visual-summary">図と表のまとめ</a></p>
+    <p class="cm-visual-pager-link"><a href="#s3" data-jump="3">次のスライドで確認表を見る</a> · <a href="fire-resistance-report.html#cm-visual-summary">図と表のまとめ</a></p>
   </aside>
 <ol class="overview" aria-label="確認の流れ"><li><b>建物の条件</b><span>規模・用途・地域（法21・27・61条など）</span></li><li><b>部材の要求性能</b><span>柱・梁・壁・床などの区分と時間</span></li><li><b>施工の根拠</b><span>告示・認定別添と隠蔽前の記録</span></li></ol>
 <ul>
@@ -225,8 +225,23 @@ body.reduce .flow.playing .step.on{transform:none}
 </ul>
 <details class="script"><summary>原稿</summary><p class="say">三つ目は耐火です。ここでの混乱の多くは、部材の話と建物の話が混ざることから生まれます。耐火構造や準耐火構造は柱や梁などの部材の性能、耐火建築物や準耐火建築物は建物全体の区分です。建物にどの区分が要るかは、用途なら法27条、地域なら法61条、規模なら法21条から決まり、その建物の部材にどれだけの時間の性能が要るかを令107条などで決める、という二段構えで考えてください。</p></details>
 </section>
-<section class="slide" id="s2" aria-label="スライド2">
-<div class="meta"><span class="cat">部材と建物の区分</span><span>02 / 08</span></div>
+<section class="slide" id="s2" aria-label="スライド2" data-video="1">
+<div class="meta"><span class="cat">動画</span><span>02 / 9</span></div>
+  <h2 class="a">動画で見る：要求→時間→根拠→隠蔽前</h2>
+  <div class="cm-video">
+    <div class="cm-video-frame">
+      <video controls preload="metadata" playsinline data-cues="[[0.5, 9.5, &quot;まず、用途の法27条と、地域の法61条から、耐火建築物の要求を確かめます。&quot;], [10.8, 16.87, &quot;柱とはりの耐火時間は、最上階から数えた階数で決まります。&quot;], [18.17, 25.16, &quot;告示仕様か大臣認定かを決め、認定書の別添どおりの仕様かを照合します。&quot;], [26.46, 33.78, &quot;天井を閉じる前に、被覆の厚さ、接合部、貫通部を検査して記録します。&quot;]]" poster="fire-resistance-video-poster.png" aria-label="耐火構造・耐火建築物の4つの手順の図解動画（35秒・日本語ナレーションと字幕付き）">
+        <source src="fire-resistance-video.mp4" type="video/mp4">
+        <track kind="subtitles" srclang="ja" label="日本語" src="fire-resistance-video-ja.vtt" default>
+      </video>
+      <p class="cm-video-fail">動画を読み込めませんでした。fire-resistance-video.mp4 がこのページと同じフォルダにあるか確認してください。</p>
+    </div>
+    <ol class="cm-video-steps" aria-label="動画の場面へ移動"><li><button type="button" data-seek="0" data-end="10.3" aria-current="false"><span>0:00</span>用途と地域から要求を知る</button></li><li><button type="button" data-seek="10.3" data-end="17.67" aria-current="false"><span>0:10</span>上から数えて時間が決まる</button></li><li><button type="button" data-seek="17.67" data-end="25.96" aria-current="false"><span>0:18</span>告示か認定かを照合</button></li><li><button type="button" data-seek="25.96" data-end="34.6" aria-current="false"><span>0:26</span>隠れる前に被覆を検査</button></li></ol>
+  </div>
+  <p class="cm-video-note">「読み上げ開始」で動画の音声が流れます。場面のボタンでその位置から再生します。字幕は「字幕」ボタンで切り替えられます。</p>
+<details class="script"><summary>原稿</summary><p class="say">まず、用途の法27条と、地域の法61条から、耐火建築物の要求を確かめます。柱とはりの耐火時間は、最上階から数えた階数で決まります。告示仕様か大臣認定かを決め、認定書の別添どおりの仕様かを照合します。天井を閉じる前に、被覆の厚さ、接合部、貫通部を検査して記録します。</p></details></section>
+<section class="slide" id="s3" aria-label="スライド3">
+<div class="meta"><span class="cat">部材と建物の区分</span><span>03 / 9</span></div>
 <h2>部材の区分と建物の区分</h2>
 <aside class="cm-visual" aria-labelledby="cm-visual-table-title">
     <h3 id="cm-visual-table-title" class="cm-visual-heading">図に対応する確認表</h3><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
@@ -270,8 +285,8 @@ body.reduce .flow.playing .step.on{transform:none}
 </ul>
 <details class="script"><summary>原稿</summary><p class="say">部材と建物の区分を整理しました。部材には耐火構造、準耐火構造、防火構造があり、建物には耐火建築物と準耐火建築物があります。耐火建築物は、主要な構造部が耐火構造で、外壁の延焼ラインにある開口部に防火設備が付いている建物です。令和6年4月からは特定主要構造部という考え方が入り、適切に区画すれば、建物の倒壊に影響しない部分の構造を合理化できるようになりました。木質化の相談が来たときに使える論点です。</p></details>
 </section>
-<section class="slide" id="s3" aria-label="スライド3">
-<div class="meta"><span class="cat">要求の入口</span><span>03 / 08</span></div>
+<section class="slide" id="s4" aria-label="スライド4">
+<div class="meta"><span class="cat">要求の入口</span><span>04 / 9</span></div>
 <h2>法27条（用途）と法61条（地域）の要求</h2>
 <table class="tbl">
 <thead><tr><th>根拠</th><th>条件</th><th>要求</th></tr></thead>
@@ -287,8 +302,8 @@ body.reduce .flow.playing .step.on{transform:none}
 <ul><li>複数の要求がかかる場合は最も厳しいものに合わせる。地域をまたぐ建物は原則として厳しい地域の規定（法65条）</li></ul>
 <details class="script"><summary>原稿</summary><p class="say">どの建物に何が要るかの入口です。ホテルは特殊建築物なので、3階以上をホテルに使えば法27条で耐火建築物等が求められます。地域でいえば、防火地域では3階以上か100平方メートル超で耐火建築物等、準防火地域では4階以上か1,500平方メートル超で耐火建築物等です。複数の条件がかかる場合は一番厳しいものに合わせます。用途変更で既存の建物をホテルにする場合、この法27条の要求を満たせるかどうかが成立性の分かれ目になります。</p></details>
 </section>
-<section class="slide" id="s4" aria-label="スライド4">
-<div class="meta"><span class="cat">要求時間</span><span>04 / 08</span></div>
+<section class="slide" id="s5" aria-label="スライド5">
+<div class="meta"><span class="cat">要求時間</span><span>05 / 9</span></div>
 <h2>令107条・令107条の2：非損傷性の時間と3つの性能</h2>
 <table class="tbl">
 <thead><tr><th>最上階から数えた階数</th><th>柱・はり</th><th>耐力壁・床</th></tr></thead>
@@ -307,8 +322,8 @@ body.reduce .flow.playing .step.on{transform:none}
 </ul>
 <details class="script"><summary>原稿</summary><p class="say">要求される時間です。耐火構造の時間は、最上階から数えて何階目かで決まります。上から4つ目までは1時間、5から9は1.5時間、10から14は2時間、柱と梁はさらに上の区分で2.5時間、3時間になります。1.5時間と2.5時間は令和5年の改正で新しくできた区分です。性能は、壊れないこと、裏面が熱くならないこと、火炎を通さないこと、の三つで、部位ごとにどれが要るかが決まっています。地階も対象となる部位については、最上階から地階まで順に数えます。</p></details>
 </section>
-<section class="slide" id="s5" aria-label="スライド5">
-<div class="meta"><span class="cat">告示仕様と認定</span><span>05 / 08</span></div>
+<section class="slide" id="s6" aria-label="スライド6">
+<div class="meta"><span class="cat">告示仕様と認定</span><span>06 / 9</span></div>
 <h2>告示仕様・大臣認定・検証法の使い分け</h2>
 <table class="tbl">
 <thead><tr><th>方法</th><th>内容</th><th>確認書類</th><th>向く場面</th></tr></thead>
@@ -324,8 +339,8 @@ body.reduce .flow.playing .step.on{transform:none}
 </ul>
 <details class="script"><summary>原稿</summary><p class="say">性能を満たす方法は三つあります。告示に例示された仕様を使う方法、大臣認定を受けた製品や工法を使う方法、それと耐火性能検証法で計算する方法です。鉄骨の吹付けロックウールや耐火塗料の多くは大臣認定品で、FPで始まる認定番号が付いています。認定は、材料、厚さ、下地、施工方法までまとめて一つの仕様として認められているものです。現場で少しでも変えると認定外になるので、施工要領書と認定書の別添を突き合わせる確認を必ず入れてください。</p></details>
 </section>
-<section class="slide" id="s6" aria-label="スライド6">
-<div class="meta"><span class="cat">被覆・接合部・貫通</span><span>06 / 08</span></div>
+<section class="slide" id="s7" aria-label="スライド7">
+<div class="meta"><span class="cat">被覆・接合部・貫通</span><span>07 / 9</span></div>
 <h2>施工品質の要所と検査の流れ</h2>
 <ul>
 <li><b>被覆</b>：吹付け厚さ・密度、成形板の目地・ビス間隔。設備吊りボルトや後施工アンカーでの欠損に注意</li>
@@ -343,8 +358,8 @@ body.reduce .flow.playing .step.on{transform:none}
 <button type="button" class="flow-next" data-flow="f1">順に見る</button><span id="f1-status" role="status"></span>
 <details class="script"><summary>原稿</summary><p class="say">耐火の品質は、図面より現場で決まります。被覆は厚さと密度、接合部は被覆が途切れていないか、貫通部は認定工法どおりに埋めているか、区画壁はスラブ下まで届いているか。特に多いのが、耐火被覆を吹いた後に設備業者が吊りボルトを打って被覆を剥がしてしまうケースです。そこで流れのように、仕様の照合、先行確認、施工と自主検査、後工程の管理、そして天井を閉じる前の立会検査という順番で管理します。天井を閉じたら見えなくなるので、閉鎖前検査を工程表に入れておくことが大事です。</p></details>
 </section>
-<section class="slide" id="s7" aria-label="スライド7">
-<div class="meta"><span class="cat">仮想ホテル例と発注者判断</span><span>07 / 08</span></div>
+<section class="slide" id="s8" aria-label="スライド8">
+<div class="meta"><span class="cat">仮想ホテル例と発注者判断</span><span>08 / 9</span></div>
 <h2>仮想ホテルA（S造・準防火地域・地上10階地下1階）の要求時間</h2>
 <table class="tbl">
 <thead><tr><th>階</th><th>最上階から</th><th>柱・はり</th><th>床</th></tr></thead>
@@ -362,8 +377,8 @@ body.reduce .flow.playing .step.on{transform:none}
 </ul>
 <details class="script"><summary>原稿</summary><p class="say">仮想ホテルで時間を出してみます。地上10階、地下1階なので、7階から上は1時間、2階から6階は1.5時間、1階と地下は2時間です。以前なら2階から6階も2時間でしたので、改正の恩恵が出るところです。発注者として決めることは三つです。被覆の工法、大空間で検証法を使うかどうか、そして木質化や区画による合理化を採るかどうかです。検証法や合理化は工事費を下げられますが、将来の用途変更で前提が崩れると再検証が必要になる、条件付きの判断だということを押さえておいてください。</p></details>
 </section>
-<section class="slide" id="s8" aria-label="スライド8">
-<div class="meta"><span class="cat">試験・引渡し</span><span>08 / 08</span></div>
+<section class="slide" id="s9" aria-label="スライド9">
+<div class="meta"><span class="cat">試験・引渡し</span><span>09 / 9</span></div>
 <h2>検査・引渡し・維持管理</h2>
 <table class="tbl">
 <thead><tr><th>段階</th><th>確認内容</th><th>記録</th></tr></thead>

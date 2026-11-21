@@ -1,0 +1,85 @@
+{
+  "kicker": "崖地条例",
+  "footnote": "架空事例の説明用モデル。条件は所在地の条例と窓口で確認します。",
+  "steps": [
+    {
+      "label": "測量",
+      "title": "崖の断面を測量で確定",
+      "say": "まず、測量で、崖の高さ、勾配、下端を、代表断面で確定します。",
+      "checks": [
+        [
+          "崖の高さHと下端",
+          "測り方は条例で確認"
+        ],
+        [
+          "建物までの水平距離D"
+        ],
+        [
+          "隣地にかかる斜面も",
+          "調査の権限と管理の責任"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><path d='M0 120 H220 L330 330 H540 V440 H0 z' fill='#5a4a3a'/><path d='M0 120 H220 L330 330 H540' fill='none' stroke='#c9b28a' stroke-width='4'/></g><g data-in='0.15'><path d='M350 120 V330' stroke='#f5b942' stroke-width='4'/><path d='M340 120 H360 M340 330 H360' stroke='#f5b942' stroke-width='4'/><text  x='365' y='232' fill='#f5b942' font-size='22' font-weight='700' text-anchor='start'>崖高 H</text></g><circle data-pulse='0.3' cx='330' cy='330' r='16' fill='none' stroke='#ff6b6b' stroke-width='4'/><text data-in='0.3' x='330' y='370' fill='#ff6b6b' font-size='19' font-weight='700' text-anchor='middle'>下端</text><g data-in='0.42'><rect x='430' y='250' width='90' height='80' fill='#cfd9f5'/><text  x='475' y='240' fill='#cfd9f5' font-size='19' font-weight='700' text-anchor='middle'>建物</text></g><g data-in='0.55'><path d='M330 300 H430' stroke='#8ec5ff' stroke-width='4'/><path d='M330 290 V310 M430 290 V310' stroke='#8ec5ff' stroke-width='4'/><text  x='380' y='290' fill='#8ec5ff' font-size='22' font-weight='900' text-anchor='middle'>D</text></g><g data-in='0.68'><path d='M180 60 V440' stroke='#eef3ff' stroke-width='3' stroke-dasharray='8 6'/><text  x='170' y='60' fill='#eef3ff' font-size='18' font-weight='700' text-anchor='end'>敷地境界</text></g></svg>"
+    },
+    {
+      "label": "条例",
+      "title": "高さと距離の条件を照合",
+      "say": "高さと距離の条件は自治体で違います。東京都では、高さ2m超で、距離が高さの2倍以内です。",
+      "checks": [
+        [
+          "東京都建築安全条例6条",
+          "高さ2m超・下端から水平距離2H以内"
+        ],
+        [
+          "横浜市建築基準条例3条",
+          "勾配30度超・高さ3m超など"
+        ],
+        [
+          "例外と測定の起点も確認",
+          "窓口で判断を記録"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><path d='M0 120 H220 L330 330 H540 V440 H0 z' fill='#5a4a3a'/><path d='M0 120 H220 L330 330 H540' fill='none' stroke='#c9b28a' stroke-width='4'/></g><g data-in='0.12'><path d='M350 120 V330' stroke='#f5b942' stroke-width='4'/><text  x='360' y='232' fill='#f5b942' font-size='22' font-weight='700' text-anchor='start'>H＞2m</text></g><g data-in='0.28'><rect x='330' y='300' width='200' height='30' fill='#ff6b6b' opacity='.35'/><path d='M330 350 H530' stroke='#ff6b6b' stroke-width='4'/><path d='M330 340 V360 M530 340 V360' stroke='#ff6b6b' stroke-width='4'/><text  x='430' y='385' fill='#ff6b6b' font-size='20' font-weight='700' text-anchor='middle'>水平距離 2H 以内</text></g><g data-in='0.45'><rect x='10' y='20' width='200' height='76' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text  x='110' y='52' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>東京都</text><text  x='110' y='82' fill='#f5b942' font-size='18' font-weight='700' text-anchor='middle'>2m超・2H以内</text></g><g data-in='0.6'><rect x='230' y='20' width='200' height='76' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text  x='330' y='52' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>横浜市</text><text  x='330' y='82' fill='#f5b942' font-size='18' font-weight='700' text-anchor='middle'>30度超・3m超</text></g></svg>"
+    },
+    {
+      "label": "擁壁",
+      "title": "既存擁壁は資料と現況で",
+      "say": "既存の擁壁は、許可や検査の資料と、ひび割れや水抜きなどの現況を照合します。",
+      "checks": [
+        [
+          "許可・検査の資料",
+          "築造時の範囲・仕様・増積みの履歴"
+        ],
+        [
+          "構造図・地盤資料",
+          "今回の荷重と比べる"
+        ],
+        [
+          "変位・ひび割れ・水抜き",
+          "湧水と排水先"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><path d='M0 100 H260 V380 H0 z' fill='#5a4a3a'/><path d='M260 90 L300 90 L320 380 L250 380 z' fill='#8a8f99' stroke='#cfd9f5' stroke-width='3'/><path d='M0 380 H540' stroke='#c9b28a' stroke-width='4'/></g><g data-in='0.18'><path d='M285 160 l8 30 l-6 26 l10 30' stroke='#ff6b6b' stroke-width='4' fill='none'/><text  x='318' y='250' fill='#ff6b6b' font-size='19' font-weight='700' text-anchor='start'>ひび割れ</text></g><g data-in='0.32'><circle cx='298' cy='300' r='8' fill='#0b1a40' stroke='#cfd9f5' stroke-width='3'/><path d='M304 304 q20 10 22 40' stroke='#8ec5ff' stroke-width='4' fill='none'/><text  x='340' y='310' fill='#8ec5ff' font-size='19' font-weight='700' text-anchor='start'>水抜き・湧水</text></g><g data-in='0.45'><path d='M300 70 L330 40' stroke='#f5b942' stroke-width='4'/><path d='M300 90 L300 60' stroke='#f5b942' stroke-width='3'/><text  x='340' y='45' fill='#f5b942' font-size='19' font-weight='700' text-anchor='start'>変位・傾き</text></g><g data-in='0.6'><rect x='410' y='100' width='120' height='130' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='470.0' y='138' fill='#eef3ff' font-size='19' font-weight='700' text-anchor='middle'>検査資料</text><line x1='428' y1='162' x2='512' y2='162' stroke='#6f86bb' stroke-width='3'/><line x1='428' y1='188' x2='482' y2='188' stroke='#6f86bb' stroke-width='3'/></g></svg>"
+    },
+    {
+      "label": "引継ぎ",
+      "title": "配置を決め、点検を引き継ぐ",
+      "say": "配置と工法を決めたら、施工中の監視条件と、擁壁の点検項目を引き継ぎます。",
+      "checks": [
+        [
+          "配置案を比べて決める",
+          "後退・既存活用・更新"
+        ],
+        [
+          "掘削順序と監視条件",
+          "基礎・裏込め・排水の隠蔽前記録"
+        ],
+        [
+          "排水と擁壁の点検項目",
+          "連絡先とあわせて引渡し"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='20' y='30' width='155' height='100' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='97.5' y='87.35' fill='#eef3ff' font-size='21' font-weight='700' text-anchor='middle'>建物を後退</text></g><g data-in='0.14'><rect x='192' y='30' width='155' height='100' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='269.5' y='87.35' fill='#eef3ff' font-size='21' font-weight='700' text-anchor='middle'>既存を活用</text></g><g data-in='0.24'><rect x='364' y='30' width='156' height='100' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='442.0' y='87.35' fill='#eef3ff' font-size='21' font-weight='700' text-anchor='middle'>擁壁を更新</text></g><g data-in='0.34'><path d='M270 140 V172' stroke='#f5b942' stroke-width='5'/><path d='M260 168 L280 168 L270 184 z' fill='#f5b942'/></g><g data-in='0.4'><rect x='120' y='195' width='300' height='70' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text x='270.0' y='238.4' fill='#5ad17b' font-size='24' font-weight='700' text-anchor='middle'>配置と工法を決定</text></g><g data-in='0.55'><rect x='60' y='290' width='200' height='140' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='160.0' y='328' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>監視条件</text><line x1='78' y1='352' x2='242' y2='352' stroke='#6f86bb' stroke-width='3'/><line x1='78' y1='378' x2='212' y2='378' stroke='#6f86bb' stroke-width='3'/></g><g data-in='0.65'><rect x='280' y='290' width='200' height='140' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='380.0' y='328' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>点検項目</text><line x1='298' y1='352' x2='462' y2='352' stroke='#6f86bb' stroke-width='3'/><line x1='298' y1='378' x2='432' y2='378' stroke='#6f86bb' stroke-width='3'/></g></svg>"
+    }
+  ]
+}

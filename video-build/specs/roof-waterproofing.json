@@ -1,0 +1,86 @@
+{
+  "kicker": "屋上防水補修",
+  "footnote": "仮想ホテルの説明用モデル。工法・試験値は特記仕様・メーカー仕様で確定します。",
+  "steps": [
+    {
+      "label": "診断",
+      "title": "漏水の経路を確かめる",
+      "say": "まず、散水試験やコアで、漏水の経路と既存防水の状態を確かめます。",
+      "checks": [
+        [
+          "問診と履歴",
+          "漏水の時期・降雨条件・改修記録"
+        ],
+        [
+          "散水・赤外線・含水測定",
+          "赤外線だけで結論にしない"
+        ],
+        [
+          "コアで層構成と接着",
+          "含水・付着を確かめる"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.02'><rect x='20' y='150' width='500' height='26' fill='#8b7a5a'/><text x='30' y='140' fill='#cfd9f5' font-size='18' font-weight='700'>押えコンクリート</text><rect x='20' y='176' width='500' height='12' fill='#222'/><text x='520' y='206' fill='#a9b9de' font-size='16' text-anchor='end'>防水層</text><rect x='20' y='188' width='500' height='70' fill='#5a6c9a'/><text x='30' y='232' fill='#eef3ff' font-size='18' font-weight='700'>スラブ</text><rect x='20' y='258' width='500' height='8' fill='#8ea3cf'/><text x='30' y='292' fill='#a9b9de' font-size='18'>客室の天井</text></g><g data-in='0.15'><path d='M120 40 q-6 14 0 20 q6 -6 0 -20' fill='#8ec5ff'/><path d='M170 40 q-6 14 0 20 q6 -6 0 -20' fill='#8ec5ff'/><path d='M220 40 q-6 14 0 20 q6 -6 0 -20' fill='#8ec5ff'/><path d='M270 40 q-6 14 0 20 q6 -6 0 -20' fill='#8ec5ff'/><text x='195' y='100' fill='#8ec5ff' font-size='20' font-weight='700' text-anchor='middle'>散水試験</text></g><path data-in='0.3' d='M330 150 L330 190 L360 200 L380 258' stroke='#8ec5ff' stroke-width='6' fill='none' stroke-dasharray='10 6'/><g data-in='0.42'><ellipse cx='390' cy='320' rx='60' ry='22' fill='#8b6a3a' opacity='.6'/><text x='390' y='370' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>雨染み</text></g><g data-in='0.6'><rect x='440' y='120' width='40' height='150' rx='6' fill='none' stroke='#f5b942' stroke-width='4'/><text x='460' y='108' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>コア</text></g></svg>"
+    },
+    {
+      "label": "区分",
+      "title": "補修区分を条件で選ぶ",
+      "say": "局部補修、かぶせ、撤去を、既存の事実と施設の制約で選びます。",
+      "checks": [
+        [
+          "局部補修",
+          "原因箇所が特定でき、全体劣化は軽い"
+        ],
+        [
+          "かぶせ（非撤去）",
+          "付着・含水が許容範囲、荷重に余裕"
+        ],
+        [
+          "撤去",
+          "広範な含水・剥離、原因不明の漏水"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='20' y='30' width='500' height='70' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='270.0' y='72.7' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>既存の事実：種別・含水・接着・排水</text></g><g data-in='0.12'><path d='M270 104 V128' stroke='#f5b942' stroke-width='5'/><path d='M260 124 L280 124 L270 140 z' fill='#f5b942'/></g><g data-in='0.2'><rect x='20' y='150' width='155' height='170' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='97.5' y='233.0' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>局部補修</text><text x='97.5' y='259.0' fill='#a9b9de' font-size='17' text-anchor='middle'>つなぎ・範囲限定</text></g><g data-in='0.32'><rect x='192' y='150' width='155' height='170' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='269.5' y='233.0' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>かぶせ</text><text x='269.5' y='259.0' fill='#a9b9de' font-size='17' text-anchor='middle'>旧層を残す</text></g><g data-in='0.44'><rect x='364' y='150' width='156' height='170' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='442.0' y='233.0' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>撤去</text><text x='442.0' y='259.0' fill='#a9b9de' font-size='17' text-anchor='middle'>下地からやり直す</text></g><g data-in='0.6'><rect x='20' y='350' width='500' height='60' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text x='270' y='388' fill='#5ad17b' font-size='22' font-weight='900' text-anchor='middle'>工法の優劣ではなく条件で決める</text></g></svg>"
+    },
+    {
+      "label": "取合い",
+      "title": "端部で途切れさせない",
+      "say": "立上り、ドレン、貫通部、設備基礎で、防水層が途切れないか確認します。",
+      "checks": [
+        [
+          "立上り・笠木",
+          "端末の押え・シール・立上り高さ"
+        ],
+        [
+          "ルーフドレン",
+          "改修用ドレン・つば回りの増張り"
+        ],
+        [
+          "貫通部・設備基礎",
+          "既製役物で処理しシール頼みにしない"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.02'><path d='M30 60 V380 H510 V60' fill='none' stroke='#8ea3cf' stroke-width='6'/><rect x='34' y='64' width='472' height='312' fill='#13285e'/></g><g data-in='0.1'><path d='M30 60 V380 H510 V60' fill='none' stroke='#f5b942' stroke-width='10' opacity='.5'/><text x='270' y='50' fill='#f5b942' font-size='19' font-weight='700' text-anchor='middle'>立上り・笠木</text></g><g data-in='0.3'><circle cx='80' cy='340' r='22' fill='#0b1a40' stroke='#8ec5ff' stroke-width='5'/><text x='112' y='372' fill='#8ec5ff' font-size='18' font-weight='700'>ドレン</text></g><g data-in='0.45'><rect x='250' y='190' width='16' height='60' fill='#cfd9f5'/><circle cx='258' cy='252' r='20' fill='none' stroke='#ff6b6b' stroke-width='4'/><text x='258' y='176' fill='#cfd9f5' font-size='18' font-weight='700' text-anchor='middle'>貫通部</text></g><g data-in='0.6'><rect x='340' y='170' width='130' height='90' rx='6' fill='#3b4d7c' stroke='#cfd9f5' stroke-width='3'/><text x='405' y='222' fill='#eef3ff' font-size='18' font-weight='700' text-anchor='middle'>設備基礎</text><rect x='336' y='166' width='138' height='98' rx='8' fill='none' stroke='#f5b942' stroke-width='4' stroke-dasharray='8 6'/></g><g data-in='0.2' stroke='#8ec5ff' stroke-width='3' fill='none' opacity='.7'><path d='M400 330 L120 340' stroke-dasharray='8 6'/><path d='M200 120 L95 318' stroke-dasharray='8 6'/></g></svg>"
+    },
+    {
+      "label": "施工管理",
+      "title": "仮防水まで戻して記録",
+      "say": "撤去は、その日のうちに仮防水まで戻せる量に区切り、工程写真を残します。",
+      "checks": [
+        [
+          "当日中に仮防水まで戻す",
+          "降雨予報で撤去を止める基準を決める"
+        ],
+        [
+          "工程写真・使用量記録",
+          "重ね幅・増張り・端末処理"
+        ],
+        [
+          "保証は範囲・免責・点検条件",
+          "点検記録を長期修繕計画へ"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.02'><rect x='20' y='240' width='500' height='40' fill='#5a6c9a'/><text x='30' y='310' fill='#a9b9de' font-size='18'>スラブ</text></g><g data-in='0.12'><rect x='20' y='226' width='160' height='14' fill='#222'/><text x='100' y='214' fill='#a9b9de' font-size='17' text-anchor='middle'>既存防水</text></g><g data-in='0.25'><rect x='180' y='224' width='170' height='16' fill='#8ec5ff' opacity='.8'/><text x='265' y='212' fill='#8ec5ff' font-size='18' font-weight='700' text-anchor='middle'>今日の撤去＋仮防水</text></g><g data-in='0.32'><rect x='350' y='226' width='170' height='14' fill='#222'/><text x='435' y='214' fill='#a9b9de' font-size='17' text-anchor='middle'>明日以降</text></g><g data-in='0.45'><circle cx='420' cy='90' r='34' fill='#8ea3cf'/><circle cx='460' cy='100' r='28' fill='#8ea3cf'/><rect x='390' y='96' width='100' height='30' fill='#8ea3cf'/><path d='M405 140 l-6 16' stroke='#8ec5ff' stroke-width='4'/><path d='M430 140 l-6 16' stroke='#8ec5ff' stroke-width='4'/><path d='M455 140 l-6 16' stroke='#8ec5ff' stroke-width='4'/><path d='M480 140 l-6 16' stroke='#8ec5ff' stroke-width='4'/><text x='300' y='110' fill='#eef3ff' font-size='19' font-weight='700' text-anchor='middle'>降雨予報で中止</text></g><g data-in='0.62' transform='translate(70 330)'><rect x='0' y='12' width='110' height='74' rx='12' fill='#13285e' stroke='#eef3ff' stroke-width='4'/><rect x='34' y='0' width='42' height='16' rx='4' fill='#eef3ff'/><circle cx='55' cy='49' r='22' fill='none' stroke='#eef3ff' stroke-width='5'/><circle cx='55' cy='49' r='8' fill='#f5b942'/></g><text data-in='0.66' x='200' y='385' fill='#eef3ff' font-size='20' font-weight='700'>工程写真・使用量を記録</text></svg>"
+    }
+  ]
+}

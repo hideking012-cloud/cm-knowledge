@@ -1,0 +1,86 @@
+{
+  "kicker": "内装制限",
+  "footnote": "仮想ホテルの説明用モデル。対象と緩和は設計者・行政に確認します。",
+  "steps": [
+    {
+      "label": "対象",
+      "title": "対象になる室を決める",
+      "say": "まず、用途、規模、階から、内装制限の対象になる室を決めます。",
+      "checks": [
+        [
+          "用途・規模・階で判定",
+          "ホテルは令128条の4"
+        ],
+        [
+          "室単位で確かめる",
+          "地階・無窓居室・火気使用室"
+        ],
+        [
+          "カーテンなどは別制度",
+          "防炎規制（消防法）"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='60' y='40' width='300' height='360' fill='#13285e' stroke='#8ea3cf' stroke-width='3'/><line x1='60' y1='100' x2='360' y2='100' stroke='#6f86bb' stroke-width='2'/><line x1='60' y1='160' x2='360' y2='160' stroke='#6f86bb' stroke-width='2'/><line x1='60' y1='220' x2='360' y2='220' stroke='#6f86bb' stroke-width='2'/><line x1='60' y1='280' x2='360' y2='280' stroke='#6f86bb' stroke-width='2'/><line x1='60' y1='340' x2='360' y2='340' stroke='#6f86bb' stroke-width='2'/><text  x='40' y='80' fill='#a9b9de' font-size='18' font-weight='700' text-anchor='end'>5F</text><text  x='40' y='140' fill='#a9b9de' font-size='18' font-weight='700' text-anchor='end'>4F</text><text  x='40' y='200' fill='#a9b9de' font-size='18' font-weight='700' text-anchor='end'>3F</text><text  x='40' y='260' fill='#a9b9de' font-size='18' font-weight='700' text-anchor='end'>2F</text><text  x='40' y='320' fill='#a9b9de' font-size='18' font-weight='700' text-anchor='end'>1F</text><text  x='40' y='380' fill='#a9b9de' font-size='18' font-weight='700' text-anchor='end'>B1</text><line x1='20' y1='340' x2='520' y2='340' stroke='#8ea3cf' stroke-width='4'/></g><g data-in='0.2'><rect x='64' y='44' width='292' height='52' fill='#f5b942' opacity='.28'/><rect x='64' y='104' width='292' height='52' fill='#f5b942' opacity='.28'/><rect x='64' y='164' width='292' height='52' fill='#f5b942' opacity='.28'/><text  x='380' y='140' fill='#f5b942' font-size='20' font-weight='700' text-anchor='start'>3階以上の</text><text  x='380' y='166' fill='#f5b942' font-size='20' font-weight='700' text-anchor='start'>客室部分</text></g><g data-in='0.4'><rect x='64' y='344' width='292' height='52' fill='#ff6b6b' opacity='.3'/><text  x='380' y='378' fill='#ff6b6b' font-size='20' font-weight='700' text-anchor='start'>地階の宴会場</text></g><g data-in='0.6'><path d='M200 284 v52' stroke='#cfd9f5' stroke-width='3'/><path d='M200 286 q20 26 0 50 q20 -4 0 -50' fill='#8ec5ff' opacity='.6'/><text  x='380' y='316' fill='#8ec5ff' font-size='19' font-weight='700' text-anchor='start'>カーテン＝防炎</text></g></svg>"
+    },
+    {
+      "label": "部位",
+      "title": "居室・通路と壁・天井",
+      "say": "居室と廊下、壁と天井で、必要な材料の区分が変わります。",
+      "checks": [
+        [
+          "居室の壁は難燃以上",
+          "床から1.2m以下の腰壁は除外"
+        ],
+        [
+          "3階以上に居室なら天井は準不燃",
+          "居室の天井"
+        ],
+        [
+          "廊下・階段は準不燃以上",
+          "1.2mの除外なし"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><rect x='20' y='60' width='300' height='320' fill='#13285e' stroke='#8ea3cf' stroke-width='4'/><text  x='170' y='230' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>客室（居室）</text><rect x='320' y='60' width='200' height='320' fill='#1d3a74' stroke='#8ea3cf' stroke-width='4'/><text  x='420' y='230' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>廊下</text></g><g data-in='0.2'><rect x='24' y='64' width='292' height='14' fill='#8ec5ff'/><text  x='170' y='105' fill='#8ec5ff' font-size='19' font-weight='700' text-anchor='middle'>天井：準不燃</text></g><g data-in='0.32'><rect x='24' y='78' width='14' height='190' fill='#f5b942'/><text  x='48' y='150' fill='#f5b942' font-size='19' font-weight='700' text-anchor='start'>壁：難燃</text></g><g data-in='0.42'><line x1='20' y1='270' x2='320' y2='270' stroke='#5ad17b' stroke-width='3' stroke-dasharray='10 6'/><rect x='24' y='272' width='14' height='104' fill='#5ad17b' opacity='.5'/><text  x='48' y='330' fill='#5ad17b' font-size='18' font-weight='700' text-anchor='start'>床から1.2m以下は除外</text></g><g data-in='0.6'><rect x='324' y='64' width='192' height='312' fill='none' stroke='#8ec5ff' stroke-width='10' opacity='.7'/><text  x='420' y='270' fill='#8ec5ff' font-size='19' font-weight='700' text-anchor='middle'>壁・天井とも</text><text  x='420' y='296' fill='#8ec5ff' font-size='19' font-weight='700' text-anchor='middle'>準不燃以上</text></g></svg>"
+    },
+    {
+      "label": "材料区分",
+      "title": "加熱時間で決まる区分",
+      "say": "不燃、準不燃、難燃は、加熱時間で決まる区分です。認定番号で照合します。",
+      "checks": [
+        [
+          "不燃材料 20分",
+          "認定番号 NM-"
+        ],
+        [
+          "準不燃材料 10分",
+          "認定番号 QM-"
+        ],
+        [
+          "難燃材料 5分",
+          "認定番号 RM-"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><text  x='20' y='40' fill='#a9b9de' font-size='19' font-weight='700' text-anchor='start'>加熱時間</text><g data-in='0.1' data-grow='left center'><rect x='20' y='70' width='480' height='70' rx='10' fill='#24407e'/></g><text data-in='0.14' x='40' y='115' fill='#eef3ff' font-size='26' font-weight='700' text-anchor='start'>不燃 20分</text><text data-in='0.16' x='480' y='115' fill='#f5b942' font-size='26' font-weight='900' text-anchor='end'>NM</text><g data-in='0.3' data-grow='left center'><rect x='20' y='180' width='240' height='70' rx='10' fill='#24407e'/></g><text data-in='0.34' x='40' y='225' fill='#eef3ff' font-size='26' font-weight='700' text-anchor='start'>準不燃 10分</text><text data-in='0.36' x='480' y='225' fill='#f5b942' font-size='26' font-weight='900' text-anchor='end'>QM</text><g data-in='0.5' data-grow='left center'><rect x='20' y='290' width='150' height='70' rx='10' fill='#24407e'/></g><text data-in='0.54' x='40' y='335' fill='#eef3ff' font-size='26' font-weight='700' text-anchor='start'>難燃 5分</text><text data-in='0.56' x='480' y='335' fill='#f5b942' font-size='26' font-weight='900' text-anchor='end'>RM</text><text data-in='0.7' x='270' y='410' fill='#5ad17b' font-size='20' font-weight='700' text-anchor='middle'>上位の区分は下位の区分を満たす</text></svg>"
+    },
+    {
+      "label": "引渡し",
+      "title": "認定番号付きで引き渡す",
+      "say": "認定書の下地条件を承認で確かめ、認定番号付きの仕上げ表を引き渡します。",
+      "checks": [
+        [
+          "材料承認",
+          "認定書の写し・下地条件・告示の該当号"
+        ],
+        [
+          "施工中の写真と出荷証明",
+          "下地時と仕上げ時"
+        ],
+        [
+          "部位別仕上げ表を引き渡す",
+          "認定番号付き"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='20' y='40' width='200' height='250' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='120.0' y='78' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>認定書</text><line x1='38' y1='102' x2='202' y2='102' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='128' x2='202' y2='128' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='154' x2='202' y2='154' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='180' x2='172' y2='180' stroke='#6f86bb' stroke-width='3'/></g><g data-in='0.2'><rect x='40' y='200' width='160' height='60' rx='6' fill='none' stroke='#f5b942' stroke-width='4'/><text  x='120' y='238' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>下地条件</text></g><g data-in='0.32'><path d='M230 165 H266' stroke='#f5b942' stroke-width='5'/><path d='M262 155 L262 175 L280 165 z' fill='#f5b942'/></g><g data-in='0.4'><rect x='290' y='40' width='230' height='330' rx='12' fill='#f4efe2'/><text  x='405' y='82' fill='#0a1636' font-size='24' font-weight='900' text-anchor='middle'>仕上げ表</text><line x1='305' y1='100' x2='505' y2='100' stroke='#0a1636' stroke-width='2'/><line x1='305' y1='152' x2='505' y2='152' stroke='#0a1636' stroke-width='2'/><line x1='305' y1='204' x2='505' y2='204' stroke='#0a1636' stroke-width='2'/><line x1='305' y1='256' x2='505' y2='256' stroke='#0a1636' stroke-width='2'/><line x1='305' y1='308' x2='505' y2='308' stroke='#0a1636' stroke-width='2'/><line x1='305' y1='360' x2='505' y2='360' stroke='#0a1636' stroke-width='2'/><text  x='310' y='132' fill='#0a1636' font-size='17' font-weight='700' text-anchor='start'>客室 天井</text><text  x='310' y='184' fill='#0a1636' font-size='17' font-weight='700' text-anchor='start'>客室 壁</text><text  x='310' y='236' fill='#0a1636' font-size='17' font-weight='700' text-anchor='start'>廊下 天井</text><text  x='310' y='288' fill='#0a1636' font-size='17' font-weight='700' text-anchor='start'>廊下 壁</text><text  x='310' y='340' fill='#0a1636' font-size='17' font-weight='700' text-anchor='start'>宴会場 壁</text><text  x='500' y='132' fill='#1d7a46' font-size='17' font-weight='700' text-anchor='end'>QM-</text><text  x='500' y='184' fill='#1d7a46' font-size='17' font-weight='700' text-anchor='end'>RM-</text><text  x='500' y='236' fill='#1d7a46' font-size='17' font-weight='700' text-anchor='end'>QM-</text><text  x='500' y='288' fill='#1d7a46' font-size='17' font-weight='700' text-anchor='end'>QM-</text><text  x='500' y='340' fill='#1d7a46' font-size='17' font-weight='700' text-anchor='end'>QM-</text></g><text data-in='0.6' x='120' y='340' fill='#cfd9f5' font-size='20' font-weight='700' text-anchor='middle'>オーナー・BMへ</text></svg>"
+    }
+  ]
+}

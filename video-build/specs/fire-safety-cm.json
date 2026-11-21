@@ -1,0 +1,86 @@
+{
+  "kicker": "防火設備のCM実務",
+  "footnote": "架空ホテル改修の説明用モデル。判断は設計者・行政が行います。",
+  "steps": [
+    {
+      "label": "発注前",
+      "title": "発注前に3点を照合",
+      "say": "発注前に、建具表、承認図、工事区分表の3点を照合します。",
+      "checks": [
+        [
+          "建具表",
+          "遮炎時間・遮煙・閉鎖方式"
+        ],
+        [
+          "承認図・認定書",
+          "認定の範囲に収まるか"
+        ],
+        [
+          "工事区分表",
+          "感知器・予備電源はどの工事か"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.05'><rect x='20' y='40' width='150' height='190' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='95' y='80' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>建具表</text><g stroke='#6f86bb' stroke-width='3'><line x1='40' y1='105' x2='150' y2='105'/><line x1='40' y1='135' x2='150' y2='135'/><line x1='40' y1='165' x2='150' y2='165'/><line x1='40' y1='195' x2='120' y2='195'/></g></g><g data-in='0.2'><rect x='195' y='40' width='150' height='190' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='270' y='80' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>承認図</text><rect x='225' y='100' width='90' height='105' fill='none' stroke='#6f86bb' stroke-width='3'/><line x1='270' y1='100' x2='270' y2='205' stroke='#6f86bb' stroke-width='3'/></g><g data-in='0.35'><rect x='370' y='40' width='150' height='190' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='445' y='80' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>工事区分表</text><g fill='none' stroke='#6f86bb' stroke-width='3'><rect x='390' y='100' width='110' height='105'/><line x1='390' y1='135' x2='500' y2='135'/><line x1='390' y1='170' x2='500' y2='170'/><line x1='445' y1='100' x2='445' y2='205'/></g></g><g data-in='0.55' fill='none' stroke='#f5b942' stroke-width='4' stroke-dasharray='8 8'><path d='M95 232 V300 H270'/><path d='M270 232 V300'/><path d='M445 232 V300 H270'/></g><g data-in='0.7'><circle cx='270' cy='350' r='56' fill='#0c2d33' stroke='#5ad17b' stroke-width='5'/><path d='M243 352 L262 371 L298 330' fill='none' stroke='#5ad17b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/></g><text data-in='0.75' x='345' y='360' fill='#5ad17b' font-size='26' font-weight='900'>同じ版で一致</text></svg>"
+    },
+    {
+      "label": "隠蔽前",
+      "title": "天井を閉じる前に写真",
+      "say": "天井を閉じる前に、区画の途切れと貫通部を、写真で残します。",
+      "checks": [
+        [
+          "壁が上階スラブまで連続",
+          "壁上端・梁際・デッキの谷"
+        ],
+        [
+          "貫通部の処理",
+          "管のすき間・ダクトのダンパー"
+        ],
+        [
+          "点検口から届くか",
+          "位置がわかる写真を受け取る"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><rect x='0' y='20' width='540' height='40' fill='#2a3b66'/><text x='16' y='48' fill='#cfd9f5' font-size='20' font-weight='700'>上階スラブ</text><rect x='245' y='60' width='50' height='360' fill='#3b4d7c' stroke='#8ea3cf' stroke-width='2'/><text x='232' y='330' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='end'>区画の壁</text><path d='M236 324 H243' stroke='#eef3ff' stroke-width='3'/><line x1='0' y1='250' x2='540' y2='250' stroke='#8ea3cf' stroke-width='4' stroke-dasharray='14 8'/><text x='16' y='280' fill='#a9b9de' font-size='18'>天井</text><g data-in='0.12'><rect x='20' y='120' width='500' height='42' fill='#1d3a74' stroke='#6f86bb' stroke-width='2'/><text x='60' y='149' fill='#eef3ff' font-size='19' font-weight='700'>ダクト</text></g><g data-in='0.22'><rect x='300' y='112' width='34' height='58' fill='#f5b942'/><text x='350' y='105' fill='#f5b942' font-size='18' font-weight='700'>防火ダンパー</text></g><g data-in='0.3'><line x1='20' y1='205' x2='520' y2='205' stroke='#8ec5ff' stroke-width='10'/><text x='400' y='232' fill='#8ec5ff' font-size='18' font-weight='700'>配管</text></g><circle data-pulse='0.4' cx='270' cy='205' r='22' fill='none' stroke='#ff6b6b' stroke-width='4'/><circle data-pulse='0.48' cx='270' cy='64' r='20' fill='none' stroke='#ff6b6b' stroke-width='4'/><g data-in='0.62' transform='translate(370 300)'><rect x='0' y='12' width='120' height='80' rx='12' fill='#13285e' stroke='#eef3ff' stroke-width='4'/><rect x='38' y='0' width='44' height='16' rx='4' fill='#eef3ff'/><circle cx='60' cy='52' r='24' fill='none' stroke='#eef3ff' stroke-width='5'/><circle cx='60' cy='52' r='9' fill='#f5b942'/></g><text data-in='0.68' x='430' y='420' fill='#eef3ff' font-size='18' font-weight='700' text-anchor='middle'>位置図の番号と紐づけ</text><g data-in='0.5'><rect x='90' y='250' width='60' height='14' fill='#f5b942'/><text x='70' y='300' fill='#f5b942' font-size='18' font-weight='700'>点検口</text></g></svg>"
+    },
+    {
+      "label": "連動試験",
+      "title": "感知から閉鎖まで一連で",
+      "say": "竣工前に、煙の感知から閉鎖完了までを、一連で試験します。",
+      "checks": [
+        [
+          "一連の作動",
+          "感知器→連動制御器→自動閉鎖装置"
+        ],
+        [
+          "予備電源への切替",
+          "停電時も閉まるか"
+        ],
+        [
+          "是正と再試験の記録",
+          "危害防止装置・復旧操作も"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.05'><rect x='10' y='20' width='240' height='70' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><circle cx='50' cy='55' r='18' fill='none' stroke='#eef3ff' stroke-width='4'/><circle cx='50' cy='55' r='6' fill='#ff6b6b'/><text x='82' y='64' fill='#eef3ff' font-size='24' font-weight='700'>煙感知器</text></g><g data-in='0.12'><path d='M130 92 V116' stroke='#f5b942' stroke-width='5'/><path d='M120 112 L140 112 L130 128 z' fill='#f5b942'/></g><g data-in='0.15'><rect x='10' y='130' width='240' height='70' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='130' y='174' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>連動制御器</text></g><g data-in='0.22'><path d='M130 202 V226' stroke='#f5b942' stroke-width='5'/><path d='M120 222 L140 222 L130 238 z' fill='#f5b942'/></g><g data-in='0.25'><rect x='10' y='240' width='240' height='70' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='130' y='284' fill='#eef3ff' font-size='24' font-weight='700' text-anchor='middle'>自動閉鎖装置</text></g><g data-in='0.32'><path d='M130 312 V336' stroke='#f5b942' stroke-width='5'/><path d='M120 332 L140 332 L130 348 z' fill='#f5b942'/></g><g data-in='0.35'><rect x='10' y='350' width='240' height='70' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text x='130' y='394' fill='#5ad17b' font-size='24' font-weight='900' text-anchor='middle'>閉鎖完了</text></g><g transform='translate(300 60)'><rect x='0' y='0' width='220' height='290' fill='none' stroke='#8ea3cf' stroke-width='5'/><rect x='6' y='6' width='208' height='278' fill='#0b1a40'/><g><rect data-in='0.3' data-grow='center top' x='8' y='8' width='204' height='274' fill='#3b4d7c' stroke='#cfd9f5' stroke-width='2'/></g><circle data-in='0.5' cx='185' cy='150' r='9' fill='#f5b942'/><text x='110' y='325' fill='#cfd9f5' font-size='20' font-weight='700' text-anchor='middle'>防火戸・シャッター</text></g><g data-in='0.62'><rect x='330' y='395' width='160' height='40' rx='8' fill='#13285e' stroke='#f5b942' stroke-width='3'/><text x='410' y='422' fill='#f5b942' font-size='20' font-weight='700' text-anchor='middle'>予備電源 切替</text></g></svg>"
+    },
+    {
+      "label": "引渡し",
+      "title": "書類と管理台帳を渡す",
+      "say": "引渡しでは、書類と管理台帳、定期報告の担当をセットで渡します。",
+      "checks": [
+        [
+          "完成区画図・建具表・試験記録",
+          "取扱説明書・復旧手順も"
+        ],
+        [
+          "定期報告の対象と初回時期",
+          "所在地の特定行政庁で確認"
+        ],
+        [
+          "担当者・委託先",
+          "消防法の点検予定も同じ台帳に"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.05'><rect x='20' y='60' width='70' height='300' rx='6' fill='#24407e' stroke='#8ea3cf' stroke-width='3'/><rect x='95' y='60' width='70' height='300' rx='6' fill='#1d3a74' stroke='#8ea3cf' stroke-width='3'/><rect x='170' y='60' width='70' height='300' rx='6' fill='#24407e' stroke='#8ea3cf' stroke-width='3'/><g fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'><text x='55' y='130' writing-mode='tb'>区画図</text><text x='130' y='130' writing-mode='tb'>建具表</text><text x='205' y='130' writing-mode='tb'>試験記録</text></g></g><path data-in='0.25' d='M255 210 H300' stroke='#f5b942' stroke-width='6' marker-end='url(#ah2)'/><defs><marker id='ah2' viewBox='0 0 10 10' refX='2' refY='5' markerWidth='4' markerHeight='4' orient='auto'><path d='M0 0 L10 5 L0 10 z' fill='#f5b942'/></marker></defs><g data-in='0.3'><rect x='320' y='40' width='210' height='340' rx='14' fill='#f4efe2' stroke='#cfd9f5' stroke-width='3'/><text x='425' y='85' fill='#0a1636' font-size='26' font-weight='900' text-anchor='middle'>管理台帳</text><line x1='340' y1='100' x2='510' y2='100' stroke='#0a1636' stroke-width='2'/></g><g font-size='19' font-weight='700' fill='#0a1636'><g data-in='0.42'><text x='342' y='145'>報告の対象</text><rect x='470' y='126' width='26' height='26' rx='4' fill='none' stroke='#1d7a46' stroke-width='3'/><path d='M474 140 l7 7 l12-15' fill='none' stroke='#1d7a46' stroke-width='4'/></g><g data-in='0.55'><text x='342' y='205'>初回時期</text><rect x='470' y='186' width='26' height='26' rx='4' fill='none' stroke='#1d7a46' stroke-width='3'/><path d='M474 200 l7 7 l12-15' fill='none' stroke='#1d7a46' stroke-width='4'/></g><g data-in='0.68'><text x='342' y='265'>担当・委託先</text><rect x='470' y='246' width='26' height='26' rx='4' fill='none' stroke='#1d7a46' stroke-width='3'/><path d='M474 260 l7 7 l12-15' fill='none' stroke='#1d7a46' stroke-width='4'/></g><g data-in='0.78'><text x='342' y='325'>消防点検予定</text><rect x='470' y='306' width='26' height='26' rx='4' fill='none' stroke='#1d7a46' stroke-width='3'/><path d='M474 320 l7 7 l12-15' fill='none' stroke='#1d7a46' stroke-width='4'/></g></g><text data-in='0.5' x='130' y='405' fill='#cfd9f5' font-size='20' font-weight='700' text-anchor='middle'>オーナー・BMへ</text></svg>"
+    }
+  ]
+}
