@@ -1,0 +1,83 @@
+{
+  "kicker": "盛土規制法・開発許可",
+  "footnote": "架空事例の説明用モデル。区域と手続は所管に確認します。",
+  "steps": [
+    {
+      "label": "区域",
+      "title": "規制区域を地図で照合",
+      "say": "まず、敷地の地番と工事範囲を、盛土規制法の規制区域や、都市計画区域と照合します。",
+      "checks": [
+        [
+          "宅地造成等工事規制区域",
+          "特定盛土等規制区域も"
+        ],
+        [
+          "都市計画区域と線引き"
+        ],
+        [
+          "崖・土砂災害・公園区域を重ねる"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='20' y='30' width='330' height='200' rx='8' fill='#3a2f1d' stroke='#f5b942' stroke-width='2' opacity='.85'/><text  x='32' y='58' fill='#f5b942' font-size='18' font-weight='700' text-anchor='start'>盛土規制法の規制区域</text></g><g data-in='0.18'><rect x='80' y='110' width='330' height='200' rx='8' fill='#1d3f4a' stroke='#8ec5ff' stroke-width='2' opacity='.85'/><text  x='92' y='138' fill='#8ec5ff' font-size='18' font-weight='700' text-anchor='start'>都市計画区域</text></g><g data-in='0.32'><rect x='140' y='190' width='330' height='200' rx='8' fill='#3a1d2a' stroke='#ff6b6b' stroke-width='2' opacity='.85'/><text  x='152' y='218' fill='#ff6b6b' font-size='18' font-weight='700' text-anchor='start'>土砂災害の指定</text></g><g data-in='0.48'><rect x='250' y='250' width='120' height='80' fill='none' stroke='#fff' stroke-width='5'/><text  x='310' y='300' fill='#fff' font-size='22' font-weight='900' text-anchor='middle'>敷地</text></g><rect data-pulse='0.55' x='240' y='240' width='140' height='100' fill='none' stroke='#5ad17b' stroke-width='4'/></svg>"
+    },
+    {
+      "label": "制度",
+      "title": "二つの制度を分けて見る",
+      "say": "盛土規制法は造成の安全を、開発許可は、建築を目的とする土地の区画形質の変更を見ます。",
+      "checks": [
+        [
+          "盛土規制法",
+          "盛土・切土・土石の堆積の規模"
+        ],
+        [
+          "都市計画法29条（開発許可）",
+          "区域・規模・目的"
+        ],
+        [
+          "みなし許可と残る手続を分ける",
+          "一枚の工程に書く"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.04'><rect x='20' y='30' width='240' height='150' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='140.0' y='101.0' fill='#eef3ff' font-size='26' font-weight='700' text-anchor='middle'>盛土規制法</text><text x='140.0' y='129.0' fill='#a9b9de' font-size='17' text-anchor='middle'>造成の安全</text></g><g data-in='0.16'><rect x='280' y='30' width='240' height='150' rx='12' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='400.0' y='101.0' fill='#eef3ff' font-size='26' font-weight='700' text-anchor='middle'>開発許可</text><text x='400.0' y='129.0' fill='#a9b9de' font-size='17' text-anchor='middle'>建築目的の区画形質の変更</text></g><g data-in='0.32'><path d='M140 184 V230 H400 V184' fill='none' stroke='#f5b942' stroke-width='4'/></g><g data-in='0.42'><rect x='60' y='250' width='420' height='80' rx='12' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text x='270.0' y='297.7' fill='#5ad17b' font-size='22' font-weight='700' text-anchor='middle'>みなし許可になる部分</text></g><g data-in='0.55'><rect x='60' y='345' width='420' height='80' rx='12' fill='#13285e' stroke='#f5b942' stroke-width='3'/><text x='270.0' y='392.7' fill='#eef3ff' font-size='22' font-weight='700' text-anchor='middle'>残る手続（標識・報告・検査）</text></g></svg>"
+    },
+    {
+      "label": "数量",
+      "title": "盛土・切土・仮置きを数量で",
+      "say": "盛土、切土、仮置きの面積と高さを数量表にし、許可図と現場で共通に使います。",
+      "checks": [
+        [
+          "盛土・切土の範囲と高さ",
+          "造成の平面図・断面図"
+        ],
+        [
+          "土石の仮置き",
+          "場所・高さ・期間"
+        ],
+        [
+          "排水系統と排水先"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><path d='M0 260 L160 260 L260 200 L540 200 V440 H0 z' fill='#5a4a3a'/></g><g data-in='0.15'><path d='M160 260 L260 200 L300 200 L200 260 z' fill='#ff6b6b' opacity='.55'/><text  x='150' y='180' fill='#ff6b6b' font-size='22' font-weight='700' text-anchor='start'>切土</text></g><g data-in='0.3'><path d='M0 260 H160 L160 230 H0 z' fill='#f5b942' opacity='.6'/><text  x='20' y='220' fill='#f5b942' font-size='22' font-weight='700' text-anchor='start'>盛土</text><path d='M60 230 V260' stroke='#fff' stroke-width='3'/><text  x='70' y='250' fill='#fff' font-size='18' font-weight='700' text-anchor='start'>H</text></g><g data-in='0.45'><path d='M380 200 L420 150 L470 150 L510 200 z' fill='#c9b28a'/><text  x='445' y='130' fill='#c9b28a' font-size='20' font-weight='700' text-anchor='middle'>仮置き</text></g><g data-in='0.6'><path d='M300 320 H520' stroke='#8ec5ff' stroke-width='6' stroke-dasharray='12 6'/><text  x='410' y='350' fill='#8ec5ff' font-size='19' font-weight='700' text-anchor='middle'>排水先</text></g><g data-in='0.7'><rect x='20' y='300' width='200' height='130' rx='10' fill='#13285e' stroke='#6f86bb' stroke-width='3'/><text x='120.0' y='338' fill='#eef3ff' font-size='20' font-weight='700' text-anchor='middle'>数量表</text><line x1='38' y1='362' x2='202' y2='362' stroke='#6f86bb' stroke-width='3'/><line x1='38' y1='388' x2='172' y2='388' stroke='#6f86bb' stroke-width='3'/></g></svg>"
+    },
+    {
+      "label": "施工",
+      "title": "埋まる前に立ち会う",
+      "say": "排水や擁壁の背面など、埋まる前の工程は立会いで確認し、完了後は点検先を引き継ぎます。",
+      "checks": [
+        [
+          "排水・擁壁の背面",
+          "隠蔽前写真・材料・立会い"
+        ],
+        [
+          "高さや工区の変更は事前に協議",
+          "必要な変更手続"
+        ],
+        [
+          "排水先と維持管理者を引継ぎ",
+          "豪雨後の点検箇所と連絡先"
+        ]
+      ],
+      "svg": "<svg viewBox='0 0 540 440'><g data-in='0.03'><path d='M0 120 H240 V380 H0 z' fill='#5a4a3a'/><path d='M240 110 H280 L300 380 H230 z' fill='#8a8f99' stroke='#cfd9f5' stroke-width='3'/><path d='M0 380 H540' stroke='#c9b28a' stroke-width='4'/></g><g data-in='0.18'><rect x='190' y='130' width='40' height='240' fill='#8ec5ff' opacity='.35'/><path d='M210 360 H330' stroke='#8ec5ff' stroke-width='6'/><text  x='100' y='170' fill='#8ec5ff' font-size='19' font-weight='700' text-anchor='start'>裏込め・排水</text></g><circle data-pulse='0.3' cx='210' cy='300' r='40' fill='none' stroke='#ff6b6b' stroke-width='4'/><g data-in='0.42' transform='translate(340 140)'><rect x='0' y='12' width='110' height='74' rx='12' fill='#13285e' stroke='#eef3ff' stroke-width='4'/><rect x='34' y='0' width='42' height='16' rx='4' fill='#eef3ff'/><circle cx='55' cy='49' r='22' fill='none' stroke='#eef3ff' stroke-width='5'/><circle cx='55' cy='49' r='8' fill='#f5b942'/></g><text data-in='0.46' x='395' y='270' fill='#eef3ff' font-size='19' font-weight='700' text-anchor='middle'>隠蔽前に立会い</text><g data-in='0.62'><rect x='330' y='300' width='190' height='80' rx='10' fill='#0c2d33' stroke='#5ad17b' stroke-width='3'/><text  x='425' y='335' fill='#5ad17b' font-size='19' font-weight='700' text-anchor='middle'>点検箇所と</text><text  x='425' y='362' fill='#5ad17b' font-size='19' font-weight='700' text-anchor='middle'>連絡先を引継ぎ</text></g></svg>"
+    }
+  ]
+}
