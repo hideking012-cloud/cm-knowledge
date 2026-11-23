@@ -1,370 +1,134 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
-<title>屋上防水補修のCM実務 | 詳細レポート</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>屋上防水補修のCM実務｜詳細レポート</title>
+<meta name="description" content="公共建築改修工事標準仕様書（建築工事編）令和7年版 第3章を軸に、漏水診断、工法記号の読み方、撤去か残すかの判断、端部・ドレンの納まり、発注・施工・検査・引渡しの確認事項を、架空のホテル案件で整理します。">
 <style>
-:root{
-  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
-  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
-  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
-  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
-}
+:root{--ink:#1f2430;--sub:#5b6474;--line:#d9dee7;--accent:#e8432f;--bg:#f6f7fa;--blue:#2b6cff;--green:#1e9e5a}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
-a{color:var(--green)}
-a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
-.skip:focus{left:8px}
-.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
-.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
-.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
-.nav{display:flex;gap:6px;flex-wrap:wrap}
-.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
-.nav a:hover{background:rgba(255,255,255,.15)}
-main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
-.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
-.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
-h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
-.hero p{margin:6px 0;color:var(--sub)}
-section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
-h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
-h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
-p{margin:8px 0}
-ul,ol{padding-left:1.4em}
-li{margin:3px 0}
-.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
-.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
-.toc li{break-inside:avoid}
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
-.card p,.card ul{font-size:15px;margin:0}
-.card.a{background:var(--amber-l);border-color:#e7cf9f}
-.card.g{background:var(--green);color:#fff;border-color:var(--green)}
-.card.g h4{color:#fff}
-.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
-.callout.g{border-color:var(--green);background:var(--green-l)}
-.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
-.small{font-size:13.5px;color:var(--sub)}
-.tbl-wrap{overflow-x:auto}
-.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
-.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
-.tbl thead th{background:var(--green);color:#fff}
-.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
-.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
-.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
-.flow li b{display:block;color:var(--green-d)}
-.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
-.check td.box{width:2.4em;text-align:center}
-.check input{width:18px;height:18px;accent-color:var(--green)}
-.srclist li{margin:6px 0}
-.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
-.back{display:inline-block;margin-top:8px;font-size:14px}
-footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
-@media (max-width:820px){
-  .g2,.g3{grid-template-columns:1fr}
-  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .toc ol{columns:1}
-}
-@media (max-width:700px){
-  .topbar{position:static}
-  body{font-size:15px}
-  h1{font-size:24px}h2{font-size:20px}
-  .hero,section.sec{padding:18px 16px}
-  .flow{grid-template-columns:1fr}
-  .tbl-wrap{overflow:visible}
-  .tbl thead{display:none}
-  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
-  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
-  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
-  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
-  .check td.box{width:100%;text-align:left}
-}
-@media print{
-  .topbar{display:none}
-  body{background:#fff}
-  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
-  a{color:var(--ink)}
-}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;line-height:1.8;font-size:16px}
+a{color:var(--blue)}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;padding:6px 10px;z-index:9}
+header.top{background:#1f2430;color:#fff;padding:14px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+header.top a{color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+header.top .nav{display:flex;gap:14px;flex-wrap:wrap}
+main{max-width:1000px;margin:0 auto;padding:24px 20px 60px}
+h1{font-size:28px;line-height:1.4;margin:10px 0 6px}
+.kicker{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub)}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14px}
+section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 22px 18px;margin:18px 0}
+h2{font-size:21px;border-left:6px solid var(--accent);padding-left:10px;margin:18px 0 10px}
+h3{font-size:17px;margin:16px 0 6px}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;vertical-align:top;text-align:left}
+th{background:#eef1f6;white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#fff8e6;border:1px solid #f5d58a;border-radius:10px;padding:10px 14px;font-size:14.5px;margin:10px 0}
+.warn{background:#fdecea;border:1px solid #f3b3aa;border-radius:10px;padding:10px 14px;font-size:14.5px;margin:10px 0}
+.case{background:#f1edff;border:1px solid #cfc3ff;border-radius:10px;padding:10px 14px;font-size:14.5px;margin:10px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:#eef1f6;border-radius:10px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--accent)}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1000px;margin:0 auto;padding:0 20px 40px;font-size:13px;color:var(--sub)}
+@media (max-width:640px){nav.toc ol{columns:1}h1{font-size:23px}}
+@media print{header.top,nav.toc{display:none}section{break-inside:avoid}}
 </style>
-<link rel="stylesheet" href="cm-visual-lessons.css">
-<script src="cm-field-cases.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
-<header class="topbar">
-  <div class="in">
-    <div class="brand">CM知識一覧 ｜ 屋上防水補修</div>
-    <nav class="nav" aria-label="サイト内リンク">
-      <a href="index.html">CM知識一覧へ戻る</a>
-      <a href="roof-waterproofing-video.html">音声・図解スライド</a>
-      <a href="facade-maintenance-slides.html">関連：外壁点検・外壁補修</a>
-    </nav>
-  </div>
-</header>
-
+<header class="top"><a href="index.html">CM知識一覧 ｜ 屋上防水補修</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="roof-waterproofing-video.html">動画解説（3分）</a></div></header>
 <main id="main">
-<div class="hero"><span class="badge">詳細レポート</span>
+<span class="kicker">詳細レポート</span>
 <h1>屋上防水補修のCM実務</h1>
-<p class="lead">建設CMが屋上防水の補修・改修を計画・査定・監理する際の判断の筋道をまとめました。一次根拠は国土交通省「公共建築改修工事標準仕様書（建築工事編）令和7年版」第3章 防水改修工事です。工法・耐用年数・試験値は一律に断定せず、特記仕様、材料メーカーの仕様、現地調査の結果で確定させてください。</p></div>
-<nav aria-label="目次" class="toc">
-<h2>目次</h2>
-<ol><li><a href="#cm-visual-summary">図と比較表</a></li>
-<li><a href="#basis">一次根拠：改修標仕 第3章</a></li>
-<li><a href="#diagnosis">漏水診断</a></li>
-<li><a href="#existing">既存防水の把握（種別・含水・接着・排水）</a></li>
-<li><a href="#method">補修区分：局部補修／かぶせ／撤去</a></li>
-<li><a href="#materials">材料比較</a></li>
-<li><a href="#details">取合い：立上り・ドレン・貫通・設備基礎</a></li>
-<li><a href="#load-wind">荷重と風・防火</a></li>
-<li><a href="#construction">仮防水と施工中の管理</a></li>
-<li><a href="#inspection">施工検査と保証</a></li>
-<li><a href="#maintenance">維持管理</a></li>
-<li><a href="#case">仮想ホテル例</a></li>
-<li><a href="#decision">判断表</a></li>
-<li><a href="#sources">一次資料</a></li>
-</ol>
-</nav>
+<p class="lead">公共建築改修工事標準仕様書（建築工事編）令和7年版 第3章を軸に、漏水診断、工法記号の読み方、撤去か残すかの判断、端部・ドレンの納まり、発注・施工・検査・引渡しの確認事項を、架空のホテル案件で整理します。</p>
+<p class="meta">最終確認：2026年11月23日。登場するホテルは説明用の架空の案件です。官庁営繕の基準のため、民間工事では契約・設計図書で採用した場合に適用されます。</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#basis">1. 一次根拠と適用の考え方</a></li>
+<li><a href="#diag">2. 漏水診断と既存防水の把握</a></li>
+<li><a href="#code">3. 改修工法の記号（3.1.4）</a></li>
+<li><a href="#choice">4. 撤去か残すか</a></li>
+<li><a href="#numbers">5. 施工の数値（改修標仕 第3章、特記がない場合）</a></li>
+<li><a href="#case">6. 架空ホテルでのCMの判断</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="basis" aria-labelledby="basis-h"><h2 id="basis-h">1. 一次根拠と適用の考え方</h2>
 
+<p>防水改修の標準は、国土交通省「公共建築改修工事標準仕様書（建築工事編）令和7年版」第3章 防水改修工事（令和7年3月21日 国営建技第5号、最終改定 令和7年5月12日）。令和7年4月1日から官庁営繕工事に適用される。</p>
+<div class="warn">官庁営繕の基準であり、民間工事にはそのまま適用されない。民間では、契約書・設計図書（特記仕様書）で同仕様書を採用した場合に適用され、数値は「特記がなければ」の既定値として扱う。材料メーカーの仕様・保証条件とも照合する。</div>
+<div class="tw"><table><tr><th>節</th><th>名称</th><th>実務での主な参照点</th></tr>
+<tr><td>1</td><td>共通事項</td><td>3.1.3 施工一般（施工しない条件、検査、養生）、3.1.4 改修工法の種類、3.1.5 有害物質（石綿等）</td></tr>
+<tr><td>2</td><td>既存防水層等の撤去及び既存下地の処理</td><td>3.2.3 保護層の撤去、3.2.4 防水層の撤去、3.2.5 ルーフドレン回り、3.2.6 既存下地の処理</td></tr>
+<tr><td>3〜6</td><td>アスファルト／改質アスファルトシート／合成高分子系ルーフィングシート／塗膜防水</td><td>3.4.4 重ね幅・増張り、3.6節 塗膜の使用量・脱気装置</td></tr>
+<tr><td>7〜9</td><td>シーリング／とい／アルミニウム製笠木</td><td>端末・取合い、排水系統、パラペット天端</td></tr></table></div>
 
-<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
-    <h2 id="cm-visual-report-title" class="cm-visual-heading">雨水の流れと防水の端部</h2><div class="cm-visual-term"><p><strong>防水層</strong> 屋上の床や立上りなどを覆い、建物の中へ雨水が入るのを抑える層です。</p>
-    <p><span>最初に開く資料</span> <b>屋上平面図</b></p></div>
-    <div class="cm-visual-with-image"><div><figure class="cm-field">
-    <div class="cm-field-drawing" aria-label="屋上の断面図">
-      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-ground" style="clip-path:polygon(8% 39.58333333333333%,84% 52.083333333333336%,84% 68.75%,8% 62.5%)"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:14.583333333333334%;width:5%;height:47.91666666666667%"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:14%;top:25%;width:7%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:14%;top:39.58333333333333%;width:68.26419266350405%;transform:rotate(0.08800737352774077rad)"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:78%;top:47.91666666666667%;width:10%;height:10.416666666666668%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:82%;top:58.333333333333336%;width:4%;height:29.166666666666668%"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:27%;top:35.41666666666667%;width:25.179356624028344%;transform:rotate(0.11942892601833845rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:57%;top:43.75%;width:19.1049731745428%;transform:rotate(0.10487693873023389rad)"></i></div>
-      <button type="button" class="cm-field-marker" style="--field-x:17%;--field-y:31.25%" data-point aria-pressed="false" aria-label="1 立上り">1</button><button type="button" class="cm-field-marker" style="--field-x:46%;--field-y:50%" data-point aria-pressed="false" aria-label="2 平場">2</button><button type="button" class="cm-field-marker" style="--field-x:82%;--field-y:54.166666666666664%" data-point aria-pressed="false" aria-label="3 排水口">3</button>
-    </div>
-    <figcaption>屋上の断面図（模式図） · 防水面だけでなく、端部や貫通部、排水経路を続けて見ます。</figcaption>
-    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>立上り</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>平場</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>排水口</button></div>
-    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 立上り</strong> 屋上と壁が交わる部分。防水層の端や継ぎ目を確認します。</p><p data-point-note><strong>2 平場</strong> 広い屋上面。水のたまりや膨れ、切れがないか見ます。</p><p data-point-note><strong>3 排水口</strong> 周りの防水層と、排水が流れる先まで確認します。</p></div>
-  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
-  <tr><th scope="row">平場</th><td>膨れ・切れ・水たまりの位置</td></tr>
-<tr><th scope="row">立上り</th><td>壁との境、継ぎ目、端末の状態</td></tr>
-<tr><th scope="row">排水口</th><td>詰まりと周囲の防水層の状態</td></tr>
-  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-roof-drain-illustration.png" alt="屋上の床から排水口へ、水が流れて下の配管に入る様子を示すイラスト" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:81%;--spot-y:35%">●</span></div><figcaption>金色の印は排水口。矢印は屋上の床に沿う雨水の流れです。外周と設備基礎の周りも見ます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
-    <div class="cm-field-case" data-answer="1">
-    <h3 class="cm-visual-heading">事例で考える</h3>
-    <p>最上階に雨染みがあります。雨染みの真上を補修するだけでよいですか？</p>
-    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
-      <button type="button" data-case-choice aria-pressed="false"><b>A</b>室内の雨染みの真上だけを塗り直す</button>
-      <button type="button" data-case-choice aria-pressed="false"><b>B</b>排水口・外周・貫通部を含めて雨水が入る経路を調べる</button>
-    </div>
-    <p class="cm-case-result" data-case-result aria-live="polite"></p>
-    <details><summary>解説と、確認に使う資料</summary>
-      <p><strong>排水口・外周・貫通部を含めて雨水が入る経路を調べる</strong></p><p>水は屋根や天井裏を伝うことがあります。雨染みと屋上の異常位置を重ね、原因を調べてから補修範囲を決めます。</p>
-      <dl class="cm-case-guide">
-        <div><dt>最初に開く資料</dt><dd>屋上平面図</dd></div>
-        <div><dt>いつ確認するか</dt><dd>漏水調査を始めるとき</dd></div>
-        <div><dt>誰と確認するか</dt><dd>施設管理者・防水の調査者</dd></div>
-      </dl>
-      <p class="cm-case-docs"><strong>関連資料</strong> 屋上平面図・漏水記録・施工写真</p>
-    </details>
-  </div>
-  </aside>
-<section id="basis" class="sec">
-<h2>1. 一次根拠：改修標仕 第3章</h2>
-<p>令和7年版の改修標準仕様書（建築工事編）第3章は、次の9節で構成されています。</p>
-<table class="tbl">
-<thead><tr><th>節</th><th>名称</th><th>実務での主な参照点</th></tr></thead>
-<tbody>
-<tr><td data-label="節">1</td><td data-label="名称">共通事項</td><td data-label="実務での主な参照点">基本要求品質、施工一般（既存部材撤去時の協議、施工を行わない気象条件、防水層の検査、降雨等への養生）、改修工法の種類と工程、石綿等の有害物質を発見した場合の協議</td></tr>
-<tr><td data-label="節">2</td><td data-label="名称">既存防水層等の撤去及び既存下地の処理</td><td data-label="実務での主な参照点">既存保護層・防水層の撤去、ルーフドレン回りの処理（改修用ドレン）、既存下地のひび割れ・欠損・浮き・水はけ不良・出入隅・納まり部の処理</td></tr>
-<tr><td data-label="節">3</td><td data-label="名称">アスファルト防水</td><td data-label="実務での主な参照点">既存アス防水上の積層、保護・露出の種別</td></tr>
-<tr><td data-label="節">4</td><td data-label="名称">改質アスファルトシート防水</td><td data-label="実務での主な参照点">トーチ工法・常温粘着工法、重ね幅・増張り</td></tr>
-<tr><td data-label="節">5</td><td data-label="名称">合成高分子系ルーフィングシート防水</td><td data-label="実務での主な参照点">接着工法・機械的固定工法</td></tr>
-<tr><td data-label="節">6</td><td data-label="名称">塗膜防水</td><td data-label="実務での主な参照点">ウレタンゴム系等、密着・通気緩衝の別</td></tr>
-<tr><td data-label="節">7</td><td data-label="名称">シーリング</td><td data-label="実務での主な参照点">端末・取合いのシール、接着性試験</td></tr>
-<tr><td data-label="節">8</td><td data-label="名称">とい</td><td data-label="実務での主な参照点">排水系統の更新</td></tr>
-<tr><td data-label="節">9</td><td data-label="名称">アルミニウム製笠木</td><td data-label="実務での主な参照点">パラペット天端の更新</td></tr>
-</tbody>
-</table>
-<h3>改修工法記号の読み方</h3>
-<table class="tbl">
-<thead><tr><th>位置</th><th>意味</th><th>記号</th></tr></thead>
-<tbody>
-<tr><td data-label="位置">先頭の文字</td><td data-label="意味">既存防水工法</td><td data-label="記号">P：保護アスファルト防水／M：露出アスファルト・改質アスファルト防水／S：合成高分子系ルーフィングシート防水／L：ウレタンゴム系塗膜防水</td></tr>
-<tr><td data-label="位置">次の数字</td><td data-label="意味">既存保護層・防水層の撤去区分</td><td data-label="記号">1：保護層・防水層とも撤去／2：保護層のみ撤去／3：露出防水層を撤去／4：露出防水層は非撤去／0：保護層・防水層とも非撤去</td></tr>
-<tr><td data-label="位置">末尾の記号</td><td data-label="意味">新規防水工法の種別</td><td data-label="記号">A：屋根保護防水密着／B：屋根保護防水絶縁／C：屋根露出防水密着／D：屋根露出防水絶縁／AI・BI・DI：各断熱工法／AS：改質アスファルトシート防水／S：合成高分子系シート防水／X：ウレタンゴム系塗膜防水／E：屋内防水密着／Y：ゴムアスファルト系塗膜防水</td></tr>
-</tbody>
-</table>
-<p>例：P0Dは保護アスファルト防水の保護層・防水層を撤去せず、屋根露出防水絶縁工法で新設する工法、M3Dは露出アスファルト防水の露出防水層を撤去し、屋根露出防水絶縁工法で新設する工法です。見積もりや特記仕様を比較する際は、まず記号で「何を残し、何を新設するか」をそろえます。</p>
 </section>
+<section id="diag" aria-labelledby="diag-h"><h2 id="diag-h">2. 漏水診断と既存防水の把握</h2>
 
-<section id="diagnosis" class="sec">
-<h2>2. 漏水診断</h2>
-<p>広い範囲を非破壊で見て疑わしい箇所を絞り、最後に微破壊で確かめる順序が、費用と精度の両立に向きます。</p>
-<table class="tbl">
-<thead><tr><th>段階</th><th>内容</th><th>得られる事実</th><th>限界</th></tr></thead>
-<tbody>
-<tr><td data-label="段階">問診・履歴</td><td data-label="内容">漏水の時期、降雨・風向との関係、室内位置、過去の改修記録、竣工図</td><td data-label="得られる事実">現象の再現条件、既存仕様の推定</td><td data-label="限界">記録が残っていないことが多い</td></tr>
-<tr><td data-label="段階">目視・打診・指触</td><td data-label="内容">ふくれ、破断、しわ、口開き、端末の剥がれ、ドレン・笠木・シールの状態</td><td data-label="得られる事実">劣化マップ、端部の異常</td><td data-label="限界">層内部・下地の状態は分からない</td></tr>
-<tr><td data-label="段階">散水試験</td><td data-label="内容">疑わしい部位ごとに区切って散水し、室内側で確認</td><td data-label="得られる事実">浸入経路の特定</td><td data-label="限界">時間がかかる、再現しない場合がある</td></tr>
-<tr><td data-label="段階">赤外線・含水測定</td><td data-label="内容">表面温度分布や含水計で滞水範囲を推定</td><td data-label="得られる事実">含水範囲の面的な把握</td><td data-label="限界">日射・時刻・仕上げで見え方が変わる。単独で結論にしない</td></tr>
-<tr><td data-label="段階">コア・切取り</td><td data-label="内容">防水層・保護層・断熱材の一部を採取</td><td data-label="得られる事実">層構成、各層の劣化、含水、層間・下地との接着</td><td data-label="限界">点の情報。採取後の補修が必要</td></tr>
-</tbody>
-</table>
-</section>
+<ol class="flow"><li><b>問診・履歴</b>漏水の時期と降雨・風向、過去の改修記録、竣工図</li><li><b>目視・打診</b>ふくれ、破断、端末の剥がれ、ドレンの詰まり</li><li><b>散水試験</b>部位を区切って散水し室内側で確認</li><li><b>赤外線・含水測定</b>含水範囲を面で推定（単独では結論にしない）</li><li><b>コア採取</b>層構成、劣化、含水、接着</li></ol>
+<div class="tw"><table><tr><th>確認項目</th><th>見ること</th><th>判断への影響</th></tr>
+<tr><td>種別</td><td>保護／露出、アスファルト・シート・塗膜、断熱の有無、改修回数</td><td>工法記号の先頭文字と撤去区分</td></tr>
+<tr><td>含水</td><td>保護層・断熱材・層間の滞水</td><td>かぶせ時のふくれ、絶縁・脱気の要否、撤去範囲</td></tr>
+<tr><td>接着</td><td>層間・下地との付着、旧層のもろさ</td><td>かぶせの可否、プライマー・下地処理</td></tr>
+<tr><td>排水</td><td>水勾配、水たまり、ドレンの数・詰まり</td><td>勾配修正、改修用ドレン、増設</td></tr>
+<tr><td>有害物質</td><td>防水層・シール材・下地調整材等の石綿含有</td><td>法定の事前調査・報告、撤去の可否と費用・工程（3.1.5：発見時は協議）</td></tr></table></div>
 
-<section id="existing" class="sec">
-<h2>3. 既存防水の把握（種別・含水・接着・排水）</h2>
-<table class="tbl">
-<thead><tr><th>項目</th><th>確認すること</th><th>判断への影響</th></tr></thead>
-<tbody>
-<tr><td data-label="項目">種別</td><td data-label="確認すること">保護／露出、アスファルト・シート・塗膜、断熱の有無、改修回数</td><td data-label="判断への影響">工法記号の先頭と撤去区分、新規材料との相性</td></tr>
-<tr><td data-label="項目">含水</td><td data-label="確認すること">保護層・断熱材・層間の滞水の範囲と程度</td><td data-label="判断への影響">かぶせ時のふくれリスク、絶縁・脱気の要否、撤去範囲</td></tr>
-<tr><td data-label="項目">接着</td><td data-label="確認すること">層間・下地との付着、旧層の脆弱化</td><td data-label="判断への影響">かぶせの可否、プライマー・下地処理の選定</td></tr>
-<tr><td data-label="項目">排水</td><td data-label="確認すること">水勾配、水たまり、ドレンの数・径・詰まり</td><td data-label="判断への影響">勾配修正、改修用ドレン、ドレン増設の要否</td></tr>
-<tr><td data-label="項目">有害物質</td><td data-label="確認すること">既存防水層・シール・下地調整材等の石綿含有</td><td data-label="判断への影響">撤去の可否と費用・工程、法定の事前調査・報告</td></tr>
-</tbody>
-</table>
-<p>異種材料をかぶせる場合は、可塑剤の移行や溶剤による旧層の侵食が起こり得ます。材料メーカーに既存層を示して適合するプライマー・絶縁材の指定を受け、試験施工で確かめます。</p>
 </section>
+<section id="code" aria-labelledby="code-h"><h2 id="code-h">3. 改修工法の記号（3.1.4）</h2>
 
-<section id="method" class="sec">
-<h2>4. 補修区分：局部補修／かぶせ／撤去</h2>
-<table class="tbl">
-<thead><tr><th>区分</th><th>向く条件</th><th>注意点</th><th>CMの確認事項</th></tr></thead>
-<tbody>
-<tr><td data-label="区分">局部補修</td><td data-label="向く条件">原因箇所が特定でき、全体劣化は軽い。本改修までのつなぎ</td><td data-label="注意点">原因の取り違えで再発する</td><td data-label="CMの確認事項">補修範囲、期待期間、再発時の扱いを発注者と合意</td></tr>
-<tr><td data-label="区分">かぶせ（非撤去）</td><td data-label="向く条件">既存の付着・含水が許容範囲、荷重に余裕、廃材・騒音・石綿飛散を抑えたい</td><td data-label="注意点">旧層との相性、絶縁・脱気、端末の納まり、重ねる回数の限界</td><td data-label="CMの確認事項">調査結果との整合、材料メーカーの適合確認、荷重確認</td></tr>
-<tr><td data-label="区分">撤去</td><td data-label="向く条件">広範な含水・剥離、原因不明の漏水、荷重に余裕がない、改修を重ねている</td><td data-label="注意点">費用・工期・騒音・粉じんの増加、撤去中の仮防水、石綿対応</td><td data-label="CMの確認事項">撤去範囲の数量根拠、仮防水計画、廃棄物処理</td></tr>
-</tbody>
-</table>
-<p>保護層（押えコンクリート等）の撤去は荷重・騒音・廃材の負担が大きいため、保護層を残して露出防水を絶縁でかぶせる案（P0系）が比較対象に挙がることが多い一方、保護層下の含水が多い場合は脱気の計画が成否を分けます。どの区分も一律の正解ではなく、調査事実と施設の制約で決めます。</p>
-</section>
+<div class="tw"><table><tr><th>位置</th><th>意味</th><th>記号</th></tr>
+<tr><td>先頭</td><td>既存防水工法</td><td>P：保護アスファルト防水（断熱含む）／M：露出アスファルト・改質アスファルト防水／S：合成高分子系ルーフィングシート防水／L：ウレタンゴム系塗膜防水</td></tr>
+<tr><td>数字</td><td>既存保護層・防水層の撤去区分</td><td>0：保護層・防水層とも非撤去／1：保護層・防水層とも撤去／2：保護層撤去・防水層非撤去（立上り部等は撤去）／3：露出防水層撤去／4：露出防水層非撤去</td></tr>
+<tr><td>末尾</td><td>新規防水工法</td><td>A：屋根保護防水密着／B：同絶縁／AI・BI：同断熱／C：屋根露出防水密着／D：同絶縁／DI：同絶縁断熱／AS・ASI：改質アスファルトシート（断熱）／S・SI：合成高分子系ルーフィングシート（断熱）／X：ウレタンゴム系塗膜／E：屋内防水密着／Y：ゴムアスファルト系塗膜</td></tr></table></div>
+<p>表3.1.1の例：保護アスファルト防水で保護層（平場）を撤去する工法はP1B・P1BI・P2A・P2AI。保護層・防水層を残す系統はP0AS〜P0X、露出アスファルトはM3AS〜M4S、シートはS3S〜S4SI、塗膜はL4X。見積もり比較では、まず記号で「何を残し、何を新設するか」をそろえる。</p>
 
-<section id="materials" class="sec">
-<h2>5. 材料比較</h2>
-<table class="tbl">
-<thead><tr><th>系統</th><th>強み</th><th>弱み・制約</th><th>改修で効く場面</th></tr></thead>
-<tbody>
-<tr><td data-label="系統">アスファルト防水（熱工法）</td><td data-label="強み">積層による高い信頼性</td><td data-label="弱み・制約">煙・臭気・火気、溶融釜の設置、重量</td><td data-label="改修で効く場面">周辺制約の少ない大面積</td></tr>
-<tr><td data-label="系統">改質アスファルトシート（トーチ・常温粘着）</td><td data-label="強み">溶融釜不要、旧アスファルト層と同系</td><td data-label="弱み・制約">トーチは火気、常温粘着は接着・圧着管理</td><td data-label="改修で効く場面">既存アスファルト防水のかぶせ</td></tr>
-<tr><td data-label="系統">合成高分子系シート（塩ビ・加硫ゴム等）</td><td data-label="強み">品質が均一、機械的固定では下地含水の影響を受けにくい</td><td data-label="弱み・制約">複雑形状が苦手、固定時の騒音・振動、耐風設計が必要</td><td data-label="改修で効く場面">平坦で広い屋根のかぶせ</td></tr>
-<tr><td data-label="系統">ウレタンゴム系塗膜</td><td data-label="強み">継目がない、役物・設備周りに強い</td><td data-label="弱み・制約">膜厚が施工に依存、天候・養生・硬化時間</td><td data-label="改修で効く場面">設備が多い屋上、通気緩衝工法で含水下地に対応</td></tr>
-</tbody>
-</table>
-<p class="note">耐用年数は資料によって幅があり、仕様・施工品質・環境・維持管理で大きく変わります。年数の数字で優劣をつけず、条件への適合、維持費、次回改修のしやすさで比較します。</p>
 </section>
+<section id="choice" aria-labelledby="choice-h"><h2 id="choice-h">4. 撤去か残すか</h2>
 
-<section id="details" class="sec">
-<h2>6. 取合い：立上り・ドレン・貫通・設備基礎</h2>
-<table class="tbl">
-<thead><tr><th>部位</th><th>典型的な不具合</th><th>計画・監理の要点</th></tr></thead>
-<tbody>
-<tr><td data-label="部位">立上り・笠木</td><td data-label="典型的な不具合">端末の剥がれ、シール切れ、笠木ジョイントからの浸入</td><td data-label="計画・監理の要点">端末押え・シール、立上り高さ、新規層の厚み増に対する納まり、笠木更新の要否</td></tr>
-<tr><td data-label="部位">ルーフドレン</td><td data-label="典型的な不具合">つば回りの破断、詰まり、排水能力不足</td><td data-label="計画・監理の要点">改修用ドレンの採否、増張り、排水能力の確認、清掃しやすさ</td></tr>
-<tr><td data-label="部位">貫通部</td><td data-label="典型的な不具合">配管・支持金物・避雷導線回りの隙間</td><td data-label="計画・監理の要点">スリーブ・既製役物で処理し、シールだけに頼らない</td></tr>
-<tr><td data-label="部位">設備基礎・架台</td><td data-label="典型的な不具合">基礎天端・側面の防水切れ、架台脚の貫通</td><td data-label="計画・監理の要点">防水を基礎天端まで回す、設備の脱着・仮移設の段取りと費用を先に確定</td></tr>
-</tbody>
-</table>
-</section>
+<div class="tw"><table><tr><th>区分</th><th>向く条件</th><th>注意点</th></tr>
+<tr><td>局部補修</td><td>原因箇所が特定でき、全体劣化は軽い</td><td>原因の取り違えで再発。補修範囲と期待期間を発注者と合意</td></tr>
+<tr><td>残す（P0系・M4系など）</td><td>付着・含水が許容範囲、荷重に余裕、騒音・廃材・石綿飛散を抑えたい</td><td>旧層との相性、絶縁・脱気、端末の納まり、重ねる回数の限界</td></tr>
+<tr><td>撤去（P1系・M3系など）</td><td>広範な含水・剥離、原因不明の漏水、荷重に余裕がない</td><td>騒音・振動・廃材・工期、撤去中の仮防水、石綿対応</td></tr></table></div>
 
-<section id="load-wind" class="sec">
-<h2>7. 荷重と風・防火</h2>
-<ul>
-<li><strong>荷重</strong>：かぶせ、断熱材の追加、保護層の新設は重量増です。保護層の撤去は軽量化になる一方で騒音・廃材が増えます。設備基礎の新設・移設は構造確認を通します。</li>
-<li><strong>風</strong>：機械的固定工法は、固定金具の配置を風圧に対して確認します（建築基準法施行令第82条の4の屋根ふき材等の考え方、材料メーカーの設計基準）。アンカーの引抜き耐力は現地で確認し、隅角部・端部の負圧に注意します。</li>
-<li><strong>防火</strong>：防火地域・準防火地域等では、屋根に求められる防火性能（いわゆる飛び火の認定）に適合する仕様かを確認します。</li>
-</ul>
 </section>
+<section id="numbers" aria-labelledby="numbers-h"><h2 id="numbers-h">5. 施工の数値（改修標仕 第3章、特記がない場合）</h2>
 
-<section id="construction" class="sec">
-<h2>8. 仮防水と施工中の管理</h2>
-<ul>
-<li>撤去範囲は、当日中に仮防水まで戻せる量に区切ります。</li>
-<li>降雨予報で撤去を中止する判断基準と連絡体制を、施工計画書に書かせます。</li>
-<li>ドレンの養生と排水経路の確保を、工程ごとに確認します。</li>
-<li>施工を行わない気象条件（改修標仕 3.1.3）を、使用材料に合わせて施工計画書で具体化します。</li>
-<li>下地の乾燥・含水の確認方法と記録様式を、着工前に決めます。</li>
-<li>火気・臭気・騒音・振動の作業時間帯を、施設の運営部門と合意します。</li>
-<li>石綿等を発見した場合の協議（改修標仕 3.1.5）と、法令に基づく事前調査・報告を工程に組み込みます。</li>
-</ul>
-</section>
+<div class="tw"><table><tr><th>項目</th><th>規定の要点</th><th>条項</th></tr>
+<tr><td>施工しない条件</td><td>降雨・降雪が予想される、下地の乾燥が不十分、気温が著しく低下、強風・高湿など防水に悪影響のおそれがあるとき</td><td>3.1.3(2)</td></tr>
+<tr><td>防水層の検査</td><td>防水層の施工は監督職員の検査を受ける</td><td>3.1.3(3)</td></tr>
+<tr><td>撤去作業と養生</td><td>降雨等のおそれがある日は既存防水層・外部のシーリングの撤去を行わない。一日の作業終了後はシート等で養生</td><td>3.1.3</td></tr>
+<tr><td>重い機械</td><td>質量15kg以上のハンドブレーカー等を使う場合は監督職員と協議</td><td>3.2.3</td></tr>
+<tr><td>ドレン回り（保護層）</td><td>改修用ドレンを設けず平場の既存保護層を残す場合、ルーフドレン端部から500mm程度まで既存保護層を四角形に撤去</td><td>3.2.3</td></tr>
+<tr><td>ドレン回り（防水層）</td><td>ルーフドレン周囲の既存防水層は端部から300mm程度まで四角形に撤去。撤去端部はポリマーセメントモルタルで勾配1/2程度</td><td>3.2.4・3.2.5</td></tr>
+<tr><td>下地のひび割れ</td><td>幅2mm以上はUカットのうえポリウレタン系シーリング材等を充填</td><td>3.2.6</td></tr>
+<tr><td>下地の欠損・浮き</td><td>欠損はポリマーセメントモルタルで平滑に補修。支障のある浮きは撤去して補修。水はけ・勾配不良は協議</td><td>3.2.6</td></tr>
+<tr><td>改質アスファルトシートの重ね</td><td>平場の重ね幅は幅方向・長手方向とも100mm以上</td><td>3.4.4</td></tr>
+<tr><td>増張り</td><td>出隅・入隅は幅200mm程度。ルーフドレン回りは幅200mm以上を、つばの端部から100mm程度の範囲で張り掛け。配管回りは幅150mm程度を下地に50mm程度張り掛け。ALC短辺目地は幅300mm程度の絶縁増張り</td><td>3.4.4</td></tr>
+<tr><td>塗膜防水の塗り方</td><td>防水材塗りは2回以上に分割し、1工程あたり平場2.5kg/㎡、立上り1.5kg/㎡を上限。硬化物比重が1.0以外は塗膜厚を確保するよう換算</td><td>表3.6.1 注</td></tr>
+<tr><td>脱気装置</td><td>絶縁工法の脱気装置の種類・設置数量は特記。特記がなければ主材料製造所の仕様</td><td>3.6.3</td></tr></table></div>
 
-<section id="inspection" class="sec">
-<h2>9. 施工検査と保証</h2>
-<table class="tbl">
-<thead><tr><th>段階</th><th>確認内容</th><th>記録</th></tr></thead>
-<tbody>
-<tr><td data-label="段階">着工前</td><td data-label="確認内容">材料の承諾、納まり詳細、試験施工・付着確認の要否と判定方法</td><td data-label="記録">施工計画書、承諾図</td></tr>
-<tr><td data-label="段階">施工中</td><td data-label="確認内容">下地処理、重ね幅・増張り、塗布量（搬入量と面積からの逆算）、端末処理、シーリングの接着性</td><td data-label="記録">工程写真、使用量記録、試験記録</td></tr>
-<tr><td data-label="段階">完了時</td><td data-label="確認内容">外観、端部・ドレン回り、必要に応じ散水等による確認</td><td data-label="記録">検査記録、竣工図</td></tr>
-<tr><td data-label="段階">保証</td><td data-label="確認内容">施工者保証・材料メーカー保証の対象範囲、期間、免責、点検条件</td><td data-label="記録">保証書、点検計画</td></tr>
-</tbody>
-</table>
-<p>試験の種類と判定値は特記仕様と材料メーカーの仕様で定めます。保証は年数より、対象範囲（防水層のみか、取合いを含むか）、免責（第三者の作業、設備起因、排水不良）、点検条件を契約前に読み合わせます。</p>
 </section>
+<section id="case" aria-labelledby="case-h"><h2 id="case-h">6. 架空ホテルでのCMの判断</h2>
 
-<section id="maintenance" class="sec">
-<h2>10. 維持管理</h2>
-<ul>
-<li>ドレン・とい・排水溝の清掃と、台風・大雨後の臨時点検を定例化します。</li>
-<li>露出防水の保護塗料・トップコートは、採用仕様に応じた塗替え計画を持ちます。</li>
-<li>設備業者・看板業者など第三者の屋上作業は許可制にし、作業後の防水確認を義務づけます。</li>
-<li>点検記録・補修履歴・竣工図を一元管理し、長期修繕計画の改修時期と費用に反映します。</li>
-</ul>
-</section>
+<div class="case"><b>CMサンプルホテル（架空）</b>：屋上約1,200㎡、保護アスファルト防水、前回改修から20年以上。最上階の客室2室で雨漏り。屋上に空調の架台が多い。</div>
+<div class="tw"><table><tr><th>段階</th><th>判断・確認</th></tr>
+<tr><td>設計</td><td>散水で経路を確認し、架空例としてコア3か所で押えコンクリート下の含水を確認。少数の調査点だけで全体の状態を決めず、追加調査で含水範囲と付着・下地・荷重の適否を確認する。保護層を残すP0X（ウレタン塗膜・通気緩衝）と全撤去のP1Bを、適用の可否を含めて費用・工期・騒音・雨養生で比較。架台・配管の取合い詳細と設備の脱着費用を先に確定</td></tr>
+<tr><td>発注</td><td>工法記号（例：P0X・X-1）、平場・立上りの面積、ドレン・貫通部の箇所数、脱気装置の数、設備の移設・復旧、保証の範囲と期間を同条件で見積もりさせる</td></tr>
+<tr><td>施工</td><td>雨のおそれがある日は撤去しない、毎日の雨養生、塗布量（搬入量÷面積）と塗り回数の記録、臭気・騒音の時間帯を運営部門と合意</td></tr>
+<tr><td>検査</td><td>監督職員の検査を経て次工程へ。端部・ドレン回りの納まり、使用量記録、工程写真、必要に応じて散水確認</td></tr>
+<tr><td>引渡し</td><td>竣工図に工法記号、使用材料・数量、保証書（範囲・免責・点検条件）、ドレン清掃と台風・大雨後の点検計画</td></tr></table></div>
+<div class="note">保証は年数だけで比べない。対象範囲（防水層のみか、端部・取合いを含むか）、免責（第三者作業・設備起因・排水不良）、点検条件を契約前に読み合わせる。</div>
 
-<section id="case" class="sec">
-<h2>11. 仮想ホテル例</h2>
-<p class="note">以下は説明用の仮想条件で、実在の施設・案件ではありません。</p>
-<table class="tbl">
-<thead><tr><th>項目</th><th>仮想条件</th></tr></thead>
-<tbody>
-<tr><td data-label="項目">建物</td><td data-label="仮想条件">RC造・地上12階の都市型ホテル、築約30年、営業中</td></tr>
-<tr><td data-label="項目">既存防水</td><td data-label="仮想条件">保護アスファルト防水（押えコンクリート）、初回改修</td></tr>
-<tr><td data-label="項目">現象</td><td data-label="仮想条件">最上階客室の天井に雨染み2か所</td></tr>
-<tr><td data-label="項目">屋上の設備</td><td data-label="仮想条件">空調室外機架台、受変電設備、看板基礎、ルーフドレン4か所</td></tr>
-</tbody>
-</table>
-<h3>判断の筋道</h3>
-<ol>
-<li>問診で雨染みの出る降雨条件を整理し、ドレン回り・立上り端部・看板基礎を区切って散水し、経路を特定する。</li>
-<li>特定した箇所を局部補修で先行止水し、客室被害の拡大を止める。</li>
-<li>押えコンクリート下の含水と付着をコアで確認し、石綿含有の事前調査も行う。</li>
-<li>候補を並べる：保護層非撤去のかぶせ（シート機械的固定、通気緩衝ウレタン等）と、保護層・防水層の撤去。荷重、耐風、設備脱着、工期、費用を比較する。</li>
-<li>客室直上の作業時間、火気・臭気・騒音、仮防水と雨天時の段取りを運営部門と合意する。</li>
-</ol>
-<p>結論は調査結果で変わります。CMは「候補・判断条件・費用と営業への影響」を並べ、発注者が決められる材料を揃えます。</p>
 </section>
-
-<section id="decision" class="sec">
-<h2>12. 判断表</h2>
-<table class="tbl">
-<thead><tr><th>確認項目</th><th>調査で得た事実</th><th>局部補修</th><th>かぶせ</th><th>撤去</th></tr></thead>
-<tbody>
-<tr><td data-label="確認項目">漏水原因</td><td data-label="調査で得た事実">特定できた／できない</td><td data-label="局部補修">特定できれば有力</td><td data-label="かぶせ">特定済みが前提</td><td data-label="撤去">原因不明なら有力</td></tr>
-<tr><td data-label="確認項目">劣化範囲</td><td data-label="調査で得た事実">局所／全面</td><td data-label="局部補修">局所なら可</td><td data-label="かぶせ">全面劣化でも旧層が健全なら可</td><td data-label="撤去">剥離・破断が広範なら有力</td></tr>
-<tr><td data-label="確認項目">含水</td><td data-label="調査で得た事実">少ない／多い</td><td data-label="局部補修">影響小</td><td data-label="かぶせ">多い場合は絶縁・脱気が条件</td><td data-label="撤去">広範なら有力</td></tr>
-<tr><td data-label="確認項目">接着</td><td data-label="調査で得た事実">良好／不良</td><td data-label="局部補修">補修部の付着確認</td><td data-label="かぶせ">良好、または絶縁で成立が条件</td><td data-label="撤去">不良なら有力</td></tr>
-<tr><td data-label="確認項目">荷重の余裕</td><td data-label="調査で得た事実">あり／なし</td><td data-label="局部補修">影響小</td><td data-label="かぶせ">余裕ありが条件</td><td data-label="撤去">余裕なしなら有力</td></tr>
-<tr><td data-label="確認項目">改修履歴</td><td data-label="調査で得た事実">初回／複数回</td><td data-label="局部補修">影響小</td><td data-label="かぶせ">初回なら候補</td><td data-label="撤去">複数回なら有力</td></tr>
-<tr><td data-label="確認項目">施設の制約</td><td data-label="調査で得た事実">騒音・火気・臭気・工期</td><td data-label="局部補修">制約に強い</td><td data-label="かぶせ">工法により制約に強い</td><td data-label="撤去">制約が厳しいと計画負担大</td></tr>
-<tr><td data-label="確認項目">石綿</td><td data-label="調査で得た事実">含有なし／あり</td><td data-label="局部補修">切取り範囲に注意</td><td data-label="かぶせ">飛散を抑えやすい</td><td data-label="撤去">含有ありは対策費・工程増</td></tr>
-</tbody>
-</table>
-<p class="note">表は比較の観点を示すもので、一つの行だけで工法を決めるものではありません。複数の行を総合し、特記仕様・材料メーカーの適合確認で確定します。</p>
-</section>
-
-<section id="sources" class="sec">
-<h2>13. 一次資料</h2>
-<ul>
-<li><a href="https://www.mlit.go.jp/gobuild/gobuild_tk6_000074.html">国土交通省 官庁営繕：公共建築改修工事標準仕様書（建築工事編）令和7年版 掲載ページ</a></li>
-<li><a href="https://www.mlit.go.jp/gobuild/content/001888823.pdf">公共建築改修工事標準仕様書（建築工事編）令和7年版 本文（PDF）</a> ― 第3章 防水改修工事</li>
-<li><a href="https://www.mlit.go.jp/gobuild/content/001888884.pdf">同 正誤表（PDF）</a></li>
-</ul>
-<p class="note">本文の利用時は、最新の正誤表と、個別工事の特記仕様・材料メーカーの仕様を必ず併せて確認してください。</p>
-</section>
+<section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://www.mlit.go.jp/gobuild/content/001888823.pdf" target="_blank" rel="noopener">公共建築改修工事標準仕様書（建築工事編）令和7年版 本文PDF</a> — 第3章 3.1.3・3.1.4・表3.1.1・3.1.5・3.2.3〜3.2.6・3.4.2・3.4.4・3.6節</li>
+<li><a href="https://www.mlit.go.jp/gobuild/content/001888884.pdf" target="_blank" rel="noopener">公共建築改修工事標準仕様書（建築工事編）令和7年版 正誤表（2025/5/12）</a></li>
+<li><a href="https://www.mlit.go.jp/report/press/eizen04_hh_000039.html" target="_blank" rel="noopener">国土交通省 報道発表：公共建築工事標準仕様書 令和7年版等を制定</a> — 令和7年4月1日から官庁営繕工事に適用</li>
+<li><a href="https://www.ishiwata.mhlw.go.jp/procedures/" target="_blank" rel="noopener">厚生労働省 石綿総合情報ポータル：事前調査・報告・作業の手続き</a> — 既存防水層・シール材を撤去する場合の事前調査</li></ul>
+<p class="meta">数値・条項番号は上記の一次資料で確認したものです。法令・通知・仕様書は改正されることがあるため、利用時は最新版を確認してください。</p></section>
 </main>
-<footer><p><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="roof-waterproofing-video.html">音声・図解スライド</a></p></footer>
+<footer>※解説用に要点を簡略化しています。個別の判断は、特定行政庁・所管行政庁・労働基準監督署・都道府県等、および契約図書（特記仕様書）を優先してください。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="roof-waterproofing-video.html">動画解説</a></footer>
 </body>
 </html>
