@@ -1,253 +1,211 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>防火設備CM実務レポート</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>防火設備のCM実務｜詳細レポート</title>
+<meta name="description" content="20分の防火設備と1時間の特定防火設備を区別し、遮煙の要否、感知・連動・閉鎖・復旧、くぐり戸と避難上の安全、認定仕様、12条の定期検査（令和7年7月の見直し）と8条の維持保全を、架空のホテル改修相談で整理します。">
 <style>
-:root{--bg:#fbfaf7;--fg:#1d2433;--mute:#5b6478;--line:#e2e0d8;--fire:#d9480f;--blue:#1d6fa5;--safe:#13865c;--card:#fff;--hl:#fff3e6;--warn:#fff0f0;--warnb:#c92a2a}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1424;--fg:#eef1f8;--mute:#a3adc8;--line:#2c365c;--card:#182040;--hl:#3a2414;--blue:#5cc3ff;--fire:#ff8a4c;--safe:#3ddc97;--warn:#3a1420;--warnb:#ff6b81}}
-:root[data-theme="dark"]{--bg:#0f1424;--fg:#eef1f8;--mute:#a3adc8;--line:#2c365c;--card:#182040;--hl:#3a2414;--blue:#5cc3ff;--fire:#ff8a4c;--safe:#3ddc97;--warn:#3a1420;--warnb:#ff6b81}
+:root{color-scheme:dark;--bg:#0a1220;--panel:#142237;--panel2:#0f1b2e;--ink:#edf4ff;--sub:#adbed4;--line:#304159;--accent:#8ee1d0;--warn:#ff8a7a;--law:#6aa6ff;--spec:#8ee1d0;--case:#b79cff;--yel:#ffd166}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans JP","Hiragino Sans",sans-serif;line-height:1.85}
-main{max-width:960px;margin:0 auto;padding:32px 16px 80px}
-h1{font-size:clamp(26px,4.6vw,40px);line-height:1.3;margin:.2em 0}
-h2{font-size:clamp(20px,3.2vw,27px);margin:2.4em 0 .6em;padding-left:12px;border-left:7px solid var(--fire)}
-h3{color:var(--blue);margin:1.5em 0 .3em;font-size:1.1em}
-.lead{color:var(--mute)}
-.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0}
-.point{background:var(--hl);border-left:6px solid var(--fire);border-radius:10px;padding:12px 16px;margin:14px 0}
-.warn{background:var(--warn);border-left:6px solid var(--warnb);border-radius:10px;padding:12px 16px;margin:14px 0}
-.tbl{overflow-x:auto;margin:12px 0}
-table{border-collapse:collapse;width:100%;font-size:.93em;min-width:560px}
-th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
-th{background:var(--card);color:var(--blue)}
-b{color:var(--fire)}
-.tag{display:inline-block;font-size:.78em;padding:1px 8px;border-radius:99px;background:var(--warnb);color:#fff;font-weight:700;margin-left:4px}
-.toc a{color:var(--blue)}
-.src{font-size:.88em;color:var(--mute);word-break:break-all}
-ol,ul{padding-left:1.4em}
-</style>
-<link rel="stylesheet" href="cm-visual-lessons.css">
-<script src="cm-field-cases.js" defer></script>
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 Inter,"Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:6px 10px;z-index:9}
+header.top{border-bottom:1px solid var(--line);padding:14px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;max-width:1160px;margin:auto}
+header.top a{font-weight:700;font-size:15px}
+header.top .nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1160px;margin:0 auto;padding:24px 22px 60px}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:10px 0 8px}
+.kicker{display:inline-block;background:var(--accent);color:#0a1220;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub);font-size:1.05rem}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14.5px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px;margin:20px 0}
+h2{font-size:1.35rem;border-left:6px solid var(--accent);padding-left:12px;margin:18px 0 10px}
+h3{font-size:1.08rem;margin:18px 0 6px;color:var(--accent)}
+p,li{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;background:var(--panel2)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#1c2f4d;color:var(--accent);white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#1d2b1f;border:1px solid #3f6b47;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.warn{background:#3a1f22;border:1px solid #8a3b33;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.case{background:#231d3d;border:1px solid #5c4d99;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--yel)}
+.k{display:inline-block;border-radius:999px;padding:0 9px;font-size:12px;font-weight:800;color:#0a1220;margin:0 3px;vertical-align:1px}
+.k.law{background:var(--law)}.k.spec{background:var(--spec)}.k.case{background:var(--case)}
+figure{margin:14px 0;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1160px;margin:0 auto;padding:0 22px 40px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+a:focus-visible{outline:3px solid #efbe77;outline-offset:3px}
+@media (max-width:640px){nav.toc ol{columns:1}section{padding:4px 14px 16px}}
+@media print{body{background:#fff;color:#000}section,nav.toc{background:#fff;color:#000}header.top,nav.toc{display:none}}
+:root{color-scheme:dark;--ink:#edf4ff;--sub:#b7c7dd;--line:#34465f;--accent:#ffac82;--bg:#0a1220;--blue:#8ed6ff;--green:#8ee1c4}header.top{background:#142237}nav.toc,section{background:#142237}th,.flow li{background:#223550}.note{background:#352e1d;border-color:#756137}.warn{background:#3e2529;border-color:#87505a}.case{background:#28253f;border-color:#5c568c}.meta,footer{font-size:14px}table,.note,.warn,.case,.src li{font-size:16px}.flow li{font-size:15px}.skip:focus{background:#223550;color:#fff}@media print{:root{color-scheme:light;--ink:#172133;--sub:#45546a;--line:#b5c2d2;--bg:white;--blue:#155ba1}body,section,nav.toc{background:white}.note,.warn,.case,th,.flow li{background:#eef2f7}}</style>
 </head>
 <body>
-<main>
-<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
-    <h2 id="cm-visual-report-title" class="cm-visual-heading">防火戸はどこで働く？</h2><div class="cm-visual-term"><p><strong>防火戸</strong> 壁の開口部を閉じて延焼を抑える戸です。閉鎖方式や遮煙性能は建具ごとに確認します。</p>
-    <p><span>最初に開く資料</span> <b>建具表</b></p></div>
-    <div class="cm-visual-with-image"><div><figure class="cm-field">
-    <div class="cm-field-drawing" aria-label="平面図">
-      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:8%;top:14.583333333333334%;width:34%;height:47.91666666666667%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:8%;top:62.5%;width:83%;height:20.833333333333336%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:70%;top:14.583333333333334%;width:21%;height:47.91666666666667%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:42%;top:14.583333333333334%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:70%;top:14.583333333333334%;width:23%;transform:rotate(1.5707963267948966rad)"></i><i class="cm-shape cm-shape-warn cm-shape-line" style="left:29%;top:62.5%;width:13%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:17%;top:72.91666666666666%;width:62%;transform:rotate(0rad)"></i></div>
-      <button type="button" class="cm-field-marker" style="--field-x:34%;--field-y:60.416666666666664%" data-point aria-pressed="false" aria-label="1 防火戸">1</button><button type="button" class="cm-field-marker" style="--field-x:55%;--field-y:72.91666666666666%" data-point aria-pressed="false" aria-label="2 廊下">2</button><button type="button" class="cm-field-marker" style="--field-x:80%;--field-y:35.41666666666667%" data-point aria-pressed="false" aria-label="3 階段">3</button>
-    </div>
-    <figcaption>平面図（模式図） · 壁の開口部で防火戸が閉まり、火や煙の広がりを抑えます。通行や避難の条件も一緒に確認します。</figcaption>
-    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>防火戸</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>廊下</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>階段</button></div>
-    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 防火戸</strong> 壁の開口部に取り付く戸です。建具表で種類を確認します。</p><p data-point-note><strong>2 廊下</strong> 通行物が閉鎖を妨げていないか、戸の動く範囲を見ます。</p><p data-point-note><strong>3 階段</strong> 戸の閉鎖後も、避難上必要な経路と運用を確認します。</p></div>
-  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
-  <tr><th scope="row">閉まる位置</th><td>区画図で、床・壁と開口部の境界を確認</td></tr>
-<tr><th scope="row">閉まるきっかけ</th><td>連動図で、感知器からの信号を確認</td></tr>
-<tr><th scope="row">最後まで閉まるか</th><td>現場で障害物や、閉鎖後の状態を確認</td></tr>
-  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-interior-illustration.png" alt="架空のホテルの客室・廊下・階段を切り開いたイラスト。天井裏にダクトと配管が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:88%;--spot-y:45%">●</span></div><figcaption>階段や廊下につながる開口部に注目します。防火戸かどうかは建具表などで確かめます。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
-    <div class="cm-field-case" data-answer="1">
-    <h3 class="cm-visual-heading">事例で考える</h3>
-    <p>廊下の防火戸の近くに、清掃ワゴンを置く案が出ました。最初に何を確認しますか？</p>
-    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
-      <button type="button" data-case-choice aria-pressed="false"><b>A</b>通行できる幅だけを見る</button>
-      <button type="button" data-case-choice aria-pressed="false"><b>B</b>戸の動く範囲と避難経路を照合する</button>
-    </div>
-    <p class="cm-case-result" data-case-result aria-live="polite"></p>
-    <details><summary>解説と、確認に使う資料</summary>
-      <p><strong>戸の動く範囲と避難経路を照合する</strong></p><p>閉鎖の妨げになる位置を図面と現場で確かめます。閉鎖試験や清掃ワゴンの置き場所も管理側と決めます。</p>
-      <dl class="cm-case-guide">
-        <div><dt>最初に開く資料</dt><dd>建具表</dd></div>
-        <div><dt>いつ確認するか</dt><dd>建具の発注前と閉鎖試験時</dd></div>
-        <div><dt>誰と確認するか</dt><dd>設計者・建具担当・施設管理者</dd></div>
-      </dl>
-      <p class="cm-case-docs"><strong>関連資料</strong> 建具表・区画図・連動試験記録</p>
-    </details>
-  </div>
-  </aside>
-<p><a href="index.html">← CM知識一覧</a></p>
-<p class="lead">発注者側CM向け 詳細レポート</p><p>関連資料 <a href="fire-compartment-slides.html">防火区画のスライド</a> ／ <a href="fire-compartment-report.html">防火区画の詳細レポート</a></p>
-<h1>防火設備のCM実務<br>設計から定期報告まで「いつ・誰と・何を」確認するか</h1>
-<p class="lead">法令照合日：2026年11月15日。e-Gov法令検索（建築基準法・同施行令・同施行規則）、国土交通省・消防庁の公開資料で照合した事項と、照合できていない事項（<span class="tag">要確認</span>）を区別して記載しています。社内調査資料（非公開）も参考にしています。</p>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="top"><a href="index.html">CM知識一覧 ｜ 防火設備</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="fire-safety-cm-video.html">動画解説（3分）</a></div></header>
+<main id="main">
+<span class="kicker">詳細レポート</span>
+<h1>防火設備のCM実務</h1>
+<p class="lead">20分の防火設備と1時間の特定防火設備を区別し、遮煙の要否、感知・連動・閉鎖・復旧、くぐり戸と避難上の安全、認定仕様、12条の定期検査（令和7年7月の見直し）と8条の維持保全を、架空のホテル改修相談で整理します。</p>
+<p class="meta">最終確認：2026年11月24日。登場するホテルは説明用の架空の案件です。告示の項番号は告示制定時の令の項番号で表記されている場合があります。<br>値の区別：<span class="k law">法令値</span>法令・政令の数値　<span class="k spec">告示・仕様値</span>告示・仕様書・認定の数値　<span class="k case">架空値</span>説明用の架空の数値</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#scope">1. このレポートの範囲と結論</a></li>
+<li><a href="#two">2. 防火設備と特定防火設備</a></li>
+<li><a href="#where">3. どこにどちらを使うか（区画との対応）</a></li>
+<li><a href="#smoke">4. 遮煙の要否と確認方法</a></li>
+<li><a href="#close">5. 感知・連動・閉鎖・復旧と避難上の安全</a></li>
+<li><a href="#cert">6. 認定・仕様と変更管理</a></li>
+<li><a href="#inspect">7. 12条の定期検査と8条の維持保全（令和7年7月1日の見直し）</a></li>
+<li><a href="#case">8. 架空ホテルでのCMの判断（相談→引渡し）</a></li>
+<li><a href="#judge">9. 判断表</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="scope" aria-labelledby="scope-h"><h2 id="scope-h">1. このレポートの範囲と結論</h2>
 
-<div class="box toc"><b>目次</b><br>
-1. <a href="#s1">CMの立ち位置と本書の使い方</a><br>
-2. <a href="#s2">法令の骨格（照合済み）</a><br>
-3. <a href="#s3">段階別：いつ・誰と・何を確認するか</a><br>
-&nbsp;&nbsp;3.1 設計／3.2 発注／3.3 施工／3.4 連動試験／3.5 引渡し／3.6 定期報告<br>
-4. <a href="#s4">役割分担の目安</a><br>
-5. <a href="#s5">防ぎたい不備と対策</a><br>
-6. <a href="#s6">確認事項リスト（未照合・案件ごと）</a><br>
-7. <a href="#s7">根拠資料</a></div>
+<p>改修相談で最も多いのは「防火設備が閉まらない状態」です。家具・サイネージ・仮置き資材による閉鎖障害、ドアストッパー、改装で外れた感知器、認定と違う部品への交換がその代表です。本レポートは、20分の<b>防火設備</b>と1時間の<b>特定防火設備</b>を区別し、遮煙の要否、感知・連動・閉鎖・復旧、避難上の安全、認定仕様、12条の定期検査と8条の維持保全を整理します。</p>
+<div class="warn">結論：①まず「どの区画の開口部か」で必要な設備（20分か1時間か、遮煙が要るか）を特定する。②閉鎖範囲に物を置かない計画を運営部門と合意し、仕様書に連動試験と記録提出を書く。③引渡しでは認定書の写し・連動試験記録・閉鎖範囲図をそろえ、定期検査と日常の維持保全につなぐ。</div>
 
-<h2 id="s1">1. CMの立ち位置と本書の使い方</h2>
-<p>防火設備（防火戸・防火シャッター・耐火クロススクリーン・ドレンチャー等）の必要性能を決めるのは<b>設計者</b>、適合を判断するのは<b>確認検査機関・特定行政庁</b>です。発注者側CMは、その判断が<b>図面 → 発注品 → 現場 → 試験記録 → 定期報告</b>まで一致しているかを確認し、確認の時期・担当・記録の受け渡しを管理します。</p>
-<div class="point">CMは法適合の最終判断をしません。認定内容や緩和規定の解釈は、必ず設計者・行政に確認し、その回答を記録に残します。</div>
-<p>2013年の福岡市の診療所火災など、防火戸の不閉鎖が被害拡大の一因とされた事故を受け、2016年6月に防火設備の定期検査が独立した制度になりました。<b>「設置した」だけでなく「閉まる状態を保つ体制」まで</b>がプロジェクトの成果物です。</p>
+</section>
+<section id="two" aria-labelledby="two-h"><h2 id="two-h">2. 防火設備と特定防火設備</h2>
 
-<h2 id="s2">2. 法令の骨格（照合済み）</h2>
-<h3>2.1 防火区画と開口部の防火設備（建築基準法施行令112条）</h3>
-<div class="tbl"><table>
-<tr><th>区画</th><th>条項</th><th>壁・床</th><th>開口部</th><th>閉鎖・遮煙の要件（19項）</th></tr>
-<tr><td>面積区画</td><td>1項</td><td>1時間準耐火基準の準耐火構造</td><td>特定防火設備（加熱開始後1時間、非加熱面に火炎を出さない）</td><td>常時閉鎖、または煙の発生・温度の急上昇のいずれかで自動閉鎖。周囲の人の安全確保、避難上支障がないこと</td></tr>
-<tr><td>高層区画</td><td>7項</td><td>耐火構造</td><td>11階以上・100㎡以内ごと：法2条9号の2ロの防火設備</td><td>同上</td></tr>
-<tr><td>高層区画（緩和）</td><td>8・9項</td><td>耐火構造</td><td>内装を準不燃（200㎡）・不燃（500㎡）とする場合は、特定防火設備以外の防火設備で区画する場合を除く＝<b>特定防火設備</b></td><td>同上</td></tr>
-<tr><td>竪穴区画</td><td>11項</td><td>準耐火構造</td><td>法2条9号の2ロの防火設備</td><td><b>遮煙性能</b>を有し、常時閉鎖式以外は<b>煙の発生で</b>自動閉鎖（19項2号）</td></tr>
-<tr><td>異種用途区画</td><td>18項</td><td>1時間準耐火基準の準耐火構造</td><td>特定防火設備</td><td>同上（19項2号）。大臣が定める基準により警報設備等を設けた場合は区画不要</td></tr>
-</table></div>
-<h3>2.2 貫通部（令112条20・21項）</h3>
-<ul>
-<li>給水管・配電管等が準耐火構造の防火区画を貫通する場合：隙間を<b>モルタルその他の不燃材料で埋める</b>。</li>
-<li>換気・暖房・冷房の風道が貫通する場合：貫通部または近接部に、煙・温度の急上昇で自動閉鎖し、<b>遮煙性能</b>をもつ特定防火設備（防火設備で区画すべき区画では防火設備）を設ける（大臣が指定する場合を除く）。</li>
-</ul>
-<h3>2.3 宿泊用途等の間仕切壁（令114条）</h3>
-<ul>
-<li>2項：学校・病院・診療所（患者の収容施設があるもの）・児童福祉施設等・ホテル・旅館・下宿・寄宿舎・マーケットの<b>防火上主要な間仕切壁</b>は準耐火構造とし、小屋裏または天井裏に達せしめる（自動スプリンクラー設備等設置部分、大臣が定める部分を除く。令112条4項各号に該当する部分を除く）。</li>
-<li>5項：これらの壁を風道が貫通する場合、令112条21項を準用し、「特定防火設備」を<b>加熱開始後45分間</b>火炎を出さない防火設備と読み替える。</li>
-<li>3項：建築面積300㎡超・小屋組木造の小屋裏隔壁（12m以内ごと）または強化天井。適用除外の各号あり。</li>
-</ul>
-<h3>2.4 閉鎖装置の構造方法（昭和48年建設省告示2563号、最終改正 令和2年）</h3>
-<ul>
-<li><b>常時閉鎖式防火戸</b>：面積3㎡以内、直接手で開くことができ、自動的に閉鎖するもの。人の通行部に設けるものは、閉鎖時に「質量×速度²」が20以下、かつ質量15kg以下（水平閉鎖で閉鎖力150N以下、または接触で停止する構造等の例外あり）。</li>
-<li><b>随時閉鎖式</b>（煙で閉鎖するもの）：居室から地上に通ずる主たる廊下・階段等の通路に設ける場合、近接して常時閉鎖式防火戸がある場合を除き、手で開き自動で閉まる部分（幅75cm以上・高さ1.8m以上・下端の床面からの高さ15cm以下）を設ける。<b>煙感知器または熱煙複合式感知器、連動制御器、自動閉鎖装置、予備電源</b>を備える。感知器は消防法の検定合格品。</li>
-</ul>
-<h3>2.5 定期報告（建築基準法12条・同施行規則5条・6条）</h3>
-<div class="tbl"><table>
-<tr><th>区分</th><th>根拠</th><th>報告時期</th><th>実施者</th></tr>
-<tr><td>特定建築物定期調査</td><td>法12条1項、規則5条</td><td>用途・構造・延べ面積等に応じ、おおむね6月〜3年の間隔で特定行政庁が定める時期</td><td>一級・二級建築士、特定建築物調査員</td></tr>
-<tr><td>防火設備定期検査</td><td>法12条3項、規則6条</td><td>おおむね6月〜1年（大臣が定める検査項目は1年〜3年）の間隔で特定行政庁が定める時期</td><td>一級・二級建築士、建築設備等検査員（防火設備の資格者証）</td></tr>
-</table></div>
-<ul>
-<li>いずれも、検査済証の交付を受けた場合は<b>その直後の時期を除く</b>（規則5条1項・6条1項各号）。</li>
-<li>報告義務者は所有者（所有者と管理者が異なる場合は管理者）。</li>
-<li>報告をせず、または虚偽の報告をした者は100万円以下の罰金（法101条）。</li>
-</ul>
-<h3>2.6 令和7年7月1日施行の定期報告告示の見直し（国土交通省資料）</h3>
-<ul>
-<li>特定建築物定期調査で行っていた<b>常時閉鎖式防火扉</b>（運動エネルギー等・本体と枠の劣化損傷・作動・物品放置・固定の状況）の確認を、<b>防火設備定期検査</b>で実施する。</li>
-<li>検査対象は<b>各階の主要な常閉防火扉</b>（原則：避難経路に設けられたもの、吹抜けに面するもの、日常の通行が多く開閉頻度の高いもの。前回未検査・前回指摘のものも考えられる）。周期は従前どおりおおむね1〜3年。</li>
-<li>国の指定では、常閉防火扉の検査対象建築物は特定建築物定期調査の対象とそろえている。用途・規模・設置階に加え、所在地の指定を確認する。</li>
-<li>特定行政庁が規則で特定建築物定期調査に常閉防火扉の項目を付加した場合、その項目の防火設備定期検査を省略できる。随時閉鎖式設備の検査要否は別途確認する。</li>
-<li>防火扉等の<b>危害防止装置</b>の検査は、人の通行の用に供する部分に限ることを明確化。</li>
-<li>特定建築物定期調査の調査結果図に<b>防火区画を明示</b>し、他の検査で活用。</li>
-</ul>
-<h3>2.7 消防法の点検（消防庁資料）</h3>
-<p>消防用設備等の点検周期は設備ごとの基準で確認する。機器点検は原則6か月ごと、総合点検は対象設備について原則1年ごと。報告は特定防火対象物が1年ごと、非特定防火対象物が3年ごとで、消防長または消防署長に提出する。建築基準法の定期報告とは根拠・実施者・報告先が異なる別制度です。</p>
+<figure><svg viewBox="0 0 900 220" role="img" aria-label="防火設備20分と特定防火設備1時間の比較">
+<rect x="0" y="0" width="900" height="220" fill="#0f1b2e"/>
+<line x1="120" y1="170" x2="860" y2="170" stroke="#adbed4" stroke-width="2"/>
+<g fill="#adbed4" font-size="14" text-anchor="middle"><text x="120" y="195">0分</text><text x="366" y="195">20分</text><text x="613" y="195">40分</text><text x="860" y="195">60分</text></g>
+<rect x="120" y="40" width="246" height="44" rx="8" fill="#6aa6ff"/><text x="132" y="68" fill="#0a1220" font-size="18" font-weight="700">防火設備：20分</text>
+<rect x="120" y="100" width="740" height="44" rx="8" fill="#ff8a7a"/><text x="132" y="128" fill="#0a1220" font-size="18" font-weight="700">特定防火設備：1時間（令112条1項）</text>
+</svg><figcaption>図1 遮炎性能の時間（加熱開始後、加熱面以外の面に火炎を出さない時間）。法令値。</figcaption></figure>
+<div class="tw"><table><tr><th>区分</th><th>性能</th><th>根拠</th><th>旧称（参考）</th><th>主な使用箇所</th></tr>
+<tr><td>防火設備</td><td>加熱開始後20分間、加熱面以外の面に火炎を出さない <span class="k law">法令値</span></td><td>建築基準法2条9号の2ロ、令109条・109条の2</td><td>乙種防火戸</td><td>耐火・準耐火建築物の外壁開口部で延焼のおそれのある部分、竪穴区画、高層区画（条件による）</td></tr>
+<tr><td>特定防火設備</td><td>加熱開始後1時間、加熱面以外の面に火炎を出さない <span class="k law">法令値</span></td><td>令112条1項</td><td>甲種防火戸</td><td>面積区画、異種用途区画、高層区画（条件による）、風道の防火ダンパー（区画による）</td></tr>
+<tr><td>十分間防火設備</td><td>加熱開始後10分間 <span class="k law">法令値</span></td><td>令112条12項</td><td>—</td><td>3階を病院等とする小規模建築物で、居室等にスプリンクラー等を設けた場合など（ホテルの一般的な改修では対象外）</td></tr></table></div>
+<p>構造方法は、国土交通大臣が定めた構造方法（告示）か、大臣認定を受けたものに限られます。名称が似ていても求められる時間は3倍違うため、改修で扉を交換するときは「既存は20分か1時間か」を図面・認定書・現物ラベルで確かめます。</p>
 
-<h2 id="s3">3. 段階別：いつ・誰と・何を確認するか</h2>
+</section>
+<section id="where" aria-labelledby="where-h"><h2 id="where-h">3. どこにどちらを使うか（区画との対応）</h2>
 
-<h3>3.1 設計（基本設計〜実施設計）</h3>
-<div class="tbl"><table>
-<tr><th>誰と</th><th>何を確認するか</th><th>成果物</th><th>根拠</th></tr>
-<tr><td>設計者（意匠・設備）</td><td>区画の種類・範囲。扉ごとの遮炎時間・遮煙の要否・閉鎖方式・適合根拠（告示仕様／大臣認定）</td><td>区画図・建具表</td><td>令112条1・7〜11・18・19項</td></tr>
-<tr><td>設計者（設備）</td><td>随時閉鎖式の感知器・連動制御器・自動閉鎖装置・予備電源の系統。風道貫通部のダンパー位置</td><td>連動図・ダンパー位置図</td><td>告示2563号、令112条21項</td></tr>
-<tr><td>設計者</td><td>宿泊用途等の防火上主要な間仕切壁と天井裏設備の納まり。スプリンクラー等・強化天井による緩和の採否</td><td>間仕切壁の範囲図・比較表</td><td>令114条2・5項</td></tr>
-<tr><td>確認検査機関・行政・消防</td><td>解釈が分かれる箇所の事前相談</td><td>協議記録</td><td>—</td></tr>
-</table></div>
-<div class="point">CMアクション：区画図・建具表・連動図が<b>同じ版で一致</b>していること、点検口・点検スペースが確保されていることを設計レビューで確認する。</div>
+<div class="tw"><table><tr><th>区画・部位（令112条ほか）</th><th>開口部の設備</th><th>遮煙・煙での自動閉鎖</th><th>補足</th></tr>
+<tr><td>面積区画（1項）</td><td>特定防火設備 <span class="k law">法令値</span></td><td>不要</td><td>1,500㎡等の区画。条件で500㎡・1,000㎡（4・5項）</td></tr>
+<tr><td>高層区画（7〜9項）</td><td>100㎡区画は防火設備、200㎡・500㎡区画は特定防火設備 <span class="k law">法令値</span></td><td>不要</td><td>11階以上の部分。内装・下地の条件で200㎡・500㎡</td></tr>
+<tr><td>竪穴区画（11項）</td><td>防火設備 <span class="k law">法令値</span></td><td>必要（19項2号）</td><td>階段・昇降路・吹抜け・ダクトスペース等</td></tr>
+<tr><td>異種用途区画（18項）</td><td>特定防火設備 <span class="k law">法令値</span></td><td>必要（19項2号）</td><td>法27条の用途部分と他の部分</td></tr>
+<tr><td>外壁の開口部（延焼のおそれのある部分）</td><td>防火設備 <span class="k law">法令値</span></td><td>—</td><td>法2条9号の2ロ、法61条</td></tr>
+<tr><td>防火区画を貫通する風道</td><td>特定防火設備（防火設備の区画では防火設備）の防火ダンパー</td><td>煙・急激な温度上昇で自動閉鎖、閉鎖時に遮煙</td><td>令112条21項、告示2565号</td></tr></table></div>
+<p>防火区画全体の整理は「防火区画」のレポートを参照してください。</p>
 
-<h3>3.2 発注（見積〜発注前）</h3>
-<div class="tbl"><table>
-<tr><th>誰と</th><th>何を確認するか</th><th>成果物</th></tr>
-<tr><td>施工者・建具／シャッター業者</td><td>承認図が建具表どおりか。認定品は認定書・別添仕様の範囲（寸法・ガラス・金物・取付下地）内か</td><td>承認図・仕様資料</td></tr>
-<tr><td>施工者・電気・消防設備業者</td><td>感知器・連動制御器・自動閉鎖装置・予備電源・配線・試験の<b>工事区分</b></td><td>工事区分表</td></tr>
-<tr><td>設計者</td><td>減額提案・金物変更・現場加工など<b>仕様変更</b>の適合再確認</td><td>変更記録</td></tr>
-<tr><td>施工者</td><td>製作納期・試験日程・是正期間を工程に反映</td><td>工程表</td></tr>
-</table></div>
-<div class="point">CMアクション：<b>建具表 × 承認図 × 工事区分表</b>の3点照合を発注の条件にする。</div>
+</section>
+<section id="smoke" aria-labelledby="smoke-h"><h2 id="smoke-h">4. 遮煙の要否と確認方法</h2>
 
-<h3>3.3 施工（取付時〜天井を閉じる前）</h3>
-<div class="tbl"><table>
-<tr><th>誰と</th><th>何を確認するか</th><th>成果物</th></tr>
-<tr><td>施工者・工事監理者</td><td>製品・寸法・金物・取付下地が承認仕様どおりか</td><td>検査記録</td></tr>
-<tr><td>施工者・設備業者</td><td>配管・ダクトの貫通処理が令112条20・21項と採用工法の条件どおりか。ダンパーの点検・復旧が可能か</td><td>隠蔽前写真（位置がわかるもの）</td></tr>
-<tr><td>施工者・内装業者</td><td>壁上端・梁際・デッキの谷で区画が途切れていないか</td><td>隠蔽前写真</td></tr>
-<tr><td>施工者・建具業者</td><td>常時閉鎖式が最後まで閉まり、固定具・仕上げが閉鎖を妨げていないか</td><td>作動確認記録</td></tr>
-</table></div>
-<div class="point">CMアクション：<b>隠蔽前検査</b>を工程に組み込み、写真を記録として受け取る。</div>
+<p>遮炎（炎を止める）はすべての防火設備に共通の性能ですが、<b>遮煙</b>（煙を止める）と<b>煙の発生による自動閉鎖</b>は、竪穴区画・異種用途区画などで追加される要件です（令112条19項2号）。</p>
+<div class="tw"><table><tr><th>確認項目</th><th>内容</th><th>出典</th></tr>
+<tr><td>遮煙の構造</td><td>告示2563号第一の構造方法に適合し、閉鎖した際にすき間が生じない構造（相じゃくり、定規縁・戸当り等）で、取付金物が閉鎖時に露出しないこと <span class="k spec">告示・仕様値</span></td><td>昭和48年建設省告示第2564号</td></tr>
+<tr><td>シャッター</td><td>内のり幅5m以下で遮煙性能試験に合格したもの、または網入りガラス等の防火設備を固定して併設し内のり幅8m以下のもの <span class="k spec">告示・仕様値</span></td><td>同上</td></tr>
+<tr><td>大臣認定品</td><td>認定書に遮煙性能の有無と条件が記載される。部材を替えると条件を外れる</td><td>認定書</td></tr></table></div>
+<div class="note">CMの確認：既存が竪穴区画の扉なのに遮煙なしの製品へ交換する、エアタイト材を外す、戸当りを削る、といった改修は遮煙性能を失わせます。改修図に「区画種別・遮煙の要否」を書き込ませます。</div>
 
-<h3>3.4 連動試験（竣工前）</h3>
-<div class="tbl"><table>
-<tr><th>誰と</th><th>何を確認するか</th><th>成果物</th></tr>
-<tr><td>施工者・建具／シャッター業者・消防設備・電気・工事監理者</td><td>感知器作動 → 連動制御器 → 自動閉鎖装置 → 閉鎖完了（すき間・ラッチ）を一連で</td><td>試験記録</td></tr>
-<tr><td>同上</td><td>常用電源遮断時の<b>予備電源</b>切替、人の通行部の<b>危害防止装置</b>、くぐり戸、<b>復旧操作</b></td><td>試験記録</td></tr>
-<tr><td>同上</td><td>不具合の是正と再試験。消防設備側の試験記録との整合</td><td>是正・再試験記録</td></tr>
-</table></div>
-<div class="point">CMアクション：関係業者が<b>同じ日にそろう</b>よう日程を調整し、行政・消防の検査より前に社内試験を完了させる。</div>
+</section>
+<section id="close" aria-labelledby="close-h"><h2 id="close-h">5. 感知・連動・閉鎖・復旧と避難上の安全</h2>
 
-<h3>3.5 引渡し</h3>
-<div class="tbl"><table>
-<tr><th>誰と</th><th>何を渡す・確認するか</th></tr>
-<tr><td>オーナー・BM・施工者</td><td>完成区画図（防火区画を明示）、建具表、告示・認定の仕様資料、連動図、隠蔽前写真、試験・是正記録、取扱説明書・復旧手順、保守連絡先</td></tr>
-<tr><td>オーナー・BM</td><td><b>管理台帳</b>：定期報告の対象か、区分、初回時期（検査済証直後の時期は除く）、報告義務者、委託先、是正費用の扱い、消防用設備等点検の予定</td></tr>
-<tr><td>オーナー・テナント</td><td>日常管理：開閉範囲・降下範囲に物を置かない、開放状態で固定しない、異常時の連絡先</td></tr>
-</table></div>
+<figure><svg viewBox="0 0 900 200" role="img" aria-label="随時閉鎖式防火設備の連動の流れ">
+<rect width="900" height="200" fill="#0f1b2e"/>
+<g font-size="17" font-weight="700" text-anchor="middle">
+<rect x="20" y="40" width="160" height="70" rx="12" fill="#edf4ff"/><text x="100" y="82" fill="#0a1220">煙感知器</text>
+<rect x="240" y="40" width="160" height="70" rx="12" fill="#edf4ff"/><text x="320" y="82" fill="#0a1220">連動制御器</text>
+<rect x="460" y="40" width="180" height="70" rx="12" fill="#edf4ff"/><text x="550" y="82" fill="#0a1220">自動閉鎖装置</text>
+<rect x="700" y="40" width="180" height="70" rx="12" fill="#8ee1d0"/><text x="790" y="82" fill="#0a1220">閉鎖（扉・シャッター）</text>
+<rect x="240" y="140" width="400" height="44" rx="10" fill="#ffd166"/><text x="440" y="168" fill="#0a1220">予備電源：停電でも閉鎖できること</text></g>
+<g stroke="#8ee1d0" stroke-width="4"><line x1="180" y1="75" x2="234" y2="75"/><line x1="400" y1="75" x2="454" y2="75"/><line x1="640" y1="75" x2="694" y2="75"/></g>
+</svg><figcaption>図2 随時閉鎖式の連動（昭和48年建設省告示第2563号の構成）。感知器は検定合格品で、防火設備から水平距離10m以内などの位置要件あり。</figcaption></figure>
+<div class="tw"><table><tr><th>方式</th><th>主な基準（告示2563号第一）</th></tr>
+<tr><td>常時閉鎖式</td><td>面積3㎡以内の防火戸で、手で直接開けられ自動的に閉鎖するもの <span class="k spec">告示・仕様値</span>。閉鎖時の質量（kg）×速度（m/s）の二乗が20以下、質量15kg以下（水平閉鎖で閉鎖力150N以下などの例外あり） <span class="k spec">告示・仕様値</span>。人の通行に供しない部分は動作基準の適用外。</td></tr>
+<tr><td>随時閉鎖式</td><td>閉鎖時の動作基準は常時閉鎖式と同じ。煙感知器（または熱煙複合式感知器）・連動制御器・自動閉鎖装置・予備電源を備える。感知器は検定合格品で、防火設備から水平距離10m以内、間仕切壁等で遮られない位置、天井面では壁から60cm以上離す <span class="k spec">告示・仕様値</span>。</td></tr>
+<tr><td>熱による作動</td><td>温度ヒューズ・熱感知器による作動の基準は告示2563号第二（作動温度等）</td></tr></table></div>
+<figure><svg viewBox="0 0 900 300" role="img" aria-label="くぐり戸の寸法">
+<rect width="900" height="300" fill="#0f1b2e"/><rect x="80" y="30" width="460" height="250" fill="#c3cede"/>
+<rect x="250" y="80" width="110" height="190" fill="#edf4ff" stroke="#0a1220" stroke-width="3"/>
+<line x1="250" y1="66" x2="360" y2="66" stroke="#ffd166" stroke-width="3"/><text x="305" y="58" fill="#ffd166" font-size="17" text-anchor="middle" font-weight="700">幅75cm以上</text>
+<line x1="378" y1="80" x2="378" y2="270" stroke="#ffd166" stroke-width="3"/><text x="390" y="180" fill="#ffd166" font-size="17" font-weight="700">高さ1.8m以上</text>
+<line x1="232" y1="270" x2="232" y2="280" stroke="#ffd166" stroke-width="3"/><text x="120" y="296" fill="#ffd166" font-size="15" font-weight="700">下端は床から15cm以下</text>
+<text x="580" y="90" fill="#edf4ff" font-size="17">・手で開けられ、自動で閉まる</text><text x="580" y="125" fill="#edf4ff" font-size="17">・近くに常時閉鎖式防火戸があれば</text><text x="596" y="150" fill="#edf4ff" font-size="17">不要</text><text x="580" y="185" fill="#edf4ff" font-size="17">・対象：居室から地上へ通じる</text><text x="596" y="210" fill="#edf4ff" font-size="17">主たる廊下・階段などの通路</text>
+</svg><figcaption>図3 随時閉鎖式防火設備のくぐり戸（告示2563号第一第二号）。告示・仕様値。</figcaption></figure>
+<h3>復旧</h3>
+<p>試験・誤作動の後に、開放保持・表示灯・制御盤の状態を元に戻せるかを確認します。復旧手順を運営部門の手順書に書き、鍵や操作箱の場所を引渡し書類に入れます。</p>
 
-<h3>3.6 定期報告（運用開始後）</h3>
-<div class="tbl"><table>
-<tr><th>誰と</th><th>何を確認するか</th></tr>
-<tr><td>オーナー（報告義務者）・BM</td><td>所在地の特定行政庁の規則で、対象・時期・付加項目（常閉防火扉を特定建築物調査で扱うか）を確認</td></tr>
-<tr><td>検査者（建築士・防火設備の検査員）</td><td>防火設備定期検査（随時閉鎖式は全数、常閉防火扉は各階の主要なもの）。前回指摘の是正状況</td></tr>
-<tr><td>消防設備士等</td><td>消防用設備等点検（機器6か月・総合1年）。感知器の結果を相互共有</td></tr>
-<tr><td>特定行政庁・消防署</td><td>それぞれへ報告。要是正事項の是正計画と完了報告</td></tr>
-</table></div>
-<div class="point">CMアクション：契約上の業務範囲に応じ、<b>初回の報告まで</b>支援するか、引継ぎで終えるかを明確にする。</div>
+</section>
+<section id="cert" aria-labelledby="cert-h"><h2 id="cert-h">6. 認定・仕様と変更管理</h2>
 
-<h2 id="s4">4. 役割分担の目安</h2>
-<div class="tbl"><table>
-<tr><th>項目</th><th>オーナー</th><th>CM</th><th>設計者・監理者</th><th>施工者・専門業者</th><th>BM・検査者</th></tr>
-<tr><td>必要性能の決定</td><td>承認</td><td>確認</td><td><b>実施</b></td><td>相談</td><td>—</td></tr>
-<tr><td>承認図・工事区分</td><td>—</td><td><b>調整</b></td><td>承認</td><td><b>作成</b></td><td>—</td></tr>
-<tr><td>隠蔽前検査</td><td>—</td><td>確認</td><td><b>監理</b></td><td><b>実施</b></td><td>—</td></tr>
-<tr><td>連動試験</td><td>報告受</td><td><b>日程・立会調整</b></td><td>立会</td><td><b>実施</b></td><td>相談</td></tr>
-<tr><td>引渡し・台帳</td><td><b>受領</b></td><td><b>取りまとめ</b></td><td>資料提供</td><td>資料提供</td><td>受領</td></tr>
-<tr><td>定期報告</td><td><b>報告義務</b></td><td>初回まで支援（契約による）</td><td>—</td><td>是正対応</td><td><b>検査実施</b></td></tr>
-</table></div>
+<ul><li>告示仕様か大臣認定かを特定し、認定品は認定番号・認定書の仕様（扉・枠・ガラス・金物・取付方法）と現物ラベルを照合する。</li>
+<li>レバーハンドル、ドアクローザー、ガラス、ガラリ、ステッカー以外の追加金物などの変更は、認定条件に適合するかをメーカーに確認させる。</li>
+<li>天井改装・間仕切り変更では、連動する感知器の位置要件（10m以内、壁から60cm以上など）を満たすか再確認する。</li>
+<li>既存不適格（例：危害防止装置のない古いシャッター）は、改修範囲と安全性の観点から更新を検討する。</li></ul>
 
-<h2 id="s5">5. 防ぎたい不備と対策</h2>
-<div class="tbl"><table>
-<tr><th>不備</th><th>段階</th><th>対策</th></tr>
-<tr><td>竪穴・異種用途区画の扉で遮煙性能・煙による閉鎖が抜ける</td><td>設計・発注</td><td>区画図と建具表を照合（令112条19項2号）</td></tr>
-<tr><td>仕様変更で告示・認定の条件から外れる</td><td>発注・施工</td><td>変更時に設計者が再確認し記録</td></tr>
-<tr><td>貫通部・壁上端の処理漏れ</td><td>施工</td><td>隠蔽前検査と写真</td></tr>
-<tr><td>工事区分の空白で連動が成立しない</td><td>発注・連動試験</td><td>工事区分表と一連の試験</td></tr>
-<tr><td>定期報告の担当・初回時期が不明</td><td>引渡し</td><td>管理台帳に明記</td></tr>
-<tr><td>物品放置・開放固定で閉まらない</td><td>運用</td><td>日常確認とテナント周知</td></tr>
-</table></div>
+</section>
+<section id="inspect" aria-labelledby="inspect-h"><h2 id="inspect-h">7. 12条の定期検査と8条の維持保全（令和7年7月1日の見直し）</h2>
 
-<h2 id="s6">6. 確認事項リスト（未照合・案件ごと）</h2>
-<div class="warn">以下は今回、公的資料の原文で照合していない、または案件ごとに異なる事項です。設計者・所管行政庁で確認してください。</div>
-<ol>
-<li>各防火区画の<b>ただし書・緩和</b>（スプリンクラー等による面積算定、用途上やむを得ない部分、異種用途区画の警報設備による緩和の大臣基準）。</li>
-<li>2025年11月1日施行の施行令改正で、内装制限における「準ずる措置」と、一定基準に適合する建築物の小屋裏隔壁等の緩和が導入された。案件への適用は関係告示の条件を設計者と確認する。</li>
-<li>面積区画に用いる防火設備で<b>熱による自動閉鎖</b>を採用する場合の構造方法（告示2563号の該当規定）。</li>
-<li>令114条2項の<b>大臣が定める部分</b>（小規模施設の緩和告示）と、スプリンクラー等による除外の具体条件。</li>
-<li>強化天井の構造方法と、照明・点検口等の開口部の扱い。</li>
-<li>所在地の特定行政庁の<b>定期報告規則</b>：対象用途・規模、報告時期、常閉防火扉を特定建築物調査に付加しているか。</li>
-<li>2026年中に施行された、または予定されている定期報告・防火関係の改正の有無（公的資料で未確認）。</li>
-<li>消防法の点検報告（消防法17条の3の3、同施行規則31条の6）の条文原文と、対象設備ごとの点検基準。</li>
-<li>採用製品ごとの<b>告示仕様／大臣認定</b>の条件（寸法、ガラス、金物、取付下地、遮煙）。</li>
-</ol>
+<div class="tw"><table><tr><th>制度</th><th>内容</th></tr>
+<tr><td>建築基準法8条（維持保全）</td><td>所有者・管理者・占有者は建築物を常時適法な状態に維持するよう努める。閉鎖範囲の物品放置、ストッパーの使用は日常管理で防ぐ。</td></tr>
+<tr><td>建築基準法12条3項（防火設備定期検査）</td><td>一級・二級建築士または防火設備検査員が検査し、特定行政庁へ報告。平成28年6月1日から防火設備が独立した検査対象。</td></tr>
+<tr><td>消防法17条の3の3（消防用設備等点検）</td><td>自動火災報知設備などの点検。防火設備の12条検査とは別制度（根拠・資格・報告先が異なる）。</td></tr></table></div>
+<h3>令和7年7月1日施行の見直し（国土交通省「定期報告告示の見直しについて」）</h3>
+<div class="tw"><table><tr><th>項目</th><th>国の扱い</th></tr>
+<tr><td>随時閉鎖式防火設備（随閉防火扉、防火シャッター、耐火クロススクリーン、ドレンチャー等）</td><td>改正前後とも全数検査（防火ダンパーは対象外）</td></tr>
+<tr><td>常時閉鎖式防火扉（常閉防火扉）</td><td>令和6年6月の改正で特定建築物定期調査から防火設備定期検査へ移行。令和7年7月の見直しで「各階の主要なもの」に限定。周期は概ね1〜3年に1回。項目は運動エネルギー等・作動の状況、劣化及び損傷、物品の放置、固定の状況</td></tr>
+<tr><td>常閉防火扉の検査を要する建築物</td><td>特定建築物定期調査の対象（平成28年告示第240号第1各号）と同じ範囲。病院・診療所等で床面積200〜300㎡の建築物は除外</td></tr>
+<tr><td>特定行政庁の選択</td><td>規則で「各階の主要な常閉防火扉」を特定建築物定期調査に加えた場合、防火設備定期検査を省略できる</td></tr>
+<tr><td>その他</td><td>危害防止装置は人の通行の用に供する部分に限って検査。目視は「目視又はこれに類する方法」に（新技術の活用）</td></tr></table></div>
+<div class="tw"><table><tr><th>自治体の例</th><th>常閉防火扉の扱い</th></tr>
+<tr><td>東京都</td><td>従来どおり特定建築物定期調査で報告。防火設備定期検査では報告を求めない（令和7年6月30日公布・7月1日施行）</td></tr>
+<tr><td>静岡県</td><td>同様に特定建築物定期調査の対象とし、防火設備定期検査では報告を求めない</td></tr></table></div>
+<div class="warn">常時閉鎖式防火扉を「定期検査の対象外」と一律に扱わない。国の見直し内容と、所管の特定行政庁の規則（どちらの報告で扱うか、周期）を必ず確認する。</div>
 
-<h2 id="s7">7. 根拠資料</h2>
-<h3>照合した公的資料</h3>
-<ul class="src">
-<li><a href="https://laws.e-gov.go.jp/law/325AC0000000201">建築基準法 第12条・第101条（e-Gov法令検索）</a></li>
-<li><a href="https://laws.e-gov.go.jp/law/325CO0000000338">建築基準法施行令 第112条・第114条（e-Gov法令検索）</a></li>
-<li><a href="https://laws.e-gov.go.jp/law/325M50004000040">建築基準法施行規則 第5条・第6条（e-Gov法令検索）</a></li>
-<li><a href="https://www.mlit.go.jp/common/001280965.pdf">昭和48年建設省告示第2563号「防火区画に用いる防火設備等の構造方法を定める件」（国土交通省）</a></li>
-<li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001860339.pdf">国土交通省「定期報告告示の見直しについて」（令和7年7月1日施行）</a></li>
-<li><a href="https://www.mlit.go.jp/report/press/house05_hh_001079.html">国土交通省「建築物に係る防火関係規制の見直し等について」（2025年11月1日施行）</a></li>
-<li><a href="https://www.fdma.go.jp/singi_kento/kento/items/post-147/shiryou_15-1.pdf">消防庁 防火対象物の点検報告等に関する資料（消防用設備等点検報告の周期）</a></li>
-</ul>
-<h3>参考にした社内調査資料</h3>
-<p class="src">防火戸の規制、防火区画の要件、宿泊施設の間仕切壁、定期報告制度、シャッターの種類に関する社内調査資料（非公開・リンク省略）。</p>
-<p class="src">本レポートは一般的な実務整理であり、個別案件の法適合を判断するものではありません。</p>
-<p><a href="animations/bouka_setsubi_animation.html">説明動画を見る</a></p>
+</section>
+<section id="case" aria-labelledby="case-h"><h2 id="case-h">8. 架空ホテルでのCMの判断（相談→引渡し）</h2>
+
+<div class="case"><b>架空のRC造10階建ホテル</b>：ロビー改装で、エレベーターホール境の防火シャッターの閉鎖線上にソファとサイネージを置く計画。客室階では常時閉鎖式の防火戸がドアストッパーで開放されていた。<span class="k case">架空値</span></div>
+<div class="tw"><table><tr><th>段階</th><th>判断・確認</th><th>証拠</th></tr>
+<tr><td>相談</td><td>閉鎖障害（家具・サイネージ・ストッパー・仮置き）を現地で洗い出す</td><td>写真付き指摘リスト</td></tr>
+<tr><td>根拠・適用条件</td><td>シャッターがどの区画の開口部か（面積・竪穴・異種用途）、20分か1時間か、遮煙が要るか</td><td>区画図・確認申請図</td></tr>
+<tr><td>設計</td><td>認定番号・告示仕様を照合。感知器位置、くぐり戸の要否と寸法、遮煙の要否を改修図に記載</td><td>認定書写し、改修図</td></tr>
+<tr><td>発注</td><td>CMの判断として家具・サイネージを閉鎖線の外へ移設する案を運営部門と合意。仕様書に連動試験・記録提出・復旧確認を明記し、移設・試験費を見積もり条件へ</td><td>合意記録、特記仕様書</td></tr>
+<tr><td>施工</td><td>床に閉鎖範囲を表示、ストッパー撤去、天井改装時に感知器・配線を外したままにしない。外す場合は代替措置と運営への周知</td><td>施工写真、日報</td></tr>
+<tr><td>連動試験</td><td>加煙→感知→警報→閉鎖→くぐり戸→予備電源→復旧を確認し時刻を記録</td><td>連動試験記録</td></tr>
+<tr><td>引渡し</td><td>認定書の写し、試験記録、閉鎖範囲図、復旧手順を所有者・運営へ。定期検査（12条）と維持保全（8条）へ引継ぎ</td><td>引渡し書類一式</td></tr></table></div>
+<h3>連動試験記録の例 <span class="k case">架空値</span></h3>
+<div class="tw"><table><tr><th>項目</th><th>結果</th><th>時刻</th><th>備考</th></tr>
+<tr><td>感知器の作動（加煙）</td><td>○</td><td>10:02:05</td><td>受信表示を確認</td></tr>
+<tr><td>閉鎖完了</td><td>○</td><td>10:02:21</td><td>閉鎖線上に障害物なし</td></tr>
+<tr><td>くぐり戸の開閉・予備電源での作動</td><td>○</td><td>10:06:40</td><td>常用電源遮断で作動</td></tr>
+<tr><td>復旧（開放保持・表示灯）</td><td>○</td><td>10:12:10</td><td>運営担当が手順を確認</td></tr></table></div>
+
+</section>
+<section id="judge" aria-labelledby="judge-h"><h2 id="judge-h">9. 判断表</h2>
+
+<div class="tw"><table><tr><th>状況</th><th>判断</th><th>次の行動</th></tr>
+<tr><td>閉鎖線上に家具・サイネージ</td><td>閉鎖障害</td><td>移設案を運営と合意、床表示</td></tr>
+<tr><td>常閉防火戸をストッパーで開放</td><td>閉鎖障害（日常の維持保全の問題）</td><td>撤去、運用ルール化。常時開放が必要なら随時閉鎖式への改修を検討</td></tr>
+<tr><td>竪穴区画の扉を交換</td><td>防火設備＋遮煙が必要</td><td>遮煙ありの認定品・告示仕様を指定</td></tr>
+<tr><td>面積区画・異種用途区画のシャッター</td><td>特定防火設備（異種用途は遮煙も）</td><td>既存の認定と性能を確認</td></tr>
+<tr><td>避難経路上の随時閉鎖式</td><td>くぐり戸（または近接の常閉防火戸）が必要</td><td>寸法75cm×1.8m、下端15cm以下を確認</td></tr>
+<tr><td>天井改装で感知器を移設</td><td>位置要件の再確認</td><td>10m以内・壁から60cm以上などを図面で確認し連動試験</td></tr>
+<tr><td>常閉防火扉の定期報告</td><td>特定行政庁で扱いが異なる</td><td>国の見直しと所管の規則を確認</td></tr></table></div>
+
+</section>
+<section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://laws.e-gov.go.jp/law/325AC0000000201" target="_blank" rel="noopener">e-Gov法令検索：建築基準法</a> — 2条9号の2ロ、8条、12条</li>
+<li><a href="https://laws.e-gov.go.jp/law/325CO0000000338" target="_blank" rel="noopener">e-Gov法令検索：建築基準法施行令</a> — 109条、109条の2、112条</li>
+<li><a href="https://www.mlit.go.jp/common/001280965.pdf" target="_blank" rel="noopener">昭和48年建設省告示第2563号 防火区画に用いる防火設備等の構造方法を定める件</a> — 常時閉鎖・随時閉鎖、くぐり戸、感知器</li>
+<li><a href="https://www.mlit.go.jp/notice/noticedata/pdf/201703/00006616.pdf" target="_blank" rel="noopener">昭和48年建設省告示第2564号 防火区画に用いる遮煙性能を有する防火設備の構造方法を定める件</a> — 遮煙の構造</li>
+<li><a href="https://www.mlit.go.jp/notice/noticedata/pdf/201703/00006617.pdf" target="_blank" rel="noopener">昭和48年建設省告示第2565号 防火区画を貫通する風道に設ける防火設備の構造方法を定める件</a> — 防火ダンパー</li>
+<li><a href="https://www.mlit.go.jp/jutakukentiku/build/content/001860339.pdf" target="_blank" rel="noopener">国土交通省：定期報告告示の見直しについて</a> — 令和7年7月1日施行、常閉防火扉の扱い</li>
+<li><a href="https://www.toshiseibi.metro.tokyo.lg.jp/kenchiku_kaihatsu/kenchiku_kakunin/chousa-houkoku/2" target="_blank" rel="noopener">東京都：定期調査・検査制度改正の内容</a> — 東京都独自の措置</li>
+<li><a href="https://www.pref.shizuoka.jp/kurashikankyo/kenchiku/taishinka/1052551/1072292.html" target="_blank" rel="noopener">静岡県：定期調査・検査報告制度の改正の内容</a> — 静岡県独自の措置</li>
+<li><a href="https://www.city.tsuchiura.lg.jp/data/doc/1763509987_doc_35_0.pdf" target="_blank" rel="noopener">土浦市：定期報告対象建築設備等と報告期間一覧</a> — 随時閉鎖式の対象・報告期間の例</li></ul>
+<p class="meta">数値・条項番号は上記の一次資料で確認したものです。法令・通知・仕様書は改正されることがあるため、利用時は最新版を確認してください。</p></section>
 </main>
+<footer>※解説用に要点を簡略化しています。個別の判断は、特定行政庁・所管行政庁・労働基準監督署・都道府県等、および契約図書（特記仕様書）を優先してください。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="fire-safety-cm-video.html">動画解説</a></footer>
 </body>
 </html>
