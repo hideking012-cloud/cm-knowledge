@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>開発の適合証明（60条証明）｜アニメーション解説</title>
+<style>
+  /* すべて .hs- で名前空間化（既存サイトのCSSと衝突しないように） */
+  .hs-player{--hs-ink:#1f2430;--hs-accent:#e8432f;--hs-sub:#5b6474;--hs-line:#d9dee7;
+    max-width:960px;margin:24px auto;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;color:var(--hs-ink)}
+  .hs-stage{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(20,30,50,.18);background:#0f1724}
+  .hs-stage canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;cursor:pointer}
+  .hs-cap{margin:10px 0 0;min-height:3.4em;padding:10px 14px;border-radius:10px;background:#1f2430;color:#fff;font-size:15px;line-height:1.7}
+  .hs-bar{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .hs-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--hs-accent);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--hs-line);background:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd:focus-visible,.hs-btn:focus-visible,.hs-chip:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-track{position:relative;flex:1;height:10px;border-radius:5px;background:var(--hs-line);cursor:pointer}
+  .hs-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:5px;background:var(--hs-accent)}
+  .hs-tick{position:absolute;top:-3px;width:2px;height:16px;background:#fff;opacity:.9}
+  .hs-time{flex:none;font-size:13px;color:var(--hs-sub);font-variant-numeric:tabular-nums;min-width:84px;text-align:right}
+  .hs-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding:0;list-style:none}
+  .hs-chip{border:1px solid var(--hs-line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--hs-ink)}
+  .hs-chip[aria-current="true"]{background:var(--hs-ink);border-color:var(--hs-ink);color:#fff}
+  .hs-text{margin-top:14px;font-size:14px;line-height:1.8;color:var(--hs-sub)}
+  .hs-text summary{cursor:pointer;color:var(--hs-ink);font-weight:700}
+  .hs-text ol{padding-left:1.4em}
+  .hs-src{font-size:12px;color:var(--hs-sub);margin-top:8px}
+  /* hs-ext v1 */
+  .hs-bar{flex-wrap:wrap}
+  .hs-track{flex:1 1 180px}
+  .hs-bgm,.hs-fs{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;cursor:pointer;padding:0 14px}
+  .hs-fs{width:40px;padding:0;font-size:18px;display:grid;place-items:center}
+  .hs-bgm.hs-off{color:var(--hs-sub);text-decoration:line-through;background:#eef1f6}
+  .hs-rate{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;padding:0 10px;cursor:pointer}
+  .hs-bgm:focus-visible,.hs-fs:focus-visible,.hs-rate:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-player:fullscreen,.hs-player.hs-full{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player:-webkit-full-screen{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player.hs-full{position:fixed;inset:0;z-index:2147483000}
+  .hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,
+  .hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:calc((100vh - 190px) * 16 / 9);margin-left:auto;margin-right:auto}
+  .hs-player:fullscreen .hs-chips,.hs-player:fullscreen .hs-text,.hs-player.hs-full .hs-chips,.hs-player.hs-full .hs-text{display:none}
+  .hs-player:fullscreen .hs-time,.hs-player.hs-full .hs-time{color:#cfd6e4}
+.lesson-nav{max-width:960px;margin:20px auto;display:flex;gap:24px;flex-wrap:wrap;padding:0 12px;font:600 16px/1.6 Inter,"Yu Gothic UI",Meiryo,sans-serif}.lesson-nav a{color:#96e8d5;text-underline-offset:4px}body{margin:0;padding:0 16px;background:#0a1220}.hs-player{--hs-ink:#edf4ff;--hs-sub:#b6c6da;--hs-line:#35475f}.hs-chip{color:#1f2430}.hs-voice-label{color:#b6c6da;font-size:14px}.hs-voice{max-width:240px;height:40px;border-radius:20px;border:1px solid #d9dee7;background:#fff;color:#1f2430;font:14px "Yu Gothic UI",sans-serif;padding:0 8px}.hs-cap{font-size:16px}.hs-text{font-size:16px}.hs-src{font-size:14px}.hs-player:fullscreen,.hs-player.hs-full{height:100dvh;overflow:hidden;display:flex;flex-direction:column}.hs-player:fullscreen .hs-stage,.hs-player.hs-full .hs-stage{flex:1;min-height:0;display:grid;place-items:center;width:100%;box-shadow:none}.hs-player:fullscreen canvas,.hs-player.hs-full canvas{width:100%;height:100%;object-fit:contain}.hs-player:fullscreen .hs-cap,.hs-player.hs-full .hs-cap{flex:none;min-height:0;margin-top:8px}.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-bar{flex:none;margin-top:8px}.hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:1280px;width:100%}@media(max-width:600px){.lesson-nav{gap:16px}.hs-player{margin:12px auto}.hs-voice{max-width:190px}.hs-cap{font-size:15px}.hs-bar{gap:8px}}.hs-snd,.hs-bgm,.hs-fs,.hs-rate{color:#1f2430}.hs-chip[aria-current="true"]{background:#c4eadf;border-color:#81c8b7;color:#16392f}</style>
+</head>
+<body>
+<nav class="lesson-nav" aria-label="教材の移動"><a href="../index.html">CM知識一覧</a><a href="../development-certificate-report.html">詳細レポートを読む</a></nav>
+
+<section class="hs-player" id="hs-tekigou" aria-label="開発の適合証明（60条証明）のしくみ アニメーション解説">
+  <div class="hs-stage">
+    <canvas width="1280" height="720" role="img" aria-label="開発の適合証明（60条証明）のしくみを説明するアニメーション。下の「テキストで読む」に同じ内容があります。"></canvas>
+  </div>
+  <p class="hs-cap" aria-live="polite"></p>
+  <div class="hs-bar">
+    <button class="hs-btn" type="button" aria-label="再生">▶</button>
+    <button class="hs-snd" type="button" aria-label="音声をオン" aria-pressed="false">🔇</button>
+    <label class="hs-voice-label">音声 <select class="hs-voice" aria-label="ナレーションの声"><option>音声を確認中</option></select></label>
+    <div class="hs-track" role="slider" aria-label="再生位置" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="hs-fill"></div></div>
+    <div class="hs-time">0:00 / 0:00</div>
+    <button class="hs-bgm" type="button" aria-pressed="true" aria-label="BGMのオン・オフ">BGM オン</button>
+    <select class="hs-rate" aria-label="再生速度"><option value="0.75">0.75倍</option><option value="1" selected>1倍</option><option value="1.25">1.25倍</option><option value="1.5">1.5倍</option><option value="2">2倍</option></select>
+    <button class="hs-fs" type="button" aria-label="全画面">⛶</button>
+  </div>
+  <ul class="hs-chips"></ul>
+
+  <details class="hs-text">
+    <summary>テキストで読む</summary>
+    <ol>
+      <li><b>タイトル：</b>開発の適合証明、いわゆる60条証明。建物の計画が、都市計画法の開発許可などの規定に適合していることを証明する書面です。なぜ必要か、対象の条文、窓口、手続き、建築確認との関係まで解説します。</li>
+      <li><b>なぜ必要か：</b>建築確認は、建築主事や指定確認検査機関が審査します。一方、開発許可などの都市計画法の手続きは、知事や市長の担当部署が扱います。そこで、開発の担当部署が、計画が都市計画法に適合していると証明するのが60条証明です。</li>
+      <li><b>60条証明とは：</b>60条証明とは、建築確認を受けようとする者が、計画が都市計画法の開発許可などの規定に適合していることを証する書面の交付を、求めることができる制度です。根拠が都市計画法施行規則60条なので、こう呼ばれます。</li>
+      <li><b>建築基準関係規定：</b>都市計画法の開発許可などの規定は、建築基準関係規定の一つで、建築確認の審査対象です。60条証明があれば、その部分が適合していることが書面で示され、確認の審査がスムーズになります。</li>
+      <li><b>対象の6つの条文：</b>証明の対象は6つの条文です。29条の開発許可、35条の2の変更許可、41条の建蔽率などの制限、42条の公告後の建築制限、43条の市街化調整区域の建築許可、そして53条の都市計画施設の区域内の建築許可です。</li>
+      <li><b>誰が出すか：</b>証明書を出すのは、原則として都道府県知事です。指定都市や中核市などでは市長、開発許可の事務を処理している市町村では、その市町村長が出します。実際の窓口は、開発指導課や都市計画課などです。</li>
+      <li><b>どんな場合に必要か：</b>使われる場面の例です。開発許可を受けた土地に、予定建築物どおりに建てるとき。許可がいらない規模の土地に建てるとき。市街化調整区域に建てるとき。都市計画道路の予定地に建てるときなどです。</li>
+      <li><b>42条：予定建築物：</b>よく使う3つの条文を見てみましょう。まず42条です。開発許可を受けた区域では、工事完了の公告のあと、許可のときに決めた予定建築物以外の建物を建てたり、用途を変えたりするには、知事の許可が必要です。60条証明で、計画が予定建築物どおりかを確認します。</li>
+      <li><b>43条：調整区域の建築：</b>次に43条です。市街化調整区域では、開発許可を受けた区域以外でも、造成をしなくても、建物の新築や改築、用途変更に知事の許可が必要です。農林漁業用の建物などの例外があります。60条証明で、許可を受けたか、許可が不要な建物かを確認します。</li>
+      <li><b>53条：都市計画施設：</b>そして53条です。都市計画道路の予定地など、都市計画施設の区域や市街地開発事業の施行区域の中に建物を建てるには、知事などの許可が必要です。60条証明で、許可を受けたか、区域にかかっていないかを確認します。</li>
+      <li><b>手続きの流れ：</b>手続きの流れです。まず開発の担当課に相談し、どの条文の証明が必要かを確認します。申請書と位置図、配置図、登記の書類などを出し、審査を経て適合証明書が交付されます。それを建築確認の申請に添付します。</li>
+      <li><b>建築確認との順番：</b>順番は、開発許可などの手続き、60条証明、建築確認、そして着工です。60条証明の取得には日数がかかるので、確認申請の前に、早めに準備しましょう。</li>
+      <li><b>添付が求められるか：</b>条文では、60条証明は交付を求めることができる、と書かれています。ただ、多くの特定行政庁や審査機関が、都市計画区域内の確認申請で添付を求めています。取扱いは地域ごとに違うので、事前に確認しましょう。</li>
+      <li><b>判定例：</b>例えば、市街化区域の敷地600㎡に、造成をせずに事務所を新築する場合。1,000㎡未満で造成もないので開発許可は不要です。そのことを60条証明で示し、都市計画道路の予定地にかかっていないかも確認して、確認申請に添付します。</li>
+      <li><b>用途変更・増築でも：</b>新築だけではありません。開発許可区域で予定建築物以外の用途に変える、市街化調整区域で増築や用途変更をするなど、確認申請が必要な工事では、60条証明を求められることがあります。</li>
+      <li><b>CMの視点：</b>CMの立場では、用地の調査の段階で、区域区分や開発許可の履歴、都市計画道路の有無を一緒に確認します。申請と審査の日数を工程に入れ、開発時の予定建築物や建蔽率などの条件を、設計に反映させましょう。</li>
+      <li><b>NG事例：</b>よくある失敗です。確認申請の直前に60条証明が必要と気づき、工程が遅れる。開発許可の予定建築物と違う計画で、証明が出ない。市街化調整区域や都市計画道路の確認が漏れ、許可が必要だった。こうした例に注意しましょう。</li>
+      <li><b>まとめ：</b>まとめです。60条証明は、都市計画法への適合を証明する書面。対象は、29条、35条の2、41条、42条、43条、53条。窓口は知事や市長の開発担当課。確認申請の前に早めに取り、添付の要否も確認しましょう。以上、60条証明のポイントでした。</li>
+    </ol>
+    <p class="hs-src">音声は端末のMicrosoft日本語女性音声から選択できます。字幕は消音時も表示します。音は再生ボタンか画面をタップした後から鳴ります。<br>出典：都市計画法施行規則 第60条、都市計画法 第29条・第35条の2・第41条・第42条・第43条・第53条、建築基準法施行令 第9条（いずれもe-Gov法令検索）。※解説用に要点を簡略化しています。個別の判断は所管行政庁・指定確認検査機関に確認してください。※イラストはイメージです。</p>
+  </details>
+</section>
+
+<script>
+(() => {
+  const root = document.getElementById('hs-tekigou');
+  const cv = root.querySelector('canvas'), ctx = cv.getContext('2d');
+  const W = 1280, H = 720;
+  const FONT = '"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif';
+  const INK = '#1f2430', RED = '#e8432f', YEL = '#ffd84a';
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
+
+  // ---------- utils ----------
+  const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const eo = x => 1 - Math.pow(1 - cl(x), 3);
+  const eio = x => { x = cl(x); return x * x * (3 - 2 * x); };
+  const eb = x => { x = cl(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const PUFFS = Array.from({length: 46}, () => [rnd(), rnd(), rnd()]);
+  const f = (w, s) => `${w} ${s}px ${FONT}`;
+
+  // ---------- building section ----------
+  const CEIL = 172, FLOOR = 620, LW = 80, RW = 1200;
+  function room(opts = {}) {
+    const g = ctx.createLinearGradient(0, CEIL, 0, FLOOR);
+    g.addColorStop(0, '#f4efe6'); g.addColorStop(1, '#e6dccb');
+    ctx.fillStyle = '#cfe6f2'; ctx.fillRect(0, 0, W, H);           // sky / outside
+    ctx.fillStyle = g; ctx.fillRect(LW, CEIL, RW - LW, FLOOR - CEIL);
+    ctx.fillStyle = '#8a8f99';
+    ctx.fillRect(40, CEIL - 22, W - 80, 22);                         // ceiling slab
+    ctx.fillRect(40, FLOOR, W - 80, 24);                             // floor slab
+    ctx.fillStyle = '#9aa0aa';
+    ctx.fillRect(60, CEIL - 22, LW - 60, FLOOR - CEIL + 46);         // left wall
+    if (!opts.noRightWall) ctx.fillRect(RW, CEIL - 22, 20, FLOOR - CEIL + 46);
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(40, FLOOR + 24, W - 80, 40);
+    // door + exit sign on left wall
+    if (opts.door) {
+      ctx.fillStyle = '#7a8a99'; ctx.fillRect(LW, FLOOR - 190, 14, 190);
+      ctx.fillStyle = '#1e9e5a'; rr(LW + 18, FLOOR - 250, 120, 40, 6); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(800, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('非常口', LW + 78, FLOOR - 229);
+    }
+  }
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
+
+  function fire(x, t, s = 1) {
+    for (let i = 0; i < 3; i++) {
+      const fl = Math.sin(t * 12 + i * 2) * 6;
+      const hh = (70 - i * 18) * s + fl, ww = (34 - i * 9) * s;
+      ctx.fillStyle = ['#ff6a2b', '#ffa531', '#ffe27a'][i];
+      ctx.beginPath();
+      ctx.moveTo(x - ww, FLOOR);
+      ctx.quadraticCurveTo(x - ww * 0.9, FLOOR - hh * 0.5, x + Math.sin(t * 9) * 5, FLOOR - hh);
+      ctx.quadraticCurveTo(x + ww * 0.9, FLOOR - hh * 0.5, x + ww, FLOOR);
+      ctx.fill();
+    }
+    ctx.fillStyle = '#5b3a2a'; ctx.fillRect(x - 46 * s, FLOOR - 10, 92 * s, 10);
+  }
+
+  // smoke layer under ceiling: x0..x1, depth px
+  function smokeLayer(x0, x1, depth, t, a = 1) {
+    if (depth <= 1) return;
+    const g = ctx.createLinearGradient(0, CEIL, 0, CEIL + depth + 20);
+    g.addColorStop(0, `rgba(60,62,72,${0.92 * a})`); g.addColorStop(1, `rgba(110,112,124,${0.55 * a})`);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x0, CEIL);
+    for (let x = x0; x <= x1; x += 16) ctx.lineTo(x, CEIL + depth + Math.sin(x / 45 + t * 2) * 7 + Math.sin(x / 19 - t * 3) * 3);
+    ctx.lineTo(x1, CEIL); ctx.closePath(); ctx.fill();
+    // billows
+    ctx.fillStyle = `rgba(150,152,162,${0.35 * a})`;
+    for (let i = 0; i < 12; i++) {
+      const x = x0 + ((i * 97 + t * 25) % (x1 - x0));
+      const r = 18 + (i % 4) * 8;
+      ctx.beginPath(); ctx.arc(x, CEIL + depth - r * 0.3 + Math.sin(t * 2 + i) * 4, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // rising plume from fire to target y
+  function plume(x, topY, t, a = 1, rate = 0.45, n = 26) {
+    for (let i = 0; i < n; i++) {
+      const [r1, r2, r3] = PUFFS[i];
+      const ph = (t * rate + i / n) % 1;
+      const y = lerp(FLOOR - 60, topY + 20, ph);
+      const xx = x + Math.sin(ph * 6 + r1 * 6) * (10 + ph * 60) * (r2 - 0.5) * 2;
+      const r = 14 + ph * 40 * (0.6 + r3);
+      ctx.fillStyle = `rgba(90,92,102,${(0.5 - ph * 0.25) * a})`;
+      ctx.beginPath(); ctx.arc(xx, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function person(x, t, crouch = 0, dir = -1, walking = true) {
+    const y = FLOOR, s = 1 - crouch * 0.28;
+    const ph = walking ? Math.sin(t * 9) : 0;
+    ctx.strokeStyle = '#2b4c7e'; ctx.lineWidth = 10; ctx.lineCap = 'round';
+    const hip = [x, y - 62 * s], neck = [x + dir * crouch * 22, y - 118 * s];
+    ctx.beginPath(); ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] + ph * 16, y - 4);
+    ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] - ph * 16, y - 4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(...neck); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] + dir * 26, neck[1] + 30 + crouch * 10);
+    ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] - ph * 14, neck[1] + 46); ctx.stroke();
+    ctx.fillStyle = '#2b4c7e'; ctx.beginPath(); ctx.arc(neck[0] + dir * 4, neck[1] - 20, 15, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // ---------- text ----------
+  function segs(s) { const out = []; let cur = '', hl = false;
+    for (const ch of s) { if (ch === '[' || ch === ']') { if (cur) out.push([cur, hl]); cur = ''; hl = ch === '['; } else cur += ch; }
+    if (cur) out.push([cur, hl]); return out; }
+  function headline(text, t, y = 76, size = 38) {
+    const lines = text.split('\n');
+    ctx.font = f(900, size);
+    const ws = lines.map(l => segs(l).reduce((a, [s]) => a + ctx.measureText(s).width, 0));
+    const lh = size * 1.32, bw = Math.max(...ws) + 72, bh = lh * lines.length + 26;
+    const sc = 0.7 + 0.3 * eb(t / 0.35), al = cl(t / 0.15);
+    ctx.save(); ctx.globalAlpha = al; ctx.translate(W / 2, y); ctx.scale(sc, sc);
+    ctx.fillStyle = 'rgba(40,30,20,.25)'; rr(-bw / 2 + 5, -bh / 2 + 7, bw, bh, 22); ctx.fill();
+    ctx.fillStyle = '#fffaf0'; rr(-bw / 2, -bh / 2, bw, bh, 22); ctx.fill();
+    ctx.lineWidth = 5; ctx.strokeStyle = '#f5ae28'; ctx.stroke();
+    ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+    lines.forEach((l, i) => {
+      let x = -ws[i] / 2; const yy = -bh / 2 + 13 + lh * (i + 0.5);
+      for (const [s, hl] of segs(l)) {
+        const w = ctx.measureText(s).width;
+        if (hl) { ctx.fillStyle = YEL; ctx.fillRect(x, yy + size * 0.3, w, size * 0.22); }
+        ctx.fillStyle = hl ? RED : INK; ctx.fillText(s, x, yy); x += w;
+      }
+    });
+    ctx.restore();
+  }
+  function pill(text, x, y, t, opt = {}) {
+    if (t <= 0) return;
+    const a = eo(t / 0.3), size = opt.size || 24;
+    ctx.save(); ctx.globalAlpha = a; ctx.font = f(700, size);
+    const w = ctx.measureText(text).width + 32, h = size + 22;
+    const bx = opt.align === 'right' ? x - w : opt.align === 'center' ? x - w / 2 : x;
+    ctx.fillStyle = opt.bg || 'rgba(25,35,60,.92)'; rr(bx, y - h / 2, w, h, h / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = opt.color || '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, bx + 16, y + 1); ctx.restore();
+  }
+  function fx(text, x, y, size, color, t = 1, align = 'center') {
+    if (t <= 0) return;
+    const s = eb(t / 0.3);
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.font = f(900, size); ctx.textAlign = align; ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8; ctx.strokeStyle = '#1f2430'; ctx.lineJoin = 'round'; ctx.strokeText(text, 0, 0);
+    ctx.fillStyle = color; ctx.fillText(text, 0, 0); ctx.restore();
+  }
+  function dimV(x, y0, y1, t, label, side = 1) {           // vertical dimension
+    if (t <= 0) return;
+    const k = eo(t / 0.4), yy = lerp(y0, y1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(x - 12, y0); ctx.lineTo(x + 12, y0); ctx.moveTo(x, y0); ctx.lineTo(x, yy);
+    if (k > .98) { ctx.moveTo(x - 12, y1); ctx.lineTo(x + 12, y1); } ctx.stroke();
+    if (k > .9) fx(label, x + side * 18, (y0 + y1) / 2, 26, YEL, (t - .35) * 3, side > 0 ? 'left' : 'right');
+  }
+  function dimH(x0, x1, y, t, label) {
+    if (t <= 0) return;
+    const k = eo(t / 0.5), xx = lerp(x0, x1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4; ctx.setLineDash([14, 10]);
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(xx, y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x0, y - 12); ctx.lineTo(x0, y + 12); ctx.stroke();
+    if (k > .98) { ctx.beginPath(); ctx.moveTo(x1, y - 12); ctx.lineTo(x1, y + 12); ctx.stroke(); }
+    if (k > .9) fx(label, (x0 + x1) / 2, y - 30, 28, YEL, (t - .45) * 3);
+  }
+  function card(x, y, w, h, num, title, body, t, color = RED) {
+    if (t <= 0) return;
+    const s = 0.85 + 0.15 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 10, h, [16, 0, 0, 16]); ctx.fill();
+    ctx.fillStyle = color; ctx.beginPath(); ctx.arc(52, 48, 24, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 52, 49);
+    ctx.fillStyle = INK; ctx.font = f(900, 27); ctx.textAlign = 'left'; ctx.fillText(title, 90, 49);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 22);
+    body.split('\n').forEach((l, i) => ctx.fillText(l, 34, 100 + i * 34));
+    ctx.restore();
+  }
+
+  // ---------- extra helpers ----------
+  function plain(c = '#eef1f6') { ctx.fillStyle = c; ctx.fillRect(0, 0, W, H); }
+  function cardSm(x, y, w, h, num, title, body, t, color) {
+    if (t <= 0) return;
+    const dx = (1 - eo(t / 0.4)) * 40;
+    ctx.save(); ctx.globalAlpha = cl(t / 0.25); ctx.translate(x + dx, y);
+    ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(3, 5, w, h, 14); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 14); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 9, h, [14, 0, 0, 14]); ctx.fill();
+    ctx.beginPath(); ctx.arc(46, h / 2, 21, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 46, h / 2 + 1);
+    ctx.textAlign = 'left'; ctx.fillStyle = INK; ctx.font = f(900, 25); ctx.fillText(title, 84, h * 0.33);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 20); ctx.fillText(body, 84, h * 0.71);
+    ctx.restore();
+  }
+  function box(x, y, w, h, lines, t) {           // lines: [text, size, weight, color]
+    if (t <= 0) return;
+    const s = 0.9 + 0.1 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill(); ctx.strokeStyle = '#f5ae28'; ctx.lineWidth = 4; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    let yy = 0; const tot = lines.reduce((a, l) => a + l[1] * 1.45, 0); yy = (h - tot) / 2;
+    for (const [tx, sz, wt, col] of lines) { ctx.font = f(wt || 700, sz); ctx.fillStyle = col || INK; ctx.fillText(tx, w / 2, yy + sz * 0.72); yy += sz * 1.45; }
+    ctx.restore();
+  }
+  function miniSmoke(x0, x1, y0, depth, t) {
+    if (depth <= 1) return;
+    ctx.fillStyle = 'rgba(70,72,84,.82)'; ctx.beginPath(); ctx.moveTo(x0, y0);
+    for (let x = x0; x <= x1; x += 10) ctx.lineTo(x, y0 + depth + Math.sin(x / 25 + t * 2.5) * 5);
+    ctx.lineTo(x1, y0); ctx.closePath(); ctx.fill();
+  }
+  function scaled(x, y, s, fn) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-x, -y); fn(); ctx.restore(); }
+
+  // ---------- 共通の追加イラスト（防火シリーズ） ----------
+  const GRN = '#1e9e5a';
+  function shutter(x, k) {                        // 断面：天井から降りる防火シャッター
+    const y1 = lerp(CEIL + 30, FLOOR, cl(k));
+    ctx.fillStyle = '#4b5260'; ctx.fillRect(x - 24, CEIL, 48, 30);
+    ctx.fillStyle = '#b8bec8'; ctx.fillRect(x - 8, CEIL + 30, 16, y1 - CEIL - 30);
+    ctx.strokeStyle = 'rgba(60,66,78,.6)'; ctx.lineWidth = 2;
+    for (let y = CEIL + 42; y < y1; y += 16) { ctx.beginPath(); ctx.moveTo(x - 8, y); ctx.lineTo(x + 8, y); ctx.stroke(); }
+  }
+  function planFloor(x, y, w, h, a = 1) {         // 平面：方眼つきの床
+    if (a <= 0) return;
+    ctx.save(); ctx.globalAlpha = cl(a);
+    ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, h);
+    ctx.strokeStyle = '#e3e7ee'; ctx.lineWidth = 1; ctx.beginPath();
+    for (let gx = x + 50; gx < x + w; gx += 50) { ctx.moveTo(gx, y); ctx.lineTo(gx, y + h); }
+    for (let gy = y + 50; gy < y + h; gy += 50) { ctx.moveTo(x, gy); ctx.lineTo(x + w, gy); }
+    ctx.stroke(); ctx.strokeStyle = INK; ctx.lineWidth = 8; ctx.strokeRect(x, y, w, h); ctx.restore();
+  }
+  function redLine(x0, y0, x1, y1, k, lw = 12) {  // 区画線（赤）を伸ばしながら描く
+    if (k <= 0) return; k = cl(k);
+    ctx.strokeStyle = RED; ctx.lineWidth = lw; ctx.lineCap = 'butt';
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(lerp(x0, x1, k), lerp(y0, y1, k)); ctx.stroke();
+  }
+  function doorMark(x, y, vert, t) {              // 平面：区画線上の防火設備
+    if (t <= 0) return; const s = eb(t / .3);
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.fillStyle = YEL; ctx.strokeStyle = INK; ctx.lineWidth = 3;
+    if (vert) { ctx.fillRect(-10, -38, 20, 76); ctx.strokeRect(-10, -38, 20, 76); } else { ctx.fillRect(-38, -10, 76, 20); ctx.strokeRect(-38, -10, 76, 20); }
+    ctx.restore();
+  }
+  function steelDoor(x, y, w, h) {                // 立面：鋼製の防火戸
+    ctx.fillStyle = '#4b5260'; ctx.fillRect(x - 8, y - 8, w + 16, h + 8);
+    ctx.fillStyle = '#9aa3b0'; ctx.fillRect(x, y, w, h);
+    ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.lineWidth = 3; ctx.strokeRect(x + 14, y + 14, w - 28, h - 28);
+    ctx.fillStyle = '#2b2f38'; ctx.fillRect(x + w - 32, y + h * .5 - 6, 18, 12);
+  }
+  function timer(cx, cy, r, k, label, col) {      // 円グラフ型のタイマー
+    ctx.fillStyle = '#eef1f6'; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * cl(k)); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = INK; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cx, cy, r * .58, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = INK; ctx.font = f(900, Math.round(r * .36)); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, cx, cy + 1);
+  }
+  function floors(x0, x1, yBot, fh, n) {          // 断面：n階建て（床スラブ・外壁・地面）
+    ctx.fillStyle = '#cfe6f2'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#f4efe6'; ctx.fillRect(x0, yBot - n * fh, x1 - x0, n * fh);
+    ctx.fillStyle = '#8a8f99';
+    for (let i = 0; i <= n; i++) ctx.fillRect(x0 - 20, i ? yBot - i * fh - 14 : yBot, x1 - x0 + 40, 14);
+    ctx.fillStyle = '#9aa0aa'; ctx.fillRect(x0 - 18, yBot - n * fh, 18, n * fh); ctx.fillRect(x1, yBot - n * fh, 18, n * fh);
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(0, yBot + 14, W, H - yBot - 14);
+  }
+  function rise(x, y0, y1, t, a = 1, spread = 30, n = 18) {   // 上へ昇る煙（任意の範囲）
+    if (a <= 0) return;
+    for (let i = 0; i < n; i++) { const [r1, r2, r3] = PUFFS[i]; const ph = (t * .35 + i / n) % 1;
+      const y = lerp(y0, y1, ph), xx = x + Math.sin(ph * 6 + r1 * 6) * spread * (r2 - .5) * 2, r = 10 + ph * 20 * (.6 + r3);
+      ctx.fillStyle = `rgba(90,92,102,${(.55 - ph * .3) * a})`; ctx.beginPath(); ctx.arc(xx, y, r, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function flame(x, y, t, s = 1, ang = 0) {        // 小さな炎（任意の位置・向き）
+    ctx.save(); ctx.translate(x, y); ctx.rotate(ang); ctx.scale(s, s);
+    for (let i = 0; i < 3; i++) { const fl = Math.sin(t * 12 + i * 2) * 5, hh = 60 - i * 15 + fl, ww = 26 - i * 7;
+      ctx.fillStyle = ['#ff6a2b', '#ffa531', '#ffe27a'][i]; ctx.beginPath(); ctx.moveTo(-ww, 0);
+      ctx.quadraticCurveTo(-ww * .9, -hh * .5, Math.sin(t * 9) * 4, -hh); ctx.quadraticCurveTo(ww * .9, -hh * .5, ww, 0); ctx.fill(); }
+    ctx.restore();
+  }
+  function sprinkler(x, y, t, on) {               // スプリンクラーヘッド
+    ctx.fillStyle = '#c0392b'; ctx.fillRect(x - 3, y - 12, 6, 14);
+    ctx.fillStyle = '#d9b44a'; ctx.beginPath(); ctx.arc(x, y + 4, 8, 0, Math.PI * 2); ctx.fill();
+    if (!on) return; ctx.fillStyle = 'rgba(60,150,230,.85)';
+    for (let i = 0; i < 14; i++) { const ph = (t * 1.6 + i / 14) % 1, an = (i / 13 - .5) * 2.2;
+      ctx.beginPath(); ctx.arc(x + Math.sin(an) * ph * 60, y + 12 + Math.cos(an) * ph * 50 + ph * ph * 30, 3, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function hatch(x, y, w, h, col = '#d8c9b8') {   // 耐火構造の壁（斜線）
+    ctx.save(); ctx.fillStyle = col; ctx.fillRect(x, y, w, h);
+    ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+    ctx.strokeStyle = 'rgba(0,0,0,.22)'; ctx.lineWidth = 2; ctx.beginPath();
+    for (let k = -h; k < w; k += 14) { ctx.moveTo(x + k, y + h); ctx.lineTo(x + k + h, y); }
+    ctx.stroke(); ctx.restore();
+    ctx.strokeStyle = RED; ctx.lineWidth = 4; ctx.strokeRect(x, y, w, h);
+  }
+  function planDoor(cx, cy, ang) {                 // 平面：開き戸（ang=0で閉、π/2で全開）
+    const L = 110, hx = cx - L / 2;
+    ctx.strokeStyle = '#9aa0aa'; ctx.lineWidth = 14; ctx.lineCap = 'butt'; ctx.beginPath();
+    ctx.moveTo(cx - 200, cy); ctx.lineTo(hx, cy); ctx.moveTo(cx + L / 2, cy); ctx.lineTo(cx + 200, cy); ctx.stroke();
+    ctx.strokeStyle = 'rgba(31,36,48,.35)'; ctx.lineWidth = 2; ctx.setLineDash([6, 6]); ctx.beginPath(); ctx.arc(hx, cy, L, -Math.PI / 2, 0); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(hx, cy); ctx.lineTo(hx + Math.cos(ang) * L, cy - Math.sin(ang) * L); ctx.stroke();
+  }
+  function detector(x, y, t, on) {                 // 煙感知器
+    ctx.fillStyle = '#fff'; ctx.strokeStyle = INK; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = on && Math.floor(t * 4) % 2 === 0 ? '#ff3b30' : '#ccd2db'; ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
+  }
+  function note(text, y, t, size = 18) {           // 下部の小さな注記
+    if (t <= 0) return;
+    ctx.globalAlpha = eo(t / .4); ctx.font = f(500, size); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, W / 2, y); ctx.globalAlpha = 1;
+  }
+
+  // ---------- 共通の画面の型（タイトル・表・手順・まとめ） ----------
+  function titleScene(t, tag, big, sub, list) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#2a1d24'); g.addColorStop(1, '#0d1422');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < 30; i++) { const [a, b, c] = PUFFS[i]; const ph = (t * 0.12 + a) % 1;
+      ctx.fillStyle = `rgba(255,140,90,${0.10 * (1 - ph)})`; ctx.beginPath();
+      ctx.arc(a * W + Math.sin(t + i) * 30, H + 80 - ph * (H + 200), 30 + c * 60, 0, Math.PI * 2); ctx.fill(); }
+    pill(`CM知識一覧｜${tag}`, W / 2, 205, t, {align: 'center', bg: RED, size: 28});
+    const s = eb((t - .25) / .5);
+    if (s > 0) { ctx.save(); ctx.translate(W / 2, 330); ctx.scale(s, s);
+      ctx.font = f(900, big.length > 6 ? 96 : 120); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.lineWidth = 12; ctx.strokeStyle = '#fff'; ctx.strokeText(big, 0, 0); ctx.fillStyle = RED; ctx.fillText(big, 0, 0); ctx.restore(); }
+    if (t > .8) { ctx.globalAlpha = eo((t - .8) / .4); ctx.font = f(800, 44); ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
+      ctx.fillText(sub, W / 2, 460); ctx.globalAlpha = 1; }
+    if (t > 1.4) { ctx.globalAlpha = eo((t - 1.4) / .4); ctx.font = f(500, 23); ctx.fillStyle = '#b9c2d3';
+      ctx.fillText(list, W / 2, 530); ctx.globalAlpha = 1; }
+  }
+  // head: 見出し配列, hc: 見出し色, rows: 行の配列, cw: 列幅, T0: 最初の行の出現秒, step: 行の間隔
+  function table(t, head, hc, rows, cw, T0, step, y0 = 160, rh = 84, fs = 21, x0 = 70) {
+    let x = x0;
+    head.forEach((h, j) => { ctx.fillStyle = hc[j]; rr(x, y0, cw[j] - 6, 56, 10); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(h, x + (cw[j] - 6) / 2, y0 + 29); x += cw[j]; });
+    rows.forEach((r, i) => {
+      const tt = t - T0 - i * step; if (tt <= 0) return;
+      ctx.save(); ctx.globalAlpha = eo(tt / .3);
+      let x = x0; const y = y0 + 66 + i * rh;
+      r.forEach((c, j) => { ctx.fillStyle = j === 0 ? '#e3e7ee' : '#fff'; rr(x, y, cw[j] - 6, rh - 8, 8); ctx.fill();
+        ctx.fillStyle = INK; ctx.font = f(j === 0 ? 900 : 700, j === 0 ? fs + 1 : fs); ctx.textAlign = j === 0 ? 'left' : 'center'; ctx.textBaseline = 'middle';
+        const ls = String(c).split('\n');
+        ls.forEach((l, k) => ctx.fillText(l, j === 0 ? x + 18 : x + (cw[j] - 6) / 2, y + (rh - 8) / 2 + (k - (ls.length - 1) / 2) * (fs + 6)));
+        x += cw[j]; });
+      ctx.restore();
+    });
+  }
+  // steps: [[見出し, 説明], ...]、T0: 各ステップの出現秒の配列
+  function stepList(t, steps, T0, color = '#f08a24') {
+    const gap = steps.length > 4 ? 100 : 122, h = steps.length > 4 ? 82 : 96;
+    steps.forEach(([a, b], k) => {
+      const y = 155 + k * gap;
+      cardSm(110, y, 1060, h, String(k + 1), a, b, t - T0[k], color);
+      if (k < steps.length - 1 && t > T0[k] + 1.0) { ctx.fillStyle = color; ctx.beginPath(); ctx.moveTo(150, y + h + 3); ctx.lineTo(170, y + h + 3); ctx.lineTo(160, y + gap - 3); ctx.fill(); }
+    });
+  }
+  // cards: [[番号, 見出し, 説明], ...]（横長カードを縦に並べる）
+  function cardRows(t, cards, T0, color, y0 = 160, ch = 140, gap = 160) {
+    cards.forEach(([n, a, b], k) => card(70, y0 + k * gap, 1140, ch, n, a, b, t - T0[k], color));
+  }
+  function summaryScene(t, tiles, msg, src) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1d2a44'); g.addColorStop(1, '#0d1422');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    tiles.forEach(([k, v, c], i) => {
+      const tt = t - .5 - i * 0.9; if (tt <= 0) return;
+      const x = 70 + i * 290, y = 170, s = 0.8 + 0.2 * eb(tt / .35);
+      ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + 130, y + 160); ctx.scale(s, s); ctx.translate(-130, -160);
+      ctx.fillStyle = '#fff'; rr(0, 0, 260, 320, 20); ctx.fill();
+      ctx.fillStyle = c; rr(0, 0, 260, 120, [20, 20, 0, 0]); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, k.length > 6 ? 30 : 36); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(k, 130, 62);
+      ctx.fillStyle = INK; ctx.font = f(700, 23); v.split('\n').forEach((l, j) => ctx.fillText(l, 130, 190 + j * 40));
+      ctx.restore();
+    });
+    pill(msg, W / 2, 545, t - 4.5, {align: 'center', bg: RED, size: 26});
+    if (t > 5.5) { ctx.globalAlpha = eo((t - 5.5) / .5); ctx.font = f(500, 18); ctx.fillStyle = '#b9c2d3'; ctx.textAlign = 'center';
+      ctx.fillText(`出典：${src}`, W / 2, 625);
+      ctx.fillText('※イラストはイメージです。個別の判断は所管行政庁・指定確認検査機関・消防機関に確認してください', W / 2, 655); ctx.globalAlpha = 1; }
+    pill('まとめ', W / 2, 110, t, {align: 'center', bg: RED, size: 30});
+  }
+  // 立面：外壁と窓（延焼のおそれのある部分の説明用）
+  function elevation(x, yBot, w, n, fh, a = 1) {
+    ctx.save(); ctx.globalAlpha = cl(a);
+    ctx.fillStyle = '#e9e2d4'; ctx.fillRect(x, yBot - n * fh, w, n * fh);
+    ctx.strokeStyle = '#8a8f99'; ctx.lineWidth = 4; ctx.strokeRect(x, yBot - n * fh, w, n * fh);
+    for (let i = 0; i < n; i++) for (let k = 0; k < Math.floor(w / 90); k++) {
+      ctx.fillStyle = '#bfe3f5'; ctx.fillRect(x + 25 + k * 90, yBot - (i + 1) * fh + 22, 50, fh - 44); }
+    ctx.restore();
+  }
+
+  // ---------- tekigou helpers（証明書） ----------
+  function cert(x, y, s, title, col, stamp) {       // 証明書のアイコン
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.fillStyle = '#fffdf6'; ctx.fillRect(-80, -100, 160, 200); ctx.strokeStyle = col; ctx.lineWidth = 5; ctx.strokeRect(-80, -100, 160, 200); ctx.strokeRect(-70, -90, 140, 180);
+    ctx.fillStyle = col; ctx.font = f(900, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(title, 0, -62);
+    ctx.fillStyle = '#d9dee7'; for (let i = 0; i < 4; i++) ctx.fillRect(-50, -26 + i * 20, 100, 6);
+    if (stamp > 0) { const k = eb(stamp / .3); ctx.save(); ctx.translate(36, 62); ctx.scale(k, k); ctx.strokeStyle = RED; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(0, 0, 24, 0, Math.PI * 2); ctx.stroke(); ctx.fillStyle = RED; ctx.font = f(900, 16); ctx.fillText('証明', 0, 1); ctx.restore(); }
+    ctx.restore();
+  }
+
+  // ---------- scenes ----------
+  const S = [];
+  S.push({name: 'タイトル', d: 13, draw(t) {
+    titleScene(t, '開発の適合証明', '60条証明', '都市計画法に「適合している」ことを証明する書面', 'なぜ必要か ／ 根拠 ／ 対象の6つの条文 ／ 誰が出すか ／ 手続き ／ 建築確認との関係 ／ NG事例');
+  }});
+
+  S.push({name: 'なぜ必要か', d: 15, draw(t) {
+    plain();
+    box(70, 200, 340, 200, [['建築確認', 30, 900, RED], ['建築主事・指定確認検査機関', 18, 700, '#4a5262']], t - .8);
+    box(870, 200, 340, 200, [['開発許可など', 30, 900, '#2b6cff'], ['知事・市長（都市計画法）', 18, 700, '#4a5262']], t - 2.4);
+    if (t > 4) { fx('？', 640, 290, 70, YEL, t - 4); pill('都市計画法に合っているかは、どう確かめる？', W / 2, 460, t - 4.4, {align: 'center', bg: INK, size: 24}); }
+    if (t > 7.4) cert(640, 300, .7, '適合証明', GRN, t - 8);
+    pill('開発の担当部署が「適合している」と証明する → 60条証明', W / 2, 600, t - 9.6, {align: 'center', bg: RED, size: 24});
+    headline('審査の[窓口]がちがう', t);
+  }});
+
+  S.push({name: '60条証明とは', d: 15, draw(t) {
+    plain();
+    box(150, 170, 980, 230, [['建築確認を受けようとする者は、計画が都市計画法の', 24, 700, '#4a5262'], ['開発許可などの規定に適合していることを証する書面', 30, 900, INK], ['の交付を求めることができる', 26, 800, RED]], t - 1.2);
+    pill('根拠：都市計画法施行規則 第60条 → 通称「60条証明」「適合証明」', W / 2, 480, t - 7, {align: 'center', bg: INK, size: 24});
+    headline('[60条証明]とは', t);
+  }});
+
+  S.push({name: '建築基準関係規定', d: 14, draw(t) {
+    plain();
+    ctx.fillStyle = RED; ctx.beginPath(); ctx.arc(420, 380, 150 * eo((t - .6) / .5), 0, Math.PI * 2); ctx.globalAlpha = .9; ctx.fill(); ctx.globalAlpha = 1;
+    ctx.fillStyle = '#2b6cff'; ctx.beginPath(); ctx.arc(860, 380, 150 * eo((t - 2) / .5), 0, Math.PI * 2); ctx.globalAlpha = .85; ctx.fill(); ctx.globalAlpha = 1;
+    if (t > 1) { ctx.fillStyle = '#fff'; ctx.font = f(900, 26); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('建築確認の審査', 380, 380); }
+    if (t > 2.4) { ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.fillText('都市計画法', 900, 360); ctx.fillText('（開発許可など）', 900, 395); }
+    pill('都市計画法の開発許可などの規定も、建築確認の審査対象（令9条）', W / 2, 600, t - 5, {align: 'center', bg: INK, size: 23});
+    pill('60条証明があれば、その部分の確認がスムーズに', W / 2, 670, t - 9, {align: 'center', bg: GRN, size: 23});
+    headline('[建築基準関係規定]に入っている', t);
+  }});
+
+  S.push({name: '対象の6つの条文', d: 17, draw(t) {
+    plain();
+    table(t, ['都市計画法', '内容'], ['#5b6474', '#2b6cff'],
+      [['29条1項・2項', '開発許可'], ['35条の2第1項', '開発許可の変更の許可'], ['41条2項', '建蔽率・高さなどの制限（用途地域のない区域）'], ['42条', '開発許可を受けた区域の公告後の建築制限'],
+       ['43条1項', '市街化調整区域の建築許可'], ['53条1項', '都市計画施設・市街地開発事業の区域内の建築許可']],
+      [300, 840], 1.4, 1.6, 150, 74, 22);
+    headline('証明の対象：[6つの条文]（施行規則60条）', t);
+  }});
+
+  S.push({name: '誰が出すか', d: 14, draw(t) {
+    plain();
+    cardRows(t, [['1', '都道府県知事', '原則'], ['2', '指定都市・中核市などの市長', 'その市の区域内'], ['3', '事務を処理する市町村長', '開発許可の事務を処理している市町村、53条は市の長 など']], [1.4, 4.6, 7.8], GRN);
+    pill('実際の窓口は、自治体の開発指導課・都市計画課など', W / 2, 668, t - 10.4, {align: 'center', bg: INK, size: 22});
+    headline('証明書を[出すところ]', t);
+  }});
+
+  S.push({name: 'どんな場合に必要か', d: 17, draw(t) {
+    plain();
+    const Q = [['開発許可を受けた土地に建てる', '予定建築物どおりか（42条）', '#2b6cff', 1.6], ['開発許可がいらない規模の土地に建てる', '許可が不要であることの確認（29条）', GRN, 5.0],
+               ['市街化調整区域に建てる', '建築許可を受けたか・不要か（43条）', '#f08a24', 8.8], ['都市計画道路などの予定地に建てる', '53条の許可を受けたか', RED, 12.0]];
+    Q.forEach(([a, b, c, t0], i) => { const tt = t - t0; if (tt <= 0) return; const y = 160 + i * 115;
+      ctx.save(); ctx.globalAlpha = eo(tt / .3); ctx.fillStyle = '#fff'; rr(110, y, 1060, 98, 14); ctx.fill(); ctx.fillStyle = c; rr(110, y, 12, 98, [14, 0, 0, 14]); ctx.fill();
+      ctx.fillStyle = INK; ctx.font = f(800, 24); ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(a, 150, y + 35);
+      ctx.fillStyle = c; ctx.font = f(700, 20); ctx.fillText(b, 150, y + 70); ctx.restore(); });
+    headline('60条証明が[使われる場面]（例）', t);
+  }});
+
+  S.push({name: '42条：予定建築物', d: 15, draw(t) {
+    plain();
+    card(70, 170, 1140, 200, '42', '開発許可を受けた区域（工事完了の公告のあと）', '許可のときに決めた「予定建築物」以外の建物を新築したり、\n用途を変えて予定建築物以外にしたりするには、知事の許可が必要', t - 1.4, '#2b6cff');
+    box(170, 410, 940, 150, [['60条証明では', 24, 700, '#4a5262'], ['計画が予定建築物どおりか（または許可を受けたか）を確認', 26, 900, '#2b6cff']], t - 8);
+    headline('[42条]：予定建築物どおりか', t);
+  }});
+
+  S.push({name: '43条：調整区域の建築', d: 15, draw(t) {
+    plain();
+    card(70, 170, 1140, 200, '43', '市街化調整区域（開発許可を受けた区域以外）', '造成をしなくても、建物の新築・改築・用途変更には\n知事の許可が必要（農林漁業用の建物などの例外あり）', t - 1.4, '#f08a24');
+    box(170, 410, 940, 150, [['60条証明では', 24, 700, '#4a5262'], ['43条の許可を受けたか、許可が不要な建物かを確認', 26, 900, '#f08a24']], t - 8);
+    headline('[43条]：市街化調整区域の建築', t);
+  }});
+
+  S.push({name: '53条：都市計画施設', d: 15, draw(t) {
+    plain('#7fb069');
+    ctx.fillStyle = '#e9dcc4'; ctx.fillRect(160, 220, 960, 360);
+    if (t > 1.4) { ctx.fillStyle = 'rgba(232,67,47,.35)'; ctx.fillRect(160, 330 * 1, 960, 110 * eo((t - 1.4) / .6)); ctx.strokeStyle = RED; ctx.lineWidth = 4; ctx.setLineDash([14, 10]); ctx.strokeRect(160, 330, 960, 110); ctx.setLineDash([]); }
+    pill('都市計画道路の予定地（都市計画施設の区域）', 640, 385, t - 2, {align: 'center', bg: RED, size: 22});
+    pill('この区域内に建てるには 知事などの許可（53条）', W / 2, 180, t - 5.6, {align: 'center', bg: INK, size: 24});
+    pill('60条証明で、許可を受けたか・区域にかかっていないかを確認', W / 2, 640, t - 9.6, {align: 'center', bg: '#2b6cff', size: 22});
+    headline('[53条]：都市計画道路の予定地など', t);
+  }});
+
+  S.push({name: '手続きの流れ', d: 15, draw(t) {
+    plain();
+    stepList(t, [['事前相談', '開発担当課で、どの条文の証明が必要かを確認'], ['申請', '申請書・位置図・配置図・登記の書類など（自治体ごとに違う）'],
+      ['審査・交付', '担当課が審査し、適合証明書を交付'], ['建築確認に添付', '建築主事・指定確認検査機関へ']], [1.0, 4.0, 7.8, 10.4], '#2b6cff');
+    headline('60条証明の[手続きの流れ]', t);
+  }});
+
+  S.push({name: '建築確認との順番', d: 13, draw(t) {
+    plain();
+    const xs = [200, 520, 840, 1120];
+    ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(140, 380); ctx.lineTo(1180, 380); ctx.stroke();
+    [['開発許可など', '#2b6cff', .8], ['60条証明', GRN, 2.4], ['建築確認', RED, 4.0], ['着工', INK, 5.6]].forEach(([a, c, t0], i) => { if (t < t0) return;
+      ctx.fillStyle = c; ctx.beginPath(); ctx.arc(xs[i], 380, 22, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = INK; ctx.font = f(800, 23); ctx.textAlign = 'center'; ctx.fillText(a, xs[i], 430); });
+    pill('60条証明の取得には日数がかかるので、確認申請の前に早めに', W / 2, 560, t - 7.6, {align: 'center', bg: RED, size: 24});
+    headline('建築確認との[順番]', t);
+  }});
+
+  S.push({name: '添付が求められるか', d: 15, draw(t) {
+    plain();
+    card(70, 180, 560, 320, '法', '条文の書き方', '施行規則60条は\n「交付を求めることができる」\n（申請者が求める書面）', t - 1.4, '#5b6474');
+    card(650, 180, 560, 320, '運', '実際の運用', '多くの特定行政庁・審査機関が、\n都市計画区域内の確認申請で\n添付を求めている（取扱いは地域ごと）', t - 6.0, '#f08a24');
+    pill('添付の要否は、審査機関と自治体に事前に確認する', W / 2, 590, t - 11, {align: 'center', bg: INK, size: 24});
+    headline('添付は[必ず]必要？', t);
+  }});
+
+  S.push({name: '判定例', d: 17, draw(t) {
+    plain();
+    box(70, 150, 1140, 76, [['市街化区域 ／ 敷地600㎡ ／ 造成なし ／ 事務所を新築', 28, 900]], t - .4);
+    const R = [['開発許可', '1,000㎡未満・造成なし → 不要', GRN, 3.0], ['60条証明', '「29条の許可が不要」であることを証明', '#2b6cff', 6.4], ['53条', '都市計画道路の予定地にかかっていないかも確認', '#f08a24', 10.0], ['確認申請', '証明書を添付して申請', RED, 13.0]];
+    R.forEach(([a, b, c, t0], i) => { const tt = t - t0; if (tt <= 0) return; const y = 260 + i * 88;
+      ctx.save(); ctx.globalAlpha = eo(tt / .3); ctx.fillStyle = '#fff'; rr(120, y, 1040, 72, 10); ctx.fill();
+      ctx.fillStyle = c; ctx.font = f(900, 24); ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(a, 150, y + 36);
+      ctx.fillStyle = INK; ctx.font = f(700, 22); ctx.fillText(b, 340, y + 36); ctx.restore(); });
+    note('※取扱いは自治体ごとに異なる（図はイメージ）', 668, t - 14, 18);
+    headline('判定例：[市街化区域の事務所]', t);
+  }});
+
+  S.push({name: '用途変更・増築でも', d: 14, draw(t) {
+    plain();
+    cardRows(t, [['1', '開発許可区域で用途を変える', '予定建築物以外にするなら、42条の許可・証明が必要'],
+      ['2', '市街化調整区域で増築・用途変更', '43条の許可が必要か確認'],
+      ['3', '確認申請が必要な工事', '新築以外でも、60条証明を求められることがある']], [1.2, 5.0, 8.6], '#7a5cff');
+    headline('[用途変更・増築]でも確認', t);
+  }});
+
+  S.push({name: 'CMの視点', d: 15, draw(t) {
+    plain();
+    cardRows(t, [['1', '用地の調査で一緒に確認', '区域区分・開発許可の履歴・都市計画道路の有無'],
+      ['2', '工程に日数を入れる', '事前相談・申請・審査の期間を確認申請の前に'],
+      ['3', '開発時の条件を引き継ぐ', '予定建築物・建蔽率などの制限（41条）を設計に反映']], [1.4, 5.0, 9.2], '#7a5cff');
+    headline('CM視点：60条証明の[段取り]', t);
+  }});
+
+  S.push({name: 'NG事例', d: 15, draw(t) {
+    plain();
+    cardRows(t, [['1', '確認申請の直前に気づく', '証明の取得に日数がかかり、工程が遅れる'],
+      ['2', '開発許可の予定建築物と違う計画', '用途・規模が合わず、証明が出ない → 計画の見直し'],
+      ['3', '調整区域・都市計画道路の確認漏れ', '43条・53条の許可が必要だった']], [1.2, 4.8, 9.0], '#7a5cff');
+    headline('NG：60条証明の[よくある失敗]', t);
+  }});
+
+  S.push({name: 'まとめ', d: 17, draw(t) {
+    summaryScene(t, [['役割を知る', '都市計画法への\n適合を証明', GRN], ['条文を知る', '29・35の2・41\n42・43・53条', '#2b6cff'],
+      ['窓口を知る', '知事・市長\n開発担当課', '#f08a24'], ['早めに取る', '確認申請の前に\n添付の要否を確認', RED]],
+      '用地の段階から、開発許可・調整区域・都市計画道路を確認', '都市計画法施行規則 第60条、都市計画法 第29条・第35条の2・第41条〜第43条・第53条、建築基準法施行令 第9条');
+  }});
+  const MECH = -1;
+
+  // ---------- narration ----------
+  const CAP = [
+    "開発の適合証明、いわゆる60条証明。建物の計画が、都市計画法の開発許可などの規定に適合していることを証明する書面です。なぜ必要か、対象の条文、窓口、手続き、建築確認との関係まで解説します。",
+    "建築確認は、建築主事や指定確認検査機関が審査します。一方、開発許可などの都市計画法の手続きは、知事や市長の担当部署が扱います。そこで、開発の担当部署が、計画が都市計画法に適合していると証明するのが60条証明です。",
+    "60条証明とは、建築確認を受けようとする者が、計画が都市計画法の開発許可などの規定に適合していることを証する書面の交付を、求めることができる制度です。根拠が都市計画法施行規則60条なので、こう呼ばれます。",
+    "都市計画法の開発許可などの規定は、建築基準関係規定の一つで、建築確認の審査対象です。60条証明があれば、その部分が適合していることが書面で示され、確認の審査がスムーズになります。",
+    "証明の対象は6つの条文です。29条の開発許可、35条の2の変更許可、41条の建蔽率などの制限、42条の公告後の建築制限、43条の市街化調整区域の建築許可、そして53条の都市計画施設の区域内の建築許可です。",
+    "証明書を出すのは、原則として都道府県知事です。指定都市や中核市などでは市長、開発許可の事務を処理している市町村では、その市町村長が出します。実際の窓口は、開発指導課や都市計画課などです。",
+    "使われる場面の例です。開発許可を受けた土地に、予定建築物どおりに建てるとき。許可がいらない規模の土地に建てるとき。市街化調整区域に建てるとき。都市計画道路の予定地に建てるときなどです。",
+    "よく使う3つの条文を見てみましょう。まず42条です。開発許可を受けた区域では、工事完了の公告のあと、許可のときに決めた予定建築物以外の建物を建てたり、用途を変えたりするには、知事の許可が必要です。60条証明で、計画が予定建築物どおりかを確認します。",
+    "次に43条です。市街化調整区域では、開発許可を受けた区域以外でも、造成をしなくても、建物の新築や改築、用途変更に知事の許可が必要です。農林漁業用の建物などの例外があります。60条証明で、許可を受けたか、許可が不要な建物かを確認します。",
+    "そして53条です。都市計画道路の予定地など、都市計画施設の区域や市街地開発事業の施行区域の中に建物を建てるには、知事などの許可が必要です。60条証明で、許可を受けたか、区域にかかっていないかを確認します。",
+    "手続きの流れです。まず開発の担当課に相談し、どの条文の証明が必要かを確認します。申請書と位置図、配置図、登記の書類などを出し、審査を経て適合証明書が交付されます。それを建築確認の申請に添付します。",
+    "順番は、開発許可などの手続き、60条証明、建築確認、そして着工です。60条証明の取得には日数がかかるので、確認申請の前に、早めに準備しましょう。",
+    "条文では、60条証明は交付を求めることができる、と書かれています。ただ、多くの特定行政庁や審査機関が、都市計画区域内の確認申請で添付を求めています。取扱いは地域ごとに違うので、事前に確認しましょう。",
+    "例えば、市街化区域の敷地600㎡に、造成をせずに事務所を新築する場合。1,000㎡未満で造成もないので開発許可は不要です。そのことを60条証明で示し、都市計画道路の予定地にかかっていないかも確認して、確認申請に添付します。",
+    "新築だけではありません。開発許可区域で予定建築物以外の用途に変える、市街化調整区域で増築や用途変更をするなど、確認申請が必要な工事では、60条証明を求められることがあります。",
+    "CMの立場では、用地の調査の段階で、区域区分や開発許可の履歴、都市計画道路の有無を一緒に確認します。申請と審査の日数を工程に入れ、開発時の予定建築物や建蔽率などの条件を、設計に反映させましょう。",
+    "よくある失敗です。確認申請の直前に60条証明が必要と気づき、工程が遅れる。開発許可の予定建築物と違う計画で、証明が出ない。市街化調整区域や都市計画道路の確認が漏れ、許可が必要だった。こうした例に注意しましょう。",
+    "まとめです。60条証明は、都市計画法への適合を証明する書面。対象は、29条、35条の2、41条、42条、43条、53条。窓口は知事や市長の開発担当課。確認申請の前に早めに取り、添付の要否も確認しましょう。以上、60条証明のポイントでした。"];
+  const tts = s => s.replace(/60条証明/g, 'ろくじゅうじょうしょうめい').replace(/施行規則60条/g, 'せこうきそく ろくじゅうじょう').replace(/1,000/g, '千').replace(/㎡/g, '平方メートル')
+    .replace(/35条の2/g, 'さんじゅうごじょうのに').replace(/建蔽率/g, 'けんぺいりつ').replace(/市街化調整区域/g, 'しがいかちょうせいくいき').replace(/6つ/g, 'むっつ')
+    .replace(/証する/g, 'しょうする').replace(/登記/g, 'とうき').replace(/3つ/g, 'みっつ').replace(/42条/g, 'よんじゅうにじょう').replace(/43条/g, 'よんじゅうさんじょう').replace(/53条/g, 'ごじゅうさんじょう');
+  const NARR = CAP.map(tts);
+
+  // ---------- player ----------
+  /* hs-ext v1 */
+  let RATE = 1, bgmOn = true;   // 再生速度・BGMのオン／オフ
+  const starts = []; let total = 0; for (const s of S) { starts.push(total); total += s.d; }
+  const btn = root.querySelector('.hs-btn'), snd = root.querySelector('.hs-snd'), track = root.querySelector('.hs-track'), fill = root.querySelector('.hs-fill');
+  const time = root.querySelector('.hs-time'), chips = root.querySelector('.hs-chips'), cap = root.querySelector('.hs-cap');
+  starts.slice(1).forEach(s => { const k = document.createElement('div'); k.className = 'hs-tick'; k.style.left = (s / total * 100) + '%'; track.appendChild(k); });
+  const chipEls = S.map((s, i) => { const li = document.createElement('li'); const b = document.createElement('button');
+    b.type = 'button'; b.className = 'hs-chip'; b.textContent = `${i + 1}. ${s.name}`;
+    b.onclick = () => { unlock(); T = starts[i]; scene = -1; play(); };
+    li.appendChild(b); chips.appendChild(li); return b; });
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let T = 0, playing = false, last = 0, scene = -1;
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  const sceneAt = T => { let i = starts.findIndex((s, k) => T >= s && T < s + S[k].d); return i < 0 ? S.length - 1 : i; };
+
+  // ---------- sound (Web Audio + Web Speech, 音声ファイル不要) ----------
+  const TTS = 'speechSynthesis' in window;
+  let soundOn = false, AC = null, master, bgmGain, nextBeat = 0, beatIdx = 0, schedTimer = null, speaking = false, jaVoice = null, fanNode = null;
+  const voiceSelect = root.querySelector('.hs-voice');
+  const savedVoice = (() => { try { return localStorage.getItem('cmKnowledgeJapaneseVoice') || ''; } catch { return ''; } })();
+  function pickVoice() {
+    const japanese = TTS ? speechSynthesis.getVoices().filter(v => /^ja(?:-|$)/i.test(v.lang)) : [];
+    const voices = japanese.filter(v => /Microsoft/i.test(v.name) && /Haruka|Sayaka|Ayumi|Nanami/i.test(v.name))
+      .sort((a, b) => Number(!/Haruka/i.test(a.name)) - Number(!/Haruka/i.test(b.name)));
+    const preferred = voiceSelect.value || savedVoice;
+    voiceSelect.replaceChildren();
+    for (const voice of voices) voiceSelect.add(new Option(voice.name, voice.voiceURI));
+    jaVoice = voices.find(v => v.voiceURI === preferred) || voices[0] || null;
+    if (jaVoice) voiceSelect.value = jaVoice.voiceURI;
+    else voiceSelect.add(new Option('Microsoft日本語女性音声を利用できません', ''));
+    voiceSelect.disabled = !jaVoice;
+  }
+  voiceSelect.addEventListener('change', () => {
+    jaVoice = speechSynthesis.getVoices().find(v => v.voiceURI === voiceSelect.value) || null;
+    try { localStorage.setItem('cmKnowledgeJapaneseVoice', voiceSelect.value); } catch {}
+    if (playing && soundOn) speak(sceneAt(T));
+  });
+  if (TTS) { pickVoice(); speechSynthesis.addEventListener('voiceschanged', pickVoice); } else pickVoice();
+  function unlock() {                       // ユーザー操作の中で一度だけ音を有効化
+    if (soundOn) return;
+    soundOn = true; setSnd();
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      AC.resume();
+      if (!master) { master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
+        bgmGain = AC.createGain(); bgmGain.gain.value = 0.0; bgmGain.connect(master); }
+    } catch (e) { AC = null; }
+    if (TTS) { const u = new SpeechSynthesisUtterance(''); speechSynthesis.speak(u); }   // iOSの解錠
+  }
+  function mute() { soundOn = false; setSnd(); stopSpeech(); stopBgm(); fan(false); }
+  function setSnd() { snd.textContent = soundOn ? '🔊' : '🔇'; snd.setAttribute('aria-label', soundOn ? '音声をオフ' : '音声をオン'); snd.setAttribute('aria-pressed', soundOn); }
+
+  // BGM：やわらかいアルペジオ（C–G–Am–F）
+  const CH = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]];
+  const hz = n => 440 * Math.pow(2, (n - 69) / 12);
+  function pluck(t, freq, dur, vol, dest) {
+    const o = AC.createOscillator(), o2 = AC.createOscillator(), g = AC.createGain();
+    o.type = 'triangle'; o.frequency.value = freq; o2.type = 'sine'; o2.frequency.value = freq * 2;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); o2.connect(g); g.connect(dest); o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
+  }
+  const BEAT = 60 / 92 / 2;                  // 8分音符
+  function sched() {
+    while (nextBeat < AC.currentTime + 0.3) {
+      const bar = Math.floor(beatIdx / 8), k = beatIdx % 8, ch = CH[bar % 4];
+      if (k === 0) pluck(nextBeat, hz(ch[0] - 12), 1.8, .5, bgmGain);
+      pluck(nextBeat, hz(ch[[0, 1, 2, 1, 0, 2, 1, 2][k]] + 12), .7, .22, bgmGain);
+      nextBeat += BEAT; beatIdx++;
+    }
+  }
+  function startBgm() {
+    if (!AC || !soundOn || !bgmOn || schedTimer) return;
+    nextBeat = AC.currentTime + .05; sched(); schedTimer = setInterval(sched, 100);
+    duck();
+  }
+  function stopBgm() { if (schedTimer) { clearInterval(schedTimer); schedTimer = null; } if (bgmGain) bgmGain.gain.setTargetAtTime(0, AC.currentTime, .05); }
+  function duck() { if (bgmGain && soundOn) bgmGain.gain.setTargetAtTime(speaking ? 0.05 : 0.12, AC.currentTime, .25); }
+
+  // 効果音
+  function pop() {
+    if (!AC || !soundOn) return; const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain();
+    o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(1500, t + .09);
+    g.gain.setValueAtTime(.18, t); g.gain.exponentialRampToValueAtTime(.0001, t + .12);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + .15);
+  }
+  function fan(on) {                         // 機械排煙シーンの送風音
+    if (!AC) return;
+    if (on && soundOn && !fanNode) {
+      const n = AC.sampleRate * 2, buf = AC.createBuffer(1, n, AC.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500;
+      const g = AC.createGain(); g.gain.value = 0; g.gain.setTargetAtTime(.07, AC.currentTime, .4);
+      src.connect(lp); lp.connect(g); g.connect(master); src.start(); fanNode = {src, g};
+    } else if (!on && fanNode) {
+      const {src, g} = fanNode; g.gain.setTargetAtTime(0, AC.currentTime, .15); src.stop(AC.currentTime + .6); fanNode = null;
+    }
+  }
+
+  // ナレーション
+  let utt = null;
+  function speak(i) {
+    stopSpeech();
+    if (!TTS || !soundOn || !jaVoice) return;
+    const u = new SpeechSynthesisUtterance(NARR[i]);
+    u.lang = 'ja-JP'; if (jaVoice) u.voice = jaVoice; u.rate = Math.min(2, 1.12 * RATE); u.pitch = 1.0; u.volume = 1;
+    u.onstart = () => { speaking = true; duck(); };
+    u.onend = u.onerror = () => { if (utt === u) { speaking = false; utt = null; duck(); } };
+    utt = u; speaking = true; duck();
+    speechSynthesis.speak(u);
+  }
+  function stopSpeech() { if (TTS) { utt = null; speaking = false; speechSynthesis.cancel(); duck(); } }
+
+  // ---------- render & loop ----------
+  function frame(T) {
+    const i = sceneAt(T);
+    ctx.save(); ctx.clearRect(0, 0, W, H); S[i].draw(Math.min(T - starts[i], S[i].d)); ctx.restore();
+    for (let k = 0; k < S.length; k++) { ctx.fillStyle = k <= i ? 'rgba(232,67,47,.95)' : 'rgba(255,255,255,.55)';
+      ctx.beginPath(); ctx.roundRect(W - 30 - (S.length - k) * 34, 18, 26, 8, 4); ctx.fill(); }
+    if (!soundOn) {                          // 音声オフ時のヒント
+      ctx.font = f(700, 20); const tx = '🔇 タップで音声つき再生'; const w = ctx.measureText(tx).width + 28;
+      ctx.fillStyle = 'rgba(15,20,30,.72)'; rr(18, 14, w, 36, 18); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(tx, 32, 33);
+    }
+    fill.style.width = (T / total * 100) + '%'; track.setAttribute('aria-valuenow', Math.round(T / total * 100));
+    time.textContent = `${fmt(T)} / ${fmt(total)}`;
+    chipEls.forEach((c, k) => c.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    if (cap.dataset.i !== String(i)) { cap.dataset.i = i; cap.textContent = CAP[i]; }
+  }
+  function enterScene(i) {
+    scene = i; pop(); speak(i); fan(i === MECH);
+  }
+  function loop(now) {
+    if (!playing) return;
+    const dt = Math.min(.1, (now - last) / 1000); last = now;
+    const i = sceneAt(T), end = starts[i] + S[i].d;
+    // ナレーションが続いている間はシーンの最後で待つ（最大6秒）
+    const holding = soundOn && speaking && T + dt * RATE >= end - 0.02 && (holdT += dt) < 6;
+    if (!holding) { holdT = 0; T += dt * RATE; }
+    if (T >= total) { T = total - 0.001; playing = false; stopBgm(); fan(false); setBtn(); }
+    const j = sceneAt(T); if (j !== scene && playing) enterScene(j);
+    frame(T); if (playing) requestAnimationFrame(loop);
+  }
+  let holdT = 0;
+  function setBtn() { btn.textContent = playing ? '❚❚' : (T >= total - .01 ? '↻' : '▶'); btn.setAttribute('aria-label', playing ? '一時停止' : '再生'); }
+  function play() {
+    if (T >= total - .01) { T = 0; scene = -1; }
+    if (!playing) { playing = true; last = performance.now(); startBgm();
+      const i = sceneAt(T);
+      if (scene !== i || T - starts[i] < 1) enterScene(i); else fan(i === MECH);
+      requestAnimationFrame(loop); }
+    setBtn();
+  }
+  function pause() { playing = false; stopSpeech(); stopBgm(); fan(false); setBtn(); frame(T); }
+  btn.onclick = () => { unlock(); playing ? pause() : play(); };
+  cv.onclick = () => {                       // 初回タップ：音声オンにして今のシーンの頭から
+    if (!soundOn) { unlock(); const i = sceneAt(T); T = starts[i]; scene = -1; if (playing) { startBgm(); enterScene(i); } else play(); return; }
+    playing ? pause() : play();
+  };
+  snd.onclick = () => {
+    if (soundOn) { mute(); frame(T); return; }
+    unlock(); const i = sceneAt(T);
+    if (playing) { T = starts[i]; startBgm(); enterScene(i); } else frame(T);
+  };
+  const seek = e => { const r = track.getBoundingClientRect(); T = cl((e.clientX - r.left) / r.width) * total; scene = sceneAt(T); stopSpeech(); fan(playing && scene === MECH); frame(T); };
+  track.addEventListener('pointerdown', e => { seek(e); track.setPointerCapture(e.pointerId); track.onpointermove = seek; });
+  track.addEventListener('pointerup', () => track.onpointermove = null);
+  track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') T = Math.min(total - .01, T + 3); else if (e.key === 'ArrowLeft') T = Math.max(0, T - 3); else return; scene = sceneAt(T); stopSpeech(); frame(T); e.preventDefault(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
+  // 再生は利用者の操作で開始します。
+  /* hs-ext v1 */
+  const bgmBtn = root.querySelector('.hs-bgm'), rateSel = root.querySelector('.hs-rate'), fsBtn = root.querySelector('.hs-fs');
+  const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } return null; };
+  bgmOn = store('hs-bgm') !== 'off';
+  const r0 = parseFloat(store('hs-rate')); if (r0 >= .5 && r0 <= 2) RATE = r0; rateSel.value = String(RATE);
+  function setBgmBtn() { bgmBtn.textContent = bgmOn ? 'BGM オン' : 'BGM オフ'; bgmBtn.setAttribute('aria-pressed', bgmOn); bgmBtn.classList.toggle('hs-off', !bgmOn); }
+  bgmBtn.onclick = () => { bgmOn = !bgmOn; store('hs-bgm', bgmOn ? 'on' : 'off'); setBgmBtn(); if (!bgmOn) stopBgm(); else if (playing && soundOn) startBgm(); };
+  rateSel.onchange = () => { RATE = parseFloat(rateSel.value) || 1; store('hs-rate', String(RATE)); };
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+  function setFsBtn() { const on = !!fsEl() || root.classList.contains('hs-full'); fsBtn.textContent = on ? '✕' : '⛶'; fsBtn.setAttribute('aria-label', on ? '全画面を終了' : '全画面'); }
+  function fakeFull(on) { root.classList.toggle('hs-full', on); setFsBtn(); }
+  fsBtn.onclick = () => {
+    if (fsEl()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (root.classList.contains('hs-full')) { fakeFull(false); return; }
+    const req = root.requestFullscreen || root.webkitRequestFullscreen;
+    if (!req) { fakeFull(true); return; }
+    try { const p = req.call(root); if (p && p.catch) p.catch(() => fakeFull(true)); } catch (e) { fakeFull(true); }
+  };
+  document.addEventListener('fullscreenchange', setFsBtn); document.addEventListener('webkitfullscreenchange', setFsBtn);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && root.classList.contains('hs-full')) fakeFull(false); });
+  setBgmBtn(); setFsBtn();
+  setSnd();
+  const readyFonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  readyFonts.then(() => frame(reduce ? starts[1] + 8 : 0));
+  window.__hsHaien = {frame: x => { T = x; frame(x); }, total};   // プレビュー用
+})();
+</script>
+</body>
+</html>

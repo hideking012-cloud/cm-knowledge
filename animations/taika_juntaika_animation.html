@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>耐火・準耐火のしくみ｜アニメーション解説</title>
+<style>
+  /* すべて .hs- で名前空間化（既存サイトのCSSと衝突しないように） */
+  .hs-player{--hs-ink:#1f2430;--hs-accent:#e8432f;--hs-sub:#5b6474;--hs-line:#d9dee7;
+    max-width:960px;margin:24px auto;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;color:var(--hs-ink)}
+  .hs-stage{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(20,30,50,.18);background:#0f1724}
+  .hs-stage canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;cursor:pointer}
+  .hs-cap{margin:10px 0 0;min-height:3.4em;padding:10px 14px;border-radius:10px;background:#1f2430;color:#fff;font-size:15px;line-height:1.7}
+  .hs-bar{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .hs-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--hs-accent);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--hs-line);background:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd:focus-visible,.hs-btn:focus-visible,.hs-chip:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-track{position:relative;flex:1;height:10px;border-radius:5px;background:var(--hs-line);cursor:pointer}
+  .hs-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:5px;background:var(--hs-accent)}
+  .hs-tick{position:absolute;top:-3px;width:2px;height:16px;background:#fff;opacity:.9}
+  .hs-time{flex:none;font-size:13px;color:var(--hs-sub);font-variant-numeric:tabular-nums;min-width:84px;text-align:right}
+  .hs-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding:0;list-style:none}
+  .hs-chip{border:1px solid var(--hs-line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--hs-ink)}
+  .hs-chip[aria-current="true"]{background:var(--hs-ink);border-color:var(--hs-ink);color:#fff}
+  .hs-text{margin-top:14px;font-size:14px;line-height:1.8;color:var(--hs-sub)}
+  .hs-text summary{cursor:pointer;color:var(--hs-ink);font-weight:700}
+  .hs-text ol{padding-left:1.4em}
+  .hs-src{font-size:12px;color:var(--hs-sub);margin-top:8px}
+  /* hs-ext v1 */
+  .hs-bar{flex-wrap:wrap}
+  .hs-track{flex:1 1 180px}
+  .hs-bgm,.hs-fs{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;cursor:pointer;padding:0 14px}
+  .hs-fs{width:40px;padding:0;font-size:18px;display:grid;place-items:center}
+  .hs-bgm.hs-off{color:var(--hs-sub);text-decoration:line-through;background:#eef1f6}
+  .hs-rate{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;padding:0 10px;cursor:pointer}
+  .hs-bgm:focus-visible,.hs-fs:focus-visible,.hs-rate:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-player:fullscreen,.hs-player.hs-full{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player:-webkit-full-screen{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player.hs-full{position:fixed;inset:0;z-index:2147483000}
+  .hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,
+  .hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:calc((100vh - 190px) * 16 / 9);margin-left:auto;margin-right:auto}
+  .hs-player:fullscreen .hs-chips,.hs-player:fullscreen .hs-text,.hs-player.hs-full .hs-chips,.hs-player.hs-full .hs-text{display:none}
+  .hs-player:fullscreen .hs-time,.hs-player.hs-full .hs-time{color:#cfd6e4}
+.lesson-nav{max-width:960px;margin:20px auto;display:flex;gap:24px;flex-wrap:wrap;padding:0 12px;font:600 16px/1.6 Inter,"Yu Gothic UI",Meiryo,sans-serif}.lesson-nav a{color:#96e8d5;text-underline-offset:4px}body{margin:0;padding:0 16px;background:#0a1220}.hs-player{--hs-ink:#edf4ff;--hs-sub:#b6c6da;--hs-line:#35475f}.hs-chip{color:#1f2430}.hs-voice-label{color:#b6c6da;font-size:14px}.hs-voice{max-width:240px;height:40px;border-radius:20px;border:1px solid #d9dee7;background:#fff;color:#1f2430;font:14px "Yu Gothic UI",sans-serif;padding:0 8px}.hs-cap{font-size:16px}.hs-text{font-size:16px}.hs-src{font-size:14px}.hs-player:fullscreen,.hs-player.hs-full{height:100dvh;overflow:hidden;display:flex;flex-direction:column}.hs-player:fullscreen .hs-stage,.hs-player.hs-full .hs-stage{flex:1;min-height:0;display:grid;place-items:center;width:100%;box-shadow:none}.hs-player:fullscreen canvas,.hs-player.hs-full canvas{width:100%;height:100%;object-fit:contain}.hs-player:fullscreen .hs-cap,.hs-player.hs-full .hs-cap{flex:none;min-height:0;margin-top:8px}.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-bar{flex:none;margin-top:8px}.hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:1280px;width:100%}@media(max-width:600px){.lesson-nav{gap:16px}.hs-player{margin:12px auto}.hs-voice{max-width:190px}.hs-cap{font-size:15px}.hs-bar{gap:8px}}.hs-snd,.hs-bgm,.hs-fs,.hs-rate{color:#1f2430}.hs-chip[aria-current="true"]{background:#c4eadf;border-color:#81c8b7;color:#16392f}</style>
+</head>
+<body>
+<nav class="lesson-nav" aria-label="教材の移動"><a href="../index.html">CM知識一覧</a><a href="../fire-resistance-report.html">詳細レポートを読む</a></nav>
+
+<section class="hs-player" id="hs-taika" aria-label="耐火・準耐火のしくみ アニメーション解説">
+  <div class="hs-stage">
+    <canvas width="1280" height="720" role="img" aria-label="耐火・準耐火のしくみを説明するアニメーション。下の「テキストで読む」に同じ内容があります。"></canvas>
+  </div>
+  <p class="hs-cap" aria-live="polite"></p>
+  <div class="hs-bar">
+    <button class="hs-btn" type="button" aria-label="再生">▶</button>
+    <button class="hs-snd" type="button" aria-label="音声をオン" aria-pressed="false">🔇</button>
+    <label class="hs-voice-label">音声 <select class="hs-voice" aria-label="ナレーションの声"><option>音声を確認中</option></select></label>
+    <div class="hs-track" role="slider" aria-label="再生位置" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="hs-fill"></div></div>
+    <div class="hs-time">0:00 / 0:00</div>
+    <button class="hs-bgm" type="button" aria-pressed="true" aria-label="BGMのオン・オフ">BGM オン</button>
+    <select class="hs-rate" aria-label="再生速度"><option value="0.75">0.75倍</option><option value="1" selected>1倍</option><option value="1.25">1.25倍</option><option value="1.5">1.5倍</option><option value="2">2倍</option></select>
+    <button class="hs-fs" type="button" aria-label="全画面">⛶</button>
+  </div>
+  <ul class="hs-chips"></ul>
+
+  <details class="hs-text">
+    <summary>テキストで読む</summary>
+    <ol>
+      <li><b>タイトル：</b>耐火と準耐火。火災が起きても、建物が崩れず、燃え広がらないためのルールです。構造の種類と性能、求められる場面、改修の注意点まで、約5分で解説します。</li>
+      <li><b>なぜ必要か：</b>火災が起きても、建物がすぐに崩れたり、隣へ燃え移ったりしないように。建築基準法は、建物の用途や規模、地域に応じて、柱や床などに火に耐える性能を求めています。その代表が、耐火建築物と準耐火建築物です。</li>
+      <li><b>主要構造部：</b>性能が求められるのは主要構造部です。壁、柱、床、はり、屋根、階段のこと。構造上重要でない間仕切壁や間柱、最下階の床、小ばり、ひさし、屋外階段などは含まれません。</li>
+      <li><b>3つの構造：</b>構造の種類は3つ。耐火構造は、通常の火災が終わるまで倒壊や延焼を防ぐもの。準耐火構造は、延焼を抑えるもの。防火構造は、外壁や軒裏で、周りの火災からの延焼を抑えるものです。</li>
+      <li><b>耐火建築物とは：</b>耐火建築物の条件は2つ。特定主要構造部を耐火構造とするか、同等の性能を検証などで確かめること。そして、外壁の開口部で延焼のおそれのある部分に、防火設備を設けることです。</li>
+      <li><b>延焼のおそれのある部分：</b>延焼のおそれのある部分は、隣地境界線や道路の中心線などから、1階は3メートル以下、2階以上は5メートル以下の範囲です。同じ敷地に建物が2つ以上あるときは、外壁の間の中心線から測ります。</li>
+      <li><b>耐火性能の時間：</b>耐火構造に求められる時間は、最上階から数えた階数で変わります。最上階から4つ目の階までは1時間。5から9は1時間半、10から14は2時間。柱とはりは、15から19で2時間半、20以上で3時間です。屋根と階段は30分です。</li>
+      <li><b>3つの性能：</b>性能は3つの面から確かめます。加熱しても壊れないこと。壁や床の裏側の温度が上がりすぎないこと。外壁や屋根に、火炎が出る亀裂ができないこと。それぞれ、非損傷性、遮熱性、遮炎性と呼ばれます。</li>
+      <li><b>準耐火建築物とは：</b>準耐火建築物は、耐火建築物以外で、主要構造部を準耐火構造としたもの、またはそれと同等の基準に適合するものです。こちらも、外壁の開口部で延焼のおそれのある部分には、防火設備が必要です。</li>
+      <li><b>準耐火性能の時間：</b>準耐火構造に求められる時間は45分。壁、柱、床、はりが対象で、屋根と階段は30分です。さらに、面積区画などで使う1時間準耐火基準では、壁、柱、床、はりに1時間が求められます。</li>
+      <li><b>ロ準耐の2タイプ：</b>同等の基準には2つのタイプがあります。1つは、外壁を耐火構造にしたもの。もう1つは、柱とはりを不燃材料、その他の主要構造部を準不燃材料などにしたものです。実務では、ロ準耐1号、2号と呼ばれます。</li>
+      <li><b>耐火と準耐火の比較：</b>比べてみましょう。耐火建築物は、火災が終わるまで倒れないこと。準耐火建築物は、一定の時間、延焼を抑えること。どちらも、延焼のおそれのある部分の開口部には防火設備を設けます。</li>
+      <li><b>求められる3つの入口：</b>耐火や準耐火が求められる入口は、主に3つ。用途による法27条、地域による法61条、そして木材などを使った大規模建築物に関する法21条です。</li>
+      <li><b>法27条（用途）：</b>法27条は、劇場や病院、物販店などの特殊建築物が対象です。例えば、3階以上の階をこれらの用途に使う場合や、物販店で3,000㎡以上の場合。倉庫や自動車車庫は、規模によって耐火建築物や準耐火建築物が求められます。</li>
+      <li><b>法61条（地域）：</b>防火地域と準防火地域では、規模に応じて性能が決まります。防火地域では、階数3以上か延べ100㎡を超えると耐火建築物と同等。準防火地域では、4階以上か1,500㎡を超えると耐火、3階建てか500㎡を超えると準耐火と同等の性能が必要です。</li>
+      <li><b>法21条（大規模木造など）：</b>木材などを使った大規模な建物も対象です。地階を除く階数が4以上、高さ16メートル超、倉庫や車庫で高さ13メートル超のもの。火災が終わるまで倒壊や延焼をしない性能が必要です。延べ3,000㎡を超えると、周囲への影響を防ぐ措置も求められます。</li>
+      <li><b>判定の手順：</b>判定の手順です。まず用途と規模で法27条を確認。次に、敷地の地域で法61条を確認。木造などなら法21条も確認します。複数に当てはまるときは、最も厳しい要求に合わせます。最後に、開口部の防火設備を忘れずに。</li>
+      <li><b>判定例：</b>例えば、準防火地域に建つ3階建て、延べ900㎡の物販店。地域だけなら準耐火建築物と同等で足ります。しかし3階を物販店に使うので、法27条により、耐火建築物などが必要です。厳しい方の法27条に合わせます。</li>
+      <li><b>NG①耐火被覆：</b>ここからは改修でよくある失敗です。設備工事で、鉄骨の柱やはりの耐火被覆を削ったり、はがしたままにしたりすると、耐火構造の性能が失われます。工事の後は、認定どおりの仕様で補修しましょう。</li>
+      <li><b>NG②開口部・用途・増築：</b>ほかにも、延焼のおそれのある部分の窓を、防火設備でないサッシに交換する。事務所を物販店や飲食店に用途変更する。増築で延べ面積や階数が増える。こうした改修で、求められる性能が変わることがあります。</li>
+      <li><b>まとめ：</b>まとめです。主要構造部を知る。求められる時間を知る。法27条、61条、21条の入口を知る。そして開口部を防火設備で守る。改修では、被覆、窓、用途、増築を変えたら必ず再確認。以上、耐火と準耐火のポイントでした。</li>
+    </ol>
+    <p class="hs-src">音声は端末のMicrosoft日本語女性音声から選択できます。字幕は消音時も表示します。音は再生ボタンか画面をタップした後から鳴ります。<br>出典：建築基準法 第2条・第21条・第27条・第61条、建築基準法施行令 第107条・第107条の2・第109条の2・第109条の3・第112条・第136条の2（いずれもe-Gov法令検索）。※解説用に要点を簡略化しています。個別の判断は所管行政庁・指定確認検査機関に確認してください。※イラストはイメージです。</p>
+  </details>
+</section>
+
+<script>
+(() => {
+  const root = document.getElementById('hs-taika');
+  const cv = root.querySelector('canvas'), ctx = cv.getContext('2d');
+  const W = 1280, H = 720;
+  const FONT = '"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif';
+  const INK = '#1f2430', RED = '#e8432f', YEL = '#ffd84a';
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
+
+  // ---------- utils ----------
+  const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const eo = x => 1 - Math.pow(1 - cl(x), 3);
+  const eio = x => { x = cl(x); return x * x * (3 - 2 * x); };
+  const eb = x => { x = cl(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const PUFFS = Array.from({length: 46}, () => [rnd(), rnd(), rnd()]);
+  const f = (w, s) => `${w} ${s}px ${FONT}`;
+
+  // ---------- building section ----------
+  const CEIL = 172, FLOOR = 620, LW = 80, RW = 1200;
+  function room(opts = {}) {
+    const g = ctx.createLinearGradient(0, CEIL, 0, FLOOR);
+    g.addColorStop(0, '#f4efe6'); g.addColorStop(1, '#e6dccb');
+    ctx.fillStyle = '#cfe6f2'; ctx.fillRect(0, 0, W, H);           // sky / outside
+    ctx.fillStyle = g; ctx.fillRect(LW, CEIL, RW - LW, FLOOR - CEIL);
+    ctx.fillStyle = '#8a8f99';
+    ctx.fillRect(40, CEIL - 22, W - 80, 22);                         // ceiling slab
+    ctx.fillRect(40, FLOOR, W - 80, 24);                             // floor slab
+    ctx.fillStyle = '#9aa0aa';
+    ctx.fillRect(60, CEIL - 22, LW - 60, FLOOR - CEIL + 46);         // left wall
+    if (!opts.noRightWall) ctx.fillRect(RW, CEIL - 22, 20, FLOOR - CEIL + 46);
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(40, FLOOR + 24, W - 80, 40);
+    // door + exit sign on left wall
+    if (opts.door) {
+      ctx.fillStyle = '#7a8a99'; ctx.fillRect(LW, FLOOR - 190, 14, 190);
+      ctx.fillStyle = '#1e9e5a'; rr(LW + 18, FLOOR - 250, 120, 40, 6); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(800, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('非常口', LW + 78, FLOOR - 229);
+    }
+  }
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
+
+  function fire(x, t, s = 1) {
+    for (let i = 0; i < 3; i++) {
+      const fl = Math.sin(t * 12 + i * 2) * 6;
+      const hh = (70 - i * 18) * s + fl, ww = (34 - i * 9) * s;
+      ctx.fillStyle = ['#ff6a2b', '#ffa531', '#ffe27a'][i];
+      ctx.beginPath();
+      ctx.moveTo(x - ww, FLOOR);
+      ctx.quadraticCurveTo(x - ww * 0.9, FLOOR - hh * 0.5, x + Math.sin(t * 9) * 5, FLOOR - hh);
+      ctx.quadraticCurveTo(x + ww * 0.9, FLOOR - hh * 0.5, x + ww, FLOOR);
+      ctx.fill();
+    }
+    ctx.fillStyle = '#5b3a2a'; ctx.fillRect(x - 46 * s, FLOOR - 10, 92 * s, 10);
+  }
+
+  // smoke layer under ceiling: x0..x1, depth px
+  function smokeLayer(x0, x1, depth, t, a = 1) {
+    if (depth <= 1) return;
+    const g = ctx.createLinearGradient(0, CEIL, 0, CEIL + depth + 20);
+    g.addColorStop(0, `rgba(60,62,72,${0.92 * a})`); g.addColorStop(1, `rgba(110,112,124,${0.55 * a})`);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x0, CEIL);
+    for (let x = x0; x <= x1; x += 16) ctx.lineTo(x, CEIL + depth + Math.sin(x / 45 + t * 2) * 7 + Math.sin(x / 19 - t * 3) * 3);
+    ctx.lineTo(x1, CEIL); ctx.closePath(); ctx.fill();
+    // billows
+    ctx.fillStyle = `rgba(150,152,162,${0.35 * a})`;
+    for (let i = 0; i < 12; i++) {
+      const x = x0 + ((i * 97 + t * 25) % (x1 - x0));
+      const r = 18 + (i % 4) * 8;
+      ctx.beginPath(); ctx.arc(x, CEIL + depth - r * 0.3 + Math.sin(t * 2 + i) * 4, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // rising plume from fire to target y
+  function plume(x, topY, t, a = 1, rate = 0.45, n = 26) {
+    for (let i = 0; i < n; i++) {
+      const [r1, r2, r3] = PUFFS[i];
+      const ph = (t * rate + i / n) % 1;
+      const y = lerp(FLOOR - 60, topY + 20, ph);
+      const xx = x + Math.sin(ph * 6 + r1 * 6) * (10 + ph * 60) * (r2 - 0.5) * 2;
+      const r = 14 + ph * 40 * (0.6 + r3);
+      ctx.fillStyle = `rgba(90,92,102,${(0.5 - ph * 0.25) * a})`;
+      ctx.beginPath(); ctx.arc(xx, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function person(x, t, crouch = 0, dir = -1, walking = true) {
+    const y = FLOOR, s = 1 - crouch * 0.28;
+    const ph = walking ? Math.sin(t * 9) : 0;
+    ctx.strokeStyle = '#2b4c7e'; ctx.lineWidth = 10; ctx.lineCap = 'round';
+    const hip = [x, y - 62 * s], neck = [x + dir * crouch * 22, y - 118 * s];
+    ctx.beginPath(); ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] + ph * 16, y - 4);
+    ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] - ph * 16, y - 4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(...neck); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] + dir * 26, neck[1] + 30 + crouch * 10);
+    ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] - ph * 14, neck[1] + 46); ctx.stroke();
+    ctx.fillStyle = '#2b4c7e'; ctx.beginPath(); ctx.arc(neck[0] + dir * 4, neck[1] - 20, 15, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // ---------- text ----------
+  function segs(s) { const out = []; let cur = '', hl = false;
+    for (const ch of s) { if (ch === '[' || ch === ']') { if (cur) out.push([cur, hl]); cur = ''; hl = ch === '['; } else cur += ch; }
+    if (cur) out.push([cur, hl]); return out; }
+  function headline(text, t, y = 76, size = 38) {
+    const lines = text.split('\n');
+    ctx.font = f(900, size);
+    const ws = lines.map(l => segs(l).reduce((a, [s]) => a + ctx.measureText(s).width, 0));
+    const lh = size * 1.32, bw = Math.max(...ws) + 72, bh = lh * lines.length + 26;
+    const sc = 0.7 + 0.3 * eb(t / 0.35), al = cl(t / 0.15);
+    ctx.save(); ctx.globalAlpha = al; ctx.translate(W / 2, y); ctx.scale(sc, sc);
+    ctx.fillStyle = 'rgba(40,30,20,.25)'; rr(-bw / 2 + 5, -bh / 2 + 7, bw, bh, 22); ctx.fill();
+    ctx.fillStyle = '#fffaf0'; rr(-bw / 2, -bh / 2, bw, bh, 22); ctx.fill();
+    ctx.lineWidth = 5; ctx.strokeStyle = '#f5ae28'; ctx.stroke();
+    ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+    lines.forEach((l, i) => {
+      let x = -ws[i] / 2; const yy = -bh / 2 + 13 + lh * (i + 0.5);
+      for (const [s, hl] of segs(l)) {
+        const w = ctx.measureText(s).width;
+        if (hl) { ctx.fillStyle = YEL; ctx.fillRect(x, yy + size * 0.3, w, size * 0.22); }
+        ctx.fillStyle = hl ? RED : INK; ctx.fillText(s, x, yy); x += w;
+      }
+    });
+    ctx.restore();
+  }
+  function pill(text, x, y, t, opt = {}) {
+    if (t <= 0) return;
+    const a = eo(t / 0.3), size = opt.size || 24;
+    ctx.save(); ctx.globalAlpha = a; ctx.font = f(700, size);
+    const w = ctx.measureText(text).width + 32, h = size + 22;
+    const bx = opt.align === 'right' ? x - w : opt.align === 'center' ? x - w / 2 : x;
+    ctx.fillStyle = opt.bg || 'rgba(25,35,60,.92)'; rr(bx, y - h / 2, w, h, h / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = opt.color || '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, bx + 16, y + 1); ctx.restore();
+  }
+  function fx(text, x, y, size, color, t = 1, align = 'center') {
+    if (t <= 0) return;
+    const s = eb(t / 0.3);
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.font = f(900, size); ctx.textAlign = align; ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8; ctx.strokeStyle = '#1f2430'; ctx.lineJoin = 'round'; ctx.strokeText(text, 0, 0);
+    ctx.fillStyle = color; ctx.fillText(text, 0, 0); ctx.restore();
+  }
+  function dimV(x, y0, y1, t, label, side = 1) {           // vertical dimension
+    if (t <= 0) return;
+    const k = eo(t / 0.4), yy = lerp(y0, y1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(x - 12, y0); ctx.lineTo(x + 12, y0); ctx.moveTo(x, y0); ctx.lineTo(x, yy);
+    if (k > .98) { ctx.moveTo(x - 12, y1); ctx.lineTo(x + 12, y1); } ctx.stroke();
+    if (k > .9) fx(label, x + side * 18, (y0 + y1) / 2, 26, YEL, (t - .35) * 3, side > 0 ? 'left' : 'right');
+  }
+  function dimH(x0, x1, y, t, label) {
+    if (t <= 0) return;
+    const k = eo(t / 0.5), xx = lerp(x0, x1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4; ctx.setLineDash([14, 10]);
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(xx, y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x0, y - 12); ctx.lineTo(x0, y + 12); ctx.stroke();
+    if (k > .98) { ctx.beginPath(); ctx.moveTo(x1, y - 12); ctx.lineTo(x1, y + 12); ctx.stroke(); }
+    if (k > .9) fx(label, (x0 + x1) / 2, y - 30, 28, YEL, (t - .45) * 3);
+  }
+  function card(x, y, w, h, num, title, body, t, color = RED) {
+    if (t <= 0) return;
+    const s = 0.85 + 0.15 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 10, h, [16, 0, 0, 16]); ctx.fill();
+    ctx.fillStyle = color; ctx.beginPath(); ctx.arc(52, 48, 24, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 52, 49);
+    ctx.fillStyle = INK; ctx.font = f(900, 27); ctx.textAlign = 'left'; ctx.fillText(title, 90, 49);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 22);
+    body.split('\n').forEach((l, i) => ctx.fillText(l, 34, 100 + i * 34));
+    ctx.restore();
+  }
+
+  // ---------- extra helpers ----------
+  function plain(c = '#eef1f6') { ctx.fillStyle = c; ctx.fillRect(0, 0, W, H); }
+  function cardSm(x, y, w, h, num, title, body, t, color) {
+    if (t <= 0) return;
+    const dx = (1 - eo(t / 0.4)) * 40;
+    ctx.save(); ctx.globalAlpha = cl(t / 0.25); ctx.translate(x + dx, y);
+    ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(3, 5, w, h, 14); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 14); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 9, h, [14, 0, 0, 14]); ctx.fill();
+    ctx.beginPath(); ctx.arc(46, h / 2, 21, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 46, h / 2 + 1);
+    ctx.textAlign = 'left'; ctx.fillStyle = INK; ctx.font = f(900, 25); ctx.fillText(title, 84, h * 0.33);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 20); ctx.fillText(body, 84, h * 0.71);
+    ctx.restore();
+  }
+  function box(x, y, w, h, lines, t) {           // lines: [text, size, weight, color]
+    if (t <= 0) return;
+    const s = 0.9 + 0.1 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill(); ctx.strokeStyle = '#f5ae28'; ctx.lineWidth = 4; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    let yy = 0; const tot = lines.reduce((a, l) => a + l[1] * 1.45, 0); yy = (h - tot) / 2;
+    for (const [tx, sz, wt, col] of lines) { ctx.font = f(wt || 700, sz); ctx.fillStyle = col || INK; ctx.fillText(tx, w / 2, yy + sz * 0.72); yy += sz * 1.45; }
+    ctx.restore();
+  }
+  function miniSmoke(x0, x1, y0, depth, t) {
+    if (depth <= 1) return;
+    ctx.fillStyle = 'rgba(70,72,84,.82)'; ctx.beginPath(); ctx.moveTo(x0, y0);
+    for (let x = x0; x <= x1; x += 10) ctx.lineTo(x, y0 + depth + Math.sin(x / 25 + t * 2.5) * 5);
+    ctx.lineTo(x1, y0); ctx.closePath(); ctx.fill();
+  }
+  function scaled(x, y, s, fn) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-x, -y); fn(); ctx.restore(); }
+
+  // ---------- 共通の追加イラスト（防火シリーズ） ----------
+  const GRN = '#1e9e5a';
+  function shutter(x, k) {                        // 断面：天井から降りる防火シャッター
+    const y1 = lerp(CEIL + 30, FLOOR, cl(k));
+    ctx.fillStyle = '#4b5260'; ctx.fillRect(x - 24, CEIL, 48, 30);
+    ctx.fillStyle = '#b8bec8'; ctx.fillRect(x - 8, CEIL + 30, 16, y1 - CEIL - 30);
+    ctx.strokeStyle = 'rgba(60,66,78,.6)'; ctx.lineWidth = 2;
+    for (let y = CEIL + 42; y < y1; y += 16) { ctx.beginPath(); ctx.moveTo(x - 8, y); ctx.lineTo(x + 8, y); ctx.stroke(); }
+  }
+  function planFloor(x, y, w, h, a = 1) {         // 平面：方眼つきの床
+    if (a <= 0) return;
+    ctx.save(); ctx.globalAlpha = cl(a);
+    ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, h);
+    ctx.strokeStyle = '#e3e7ee'; ctx.lineWidth = 1; ctx.beginPath();
+    for (let gx = x + 50; gx < x + w; gx += 50) { ctx.moveTo(gx, y); ctx.lineTo(gx, y + h); }
+    for (let gy = y + 50; gy < y + h; gy += 50) { ctx.moveTo(x, gy); ctx.lineTo(x + w, gy); }
+    ctx.stroke(); ctx.strokeStyle = INK; ctx.lineWidth = 8; ctx.strokeRect(x, y, w, h); ctx.restore();
+  }
+  function redLine(x0, y0, x1, y1, k, lw = 12) {  // 区画線（赤）を伸ばしながら描く
+    if (k <= 0) return; k = cl(k);
+    ctx.strokeStyle = RED; ctx.lineWidth = lw; ctx.lineCap = 'butt';
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(lerp(x0, x1, k), lerp(y0, y1, k)); ctx.stroke();
+  }
+  function doorMark(x, y, vert, t) {              // 平面：区画線上の防火設備
+    if (t <= 0) return; const s = eb(t / .3);
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.fillStyle = YEL; ctx.strokeStyle = INK; ctx.lineWidth = 3;
+    if (vert) { ctx.fillRect(-10, -38, 20, 76); ctx.strokeRect(-10, -38, 20, 76); } else { ctx.fillRect(-38, -10, 76, 20); ctx.strokeRect(-38, -10, 76, 20); }
+    ctx.restore();
+  }
+  function steelDoor(x, y, w, h) {                // 立面：鋼製の防火戸
+    ctx.fillStyle = '#4b5260'; ctx.fillRect(x - 8, y - 8, w + 16, h + 8);
+    ctx.fillStyle = '#9aa3b0'; ctx.fillRect(x, y, w, h);
+    ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.lineWidth = 3; ctx.strokeRect(x + 14, y + 14, w - 28, h - 28);
+    ctx.fillStyle = '#2b2f38'; ctx.fillRect(x + w - 32, y + h * .5 - 6, 18, 12);
+  }
+  function timer(cx, cy, r, k, label, col) {      // 円グラフ型のタイマー
+    ctx.fillStyle = '#eef1f6'; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * cl(k)); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = INK; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cx, cy, r * .58, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = INK; ctx.font = f(900, Math.round(r * .36)); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, cx, cy + 1);
+  }
+  function floors(x0, x1, yBot, fh, n) {          // 断面：n階建て（床スラブ・外壁・地面）
+    ctx.fillStyle = '#cfe6f2'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#f4efe6'; ctx.fillRect(x0, yBot - n * fh, x1 - x0, n * fh);
+    ctx.fillStyle = '#8a8f99';
+    for (let i = 0; i <= n; i++) ctx.fillRect(x0 - 20, i ? yBot - i * fh - 14 : yBot, x1 - x0 + 40, 14);
+    ctx.fillStyle = '#9aa0aa'; ctx.fillRect(x0 - 18, yBot - n * fh, 18, n * fh); ctx.fillRect(x1, yBot - n * fh, 18, n * fh);
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(0, yBot + 14, W, H - yBot - 14);
+  }
+  function rise(x, y0, y1, t, a = 1, spread = 30, n = 18) {   // 上へ昇る煙（任意の範囲）
+    if (a <= 0) return;
+    for (let i = 0; i < n; i++) { const [r1, r2, r3] = PUFFS[i]; const ph = (t * .35 + i / n) % 1;
+      const y = lerp(y0, y1, ph), xx = x + Math.sin(ph * 6 + r1 * 6) * spread * (r2 - .5) * 2, r = 10 + ph * 20 * (.6 + r3);
+      ctx.fillStyle = `rgba(90,92,102,${(.55 - ph * .3) * a})`; ctx.beginPath(); ctx.arc(xx, y, r, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function flame(x, y, t, s = 1, ang = 0) {        // 小さな炎（任意の位置・向き）
+    ctx.save(); ctx.translate(x, y); ctx.rotate(ang); ctx.scale(s, s);
+    for (let i = 0; i < 3; i++) { const fl = Math.sin(t * 12 + i * 2) * 5, hh = 60 - i * 15 + fl, ww = 26 - i * 7;
+      ctx.fillStyle = ['#ff6a2b', '#ffa531', '#ffe27a'][i]; ctx.beginPath(); ctx.moveTo(-ww, 0);
+      ctx.quadraticCurveTo(-ww * .9, -hh * .5, Math.sin(t * 9) * 4, -hh); ctx.quadraticCurveTo(ww * .9, -hh * .5, ww, 0); ctx.fill(); }
+    ctx.restore();
+  }
+  function sprinkler(x, y, t, on) {               // スプリンクラーヘッド
+    ctx.fillStyle = '#c0392b'; ctx.fillRect(x - 3, y - 12, 6, 14);
+    ctx.fillStyle = '#d9b44a'; ctx.beginPath(); ctx.arc(x, y + 4, 8, 0, Math.PI * 2); ctx.fill();
+    if (!on) return; ctx.fillStyle = 'rgba(60,150,230,.85)';
+    for (let i = 0; i < 14; i++) { const ph = (t * 1.6 + i / 14) % 1, an = (i / 13 - .5) * 2.2;
+      ctx.beginPath(); ctx.arc(x + Math.sin(an) * ph * 60, y + 12 + Math.cos(an) * ph * 50 + ph * ph * 30, 3, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function hatch(x, y, w, h, col = '#d8c9b8') {   // 耐火構造の壁（斜線）
+    ctx.save(); ctx.fillStyle = col; ctx.fillRect(x, y, w, h);
+    ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+    ctx.strokeStyle = 'rgba(0,0,0,.22)'; ctx.lineWidth = 2; ctx.beginPath();
+    for (let k = -h; k < w; k += 14) { ctx.moveTo(x + k, y + h); ctx.lineTo(x + k + h, y); }
+    ctx.stroke(); ctx.restore();
+    ctx.strokeStyle = RED; ctx.lineWidth = 4; ctx.strokeRect(x, y, w, h);
+  }
+  function planDoor(cx, cy, ang) {                 // 平面：開き戸（ang=0で閉、π/2で全開）
+    const L = 110, hx = cx - L / 2;
+    ctx.strokeStyle = '#9aa0aa'; ctx.lineWidth = 14; ctx.lineCap = 'butt'; ctx.beginPath();
+    ctx.moveTo(cx - 200, cy); ctx.lineTo(hx, cy); ctx.moveTo(cx + L / 2, cy); ctx.lineTo(cx + 200, cy); ctx.stroke();
+    ctx.strokeStyle = 'rgba(31,36,48,.35)'; ctx.lineWidth = 2; ctx.setLineDash([6, 6]); ctx.beginPath(); ctx.arc(hx, cy, L, -Math.PI / 2, 0); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(hx, cy); ctx.lineTo(hx + Math.cos(ang) * L, cy - Math.sin(ang) * L); ctx.stroke();
+  }
+  function detector(x, y, t, on) {                 // 煙感知器
+    ctx.fillStyle = '#fff'; ctx.strokeStyle = INK; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = on && Math.floor(t * 4) % 2 === 0 ? '#ff3b30' : '#ccd2db'; ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
+  }
+  function note(text, y, t, size = 18) {           // 下部の小さな注記
+    if (t <= 0) return;
+    ctx.globalAlpha = eo(t / .4); ctx.font = f(500, size); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, W / 2, y); ctx.globalAlpha = 1;
+  }
+
+  // ---------- 共通の画面の型（タイトル・表・手順・まとめ） ----------
+  function titleScene(t, tag, big, sub, list) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#2a1d24'); g.addColorStop(1, '#0d1422');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < 30; i++) { const [a, b, c] = PUFFS[i]; const ph = (t * 0.12 + a) % 1;
+      ctx.fillStyle = `rgba(255,140,90,${0.10 * (1 - ph)})`; ctx.beginPath();
+      ctx.arc(a * W + Math.sin(t + i) * 30, H + 80 - ph * (H + 200), 30 + c * 60, 0, Math.PI * 2); ctx.fill(); }
+    pill(`CM知識一覧｜${tag}`, W / 2, 205, t, {align: 'center', bg: RED, size: 28});
+    const s = eb((t - .25) / .5);
+    if (s > 0) { ctx.save(); ctx.translate(W / 2, 330); ctx.scale(s, s);
+      ctx.font = f(900, big.length > 6 ? 96 : 120); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.lineWidth = 12; ctx.strokeStyle = '#fff'; ctx.strokeText(big, 0, 0); ctx.fillStyle = RED; ctx.fillText(big, 0, 0); ctx.restore(); }
+    if (t > .8) { ctx.globalAlpha = eo((t - .8) / .4); ctx.font = f(800, 44); ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
+      ctx.fillText(sub, W / 2, 460); ctx.globalAlpha = 1; }
+    if (t > 1.4) { ctx.globalAlpha = eo((t - 1.4) / .4); ctx.font = f(500, 23); ctx.fillStyle = '#b9c2d3';
+      ctx.fillText(list, W / 2, 530); ctx.globalAlpha = 1; }
+  }
+  // head: 見出し配列, hc: 見出し色, rows: 行の配列, cw: 列幅, T0: 最初の行の出現秒, step: 行の間隔
+  function table(t, head, hc, rows, cw, T0, step, y0 = 160, rh = 84, fs = 21, x0 = 70) {
+    let x = x0;
+    head.forEach((h, j) => { ctx.fillStyle = hc[j]; rr(x, y0, cw[j] - 6, 56, 10); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(h, x + (cw[j] - 6) / 2, y0 + 29); x += cw[j]; });
+    rows.forEach((r, i) => {
+      const tt = t - T0 - i * step; if (tt <= 0) return;
+      ctx.save(); ctx.globalAlpha = eo(tt / .3);
+      let x = x0; const y = y0 + 66 + i * rh;
+      r.forEach((c, j) => { ctx.fillStyle = j === 0 ? '#e3e7ee' : '#fff'; rr(x, y, cw[j] - 6, rh - 8, 8); ctx.fill();
+        ctx.fillStyle = INK; ctx.font = f(j === 0 ? 900 : 700, j === 0 ? fs + 1 : fs); ctx.textAlign = j === 0 ? 'left' : 'center'; ctx.textBaseline = 'middle';
+        const ls = String(c).split('\n');
+        ls.forEach((l, k) => ctx.fillText(l, j === 0 ? x + 18 : x + (cw[j] - 6) / 2, y + (rh - 8) / 2 + (k - (ls.length - 1) / 2) * (fs + 6)));
+        x += cw[j]; });
+      ctx.restore();
+    });
+  }
+  // steps: [[見出し, 説明], ...]、T0: 各ステップの出現秒の配列
+  function stepList(t, steps, T0, color = '#f08a24') {
+    const gap = steps.length > 4 ? 100 : 122, h = steps.length > 4 ? 82 : 96;
+    steps.forEach(([a, b], k) => {
+      const y = 155 + k * gap;
+      cardSm(110, y, 1060, h, String(k + 1), a, b, t - T0[k], color);
+      if (k < steps.length - 1 && t > T0[k] + 1.0) { ctx.fillStyle = color; ctx.beginPath(); ctx.moveTo(150, y + h + 3); ctx.lineTo(170, y + h + 3); ctx.lineTo(160, y + gap - 3); ctx.fill(); }
+    });
+  }
+  // cards: [[番号, 見出し, 説明], ...]（横長カードを縦に並べる）
+  function cardRows(t, cards, T0, color, y0 = 160, ch = 140, gap = 160) {
+    cards.forEach(([n, a, b], k) => card(70, y0 + k * gap, 1140, ch, n, a, b, t - T0[k], color));
+  }
+  function summaryScene(t, tiles, msg, src) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1d2a44'); g.addColorStop(1, '#0d1422');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    tiles.forEach(([k, v, c], i) => {
+      const tt = t - .5 - i * 0.9; if (tt <= 0) return;
+      const x = 70 + i * 290, y = 170, s = 0.8 + 0.2 * eb(tt / .35);
+      ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + 130, y + 160); ctx.scale(s, s); ctx.translate(-130, -160);
+      ctx.fillStyle = '#fff'; rr(0, 0, 260, 320, 20); ctx.fill();
+      ctx.fillStyle = c; rr(0, 0, 260, 120, [20, 20, 0, 0]); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, k.length > 6 ? 30 : 36); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(k, 130, 62);
+      ctx.fillStyle = INK; ctx.font = f(700, 23); v.split('\n').forEach((l, j) => ctx.fillText(l, 130, 190 + j * 40));
+      ctx.restore();
+    });
+    pill(msg, W / 2, 545, t - 4.5, {align: 'center', bg: RED, size: 26});
+    if (t > 5.5) { ctx.globalAlpha = eo((t - 5.5) / .5); ctx.font = f(500, 18); ctx.fillStyle = '#b9c2d3'; ctx.textAlign = 'center';
+      ctx.fillText(`出典：${src}`, W / 2, 625);
+      ctx.fillText('※イラストはイメージです。個別の判断は所管行政庁・指定確認検査機関・消防機関に確認してください', W / 2, 655); ctx.globalAlpha = 1; }
+    pill('まとめ', W / 2, 110, t, {align: 'center', bg: RED, size: 30});
+  }
+  // 立面：外壁と窓（延焼のおそれのある部分の説明用）
+  function elevation(x, yBot, w, n, fh, a = 1) {
+    ctx.save(); ctx.globalAlpha = cl(a);
+    ctx.fillStyle = '#e9e2d4'; ctx.fillRect(x, yBot - n * fh, w, n * fh);
+    ctx.strokeStyle = '#8a8f99'; ctx.lineWidth = 4; ctx.strokeRect(x, yBot - n * fh, w, n * fh);
+    for (let i = 0; i < n; i++) for (let k = 0; k < Math.floor(w / 90); k++) {
+      ctx.fillStyle = '#bfe3f5'; ctx.fillRect(x + 25 + k * 90, yBot - (i + 1) * fh + 22, 50, fh - 44); }
+    ctx.restore();
+  }
+
+  // ---------- scenes ----------
+  const S = [];
+  S.push({name: 'タイトル', d: 8, draw(t) {
+    titleScene(t, '耐火・準耐火', '耐火・準耐火', '火災で「倒れない」「燃え広がらない」建物の基準', '主要構造部 ／ 耐火構造 ／ 準耐火構造 ／ 延焼のおそれのある部分 ／ 法27条・61条・21条 ／ 改修NG事例');
+  }});
+
+  S.push({name: 'なぜ必要か', d: 15, draw(t) {
+    floors(120, 1160, 620, 140, 3);
+    fire(330, t, .9);
+    miniSmoke(120, 1160, 620 - 140, 40 * eio(t / 3), t);
+    ctx.fillStyle = '#8a7f6e';
+    for (const x of [300, 640, 980]) for (let i = 0; i < 3; i++) ctx.fillRect(x - 10, 620 - (i + 1) * 140, 20, 140 - 14);
+    if (t > 2) { const k = eo((t - 2) / .5); ctx.fillStyle = `rgba(232,67,47,${.85 * k})`;
+      for (const x of [300, 640, 980]) for (let i = 0; i < 3; i++) ctx.fillRect(x - 10, 620 - (i + 1) * 140, 20, 140 - 14);
+      ctx.fillRect(100, 620 - 140 - 14, 1080, 14); ctx.fillRect(100, 620 - 280 - 14, 1080, 14); }
+    pill('柱・床・はりなどが火に耐える', 640, 390, t - 2.4, {align: 'center', bg: RED, size: 26});
+    fx('崩れない・燃え移らない', 900, 250, 36, YEL, t - 4.5);
+    pill('用途・規模・地域に応じて、耐火建築物・準耐火建築物などが求められる', W / 2, 668, t - 8.5, {align: 'center', bg: INK, size: 24});
+    headline('火災でも[崩れない]・[燃え広がらない]', t);
+  }});
+
+  S.push({name: '主要構造部', d: 14, draw(t) {
+    floors(160, 1120, 620, 200, 2);
+    const parts = [['柱', 300, 0, 1.6], ['はり', 640, 1, 2.0], ['床', 640, 2, 2.4], ['壁', 960, 3, 2.8], ['屋根', 640, 4, 3.2], ['階段', 900, 5, 3.6]];
+    if (t > 1.4) { const k = eo((t - 1.4) / .5); ctx.fillStyle = `rgba(232,67,47,${.85 * k})`;
+      ctx.fillRect(280, 620 - 400, 26, 400 - 14); ctx.fillRect(140, 620 - 214, 1000, 14); ctx.fillRect(140, 620 - 414, 1000, 14);
+      ctx.fillRect(1120, 620 - 400, 18, 400); ctx.fillRect(160, 620 - 214 - 30, 960, 22); }
+    if (t > 3.4) { ctx.strokeStyle = `rgba(232,67,47,${eo((t - 3.4) / .5)})`; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(820, 606); ctx.lineTo(1000, 420); ctx.stroke(); }
+    pill('柱', 300, 330, t - 1.6, {align: 'center', bg: RED, size: 22});
+    pill('はり', 520, 375, t - 2.0, {align: 'center', bg: RED, size: 22});
+    pill('床', 700, 440, t - 2.4, {align: 'center', bg: RED, size: 22});
+    pill('壁', 1080, 300, t - 2.8, {align: 'center', bg: RED, size: 22});
+    pill('屋根', 640, 180, t - 3.2, {align: 'center', bg: RED, size: 22});
+    pill('階段', 900, 540, t - 3.6, {align: 'center', bg: RED, size: 22});
+    pill('除く：構造上重要でない間仕切壁・間柱・最下階の床・小ばり・ひさし・屋外階段など', W / 2, 668, t - 6.5, {align: 'center', bg: INK, size: 22});
+    headline('性能が求められる[主要構造部]（法2条5号）', t);
+  }});
+
+  S.push({name: '3つの構造', d: 15, draw(t) {
+    plain();
+    cardRows(t, [['1', '耐火構造（法2条7号）', '通常の火災が終わるまで、倒壊・延焼を防止する'],
+      ['2', '準耐火構造（法2条7号の2）', '通常の火災による延焼を抑制する'],
+      ['3', '防火構造（法2条8号）', '外壁・軒裏で、周囲の火災による延焼を抑制する']], [1.5, 6.0, 9.0], RED);
+    note('※いずれも政令の技術的基準に適合し、国土交通大臣が定めた構造方法を用いるか、大臣の認定を受けたもの', 668, t - 10.5);
+    headline('[耐火構造]・[準耐火構造]・[防火構造]', t);
+  }});
+
+  S.push({name: '耐火建築物とは', d: 15, draw(t) {
+    plain('#cfe6f2');
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(0, 600, W, 120);
+    elevation(340, 600, 600, 4, 105, eo((t - .3) / .5));
+    if (t > 1.8) { ctx.strokeStyle = `rgba(232,67,47,${eo((t - 1.8) / .5)})`; ctx.lineWidth = 8; ctx.strokeRect(340, 180, 600, 420); }
+    pill('① 特定主要構造部が 耐火構造（または同等の性能を検証）', 640, 152, t - 2.0, {align: 'center', bg: RED, size: 22});
+    if (t > 7.6) { const a = eo((t - 7.6) / .4); ctx.fillStyle = `rgba(255,216,74,${.9 * a})`;
+      for (let i = 0; i < 4; i++) for (const k of [0, 5]) ctx.fillRect(340 + 25 + k * 90 - 4, 600 - (i + 1) * 105 + 18, 58, 105 - 36); }
+    pill('② 延焼のおそれのある部分の開口部に 防火設備', 640, 630, t - 8.0, {align: 'center', bg: '#f08a24', size: 22});
+    pill('※②の防火設備は、加熱開始後20分間、火炎を遮る性能（令109条の2）', W / 2, 685, t - 10.4, {align: 'center', bg: INK, size: 17});
+    headline('[耐火建築物]の2つの条件（法2条9号の2）', t);
+  }});
+
+  S.push({name: '延焼のおそれのある部分', d: 16, draw(t) {
+    plain('#cfe6f2');
+    const BL = 300, m = 40;
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(0, 600, W, 120);
+    ctx.fillStyle = '#d8d2c4'; ctx.fillRect(60, 360, 180, 240);
+    ctx.font = f(700, 18); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'center'; ctx.fillText('隣の建物', 150, 340);
+    ctx.strokeStyle = RED; ctx.lineWidth = 4; ctx.setLineDash([12, 8]); ctx.beginPath(); ctx.moveTo(BL, 150); ctx.lineTo(BL, 620); ctx.stroke(); ctx.setLineDash([]);
+    pill('隣地境界線', BL - 12, 260, t - .5, {align: 'right', bg: RED, size: 20});
+    elevation(380, 600, 720, 3, 130, 1);
+    const k1 = eo((t - 3.0) / .6), k2 = eo((t - 5.0) / .6);
+    if (k1 > 0) { ctx.fillStyle = `rgba(255,216,74,${.6 * k1})`; ctx.fillRect(380, 470, BL + 180 - 380, 130); }
+    if (k2 > 0) { ctx.fillStyle = `rgba(255,216,74,${.6 * k2})`; ctx.fillRect(380, 210, BL + 300 - 380, 260); }
+    dimH(BL, BL + 180, 625, t - 3.0, '1階 3m');
+    dimH(BL, BL + 300, 190, t - 5.0, '2階以上 5m');
+    pill('この範囲の窓・扉に防火設備', 860, 400, t - 7.5, {align: 'center', bg: '#f08a24', size: 22});
+    pill('※道路は道路中心線、同じ敷地の建物どうしは外壁間の中心線から測る。公園・川などに面する部分は除く', W / 2, 685, t - 9.5, {align: 'center', bg: INK, size: 17});
+    headline('[延焼のおそれのある部分]（法2条6号）', t);
+  }});
+
+  S.push({name: '耐火性能の時間', d: 17, draw(t) {
+    plain('#e8eef5');
+    const x = 110, w = 220, fh = 22, n = 20, yb = 640;
+    const band = i => { const fromTop = n - i; return fromTop <= 4 ? 0 : fromTop <= 9 ? 1 : fromTop <= 14 ? 2 : fromTop <= 19 ? 3 : 4; };
+    const col = ['#ffd9cf', '#ffb3a1', '#ff8a73', '#e8432f', '#a61e12'];
+    if (t > .4) { ctx.globalAlpha = eo((t - .4) / .5);
+      for (let i = 0; i < n; i++) { const y = yb - (i + 1) * fh, b = band(i);
+        ctx.fillStyle = t > 2 + b * 1.6 ? col[b] : '#f4efe6'; ctx.fillRect(x, y + 2, w, fh - 2); ctx.fillStyle = '#8a8f99'; ctx.fillRect(x - 4, y, w + 8, 2); }
+      ctx.font = f(700, 16); ctx.fillStyle = INK; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText('最上階', x + w + 10, yb - n * fh + fh / 2); ctx.fillText('最下階', x + w + 10, yb - fh / 2);
+      ctx.globalAlpha = 1; }
+    table(t, ['最上階から数えた階', '壁・床', '柱・はり'], ['#5b6474', '#2b6cff', RED],
+      [['1〜4', '1時間', '1時間'], ['5〜9', '1.5時間', '1.5時間'], ['10〜14', '2時間', '2時間'], ['15〜19', '2時間', '2.5時間'], ['20以上', '2時間', '3時間']],
+      [260, 260, 260], 2.0, 1.6, 150, 72, 22, 420);
+    pill('屋根・階段は 30分', 1210, 668, t - 11, {align: 'right', bg: INK, size: 22});
+    note('※壁は耐力壁。地階の階数もすべて算入（令107条）', 668, t - 11.5, 17);
+    headline('[耐火性能]の時間（令107条）', t);
+  }});
+
+  S.push({name: '3つの性能', d: 15, draw(t) {
+    plain();
+    const P = [[70, '壊れない', '加熱しても、構造耐力上支障のある\n変形・溶融・破壊などを生じない', '#2b6cff', 3.0],
+               [460, '裏が熱くならない', '壁・床の加熱面の反対側が、\n可燃物が燃える温度以上にならない', '#f08a24', 6.2],
+               [850, '火炎を出さない', '外壁・屋根に、屋外へ火炎を出す\n亀裂などを生じない', RED, 9.4]];
+    P.forEach(([x, ttl, body, c, t0]) => {
+      const tt = t - t0; if (tt <= 0) return;
+      ctx.save(); ctx.globalAlpha = eo(tt / .4);
+      ctx.fillStyle = '#fff'; rr(x, 170, 360, 420, 18); ctx.fill(); ctx.strokeStyle = c; ctx.lineWidth = 4; ctx.stroke();
+      hatch(x + 140, 210, 80, 180, '#d8c9b8');
+      flame(x + 110, 390, t, .8);
+      if (c === '#f08a24') { ctx.fillStyle = 'rgba(240,138,36,.4)'; ctx.fillRect(x + 220, 210, 40, 180); }
+      if (c === RED) { ctx.strokeStyle = '#2b2f38'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + 180, 230); ctx.lineTo(x + 170, 300); ctx.lineTo(x + 190, 370); ctx.stroke(); fx('✕', x + 270, 300, 40, '#ff8a7a', tt - .6); }
+      ctx.fillStyle = c; ctx.font = f(900, 30); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(ttl, x + 180, 440);
+      ctx.fillStyle = INK; ctx.font = f(600, 19); body.split('\n').forEach((l, j) => ctx.fillText(l, x + 180, 495 + j * 30));
+      ctx.restore();
+    });
+    note('※通称：非損傷性・遮熱性・遮炎性（令107条 第1号〜第3号）', 650, t - 11, 19);
+    headline('耐火性能を確かめる[3つの面]', t);
+  }});
+
+  S.push({name: '準耐火建築物とは', d: 15, draw(t) {
+    plain();
+    card(70, 165, 560, 300, 'イ', '主要構造部を準耐火構造', '壁・柱・床・はり・屋根・階段を\n準耐火構造とする\n（木造でも可能）', t - 3.0, '#7a5cff');
+    card(650, 165, 560, 300, 'ロ', 'イと同等の性能（令109条の3）', '外壁を耐火構造とする など\n柱・はりを不燃材料とする など', t - 6.6, '#0f9d8a');
+    box(70, 495, 1140, 110, [['＋ 延焼のおそれのある部分の開口部に 防火設備', 30, 900, '#f08a24']], t - 9.6);
+    headline('[準耐火建築物]とは（法2条9号の3）', t);
+  }});
+
+  S.push({name: '準耐火性能の時間', d: 15, draw(t) {
+    plain();
+    table(t, ['部分', '準耐火構造（令107条の2）', '1時間準耐火基準（令112条2項）'], ['#5b6474', '#7a5cff', RED],
+      [['壁（耐力壁）・柱・床・はり', '45分', '1時間'], ['屋根・階段', '30分', '―'], ['使われる場面', 'イ準耐火建築物', '面積区画の床・壁など']],
+      [380, 380, 380], 1.0, 2.6, 170, 110, 24);
+    pill('1時間準耐火基準は、防火区画や法27条の建物などで使われる', W / 2, 668, t - 10, {align: 'center', bg: INK, size: 22});
+    headline('[準耐火性能]の時間', t);
+  }});
+
+  S.push({name: 'ロ準耐の2タイプ', d: 15, draw(t) {
+    plain();
+    const P = [[70, '1号（外壁耐火）', ['外壁を耐火構造', '屋根は火の粉に強い構造', '内部は木造なども可'], 2.6, '#0f9d8a'],
+               [650, '2号（不燃構造）', ['柱・はりは不燃材料', 'その他の主要構造部は準不燃材料', '外壁の延焼部分は防火構造'], 7.6, '#2b6cff']];
+    P.forEach(([x, ttl, ls, t0, c]) => {
+      const tt = t - t0; if (tt <= 0) return;
+      ctx.save(); ctx.globalAlpha = eo(tt / .4);
+      ctx.fillStyle = '#fff'; rr(x, 165, 560, 430, 18); ctx.fill(); ctx.strokeStyle = c; ctx.lineWidth = 4; ctx.stroke();
+      ctx.fillStyle = c; ctx.font = f(900, 30); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(ttl, x + 280, 205);
+      const bx = x + 150, by = 250, bw = 260, bh = 170;
+      ctx.fillStyle = '#f4efe6'; ctx.fillRect(bx, by, bw, bh);
+      ctx.fillStyle = c === '#0f9d8a' ? '#9aa0aa' : '#d8c9b8'; ctx.fillRect(bx - 14, by, 14, bh); ctx.fillRect(bx + bw, by, 14, bh);
+      ctx.fillStyle = '#8a8f99'; ctx.fillRect(bx - 20, by - 12, bw + 40, 12);
+      if (c === '#0f9d8a') { ctx.fillStyle = RED; ctx.fillRect(bx - 14, by, 14, bh); ctx.fillRect(bx + bw, by, 14, bh); ctx.fillStyle = '#c69c6d'; ctx.fillRect(bx + 60, by, 12, bh); ctx.fillRect(bx + 180, by, 12, bh); }
+      else { ctx.fillStyle = '#5b6474'; ctx.fillRect(bx + 60, by, 14, bh); ctx.fillRect(bx + 180, by, 14, bh); ctx.fillRect(bx, by, bw, 10); }
+      ctx.fillStyle = INK; ctx.font = f(700, 22); ls.forEach((l, j) => ctx.fillText('・' + l, x + 280, 470 + j * 38));
+      ctx.restore();
+    });
+    note('※実務では「ロ準耐1号・2号」と呼ばれる（条文は令109条の3 第1号・第2号）', 650, t - 11, 19);
+    headline('[ロ準耐]の2つのタイプ', t);
+  }});
+
+  S.push({name: '耐火と準耐火の比較', d: 14, draw(t) {
+    plain();
+    table(t, ['項目', '耐火建築物', '準耐火建築物'], ['#5b6474', RED, '#7a5cff'],
+      [['目標', '火災が終わるまで倒れない', '一定の時間、延焼を抑える'], ['構造の時間', '1〜3時間（階による）', '45分（1時間準耐火は1時間）'],
+       ['主な構造の例', 'RC造・耐火被覆した鉄骨造など', '準耐火構造の木造・鉄骨造など'], ['開口部', '延焼部分に防火設備', '延焼部分に防火設備']],
+      [260, 440, 440], 1.0, 1.8, 165, 92, 22);
+    headline('[耐火建築物]と[準耐火建築物]の比較', t);
+  }});
+
+  S.push({name: '求められる3つの入口', d: 13, draw(t) {
+    plain();
+    const P = [['法27条', '用途で決まる', '劇場・病院・物販店・倉庫・車庫など', RED, 2.6], ['法61条', '地域で決まる', '防火地域・準防火地域', '#2b6cff', 4.6], ['法21条', '規模で決まる', '木材などを使った大規模建築物', GRN, 6.6]];
+    P.forEach(([a, b, c, col, t0], i) => {
+      const tt = t - t0; if (tt <= 0) return; const x = 70 + i * 390;
+      ctx.save(); ctx.globalAlpha = eo(tt / .4);
+      ctx.fillStyle = '#fff'; rr(x, 180, 360, 400, 20); ctx.fill();
+      ctx.fillStyle = col; rr(x, 180, 360, 130, [20, 20, 0, 0]); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, 44); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(a, x + 180, 245);
+      ctx.fillStyle = col; ctx.font = f(900, 30); ctx.fillText(b, x + 180, 380);
+      ctx.fillStyle = INK; ctx.font = f(600, 20); ctx.fillText(c, x + 180, 450);
+      ctx.restore();
+    });
+    pill('複数に当てはまるときは、最も厳しい要求に合わせる', W / 2, 660, t - 8.5, {align: 'center', bg: INK, size: 24});
+    headline('耐火・準耐火が求められる[3つの入口]', t);
+  }});
+
+  S.push({name: '法27条（用途）', d: 16, draw(t) {
+    plain();
+    cardRows(t, [['1', '劇場・病院・ホテル・物販店など（別表第1 (1)〜(4)項）', '3階以上の階をその用途に使う／一定の規模以上（例：物販店で床面積3,000㎡以上）→ 耐火建築物など'],
+      ['2', '倉庫・自動車車庫（(5)(6)項）', '倉庫で3階以上の部分200㎡以上、車庫で3階以上の階 → 耐火建築物'],
+      ['3', '倉庫・自動車車庫（規模による）', '倉庫で1,500㎡以上、車庫で150㎡以上 など → 耐火建築物 または 準耐火建築物']], [1.0, 7.6, 10.2], RED);
+    note('※1は、避難が終わるまで倒壊・延焼しない性能（法27条1項）。階数3・延べ200㎡未満の除外などあり', 668, t - 11.2, 18);
+    headline('[法27条]：特殊建築物は用途と規模で決まる', t);
+  }});
+
+  S.push({name: '法61条（地域）', d: 17, draw(t) {
+    plain();
+    table(t, ['地域', '耐火建築物と同等', '準耐火建築物と同等'], ['#5b6474', RED, '#7a5cff'],
+      [['防火地域', '階数3以上 または\n延べ100㎡超', 'それ以外'], ['準防火地域', '地階を除く階数4以上\nまたは 延べ1,500㎡超', '階数3（1,500㎡以下）\nまたは 延べ500㎡超']],
+      [260, 440, 440], 3.4, 4.6, 180, 150, 23);
+    pill('くわしくは「防火地域・準防火地域」の動画で', W / 2, 640, t - 11, {align: 'center', bg: INK, size: 24});
+    headline('[法61条]：防火地域・準防火地域の建物', t);
+  }});
+
+  S.push({name: '法21条（大規模木造など）', d: 17, draw(t) {
+    plain();
+    cardRows(t, [['1', '地階を除く階数 4以上', '木材などの可燃材料を主要構造部に用いた建築物'],
+      ['2', '高さ 16m超（倉庫・車庫などは13m超）', '通常の火災が終わるまで、倒壊・延焼を防止する性能'],
+      ['3', '延べ 3,000㎡超', '周囲への防火上有害な影響を防止する措置（法21条2項）']], [3.0, 4.6, 11.2], GRN);
+    note('※周囲に延焼防止上有効な空地がある場合などの例外あり', 668, t - 12, 18);
+    headline('[法21条]：木材などを使った大規模建築物', t);
+  }});
+
+  S.push({name: '判定の手順', d: 15, draw(t) {
+    plain();
+    stepList(t, [['用途と規模で 法27条 を確認', '別表第1の用途・階・床面積'], ['敷地の地域で 法61条 を確認', '防火地域・準防火地域・法22条区域'],
+      ['木造などなら 法21条 を確認', '階数4以上・高さ16m超・延べ3,000㎡超'], ['最も厳しい要求に合わせる', '耐火建築物 ＞ 準耐火建築物 ＞ その他'],
+      ['開口部の防火設備を確認', '延焼のおそれのある部分の窓・扉']], [1.0, 3.6, 5.6, 7.8, 10.2]);
+    headline('耐火・準耐火の[判定手順]', t);
+  }});
+
+  S.push({name: '判定例', d: 15, draw(t) {
+    plain();
+    box(70, 150, 1140, 80, [['準防火地域 ／ 3階建て ／ 延べ900㎡ ／ 1〜3階 物販店', 28, 900]], t - .4);
+    box(80, 260, 520, 220, [['法61条（地域）', 26, 800, '#2b6cff'], ['階数3・1,500㎡以下', 22, 600, '#4a5262'], ['→ 準耐火と同等', 34, 900, INK]], t - 3.6);
+    box(680, 260, 520, 220, [['法27条（用途）', 26, 800, RED], ['3階を物販店に使う', 22, 600, '#4a5262'], ['→ 耐火建築物など', 34, 900, RED]], t - 6.8);
+    if (t > 7.6) fx('厳しい方', 640, 370, 30, YEL, t - 7.6);
+    pill('結論：法27条に合わせて 耐火建築物など が必要', W / 2, 560, t - 9.6, {align: 'center', bg: RED, size: 28});
+    note('※ほかに法21条・防火区画・内装制限なども別に確認', 668, t - 10.5, 18);
+    headline('判定例：[厳しい方]に合わせる', t);
+  }});
+
+  S.push({name: 'NG①耐火被覆', d: 14, draw(t) {
+    room();
+    const cx = 640;
+    ctx.fillStyle = '#c9c3b5'; ctx.fillRect(cx - 50, CEIL, 100, FLOOR - CEIL);
+    ctx.fillStyle = '#5b6474'; ctx.fillRect(cx - 26, CEIL, 52, FLOOR - CEIL);
+    ctx.fillStyle = '#c9c3b5'; ctx.fillRect(LW, CEIL, RW - LW, 50); ctx.fillStyle = '#5b6474'; ctx.fillRect(LW, CEIL + 12, RW - LW, 26);
+    pill('鉄骨の柱・はり＋耐火被覆', cx + 70, 300, t - .5, {bg: '#5b6474', size: 22});
+    if (t > 2.6) { const k = eo((t - 2.6) / .6);
+      ctx.fillStyle = '#5b6474'; ctx.fillRect(cx - 50, 360, 24 * k + 2, 120); ctx.fillRect(820, CEIL, 140 * k, 50);
+      ctx.strokeStyle = RED; ctx.lineWidth = 4; ctx.setLineDash([8, 6]); ctx.strokeRect(cx - 54, 356, 34, 128); ctx.strokeRect(816, CEIL - 4, 148, 58); ctx.setLineDash([]); }
+    if (t > 3) { ctx.fillStyle = '#7f93a8'; ctx.fillRect(700, CEIL + 60, 480, 30); }
+    pill('設備工事で削る・はがす ✕', 320, 420, t - 3.2, {align: 'center', bg: RED, size: 24});
+    fx('耐火性能が失われる', 900, 420, 34, '#ff8a7a', t - 5.5);
+    pill('対策：認定どおりの仕様で補修し、写真で記録する', W / 2, 670, t - 8.5, {align: 'center', bg: GRN, size: 24});
+    headline('改修NG①：[耐火被覆]の損傷', t);
+  }});
+
+  S.push({name: 'NG②開口部・用途・増築', d: 15, draw(t) {
+    plain();
+    cardRows(t, [['1', '窓・扉の交換', '延焼のおそれのある部分を防火設備でないサッシに → 耐火・準耐火建築物の条件から外れる'],
+      ['2', '用途の変更', '事務所 → 物販店・飲食店など。法27条の対象になり、耐火建築物などが必要になることも'],
+      ['3', '増築', '延べ面積・階数が増えて、法27条・法61条・法21条の要求が上がる']], [.6, 4.2, 8.4], '#7a5cff');
+    pill('計画の初めに、用途・地域・規模の3つを確認する', W / 2, 668, t - 10.6, {align: 'center', bg: RED, size: 24});
+    headline('改修NG②：[開口部・用途・増築]', t);
+  }});
+
+  S.push({name: 'まとめ', d: 15, draw(t) {
+    summaryScene(t, [['部位を知る', '主要構造部\n柱・床・はり・壁', '#2b6cff'], ['時間を知る', '耐火1〜3時間\n準耐火45分', RED],
+      ['入口を知る', '法27条・61条・21条\n厳しい方に', GRN], ['開口部を守る', '延焼部分は\n防火設備', '#f08a24']],
+      '改修では、被覆・窓・用途・増築を変えたら必ず再確認', '建築基準法 第2条・第21条・第27条・第61条、同施行令 第107条・第107条の2・第109条の3・第112条');
+  }});
+  const MECH = -1;
+
+  // ---------- narration ----------
+  const CAP = [
+    "耐火と準耐火。火災が起きても、建物が崩れず、燃え広がらないためのルールです。構造の種類と性能、求められる場面、改修の注意点まで、約5分で解説します。",
+    "火災が起きても、建物がすぐに崩れたり、隣へ燃え移ったりしないように。建築基準法は、建物の用途や規模、地域に応じて、柱や床などに火に耐える性能を求めています。その代表が、耐火建築物と準耐火建築物です。",
+    "性能が求められるのは主要構造部です。壁、柱、床、はり、屋根、階段のこと。構造上重要でない間仕切壁や間柱、最下階の床、小ばり、ひさし、屋外階段などは含まれません。",
+    "構造の種類は3つ。耐火構造は、通常の火災が終わるまで倒壊や延焼を防ぐもの。準耐火構造は、延焼を抑えるもの。防火構造は、外壁や軒裏で、周りの火災からの延焼を抑えるものです。",
+    "耐火建築物の条件は2つ。特定主要構造部を耐火構造とするか、同等の性能を検証などで確かめること。そして、外壁の開口部で延焼のおそれのある部分に、防火設備を設けることです。",
+    "延焼のおそれのある部分は、隣地境界線や道路の中心線などから、1階は3メートル以下、2階以上は5メートル以下の範囲です。同じ敷地に建物が2つ以上あるときは、外壁の間の中心線から測ります。",
+    "耐火構造に求められる時間は、最上階から数えた階数で変わります。最上階から4つ目の階までは1時間。5から9は1時間半、10から14は2時間。柱とはりは、15から19で2時間半、20以上で3時間です。屋根と階段は30分です。",
+    "性能は3つの面から確かめます。加熱しても壊れないこと。壁や床の裏側の温度が上がりすぎないこと。外壁や屋根に、火炎が出る亀裂ができないこと。それぞれ、非損傷性、遮熱性、遮炎性と呼ばれます。",
+    "準耐火建築物は、耐火建築物以外で、主要構造部を準耐火構造としたもの、またはそれと同等の基準に適合するものです。こちらも、外壁の開口部で延焼のおそれのある部分には、防火設備が必要です。",
+    "準耐火構造に求められる時間は45分。壁、柱、床、はりが対象で、屋根と階段は30分です。さらに、面積区画などで使う1時間準耐火基準では、壁、柱、床、はりに1時間が求められます。",
+    "同等の基準には2つのタイプがあります。1つは、外壁を耐火構造にしたもの。もう1つは、柱とはりを不燃材料、その他の主要構造部を準不燃材料などにしたものです。実務では、ロ準耐1号、2号と呼ばれます。",
+    "比べてみましょう。耐火建築物は、火災が終わるまで倒れないこと。準耐火建築物は、一定の時間、延焼を抑えること。どちらも、延焼のおそれのある部分の開口部には防火設備を設けます。",
+    "耐火や準耐火が求められる入口は、主に3つ。用途による法27条、地域による法61条、そして木材などを使った大規模建築物に関する法21条です。",
+    "法27条は、劇場や病院、物販店などの特殊建築物が対象です。例えば、3階以上の階をこれらの用途に使う場合や、物販店で3,000㎡以上の場合。倉庫や自動車車庫は、規模によって耐火建築物や準耐火建築物が求められます。",
+    "防火地域と準防火地域では、規模に応じて性能が決まります。防火地域では、階数3以上か延べ100㎡を超えると耐火建築物と同等。準防火地域では、4階以上か1,500㎡を超えると耐火、3階建てか500㎡を超えると準耐火と同等の性能が必要です。",
+    "木材などを使った大規模な建物も対象です。地階を除く階数が4以上、高さ16メートル超、倉庫や車庫で高さ13メートル超のもの。火災が終わるまで倒壊や延焼をしない性能が必要です。延べ3,000㎡を超えると、周囲への影響を防ぐ措置も求められます。",
+    "判定の手順です。まず用途と規模で法27条を確認。次に、敷地の地域で法61条を確認。木造などなら法21条も確認します。複数に当てはまるときは、最も厳しい要求に合わせます。最後に、開口部の防火設備を忘れずに。",
+    "例えば、準防火地域に建つ3階建て、延べ900㎡の物販店。地域だけなら準耐火建築物と同等で足ります。しかし3階を物販店に使うので、法27条により、耐火建築物などが必要です。厳しい方の法27条に合わせます。",
+    "ここからは改修でよくある失敗です。設備工事で、鉄骨の柱やはりの耐火被覆を削ったり、はがしたままにしたりすると、耐火構造の性能が失われます。工事の後は、認定どおりの仕様で補修しましょう。",
+    "ほかにも、延焼のおそれのある部分の窓を、防火設備でないサッシに交換する。事務所を物販店や飲食店に用途変更する。増築で延べ面積や階数が増える。こうした改修で、求められる性能が変わることがあります。",
+    "まとめです。主要構造部を知る。求められる時間を知る。法27条、61条、21条の入口を知る。そして開口部を防火設備で守る。改修では、被覆、窓、用途、増築を変えたら必ず再確認。以上、耐火と準耐火のポイントでした。"];
+  const tts = s => s.replace(/延べ/g, 'のべ').replace(/1,500/g, '千五百').replace(/3,000/g, '三千').replace(/㎡/g, '平方メートル')
+    .replace(/主要構造部/g, 'しゅようこうぞうぶ').replace(/間仕切壁/g, 'まじきりかべ').replace(/間柱/g, 'まばしら').replace(/小ばり/g, 'こばり').replace(/軒裏/g, 'のきうら')
+    .replace(/非損傷性/g, 'ひそんしょうせい').replace(/遮熱性/g, 'しゃねつせい').replace(/遮炎性/g, 'しゃえんせい').replace(/ロ準耐/g, 'ろじゅんたい')
+    .replace(/耐火被覆/g, 'たいかひふく').replace(/最上階/g, 'さいじょうかい').replace(/最下階/g, 'さいかかい').replace(/地階/g, 'ちかい')
+    .replace(/1時間半/g, 'いちじかんはん').replace(/2時間半/g, 'にじかんはん').replace(/3つ/g, 'みっつ').replace(/2つ/g, 'ふたつ').replace(/1つ/g, 'ひとつ').replace(/4つ目/g, 'よっつめ')
+    .replace(/法27条/g, 'ほう にじゅうななじょう').replace(/法61条/g, 'ほう ろくじゅういちじょう').replace(/法21条/g, 'ほう にじゅういちじょう').replace(/61条/g, 'ろくじゅういちじょう').replace(/21条/g, 'にじゅういちじょう');
+  const NARR = CAP.map(tts);
+
+  // ---------- player ----------
+  /* hs-ext v1 */
+  let RATE = 1, bgmOn = true;   // 再生速度・BGMのオン／オフ
+  const starts = []; let total = 0; for (const s of S) { starts.push(total); total += s.d; }
+  const btn = root.querySelector('.hs-btn'), snd = root.querySelector('.hs-snd'), track = root.querySelector('.hs-track'), fill = root.querySelector('.hs-fill');
+  const time = root.querySelector('.hs-time'), chips = root.querySelector('.hs-chips'), cap = root.querySelector('.hs-cap');
+  starts.slice(1).forEach(s => { const k = document.createElement('div'); k.className = 'hs-tick'; k.style.left = (s / total * 100) + '%'; track.appendChild(k); });
+  const chipEls = S.map((s, i) => { const li = document.createElement('li'); const b = document.createElement('button');
+    b.type = 'button'; b.className = 'hs-chip'; b.textContent = `${i + 1}. ${s.name}`;
+    b.onclick = () => { unlock(); T = starts[i]; scene = -1; play(); };
+    li.appendChild(b); chips.appendChild(li); return b; });
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let T = 0, playing = false, last = 0, scene = -1;
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  const sceneAt = T => { let i = starts.findIndex((s, k) => T >= s && T < s + S[k].d); return i < 0 ? S.length - 1 : i; };
+
+  // ---------- sound (Web Audio + Web Speech, 音声ファイル不要) ----------
+  const TTS = 'speechSynthesis' in window;
+  let soundOn = false, AC = null, master, bgmGain, nextBeat = 0, beatIdx = 0, schedTimer = null, speaking = false, jaVoice = null, fanNode = null;
+  const voiceSelect = root.querySelector('.hs-voice');
+  const savedVoice = (() => { try { return localStorage.getItem('cmKnowledgeJapaneseVoice') || ''; } catch { return ''; } })();
+  function pickVoice() {
+    const japanese = TTS ? speechSynthesis.getVoices().filter(v => /^ja(?:-|$)/i.test(v.lang)) : [];
+    const voices = japanese.filter(v => /Microsoft/i.test(v.name) && /Haruka|Sayaka|Ayumi|Nanami/i.test(v.name))
+      .sort((a, b) => Number(!/Haruka/i.test(a.name)) - Number(!/Haruka/i.test(b.name)));
+    const preferred = voiceSelect.value || savedVoice;
+    voiceSelect.replaceChildren();
+    for (const voice of voices) voiceSelect.add(new Option(voice.name, voice.voiceURI));
+    jaVoice = voices.find(v => v.voiceURI === preferred) || voices[0] || null;
+    if (jaVoice) voiceSelect.value = jaVoice.voiceURI;
+    else voiceSelect.add(new Option('Microsoft日本語女性音声を利用できません', ''));
+    voiceSelect.disabled = !jaVoice;
+  }
+  voiceSelect.addEventListener('change', () => {
+    jaVoice = speechSynthesis.getVoices().find(v => v.voiceURI === voiceSelect.value) || null;
+    try { localStorage.setItem('cmKnowledgeJapaneseVoice', voiceSelect.value); } catch {}
+    if (playing && soundOn) speak(sceneAt(T));
+  });
+  if (TTS) { pickVoice(); speechSynthesis.addEventListener('voiceschanged', pickVoice); } else pickVoice();
+  function unlock() {                       // ユーザー操作の中で一度だけ音を有効化
+    if (soundOn) return;
+    soundOn = true; setSnd();
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      AC.resume();
+      if (!master) { master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
+        bgmGain = AC.createGain(); bgmGain.gain.value = 0.0; bgmGain.connect(master); }
+    } catch (e) { AC = null; }
+    if (TTS) { const u = new SpeechSynthesisUtterance(''); speechSynthesis.speak(u); }   // iOSの解錠
+  }
+  function mute() { soundOn = false; setSnd(); stopSpeech(); stopBgm(); fan(false); }
+  function setSnd() { snd.textContent = soundOn ? '🔊' : '🔇'; snd.setAttribute('aria-label', soundOn ? '音声をオフ' : '音声をオン'); snd.setAttribute('aria-pressed', soundOn); }
+
+  // BGM：やわらかいアルペジオ（C–G–Am–F）
+  const CH = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]];
+  const hz = n => 440 * Math.pow(2, (n - 69) / 12);
+  function pluck(t, freq, dur, vol, dest) {
+    const o = AC.createOscillator(), o2 = AC.createOscillator(), g = AC.createGain();
+    o.type = 'triangle'; o.frequency.value = freq; o2.type = 'sine'; o2.frequency.value = freq * 2;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); o2.connect(g); g.connect(dest); o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
+  }
+  const BEAT = 60 / 92 / 2;                  // 8分音符
+  function sched() {
+    while (nextBeat < AC.currentTime + 0.3) {
+      const bar = Math.floor(beatIdx / 8), k = beatIdx % 8, ch = CH[bar % 4];
+      if (k === 0) pluck(nextBeat, hz(ch[0] - 12), 1.8, .5, bgmGain);
+      pluck(nextBeat, hz(ch[[0, 1, 2, 1, 0, 2, 1, 2][k]] + 12), .7, .22, bgmGain);
+      nextBeat += BEAT; beatIdx++;
+    }
+  }
+  function startBgm() {
+    if (!AC || !soundOn || !bgmOn || schedTimer) return;
+    nextBeat = AC.currentTime + .05; sched(); schedTimer = setInterval(sched, 100);
+    duck();
+  }
+  function stopBgm() { if (schedTimer) { clearInterval(schedTimer); schedTimer = null; } if (bgmGain) bgmGain.gain.setTargetAtTime(0, AC.currentTime, .05); }
+  function duck() { if (bgmGain && soundOn) bgmGain.gain.setTargetAtTime(speaking ? 0.05 : 0.12, AC.currentTime, .25); }
+
+  // 効果音
+  function pop() {
+    if (!AC || !soundOn) return; const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain();
+    o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(1500, t + .09);
+    g.gain.setValueAtTime(.18, t); g.gain.exponentialRampToValueAtTime(.0001, t + .12);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + .15);
+  }
+  function fan(on) {                         // 機械排煙シーンの送風音
+    if (!AC) return;
+    if (on && soundOn && !fanNode) {
+      const n = AC.sampleRate * 2, buf = AC.createBuffer(1, n, AC.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500;
+      const g = AC.createGain(); g.gain.value = 0; g.gain.setTargetAtTime(.07, AC.currentTime, .4);
+      src.connect(lp); lp.connect(g); g.connect(master); src.start(); fanNode = {src, g};
+    } else if (!on && fanNode) {
+      const {src, g} = fanNode; g.gain.setTargetAtTime(0, AC.currentTime, .15); src.stop(AC.currentTime + .6); fanNode = null;
+    }
+  }
+
+  // ナレーション
+  let utt = null;
+  function speak(i) {
+    stopSpeech();
+    if (!TTS || !soundOn || !jaVoice) return;
+    const u = new SpeechSynthesisUtterance(NARR[i]);
+    u.lang = 'ja-JP'; if (jaVoice) u.voice = jaVoice; u.rate = Math.min(2, 1.12 * RATE); u.pitch = 1.0; u.volume = 1;
+    u.onstart = () => { speaking = true; duck(); };
+    u.onend = u.onerror = () => { if (utt === u) { speaking = false; utt = null; duck(); } };
+    utt = u; speaking = true; duck();
+    speechSynthesis.speak(u);
+  }
+  function stopSpeech() { if (TTS) { utt = null; speaking = false; speechSynthesis.cancel(); duck(); } }
+
+  // ---------- render & loop ----------
+  function frame(T) {
+    const i = sceneAt(T);
+    ctx.save(); ctx.clearRect(0, 0, W, H); S[i].draw(Math.min(T - starts[i], S[i].d)); ctx.restore();
+    for (let k = 0; k < S.length; k++) { ctx.fillStyle = k <= i ? 'rgba(232,67,47,.95)' : 'rgba(255,255,255,.55)';
+      ctx.beginPath(); ctx.roundRect(W - 30 - (S.length - k) * 34, 18, 26, 8, 4); ctx.fill(); }
+    if (!soundOn) {                          // 音声オフ時のヒント
+      ctx.font = f(700, 20); const tx = '🔇 タップで音声つき再生'; const w = ctx.measureText(tx).width + 28;
+      ctx.fillStyle = 'rgba(15,20,30,.72)'; rr(18, 14, w, 36, 18); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(tx, 32, 33);
+    }
+    fill.style.width = (T / total * 100) + '%'; track.setAttribute('aria-valuenow', Math.round(T / total * 100));
+    time.textContent = `${fmt(T)} / ${fmt(total)}`;
+    chipEls.forEach((c, k) => c.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    if (cap.dataset.i !== String(i)) { cap.dataset.i = i; cap.textContent = CAP[i]; }
+  }
+  function enterScene(i) {
+    scene = i; pop(); speak(i); fan(i === MECH);
+  }
+  function loop(now) {
+    if (!playing) return;
+    const dt = Math.min(.1, (now - last) / 1000); last = now;
+    const i = sceneAt(T), end = starts[i] + S[i].d;
+    // ナレーションが続いている間はシーンの最後で待つ（最大6秒）
+    const holding = soundOn && speaking && T + dt * RATE >= end - 0.02 && (holdT += dt) < 6;
+    if (!holding) { holdT = 0; T += dt * RATE; }
+    if (T >= total) { T = total - 0.001; playing = false; stopBgm(); fan(false); setBtn(); }
+    const j = sceneAt(T); if (j !== scene && playing) enterScene(j);
+    frame(T); if (playing) requestAnimationFrame(loop);
+  }
+  let holdT = 0;
+  function setBtn() { btn.textContent = playing ? '❚❚' : (T >= total - .01 ? '↻' : '▶'); btn.setAttribute('aria-label', playing ? '一時停止' : '再生'); }
+  function play() {
+    if (T >= total - .01) { T = 0; scene = -1; }
+    if (!playing) { playing = true; last = performance.now(); startBgm();
+      const i = sceneAt(T);
+      if (scene !== i || T - starts[i] < 1) enterScene(i); else fan(i === MECH);
+      requestAnimationFrame(loop); }
+    setBtn();
+  }
+  function pause() { playing = false; stopSpeech(); stopBgm(); fan(false); setBtn(); frame(T); }
+  btn.onclick = () => { unlock(); playing ? pause() : play(); };
+  cv.onclick = () => {                       // 初回タップ：音声オンにして今のシーンの頭から
+    if (!soundOn) { unlock(); const i = sceneAt(T); T = starts[i]; scene = -1; if (playing) { startBgm(); enterScene(i); } else play(); return; }
+    playing ? pause() : play();
+  };
+  snd.onclick = () => {
+    if (soundOn) { mute(); frame(T); return; }
+    unlock(); const i = sceneAt(T);
+    if (playing) { T = starts[i]; startBgm(); enterScene(i); } else frame(T);
+  };
+  const seek = e => { const r = track.getBoundingClientRect(); T = cl((e.clientX - r.left) / r.width) * total; scene = sceneAt(T); stopSpeech(); fan(playing && scene === MECH); frame(T); };
+  track.addEventListener('pointerdown', e => { seek(e); track.setPointerCapture(e.pointerId); track.onpointermove = seek; });
+  track.addEventListener('pointerup', () => track.onpointermove = null);
+  track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') T = Math.min(total - .01, T + 3); else if (e.key === 'ArrowLeft') T = Math.max(0, T - 3); else return; scene = sceneAt(T); stopSpeech(); frame(T); e.preventDefault(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
+  // 再生は利用者の操作で開始します。
+  /* hs-ext v1 */
+  const bgmBtn = root.querySelector('.hs-bgm'), rateSel = root.querySelector('.hs-rate');
+  const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } return null; };
+  bgmOn = store('hs-bgm') !== 'off';
+  const r0 = parseFloat(store('hs-rate')); if (r0 >= .5 && r0 <= 2) RATE = r0; rateSel.value = String(RATE);
+  function setBgmBtn() { bgmBtn.textContent = bgmOn ? 'BGM オン' : 'BGM オフ'; bgmBtn.setAttribute('aria-pressed', bgmOn); bgmBtn.classList.toggle('hs-off', !bgmOn); }
+  bgmBtn.onclick = () => { bgmOn = !bgmOn; store('hs-bgm', bgmOn ? 'on' : 'off'); setBgmBtn(); if (!bgmOn) stopBgm(); else if (playing && soundOn) startBgm(); };
+  rateSel.onchange = () => { RATE = parseFloat(rateSel.value) || 1; store('hs-rate', String(RATE)); };
+  const fsBtn = root.querySelector('.hs-fs');
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+  function setFsBtn() { const on = !!fsEl() || root.classList.contains('hs-full'); fsBtn.textContent = on ? '✕' : '⛶'; fsBtn.setAttribute('aria-label', on ? '全画面を終了' : '全画面'); }
+  function fakeFull(on) { root.classList.toggle('hs-full', on); setFsBtn(); }
+  fsBtn.onclick = () => {
+    if (fsEl()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (root.classList.contains('hs-full')) { fakeFull(false); return; }
+    const req = root.requestFullscreen || root.webkitRequestFullscreen;
+    if (!req) { fakeFull(true); return; }
+    try { const p = req.call(root); if (p && p.catch) p.catch(() => fakeFull(true)); } catch (e) { fakeFull(true); }
+  };
+  document.addEventListener('fullscreenchange', setFsBtn); document.addEventListener('webkitfullscreenchange', setFsBtn);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && root.classList.contains('hs-full')) fakeFull(false); });
+  setFsBtn();
+  setBgmBtn();
+  setSnd();
+  const readyFonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  readyFonts.then(() => frame(reduce ? starts[1] + 8 : 0));
+  window.__hsHaien = {frame: x => { T = x; frame(x); }, total};   // プレビュー用
+})();
+</script>
+</body>
+</html>

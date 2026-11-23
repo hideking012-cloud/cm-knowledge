@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>排煙設備のしくみ｜アニメーション解説</title>
+<style>
+  /* すべて .hs- で名前空間化（既存サイトのCSSと衝突しないように） */
+  .hs-player{--hs-ink:#1f2430;--hs-accent:#e8432f;--hs-sub:#5b6474;--hs-line:#d9dee7;
+    max-width:960px;margin:24px auto;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;color:var(--hs-ink)}
+  .hs-stage{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(20,30,50,.18);background:#0f1724}
+  .hs-stage canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;cursor:pointer}
+  .hs-cap{margin:10px 0 0;min-height:3.4em;padding:10px 14px;border-radius:10px;background:#1f2430;color:#fff;font-size:15px;line-height:1.7}
+  .hs-bar{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .hs-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--hs-accent);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--hs-line);background:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd:focus-visible,.hs-btn:focus-visible,.hs-chip:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-track{position:relative;flex:1;height:10px;border-radius:5px;background:var(--hs-line);cursor:pointer}
+  .hs-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:5px;background:var(--hs-accent)}
+  .hs-tick{position:absolute;top:-3px;width:2px;height:16px;background:#fff;opacity:.9}
+  .hs-time{flex:none;font-size:13px;color:var(--hs-sub);font-variant-numeric:tabular-nums;min-width:84px;text-align:right}
+  .hs-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding:0;list-style:none}
+  .hs-chip{border:1px solid var(--hs-line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--hs-ink)}
+  .hs-chip[aria-current="true"]{background:var(--hs-ink);border-color:var(--hs-ink);color:#fff}
+  .hs-text{margin-top:14px;font-size:14px;line-height:1.8;color:var(--hs-sub)}
+  .hs-text summary{cursor:pointer;color:var(--hs-ink);font-weight:700}
+  .hs-text ol{padding-left:1.4em}
+  .hs-src{font-size:12px;color:var(--hs-sub);margin-top:8px}
+  /* hs-ext v1 */
+  .hs-bar{flex-wrap:wrap}
+  .hs-track{flex:1 1 180px}
+  .hs-bgm,.hs-fs{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;cursor:pointer;padding:0 14px}
+  .hs-fs{width:40px;padding:0;font-size:18px;display:grid;place-items:center}
+  .hs-bgm.hs-off{color:var(--hs-sub);text-decoration:line-through;background:#eef1f6}
+  .hs-rate{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;padding:0 10px;cursor:pointer}
+  .hs-bgm:focus-visible,.hs-fs:focus-visible,.hs-rate:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-player:fullscreen,.hs-player.hs-full{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player:-webkit-full-screen{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player.hs-full{position:fixed;inset:0;z-index:2147483000}
+  .hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,
+  .hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:calc((100vh - 190px) * 16 / 9);margin-left:auto;margin-right:auto}
+  .hs-player:fullscreen .hs-chips,.hs-player:fullscreen .hs-text,.hs-player.hs-full .hs-chips,.hs-player.hs-full .hs-text{display:none}
+  .hs-player:fullscreen .hs-time,.hs-player.hs-full .hs-time{color:#cfd6e4}
+.lesson-nav{max-width:960px;margin:20px auto;display:flex;gap:24px;flex-wrap:wrap;padding:0 12px;font:600 16px/1.6 Inter,"Yu Gothic UI",Meiryo,sans-serif}.lesson-nav a{color:#96e8d5;text-underline-offset:4px}body{margin:0;padding:0 16px;background:#0a1220}.hs-player{--hs-ink:#edf4ff;--hs-sub:#b6c6da;--hs-line:#35475f}.hs-chip{color:#1f2430}.hs-voice-label{color:#b6c6da;font-size:14px}.hs-voice{max-width:240px;height:40px;border-radius:20px;border:1px solid #d9dee7;background:#fff;color:#1f2430;font:14px "Yu Gothic UI",sans-serif;padding:0 8px}.hs-cap{font-size:16px}.hs-text{font-size:16px}.hs-src{font-size:14px}.hs-player:fullscreen,.hs-player.hs-full{height:100dvh;overflow:hidden;display:flex;flex-direction:column}.hs-player:fullscreen .hs-stage,.hs-player.hs-full .hs-stage{flex:1;min-height:0;display:grid;place-items:center;width:100%;box-shadow:none}.hs-player:fullscreen canvas,.hs-player.hs-full canvas{width:100%;height:100%;object-fit:contain}.hs-player:fullscreen .hs-cap,.hs-player.hs-full .hs-cap{flex:none;min-height:0;margin-top:8px}.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-bar{flex:none;margin-top:8px}.hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:1280px;width:100%}@media(max-width:600px){.lesson-nav{gap:16px}.hs-player{margin:12px auto}.hs-voice{max-width:190px}.hs-cap{font-size:15px}.hs-bar{gap:8px}}.hs-snd,.hs-bgm,.hs-fs,.hs-rate{color:#1f2430}.hs-chip[aria-current="true"]{background:#c4eadf;border-color:#81c8b7;color:#16392f}</style>
+</head>
+<body>
+<nav class="lesson-nav" aria-label="教材の移動"><a href="../index.html">CM知識一覧</a><a href="../smoke-control-report.html">詳細レポートを読む</a></nav>
+
+<section class="hs-player" id="hs-haien" aria-label="排煙設備のしくみ アニメーション解説">
+  <div class="hs-stage">
+    <canvas width="1280" height="720" role="img" aria-label="排煙設備のしくみを説明するアニメーション。下の「テキストで読む」に同じ内容があります。"></canvas>
+  </div>
+  <p class="hs-cap" aria-live="polite"></p>
+  <div class="hs-bar">
+    <button class="hs-btn" type="button" aria-label="再生">▶</button>
+    <button class="hs-snd" type="button" aria-label="音声をオン" aria-pressed="false">🔇</button>
+    <label class="hs-voice-label">音声 <select class="hs-voice" aria-label="ナレーションの声"><option>音声を確認中</option></select></label>
+    <div class="hs-track" role="slider" aria-label="再生位置" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="hs-fill"></div></div>
+    <div class="hs-time">0:00 / 0:00</div>
+    <button class="hs-bgm" type="button" aria-pressed="true" aria-label="BGMのオン・オフ">BGM オン</button>
+    <select class="hs-rate" aria-label="再生速度"><option value="0.75">0.75倍</option><option value="1" selected>1倍</option><option value="1.25">1.25倍</option><option value="1.5">1.5倍</option><option value="2">2倍</option></select>
+    <button class="hs-fs" type="button" aria-label="全画面">⛶</button>
+  </div>
+  <ul class="hs-chips"></ul>
+
+  <details class="hs-text">
+    <summary>テキストで読む</summary>
+    <ol>
+      <li><b>タイトル：</b>排煙設備。煙を区切って、逃がす。そのしくみと基準、計算方法、改修の注意点まで、約5分半で解説します。</li>
+      <li><b>煙の動き：</b>火災が起きると、熱い煙は天井にたまり、時間とともに下へ降りてきます。煙の層が避難する人の高さまで下がる前に、煙を外へ出して避難の時間を確保する。これが排煙設備の役割です。</li>
+      <li><b>設置が必要な建物：</b>設置が必要なのは主に4つ。劇場や病院、物販店などの特殊建築物で延べ500㎡を超えるもの。3階建て以上で延べ500㎡を超えるもの。排煙上の無窓居室。そして、延べ1,000㎡を超える建物の、200㎡を超える居室です。</li>
+      <li><b>適用除外：</b>ただし除外もあります。小さく区画された部分、学校や体育館などのスポーツ施設、階段や昇降路の部分、不燃性の物品を扱う倉庫など。告示1436号の条件に合う部分も、設けなくてよいとされています。</li>
+      <li><b>無窓居室の判定：</b>無窓居室かどうかは、天井から80センチ以内で開けられる部分の面積で判定します。床面積の50分の1に満たなければ、排煙上の無窓居室。100㎡の部屋なら、2㎡以上が必要です。</li>
+      <li><b>防煙区画：</b>排煙設備を設けるときは、まず床面積500㎡以内ごとに防煙区画をつくります。区切りには、天井から50センチ以上下に突き出した、不燃材料の垂れ壁などを使います。</li>
+      <li><b>防煙壁の種類：</b>防煙壁には、間仕切壁のほか、ガラスなどの固定式の垂れ壁、火災のときに煙感知器と連動して降りてくる可動式の垂れ壁があります。</li>
+      <li><b>自然排煙：</b>自然排煙は、窓などの開口部から煙を直接外へ出す方式です。排煙口は天井から80センチ以内、かつ防煙壁の下端より上に設け、開けられる面積は区画の床面積の50分の1以上とします。</li>
+      <li><b>手動開放装置：</b>排煙口を開ける手動開放装置は、壁に付ける場合は床から0.8メートル以上1.5メートル以下。天井から吊り下げる場合は床からおおむね1.8メートルの高さとし、使い方を見やすく表示します。</li>
+      <li><b>排煙口の配置：</b>排煙口は、区画のどの場所からも水平距離30メートル以内に置きます。部屋の端に1つだけだと届かない範囲が出るので、位置を見直すか、排煙口を増やします。</li>
+      <li><b>機械排煙：</b>機械排煙は、排煙口からダクトを通して、排煙機で煙を吸い出す方式です。排煙口はふだん閉じていて、開くと排煙機が自動で動き出します。</li>
+      <li><b>排煙機の能力：</b>排煙機の能力は、毎分120㎥以上、かつ床面積1㎡あたり毎分1㎥以上。2つ以上の区画を受け持つ場合は、最も大きい区画の床面積1㎡あたり、毎分2㎥以上が必要です。</li>
+      <li><b>電源・材料：</b>電源が必要な排煙設備には予備電源を設け、煙に触れる部分は不燃材料でつくります。高さ31メートルを超える建物などでは、中央管理室で制御と監視を行います。</li>
+      <li><b>計算①手順：</b>次は計算の手順です。まず居室の床面積を求め、50分の1を掛けて、必要な排煙面積を出します。次に、窓ごとに有効な開口面積を算定して合計し、必要面積以上ならOK。足りなければ、窓の追加や機械排煙を検討します。</li>
+      <li><b>計算②窓の有効面積：</b>例えば120㎡の居室なら、必要な面積は2.4㎡。引違い窓は開く部分だけを数え、高さは天井から80センチ以内の部分だけ。幅0.9メートル、高さ0.6メートルで0.54㎡です。4か所では2.16㎡で足りません。5か所にすると2.7㎡で、基準を満たします。</li>
+      <li><b>告示1436号の全体像：</b>告示1436号は、排煙設備を設けなくてよい部分を定めています。小規模な住宅の居室、避難階などの一定の用途、消火設備のある機械室や車庫、そして高さ31メートル以下と、31メートルを超える部分の、区画や内装の条件です。</li>
+      <li><b>1436号ニ（31m以下）：</b>よく使うのが、高さ31メートル以下の部分の規定です。居室なら、100㎡以内ごとに準耐火構造の壁などで区画して内装を準不燃材料にするか、100㎡以下で内装と下地を不燃材料にします。居室以外の室にも、内装や防煙壁による条件があります。</li>
+      <li><b>天井高3m以上の特例：</b>天井の高さが3メートル以上の部屋には、排煙口の位置の特例があります。床から2.1メートル以上、かつ天井高さの2分の1以上の壁で、防煙壁の下端より上であれば、排煙口として扱えます。</li>
+      <li><b>消防法の排煙設備：</b>消防法の排煙設備が必要になるのは、延べ1,000㎡以上の地下街、床面積500㎡以上の劇場などの舞台部、そして遊技場や物販店、駅、駐車場などの地階や無窓階で、床面積1,000㎡以上のものです。</li>
+      <li><b>建基法と消防法の違い：</b>基準にも違いがあります。地下街では、防煙区画は300㎡以下、垂れ壁は80センチ以上。消防法の排煙口は、天井高さの2分の1以上の部分に設けます。建築基準法で免除されても、消防法の設置義務は別に判断します。</li>
+      <li><b>NG①間仕切りの追加：</b>ここからは改修でよくある失敗です。テナント工事で間仕切りを増やすと、窓のない部屋や、排煙口まで30メートルを超える場所が生まれます。排煙口の追加や機械排煙、告示1436号の適用を検討しましょう。</li>
+      <li><b>NG②天井の変更：</b>天井を下げる改修も要注意。垂れ壁の丈が50センチ未満になると、防煙壁として扱えません。窓の上部が天井裏に隠れると、排煙に有効な面積も減ってしまいます。</li>
+      <li><b>NG③内装・用途・窓：</b>ほかにも、告示で免除していた部屋の内装を木質化して条件から外れる、事務所を飲食店に用途変更して設置対象になる、窓のFIX化や看板で開放面積が足りなくなる、といった例があります。</li>
+      <li><b>まとめ：</b>まとめです。区切る、逃がす、吸い出す。そして改修では、間仕切り・天井・内装・用途・窓を変えたら必ず再確認。以上、排煙設備のポイントでした。</li>
+    </ol>
+    <p class="hs-src">音声は端末のMicrosoft日本語女性音声から選択できます。字幕は消音時も表示します。音は再生ボタンか画面をタップした後から鳴ります。<br>出典：建築基準法施行令 第126条の2・第126条の3、平成12年建設省告示第1436号、消防法施行令 第28条。※解説用に要点を簡略化しています。個別の判断は所管行政庁・指定確認検査機関に確認してください。※イラストはイメージです。</p>
+  </details>
+</section>
+
+<script>
+(() => {
+  const root = document.getElementById('hs-haien');
+  const cv = root.querySelector('canvas'), ctx = cv.getContext('2d');
+  const W = 1280, H = 720;
+  const FONT = '"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif';
+  const INK = '#1f2430', RED = '#e8432f', YEL = '#ffd84a';
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
+
+  // ---------- utils ----------
+  const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const eo = x => 1 - Math.pow(1 - cl(x), 3);
+  const eio = x => { x = cl(x); return x * x * (3 - 2 * x); };
+  const eb = x => { x = cl(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const PUFFS = Array.from({length: 46}, () => [rnd(), rnd(), rnd()]);
+  const f = (w, s) => `${w} ${s}px ${FONT}`;
+
+  // ---------- building section ----------
+  const CEIL = 172, FLOOR = 620, LW = 80, RW = 1200;
+  function room(opts = {}) {
+    const g = ctx.createLinearGradient(0, CEIL, 0, FLOOR);
+    g.addColorStop(0, '#f4efe6'); g.addColorStop(1, '#e6dccb');
+    ctx.fillStyle = '#cfe6f2'; ctx.fillRect(0, 0, W, H);           // sky / outside
+    ctx.fillStyle = g; ctx.fillRect(LW, CEIL, RW - LW, FLOOR - CEIL);
+    ctx.fillStyle = '#8a8f99';
+    ctx.fillRect(40, CEIL - 22, W - 80, 22);                         // ceiling slab
+    ctx.fillRect(40, FLOOR, W - 80, 24);                             // floor slab
+    ctx.fillStyle = '#9aa0aa';
+    ctx.fillRect(60, CEIL - 22, LW - 60, FLOOR - CEIL + 46);         // left wall
+    if (!opts.noRightWall) ctx.fillRect(RW, CEIL - 22, 20, FLOOR - CEIL + 46);
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(40, FLOOR + 24, W - 80, 40);
+    // door + exit sign on left wall
+    if (opts.door) {
+      ctx.fillStyle = '#7a8a99'; ctx.fillRect(LW, FLOOR - 190, 14, 190);
+      ctx.fillStyle = '#1e9e5a'; rr(LW + 18, FLOOR - 250, 120, 40, 6); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(800, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('非常口', LW + 78, FLOOR - 229);
+    }
+  }
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
+
+  function fire(x, t, s = 1) {
+    for (let i = 0; i < 3; i++) {
+      const fl = Math.sin(t * 12 + i * 2) * 6;
+      const hh = (70 - i * 18) * s + fl, ww = (34 - i * 9) * s;
+      ctx.fillStyle = ['#ff6a2b', '#ffa531', '#ffe27a'][i];
+      ctx.beginPath();
+      ctx.moveTo(x - ww, FLOOR);
+      ctx.quadraticCurveTo(x - ww * 0.9, FLOOR - hh * 0.5, x + Math.sin(t * 9) * 5, FLOOR - hh);
+      ctx.quadraticCurveTo(x + ww * 0.9, FLOOR - hh * 0.5, x + ww, FLOOR);
+      ctx.fill();
+    }
+    ctx.fillStyle = '#5b3a2a'; ctx.fillRect(x - 46 * s, FLOOR - 10, 92 * s, 10);
+  }
+
+  // smoke layer under ceiling: x0..x1, depth px
+  function smokeLayer(x0, x1, depth, t, a = 1) {
+    if (depth <= 1) return;
+    const g = ctx.createLinearGradient(0, CEIL, 0, CEIL + depth + 20);
+    g.addColorStop(0, `rgba(60,62,72,${0.92 * a})`); g.addColorStop(1, `rgba(110,112,124,${0.55 * a})`);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x0, CEIL);
+    for (let x = x0; x <= x1; x += 16) ctx.lineTo(x, CEIL + depth + Math.sin(x / 45 + t * 2) * 7 + Math.sin(x / 19 - t * 3) * 3);
+    ctx.lineTo(x1, CEIL); ctx.closePath(); ctx.fill();
+    // billows
+    ctx.fillStyle = `rgba(150,152,162,${0.35 * a})`;
+    for (let i = 0; i < 12; i++) {
+      const x = x0 + ((i * 97 + t * 25) % (x1 - x0));
+      const r = 18 + (i % 4) * 8;
+      ctx.beginPath(); ctx.arc(x, CEIL + depth - r * 0.3 + Math.sin(t * 2 + i) * 4, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // rising plume from fire to target y
+  function plume(x, topY, t, a = 1, rate = 0.45, n = 26) {
+    for (let i = 0; i < n; i++) {
+      const [r1, r2, r3] = PUFFS[i];
+      const ph = (t * rate + i / n) % 1;
+      const y = lerp(FLOOR - 60, topY + 20, ph);
+      const xx = x + Math.sin(ph * 6 + r1 * 6) * (10 + ph * 60) * (r2 - 0.5) * 2;
+      const r = 14 + ph * 40 * (0.6 + r3);
+      ctx.fillStyle = `rgba(90,92,102,${(0.5 - ph * 0.25) * a})`;
+      ctx.beginPath(); ctx.arc(xx, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function person(x, t, crouch = 0, dir = -1, walking = true) {
+    const y = FLOOR, s = 1 - crouch * 0.28;
+    const ph = walking ? Math.sin(t * 9) : 0;
+    ctx.strokeStyle = '#2b4c7e'; ctx.lineWidth = 10; ctx.lineCap = 'round';
+    const hip = [x, y - 62 * s], neck = [x + dir * crouch * 22, y - 118 * s];
+    ctx.beginPath(); ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] + ph * 16, y - 4);
+    ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] - ph * 16, y - 4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(...neck); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] + dir * 26, neck[1] + 30 + crouch * 10);
+    ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] - ph * 14, neck[1] + 46); ctx.stroke();
+    ctx.fillStyle = '#2b4c7e'; ctx.beginPath(); ctx.arc(neck[0] + dir * 4, neck[1] - 20, 15, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // ---------- text ----------
+  function segs(s) { const out = []; let cur = '', hl = false;
+    for (const ch of s) { if (ch === '[' || ch === ']') { if (cur) out.push([cur, hl]); cur = ''; hl = ch === '['; } else cur += ch; }
+    if (cur) out.push([cur, hl]); return out; }
+  function headline(text, t, y = 76, size = 38) {
+    const lines = text.split('\n');
+    ctx.font = f(900, size);
+    const ws = lines.map(l => segs(l).reduce((a, [s]) => a + ctx.measureText(s).width, 0));
+    const lh = size * 1.32, bw = Math.max(...ws) + 72, bh = lh * lines.length + 26;
+    const sc = 0.7 + 0.3 * eb(t / 0.35), al = cl(t / 0.15);
+    ctx.save(); ctx.globalAlpha = al; ctx.translate(W / 2, y); ctx.scale(sc, sc);
+    ctx.fillStyle = 'rgba(40,30,20,.25)'; rr(-bw / 2 + 5, -bh / 2 + 7, bw, bh, 22); ctx.fill();
+    ctx.fillStyle = '#fffaf0'; rr(-bw / 2, -bh / 2, bw, bh, 22); ctx.fill();
+    ctx.lineWidth = 5; ctx.strokeStyle = '#f5ae28'; ctx.stroke();
+    ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+    lines.forEach((l, i) => {
+      let x = -ws[i] / 2; const yy = -bh / 2 + 13 + lh * (i + 0.5);
+      for (const [s, hl] of segs(l)) {
+        const w = ctx.measureText(s).width;
+        if (hl) { ctx.fillStyle = YEL; ctx.fillRect(x, yy + size * 0.3, w, size * 0.22); }
+        ctx.fillStyle = hl ? RED : INK; ctx.fillText(s, x, yy); x += w;
+      }
+    });
+    ctx.restore();
+  }
+  function pill(text, x, y, t, opt = {}) {
+    if (t <= 0) return;
+    const a = eo(t / 0.3), size = opt.size || 24;
+    ctx.save(); ctx.globalAlpha = a; ctx.font = f(700, size);
+    const w = ctx.measureText(text).width + 32, h = size + 22;
+    const bx = opt.align === 'right' ? x - w : opt.align === 'center' ? x - w / 2 : x;
+    ctx.fillStyle = opt.bg || 'rgba(25,35,60,.92)'; rr(bx, y - h / 2, w, h, h / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = opt.color || '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, bx + 16, y + 1); ctx.restore();
+  }
+  function fx(text, x, y, size, color, t = 1, align = 'center') {
+    if (t <= 0) return;
+    const s = eb(t / 0.3);
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.font = f(900, size); ctx.textAlign = align; ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8; ctx.strokeStyle = '#1f2430'; ctx.lineJoin = 'round'; ctx.strokeText(text, 0, 0);
+    ctx.fillStyle = color; ctx.fillText(text, 0, 0); ctx.restore();
+  }
+  function dimV(x, y0, y1, t, label, side = 1) {           // vertical dimension
+    if (t <= 0) return;
+    const k = eo(t / 0.4), yy = lerp(y0, y1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(x - 12, y0); ctx.lineTo(x + 12, y0); ctx.moveTo(x, y0); ctx.lineTo(x, yy);
+    if (k > .98) { ctx.moveTo(x - 12, y1); ctx.lineTo(x + 12, y1); } ctx.stroke();
+    if (k > .9) fx(label, x + side * 18, (y0 + y1) / 2, 26, YEL, (t - .35) * 3, side > 0 ? 'left' : 'right');
+  }
+  function dimH(x0, x1, y, t, label) {
+    if (t <= 0) return;
+    const k = eo(t / 0.5), xx = lerp(x0, x1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4; ctx.setLineDash([14, 10]);
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(xx, y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x0, y - 12); ctx.lineTo(x0, y + 12); ctx.stroke();
+    if (k > .98) { ctx.beginPath(); ctx.moveTo(x1, y - 12); ctx.lineTo(x1, y + 12); ctx.stroke(); }
+    if (k > .9) fx(label, (x0 + x1) / 2, y - 30, 28, YEL, (t - .45) * 3);
+  }
+  function card(x, y, w, h, num, title, body, t, color = RED) {
+    if (t <= 0) return;
+    const s = 0.85 + 0.15 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 10, h, [16, 0, 0, 16]); ctx.fill();
+    ctx.fillStyle = color; ctx.beginPath(); ctx.arc(52, 48, 24, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 52, 49);
+    ctx.fillStyle = INK; ctx.font = f(900, 27); ctx.textAlign = 'left'; ctx.fillText(title, 90, 49);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 22);
+    body.split('\n').forEach((l, i) => ctx.fillText(l, 34, 100 + i * 34));
+    ctx.restore();
+  }
+
+  // ---------- extra helpers ----------
+  function plain(c = '#eef1f6') { ctx.fillStyle = c; ctx.fillRect(0, 0, W, H); }
+  function cardSm(x, y, w, h, num, title, body, t, color) {
+    if (t <= 0) return;
+    const dx = (1 - eo(t / 0.4)) * 40;
+    ctx.save(); ctx.globalAlpha = cl(t / 0.25); ctx.translate(x + dx, y);
+    ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(3, 5, w, h, 14); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 14); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 9, h, [14, 0, 0, 14]); ctx.fill();
+    ctx.beginPath(); ctx.arc(46, h / 2, 21, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 46, h / 2 + 1);
+    ctx.textAlign = 'left'; ctx.fillStyle = INK; ctx.font = f(900, 25); ctx.fillText(title, 84, h * 0.33);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 20); ctx.fillText(body, 84, h * 0.71);
+    ctx.restore();
+  }
+  function box(x, y, w, h, lines, t) {           // lines: [text, size, weight, color]
+    if (t <= 0) return;
+    const s = 0.9 + 0.1 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill(); ctx.strokeStyle = '#f5ae28'; ctx.lineWidth = 4; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    let yy = 0; const tot = lines.reduce((a, l) => a + l[1] * 1.45, 0); yy = (h - tot) / 2;
+    for (const [tx, sz, wt, col] of lines) { ctx.font = f(wt || 700, sz); ctx.fillStyle = col || INK; ctx.fillText(tx, w / 2, yy + sz * 0.72); yy += sz * 1.45; }
+    ctx.restore();
+  }
+  function miniSmoke(x0, x1, y0, depth, t) {
+    if (depth <= 1) return;
+    ctx.fillStyle = 'rgba(70,72,84,.82)'; ctx.beginPath(); ctx.moveTo(x0, y0);
+    for (let x = x0; x <= x1; x += 10) ctx.lineTo(x, y0 + depth + Math.sin(x / 25 + t * 2.5) * 5);
+    ctx.lineTo(x1, y0); ctx.closePath(); ctx.fill();
+  }
+  function scaled(x, y, s, fn) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-x, -y); fn(); ctx.restore(); }
+
+  // ---------- scenes ----------
+  const S = [];
+  S.push({name: 'タイトル', d: 6, draw(t) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1d2a44'); g.addColorStop(1, '#0d1422');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < 30; i++) { const [a, b, c] = PUFFS[i]; const ph = (t * 0.12 + a) % 1;
+      ctx.fillStyle = `rgba(160,165,180,${0.16 * (1 - ph)})`; ctx.beginPath();
+      ctx.arc(a * W + Math.sin(t + i) * 30, H + 80 - ph * (H + 200), 40 + c * 70, 0, Math.PI * 2); ctx.fill(); }
+    pill('CM知識一覧｜排煙', W / 2, 205, t, {align: 'center', bg: RED, size: 28});
+    const s = eb((t - .25) / .5);
+    if (s > 0) { ctx.save(); ctx.translate(W / 2, 330); ctx.scale(s, s);
+      ctx.font = f(900, 120); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.lineWidth = 12; ctx.strokeStyle = '#fff'; ctx.strokeText('排煙設備', 0, 0); ctx.fillStyle = RED; ctx.fillText('排煙設備', 0, 0); ctx.restore(); }
+    if (t > .8) { ctx.globalAlpha = eo((t - .8) / .4); ctx.font = f(800, 44); ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
+      ctx.fillText('煙を「区切って」「逃がす」しくみと基準', W / 2, 460); ctx.globalAlpha = 1; }
+    if (t > 1.4) { ctx.globalAlpha = eo((t - 1.4) / .4); ctx.font = f(500, 23); ctx.fillStyle = '#b9c2d3';
+      ctx.fillText('設置基準 ／ 自然排煙 ／ 機械排煙 ／ 排煙計算 ／ 告示1436号 ／ 消防法 ／ 改修NG事例', W / 2, 530); ctx.globalAlpha = 1; }
+  }});
+
+  S.push({name: '煙の動き', d: 12, draw(t) {
+    room({door: true});
+    const depth = 300 * eio(t / 7);
+    smokeLayer(LW, RW, depth, t);
+    plume(820, CEIL + depth * 0.4, t, 1, 0.5);
+    fire(820, t);
+    const px = lerp(1050, 210, eio((t - .3) / 7));
+    person(px, t, cl((depth - 170) / 100), -1, t < 7.3);
+    fx('モクモク…', 900, CEIL + depth + 50, 34, '#fff', t - 1.2);
+    if (t > 4.5) pill('煙の層が下がる前に、避難する時間を稼ぐ', W / 2, 670, t - 4.5, {align: 'center', bg: RED, size: 26});
+    headline('火災の煙は[天井にたまり]、[下へ降りてくる]', t);
+  }});
+
+  S.push({name: '設置が必要な建物', d: 15, draw(t) {
+    plain();
+    const cw = 560, ch = 200, x0 = 70, y0 = 170, gx = 20, gy = 22;
+    card(x0, y0, cw, ch, '1', '特殊建築物', '法別表第1(い)欄(1)〜(4)項の用途で\n延べ面積500㎡超', t - .4);
+    card(x0 + cw + gx * 2, y0, cw, ch, '2', '階数3以上の建築物', '階数3以上で\n延べ面積500㎡超', t - 2.4);
+    card(x0, y0 + ch + gy, cw, ch, '3', '排煙上の無窓居室', '天井から80cm以内で開放できる部分が\n床面積の1/50未満の居室', t - 4.6);
+    card(x0 + cw + gx * 2, y0 + ch + gy, cw, ch, '4', '大規模建築物の大きな居室', '延べ面積1,000㎡超の建築物で\n床面積200㎡超の居室', t - 6.6);
+    if (t > 8) { ctx.globalAlpha = eo((t - 8) / .4); ctx.font = f(500, 21); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'center';
+      ctx.fillText('(1)劇場・集会場など (2)病院・ホテル・共同住宅など (3)学校・体育館など (4)百貨店・飲食店など', W / 2, 670); ctx.globalAlpha = 1; }
+    headline('排煙設備が必要な主な建築物（[令126条の2]）', t);
+  }});
+
+  S.push({name: '適用除外', d: 14, draw(t) {
+    plain();
+    const items = [
+      ['小さく区画された部分', '(2)項の用途で、準耐火構造の床・壁や防火設備で区画した100㎡以内（共同住宅の住戸は200㎡以内）'],
+      ['学校・スポーツ施設', '学校、体育館、ボーリング場、スキー場、スケート場、水泳場、スポーツの練習場'],
+      ['階段・昇降路など', '階段の部分、昇降機の昇降路の部分（乗降ロビーを含む）など'],
+      ['不燃性の工場・倉庫など', '機械製作工場、不燃性の物品を保管する倉庫などで、主要構造部が不燃材料のものなど'],
+      ['告示1436号で定める部分', '火災時に、避難上支障のある高さまで煙が降下しないとして告示で定める部分']];
+    items.forEach((it, k) => cardSm(70, 150 + k * 102, 1140, 88, String(k + 1), it[0], it[1], t - 0.5 - k * 1.3, '#7a5cff'));
+    headline('排煙設備を[設けなくてよい]部分（令126条の2ただし書）', t);
+  }});
+
+  S.push({name: '無窓居室の判定', d: 14, draw(t) {
+    room({noRightWall: true});
+    const WT = CEIL + 30, WB = CEIL + 300, Z = CEIL + 95;
+    ctx.fillStyle = '#9aa0aa'; ctx.fillRect(RW, CEIL - 22, 20, WT - CEIL + 22); ctx.fillRect(RW, WB, 20, FLOOR - WB + 24);
+    ctx.fillStyle = '#bfe3f5'; ctx.fillRect(RW, WT, 20, WB - WT); ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 3; ctx.strokeRect(RW, WT, 20, WB - WT);
+    if (t > 1) { const a = eo((t - 1) / .5);
+      ctx.fillStyle = `rgba(46,180,110,${.16 * a})`; ctx.fillRect(LW, CEIL, RW - LW + 20, Z - CEIL);
+      ctx.strokeStyle = `rgba(30,158,90,${a})`; ctx.setLineDash([14, 10]); ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(LW, Z); ctx.lineTo(RW + 20, Z); ctx.stroke(); ctx.setLineDash([]); }
+    dimV(LW + 40, CEIL, Z, t - 1.2, '天井から80cm', 1);
+    if (t > 2.2) { ctx.fillStyle = `rgba(30,158,90,${.9 * eo((t - 2.2) / .4)})`; ctx.fillRect(RW - 3, WT, 26, Z - WT); }
+    if (t > 2.8) { ctx.fillStyle = `rgba(110,112,124,${.75 * eo((t - 2.8) / .4)})`; ctx.fillRect(RW - 3, Z, 26, WB - Z); }
+    pill('開放できる部分＝有効', RW - 20, (WT + Z) / 2, t - 2.4, {align: 'right', bg: '#1e9e5a'});
+    pill('80cmより下は算入しない', RW - 20, (Z + WB) / 2 + 20, t - 3.0, {align: 'right'});
+    box(250, 420, 700, 150, [['有効な開口面積 ≧ 床面積 × 1/50', 34, 900], ['例）床面積100㎡の居室 → 2㎡以上', 26, 700, '#4a5262']], t - 4.2);
+    if (t > 7) pill('満たさない → 排煙上の無窓居室（排煙設備が必要）', W / 2, 670, t - 7, {align: 'center', bg: RED, size: 26});
+    headline('[排煙上の無窓居室]かどうかの判定', t);
+  }});
+
+  S.push({name: '防煙区画', d: 13, draw(t) {
+    room();
+    const WALLX = 700, HANG = 78;
+    const depth = Math.min(HANG - 8, 140 * eio(t / 3.2));
+    smokeLayer(LW, WALLX, depth, t);
+    plume(380, CEIL + depth * .4, t, 1, .5);
+    fire(380, t);
+    ctx.fillStyle = '#5d636e'; ctx.fillRect(WALLX, CEIL, 16, HANG);
+    ctx.fillStyle = 'rgba(255,255,255,.35)'; ctx.fillRect(WALLX + 3, CEIL + 4, 4, HANG - 8);
+    pill('防煙壁（不燃の垂れ壁など）', WALLX + 34, CEIL + 120, t - 1.0);
+    dimV(WALLX - 22, CEIL, CEIL + HANG, t - 1.6, '天井から50cm以上', -1);
+    if (t > 3.2) { const k = eo((t - 3.2) / .6);
+      ctx.fillStyle = `rgba(232,67,47,${.12 * k})`; ctx.fillRect(LW, CEIL, WALLX - LW, FLOOR - CEIL);
+      ctx.strokeStyle = RED; ctx.lineWidth = 4; ctx.setLineDash([16, 10]); ctx.strokeRect(LW + 6, CEIL + 6, WALLX - LW - 6, FLOOR - CEIL - 12); ctx.setLineDash([]);
+      fx('500㎡以内', (LW + WALLX) / 2, 470, 54, '#fff', t - 3.3); }
+    if (t > 5) fx('煙はここで止まる', 960, 360, 40, YEL, t - 5);
+    if (t > 7) pill('区画ごとに排煙口を設ける', W / 2, 670, t - 7, {align: 'center', bg: RED, size: 26});
+    headline('[防煙区画]：500㎡以内ごとに[防煙壁]で区切る', t);
+  }});
+
+  S.push({name: '防煙壁の種類', d: 12, draw(t) {
+    plain();
+    const P = [[70, '間仕切壁', 0.4], [470, '固定式の垂れ壁', 2.4], [870, '可動式の垂れ壁', 4.6]];
+    P.forEach(([x, name, t0], k) => {
+      const tt = t - t0; if (tt <= 0) return;
+      const a = eo(tt / .4), y = 170, w = 340, h = 400, c = y + 40, fl = y + 360, mx = x + w / 2;
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.fillStyle = '#fff'; rr(x, y, w, h, 16); ctx.fill();
+      ctx.fillStyle = '#f4efe6'; ctx.fillRect(x + 14, c, w - 28, fl - c);
+      ctx.fillStyle = '#8a8f99'; ctx.fillRect(x + 14, c - 14, w - 28, 14); ctx.fillRect(x + 14, fl, w - 28, 14);
+      let hang;
+      if (k === 0) { hang = fl - c; ctx.fillStyle = '#9aa0aa'; ctx.fillRect(mx - 8, c, 16, hang); }
+      if (k === 1) { hang = 60; ctx.fillStyle = 'rgba(150,200,230,.85)'; ctx.fillRect(mx - 6, c, 12, hang); ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 2; ctx.strokeRect(mx - 6, c, 12, hang); }
+      if (k === 2) { const drop = eio((tt - 2.2) / .8); hang = 6 + 54 * drop;
+        ctx.fillStyle = '#c9cdd4'; ctx.fillRect(mx - 18, c - 4, 36, 10);
+        ctx.fillStyle = 'rgba(205,210,220,.95)'; ctx.fillRect(mx - 6, c, 12, hang);
+        const on = tt > 1.4 && Math.floor(tt * 4) % 2 === 0;
+        ctx.fillStyle = on ? '#ff3b30' : '#ddd'; ctx.beginPath(); ctx.arc(x + 80, c + 8, 9, 0, Math.PI * 2); ctx.fill();
+        if (tt > 1.4) { ctx.font = f(800, 18); ctx.fillStyle = '#d63a2c'; ctx.textAlign = 'center'; ctx.fillText('感知', x + 80, c + 36); } }
+      const dep = Math.min(hang - 6, 52 * eio(tt / 2.5));
+      miniSmoke(x + 14, mx - 8, c, dep, t);
+      ctx.restore();
+      pill(name, mx, 610, tt, {align: 'center', size: 26});
+    });
+    if (t > 7) pill('いずれも不燃材料で造る・覆う', W / 2, 672, t - 7, {align: 'center', bg: RED, size: 24});
+    headline('[防煙壁]の種類', t);
+  }});
+
+  S.push({name: '自然排煙', d: 14, draw(t) {
+    room({noRightWall: true});
+    const WIN = 80;
+    ctx.fillStyle = '#9aa0aa';
+    ctx.fillRect(RW, CEIL - 22, 20, 22 + 8); ctx.fillRect(RW, CEIL + WIN, 20, FLOOR - CEIL - WIN + 24);
+    const open = eio((t - 2.2) / .6);
+    ctx.save(); ctx.translate(RW + 10, CEIL + WIN); ctx.rotate(-open * 0.85);
+    ctx.fillStyle = '#bfe3f5'; ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 4; ctx.fillRect(-6, -WIN + 8, 12, WIN - 8); ctx.strokeRect(-6, -WIN + 8, 12, WIN - 8);
+    ctx.restore();
+    let depth = 150; if (t > 2.4) depth = lerp(150, 70, eio((t - 2.4) / 3));
+    smokeLayer(LW, RW, depth, t);
+    plume(420, CEIL + depth * .4, t, 1, .5);
+    fire(420, t);
+    if (open > .3) for (let i = 0; i < 14; i++) {
+      const ph = (t * .6 + i / 14) % 1, x = RW - 40 + ph * 160, y = CEIL + 18 + (i % 4) * 14 - ph * 40;
+      ctx.fillStyle = `rgba(90,92,102,${.6 * (1 - ph) * open})`; ctx.beginPath(); ctx.arc(x, y, 14 + ph * 26, 0, Math.PI * 2); ctx.fill(); }
+    const HX = RW - 8, HY = FLOOR - 150;
+    ctx.fillStyle = '#d63a2c'; rr(HX - 26, HY - 26, 26, 52, 5); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(800, 13); ctx.textAlign = 'center'; ctx.fillText('排煙', HX - 13, HY + 1);
+    person(lerp(820, HX - 60, eio(t / 1.8)), t, 0, 1, t < 1.8);
+    if (t > 1.8 && t < 2.6) fx('グイッ', HX - 120, HY - 90, 36, YEL);
+    dimV(RW - 34, CEIL, CEIL + WIN, t - 3.4, '天井から80cm以内', -1);
+    if (t > 5.5) pill('防煙壁の下端より上に設ける', 560, 330, t - 5.5);
+    if (t > 7.5) pill('開放できる面積：区画の床面積の1/50以上', W / 2 - 40, 670, t - 7.5, {align: 'center', bg: RED, size: 26});
+    headline('[自然排煙]：天井から80cm以内の窓から外へ', t);
+  }});
+
+  S.push({name: '手動開放装置', d: 14, draw(t) {
+    plain('#f4efe6');
+    const px = 200, m = h => FLOOR - h * 200;          // 1m = 200px
+    ctx.fillStyle = '#8a8f99'; ctx.fillRect(40, CEIL - 22, W - 80, 22); ctx.fillRect(40, FLOOR, W - 80, 30);
+    // ruler
+    ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(px, FLOOR); ctx.lineTo(px, m(2.0)); ctx.stroke();
+    ctx.font = f(700, 20); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    for (const v of [0, 0.5, 1.0, 1.5, 2.0]) { ctx.beginPath(); ctx.moveTo(px - 12, m(v)); ctx.lineTo(px + 12, m(v)); ctx.stroke(); ctx.fillText(v.toFixed(1) + 'm', px - 20, m(v)); }
+    if (t > 1) { const a = eo((t - 1) / .5);
+      ctx.fillStyle = `rgba(255,216,74,${.45 * a})`; ctx.fillRect(px + 14, m(1.5), 520, m(0.8) - m(1.5));
+      ctx.strokeStyle = `rgba(230,170,20,${a})`; ctx.lineWidth = 3; ctx.setLineDash([12, 8]);
+      ctx.strokeRect(px + 14, m(1.5), 520, m(0.8) - m(1.5)); ctx.setLineDash([]); }
+    fx('壁付け：0.8〜1.5m', px + 280, m(1.5) - 34, 34, YEL, t - 1.6);
+    // wall-mounted box
+    const bx = 560, by = m(1.15);
+    ctx.fillStyle = '#d63a2c'; rr(bx - 36, by - 55, 72, 110, 8); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(800, 16); ctx.textAlign = 'center'; ctx.fillText('排煙口', bx, by - 30); ctx.fillText('開放装置', bx, by - 10);
+    ctx.fillStyle = '#333'; rr(bx - 18, by + 12, 36, 26, 5); ctx.fill();
+    scaled(430, FLOOR, 2.1, () => person(430, t, 0, 1, false));
+    if (t > 4) pill('使用方法を見やすく表示', bx + 60, by + 90, t - 4);
+    // ceiling-hung
+    const hx = 980, hy = m(1.8);
+    if (t > 5.5) { const a = eo((t - 5.5) / .5); ctx.globalAlpha = a;
+      ctx.strokeStyle = '#555'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(hx, CEIL); ctx.lineTo(hx, hy - 20); ctx.stroke();
+      ctx.fillStyle = '#d63a2c'; rr(hx - 26, hy - 22, 52, 44, 8); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(800, 14); ctx.fillText('引く', hx, hy); ctx.globalAlpha = 1; }
+    dimV(1080, FLOOR, hy, t - 6.2, 'おおむね1.8m', -1);
+    if (t > 6.6) pill('天井吊り下げ型', hx, hy - 70, t - 6.6, {align: 'center'});
+    headline('[手動開放装置]の取付け高さ', t);
+  }});
+
+  S.push({name: '排煙口の配置', d: 13, draw(t) {
+    plain();
+    const sc = 10, x0 = 390, y0 = 220, rw = 50 * sc, rh = 28 * sc, R = 30 * sc;
+    const mv = eio((t - 6.5) / 1.2);
+    const ox = lerp(x0 + 30, x0 + rw / 2, mv), oy = y0 + rh / 2;
+    const gr = eo((t - .8) / 1.2) * R;
+    ctx.save(); ctx.beginPath(); ctx.rect(x0, y0, rw, rh); ctx.clip();
+    ctx.fillStyle = t > 2.2 ? 'rgba(232,67,47,.28)' : '#fff'; ctx.fillRect(x0, y0, rw, rh);
+    ctx.fillStyle = '#e3f6ea'; ctx.beginPath(); ctx.arc(ox, oy, gr, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,.06)'; ctx.lineWidth = 1;
+    for (let x = x0; x <= x0 + rw; x += 5 * sc) { ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y0 + rh); ctx.stroke(); }
+    for (let y = y0; y <= y0 + rh; y += 5 * sc) { ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x0 + rw, y); ctx.stroke(); }
+    ctx.restore();
+    ctx.strokeStyle = '#1e9e5a'; ctx.lineWidth = 3; ctx.setLineDash([10, 8]);
+    ctx.beginPath(); ctx.arc(ox, oy, gr, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = INK; ctx.lineWidth = 8; ctx.strokeRect(x0, y0, rw, rh);
+    ctx.fillStyle = RED; ctx.fillRect(ox - 14, oy - 14, 28, 28); ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.strokeRect(ox - 14, oy - 14, 28, 28);
+    if (gr > 20) { ctx.strokeStyle = '#1e9e5a'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox + gr * .7, oy - gr * .7); ctx.stroke();
+      fx('30m', ox + gr * .35 + 30, oy - gr * .35, 34, '#7dffb0'); }
+    pill('排煙口', ox, oy + 42, t - .4, {align: 'center', bg: RED, size: 20});
+    if (t > 2.4 && t < 6.5) fx('届かない ✕', x0 + rw - 110, y0 + 60, 34, '#ff8a7a', t - 2.4);
+    if (t > 8) fx('全体が30m以内 ○', W / 2, y0 + rh + 70, 40, YEL, t - 8);
+    ctx.font = f(500, 18); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'left'; ctx.fillText('平面図（イメージ）50m × 28m の防煙区画', x0, y0 - 22);
+    headline('排煙口は各部分から[水平距離30m以内]', t);
+  }});
+
+  S.push({name: '機械排煙', d: 13, draw(t) {
+    room();
+    const GX = 470, DY = CEIL, DH = 34, FX = 1110, FY = CEIL + 40;
+    const on = eio((t - 2.0) / .5);
+    let depth = 150; if (t > 2.3) depth = lerp(150, 60, eio((t - 2.3) / 3.5));
+    smokeLayer(LW, RW, depth, t);
+    plume(300, CEIL + depth * .4, t, 1, .5);
+    fire(300, t);
+    ctx.fillStyle = '#b8bec8'; ctx.strokeStyle = '#59606b'; ctx.lineWidth = 3;
+    ctx.fillRect(GX - 50, DY, FX - GX + 10, DH); ctx.strokeRect(GX - 50, DY, FX - GX + 10, DH);
+    const op = eio((t - 1.4) / .4);
+    ctx.fillStyle = '#4b525d'; for (let i = 0; i < 6; i++) ctx.fillRect(GX - 44 + i * 16, DY + DH - 6 + op * 6, 9, 6 + op * 4);
+    ctx.fillStyle = '#e8ecf2'; ctx.beginPath(); ctx.arc(FX, FY, 46, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.save(); ctx.translate(FX, FY); ctx.rotate(t * 14 * on);
+    ctx.fillStyle = '#5b6474'; for (let i = 0; i < 4; i++) { ctx.rotate(Math.PI / 2); ctx.beginPath(); ctx.ellipse(0, -20, 9, 20, 0, 0, Math.PI * 2); ctx.fill(); }
+    ctx.restore();
+    ctx.fillStyle = '#b8bec8'; ctx.fillRect(FX + 40, FY - 16, 110, 32); ctx.strokeRect(FX + 40, FY - 16, 110, 32);
+    if (on > 0) for (let i = 0; i < 24; i++) {
+      const ph = (t * .5 + i / 24) % 1; let x, y;
+      if (ph < .2) { x = GX + Math.sin(i) * 40; y = lerp(CEIL + depth, DY + DH - 4, ph / .2); }
+      else if (ph < .8) { x = lerp(GX, FX - 46, (ph - .2) / .6); y = DY + DH / 2; }
+      else { x = lerp(FX + 46, W + 20, (ph - .8) / .2); y = FY; }
+      ctx.fillStyle = `rgba(70,72,82,${.75 * on})`; ctx.beginPath(); ctx.arc(x, y, 9, 0, Math.PI * 2); ctx.fill();
+    }
+    pill('排煙口', GX - 70, CEIL + 76, t - .3);
+    pill('ダクト（風道）', 720, CEIL + 76, t - .6);
+    pill('排煙機', FX - 30, FY + 80, t - .9, {align: 'center'});
+    if (t > 1.4 && t < 2.4) fx('パカッ', GX, CEIL + 150, 36, YEL);
+    if (t > 2.2 && t < 3.6) fx('ゴォォ…', FX - 160, FY + 140, 34, '#fff');
+    if (t > 4.5) pill('排煙口はふだん閉鎖 → 開くと排煙機が自動で起動', W / 2, 670, t - 4.5, {align: 'center', bg: RED, size: 24});
+    headline('[機械排煙]：排煙口→ダクト→[排煙機]で吸い出す', t);
+  }});
+
+  S.push({name: '排煙機の能力', d: 15, draw(t) {
+    plain();
+    box(110, 150, 1060, 150, [['1分あたり 120㎥以上 かつ 床面積1㎡あたり 1㎥以上', 32, 900],
+      ['2区画以上を受け持つときは、最大区画の床面積1㎡あたり 2㎥以上', 24, 700, RED]], t - .3);
+    const rows = [['① 1区画 80㎡', '80×1＝80 → 最低の120', 120, 3.0],
+                  ['② 1区画 300㎡', '300×1', 300, 5.0],
+                  ['③ 2区画 300㎡＋200㎡', '最大300×2', 600, 8.0]];
+    const bx = 520, maxW = 600, k = maxW / 600;
+    rows.forEach(([lab, calc, v, t0], i) => {
+      const tt = t - t0; if (tt <= 0) return;
+      const y = 375 + i * 105, a = eo(tt / .3);
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.font = f(900, 27); ctx.fillStyle = INK; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(lab, 90, y - 14);
+      ctx.font = f(500, 20); ctx.fillStyle = '#5b6474'; ctx.fillText(calc, 90, y + 22);
+      const w = v * k * eo((tt - .3) / 1.0);
+      ctx.fillStyle = i === 2 ? RED : '#2b6cff'; rr(bx, y - 24, Math.max(4, w), 48, 10); ctx.fill();
+      if (tt > 1.2) { ctx.font = f(900, 26); ctx.fillStyle = INK; ctx.fillText(`${v}㎥/分`, bx + w + 16, y); }
+      ctx.restore();
+    });
+    headline('[排煙機の能力]を計算してみる', t);
+  }});
+
+  S.push({name: '電源・材料', d: 12, draw(t) {
+    plain();
+    const cw = 1140, ch = 140, x0 = 70;
+    card(x0, 160, cw, ch, '1', '予備電源', '電源を必要とする排煙設備には、予備電源を設ける', t - .4, '#0f9d8a');
+    card(x0, 320, cw, ch, '2', '不燃材料', '排煙口・風道など、煙に接する部分は不燃材料で造る', t - 3.0, '#0f9d8a');
+    card(x0, 480, cw, ch, '3', '中央管理室', '高さ31m超の建築物や、床面積1,000㎡超の地下街は、中央管理室で制御・監視', t - 5.6, '#0f9d8a');
+    headline('そのほかの主な基準（[令126条の3]）', t);
+  }});
+
+  S.push({name: '計算①手順', d: 16, draw(t) {
+    plain();
+    const steps = [['床面積 A を求める', '居室（防煙区画）ごとの床面積'],
+      ['必要な排煙面積 ＝ A × 1/50', '例）120㎡ → 2.4㎡'],
+      ['窓ごとに有効な開口面積を算定', '開く部分の幅 × 有効な高さ（天井から80cm以内・防煙壁の下端より上）'],
+      ['合計 ≧ 必要面積 なら OK', '足りなければ 窓の追加・位置の変更・機械排煙 を検討']];
+    steps.forEach(([a, b], k) => {
+      const y = 160 + k * 122;
+      cardSm(110, y, 1060, 96, String(k + 1), a, b, t - 0.6 - k * 2.4, '#f08a24');
+      if (k < 3 && t > 0.6 + k * 2.4 + 1.2) { ctx.fillStyle = '#f08a24'; ctx.beginPath(); ctx.moveTo(150, y + 100); ctx.lineTo(170, y + 100); ctx.lineTo(160, y + 118); ctx.fill(); }
+    });
+    headline('[自然排煙の計算]手順', t);
+  }});
+
+  S.push({name: '計算②窓の有効面積', d: 17, draw(t) {
+    plain('#f4efe6');
+    const m = 100, C = 175, Z = C + 0.8 * m, wy = C + 0.2 * m, wh = 1.5 * m, ww = 1.8 * m, gap = 26, x0 = 80;
+    ctx.fillStyle = '#8a8f99'; ctx.fillRect(40, C - 18, W - 80, 18);
+    ctx.font = f(500, 17); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText('室内から見た外壁（展開図・イメージ）', 50, C + wh + 72);
+    if (t > 1) { const a = eo((t - 1) / .5);
+      ctx.fillStyle = `rgba(46,180,110,${.18 * a})`; ctx.fillRect(40, C, W - 80, Z - C);
+      ctx.strokeStyle = `rgba(30,158,90,${a})`; ctx.setLineDash([12, 8]); ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(40, Z); ctx.lineTo(W - 40, Z); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = `rgba(30,120,70,${a})`; ctx.font = f(800, 18); ctx.textAlign = 'right'; ctx.fillText('天井から80cm', W - 50, Z - 14); }
+    const n = t > 10.5 ? 5 : 4;
+    for (let i = 0; i < 5; i++) {
+      const x = x0 + i * (ww + gap);
+      let al = 1; if (i === 4) { if (t <= 10.5) continue; al = eo((t - 10.5) / .5); }
+      ctx.save(); ctx.globalAlpha = al;
+      ctx.fillStyle = '#d9eef8'; ctx.fillRect(x, wy, ww, wh); ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 4; ctx.strokeRect(x, wy, ww, wh);
+      const sl = eio((t - 2.2) / .8) * ww / 2;     // 片側の障子を引く
+      ctx.fillStyle = 'rgba(160,200,225,.9)'; ctx.fillRect(x + ww / 2 - sl, wy + 4, ww / 2, wh - 8);
+      ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 2; ctx.strokeRect(x + ww / 2 - sl, wy + 4, ww / 2, wh - 8);
+      if (t > 3.4) { ctx.fillStyle = `rgba(30,158,90,${.85 * eo((t - 3.4) / .4)})`; ctx.fillRect(x + ww / 2, wy, ww / 2, Z - wy); }
+      if (t > 3.4) { ctx.fillStyle = 'rgba(110,112,124,.35)'; ctx.fillRect(x + ww / 2, Z, ww / 2, wy + wh - Z); }
+      ctx.restore();
+    }
+    if (t > 3.8) { pill('有効 0.9m × 0.6m', x0 + ww * .75, wy - 2, t - 3.8, {align: 'center', bg: '#1e9e5a', size: 18}); }
+    const bxY = 470;
+    box(80, bxY, 520, 150, [['必要：120㎡ × 1/50', 26, 700, '#4a5262'], ['＝ 2.4㎡', 40, 900, INK]], t - 5);
+    if (t > 7) {
+      const ok = n === 5;
+      box(680, bxY, 520, 150, [[ok ? '0.54㎡ × 5か所' : '0.54㎡ × 4か所', 26, 700, '#4a5262'],
+        [ok ? '＝ 2.70㎡ ≧ 2.4 ○' : '＝ 2.16㎡ ＜ 2.4 ✕', 38, 900, ok ? '#1e9e5a' : RED]], ok ? t - 10.8 : t - 7);
+    }
+    ctx.font = f(500, 16); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'center';
+    ctx.fillText('※引違い窓は開く部分を算入。窓の開き方による算定の細部は所管行政庁の取扱いを確認', W / 2, 690);
+    headline('計算例：[引違い窓]の有効面積', t);
+  }});
+
+  S.push({name: '告示1436号の全体像', d: 14, draw(t) {
+    plain();
+    const items = [
+      ['イ 小規模な住宅の居室', '階数2以下・延べ200㎡以下の住宅などの居室で、換気上有効な開口部が床面積の1/20以上'],
+      ['ロ 避難階・その直上階', '一定の用途（博物館・美術館・図書館など）で、各居室から容易に屋外へ避難できるもの'],
+      ['ハ 機械室・車庫など', '危険物の貯蔵場、自動車車庫、通信機械室などで、不燃性ガス・粉末消火設備を設けたもの'],
+      ['ニ 高さ31m以下の部分', '100㎡以内の区画・内装の不燃化などの条件（次の章で詳しく）'],
+      ['ホ 高さ31m超の部分', '100㎡以下の室を耐火構造の床・壁などで区画し、内装を準不燃材料としたもの']];
+    items.forEach((it, k) => cardSm(70, 150 + k * 100, 1140, 86, String(k + 1), it[0], it[1], t - 0.5 - k * 1.6, '#0f9d8a'));
+    headline('[告示1436号]第4号：排煙設備を要しない部分', t);
+  }});
+
+  S.push({name: '1436号ニ（31m以下）', d: 17, draw(t) {
+    plain();
+    const cw = 560, ch = 200, x0 = 70, y0 = 170;
+    card(x0, y0, cw, ch, '三', '居室：100㎡区画＋内装準不燃', '100㎡以内ごとに準耐火構造の床・壁や\n防火設備で区画し、内装を準不燃材料', t - .5, '#0f9d8a');
+    card(x0 + cw + 40, y0, cw, ch, '四', '居室：100㎡以下＋内装不燃', '床面積100㎡以下で、内装の仕上げを\n不燃材料とし、下地も不燃材料', t - 3.5, '#0f9d8a');
+    card(x0, y0 + ch + 22, cw, ch, '一', '室：内装準不燃＋開口部', '内装を準不燃材料とし、居室などに面する\n開口部に防火設備などを設ける', t - 7.5, '#5b6474');
+    card(x0 + cw + 40, y0 + ch + 22, cw, ch, '二', '室：100㎡以下＋防煙壁', '床面積100㎡以下で、\n防煙壁で区画したもの', t - 9.5, '#5b6474');
+    if (t > 11) { ctx.globalAlpha = eo((t - 11) / .4); ctx.font = f(500, 19); ctx.fillStyle = '#5b6474'; ctx.textAlign = 'center';
+      ctx.fillText('※「室」は居室以外の部屋。特殊建築物の主たる用途に供する地階の部分は対象外', W / 2, 668); ctx.globalAlpha = 1; }
+    headline('告示1436号 第4号ニ：[高さ31m以下]の部分', t);
+  }});
+
+  S.push({name: '天井高3m以上の特例', d: 13, draw(t) {
+    room({noRightWall: true});
+    const mm = (FLOOR - CEIL) / 4.5, y21 = FLOOR - 2.1 * mm, yHalf = FLOOR - 2.25 * mm, Z = CEIL + 0.8 * mm;
+    const wTop = CEIL + 0.9 * mm, wBot = Math.min(y21, yHalf) - 4;
+    ctx.fillStyle = '#9aa0aa'; ctx.fillRect(RW, CEIL - 22, 20, wTop - CEIL + 22); ctx.fillRect(RW, wBot, 20, FLOOR - wBot + 24);
+    ctx.fillStyle = '#bfe3f5'; ctx.fillRect(RW, wTop, 20, wBot - wTop); ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 3; ctx.strokeRect(RW, wTop, 20, wBot - wTop);
+    dimV(LW + 50, FLOOR, CEIL, t - .6, '天井高 4.5m（例）', 1);
+    if (t > 1.8) { const a = eo((t - 1.8) / .4); ctx.fillStyle = `rgba(46,180,110,${.15 * a})`; ctx.fillRect(LW, CEIL, RW - LW, Z - CEIL);
+      pill('通常：天井から80cm以内', 640, (CEIL + Z) / 2, t - 1.8, {align: 'center', bg: '#1e9e5a', size: 20}); }
+    if (t > 4) { const a = eo((t - 4) / .5);
+      ctx.fillStyle = `rgba(255,216,74,${.28 * a})`; ctx.fillRect(LW, CEIL, RW - LW, yHalf - CEIL);
+      ctx.strokeStyle = `rgba(220,160,10,${a})`; ctx.lineWidth = 3; ctx.setLineDash([12, 8]);
+      ctx.beginPath(); ctx.moveTo(LW, yHalf); ctx.lineTo(RW, yHalf); ctx.stroke(); ctx.setLineDash([]); }
+    dimV(RW - 40, FLOOR, y21, t - 4.6, '床から2.1m以上', -1);
+    if (t > 5.4) fx('天井高の1/2以上', 520, yHalf + 34, 30, YEL, t - 5.4);
+    if (t > 6.5) pill('この範囲の壁に設けた排煙口も有効（防煙壁の下端より上）', W / 2, 670, t - 6.5, {align: 'center', bg: RED, size: 23});
+    headline('[天井高3m以上]の排煙口の特例（告示1436号 第3号）', t, 76, 34);
+  }});
+
+  S.push({name: '消防法の排煙設備', d: 15, draw(t) {
+    plain();
+    const cw = 1140, ch = 140, x0 = 70;
+    card(x0, 160, cw, ch, '1', '地下街（(16の2)項）', '延べ面積 1,000㎡以上', t - .5, RED);
+    card(x0, 320, cw, ch, '2', '劇場・映画館など（(1)項）の舞台部', '舞台部の床面積 500㎡以上', t - 3.5, RED);
+    card(x0, 480, cw, ch, '3', '遊技場など(2)項・物販店など(4)項・駅など(10)項・駐車場など(13)項', '地階または無窓階で、床面積 1,000㎡以上', t - 6.8, RED);
+    headline('[消防法]の排煙設備が必要な防火対象物（令28条）', t, 76, 36);
+  }});
+
+  S.push({name: '建基法と消防法の違い', d: 14, draw(t) {
+    plain();
+    const rows = [['目的', '避難の安全', '消防隊の消火活動'],
+      ['防煙区画', '500㎡以内', '500㎡以下（地下街は300㎡）'],
+      ['防煙壁', '天井から50cm以上', '50cm以上（地下街は80cm）'],
+      ['排煙口の位置', '天井から80cm以内など', '防煙壁の下端より上・天井高の1/2以上'],
+      ['免除の関係', '令126条の2・告示1436号', '建基法で免除でも消防法は別に判断']];
+    const x0 = 70, cw = [230, 430, 480], rh = 84, y0 = 160;
+    const head = ['項目', '建築基準法', '消防法'], hc = ['#5b6474', '#2b6cff', RED];
+    let x = x0;
+    head.forEach((h, j) => { ctx.fillStyle = hc[j]; rr(x, y0, cw[j] - 6, 56, 10); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(h, x + (cw[j] - 6) / 2, y0 + 29); x += cw[j]; });
+    rows.forEach((r, i) => {
+      const tt = t - 0.6 - i * 1.6; if (tt <= 0) return;
+      ctx.save(); ctx.globalAlpha = eo(tt / .3);
+      let x = x0; const y = y0 + 66 + i * rh;
+      r.forEach((c, j) => { ctx.fillStyle = j === 0 ? '#e3e7ee' : '#fff'; rr(x, y, cw[j] - 6, rh - 8, 8); ctx.fill();
+        ctx.fillStyle = INK; ctx.font = f(j === 0 ? 900 : 700, j === 0 ? 22 : 21); ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText(c, x + 18, y + (rh - 8) / 2); x += cw[j]; });
+      ctx.restore();
+    });
+    headline('[建築基準法]と[消防法]の基準の違い', t);
+  }});
+
+  S.push({name: 'NG①間仕切りの追加', d: 14, draw(t) {
+    plain();
+    const x0 = 200, y0 = 190, w = 880, h = 380;
+    ctx.fillStyle = '#fff'; ctx.fillRect(x0, y0, w, h);
+    ctx.strokeStyle = INK; ctx.lineWidth = 10; ctx.strokeRect(x0, y0, w, h);
+    for (let i = 0; i < 5; i++) { ctx.fillStyle = '#5ab4e5'; ctx.fillRect(x0 + 60 + i * 165, y0 - 6, 110, 12); }
+    ctx.font = f(700, 18); ctx.fillStyle = '#2b6cff'; ctx.textAlign = 'left'; ctx.fillText('排煙窓（外壁）', x0, y0 - 26);
+    const k = eio((t - 1.5) / 1.2);
+    if (k > 0) { ctx.strokeStyle = '#7a5cff'; ctx.lineWidth = 8;
+      ctx.beginPath(); ctx.moveTo(x0, y0 + 200); ctx.lineTo(x0 + w * k, y0 + 200);
+      ctx.moveTo(x0 + 440, y0 + 200); ctx.lineTo(x0 + 440, y0 + 200 + 180 * k); ctx.stroke(); }
+    if (t > 3) {
+      const a = eo((t - 3) / .5);
+      ctx.fillStyle = `rgba(232,67,47,${.25 * a})`; ctx.fillRect(x0 + 5, y0 + 204, 431, h - 209); ctx.fillRect(x0 + 444, y0 + 204, w - 449, h - 209);
+      fx('窓のない会議室 ✕', x0 + 220, y0 + 290, 30, '#ff8a7a', t - 3.2);
+      fx('窓のない倉庫 ✕', x0 + 660, y0 + 290, 30, '#ff8a7a', t - 3.6);
+      ctx.fillStyle = `rgba(46,180,110,${.15 * a})`; ctx.fillRect(x0 + 5, y0 + 5, w - 10, 191);
+    }
+    pill('テナント工事で間仕切りを新設', W / 2, y0 + 100, t - 1.5, {align: 'center', bg: '#7a5cff', size: 24});
+    if (t > 6) pill('対策：排煙口の追加／機械排煙／告示1436号の適用（100㎡区画＋内装）を検討', W / 2, 650, t - 6, {align: 'center', bg: RED, size: 22});
+    headline('改修NG①：[間仕切りの追加]で排煙できない部屋', t);
+  }});
+
+  S.push({name: 'NG②天井の変更', d: 14, draw(t) {
+    room({noRightWall: true});
+    const HANG = 55, WALLX = 640, drop = 35 * eio((t - 2) / 1);
+    const wTop = CEIL + 10, wBot = CEIL + 150;
+    ctx.fillStyle = '#9aa0aa'; ctx.fillRect(RW, CEIL - 22, 20, wTop - CEIL + 22); ctx.fillRect(RW, wBot, 20, FLOOR - wBot + 24);
+    ctx.fillStyle = '#bfe3f5'; ctx.fillRect(RW, wTop, 20, wBot - wTop); ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 3; ctx.strokeRect(RW, wTop, 20, wBot - wTop);
+    ctx.fillStyle = '#5d636e'; ctx.fillRect(WALLX, CEIL, 16, HANG);
+    if (drop > 0) {
+      ctx.fillStyle = 'rgba(60,60,70,.55)'; ctx.fillRect(LW, CEIL, RW - LW + 20, drop);   // 天井裏
+      ctx.fillStyle = '#c9b99a'; ctx.fillRect(LW, CEIL + drop, RW - LW, 8);                  // 新しい天井
+      ctx.fillStyle = 'rgba(232,67,47,.8)'; ctx.fillRect(RW - 2, wTop, 24, Math.max(0, CEIL + drop - wTop));
+    }
+    pill('防煙垂れ壁 50cm', WALLX + 30, CEIL + 90, t - .5);
+    if (t > 2) pill('天井を30cm下げる', 300, CEIL + 120, t - 2, {bg: '#7a5cff'});
+    if (t > 4) { dimV(WALLX - 24, CEIL + drop + 8, CEIL + HANG, t - 4, '残り20cm → 防煙壁にならない ✕', -1); }
+    if (t > 7) pill('窓の上部が天井裏に → 有効面積が減る ✕', RW - 30, CEIL + 200, t - 7, {align: 'right', bg: RED});
+    if (t > 9) pill('対策：垂れ壁の延長・排煙計算のやり直し・排煙窓の位置確認', W / 2, 670, t - 9, {align: 'center', bg: INK, size: 23});
+    headline('改修NG②：[天井を下げる]と防煙壁・排煙窓が効かない', t, 76, 34);
+  }});
+
+  S.push({name: 'NG③内装・用途・窓', d: 15, draw(t) {
+    plain();
+    const cw = 1140, ch = 140, x0 = 70;
+    card(x0, 160, cw, ch, '1', '内装を木質化する', '告示1436号で免除していた部屋 → 内装の不燃・準不燃の条件が外れ、排煙設備が必要に', t - .6, '#7a5cff');
+    card(x0, 320, cw, ch, '2', '用途を変更する（事務所 → 飲食店・物販店など）', '特殊建築物に該当 → 延べ500㎡超なら排煙設備の設置対象に', t - 4.6, '#7a5cff');
+    card(x0, 480, cw, ch, '3', '窓のFIX化・看板や設備機器で窓をふさぐ', '開放できる面積が不足 → 自然排煙が成立しない', t - 8.6, '#7a5cff');
+    headline('改修NG③：[内装・用途・窓]の変更', t);
+  }});
+
+  S.push({name: 'まとめ', d: 10, draw(t) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1d2a44'); g.addColorStop(1, '#0d1422');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    const tiles = [['区切る', '防煙区画500㎡以内\n垂れ壁50cm以上', '#2b6cff'], ['逃がす', '天井から80cm以内\n床面積の1/50以上', '#1e9e5a'],
+                   ['吸い出す', '120㎥/分以上\n排煙口は30m以内', '#f08a24'], ['再確認', '間仕切り・天井・\n内装・用途・窓', RED]];
+    tiles.forEach(([k, v, c], i) => {
+      const tt = t - .5 - i * 0.9; if (tt <= 0) return;
+      const x = 70 + i * 290, y = 190, s = 0.8 + 0.2 * eb(tt / .35);
+      ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + 130, y + 170); ctx.scale(s, s); ctx.translate(-130, -170);
+      ctx.fillStyle = '#fff'; rr(0, 0, 260, 340, 20); ctx.fill();
+      ctx.fillStyle = c; rr(0, 0, 260, 120, [20, 20, 0, 0]); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, 44); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(k, 130, 62);
+      ctx.fillStyle = INK; ctx.font = f(700, 23); v.split('\n').forEach((l, j) => ctx.fillText(l, 130, 190 + j * 40));
+      ctx.restore();
+    });
+    if (t > 4.5) { ctx.globalAlpha = eo((t - 4.5) / .5); ctx.font = f(500, 18); ctx.fillStyle = '#b9c2d3'; ctx.textAlign = 'center';
+      ctx.fillText('出典：建築基準法施行令 第126条の2・第126条の3、平成12年建設省告示第1436号、消防法施行令 第28条 ／ ※イラストはイメージです', W / 2, 640); ctx.globalAlpha = 1; }
+    pill('まとめ', W / 2, 110, t, {align: 'center', bg: RED, size: 30});
+  }});
+  const MECH = S.findIndex(s => s.name === '機械排煙');
+
+  // ---------- narration ----------
+  const CAP = ["排煙設備。煙を区切って、逃がす。そのしくみと基準、計算方法、改修の注意点まで、約5分半で解説します。", "火災が起きると、熱い煙は天井にたまり、時間とともに下へ降りてきます。煙の層が避難する人の高さまで下がる前に、煙を外へ出して避難の時間を確保する。これが排煙設備の役割です。", "設置が必要なのは主に4つ。劇場や病院、物販店などの特殊建築物で延べ500㎡を超えるもの。3階建て以上で延べ500㎡を超えるもの。排煙上の無窓居室。そして、延べ1,000㎡を超える建物の、200㎡を超える居室です。", "ただし除外もあります。小さく区画された部分、学校や体育館などのスポーツ施設、階段や昇降路の部分、不燃性の物品を扱う倉庫など。告示1436号の条件に合う部分も、設けなくてよいとされています。", "無窓居室かどうかは、天井から80センチ以内で開けられる部分の面積で判定します。床面積の50分の1に満たなければ、排煙上の無窓居室。100㎡の部屋なら、2㎡以上が必要です。", "排煙設備を設けるときは、まず床面積500㎡以内ごとに防煙区画をつくります。区切りには、天井から50センチ以上下に突き出した、不燃材料の垂れ壁などを使います。", "防煙壁には、間仕切壁のほか、ガラスなどの固定式の垂れ壁、火災のときに煙感知器と連動して降りてくる可動式の垂れ壁があります。", "自然排煙は、窓などの開口部から煙を直接外へ出す方式です。排煙口は天井から80センチ以内、かつ防煙壁の下端より上に設け、開けられる面積は区画の床面積の50分の1以上とします。", "排煙口を開ける手動開放装置は、壁に付ける場合は床から0.8メートル以上1.5メートル以下。天井から吊り下げる場合は床からおおむね1.8メートルの高さとし、使い方を見やすく表示します。", "排煙口は、区画のどの場所からも水平距離30メートル以内に置きます。部屋の端に1つだけだと届かない範囲が出るので、位置を見直すか、排煙口を増やします。", "機械排煙は、排煙口からダクトを通して、排煙機で煙を吸い出す方式です。排煙口はふだん閉じていて、開くと排煙機が自動で動き出します。", "排煙機の能力は、毎分120㎥以上、かつ床面積1㎡あたり毎分1㎥以上。2つ以上の区画を受け持つ場合は、最も大きい区画の床面積1㎡あたり、毎分2㎥以上が必要です。", "電源が必要な排煙設備には予備電源を設け、煙に触れる部分は不燃材料でつくります。高さ31メートルを超える建物などでは、中央管理室で制御と監視を行います。", "次は計算の手順です。まず居室の床面積を求め、50分の1を掛けて、必要な排煙面積を出します。次に、窓ごとに有効な開口面積を算定して合計し、必要面積以上ならOK。足りなければ、窓の追加や機械排煙を検討します。", "例えば120㎡の居室なら、必要な面積は2.4㎡。引違い窓は開く部分だけを数え、高さは天井から80センチ以内の部分だけ。幅0.9メートル、高さ0.6メートルで0.54㎡です。4か所では2.16㎡で足りません。5か所にすると2.7㎡で、基準を満たします。", "告示1436号は、排煙設備を設けなくてよい部分を定めています。小規模な住宅の居室、避難階などの一定の用途、消火設備のある機械室や車庫、そして高さ31メートル以下と、31メートルを超える部分の、区画や内装の条件です。", "よく使うのが、高さ31メートル以下の部分の規定です。居室なら、100㎡以内ごとに準耐火構造の壁などで区画して内装を準不燃材料にするか、100㎡以下で内装と下地を不燃材料にします。居室以外の室にも、内装や防煙壁による条件があります。", "天井の高さが3メートル以上の部屋には、排煙口の位置の特例があります。床から2.1メートル以上、かつ天井高さの2分の1以上の壁で、防煙壁の下端より上であれば、排煙口として扱えます。", "消防法の排煙設備が必要になるのは、延べ1,000㎡以上の地下街、床面積500㎡以上の劇場などの舞台部、そして遊技場や物販店、駅、駐車場などの地階や無窓階で、床面積1,000㎡以上のものです。", "基準にも違いがあります。地下街では、防煙区画は300㎡以下、垂れ壁は80センチ以上。消防法の排煙口は、天井高さの2分の1以上の部分に設けます。建築基準法で免除されても、消防法の設置義務は別に判断します。", "ここからは改修でよくある失敗です。テナント工事で間仕切りを増やすと、窓のない部屋や、排煙口まで30メートルを超える場所が生まれます。排煙口の追加や機械排煙、告示1436号の適用を検討しましょう。", "天井を下げる改修も要注意。垂れ壁の丈が50センチ未満になると、防煙壁として扱えません。窓の上部が天井裏に隠れると、排煙に有効な面積も減ってしまいます。", "ほかにも、告示で免除していた部屋の内装を木質化して条件から外れる、事務所を飲食店に用途変更して設置対象になる、窓のFIX化や看板で開放面積が足りなくなる、といった例があります。", "まとめです。区切る、逃がす、吸い出す。そして改修では、間仕切り・天井・内装・用途・窓を変えたら必ず再確認。以上、排煙設備のポイントでした。"];
+  const tts = s => s.replace(/無窓/g, 'むそう').replace(/延べ/g, 'のべ').replace(/はめ殺し/g, 'はめごろし').replace(/垂れ壁/g, 'たれかべ')
+    .replace(/下端/g, 'かたん').replace(/50分の1/g, '五十分の一').replace(/20分の1/g, '二十分の一').replace(/1,000/g, '千').replace(/㎡/g, '平方メートル').replace(/㎥/g, '立方メートル')
+    .replace(/2分の1/g, '二分の一').replace(/20分の1/g, '二十分の一').replace(/FIX/g, 'フィックス').replace(/OK/g, 'オーケー').replace(/1つ/g, 'ひとつ').replace(/2つ/g, 'ふたつ').replace(/3つ/g, 'みっつ').replace(/4つ/g, 'よっつ');
+  const NARR = CAP.map(tts);
+
+  // ---------- player ----------
+  /* hs-ext v1 */
+  let RATE = 1, bgmOn = true;   // 再生速度・BGMのオン／オフ
+  const starts = []; let total = 0; for (const s of S) { starts.push(total); total += s.d; }
+  const btn = root.querySelector('.hs-btn'), snd = root.querySelector('.hs-snd'), track = root.querySelector('.hs-track'), fill = root.querySelector('.hs-fill');
+  const time = root.querySelector('.hs-time'), chips = root.querySelector('.hs-chips'), cap = root.querySelector('.hs-cap');
+  starts.slice(1).forEach(s => { const k = document.createElement('div'); k.className = 'hs-tick'; k.style.left = (s / total * 100) + '%'; track.appendChild(k); });
+  const chipEls = S.map((s, i) => { const li = document.createElement('li'); const b = document.createElement('button');
+    b.type = 'button'; b.className = 'hs-chip'; b.textContent = `${i + 1}. ${s.name}`;
+    b.onclick = () => { unlock(); T = starts[i]; scene = -1; play(); };
+    li.appendChild(b); chips.appendChild(li); return b; });
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let T = 0, playing = false, last = 0, scene = -1;
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  const sceneAt = T => { let i = starts.findIndex((s, k) => T >= s && T < s + S[k].d); return i < 0 ? S.length - 1 : i; };
+
+  // ---------- sound (Web Audio + Web Speech, 音声ファイル不要) ----------
+  const TTS = 'speechSynthesis' in window;
+  let soundOn = false, AC = null, master, bgmGain, nextBeat = 0, beatIdx = 0, schedTimer = null, speaking = false, jaVoice = null, fanNode = null;
+  const voiceSelect = root.querySelector('.hs-voice');
+  const savedVoice = (() => { try { return localStorage.getItem('cmKnowledgeJapaneseVoice') || ''; } catch { return ''; } })();
+  function pickVoice() {
+    const japanese = TTS ? speechSynthesis.getVoices().filter(v => /^ja(?:-|$)/i.test(v.lang)) : [];
+    const voices = japanese.filter(v => /Microsoft/i.test(v.name) && /Haruka|Sayaka|Ayumi|Nanami/i.test(v.name))
+      .sort((a, b) => Number(!/Haruka/i.test(a.name)) - Number(!/Haruka/i.test(b.name)));
+    const preferred = voiceSelect.value || savedVoice;
+    voiceSelect.replaceChildren();
+    for (const voice of voices) voiceSelect.add(new Option(voice.name, voice.voiceURI));
+    jaVoice = voices.find(v => v.voiceURI === preferred) || voices[0] || null;
+    if (jaVoice) voiceSelect.value = jaVoice.voiceURI;
+    else voiceSelect.add(new Option('Microsoft日本語女性音声を利用できません', ''));
+    voiceSelect.disabled = !jaVoice;
+  }
+  voiceSelect.addEventListener('change', () => {
+    jaVoice = speechSynthesis.getVoices().find(v => v.voiceURI === voiceSelect.value) || null;
+    try { localStorage.setItem('cmKnowledgeJapaneseVoice', voiceSelect.value); } catch {}
+    if (playing && soundOn) speak(sceneAt(T));
+  });
+  if (TTS) { pickVoice(); speechSynthesis.addEventListener('voiceschanged', pickVoice); } else pickVoice();
+  function unlock() {                       // ユーザー操作の中で一度だけ音を有効化
+    if (soundOn) return;
+    soundOn = true; setSnd();
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      AC.resume();
+      if (!master) { master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
+        bgmGain = AC.createGain(); bgmGain.gain.value = 0.0; bgmGain.connect(master); }
+    } catch (e) { AC = null; }
+    if (TTS) { const u = new SpeechSynthesisUtterance(''); speechSynthesis.speak(u); }   // iOSの解錠
+  }
+  function mute() { soundOn = false; setSnd(); stopSpeech(); stopBgm(); fan(false); }
+  function setSnd() { snd.textContent = soundOn ? '🔊' : '🔇'; snd.setAttribute('aria-label', soundOn ? '音声をオフ' : '音声をオン'); snd.setAttribute('aria-pressed', soundOn); }
+
+  // BGM：やわらかいアルペジオ（C–G–Am–F）
+  const CH = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]];
+  const hz = n => 440 * Math.pow(2, (n - 69) / 12);
+  function pluck(t, freq, dur, vol, dest) {
+    const o = AC.createOscillator(), o2 = AC.createOscillator(), g = AC.createGain();
+    o.type = 'triangle'; o.frequency.value = freq; o2.type = 'sine'; o2.frequency.value = freq * 2;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); o2.connect(g); g.connect(dest); o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
+  }
+  const BEAT = 60 / 92 / 2;                  // 8分音符
+  function sched() {
+    while (nextBeat < AC.currentTime + 0.3) {
+      const bar = Math.floor(beatIdx / 8), k = beatIdx % 8, ch = CH[bar % 4];
+      if (k === 0) pluck(nextBeat, hz(ch[0] - 12), 1.8, .5, bgmGain);
+      pluck(nextBeat, hz(ch[[0, 1, 2, 1, 0, 2, 1, 2][k]] + 12), .7, .22, bgmGain);
+      nextBeat += BEAT; beatIdx++;
+    }
+  }
+  function startBgm() {
+    if (!AC || !soundOn || !bgmOn || schedTimer) return;
+    nextBeat = AC.currentTime + .05; sched(); schedTimer = setInterval(sched, 100);
+    duck();
+  }
+  function stopBgm() { if (schedTimer) { clearInterval(schedTimer); schedTimer = null; } if (bgmGain) bgmGain.gain.setTargetAtTime(0, AC.currentTime, .05); }
+  function duck() { if (bgmGain && soundOn) bgmGain.gain.setTargetAtTime(speaking ? 0.05 : 0.12, AC.currentTime, .25); }
+
+  // 効果音
+  function pop() {
+    if (!AC || !soundOn) return; const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain();
+    o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(1500, t + .09);
+    g.gain.setValueAtTime(.18, t); g.gain.exponentialRampToValueAtTime(.0001, t + .12);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + .15);
+  }
+  function fan(on) {                         // 機械排煙シーンの送風音
+    if (!AC) return;
+    if (on && soundOn && !fanNode) {
+      const n = AC.sampleRate * 2, buf = AC.createBuffer(1, n, AC.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500;
+      const g = AC.createGain(); g.gain.value = 0; g.gain.setTargetAtTime(.07, AC.currentTime, .4);
+      src.connect(lp); lp.connect(g); g.connect(master); src.start(); fanNode = {src, g};
+    } else if (!on && fanNode) {
+      const {src, g} = fanNode; g.gain.setTargetAtTime(0, AC.currentTime, .15); src.stop(AC.currentTime + .6); fanNode = null;
+    }
+  }
+
+  // ナレーション
+  let utt = null;
+  function speak(i) {
+    stopSpeech();
+    if (!TTS || !soundOn || !jaVoice) return;
+    const u = new SpeechSynthesisUtterance(NARR[i]);
+    u.lang = 'ja-JP'; if (jaVoice) u.voice = jaVoice; u.rate = Math.min(2, 1.12 * RATE); u.pitch = 1.0; u.volume = 1;
+    u.onstart = () => { speaking = true; duck(); };
+    u.onend = u.onerror = () => { if (utt === u) { speaking = false; utt = null; duck(); } };
+    utt = u; speaking = true; duck();
+    speechSynthesis.speak(u);
+  }
+  function stopSpeech() { if (TTS) { utt = null; speaking = false; speechSynthesis.cancel(); duck(); } }
+
+  // ---------- render & loop ----------
+  function frame(T) {
+    const i = sceneAt(T);
+    ctx.save(); ctx.clearRect(0, 0, W, H); S[i].draw(Math.min(T - starts[i], S[i].d)); ctx.restore();
+    for (let k = 0; k < S.length; k++) { ctx.fillStyle = k <= i ? 'rgba(232,67,47,.95)' : 'rgba(255,255,255,.55)';
+      ctx.beginPath(); ctx.roundRect(W - 30 - (S.length - k) * 34, 18, 26, 8, 4); ctx.fill(); }
+    if (!soundOn) {                          // 音声オフ時のヒント
+      ctx.font = f(700, 20); const tx = '🔇 タップで音声つき再生'; const w = ctx.measureText(tx).width + 28;
+      ctx.fillStyle = 'rgba(15,20,30,.72)'; rr(18, 14, w, 36, 18); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(tx, 32, 33);
+    }
+    fill.style.width = (T / total * 100) + '%'; track.setAttribute('aria-valuenow', Math.round(T / total * 100));
+    time.textContent = `${fmt(T)} / ${fmt(total)}`;
+    chipEls.forEach((c, k) => c.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    if (cap.dataset.i !== String(i)) { cap.dataset.i = i; cap.textContent = CAP[i]; }
+  }
+  function enterScene(i) {
+    scene = i; pop(); speak(i); fan(i === MECH);
+  }
+  function loop(now) {
+    if (!playing) return;
+    const dt = Math.min(.1, (now - last) / 1000); last = now;
+    const i = sceneAt(T), end = starts[i] + S[i].d;
+    // ナレーションが続いている間はシーンの最後で待つ（最大6秒）
+    const holding = soundOn && speaking && T + dt * RATE >= end - 0.02 && (holdT += dt) < 6;
+    if (!holding) { holdT = 0; T += dt * RATE; }
+    if (T >= total) { T = total - 0.001; playing = false; stopBgm(); fan(false); setBtn(); }
+    const j = sceneAt(T); if (j !== scene && playing) enterScene(j);
+    frame(T); if (playing) requestAnimationFrame(loop);
+  }
+  let holdT = 0;
+  function setBtn() { btn.textContent = playing ? '❚❚' : (T >= total - .01 ? '↻' : '▶'); btn.setAttribute('aria-label', playing ? '一時停止' : '再生'); }
+  function play() {
+    if (T >= total - .01) { T = 0; scene = -1; }
+    if (!playing) { playing = true; last = performance.now(); startBgm();
+      const i = sceneAt(T);
+      if (scene !== i || T - starts[i] < 1) enterScene(i); else fan(i === MECH);
+      requestAnimationFrame(loop); }
+    setBtn();
+  }
+  function pause() { playing = false; stopSpeech(); stopBgm(); fan(false); setBtn(); frame(T); }
+  btn.onclick = () => { unlock(); playing ? pause() : play(); };
+  cv.onclick = () => {                       // 初回タップ：音声オンにして今のシーンの頭から
+    if (!soundOn) { unlock(); const i = sceneAt(T); T = starts[i]; scene = -1; if (playing) { startBgm(); enterScene(i); } else play(); return; }
+    playing ? pause() : play();
+  };
+  snd.onclick = () => {
+    if (soundOn) { mute(); frame(T); return; }
+    unlock(); const i = sceneAt(T);
+    if (playing) { T = starts[i]; startBgm(); enterScene(i); } else frame(T);
+  };
+  const seek = e => { const r = track.getBoundingClientRect(); T = cl((e.clientX - r.left) / r.width) * total; scene = sceneAt(T); stopSpeech(); fan(playing && scene === MECH); frame(T); };
+  track.addEventListener('pointerdown', e => { seek(e); track.setPointerCapture(e.pointerId); track.onpointermove = seek; });
+  track.addEventListener('pointerup', () => track.onpointermove = null);
+  track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') T = Math.min(total - .01, T + 3); else if (e.key === 'ArrowLeft') T = Math.max(0, T - 3); else return; scene = sceneAt(T); stopSpeech(); frame(T); e.preventDefault(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
+  // 再生は利用者の操作で開始します。
+  /* hs-ext v1 */
+  const bgmBtn = root.querySelector('.hs-bgm'), rateSel = root.querySelector('.hs-rate'), fsBtn = root.querySelector('.hs-fs');
+  const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } return null; };
+  bgmOn = store('hs-bgm') !== 'off';
+  const r0 = parseFloat(store('hs-rate')); if (r0 >= .5 && r0 <= 2) RATE = r0; rateSel.value = String(RATE);
+  function setBgmBtn() { bgmBtn.textContent = bgmOn ? 'BGM オン' : 'BGM オフ'; bgmBtn.setAttribute('aria-pressed', bgmOn); bgmBtn.classList.toggle('hs-off', !bgmOn); }
+  bgmBtn.onclick = () => { bgmOn = !bgmOn; store('hs-bgm', bgmOn ? 'on' : 'off'); setBgmBtn(); if (!bgmOn) stopBgm(); else if (playing && soundOn) startBgm(); };
+  rateSel.onchange = () => { RATE = parseFloat(rateSel.value) || 1; store('hs-rate', String(RATE)); };
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+  function setFsBtn() { const on = !!fsEl() || root.classList.contains('hs-full'); fsBtn.textContent = on ? '✕' : '⛶'; fsBtn.setAttribute('aria-label', on ? '全画面を終了' : '全画面'); }
+  function fakeFull(on) { root.classList.toggle('hs-full', on); setFsBtn(); }
+  fsBtn.onclick = () => {
+    if (fsEl()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (root.classList.contains('hs-full')) { fakeFull(false); return; }
+    const req = root.requestFullscreen || root.webkitRequestFullscreen;
+    if (!req) { fakeFull(true); return; }
+    try { const p = req.call(root); if (p && p.catch) p.catch(() => fakeFull(true)); } catch (e) { fakeFull(true); }
+  };
+  document.addEventListener('fullscreenchange', setFsBtn); document.addEventListener('webkitfullscreenchange', setFsBtn);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && root.classList.contains('hs-full')) fakeFull(false); });
+  setBgmBtn(); setFsBtn();
+  setSnd();
+  const readyFonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  readyFonts.then(() => frame(reduce ? starts[1] + 8 : 0));
+  window.__hsHaien = {frame: x => { T = x; frame(x); }, total};   // プレビュー用
+})();
+</script>
+</body>
+</html>
