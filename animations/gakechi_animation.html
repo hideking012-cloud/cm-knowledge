@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>崖地条例｜アニメーション解説</title>
+<style>
+  /* すべて .hs- で名前空間化（既存サイトのCSSと衝突しないように） */
+  .hs-player{--hs-ink:#1f2430;--hs-accent:#8a5a2b;--hs-sub:#5b6474;--hs-line:#d9dee7;
+    max-width:960px;margin:24px auto;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;color:var(--hs-ink)}
+  .hs-stage{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(20,30,50,.18);background:#0f1724}
+  .hs-stage canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;cursor:pointer}
+  .hs-cap{margin:10px 0 0;min-height:3.4em;padding:10px 14px;border-radius:10px;background:#1f2430;color:#fff;font-size:15px;line-height:1.7}
+  .hs-bar{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .hs-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--hs-accent);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--hs-line);background:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd:focus-visible,.hs-btn:focus-visible,.hs-chip:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-track{position:relative;flex:1;height:10px;border-radius:5px;background:var(--hs-line);cursor:pointer}
+  .hs-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:5px;background:var(--hs-accent)}
+  .hs-tick{position:absolute;top:-3px;width:2px;height:16px;background:#fff;opacity:.9}
+  .hs-time{flex:none;font-size:13px;color:var(--hs-sub);font-variant-numeric:tabular-nums;min-width:84px;text-align:right}
+  .hs-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding:0;list-style:none}
+  .hs-chip{border:1px solid var(--hs-line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--hs-ink)}
+  .hs-chip[aria-current="true"]{background:var(--hs-ink);border-color:var(--hs-ink);color:#fff}
+  .hs-text{margin-top:14px;font-size:14px;line-height:1.8;color:var(--hs-sub)}
+  .hs-text summary{cursor:pointer;color:var(--hs-ink);font-weight:700}
+  .hs-text ol{padding-left:1.4em}
+  .hs-src{font-size:12px;color:var(--hs-sub);margin-top:8px}
+  /* hs-ext v1 */
+  .hs-bar{flex-wrap:wrap}
+  .hs-track{flex:1 1 180px}
+  .hs-bgm,.hs-fs{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;cursor:pointer;padding:0 14px}
+  .hs-fs{width:40px;padding:0;font-size:18px;display:grid;place-items:center}
+  .hs-bgm.hs-off{color:var(--hs-sub);text-decoration:line-through;background:#eef1f6}
+  .hs-rate{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;padding:0 10px;cursor:pointer}
+  .hs-bgm:focus-visible,.hs-fs:focus-visible,.hs-rate:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-player:fullscreen,.hs-player.hs-full{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player:-webkit-full-screen{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player.hs-full{position:fixed;inset:0;z-index:2147483000}
+  .hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,
+  .hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:calc((100vh - 190px) * 16 / 9);margin-left:auto;margin-right:auto}
+  .hs-player:fullscreen .hs-chips,.hs-player:fullscreen .hs-text,.hs-player.hs-full .hs-chips,.hs-player.hs-full .hs-text{display:none}
+  .hs-player:fullscreen .hs-time,.hs-player.hs-full .hs-time{color:#cfd6e4}
+.lesson-nav{max-width:960px;margin:20px auto;display:flex;gap:24px;flex-wrap:wrap;padding:0 12px;font:600 16px/1.6 Inter,"Yu Gothic UI",Meiryo,sans-serif}.lesson-nav a{color:#96e8d5;text-underline-offset:4px}body{margin:0;padding:0 16px;background:#0a1220}.hs-player{--hs-ink:#edf4ff;--hs-sub:#b6c6da;--hs-line:#35475f}.hs-chip{color:#1f2430}.hs-voice-label{color:#b6c6da;font-size:14px}.hs-voice{max-width:240px;height:40px;border-radius:20px;border:1px solid #d9dee7;background:#fff;color:#1f2430;font:14px "Yu Gothic UI",sans-serif;padding:0 8px}.hs-cap{font-size:16px}.hs-text{font-size:16px}.hs-src{font-size:14px}.hs-player:fullscreen,.hs-player.hs-full{height:100dvh;overflow:hidden;display:flex;flex-direction:column}.hs-player:fullscreen .hs-stage,.hs-player.hs-full .hs-stage{flex:1;min-height:0;display:grid;place-items:center;width:100%;box-shadow:none}.hs-player:fullscreen canvas,.hs-player.hs-full canvas{width:100%;height:100%;object-fit:contain}.hs-player:fullscreen .hs-cap,.hs-player.hs-full .hs-cap{flex:none;min-height:0;margin-top:8px}.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-bar{flex:none;margin-top:8px}.hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:1280px;width:100%}@media(max-width:600px){.lesson-nav{gap:16px}.hs-player{margin:12px auto}.hs-voice{max-width:190px}.hs-cap{font-size:15px}.hs-bar{gap:8px}}.hs-snd,.hs-bgm,.hs-fs,.hs-rate{color:#1f2430}.hs-chip[aria-current="true"]{background:#c4eadf;border-color:#81c8b7;color:#16392f}</style>
+</head>
+<body>
+<nav class="lesson-nav" aria-label="教材の移動"><a href="../index.html">CM知識一覧</a><a href="../cliff-ordinance-report.html">詳細レポートを読む</a></nav>
+
+<section class="hs-player" id="hs-gakechi" aria-label="崖地条例 アニメーション解説">
+  <div class="hs-stage">
+    <canvas width="1280" height="720" role="img" aria-label="崖地条例を説明するアニメーション。下の「テキストで読む」に同じ内容があります。"></canvas>
+  </div>
+  <p class="hs-cap" aria-live="polite"></p>
+  <div class="hs-bar">
+    <button class="hs-btn" type="button" aria-label="再生">▶</button>
+    <button class="hs-snd" type="button" aria-label="音声をオン" aria-pressed="false">🔇</button>
+    <label class="hs-voice-label">音声 <select class="hs-voice" aria-label="ナレーションの声"><option>音声を確認中</option></select></label>
+    <div class="hs-track" role="slider" aria-label="再生位置" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="hs-fill"></div></div>
+    <div class="hs-time">0:00 / 0:00</div>
+    <button class="hs-bgm" type="button" aria-pressed="true" aria-label="BGMのオン・オフ">BGM オン</button>
+    <select class="hs-rate" aria-label="再生速度"><option value="0.75">0.75倍</option><option value="1" selected>1倍</option><option value="1.25">1.25倍</option><option value="1.5">1.5倍</option><option value="2">2倍</option></select>
+    <button class="hs-fs" type="button" aria-label="全画面">⛶</button>
+  </div>
+  <ul class="hs-chips"></ul>
+
+  <details class="hs-text">
+    <summary>テキストで読む</summary>
+    <ol>
+      <li><b>タイトル：</b>崖地条例。崖のそばに建てるときの確認を、測量、条例、既存の擁壁、配置の比較、施工と点検の順に解説します。</li>
+      <li><b>擁壁とは：</b>擁壁は、土の高さが違う場所で、土が崩れないように支える壁です。崖の上に建てるなら、基礎の荷重と擁壁、排水。崖の下に建てるなら、崩れたときの影響と建物の構造を確かめます。</li>
+      <li><b>断面を測量：</b>まず、測量で崖の断面を確定します。崖の上端と下端、高さ、建物までの水平距離を、代表断面に描きます。崖が隣地にあっても、影響がある場合は調べる範囲に含めます。</li>
+      <li><b>事例で考える：</b>事例で考えます。擁壁が敷地の外にあります。計画のどこに入れますか。答えはA。崖が隣地にあっても、影響が及ぶことがあります。斜面と擁壁と計画建物を同じ断面に描き、許可図、排水、現況、調べられる範囲を確認します。</li>
+      <li><b>高さと距離の条件：</b>東京都建築安全条例では、高さ2メートルを超える崖の下端から、崖の高さの2倍以内に建てる場合、原則として擁壁が必要です。例外もあるため、条文と窓口で確かめます。</li>
+      <li><b>東京都と横浜市：</b>横浜市の建築基準条例では、勾配が30度を超える一体の崖で、高さ3メートルを超えるものが対象です。数値だけでなく、測る起点、崖の定義、例外まで、所在地の条例で確かめます。</li>
+      <li><b>崖高の測り方：</b>測り方も自治体で違います。東京都のがけ高には、崖の下端を通る二分の一勾配の斜線を使う定義があります。横浜市では、一体の傾斜地の主要な部分の勾配を確かめ、所定の場合は崖の上の排水の措置も必要です。</li>
+      <li><b>既存擁壁：</b>既存の擁壁は、許可や検査の資料と、今の状態を照合します。築造時の範囲と仕様、増し積みの履歴、ひび割れや変位、水抜きの状態や湧水を確かめ、必要なら専門家が調査します。</li>
+      <li><b>見た目では決めない：</b>見た目や検査の書類だけでは、今の健全性は確定できません。記録の欠落、建物による追加の荷重、地下水、局部と全体の安定。こうした論点を、専門家の調査計画に落とし込みます。</li>
+      <li><b>関係する指定：</b>崖の条例だけでなく、盛土規制法の規制区域、土砂災害特別警戒区域、建築確認との関係も確かめ、各窓口の判断を一枚にまとめます。</li>
+      <li><b>配置案の比較：</b>配置案を比べます。建物を後退させる、既存の擁壁を活かす、擁壁を造り直す。客室数や費用だけでなく、隣地の条件と維持管理の負担も並べます。</li>
+      <li><b>崖高2.6mの例：</b>架空の別棟の計画で、崖の高さは2.6メートルと聞いたとします。この数字だけで計画を決めず、条例上の測り方、現況と造成後の断面、建物の位置、既存の擁壁、土砂災害の指定を照合します。CMは未確認の条件を見積の前提に書き、判断日を発注者と決めます。</li>
+      <li><b>判断の順番：</b>判断の順番は、測量と資料の収集、専門家による調査、窓口への相談、そして配置と工法の決定です。安全性の確認が済む時点を、土地の取得や工事発注の判断日につなげます。</li>
+      <li><b>よくある失敗：</b>よくある失敗です。敷地の外の擁壁を調査図から外す。崖の高さの数字だけで判断する。古い書類だけで安全と決める。大雨のときの作業中止や連絡の条件を決めずに着工する。</li>
+      <li><b>施工と点検：</b>工事中は、掘削の順序と荷重、監視の条件を決め、基礎や裏込め、排水を、隠れる前に記録します。引渡しでは、排水施設と擁壁の点検項目、連絡先を渡します。</li>
+      <li><b>発注者チェック表：</b>段階ごとのチェック表です。企画では測量で断面を確定し、基本設計では条例と指定を照合し、着工前に配置と対策を比べ、変更があれば再び照会します。判定の結果には、根拠の条項、窓口、回答日、図面の版を添えます。</li>
+      <li><b>まとめ：</b>まとめです。崖を測り、条例と指定を照合し、配置案を比べ、施工の記録と点検を引き継ぐ。以上、崖地条例のポイントでした。</li>
+    </ol>
+    <p class="hs-src">音声は端末のMicrosoft日本語女性音声から選択できます。字幕は消音時も表示します。音は再生ボタンか画面をタップした後から鳴ります。<br>出典：東京都建築安全条例 第6条、横浜市建築基準条例 第3条、宅地造成及び特定盛土等規制法、土砂災害防止法、建築基準法施行令 第80条の3。※解説用に要点を簡略化しています。</p>
+  </details>
+</section>
+
+<script>
+(() => {
+  const root = document.getElementById('hs-gakechi');
+  const cv = root.querySelector('canvas'), ctx = cv.getContext('2d');
+  const W = 1280, H = 720;
+  const FONT = '"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif';
+  const INK = '#1f2430', RED = '#e8432f', YEL = '#ffd84a';
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
+
+  // ---------- utils ----------
+  const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const eo = x => 1 - Math.pow(1 - cl(x), 3);
+  const eio = x => { x = cl(x); return x * x * (3 - 2 * x); };
+  const eb = x => { x = cl(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const PUFFS = Array.from({length: 46}, () => [rnd(), rnd(), rnd()]);
+  const f = (w, s) => `${w} ${s}px ${FONT}`;
+
+  // ---------- building section ----------
+  const CEIL = 172, FLOOR = 620, LW = 80, RW = 1200;
+  function room(opts = {}) {
+    const g = ctx.createLinearGradient(0, CEIL, 0, FLOOR);
+    g.addColorStop(0, '#f4efe6'); g.addColorStop(1, '#e6dccb');
+    ctx.fillStyle = '#cfe6f2'; ctx.fillRect(0, 0, W, H);           // sky / outside
+    ctx.fillStyle = g; ctx.fillRect(LW, CEIL, RW - LW, FLOOR - CEIL);
+    ctx.fillStyle = '#8a8f99';
+    ctx.fillRect(40, CEIL - 22, W - 80, 22);                         // ceiling slab
+    ctx.fillRect(40, FLOOR, W - 80, 24);                             // floor slab
+    ctx.fillStyle = '#9aa0aa';
+    ctx.fillRect(60, CEIL - 22, LW - 60, FLOOR - CEIL + 46);         // left wall
+    if (!opts.noRightWall) ctx.fillRect(RW, CEIL - 22, 20, FLOOR - CEIL + 46);
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(40, FLOOR + 24, W - 80, 40);
+    // door + exit sign on left wall
+    if (opts.door) {
+      ctx.fillStyle = '#7a8a99'; ctx.fillRect(LW, FLOOR - 190, 14, 190);
+      ctx.fillStyle = '#1e9e5a'; rr(LW + 18, FLOOR - 250, 120, 40, 6); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(800, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('非常口', LW + 78, FLOOR - 229);
+    }
+  }
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
+
+  function fire(x, t, s = 1) {
+    for (let i = 0; i < 3; i++) {
+      const fl = Math.sin(t * 12 + i * 2) * 6;
+      const hh = (70 - i * 18) * s + fl, ww = (34 - i * 9) * s;
+      ctx.fillStyle = ['#ff6a2b', '#ffa531', '#ffe27a'][i];
+      ctx.beginPath();
+      ctx.moveTo(x - ww, FLOOR);
+      ctx.quadraticCurveTo(x - ww * 0.9, FLOOR - hh * 0.5, x + Math.sin(t * 9) * 5, FLOOR - hh);
+      ctx.quadraticCurveTo(x + ww * 0.9, FLOOR - hh * 0.5, x + ww, FLOOR);
+      ctx.fill();
+    }
+    ctx.fillStyle = '#5b3a2a'; ctx.fillRect(x - 46 * s, FLOOR - 10, 92 * s, 10);
+  }
+
+  // smoke layer under ceiling: x0..x1, depth px
+  function smokeLayer(x0, x1, depth, t, a = 1) {
+    if (depth <= 1) return;
+    const g = ctx.createLinearGradient(0, CEIL, 0, CEIL + depth + 20);
+    g.addColorStop(0, `rgba(60,62,72,${0.92 * a})`); g.addColorStop(1, `rgba(110,112,124,${0.55 * a})`);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x0, CEIL);
+    for (let x = x0; x <= x1; x += 16) ctx.lineTo(x, CEIL + depth + Math.sin(x / 45 + t * 2) * 7 + Math.sin(x / 19 - t * 3) * 3);
+    ctx.lineTo(x1, CEIL); ctx.closePath(); ctx.fill();
+    // billows
+    ctx.fillStyle = `rgba(150,152,162,${0.35 * a})`;
+    for (let i = 0; i < 12; i++) {
+      const x = x0 + ((i * 97 + t * 25) % (x1 - x0));
+      const r = 18 + (i % 4) * 8;
+      ctx.beginPath(); ctx.arc(x, CEIL + depth - r * 0.3 + Math.sin(t * 2 + i) * 4, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // rising plume from fire to target y
+  function plume(x, topY, t, a = 1, rate = 0.45, n = 26) {
+    for (let i = 0; i < n; i++) {
+      const [r1, r2, r3] = PUFFS[i];
+      const ph = (t * rate + i / n) % 1;
+      const y = lerp(FLOOR - 60, topY + 20, ph);
+      const xx = x + Math.sin(ph * 6 + r1 * 6) * (10 + ph * 60) * (r2 - 0.5) * 2;
+      const r = 14 + ph * 40 * (0.6 + r3);
+      ctx.fillStyle = `rgba(90,92,102,${(0.5 - ph * 0.25) * a})`;
+      ctx.beginPath(); ctx.arc(xx, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function person(x, t, crouch = 0, dir = -1, walking = true) {
+    const y = FLOOR, s = 1 - crouch * 0.28;
+    const ph = walking ? Math.sin(t * 9) : 0;
+    ctx.strokeStyle = '#2b4c7e'; ctx.lineWidth = 10; ctx.lineCap = 'round';
+    const hip = [x, y - 62 * s], neck = [x + dir * crouch * 22, y - 118 * s];
+    ctx.beginPath(); ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] + ph * 16, y - 4);
+    ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] - ph * 16, y - 4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(...neck); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] + dir * 26, neck[1] + 30 + crouch * 10);
+    ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] - ph * 14, neck[1] + 46); ctx.stroke();
+    ctx.fillStyle = '#2b4c7e'; ctx.beginPath(); ctx.arc(neck[0] + dir * 4, neck[1] - 20, 15, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // ---------- text ----------
+  function segs(s) { const out = []; let cur = '', hl = false;
+    for (const ch of s) { if (ch === '[' || ch === ']') { if (cur) out.push([cur, hl]); cur = ''; hl = ch === '['; } else cur += ch; }
+    if (cur) out.push([cur, hl]); return out; }
+  function headline(text, t, y = 76, size = 38) {
+    const lines = text.split('\n');
+    ctx.font = f(900, size);
+    const ws = lines.map(l => segs(l).reduce((a, [s]) => a + ctx.measureText(s).width, 0));
+    const lh = size * 1.32, bw = Math.max(...ws) + 72, bh = lh * lines.length + 26;
+    const sc = 0.7 + 0.3 * eb(t / 0.35), al = cl(t / 0.15);
+    ctx.save(); ctx.globalAlpha = al; ctx.translate(W / 2, y); ctx.scale(sc, sc);
+    ctx.fillStyle = 'rgba(40,30,20,.25)'; rr(-bw / 2 + 5, -bh / 2 + 7, bw, bh, 22); ctx.fill();
+    ctx.fillStyle = '#fffaf0'; rr(-bw / 2, -bh / 2, bw, bh, 22); ctx.fill();
+    ctx.lineWidth = 5; ctx.strokeStyle = '#f5ae28'; ctx.stroke();
+    ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+    lines.forEach((l, i) => {
+      let x = -ws[i] / 2; const yy = -bh / 2 + 13 + lh * (i + 0.5);
+      for (const [s, hl] of segs(l)) {
+        const w = ctx.measureText(s).width;
+        if (hl) { ctx.fillStyle = YEL; ctx.fillRect(x, yy + size * 0.3, w, size * 0.22); }
+        ctx.fillStyle = hl ? RED : INK; ctx.fillText(s, x, yy); x += w;
+      }
+    });
+    ctx.restore();
+  }
+  function pill(text, x, y, t, opt = {}) {
+    if (t <= 0) return;
+    const a = eo(t / 0.3), size = opt.size || 24;
+    ctx.save(); ctx.globalAlpha = a; ctx.font = f(700, size);
+    const w = ctx.measureText(text).width + 32, h = size + 22;
+    const bx = opt.align === 'right' ? x - w : opt.align === 'center' ? x - w / 2 : x;
+    ctx.fillStyle = opt.bg || 'rgba(25,35,60,.92)'; rr(bx, y - h / 2, w, h, h / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = opt.color || '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, bx + 16, y + 1); ctx.restore();
+  }
+  function fx(text, x, y, size, color, t = 1, align = 'center') {
+    if (t <= 0) return;
+    const s = eb(t / 0.3);
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.font = f(900, size); ctx.textAlign = align; ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8; ctx.strokeStyle = '#1f2430'; ctx.lineJoin = 'round'; ctx.strokeText(text, 0, 0);
+    ctx.fillStyle = color; ctx.fillText(text, 0, 0); ctx.restore();
+  }
+  function dimV(x, y0, y1, t, label, side = 1) {           // vertical dimension
+    if (t <= 0) return;
+    const k = eo(t / 0.4), yy = lerp(y0, y1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(x - 12, y0); ctx.lineTo(x + 12, y0); ctx.moveTo(x, y0); ctx.lineTo(x, yy);
+    if (k > .98) { ctx.moveTo(x - 12, y1); ctx.lineTo(x + 12, y1); } ctx.stroke();
+    if (k > .9) fx(label, x + side * 18, (y0 + y1) / 2, 26, YEL, (t - .35) * 3, side > 0 ? 'left' : 'right');
+  }
+  function dimH(x0, x1, y, t, label) {
+    if (t <= 0) return;
+    const k = eo(t / 0.5), xx = lerp(x0, x1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4; ctx.setLineDash([14, 10]);
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(xx, y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x0, y - 12); ctx.lineTo(x0, y + 12); ctx.stroke();
+    if (k > .98) { ctx.beginPath(); ctx.moveTo(x1, y - 12); ctx.lineTo(x1, y + 12); ctx.stroke(); }
+    if (k > .9) fx(label, (x0 + x1) / 2, y - 30, 28, YEL, (t - .45) * 3);
+  }
+  function card(x, y, w, h, num, title, body, t, color = RED) {
+    if (t <= 0) return;
+    const s = 0.85 + 0.15 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 10, h, [16, 0, 0, 16]); ctx.fill();
+    ctx.fillStyle = color; ctx.beginPath(); ctx.arc(52, 48, 24, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 52, 49);
+    ctx.fillStyle = INK; ctx.font = f(900, 27); ctx.textAlign = 'left'; ctx.fillText(title, 90, 49);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 22);
+    body.split('\n').forEach((l, i) => ctx.fillText(l, 34, 100 + i * 34));
+    ctx.restore();
+  }
+
+  // ---------- extra helpers ----------
+  function plain(c = '#eef1f6') { ctx.fillStyle = c; ctx.fillRect(0, 0, W, H); }
+  function cardSm(x, y, w, h, num, title, body, t, color) {
+    if (t <= 0) return;
+    const dx = (1 - eo(t / 0.4)) * 40;
+    ctx.save(); ctx.globalAlpha = cl(t / 0.25); ctx.translate(x + dx, y);
+    ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(3, 5, w, h, 14); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 14); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 9, h, [14, 0, 0, 14]); ctx.fill();
+    ctx.beginPath(); ctx.arc(46, h / 2, 21, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 46, h / 2 + 1);
+    ctx.textAlign = 'left'; ctx.fillStyle = INK; ctx.font = f(900, 25); ctx.fillText(title, 84, h * 0.33);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 20); ctx.fillText(body, 84, h * 0.71);
+    ctx.restore();
+  }
+  function box(x, y, w, h, lines, t) {           // lines: [text, size, weight, color]
+    if (t <= 0) return;
+    const s = 0.9 + 0.1 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill(); ctx.strokeStyle = '#f5ae28'; ctx.lineWidth = 4; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    let yy = 0; const tot = lines.reduce((a, l) => a + l[1] * 1.45, 0); yy = (h - tot) / 2;
+    for (const [tx, sz, wt, col] of lines) { ctx.font = f(wt || 700, sz); ctx.fillStyle = col || INK; ctx.fillText(tx, w / 2, yy + sz * 0.72); yy += sz * 1.45; }
+    ctx.restore();
+  }
+  function miniSmoke(x0, x1, y0, depth, t) {
+    if (depth <= 1) return;
+    ctx.fillStyle = 'rgba(70,72,84,.82)'; ctx.beginPath(); ctx.moveTo(x0, y0);
+    for (let x = x0; x <= x1; x += 10) ctx.lineTo(x, y0 + depth + Math.sin(x / 25 + t * 2.5) * 5);
+    ctx.lineTo(x1, y0); ctx.closePath(); ctx.fill();
+  }
+  function scaled(x, y, s, fn) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-x, -y); fn(); ctx.restore(); }
+
+  const ACC = '#8a5a2b';
+  // ---------- HVAC helpers ----------
+  const BLUE = '#2b7de9', HOT = '#e8432f', GRN = '#1e9e5a', COOL = '#3aa0ff', WARM = '#ff7a3a';
+  function poly(pts, color, w = 8, dash) {
+    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    if (dash) ctx.setLineDash(dash);
+    ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); ctx.restore();
+  }
+  function polyLen(pts) { let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; }
+  function along(pts, d) {
+    for (let i = 1; i < pts.length; i++) {
+      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], l = Math.hypot(x1 - x0, y1 - y0);
+      if (d <= l) return [lerp(x0, x1, d / l), lerp(y0, y1, d / l)]; d -= l;
+    }
+    return pts[pts.length - 1];
+  }
+  function flow(pts, t, color, n = 10, speed = 90, r = 7) {   // 管の中を流れる粒
+    const L = polyLen(pts); ctx.fillStyle = color;
+    for (let i = 0; i < n; i++) { const [x, y] = along(pts, (t * speed + i * L / n) % L); ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function arrow(x0, y0, x1, y1, color, w = 6, t = 1) {
+    if (t <= 0) return; const k = eo(t / 0.4), xe = lerp(x0, x1, k), ye = lerp(y0, y1, k), a = Math.atan2(y1 - y0, x1 - x0);
+    ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = w; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(xe - Math.cos(a) * w * 2, ye - Math.sin(a) * w * 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xe, ye); ctx.lineTo(xe - Math.cos(a - .45) * w * 3.6, ye - Math.sin(a - .45) * w * 3.6);
+    ctx.lineTo(xe - Math.cos(a + .45) * w * 3.6, ye - Math.sin(a + .45) * w * 3.6); ctx.closePath(); ctx.fill(); ctx.restore();
+  }
+  function unit(x, y, w, h, label, t = 1, opt = {}) {           // 機器の箱
+    if (t <= 0) return; const s = 0.85 + 0.15 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.16)'; rr(3, 5, w, h, 12); ctx.fill();
+    ctx.fillStyle = opt.bg || '#fff'; rr(0, 0, w, h, 12); ctx.fill(); ctx.strokeStyle = opt.line || '#5b6474'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.fillStyle = opt.color || INK; ctx.font = f(800, opt.size || 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    label.split('\n').forEach((l, i, a) => ctx.fillText(l, w / 2, h / 2 + (i - (a.length - 1) / 2) * (opt.size || 24) * 1.3));
+    ctx.restore();
+  }
+  function fanIcon(x, y, r, t, color = '#5b6474') {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(t * 6); ctx.fillStyle = color;
+    for (let k = 0; k < 4; k++) { ctx.rotate(Math.PI / 2); ctx.beginPath(); ctx.ellipse(r * .45, 0, r * .5, r * .2, 0, 0, Math.PI * 2); ctx.fill(); }
+    ctx.restore();
+  }
+  function thermo(x, y, val, color, label, t = 1) {           // 温度の札
+    if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3);
+    ctx.fillStyle = color; rr(x - 62, y - 30, 124, 60, 14); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 30); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(val, x, y + 1);
+    if (label) { ctx.fillStyle = INK; ctx.font = f(700, 20); ctx.fillText(label, x, y + 52); }
+    ctx.restore();
+  }
+  function sun(x, y, t) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(t * .4); ctx.fillStyle = '#ffb627';
+    for (let k = 0; k < 12; k++) { ctx.rotate(Math.PI / 6); ctx.fillRect(46, -4, 22, 8); }
+    ctx.beginPath(); ctx.arc(0, 0, 38, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
+  function bubble(text, x, y, t, color = HOT) {
+    if (t <= 0) return; const s = eb(t / .35); ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.font = f(900, 26); const w = ctx.measureText(text).width + 36;
+    ctx.fillStyle = '#fff'; rr(-w / 2, -28, w, 56, 28); ctx.fill(); ctx.strokeStyle = color; ctx.lineWidth = 4; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-14, 26); ctx.lineTo(-30, 50); ctx.lineTo(4, 27); ctx.fillStyle = '#fff'; ctx.fill();
+    ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 0, 1); ctx.restore();
+  }
+  function fcu(x, y, t, on = true, w = 150, h = 54) {          // 天井のファンコイル
+    ctx.fillStyle = '#dfe4ec'; rr(x, y, w, h, 8); ctx.fill(); ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.fillStyle = INK; ctx.font = f(800, 18); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('FCU', x + w / 2, y + h / 2);
+    if (on) fanIcon(x + 22, y + h / 2, 16, t);
+  }
+
+
+  // ---------- generic scene builders ----------
+  const DARK = '#1f2430';
+  function foot(text, t, color = DARK) { if (text && t > 0) pill(text, W / 2, 660, t, {align: 'center', bg: color, size: 21}); }
+  const sc = {
+    title(big, sub, keys, label, color = ACC) {
+      return t => {
+        const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#16304f'); g.addColorStop(1, '#0b1626');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+        for (let i = 0; i < 22; i++) { const [a, b, c] = PUFFS[i], ph = (t * .1 + a) % 1;
+          ctx.fillStyle = `rgba(255,255,255,${.10 * (1 - ph)})`; ctx.beginPath(); ctx.arc(ph * W, b * H + Math.sin(t + i) * 20, 10 + c * 26, 0, Math.PI * 2); ctx.fill(); }
+        pill(label, W / 2, 205, t, {align: 'center', bg: color, size: 28});
+        const s = eb((t - .25) / .5);
+        if (s > 0) { ctx.save(); ctx.translate(W / 2, 330); ctx.scale(s, s); ctx.font = f(900, big.length > 7 ? 92 : 112);
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineWidth = 12; ctx.strokeStyle = '#fff'; ctx.strokeText(big, 0, 0);
+          ctx.fillStyle = color; ctx.fillText(big, 0, 0); ctx.restore(); }
+        if (t > .8) { ctx.globalAlpha = eo((t - .8) / .4); ctx.font = f(800, 42); ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText(sub, W / 2, 460); ctx.globalAlpha = 1; }
+        if (t > 1.4) { ctx.globalAlpha = eo((t - 1.4) / .4); ctx.font = f(500, 23); ctx.fillStyle = '#b9c2d3'; ctx.fillText(keys, W / 2, 530); ctx.globalAlpha = 1; }
+      };
+    },
+    cards(head, list, ft, fcol) {           // list: [title, body, color?] ×4
+      return t => {
+        plain(); const cw = 560, ch = 200, x0 = 70, y0 = 170, g = 40;
+        list.forEach(([a, b, c], i) => card(x0 + (i % 2) * (cw + g), y0 + Math.floor(i / 2) * (ch + 22), cw, ch, String(i + 1), a, b, t - .4 - i * 2.1, c || ACC));
+        foot(ft, t - (list.length * 2.1 + .6), fcol); headline(head, t);
+      };
+    },
+    compare(head, cols, ft) {               // cols: [label, title, items[], color]
+      return t => {
+        plain(); const n = cols.length, gap = 25, cw = (1190 - gap * (n - 1)) / n, x0 = 45, y0 = 160, h = 410;
+        cols.forEach(([lab, ttl, items, col], i) => {
+          const tt = t - .4 - i * 2.6; if (tt <= 0) return; const x = x0 + i * (cw + gap), s = .85 + .15 * eb(tt / .35);
+          ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + cw / 2, y0 + h / 2); ctx.scale(s, s); ctx.translate(-cw / 2, -h / 2);
+          ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(4, 6, cw, h, 16); ctx.fill(); ctx.fillStyle = '#fff'; rr(0, 0, cw, h, 16); ctx.fill();
+          ctx.fillStyle = col; rr(0, 0, cw, 70, [16, 16, 0, 0]); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+          if (lab) { ctx.font = f(900, 26); ctx.fillText(lab, 22, 36); }
+          ctx.font = f(800, 22); ctx.fillText(ttl, lab ? 22 + ctx.measureText(lab).width + 50 : 22, 36);
+          ctx.font = f(600, 21);
+          items.forEach((it, k) => { if (tt > .6 + k * .5) { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(28, 120 + k * 80, 7, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = INK; it.split('\n').forEach((l, j) => ctx.fillText(l, 46, 121 + k * 80 + j * 28)); } });
+          ctx.restore();
+        });
+        foot(ft, t - (n * 2.6 + 1)); headline(head, t);
+      };
+    },
+    table(head, cols, rows, ft, widths) {   // rows appear one by one
+      return t => {
+        plain(); const x0 = 90, wAll = 1100, ws = widths || cols.map(() => wAll / cols.length), y0 = 160, rh = Math.min(84, 380 / rows.length);
+        ctx.fillStyle = DARK; rr(x0, y0, wAll, 60, [14, 14, 0, 0]); ctx.fill();
+        ctx.font = f(800, 22); ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        let x = x0; cols.forEach((c, k) => { ctx.fillText(c, x + 24, y0 + 31); x += ws[k]; });
+        rows.forEach((r, i) => { const tt = t - .8 - i * 1.4; if (tt <= 0) return; const y = y0 + 60 + i * rh;
+          ctx.globalAlpha = eo(tt / .3); ctx.fillStyle = i % 2 ? '#f6f8fb' : '#fff'; ctx.fillRect(x0, y, wAll, rh);
+          let xx = x0; r.forEach((c, k) => { ctx.fillStyle = k === 0 ? INK : (k === r.length - 1 ? ACC : '#3a4252'); ctx.font = f(k === 0 ? 800 : 600, 22);
+            c.split('\n').forEach((l, j, a) => ctx.fillText(l, xx + 24, y + rh / 2 + (j - (a.length - 1) / 2) * 26)); xx += ws[k]; });
+          ctx.globalAlpha = 1; });
+        foot(ft, t - (rows.length * 1.4 + 1.2)); headline(head, t);
+      };
+    },
+    flow(head, steps, ft, color = ACC) {    // 縦に並ぶ手順
+      return t => {
+        plain(); const n = steps.length, bh = Math.min(92, (440 - (n - 1) * 22) / n), x = 230, w = 820, y0 = 160;
+        steps.forEach(([a, b], i) => { const tt = t - .5 - i * 1.8; if (tt <= 0) return; const y = y0 + i * (bh + 22), dx = (1 - eo(tt / .4)) * 50;
+          ctx.save(); ctx.globalAlpha = cl(tt / .25); ctx.translate(dx, 0);
+          ctx.fillStyle = 'rgba(0,0,0,.12)'; rr(x + 3, y + 5, w, bh, 14); ctx.fill(); ctx.fillStyle = '#fff'; rr(x, y, w, bh, 14); ctx.fill();
+          ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x + 46, y + bh / 2, 24, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(String(i + 1), x + 46, y + bh / 2 + 1);
+          ctx.textAlign = 'left'; ctx.fillStyle = INK; ctx.font = f(900, 26); ctx.fillText(a, x + 90, y + bh / 2 - (b ? 14 : 0));
+          if (b) { ctx.fillStyle = '#4a5262'; ctx.font = f(500, 20); ctx.fillText(b, x + 90, y + bh / 2 + 18); }
+          ctx.restore();
+          if (i < n - 1 && tt > .5) arrow(x + 46, y + bh + 2, x + 46, y + bh + 20, color, 4, tt - .5);
+        });
+        foot(ft, t - (n * 1.8 + .8)); headline(head, t);
+      };
+    },
+    term(word, desc, notes) {               // 用語の説明
+      return t => {
+        plain('#eef3f7'); pill('ことば', W / 2, 150, t, {align: 'center', bg: ACC, size: 24});
+        const s = eb((t - .3) / .5); if (s > 0) { ctx.save(); ctx.translate(W / 2, 255); ctx.scale(s, s); ctx.font = f(900, 76); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.lineWidth = 10; ctx.strokeStyle = '#fff'; ctx.strokeText(word, 0, 0); ctx.fillStyle = ACC; ctx.fillText(word, 0, 0); ctx.restore(); }
+        if (t > 1.2) box(140, 330, 1000, 110, [[desc, desc.length > 30 ? 26 : 30, 800, INK]], t - 1.2);
+        (notes || []).forEach((n, i) => pill(n, W / 2, 500 + i * 62, t - 3 - i * 1.4, {align: 'center', bg: DARK, size: 22}));
+      };
+    },
+    quiz(q, opts, correct, expl) {          // 事例で考える（A／B）
+      return t => {
+        plain(); pill('事例で考える', W / 2, 60, t, {align: 'center', bg: ACC, size: 26});
+        box(90, 105, 1100, 110, [[q, q.length > 34 ? 25 : 29, 800, INK]], t - .3);
+        const reveal = t > 7;
+        opts.forEach((o, i) => { const tt = t - 2 - i * 1.2; if (tt <= 0) return; const y = 250 + i * 120, ok = i === correct;
+          ctx.save(); ctx.globalAlpha = cl(tt / .25) * (reveal && !ok ? .45 : 1);
+          ctx.fillStyle = '#fff'; rr(150, y, 980, 96, 16); ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = reveal ? (ok ? GRN : '#c4ccd8') : '#c4ccd8'; ctx.stroke();
+          ctx.fillStyle = reveal && ok ? GRN : '#5b6474'; ctx.beginPath(); ctx.arc(205, y + 48, 28, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = f(900, 28); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('AB'[i], 205, y + 49);
+          ctx.fillStyle = INK; ctx.font = f(700, o.length > 30 ? 22 : 25); ctx.textAlign = 'left'; ctx.fillText(o, 255, y + 49); ctx.restore();
+          if (reveal && ok) check(1090, y + 46, t - 7); });
+        if (t > 8.5) pill(expl, W / 2, 530 + 120 * (opts.length - 2), t - 8.5, {align: 'center', bg: GRN, size: 21});
+      };
+    },
+    ng(head, list, ft) {                    // よくある失敗
+      return t => {
+        plain('#fbf1ef'); const cw = 560, ch = 200, x0 = 70, y0 = 170, g = 40;
+        list.forEach(([a, b], i) => card(x0 + (i % 2) * (cw + g), y0 + Math.floor(i / 2) * (ch + 22), cw, ch, '✕', a, b, t - .4 - i * 2.2, HOT));
+        foot(ft, t - (list.length * 2.2 + .6)); headline(head, t);
+      };
+    },
+    summary(tiles, note) {                  // tiles: [word, body, color] ×4
+      return t => {
+        const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#16304f'); g.addColorStop(1, '#0b1626');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+        tiles.forEach(([a, b, col], i) => { const tt = t - .5 - i * .9; if (tt <= 0) return;
+          const x = 70 + i * 290, y = 190, s = .8 + .2 * eb(tt / .35);
+          ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + 130, y + 150); ctx.scale(s, s); ctx.translate(-130, -150);
+          ctx.fillStyle = '#fff'; rr(0, 0, 260, 300, 22); ctx.fill(); ctx.fillStyle = col; rr(0, 0, 260, 110, [22, 22, 0, 0]); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = f(900, a.length > 4 ? 36 : 44); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(a, 130, 57);
+          ctx.fillStyle = INK; ctx.font = f(700, 25); b.split('\n').forEach((l, k) => ctx.fillText(l, 130, 170 + k * 42)); ctx.restore(); });
+        if (t > 4.5) { ctx.globalAlpha = eo((t - 4.5) / .5); ctx.font = f(500, 18); ctx.fillStyle = '#b9c2d3'; ctx.textAlign = 'center'; ctx.fillText(note, W / 2, 640); ctx.globalAlpha = 1; }
+        pill('まとめ', W / 2, 110, t, {align: 'center', bg: ACC, size: 30});
+      };
+    },
+  };
+  function building(x, y, w, floors, fh, t, opt = {}) {   // 階の積み重ね（上から）
+    for (let i = 0; i < floors; i++) { const yy = y + i * fh, fl = floors - i;
+      ctx.fillStyle = (opt.fill && opt.fill(fl, t)) || '#dfe6f1'; ctx.fillRect(x, yy, w, fh - 4);
+      ctx.fillStyle = INK; ctx.font = f(800, 18); ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(fl + 'F', x - 12, yy + fh / 2); }
+  }
+  function docIcon(x, y, w, h, title, t, color = ACC) {
+    if (t <= 0) return; const s = .85 + .15 * eb(t / .35);
+    ctx.save(); ctx.globalAlpha = cl(t / .2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(3, 5, w, h, 10); ctx.fill(); ctx.fillStyle = '#fff'; rr(0, 0, w, h, 10); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, w, 44, [10, 10, 0, 0]); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(800, 20); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(title, w / 2, 23);
+    ctx.strokeStyle = '#c4ccd8'; ctx.lineWidth = 3; for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.moveTo(16, 66 + k * 22); ctx.lineTo(w - 16 - (k === 3 ? 30 : 0), 66 + k * 22); ctx.stroke(); }
+    ctx.restore();
+  }
+  function check(x, y, t, color = GRN) { if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3); ctx.strokeStyle = color; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(x - 14, y); ctx.lineTo(x - 3, y + 12); ctx.lineTo(x + 18, y - 14); ctx.stroke(); ctx.restore(); }
+  function camera(x, y, t) {                 // カメラ（写真で記録）
+    if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3); ctx.translate(x, y);
+    ctx.fillStyle = '#13285e'; rr(0, 14, 130, 86, 14); ctx.fill(); ctx.fillStyle = '#fff'; rr(42, 0, 46, 18, 4); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(65, 57, 26, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = '#f5b942'; ctx.beginPath(); ctx.arc(65, 57, 9, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
+
+  // ---------- scenes ----------
+  const S = [];
+  const SOIL = '#8b6b4a', SOILL = '#c9b28a';
+  function cliff(H0 = 140, top = 230, x0 = 330, x1 = 470, base = 560) {
+    ctx.fillStyle = SOIL; ctx.beginPath(); ctx.moveTo(0, top); ctx.lineTo(x0, top); ctx.lineTo(x1, base); ctx.lineTo(W, base); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
+    poly([[0, top], [x0, top], [x1, base], [W, base]], SOILL, 5);
+  }
+  S.push({name: 'タイトル', d: 7, draw: sc.title('崖地条例', '崖の近くに建てる前に確かめること', '測量 ／ 崖高と距離 ／ 東京都と横浜市 ／ 既存擁壁 ／ 関係する指定 ／ 配置案 ／ 施工と点検', 'CM知識一覧｜崖地')});
+  S.push({name: "擁壁とは", d: 12, draw: sc.term('擁壁', '土の高さが違う場所で、土が崩れないよう支える壁', ['崖の上に建てる：基礎の荷重・擁壁・排水', '崖の下に建てる：崩れたときの影響と建物の構造'])});
+  S.push({name: '断面を測量', d: 15, draw(t) {
+    plain('#e8f1fb'); cliff();
+    dimV(500, 230, 560, t - 1, '崖高 H');
+    if (t > 2.4) { ctx.strokeStyle = HOT; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(470, 560, 18 + Math.sin(t * 5) * 3, 0, Math.PI * 2); ctx.stroke(); fx('下端', 470, 600, 26, HOT, t - 2.4); }
+    if (t > 3.4) fx('上端', 330, 200, 26, '#fff', t - 3.4);
+    if (t > 4.6) { const k = eo((t - 4.6) / .6); ctx.fillStyle = '#e8edf5'; ctx.fillRect(800, 560 - 160 * k, 220, 160 * k); ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 3; ctx.strokeRect(800, 560 - 160 * k, 220, 160 * k);
+      if (k > .9) { ctx.fillStyle = INK; ctx.font = f(800, 24); ctx.textAlign = 'center'; ctx.fillText('計画建物', 910, 490); } }
+    dimH(470, 800, 530, t - 6, '水平距離 D');
+    if (t > 8) { poly([[200, 150], [200, 680]], '#fff', 4, [12, 8]); pill('敷地境界', 200, 160, t - 8, {align: 'center', bg: DARK, size: 20}); }
+    foot('崖が隣地にあっても、影響があれば調べる範囲に含める', t - 9.5);
+    headline('まず[測量]で崖の断面を確定', t);
+  }});
+  S.push({name: "事例で考える", d: 14, draw: sc.quiz('擁壁が敷地の外にあります。計画のどこに入れますか？', ['斜面・擁壁・計画建物を同じ断面に描き、影響を確認する', '敷地境界の外なので、調査図から外す'], 0, '崖が隣地でも影響は及ぶ。許可図・排水・現況・調べられる範囲を確認')});
+  S.push({name: '高さと距離の条件', d: 15, draw(t) {
+    plain('#e8f1fb'); cliff();
+    dimV(500, 230, 560, t - .6, 'H ＞ 2m');
+    if (t > 2.5) { const k = eo((t - 2.5) / 1.2); ctx.fillStyle = 'rgba(232,67,47,.28)'; ctx.fillRect(470, 420, 660 * k, 140); poly([[470, 590], [470 + 660 * k, 590]], HOT, 4);
+      if (k > .95) fx('下端から 2H 以内', 800, 620, 30, HOT, t - 3.7); }
+    if (t > 5.5) { ctx.fillStyle = '#8a8f99'; ctx.beginPath(); ctx.moveTo(330, 230); ctx.lineTo(372, 230); ctx.lineTo(392, 560); ctx.lineTo(330, 560); ctx.closePath(); ctx.globalAlpha = eo((t - 5.5) / .6); ctx.fill(); ctx.globalAlpha = 1;
+      pill('原則：擁壁が必要（例外あり）', 360, 170, t - 6, {align: 'center', bg: ACC, size: 22}); }
+    if (t > 8) { ctx.fillStyle = '#e8edf5'; ctx.fillRect(820, 420, 180, 140); ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 3; ctx.strokeRect(820, 420, 180, 140); fx('？', 910, 480, 50, HOT, t - 8.3); }
+    foot('東京都建築安全条例6条の例。数値と例外は所在地の条例で確認', t - 9.5);
+    headline('高さ[2m超]・下端から[2倍以内]', t);
+  }});
+  S.push({name: '東京都と横浜市', d: 15, draw: sc.table('自治体で[条件が違う]', ['条例', '高さ・勾配', '距離', '原則の対応'],
+    [['東京都\n建築安全条例6条', '高さ2m超', '下端から\n崖高の2倍以内', '高さ2m超の擁壁\n（例外あり）'], ['横浜市\n建築基準条例3条', '勾配30度超\n高さ3m超', '下端から\n崖高の2倍以内', '擁壁または防土堤\n（例外あり）']],
+    '測る起点・崖の定義・例外まで、所在地の条例と窓口で確認', [250, 250, 260, 340])});
+  S.push({name: "崖高の測り方", d: 15, draw: function(t) { plain('#e8f1fb'); cliff(); if (t > 1) { const k = eo((t - 1) / 1.2); poly([[470, 560], [470 - 600 * k, 560 - 300 * k]], '#e09a00', 5, [14, 8]); fx('下端を通る1/2勾配の線', 230, 470, 24, '#ffd27a', t - 2.2); } dimV(560, 230, 560, t - 3.5, 'がけ高'); box(820, 170, 400, 170, [['東京都', 26, 900, ACC], ['がけ高の定義に', 21, 600, '#4a5262'], ['1/2勾配の斜線を使う', 21, 600, '#4a5262']], t - 5); box(820, 370, 400, 170, [['横浜市', 26, 900, ACC], ['主要な部分の勾配を確認', 21, 600, '#4a5262'], ['所定の場合は崖上の排水も', 21, 600, '#4a5262']], t - 7); foot('測り方は施行細則・解説と所管の運用で確かめる', t - 9.5); headline('[崖高の測り方]も自治体で違う', t); }});
+  S.push({name: '既存擁壁', d: 16, draw(t) {
+    plain('#e8f1fb');
+    ctx.fillStyle = SOIL; ctx.fillRect(0, 170, 430, 420); ctx.fillStyle = '#8a8f99'; ctx.beginPath(); ctx.moveTo(430, 160); ctx.lineTo(480, 160); ctx.lineTo(505, 590); ctx.lineTo(420, 590); ctx.closePath(); ctx.fill();
+    poly([[0, 590], [W, 590]], SOILL, 5);
+    if (t > 1.5) { poly([[455, 260], [465, 300], [457, 330], [470, 370]], HOT, 5); fx('ひび割れ', 560, 320, 26, HOT, t - 1.5); }
+    if (t > 3) { ctx.fillStyle = '#0b1a40'; ctx.beginPath(); ctx.arc(470, 480, 10, 0, Math.PI * 2); ctx.fill(); flow([[478, 484], [520, 500], [540, 560]], t, COOL, 4, 50, 5); fx('水抜き・湧水', 640, 500, 26, BLUE, t - 3); }
+    if (t > 4.5) { arrow(485, 210, 560, 180, '#e09a00', 5, t - 4.5); fx('変位・傾き', 660, 180, 26, '#e09a00', t - 4.8); }
+    docIcon(820, 200, 170, 190, '許可・検査', t - 6.5); docIcon(1020, 200, 170, 190, '構造図', t - 7.2);
+    foot('築造時の範囲・仕様・増し積みの履歴と、今の状態を照合する', t - 9);
+    headline('既存擁壁は[資料]と[現況]で', t);
+  }});
+  S.push({name: "見た目では決めない", d: 15, draw: sc.cards('見た目と書類だけでは[決めない]', [['記録の欠落', '許可図・検査書類が\nない部分'], ['建物の追加荷重', '崖の上の新しい基礎'], ['地下水・湧水', '水抜きと排水先'], ['局部と全体の安定', '専門家の調査計画へ']], '気になる論点を、調査の計画に落とし込む')});
+  S.push({name: '関係する指定', d: 14, draw: sc.cards('[窓口ごとの判断]を一枚に', [['崖の条例', '崖上・崖下の配置\n安全性の例外'], ['盛土規制法', '規制区域と\n盛土・切土の規模'], ['土砂災害特別警戒区域', '居室のある建物の構造'], ['建築確認', '条例の判断との関係']], '建築・造成・防災の各窓口に相談する')});
+  S.push({name: '配置案の比較', d: 16, draw: sc.compare('配置案を[3つ]並べる', [['A案', '建物を後退', ['擁壁工事と隣地への\n影響を抑えやすい', '床面積・駐車・\n消防動線が減る'], '#5b6474'],
+    ['B案', '既存擁壁を活用', ['撤去・再施工を\n抑えられる可能性', '調査・補修・監視の費用'], ACC], ['C案', '擁壁を更新', ['新しい計画に合わせて\n安全性を確保', '費用・工期・\n隣地との協議'], GRN]], '客室数と費用に加え、隣地の条件と維持管理の負担も比べる')});
+  S.push({name: "崖高2.6mの例", d: 15, draw: function(t) { plain(); fx('崖高 2.6m', 330, 250, 70, ACC, t - .3); if (t > 2) pill('この数字だけで計画を決めない', 330, 360, t - 2, {align: 'center', bg: HOT, size: 24}); box(660, 160, 560, 440, [['照合すること', 26, 900, INK], ['条例上の測り方', 22, 600, '#4a5262'], ['現況と造成後の断面', 22, 600, '#4a5262'], ['建物の位置', 22, 600, '#4a5262'], ['既存擁壁', 22, 600, '#4a5262'], ['土砂災害の指定', 22, 600, '#4a5262']], t - 3.5); if (t > 8) box(80, 440, 520, 150, [['CMは', 22, 800, ACC], ['未確認の条件を見積の前提に書き', 20, 600, '#4a5262'], ['判断日を発注者と決める', 20, 600, '#4a5262']], t - 8); headline('架空の別棟：[数字だけで決めない]', t); }});
+  S.push({name: '判断の順番', d: 14, draw: sc.flow('判断の[順番]', [['測量・既存資料を集める', '現況測量・代表断面・擁壁の資料'], ['地盤・擁壁を専門家が調査', ''], ['条例・造成・防災の窓口へ相談', ''], ['配置と工法を決め、条件を記録', '']], '安全性の確認が済む時点を、土地取得と発注の判断日につなげる')});
+  S.push({name: "よくある失敗", d: 15, draw: sc.ng('よくある[失敗]', [['敷地外の擁壁を外す', '隣地の崖も影響がある'], ['崖高の数字だけで判断', '測り方は条例で違う'], ['古い書類だけで安全と判断', '今の状態は調査で確かめる'], ['大雨の対応を決めずに着工', '作業中止と連絡の条件を\n施工計画に'], ], '')});
+  S.push({name: '施工と点検', d: 15, draw(t) {
+    plain('#e8f1fb');
+    ctx.fillStyle = SOIL; ctx.fillRect(0, 170, 400, 420); ctx.fillStyle = '#8a8f99'; ctx.fillRect(400, 160, 60, 430); poly([[0, 590], [W, 590]], SOILL, 5);
+    if (t > 1) { ctx.fillStyle = 'rgba(58,160,255,.3)'; ctx.fillRect(350, 180, 50, 400); fx('裏込め・排水', 250, 230, 24, BLUE, t - 1); }
+    if (t > 2) { poly([[380, 570], [560, 570]], COOL, 8); flow([[380, 570], [560, 570]], t, '#fff', 5, 60, 4); }
+    if (t > 3.5) { const tt = t - 3.5; ctx.save(); ctx.globalAlpha = eo(tt / .3); ctx.translate(640, 230); ctx.fillStyle = '#13285e'; rr(0, 14, 130, 86, 14); ctx.fill(); ctx.fillStyle = '#fff'; rr(42, 0, 46, 18, 4); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(65, 57, 26, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); fx('隠れる前に記録', 705, 360, 26, '#fff', tt); }
+    box(860, 200, 360, 300, [['引き渡すもの', 26, 900, INK], ['排水施設の点検項目', 22, 600, '#4a5262'], ['擁壁の点検項目', 22, 600, '#4a5262'], ['連絡先', 22, 600, '#4a5262']], t - 6);
+    foot('工事中は掘削の順序・荷重・監視の条件を決めておく', t - 8.5);
+    headline('記録して[点検]を引き継ぐ', t);
+  }});
+  S.push({name: "発注者チェック表", d: 15, draw: sc.table("段階ごとの[チェック表]", ['段階', '発注者の確認', '残す成果物'], [["企画", "測量で崖の断面を確定", "区域図・現況・窓口一覧"], ["基本設計", "条例と指定区域を照合", "配置比較・判定の根拠\n協議記録"], ["着工前", "配置・対策案を比較", "申請図・許可の条件\n着手できる日"], ["施工・引渡し", "変更時は再照会", "竣工図・提出記録\n維持管理台帳"]], "判定には根拠の条項・窓口・回答日・図面の版を添える", [200, 430, 470])});
+  S.push({name: 'まとめ', d: 12, draw: sc.summary([['測る', '崖高・下端\n水平距離', ACC], ['照合する', '条例・指定\n例外', BLUE], ['比べる', '後退・活用\n更新', '#9b59d0'], ['引き継ぐ', '監視・記録\n点検項目', GRN]], '条件は所在地の条例・窓口で確認します ／ ※イラストはイメージです')});
+
+  if (S.length !== 17) console.error('scene/caption count mismatch', S.length, 17);
+
+  // ---------- narration ----------
+  const CAP = ["崖地条例。崖のそばに建てるときの確認を、測量、条例、既存の擁壁、配置の比較、施工と点検の順に解説します。", "擁壁は、土の高さが違う場所で、土が崩れないように支える壁です。崖の上に建てるなら、基礎の荷重と擁壁、排水。崖の下に建てるなら、崩れたときの影響と建物の構造を確かめます。", "まず、測量で崖の断面を確定します。崖の上端と下端、高さ、建物までの水平距離を、代表断面に描きます。崖が隣地にあっても、影響がある場合は調べる範囲に含めます。", "事例で考えます。擁壁が敷地の外にあります。計画のどこに入れますか。答えはA。崖が隣地にあっても、影響が及ぶことがあります。斜面と擁壁と計画建物を同じ断面に描き、許可図、排水、現況、調べられる範囲を確認します。", "東京都建築安全条例では、高さ2メートルを超える崖の下端から、崖の高さの2倍以内に建てる場合、原則として擁壁が必要です。例外もあるため、条文と窓口で確かめます。", "横浜市の建築基準条例では、勾配が30度を超える一体の崖で、高さ3メートルを超えるものが対象です。数値だけでなく、測る起点、崖の定義、例外まで、所在地の条例で確かめます。", "測り方も自治体で違います。東京都のがけ高には、崖の下端を通る二分の一勾配の斜線を使う定義があります。横浜市では、一体の傾斜地の主要な部分の勾配を確かめ、所定の場合は崖の上の排水の措置も必要です。", "既存の擁壁は、許可や検査の資料と、今の状態を照合します。築造時の範囲と仕様、増し積みの履歴、ひび割れや変位、水抜きの状態や湧水を確かめ、必要なら専門家が調査します。", "見た目や検査の書類だけでは、今の健全性は確定できません。記録の欠落、建物による追加の荷重、地下水、局部と全体の安定。こうした論点を、専門家の調査計画に落とし込みます。", "崖の条例だけでなく、盛土規制法の規制区域、土砂災害特別警戒区域、建築確認との関係も確かめ、各窓口の判断を一枚にまとめます。", "配置案を比べます。建物を後退させる、既存の擁壁を活かす、擁壁を造り直す。客室数や費用だけでなく、隣地の条件と維持管理の負担も並べます。", "架空の別棟の計画で、崖の高さは2.6メートルと聞いたとします。この数字だけで計画を決めず、条例上の測り方、現況と造成後の断面、建物の位置、既存の擁壁、土砂災害の指定を照合します。CMは未確認の条件を見積の前提に書き、判断日を発注者と決めます。", "判断の順番は、測量と資料の収集、専門家による調査、窓口への相談、そして配置と工法の決定です。安全性の確認が済む時点を、土地の取得や工事発注の判断日につなげます。", "よくある失敗です。敷地の外の擁壁を調査図から外す。崖の高さの数字だけで判断する。古い書類だけで安全と決める。大雨のときの作業中止や連絡の条件を決めずに着工する。", "工事中は、掘削の順序と荷重、監視の条件を決め、基礎や裏込め、排水を、隠れる前に記録します。引渡しでは、排水施設と擁壁の点検項目、連絡先を渡します。", "段階ごとのチェック表です。企画では測量で断面を確定し、基本設計では条例と指定を照合し、着工前に配置と対策を比べ、変更があれば再び照会します。判定の結果には、根拠の条項、窓口、回答日、図面の版を添えます。", "まとめです。崖を測り、条例と指定を照合し、配置案を比べ、施工の記録と点検を引き継ぐ。以上、崖地条例のポイントでした。"];
+  const tts = s => s.replace(/崖の高さ/g, "がけのたかさ").replace(/上端/g, "じょうたん").replace(/下端/g, "かたん").replace(/擁壁/g, "ようへき").replace(/増し積み/g, "ましづみ").replace(/裏込め/g, "うらごめ").replace(/湧水/g, "ゆうすい").replace(/造り直す/g, "つくりなおす").replace(/架空/g, "かくう").replace(/CM/g, "シーエム").replace(/1つ/g, "ひとつ").replace(/2つ/g, "ふたつ").replace(/3つ/g, "みっつ").replace(/4つ/g, "よっつ").replace(/㎡/g, "平方メートル");
+  const NARR = CAP.map(tts);
+  S.forEach((s, i) => { s.d = Math.max(s.d, Math.ceil(CAP[i].length / 7.2) + 2); });   // 読み上げの長さに合わせる
+  const FANI = -1;
+
+  // ---------- player ----------
+  /* hs-ext v1 */
+  let RATE = 1, bgmOn = true;   // 再生速度・BGMのオン／オフ
+  const starts = []; let total = 0; for (const s of S) { starts.push(total); total += s.d; }
+  const btn = root.querySelector('.hs-btn'), snd = root.querySelector('.hs-snd'), track = root.querySelector('.hs-track'), fill = root.querySelector('.hs-fill');
+  const time = root.querySelector('.hs-time'), chips = root.querySelector('.hs-chips'), cap = root.querySelector('.hs-cap');
+  starts.slice(1).forEach(s => { const k = document.createElement('div'); k.className = 'hs-tick'; k.style.left = (s / total * 100) + '%'; track.appendChild(k); });
+  const chipEls = S.map((s, i) => { const li = document.createElement('li'); const b = document.createElement('button');
+    b.type = 'button'; b.className = 'hs-chip'; b.textContent = `${i + 1}. ${s.name}`;
+    b.onclick = () => { unlock(); T = starts[i]; scene = -1; play(); };
+    li.appendChild(b); chips.appendChild(li); return b; });
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let T = 0, playing = false, last = 0, scene = -1;
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  const sceneAt = T => { let i = starts.findIndex((s, k) => T >= s && T < s + S[k].d); return i < 0 ? S.length - 1 : i; };
+
+  // ---------- sound (Web Audio + Web Speech, 音声ファイル不要) ----------
+  const TTS = 'speechSynthesis' in window;
+  let soundOn = false, AC = null, master, bgmGain, nextBeat = 0, beatIdx = 0, schedTimer = null, speaking = false, jaVoice = null, fanNode = null;
+  const voiceSelect = root.querySelector('.hs-voice');
+  const savedVoice = (() => { try { return localStorage.getItem('cmKnowledgeJapaneseVoice') || ''; } catch { return ''; } })();
+  function pickVoice() {
+    const japanese = TTS ? speechSynthesis.getVoices().filter(v => /^ja(?:-|$)/i.test(v.lang)) : [];
+    const voices = japanese.filter(v => /Microsoft/i.test(v.name) && /Haruka|Sayaka|Ayumi|Nanami/i.test(v.name))
+      .sort((a, b) => Number(!/Haruka/i.test(a.name)) - Number(!/Haruka/i.test(b.name)));
+    const preferred = voiceSelect.value || savedVoice;
+    voiceSelect.replaceChildren();
+    for (const voice of voices) voiceSelect.add(new Option(voice.name, voice.voiceURI));
+    jaVoice = voices.find(v => v.voiceURI === preferred) || voices[0] || null;
+    if (jaVoice) voiceSelect.value = jaVoice.voiceURI;
+    else voiceSelect.add(new Option('Microsoft日本語女性音声を利用できません', ''));
+    voiceSelect.disabled = !jaVoice;
+  }
+  voiceSelect.addEventListener('change', () => {
+    jaVoice = speechSynthesis.getVoices().find(v => v.voiceURI === voiceSelect.value) || null;
+    try { localStorage.setItem('cmKnowledgeJapaneseVoice', voiceSelect.value); } catch {}
+    if (playing && soundOn) speak(sceneAt(T));
+  });
+  if (TTS) { pickVoice(); speechSynthesis.addEventListener('voiceschanged', pickVoice); } else pickVoice();
+  function unlock() {                       // ユーザー操作の中で一度だけ音を有効化
+    if (soundOn) return;
+    soundOn = true; setSnd();
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      AC.resume();
+      if (!master) { master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
+        bgmGain = AC.createGain(); bgmGain.gain.value = 0.0; bgmGain.connect(master); }
+    } catch (e) { AC = null; }
+    if (TTS) { const u = new SpeechSynthesisUtterance(''); speechSynthesis.speak(u); }   // iOSの解錠
+  }
+  function mute() { soundOn = false; setSnd(); stopSpeech(); stopBgm(); fan(false); }
+  function setSnd() { snd.textContent = soundOn ? '🔊' : '🔇'; snd.setAttribute('aria-label', soundOn ? '音声をオフ' : '音声をオン'); snd.setAttribute('aria-pressed', soundOn); }
+
+  // BGM：やわらかいアルペジオ（C–G–Am–F）
+  const CH = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]];
+  const hz = n => 440 * Math.pow(2, (n - 69) / 12);
+  function pluck(t, freq, dur, vol, dest) {
+    const o = AC.createOscillator(), o2 = AC.createOscillator(), g = AC.createGain();
+    o.type = 'triangle'; o.frequency.value = freq; o2.type = 'sine'; o2.frequency.value = freq * 2;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); o2.connect(g); g.connect(dest); o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
+  }
+  const BEAT = 60 / 92 / 2;                  // 8分音符
+  function sched() {
+    while (nextBeat < AC.currentTime + 0.3) {
+      const bar = Math.floor(beatIdx / 8), k = beatIdx % 8, ch = CH[bar % 4];
+      if (k === 0) pluck(nextBeat, hz(ch[0] - 12), 1.8, .5, bgmGain);
+      pluck(nextBeat, hz(ch[[0, 1, 2, 1, 0, 2, 1, 2][k]] + 12), .7, .22, bgmGain);
+      nextBeat += BEAT; beatIdx++;
+    }
+  }
+  function startBgm() {
+    if (!AC || !soundOn || !bgmOn || schedTimer) return;
+    nextBeat = AC.currentTime + .05; sched(); schedTimer = setInterval(sched, 100);
+    duck();
+  }
+  function stopBgm() { if (schedTimer) { clearInterval(schedTimer); schedTimer = null; } if (bgmGain) bgmGain.gain.setTargetAtTime(0, AC.currentTime, .05); }
+  function duck() { if (bgmGain && soundOn) bgmGain.gain.setTargetAtTime(speaking ? 0.05 : 0.12, AC.currentTime, .25); }
+
+  // 効果音
+  function pop() {
+    if (!AC || !soundOn) return; const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain();
+    o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(1500, t + .09);
+    g.gain.setValueAtTime(.18, t); g.gain.exponentialRampToValueAtTime(.0001, t + .12);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + .15);
+  }
+  function fan(on) {                         // 送風の場面の音
+    if (!AC) return;
+    if (on && soundOn && !fanNode) {
+      const n = AC.sampleRate * 2, buf = AC.createBuffer(1, n, AC.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500;
+      const g = AC.createGain(); g.gain.value = 0; g.gain.setTargetAtTime(.07, AC.currentTime, .4);
+      src.connect(lp); lp.connect(g); g.connect(master); src.start(); fanNode = {src, g};
+    } else if (!on && fanNode) {
+      const {src, g} = fanNode; g.gain.setTargetAtTime(0, AC.currentTime, .15); src.stop(AC.currentTime + .6); fanNode = null;
+    }
+  }
+
+  // ナレーション
+  let utt = null;
+  function speak(i) {
+    stopSpeech();
+    if (!TTS || !soundOn || !jaVoice) return;
+    const u = new SpeechSynthesisUtterance(NARR[i]);
+    u.lang = 'ja-JP'; if (jaVoice) u.voice = jaVoice; u.rate = Math.min(2, 1.12 * RATE); u.pitch = 1.0; u.volume = 1;
+    u.onstart = () => { speaking = true; duck(); };
+    u.onend = u.onerror = () => { if (utt === u) { speaking = false; utt = null; duck(); } };
+    utt = u; speaking = true; duck();
+    speechSynthesis.speak(u);
+  }
+  function stopSpeech() { if (TTS) { utt = null; speaking = false; speechSynthesis.cancel(); duck(); } }
+
+  // ---------- render & loop ----------
+  function frame(T) {
+    const i = sceneAt(T);
+    ctx.save(); ctx.clearRect(0, 0, W, H); S[i].draw(Math.min(T - starts[i], S[i].d)); ctx.restore();
+    for (let k = 0; k < S.length; k++) { ctx.fillStyle = k <= i ? '#8a5a2b' : 'rgba(255,255,255,.55)';
+      ctx.beginPath(); ctx.roundRect(W - 30 - (S.length - k) * 34, 18, 26, 8, 4); ctx.fill(); }
+    if (!soundOn) {                          // 音声オフ時のヒント
+      ctx.font = f(700, 20); const tx = '🔇 タップで音声つき再生'; const w = ctx.measureText(tx).width + 28;
+      ctx.fillStyle = 'rgba(15,20,30,.72)'; rr(18, 14, w, 36, 18); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(tx, 32, 33);
+    }
+    fill.style.width = (T / total * 100) + '%'; track.setAttribute('aria-valuenow', Math.round(T / total * 100));
+    time.textContent = `${fmt(T)} / ${fmt(total)}`;
+    chipEls.forEach((c, k) => c.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    if (cap.dataset.i !== String(i)) { cap.dataset.i = i; cap.textContent = CAP[i]; }
+  }
+  function enterScene(i) {
+    scene = i; pop(); speak(i); fan(i === FANI);
+  }
+  function loop(now) {
+    if (!playing) return;
+    const dt = Math.min(.1, (now - last) / 1000); last = now;
+    const i = sceneAt(T), end = starts[i] + S[i].d;
+    // ナレーションが続いている間はシーンの最後で待つ（最大6秒）
+    const holding = soundOn && speaking && T + dt * RATE >= end - 0.02 && (holdT += dt) < 6;
+    if (!holding) { holdT = 0; T += dt * RATE; }
+    if (T >= total) { T = total - 0.001; playing = false; stopBgm(); fan(false); setBtn(); }
+    const j = sceneAt(T); if (j !== scene && playing) enterScene(j);
+    frame(T); if (playing) requestAnimationFrame(loop);
+  }
+  let holdT = 0;
+  function setBtn() { btn.textContent = playing ? '❚❚' : (T >= total - .01 ? '↻' : '▶'); btn.setAttribute('aria-label', playing ? '一時停止' : '再生'); }
+  function play() {
+    if (T >= total - .01) { T = 0; scene = -1; }
+    if (!playing) { playing = true; last = performance.now(); startBgm();
+      const i = sceneAt(T);
+      if (scene !== i || T - starts[i] < 1) enterScene(i); else fan(i === FANI);
+      requestAnimationFrame(loop); }
+    setBtn();
+  }
+  function pause() { playing = false; stopSpeech(); stopBgm(); fan(false); setBtn(); frame(T); }
+  btn.onclick = () => { unlock(); playing ? pause() : play(); };
+  cv.onclick = () => {                       // 初回タップ：音声オンにして今のシーンの頭から
+    if (!soundOn) { unlock(); const i = sceneAt(T); T = starts[i]; scene = -1; if (playing) { startBgm(); enterScene(i); } else play(); return; }
+    playing ? pause() : play();
+  };
+  snd.onclick = () => {
+    if (soundOn) { mute(); frame(T); return; }
+    unlock(); const i = sceneAt(T);
+    if (playing) { T = starts[i]; startBgm(); enterScene(i); } else frame(T);
+  };
+  const seek = e => { const r = track.getBoundingClientRect(); T = cl((e.clientX - r.left) / r.width) * total; scene = sceneAt(T); stopSpeech(); fan(playing && scene === FANI); frame(T); };
+  track.addEventListener('pointerdown', e => { seek(e); track.setPointerCapture(e.pointerId); track.onpointermove = seek; });
+  track.addEventListener('pointerup', () => track.onpointermove = null);
+  track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') T = Math.min(total - .01, T + 3); else if (e.key === 'ArrowLeft') T = Math.max(0, T - 3); else return; scene = sceneAt(T); stopSpeech(); frame(T); e.preventDefault(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
+  // 再生は利用者の操作で開始します。
+  /* hs-ext v1 */
+  const bgmBtn = root.querySelector('.hs-bgm'), rateSel = root.querySelector('.hs-rate'), fsBtn = root.querySelector('.hs-fs');
+  const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } return null; };
+  bgmOn = store('hs-bgm') !== 'off';
+  const r0 = parseFloat(store('hs-rate')); if (r0 >= .5 && r0 <= 2) RATE = r0; rateSel.value = String(RATE);
+  function setBgmBtn() { bgmBtn.textContent = bgmOn ? 'BGM オン' : 'BGM オフ'; bgmBtn.setAttribute('aria-pressed', bgmOn); bgmBtn.classList.toggle('hs-off', !bgmOn); }
+  bgmBtn.onclick = () => { bgmOn = !bgmOn; store('hs-bgm', bgmOn ? 'on' : 'off'); setBgmBtn(); if (!bgmOn) stopBgm(); else if (playing && soundOn) startBgm(); };
+  rateSel.onchange = () => { RATE = parseFloat(rateSel.value) || 1; store('hs-rate', String(RATE)); };
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+  function setFsBtn() { const on = !!fsEl() || root.classList.contains('hs-full'); fsBtn.textContent = on ? '✕' : '⛶'; fsBtn.setAttribute('aria-label', on ? '全画面を終了' : '全画面'); }
+  function fakeFull(on) { root.classList.toggle('hs-full', on); setFsBtn(); }
+  fsBtn.onclick = () => {
+    if (fsEl()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (root.classList.contains('hs-full')) { fakeFull(false); return; }
+    const req = root.requestFullscreen || root.webkitRequestFullscreen;
+    if (!req) { fakeFull(true); return; }
+    try { const p = req.call(root); if (p && p.catch) p.catch(() => fakeFull(true)); } catch (e) { fakeFull(true); }
+  };
+  document.addEventListener('fullscreenchange', setFsBtn); document.addEventListener('webkitfullscreenchange', setFsBtn);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && root.classList.contains('hs-full')) fakeFull(false); });
+  setBgmBtn(); setFsBtn();
+  setSnd();
+  const readyFonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  readyFonts.then(() => frame(reduce ? starts[1] + 8 : 0));
+  window.__hsgakechi = {frame: x => { T = x; frame(x); }, total, starts};   // プレビュー用
+})();
+</script>
+</body>
+</html>
