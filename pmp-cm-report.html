@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PMP×建設CM：資格制度と工程・出来高・変更の管理｜詳細レポート</title>
+<meta name="description" content="PMPは資格、PMBOKはガイド、建設CMは職能。架空のホテル改修（1億円・12週）で、2026年の資格制度とWBS・CPM・EVM・リスク・変更管理を整理します。">
+<style>
+:root{color-scheme:dark;--bg:#0a1220;--panel:#142237;--panel2:#0f1b2e;--ink:#edf4ff;--sub:#adbed4;--line:#304159;--accent:#8ee1d0;--warn:#ff8a7a;--law:#6aa6ff;--spec:#8ee1d0;--case:#b79cff;--yel:#ffd166}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 Inter,"Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:6px 10px;z-index:9}
+header.top{border-bottom:1px solid var(--line);padding:14px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;max-width:1160px;margin:auto}
+header.top a{font-weight:700;font-size:15px}
+header.top .nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1160px;margin:0 auto;padding:24px 22px 60px}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:10px 0 8px}
+.kicker{display:inline-block;background:var(--accent);color:#0a1220;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub);font-size:1.05rem}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14.5px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px;margin:20px 0}
+h2{font-size:1.35rem;border-left:6px solid var(--accent);padding-left:12px;margin:18px 0 10px}
+h3{font-size:1.08rem;margin:18px 0 6px;color:var(--accent)}
+p,li{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;background:var(--panel2)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#1c2f4d;color:var(--accent);white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#1d2b1f;border:1px solid #3f6b47;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.warn{background:#3a1f22;border:1px solid #8a3b33;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.case{background:#231d3d;border:1px solid #5c4d99;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--yel)}
+.k{display:inline-block;border-radius:999px;padding:0 9px;font-size:12px;font-weight:800;color:#0a1220;margin:0 3px;vertical-align:1px}
+.k.law{background:var(--law)}.k.spec{background:var(--spec)}.k.case{background:var(--case)}
+figure{margin:14px 0;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1160px;margin:0 auto;padding:0 22px 40px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+a:focus-visible{outline:3px solid #efbe77;outline-offset:3px}
+@media (max-width:640px){nav.toc ol{columns:1}section{padding:4px 14px 16px}}
+@media print{body{background:#fff;color:#000}section,nav.toc{background:#fff;color:#000}header.top,nav.toc{display:none}}
+table,.note,.warn,.case,.flow li,.src li,nav.toc ol{font-size:16px}figcaption{font-size:14px}
+:root{color-scheme:dark;--ink:#edf4ff;--sub:#b7c7dd;--line:#34465f;--accent:#ffac82;--bg:#0a1220;--blue:#8ed6ff;--green:#8ee1c4}header.top{background:#142237}nav.toc,section{background:#142237}th,.flow li{background:#223550}.note{background:#352e1d;border-color:#756137}.warn{background:#3e2529;border-color:#87505a}.case{background:#28253f;border-color:#5c568c}.meta,footer{font-size:14px}table,.note,.warn,.case,.src li{font-size:16px}.flow li{font-size:15px}.skip:focus{background:#223550;color:#fff}@media print{:root{color-scheme:light;--ink:#172133;--sub:#45546a;--line:#b5c2d2;--bg:white;--blue:#155ba1}body,section,nav.toc{background:white}.note,.warn,.case,th,.flow li{background:#eef2f7}}</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="top"><a href="index.html">CM知識一覧 ｜ PMP×建設CM</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="pmp-cm-video.html">動画解説（3分）</a></div></header>
+<main id="main">
+<span class="kicker">詳細レポート</span>
+<h1>PMP×建設CM：資格制度と工程・出来高・変更の管理</h1>
+<p class="lead">PMPは資格、PMBOKはガイド、建設CMは職能。架空のホテル改修（1億円・12週）で、2026年の資格制度とWBS・CPM・EVM・リスク・変更管理を整理します。</p>
+<p class="meta">最終確認：2026年11月24日。登場するホテルは説明用の架空の案件です。資格制度はPMI公式の現行値（2026年11月24日時点）です。<br>値の区別：<span class="k spec">PMI公式値</span>PMI公式ページ・PDFで確認した制度値　<span class="k law">国の資料</span>国土交通省の資料　<span class="k case">架空値</span>説明用の架空の数値</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#scope">範囲と結論</a></li>
+<li><a href="#diff">PMP・PMBOK・建設CMの違い</a></li>
+<li><a href="#exam">2026年の試験制度</a></li>
+<li><a href="#elig">受験資格（学歴別の実務経験）</a></li>
+<li><a href="#train">35時間の研修</a></li>
+<li><a href="#ccr">資格の維持（3年ごとの更新）</a></li>
+<li><a href="#wbs">WBS：成果物で分ける</a></li>
+<li><a href="#cpm">CPM：クリティカルパスの遅れ</a></li>
+<li><a href="#evm">EVM：計画値・出来高・実コスト</a></li>
+<li><a href="#risk">リスクと課題</a></li>
+<li><a href="#change">変更管理と契約の主語</a></li>
+<li><a href="#people">予測型と反復の組み合わせ</a></li>
+<li><a href="#handover">引渡しと価値の確認</a></li>
+<li><a href="#check">CMチェックリスト</a></li>
+<li><a href="#ledger">同じ架空案件の台帳サンプル</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="scope" aria-labelledby="scope-h"><h2 id="scope-h">範囲と結論</h2>
+
+<p>本レポートは、PMI（Project Management Institute）の資格PMPと、その知識を建設CM（発注者側のマネジメント業務）でどう使うかを、架空のホテル改修（予算1億円・工期12週）で整理します。資格制度の記述は<b>2026年11月24日時点</b>でPMI公式ページ・公式PDFを確認した内容です。</p>
+<div class="warn">結論：①PMPは資格、PMBOKはガイド、建設CMは職能で、互いに別物。PMPだけで設計・工事監理など日本の法的資格は代替できない。②工程の遅れはCPMで、進みと費用効率はEVMで、計画と出来高を並べて判断する。③変更はCMが影響評価し、契約上の権限者が承認する。④価値は引渡し後に測る。</div>
+<p class="meta">画面・本文の数値は <span class="k spec">PMI公式値</span>（PMI公式ページで確認した制度値）と <span class="k case">架空値</span>（説明用の架空値）を区別しています。</p>
+
+</section>
+<section id="diff" aria-labelledby="diff-h"><h2 id="diff-h">PMP・PMBOK・建設CMの違い</h2>
+<figure><svg viewBox="0 0 900 230" role="img" aria-label="資格・ガイド・職能の関係"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="30" y="40" width="240" height="90" rx="10" fill="#ffd166"/><text x="150.0" y="85.0" fill="#0a1220" font-size="22" font-weight="800" text-anchor="middle">PMP</text><text x="150.0" y="109.0" fill="#0a1220" font-size="14" text-anchor="middle">PMIが認定する専門資格</text><rect x="330" y="40" width="240" height="90" rx="10" fill="#8ee1d0"/><text x="450.0" y="85.0" fill="#0a1220" font-size="22" font-weight="800" text-anchor="middle">PMBOKガイド</text><text x="450.0" y="109.0" fill="#0a1220" font-size="14" text-anchor="middle">知識体系のガイド（参考書の一つ）</text><rect x="630" y="40" width="240" height="90" rx="10" fill="#6aa6ff"/><text x="750.0" y="85.0" fill="#0a1220" font-size="22" font-weight="800" text-anchor="middle">建設CM</text><text x="750.0" y="109.0" fill="#0a1220" font-size="14" text-anchor="middle">発注者側に立つ業務（職能）</text><text x="450" y="175" fill="#edf4ff" font-size="16" text-anchor="middle">PMPの知識は建設CMに役立つが、建築士などの法定資格や、設計・工事監理の実施要件を代替しない</text><text x="450" y="205" fill="#adbed4" font-size="14" text-anchor="middle">試験は単一の参考書に基づいて作られていない（PMI ECO）</text></svg><figcaption>図1 PMP・PMBOK・建設CMの関係（3つは別のもの）</figcaption></figure>
+<div class="tw"><table><tr><th>項目</th><th>PMP</th><th>PMBOKガイド</th><th>建設CM</th></tr>
+<tr><td>性格</td><td>PMIの専門資格</td><td>プロジェクトマネジメントの知識体系のガイド</td><td>発注者側に立つ業務・職能</td></tr>
+<tr><td>主体</td><td>個人が取得・維持</td><td>PMIが発行（現行は第8版：6つの原則・7つのパフォーマンス領域）</td><td>CM会社・CMRが委託契約に基づき実施</td></tr>
+<tr><td>法的な位置付け</td><td>日本の建築士・施工管理技士等の法定資格ではない</td><td>規格・ガイド（法令ではない）</td><td>国はCMRを「技術的な中立性を保ちつつ発注者の側に立つ」者と説明 <span class="k law">国の資料</span></td></tr>
+<tr><td>建設CMとの関係</td><td>共通の考え方・用語を身に付ける手段</td><td>参照先の一つ</td><td>契約・法令で決まった役割と権限の中で使う</td></tr></table></div>
+<div class="note">PMP試験は「PMBOKの暗記試験」ではありません。PMIの試験内容の概要（ECO）は、試験が特定の一冊の参考書に基づいて作られていないこと、経験に基づく判断を問うことを示しています。</div>
+
+</section>
+<section id="exam" aria-labelledby="exam-h"><h2 id="exam-h">2026年の試験制度</h2>
+
+<p>PMIは2026年7月に新しい試験内容の概要（ECO, July 2026）に基づく試験へ更新しました。現行値は次のとおりです。</p>
+<div class="tw"><table><tr><th>項目</th><th>現行値（2026年11月24日時点）</th><th>区分</th></tr>
+<tr><td>問題数</td><td>180問（採点170問＋採点されない事前テスト10問）</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>試験時間</td><td>240分（10分休憩2回）</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>領域の配分</td><td>People 33%／Process 41%／Business Environment 26%</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>進め方の配分</td><td>予測型が約40%、残り約60%は適応型（アジャイル）とハイブリッドの合計。3領域すべてにまたがる</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>受験方法</td><td>Pearson VUEテストセンターまたはオンライン</td><td><span class="k spec">PMI公式値</span></td></tr></table></div>
+<div class="note">配点や時間はPMIが改定することがあります。受験時は公式のECOと試験ページで最新値を確認してください。</div>
+
+</section>
+<section id="elig" aria-labelledby="elig-h"><h2 id="elig-h">受験資格（学歴別の実務経験）</h2>
+
+<div class="tw"><table><tr><th>学歴（PMIの区分）</th><th>プロジェクトを率いた経験</th><th>区分</th></tr>
+<tr><td>高校卒業相当（EQF4／ISCED3–4）</td><td>60か月（5年）</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>準学士相当の課程（EQF5／ISCED5相当）</td><td>48か月（4年）</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>学士以上（EQF6／ISCED6相当）</td><td>36か月（3年）</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>PMI GAC認定課程の学士・大学院</td><td>24か月（2年）</td><td><span class="k spec">PMI公式値</span></td></tr></table></div>
+<p>経験はすべて<b>直近10年以内</b>で、<b>重ならない月</b>（non-overlapping）で数えます。同じ月に2案件を担当しても1か月です。</p>
+<div class="warn">48か月の区分は「日本の専門学校卒なら一律に該当」とは言えません。認定された準学士相当（EQF5／ISCED5等）に相当する教育資格かどうかはPMIの審査で判断されます。</div>
+<figure><svg viewBox="0 0 900 210" role="img" aria-label="重なる月を二重に数えない例"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><line x1="60.0" y1="60" x2="840.0" y2="60" stroke="#adbed4" stroke-width="2"/><text x="60.0" y="45" fill="#adbed4" font-size="13" text-anchor="middle">10年前</text><text x="216.0" y="45" fill="#adbed4" font-size="13" text-anchor="middle">8年前</text><text x="372.0" y="45" fill="#adbed4" font-size="13" text-anchor="middle">6年前</text><text x="528.0" y="45" fill="#adbed4" font-size="13" text-anchor="middle">4年前</text><text x="684.0" y="45" fill="#adbed4" font-size="13" text-anchor="middle">2年前</text><text x="840.0" y="45" fill="#adbed4" font-size="13" text-anchor="middle">現在</text><rect x="255.0" y="80" width="156.0" height="34" rx="6" fill="#6aa6ff"/><text x="333.0" y="102" font-size="14" text-anchor="middle" fill="#0a1220" font-weight="800">案件A 24か月</text><rect x="372.0" y="124" width="117.0" height="34" rx="6" fill="#8ee1d0"/><text x="430.5" y="146" font-size="14" text-anchor="middle" fill="#0a1220" font-weight="800">案件B 18か月</text><rect x="372.0" y="74" width="39.0" height="90" fill="none" stroke="#ff8a7a" stroke-width="3" stroke-dasharray="5 4"/><text x="391.5" y="186" fill="#ff8a7a" font-size="14" text-anchor="middle">重なり6か月</text><text x="606.0" y="110" fill="#edf4ff" font-size="16">数える月数</text><text x="606.0" y="138" fill="#ffd166" font-size="18" font-weight="800">24＋18−6＝36か月</text></svg><figcaption>図2 受験資格の実務経験：直近10年以内・重なる月は1回だけ数える（月数は説明用の架空例）</figcaption></figure>
+</section>
+<section id="train" aria-labelledby="train-h"><h2 id="train-h">35時間の研修</h2>
+
+<p>受験申請には、ECOの内容に沿ったプロジェクトマネジメント研修<b>35時間</b> <span class="k spec">PMI公式値</span> が必要です。有効なCAPM保持者はこの要件を満たします。</p>
+<div class="tw"><table><tr><th>研修の形</th><th>2026年11月30日まで</th><th>2026年12月1日から（予定・未来日）</th></tr>
+<tr><td>ライブ講座（対面・オンラインで講師が教える）</td><td>適格な提供者の講座を利用可</td><td>PMI認定トレーニングパートナー（ATP）、中国の登録教育機関（REP）、適格な認定大学（GAC認定課程を含む）が提供するものに限定</td></tr>
+<tr><td>オンデマンド（自分のペース）</td><td>修了評価付きの講座</td><td>引き続き利用可（公式ページの記載）</td></tr>
+<tr><td>書籍・模擬試験のみ</td><td colspan="2">研修時間として認められない</td></tr></table></div>
+<div class="note">12月1日の変更は本レポートの確認日より後の予定です。申請時点の公式ページで条件を再確認してください。</div>
+
+</section>
+<section id="ccr" aria-labelledby="ccr-h"><h2 id="ccr-h">資格の維持（3年ごとの更新）</h2>
+
+<div class="tw"><table><tr><th>要件</th><th>PMP</th><th>区分</th></tr>
+<tr><td>更新周期・必要PDU</td><td>3年ごとに60PDU</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>教育（Education）</td><td>最低35PDU。うちWays of Working・Power Skills・Business Acumenの各8PDU以上</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>専門職への還元（Giving Back）</td><td>最大25PDU</td><td><span class="k spec">PMI公式値</span></td></tr>
+<tr><td>手続き</td><td>PDUの報告に加え、更新申請と更新料の支払いが必要</td><td><span class="k spec">PMI公式値</span></td></tr></table></div>
+<p>内訳の詳細条件はPMIの<a href="https://www.pmi.org/certifications/certification-resources/maintain">資格維持ページ</a>とCCRハンドブックで確認してください。</p>
+
+</section>
+<section id="wbs" aria-labelledby="wbs-h"><h2 id="wbs-h">WBS：成果物で分ける</h2>
+<figure><svg viewBox="0 0 900 260" role="img" aria-label="WBS（成果物で分解）"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="330" y="20" width="240" height="50" rx="10" fill="#edf4ff"/><text x="450.0" y="51.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">ホテル改修（架空）</text><line x1="450" y1="70" x2="450" y2="90" stroke="#adbed4" stroke-width="2"/><line x1="120" y1="90" x2="120" y2="110" stroke="#adbed4" stroke-width="2"/><rect x="20" y="110" width="200" height="130" rx="10" fill="#ffd166"/><text x="120.0" y="181.0" fill="#0a1220" font-size="18" font-weight="800" text-anchor="middle">客室</text><text x="120" y="200" fill="#0a1220" font-size="14" text-anchor="middle">責任：内装担当</text><text x="120" y="222" fill="#14632f" font-size="14" text-anchor="middle" font-weight="700">完了：検査合格</text><line x1="450" y1="70" x2="450" y2="90" stroke="#adbed4" stroke-width="2"/><line x1="340" y1="90" x2="340" y2="110" stroke="#adbed4" stroke-width="2"/><rect x="240" y="110" width="200" height="130" rx="10" fill="#8ee1d0"/><text x="340.0" y="181.0" fill="#0a1220" font-size="18" font-weight="800" text-anchor="middle">共用部</text><text x="340" y="200" fill="#0a1220" font-size="14" text-anchor="middle">責任：建築担当</text><text x="340" y="222" fill="#14632f" font-size="14" text-anchor="middle" font-weight="700">完了：是正なし</text><line x1="450" y1="70" x2="450" y2="90" stroke="#adbed4" stroke-width="2"/><line x1="560" y1="90" x2="560" y2="110" stroke="#adbed4" stroke-width="2"/><rect x="460" y="110" width="200" height="130" rx="10" fill="#6aa6ff"/><text x="560.0" y="181.0" fill="#0a1220" font-size="18" font-weight="800" text-anchor="middle">設備</text><text x="560" y="200" fill="#0a1220" font-size="14" text-anchor="middle">責任：設備担当</text><text x="560" y="222" fill="#14632f" font-size="14" text-anchor="middle" font-weight="700">完了：試運転</text><line x1="450" y1="70" x2="450" y2="90" stroke="#adbed4" stroke-width="2"/><line x1="780" y1="90" x2="780" y2="110" stroke="#adbed4" stroke-width="2"/><rect x="680" y="110" width="200" height="130" rx="10" fill="#ff8a7a"/><text x="780.0" y="181.0" fill="#0a1220" font-size="18" font-weight="800" text-anchor="middle">試験・引渡し</text><text x="780" y="200" fill="#0a1220" font-size="14" text-anchor="middle">責任：CM調整</text><text x="780" y="222" fill="#14632f" font-size="14" text-anchor="middle" font-weight="700">完了：書類受領</text><line x1="120" y1="90" x2="780" y2="90" stroke="#adbed4" stroke-width="2"/></svg><figcaption>図3 WBSは成果物を軸に必要な作業を階層化し、各要素に責任者と完了条件を付ける（架空例）</figcaption></figure>
+<div class="tw"><table><tr><th>悪い分け方</th><th>良い分け方</th><th>理由</th></tr>
+<tr><td>「打合せ」「現場管理」だけで、成果物・範囲が不明</td><td>客室・共用部・設備・試験と引渡しなど成果物</td><td>完了したかを判定でき、出来高（EV）を数えられる</td></tr>
+<tr><td>責任者なし</td><td>要素ごとに責任者</td><td>遅れたときの判断・連絡先が明確</td></tr>
+<tr><td>「90%完了」など主観</td><td>検査合格・試運転完了など客観的な完了条件</td><td>主観的な進捗はEVを歪める</td></tr></table></div>
+
+</section>
+<section id="cpm" aria-labelledby="cpm-h"><h2 id="cpm-h">CPM：クリティカルパスの遅れ</h2>
+<figure><svg viewBox="0 0 900 345" role="img" aria-label="簡略CPMの例"><rect width="100%" height="100%" fill="#0f1b2e"/><line x1="150" y1="30" x2="150" y2="300" stroke="#304159"/><text x="150" y="24" fill="#adbed4" font-size="12" text-anchor="middle">0</text><line x1="205" y1="30" x2="205" y2="300" stroke="#304159"/><text x="205" y="24" fill="#adbed4" font-size="12" text-anchor="middle">1</text><line x1="260" y1="30" x2="260" y2="300" stroke="#304159"/><text x="260" y="24" fill="#adbed4" font-size="12" text-anchor="middle">2</text><line x1="315" y1="30" x2="315" y2="300" stroke="#304159"/><text x="315" y="24" fill="#adbed4" font-size="12" text-anchor="middle">3</text><line x1="370" y1="30" x2="370" y2="300" stroke="#304159"/><text x="370" y="24" fill="#adbed4" font-size="12" text-anchor="middle">4</text><line x1="425" y1="30" x2="425" y2="300" stroke="#304159"/><text x="425" y="24" fill="#adbed4" font-size="12" text-anchor="middle">5</text><line x1="480" y1="30" x2="480" y2="300" stroke="#304159"/><text x="480" y="24" fill="#adbed4" font-size="12" text-anchor="middle">6</text><line x1="535" y1="30" x2="535" y2="300" stroke="#304159"/><text x="535" y="24" fill="#adbed4" font-size="12" text-anchor="middle">7</text><line x1="590" y1="30" x2="590" y2="300" stroke="#304159"/><text x="590" y="24" fill="#adbed4" font-size="12" text-anchor="middle">8</text><line x1="645" y1="30" x2="645" y2="300" stroke="#304159"/><text x="645" y="24" fill="#adbed4" font-size="12" text-anchor="middle">9</text><line x1="700" y1="30" x2="700" y2="300" stroke="#304159"/><text x="700" y="24" fill="#adbed4" font-size="12" text-anchor="middle">10</text><line x1="755" y1="30" x2="755" y2="300" stroke="#304159"/><text x="755" y="24" fill="#adbed4" font-size="12" text-anchor="middle">11</text><line x1="810" y1="30" x2="810" y2="300" stroke="#304159"/><text x="810" y="24" fill="#adbed4" font-size="12" text-anchor="middle">12</text><line x1="865" y1="30" x2="865" y2="300" stroke="#304159"/><text x="865" y="24" fill="#adbed4" font-size="12" text-anchor="middle">13</text><text x="140" y="67" fill="#edf4ff" font-size="15" text-anchor="end">設計</text><rect x="150" y="45" width="110" height="30" rx="6" fill="#ff8a7a"/><text x="205.0" y="66" fill="#0a1220" font-size="14" font-weight="800" text-anchor="middle">2週</text><text x="140" y="111" fill="#edf4ff" font-size="15" text-anchor="end">承認準備</text><rect x="260" y="89" width="110" height="30" rx="6" fill="#6aa6ff"/><text x="315.0" y="110" fill="#0a1220" font-size="14" font-weight="800" text-anchor="middle">2週</text><text x="140" y="155" fill="#edf4ff" font-size="15" text-anchor="end">調達</text><rect x="260" y="133" width="220" height="30" rx="6" fill="#ff8a7a"/><text x="370.0" y="154" fill="#0a1220" font-size="14" font-weight="800" text-anchor="middle">4週</text><text x="140" y="199" fill="#edf4ff" font-size="15" text-anchor="end">施工</text><rect x="480" y="177" width="220" height="30" rx="6" fill="#ff8a7a"/><text x="590.0" y="198" fill="#0a1220" font-size="14" font-weight="800" text-anchor="middle">4週</text><text x="140" y="243" fill="#edf4ff" font-size="15" text-anchor="end">試験</text><rect x="700" y="221" width="110" height="30" rx="6" fill="#ff8a7a"/><text x="755.0" y="242" fill="#0a1220" font-size="14" font-weight="800" text-anchor="middle">2週</text><rect x="480" y="133" width="55" height="30" fill="none" stroke="#ffd166" stroke-width="3" stroke-dasharray="5 3"/><text x="541" y="153" fill="#ffd166" font-size="14">＋1週</text><line x1="865" y1="30" x2="865" y2="300" stroke="#ffd166" stroke-width="3" stroke-dasharray="6 4"/><text x="861" y="335" fill="#ffd166" font-size="15" text-anchor="end">調達＋1週→13週</text><line x1="810" y1="30" x2="810" y2="300" stroke="#edf4ff" stroke-width="2"/><text x="806" y="312" fill="#edf4ff" font-size="15" text-anchor="end">計画12週</text></svg><figcaption>図4 簡略CPM（架空）：赤がクリティカルパス。承認準備は設計完了後に調達と並行。前提：資源制約なし・依存関係不変・回復策なし</figcaption></figure>
+<p><span class="k case">架空値</span> 設計2週→調達4週→施工4週→試験2週＝12週。承認準備2週は設計完了後に始まり、調達と並行で余裕があります。クリティカルパス上の調達が1週遅れると、全体は13週になります。</p>
+<div class="note">この計算は、資源制約なし・依存関係不変・回復策なしという前提です。実務では夜間作業の追加や工程の組み替えで回復できる場合があり、その費用と営業影響を比べて判断します。</div>
+
+</section>
+<section id="evm" aria-labelledby="evm-h"><h2 id="evm-h">EVM：計画値・出来高・実コスト</h2>
+
+<div class="tw"><table><tr><th>指標</th><th>意味・式</th><th>例（第6週）<span class="k case">架空値</span></th></tr>
+<tr><td>PV（計画値）</td><td>今までに終わる予定だった作業の予算額</td><td>5,000万円</td></tr>
+<tr><td>EV（出来高）</td><td>終わった作業を予算単価で評価した額。支払額や作業時間ではない</td><td>4,000万円</td></tr>
+<tr><td>AC（実コスト）</td><td>その作業に実際にかかった費用</td><td>4,500万円</td></tr>
+<tr><td>CPI</td><td>EV÷AC（1未満は費用効率が計画より悪い）</td><td>≒0.89</td></tr>
+<tr><td>SPI</td><td>EV÷PV（1未満は出来高が計画に届かない）</td><td>0.80</td></tr>
+<tr><td>CV／SV</td><td>EV−AC／EV−PV</td><td>−500万円／−1,000万円</td></tr></table></div>
+<figure><svg viewBox="0 0 900 300" role="img" aria-label="EVMの例"><rect width="100%" height="100%" fill="#0f1b2e"/><rect x="70" y="60.0" width="100" height="200.0" rx="6" fill="#6aa6ff"/><text x="120" y="52.0" fill="#edf4ff" font-size="16" font-weight="800" text-anchor="middle">5,000</text><text x="120" y="282" fill="#edf4ff" font-size="14" text-anchor="middle">PV 計画値</text><rect x="220" y="100.0" width="100" height="160.0" rx="6" fill="#8ee1d0"/><text x="270" y="92.0" fill="#edf4ff" font-size="16" font-weight="800" text-anchor="middle">4,000</text><text x="270" y="282" fill="#edf4ff" font-size="14" text-anchor="middle">EV 出来高</text><rect x="370" y="80.0" width="100" height="180.0" rx="6" fill="#ffd166"/><text x="420" y="72.0" fill="#edf4ff" font-size="16" font-weight="800" text-anchor="middle">4,500</text><text x="420" y="282" fill="#edf4ff" font-size="14" text-anchor="middle">AC 実コスト</text><text x="560" y="80" fill="#ffd166" font-size="26" font-weight="800">CPI＝4,000÷4,500≒0.89</text><text x="560" y="140" fill="#ff8a7a" font-size="26" font-weight="800">SPI＝4,000÷5,000＝0.80</text><text x="560" y="190" fill="#edf4ff" font-size="15">CV＝EV−AC＝−500万円（費用超過）</text><text x="560" y="215" fill="#edf4ff" font-size="15">SV＝EV−PV＝−1,000万円（出来高不足）</text><text x="560" y="250" fill="#adbed4" font-size="14">SPI0.80は「暦日で20%遅れ」の意味ではない</text></svg><figcaption>図5 第6週のEVM（架空値・単位万円）：ACがPVより少なくても、EVで見ると費用効率も進みも計画を下回る</figcaption></figure>
+<div class="warn">読み違えやすい点：①ACがPVより少ない＝順調、ではない。②EVは支払額ではない。③SPI0.80は「暦日で20%遅れ」ではなく、SPIだけで遅延日数や完成日を出さない。工程はCPMで別に確認する。④1回の値ではなく推移で見る。</div>
+
+</section>
+<section id="risk" aria-labelledby="risk-h"><h2 id="risk-h">リスクと課題</h2>
+<figure><svg viewBox="0 0 900 200" role="img" aria-label="リスクと課題"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="30" y="40" width="360" height="110" rx="10" fill="#ffd166"/><text x="210.0" y="95.0" fill="#0a1220" font-size="19" font-weight="800" text-anchor="middle">リスク（起こる前）</text><text x="210.0" y="119.0" fill="#0a1220" font-size="14" text-anchor="middle">空調機の納期遅れ：確率30%×影響200万円</text><line x1="400" y1="95" x2="500" y2="95" stroke="#ff8a7a" stroke-width="3" marker-end="url(#a)"/><text x="450" y="80" fill="#ff8a7a" font-size="14" text-anchor="middle">発生</text><rect x="510" y="40" width="360" height="110" rx="10" fill="#ff8a7a"/><text x="690.0" y="95.0" fill="#0a1220" font-size="19" font-weight="800" text-anchor="middle">課題（起きた後）</text><text x="690.0" y="119.0" fill="#0a1220" font-size="14" text-anchor="middle">対応策・担当・期限を課題ログで管理</text><text x="450" y="185" fill="#adbed4" font-size="14" text-anchor="middle">期待額60万円は1件の目安。予備費の必要額をこの計算だけで決めない（架空値）</text></svg><figcaption>図6 リスク登録簿と課題ログの使い分け</figcaption></figure>
+<div class="tw"><table><tr><th>項目</th><th>リスク登録簿</th><th>課題ログ</th></tr>
+<tr><td>対象</td><td>まだ起きていない不確実な事象</td><td>すでに起きた問題</td></tr>
+<tr><td>書くこと</td><td>原因・確率・影響・事前の対応策・責任者</td><td>影響・対応策・担当・期限・状況</td></tr>
+<tr><td>例 <span class="k case">架空値</span></td><td>空調機の納期遅れ：30%×200万円＝期待額60万円。代替機種を準備</td><td>納期遅れが確定：代替機種の承認、工程の組み替え</td></tr></table></div>
+<div class="note">予備費を説明する場合：特定されたリスクに備えるコンティンジェンシー予備はコストベースラインの内側、未特定のリスクに備えるマネジメント予備は外側に置くのが一般的な整理です。1件の期待額だけで必要額を決めません。</div>
+
+</section>
+<section id="change" aria-labelledby="change-h"><h2 id="change-h">変更管理と契約の主語</h2>
+<figure><svg viewBox="0 0 900 170" role="img" aria-label="変更管理の流れ"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="20" y="40" width="190" height="80" rx="10" fill="#edf4ff"/><text x="115.0" y="80.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">変更要求</text><text x="115.0" y="104.0" fill="#0a1220" font-size="14" text-anchor="middle">客室仕様の追加</text><line x1="212" y1="80" x2="240" y2="80" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="242" y="40" width="190" height="80" rx="10" fill="#ffd166"/><text x="337.0" y="80.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">影響評価（CM）</text><text x="337.0" y="104.0" fill="#0a1220" font-size="14" text-anchor="middle">＋300万円・＋1週</text><line x1="434" y1="80" x2="462" y2="80" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="464" y="40" width="190" height="80" rx="10" fill="#ff8a7a"/><text x="559.0" y="80.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">承認</text><text x="559.0" y="104.0" fill="#0a1220" font-size="14" text-anchor="middle">契約上の権限者</text><line x1="656" y1="80" x2="684" y2="80" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="686" y="40" width="190" height="80" rx="10" fill="#8ee1d0"/><text x="781.0" y="80.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">基準更新・記録</text><text x="781.0" y="104.0" fill="#0a1220" font-size="14" text-anchor="middle">工程・予算・変更履歴</text><text x="450" y="155" fill="#adbed4" font-size="14" text-anchor="middle">CMは影響と選択肢を示すが、独断で承認しない（金額・期間は架空値）</text></svg><figcaption>図7 変更管理：要求→影響評価→権限者の承認→ベースライン更新と記録</figcaption></figure>
+<div class="tw"><table><tr><th>契約</th><th>当事者</th><th>性格</th><th>変更での役割</th></tr>
+<tr><td>CM業務委託</td><td>発注者とCM会社</td><td>マネジメント業務の委託</td><td>影響評価・選択肢と推奨の提示・記録</td></tr>
+<tr><td>工事請負</td><td>発注者と施工者</td><td>工事の完成を約する契約</td><td>見積もり・工程の提出、承認後の施工</td></tr>
+<tr><td>設計・工事監理委託</td><td>発注者と設計者・工事監理者</td><td>建築士法等に基づく業務</td><td>設計変更・工事監理（CMが代わらない）</td></tr></table></div>
+<div class="note">安全について：CMが施工者へ直接指示できるかは、一律に「法律で禁止」とは言えません。契約と法令で定めた役割・権限を確認したうえで対応し、緊急時の退避を妨げてはいけません。</div>
+
+</section>
+<section id="people" aria-labelledby="people-h"><h2 id="people-h">予測型と反復の組み合わせ</h2>
+
+<div class="tw"><table><tr><th>対象</th><th>進め方</th><th>守る条件</th></tr>
+<tr><td>施工計画・工程</td><td>予測型：先に計画を固め、ベースラインで管理</td><td rowspan="2">法規・安全を確保し、受入れ基準の変更は合意・承認</td></tr>
+<tr><td>客室モックアップ</td><td>反復：見て直すを繰り返し、仕様を決める</td></tr></table></div>
+<p>合意の場（定例・デザインレビュー）と記録の方法（議事録・変更履歴）を最初に決めておくと、反復の結果を基準に反映できます。</p>
+
+</section>
+<section id="handover" aria-labelledby="handover-h"><h2 id="handover-h">引渡しと価値の確認</h2>
+
+<ul class="flow"><li><b>試験結果</b>試運転・検査の記録</li><li><b>是正の完了</b>指摘の是正と確認</li><li><b>変更の承認履歴</b>誰がいつ何を承認したか</li><li><b>運用への引継ぎ</b>取扱説明・保守体制</li><li><b>開業後に測る</b>稼働・満足度・不具合件数（指標は事業者と合意）</li></ul>
+
+</section>
+<section id="check" aria-labelledby="check-h"><h2 id="check-h">CMチェックリスト</h2>
+
+<div class="tw"><table><tr><th>段階</th><th>確認すること</th><th>記録</th></tr>
+<tr><td>立上げ</td><td>成功条件（期限・予算・営業影響・受入れ基準）を合意したか</td><td>プロジェクト憲章・合意メモ</td></tr>
+<tr><td>計画</td><td>WBSが成果物単位で、責任者と完了条件があるか</td><td>WBS辞書</td></tr>
+<tr><td>工程</td><td>クリティカルパスと長納期品を把握しているか</td><td>工程表・長納期品追跡表</td></tr>
+<tr><td>監視</td><td>PV・EV・ACを同じ基準日でそろえたか</td><td>EVM月報</td></tr>
+<tr><td>リスク</td><td>事前の対応策と責任者を決めたか。起きたら課題へ移したか</td><td>リスク登録簿・課題ログ</td></tr>
+<tr><td>変更</td><td>影響評価を示し、契約上の権限者が承認したか</td><td>変更要求書・承認記録</td></tr>
+<tr><td>引渡し</td><td>試験・是正・承認履歴・運用引継ぎがそろったか</td><td>引渡し台帳</td></tr></table></div>
+
+</section>
+<section id="ledger" aria-labelledby="ledger-h"><h2 id="ledger-h">同じ架空案件の台帳サンプル</h2>
+
+<p><span class="k case">架空値</span> 架空のホテル改修（予算1億円・工期12週）の第6週時点の台帳例です。</p>
+<div class="tw"><table><tr><th>No.</th><th>種別</th><th>内容</th><th>数値</th><th>担当</th><th>状況</th></tr>
+<tr><td>R-01</td><td>リスク</td><td>空調機の納期遅れ</td><td>30%×200万円＝60万円</td><td>設備担当</td><td>代替機種の候補を準備中</td></tr>
+<tr><td>C-01</td><td>変更</td><td>客室仕様の追加</td><td>＋300万円・＋1週</td><td>CM（評価）／権限者（承認）</td><td>影響評価を提出、承認待ち</td></tr>
+<tr><td>E-06</td><td>EVM</td><td>第6週の実績</td><td>PV5,000／EV4,000／AC4,500万円</td><td>CM</td><td>CPI≒0.89・SPI0.80、回復策を検討</td></tr>
+<tr><td>S-01</td><td>工程</td><td>調達の遅れ</td><td>＋1週→全体13週（前提付き）</td><td>CM・施工者</td><td>回復策の費用と営業影響を比較</td></tr>
+<tr><td>H-01</td><td>引渡し</td><td>運用への引継ぎ</td><td>—</td><td>施工者・運営</td><td>取扱説明の日程調整</td></tr></table></div>
+
+</section>
+<section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://www.pmi.org/certifications/project-management-pmp" target="_blank" rel="noopener">PMI「Project Management Professional (PMP)® Certification」</a></li>
+<li><a href="https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/new-pmp-examination-content-outline-2026.pdf" target="_blank" rel="noopener">PMI「PMP Examination Content Outline – July 2026」(PDF)</a></li>
+<li><a href="https://www.pmi.org/certifications/project-management-pmp/new-exam" target="_blank" rel="noopener">PMI「What’s new in the updated PMP® exam」</a></li>
+<li><a href="https://www.pmi.org/blog/pmp-35-hour-training-requirement" target="_blank" rel="noopener">PMI「How to Meet the PMP 35-Hour Training Requirement」</a></li>
+<li><a href="https://www.pmi.org/certifications/certification-resources/maintain" target="_blank" rel="noopener">PMI「Maintain Your Certification」</a></li>
+<li><a href="https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/ccr-certification-requirements-handbook.pdf" target="_blank" rel="noopener">PMI「Continuing Certification Requirements (CCR) Handbook」(PDF)</a></li>
+<li><a href="https://www.pmi.org/standards/pmbok" target="_blank" rel="noopener">PMI「PMBOK® Guide」</a></li>
+<li><a href="https://www.pmi.org/blog/earned-value-management" target="_blank" rel="noopener">PMI「Earned Value Management: A Guide to Reading the Numbers」</a></li>
+<li><a href="https://www.mlit.go.jp/totikensangyo/const/content/001362396.pdf" target="_blank" rel="noopener">国土交通省「地方公共団体におけるピュア型CM方式活用ガイドライン」（令和2年9月）(PDF)</a></li></ul>
+<p class="meta">制度値は上記のPMI公式資料で確認したものです。資格制度・試験内容は改定されることがあるため、利用時は最新版を確認してください。</p></section>
+</main>
+<footer>※解説用に要点を簡略化しています。資格制度はPMIの公式要件と審査、業務の権限は適用法令と契約図書で確認してください。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="pmp-cm-video.html">動画解説</a></footer>
+</body>
+</html>
