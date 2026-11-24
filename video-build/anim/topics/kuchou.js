@@ -1,70 +1,3 @@
-  // ---------- HVAC helpers ----------
-  const BLUE = '#2b7de9', HOT = '#e8432f', GRN = '#1e9e5a', COOL = '#3aa0ff', WARM = '#ff7a3a';
-  function poly(pts, color, w = 8, dash) {
-    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-    if (dash) ctx.setLineDash(dash);
-    ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); ctx.restore();
-  }
-  function polyLen(pts) { let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; }
-  function along(pts, d) {
-    for (let i = 1; i < pts.length; i++) {
-      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], l = Math.hypot(x1 - x0, y1 - y0);
-      if (d <= l) return [lerp(x0, x1, d / l), lerp(y0, y1, d / l)]; d -= l;
-    }
-    return pts[pts.length - 1];
-  }
-  function flow(pts, t, color, n = 10, speed = 90, r = 7) {   // 管の中を流れる粒
-    const L = polyLen(pts); ctx.fillStyle = color;
-    for (let i = 0; i < n; i++) { const [x, y] = along(pts, (t * speed + i * L / n) % L); ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); }
-  }
-  function arrow(x0, y0, x1, y1, color, w = 6, t = 1) {
-    if (t <= 0) return; const k = eo(t / 0.4), xe = lerp(x0, x1, k), ye = lerp(y0, y1, k), a = Math.atan2(y1 - y0, x1 - x0);
-    ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = w; ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(xe - Math.cos(a) * w * 2, ye - Math.sin(a) * w * 2); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(xe, ye); ctx.lineTo(xe - Math.cos(a - .45) * w * 3.6, ye - Math.sin(a - .45) * w * 3.6);
-    ctx.lineTo(xe - Math.cos(a + .45) * w * 3.6, ye - Math.sin(a + .45) * w * 3.6); ctx.closePath(); ctx.fill(); ctx.restore();
-  }
-  function unit(x, y, w, h, label, t = 1, opt = {}) {           // 機器の箱
-    if (t <= 0) return; const s = 0.85 + 0.15 * eb(t / 0.35);
-    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
-    ctx.fillStyle = 'rgba(0,0,0,.16)'; rr(3, 5, w, h, 12); ctx.fill();
-    ctx.fillStyle = opt.bg || '#fff'; rr(0, 0, w, h, 12); ctx.fill(); ctx.strokeStyle = opt.line || '#5b6474'; ctx.lineWidth = 3; ctx.stroke();
-    ctx.fillStyle = opt.color || INK; ctx.font = f(800, opt.size || 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    label.split('\n').forEach((l, i, a) => ctx.fillText(l, w / 2, h / 2 + (i - (a.length - 1) / 2) * (opt.size || 24) * 1.3));
-    ctx.restore();
-  }
-  function fanIcon(x, y, r, t, color = '#5b6474') {
-    ctx.save(); ctx.translate(x, y); ctx.rotate(t * 6); ctx.fillStyle = color;
-    for (let k = 0; k < 4; k++) { ctx.rotate(Math.PI / 2); ctx.beginPath(); ctx.ellipse(r * .45, 0, r * .5, r * .2, 0, 0, Math.PI * 2); ctx.fill(); }
-    ctx.restore();
-  }
-  function thermo(x, y, val, color, label, t = 1) {           // 温度の札
-    if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3);
-    ctx.fillStyle = color; rr(x - 62, y - 30, 124, 60, 14); ctx.fill();
-    ctx.fillStyle = '#fff'; ctx.font = f(900, 30); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(val, x, y + 1);
-    if (label) { ctx.fillStyle = INK; ctx.font = f(700, 20); ctx.fillText(label, x, y + 52); }
-    ctx.restore();
-  }
-  function sun(x, y, t) {
-    ctx.save(); ctx.translate(x, y); ctx.rotate(t * .4); ctx.fillStyle = '#ffb627';
-    for (let k = 0; k < 12; k++) { ctx.rotate(Math.PI / 6); ctx.fillRect(46, -4, 22, 8); }
-    ctx.beginPath(); ctx.arc(0, 0, 38, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-  }
-  function bubble(text, x, y, t, color = HOT) {
-    if (t <= 0) return; const s = eb(t / .35); ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
-    ctx.font = f(900, 26); const w = ctx.measureText(text).width + 36;
-    ctx.fillStyle = '#fff'; rr(-w / 2, -28, w, 56, 28); ctx.fill(); ctx.strokeStyle = color; ctx.lineWidth = 4; ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(-14, 26); ctx.lineTo(-30, 50); ctx.lineTo(4, 27); ctx.fillStyle = '#fff'; ctx.fill();
-    ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 0, 1); ctx.restore();
-  }
-  function fcu(x, y, t, on = true, w = 150, h = 54) {          // 天井のファンコイル
-    ctx.fillStyle = '#dfe4ec'; rr(x, y, w, h, 8); ctx.fill(); ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 3; ctx.stroke();
-    ctx.fillStyle = INK; ctx.font = f(800, 18); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('FCU', x + w / 2, y + h / 2);
-    if (on) fanIcon(x + 22, y + h / 2, 16, t);
-  }
-
-  // ---------- scenes ----------
-  const S = [];
   S.push({name: 'タイトル', d: 7, draw(t) {
     const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#16304f'); g.addColorStop(1, '#0b1626');
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
@@ -163,7 +96,7 @@
     if (t > 8.5) pill('更新案を比べるときも、外気量と換気系統は別に確認', W / 2, 660, t - 8.5, {align: 'center', bg: '#1f2430', size: 22});
     headline('室温の調整と[外気の取り入れ]は別', t);
   }});
-  const FANI = S.length - 1;
+
 
   S.push({name: '機器の診断', d: 15, draw(t) {
     plain();

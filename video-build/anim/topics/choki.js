@@ -1,0 +1,41 @@
+  S.push({name: 'タイトル', d: 7, draw: sc.title('長期修繕計画', '安全と営業で優先し、年度の予算に組む', '長期計画と年度予算 ／ 資産台帳 ／ 先送りの条件 ／ 配分の例 ／ 年度別の資金 ／ 毎年の更新 ／ 実績の反映', 'CM知識一覧｜長期修繕')});
+  S.push({name: '長期と年度', d: 14, draw: sc.flow('長期の計画と[その年の予算]を分ける', [['資産と修繕履歴、点検結果を棚卸し', ''], ['安全・事業継続・快適性で優先順位', ''], ['年ごとの資金と発注時期を照合', '']], '長期計画は、金額と工事の順番を更新する台帳として管理する')});
+  S.push({name: '資産台帳', d: 15, draw(t) {
+    plain(); ctx.fillStyle = '#f4efe2'; rr(80, 160, 1120, 440, 16); ctx.fill();
+    ctx.fillStyle = INK; ctx.font = f(900, 26); ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ['資産・数量', '前回工事・劣化', '費用の根拠'].forEach((h, i) => ctx.fillText(h, 120 + i * 370, 205)); poly([[100, 232], [1180, 232]], INK, 2);
+    [['外壁 3,200㎡', '12年前・浮き', '見積（R7）'], ['屋上 900㎡', '18年前・漏水', '単価（R6）'], ['給湯 2系統', '15年前・故障', '見積（R7）'], ['受変電 1式', '20年前・状態未確認', '調査予定・仮の金額']].forEach((r, i) => {
+      const tt = t - .8 - i * 1.4; if (tt <= 0) return; ctx.globalAlpha = eo(tt / .3); const y = 280 + i * 76;
+      r.forEach((c, k) => { ctx.fillStyle = k === 2 ? (i === 3 ? '#b5651d' : '#1d7a46') : INK; ctx.font = f(k === 0 ? 800 : 600, 23); ctx.fillText(c, 120 + k * 370, y); }); poly([[100, y + 36], [1180, y + 36]], '#d8cfb8', 2); ctx.globalAlpha = 1; });
+    if (t > 7.5) { ctx.strokeStyle = '#b5651d'; ctx.lineWidth = 4; rr(840, 485, 340, 50, 10); ctx.stroke(); }
+    foot('状態が分からない部位は「調査予定・仮の金額」とし、確かな見積と混ぜない', t - 8);
+    headline('台帳に[費用の根拠]をつなぐ', t);
+  }});
+  S.push({name: '先送りの条件', d: 16, draw(t) {
+    plain();
+    box(90, 160, 1100, 110, [['直ちに対応　─　危険箇所の隔離・応急と恒久の対策', 26, 900, HOT]], t - .5);
+    box(90, 300, 1100, 110, [['早めに計画　─　故障で全館停止・部品調達が困難・漏水の進行', 26, 900, '#b5651d']], t - 2.5);
+    box(90, 440, 1100, 110, [['まとめて施工を検討　─　足場の共用・設備停止の同時化', 26, 900, ACC]], t - 4.5);
+    foot('延期するなら、代わりの措置・点検頻度・再判断の期限を残す', t - 7);
+    headline('[先送りできるか]を安全と営業で判断', t);
+  }});
+  S.push({name: '配分の例', d: 15, draw: sc.compare('外壁・防水・給湯の[予算配分]（架空）', [['', '外壁と防水をまとめる', ['仮設・現場管理を共用', '年度の支出が集中'], ACC], ['', '給湯を先に行う', ['故障による長い停止を\n防ぎやすい', '工事の回数が増える'], BLUE], ['', '年度を分ける', ['単年度の予算に\n合わせやすい', '営業停止の回数が増える'], '#5b6474']], '同時に行う利点と、単年度の予算・営業停止日を並べる')});
+  S.push({name: '年度別の資金', d: 15, draw(t) {
+    plain(); ctx.fillStyle = '#5b6474'; ctx.font = f(600, 20); ctx.textAlign = 'left'; ctx.fillText('年度別の支出（図解用）', 100, 160);
+    poly([[90, 580], [1190, 580]], '#8a93a3', 3);
+    [['R8', 60, 40], ['R9', 260, 110], ['R10', 140, 230], ['R11', 90, 160], ['R12', 70, 80]].forEach(([y, a, b], i) => { const tt = t - .6 - i * .5; const x = 150 + i * 210;
+      if (tt > 0) { const k = eo(tt / .8); ctx.fillStyle = ACC; ctx.fillRect(x, 580 - a * 1.4 * k, 60, a * 1.4 * k); ctx.fillStyle = '#e09a00'; ctx.fillRect(x + 70, 580 - b * 1.4 * k, 60, b * 1.4 * k); }
+      ctx.fillStyle = INK; ctx.font = f(800, 22); ctx.textAlign = 'center'; ctx.fillText(y, x + 65, 610); });
+    if (t > 4) { ctx.fillStyle = ACC; ctx.fillRect(840, 150, 26, 26); ctx.fillStyle = '#e09a00'; ctx.fillRect(1010, 150, 26, 26); ctx.fillStyle = INK; ctx.font = f(700, 20); ctx.textAlign = 'left'; ctx.fillText('基準案', 875, 170); ctx.fillText('繰り延べ案', 1045, 170); }
+    foot('設計費と工事費を実際の支払時期に置き、変動する案も並べる', t - 6);
+    headline('年度別の資金を[複数案]で並べる', t);
+  }});
+  S.push({name: '毎年の更新', d: 14, draw(t) {
+    plain(); ctx.strokeStyle = '#9aa6b8'; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(640, 400, 170, 0, Math.PI * 2); ctx.stroke();
+    if (t > 1) { const a = t * 1.2; ctx.fillStyle = ACC; ctx.beginPath(); ctx.arc(640 + Math.cos(a) * 170, 400 + Math.sin(a) * 170, 14, 0, Math.PI * 2); ctx.fill(); }
+    unit(540, 190, 200, 70, '点検・実績', t - .5, {size: 22}); unit(820, 365, 200, 70, '再評価', t - 1.3, {size: 22}); unit(540, 540, 200, 70, '翌年度予算', t - 2.1, {size: 22}); unit(260, 365, 200, 70, '発注の順番', t - 2.9, {size: 22});
+    if (t > 4) fx('毎年更新', 640, 400, 34, GRN, t - 4);
+    headline('毎年[見直して]予算と発注順へ', t);
+  }});
+  S.push({name: '実績の反映', d: 14, draw: sc.table('工事の[実績]を次の計画へ戻す', ['更新先', '反映すること'], [['資産台帳', '機器・工法・保証、工事範囲と施工年'], ['長期費用表', '実績・数量差・予備費の使用、次回の想定'], ['年度保全計画', '点検の時期・運用上の注意']], '', [340, 760])});
+  S.push({name: 'まとめ', d: 12, draw: sc.summary([['つなぐ', '台帳と\n費用の根拠', ACC], ['決める', '先送りの\n条件', HOT], ['並べる', '年度別の\n資金案', '#e09a00'], ['戻す', '実績を\n次の計画へ', GRN]], '金額・年度は説明用の例です ／ ※イラストはイメージです')});
