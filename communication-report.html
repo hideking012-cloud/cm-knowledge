@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>コミュニケーション×建設CM：食い違わない聞き方・伝え方・記録｜詳細レポート</title>
+<meta name="description" content="運営と施工者の「了解」が食い違った場面から、事実と解釈の区別、傾聴と要約、SBAR、閉ループ、書面と変更記録までを整理します。">
+<style>
+:root{color-scheme:dark;--bg:#0a1220;--panel:#142237;--panel2:#0f1b2e;--ink:#edf4ff;--sub:#adbed4;--line:#304159;--accent:#8ee1d0;--warn:#ff8a7a;--law:#6aa6ff;--spec:#8ee1d0;--case:#b79cff;--yel:#ffd166}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 Inter,"Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:6px 10px;z-index:9}
+header.top{border-bottom:1px solid var(--line);padding:14px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;max-width:1160px;margin:auto}
+header.top a{font-weight:700;font-size:15px}
+header.top .nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1160px;margin:0 auto;padding:24px 22px 60px}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:10px 0 8px}
+.kicker{display:inline-block;background:var(--accent);color:#0a1220;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub);font-size:1.05rem}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14.5px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px;margin:20px 0}
+h2{font-size:1.35rem;border-left:6px solid var(--accent);padding-left:12px;margin:18px 0 10px}
+h3{font-size:1.08rem;margin:18px 0 6px;color:var(--accent)}
+p,li{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;background:var(--panel2)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#1c2f4d;color:var(--accent);white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#1d2b1f;border:1px solid #3f6b47;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.warn{background:#3a1f22;border:1px solid #8a3b33;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.case{background:#231d3d;border:1px solid #5c4d99;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--yel)}
+.k{display:inline-block;border-radius:999px;padding:0 9px;font-size:12px;font-weight:800;color:#0a1220;margin:0 3px;vertical-align:1px}
+.k.law{background:var(--law)}.k.spec{background:var(--spec)}.k.case{background:var(--case)}
+figure{margin:14px 0;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1160px;margin:0 auto;padding:0 22px 40px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+a:focus-visible{outline:3px solid #efbe77;outline-offset:3px}
+@media (max-width:640px){nav.toc ol{columns:1}section{padding:4px 14px 16px}}
+@media print{body{background:#fff;color:#000}section,nav.toc{background:#fff;color:#000}header.top,nav.toc{display:none}}
+table,.note,.warn,.case,.flow li,.src li,nav.toc ol{font-size:16px}figcaption{font-size:14px}td,th{font-size:16px}
+:root{color-scheme:dark;--ink:#edf4ff;--sub:#b7c7dd;--line:#34465f;--accent:#ffac82;--bg:#0a1220;--blue:#8ed6ff;--green:#8ee1c4}header.top{background:#142237}nav.toc,section{background:#142237}th,.flow li{background:#223550}.note{background:#352e1d;border-color:#756137}.warn{background:#3e2529;border-color:#87505a}.case{background:#28253f;border-color:#5c568c}.meta,footer{font-size:14px}table,.note,.warn,.case,.src li{font-size:16px}.flow li{font-size:15px}.skip:focus{background:#223550;color:#fff}@media print{:root{color-scheme:light;--ink:#172133;--sub:#45546a;--line:#b5c2d2;--bg:white;--blue:#155ba1}body,section,nav.toc{background:white}.note,.warn,.case,th,.flow li{background:#eef2f7}}</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="top"><a href="index.html">CM知識一覧 ｜ コミュニケーション×建設CM</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="communication-video.html">動画解説（3分）</a></div></header>
+<main id="main">
+<span class="kicker">詳細レポート</span>
+<h1>コミュニケーション×建設CM：食い違わない聞き方・伝え方・記録</h1>
+<p class="lead">運営と施工者の「了解」が食い違った場面から、事実と解釈の区別、傾聴と要約、SBAR、閉ループ、書面と変更記録までを整理します。</p>
+<p class="meta">最終確認：2026年11月24日。登場するホテルは説明用の架空の案件です。時刻・件数・室数はすべて架空例です。<br>値の区別：<span class="k law">一次資料</span>公的機関・大学・専門団体の公開資料　<span class="k spec">運用例</span>現場で選べるやり方の一例（最適値ではない）　<span class="k case">架空例</span>説明用の架空の数値・場面</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#scope">範囲と結論</a></li>
+<li><a href="#fact">事実と解釈を分ける</a></li>
+<li><a href="#listen">開かれた質問と傾聴、要約確認</a></li>
+<li><a href="#myth">決め付けない：性格の型と「7・38・55」</a></li>
+<li><a href="#channel">手段を選ぶ</a></li>
+<li><a href="#sbar">SBARで報告する</a></li>
+<li><a href="#loop">送る・復唱・確認（閉ループ）</a></li>
+<li><a href="#write">書面に入れること</a></li>
+<li><a href="#log">変更記録と上げる手順</a></li>
+<li><a href="#talk">会話例</a></li>
+<li><a href="#check">実践チェックリスト</a></li>
+<li><a href="#limit">限界と注意</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="scope" aria-labelledby="scope-h"><h2 id="scope-h">範囲と結論</h2>
+<p>営業中の架空ホテルで、運営と施工者の「了解」の中身が食い違い、夜間の騒音苦情につながった場面を例に、聞き方・確かめ方・伝え方・記録の仕方を整理します。</p>
+<div class="warn">結論：①事実と解釈を分ける。②開かれた質問で聞き、最後まで聴く。③要約して確かめる。④性格の型や数字の俗説で決め付けない。⑤急ぎと記録の必要で手段を選ぶ。⑥報告はSBARの順に組み立てる。⑦大事な取り決めは送る・復唱・確認で輪を閉じる。⑧書面に担当・期限・数値・単位を入れ、変更は記録し、返事がなければ決めた相手へ上げる。</div>
+<p>SBAR・check-back・DESCは米国AHRQのTeamSTEPPS（医療チームの安全のための教材）の手法で、本レポートでは臨床の内容を入れず、建設CMの業務連絡に応用しています <span class="k law">一次資料</span>。時刻・件数・室数はすべて <span class="k case">架空例</span> です。</p>
+</section>
+<section id="fact" aria-labelledby="fact-h"><h2 id="fact-h">事実と解釈を分ける</h2>
+<figure><svg viewBox="0 0 900 220" role="img" aria-label="了解の食い違い"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="40" y="120" width="220" height="60" rx="10" fill="#6aa6ff"/><text x="150.0" y="156.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">ホテル運営</text><rect x="640" y="120" width="220" height="60" rx="10" fill="#ffd166"/><text x="750.0" y="156.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">施工者</text><rect x="60" y="25" width="180" height="55" rx="10" fill="#edf4ff"/><text x="150.0" y="58.5" fill="#0a1220" font-size="18" font-weight="800" text-anchor="middle">21時まで</text><rect x="660" y="25" width="180" height="55" rx="10" fill="#ffd9d3"/><text x="750.0" y="58.5" fill="#0a1220" font-size="18" font-weight="800" text-anchor="middle">22時まで</text><rect x="330" y="110" width="240" height="80" rx="10" fill="#2a3d63"/><text x="450.0" y="156.0" fill="#edf4ff" font-size="16" font-weight="800" text-anchor="middle">「夜間作業は了解」</text><line x1="262" y1="150" x2="328" y2="150" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><line x1="572" y1="150" x2="638" y2="150" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><text x="450" y="212" fill="#adbed4" font-size="14" font-weight="700" text-anchor="middle">同じ言葉でも、時刻・範囲の前提が違えば食い違う（架空例）</text></svg><figcaption>図1 「了解」の中身が違っていた例（架空）</figcaption></figure><figure><svg viewBox="0 0 900 210" role="img" aria-label="事実と解釈"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="20" y="15" width="420" height="180" rx="12" fill="#1d3a33"/><rect x="460" y="15" width="420" height="180" rx="12" fill="#3a2a1f"/><text x="230" y="45" fill="#5fd39a" font-size="20" font-weight="700" text-anchor="middle">事実</text><text x="670" y="45" fill="#ffd166" font-size="20" font-weight="700" text-anchor="middle">解釈・推測</text><rect x="50" y="62" width="360" height="34" rx="10" fill="#edf4ff"/><text x="230.0" y="85.0" fill="#0a1220" font-size="15" font-weight="800" text-anchor="middle">苦情は2件</text><rect x="50" y="104" width="360" height="34" rx="10" fill="#edf4ff"/><text x="230.0" y="127.0" fill="#0a1220" font-size="15" font-weight="800" text-anchor="middle">時刻は22時ごろ</text><rect x="50" y="146" width="360" height="34" rx="10" fill="#edf4ff"/><text x="230.0" y="169.0" fill="#0a1220" font-size="15" font-weight="800" text-anchor="middle">8階の客室から</text><rect x="490" y="62" width="360" height="34" rx="10" fill="#ffe7c2"/><text x="670.0" y="85.0" fill="#0a1220" font-size="15" font-weight="800" text-anchor="middle">約束を破った？</text><rect x="490" y="104" width="360" height="34" rx="10" fill="#ffe7c2"/><text x="670.0" y="127.0" fill="#0a1220" font-size="15" font-weight="800" text-anchor="middle">わざと遅らせた？</text><rect x="490" y="146" width="360" height="34" rx="10" fill="#ffe7c2"/><text x="670.0" y="169.0" fill="#0a1220" font-size="15" font-weight="800" text-anchor="middle">連絡が悪い？</text></svg><figcaption>図2 事実（誰が見ても同じもの）と解釈・推測を分けて書く（架空例）</figcaption></figure><div class="tw"><table><tr><th>区分</th><th>例（架空）</th><th>書き方</th></tr><tr><td>事実</td><td>苦情2件、22時ごろ、8階の客室</td><td>数値・時刻・場所・出典を書く</td></tr><tr><td>解釈</td><td>時刻の認識が食い違っている</td><td>「〜と考えます」と自分の判断として書く</td></tr><tr><td>推測</td><td>わざと遅らせた？</td><td>根拠がなければ書かない。確認の質問に変える</td></tr></table></div>
+</section>
+<section id="listen" aria-labelledby="listen-h"><h2 id="listen-h">開かれた質問と傾聴、要約確認</h2>
+<figure><svg viewBox="0 0 900 260" role="img" aria-label="要約確認の輪"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><circle cx="450" cy="130" r="95" fill="none" stroke="#8ee1d0" stroke-width="6"/><rect x="360" y="10" width="180" height="50" rx="10" fill="#6aa6ff"/><text x="450.0" y="41.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">相手が話す</text><rect x="520" y="105" width="190" height="50" rx="10" fill="#ffd166"/><text x="615.0" y="136.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">CMが要約</text><rect x="360" y="200" width="180" height="50" rx="10" fill="#5fd39a"/><text x="450.0" y="231.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">相手が確認</text><rect x="40" y="90" width="260" height="80" rx="10" fill="#edf4ff"/><text x="170.0" y="126.0" fill="#0a1220" font-size="14" font-weight="800" text-anchor="middle">「つまり21時に搬出まで</text><text x="170.0" y="148.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">終える、ですね」</text><text x="780" y="90" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">食い違いは</text><text x="780" y="114" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">ここで見つかる</text></svg><figcaption>図3 聴く→要約する→確認してもらう</figcaption></figure><div class="tw"><table><tr><th>質問の種類</th><th>例</th><th>使いどころ</th></tr><tr><td>閉じた質問</td><td>22時まで作業しましたか？</td><td>事実の確認、最後の念押し</td></tr><tr><td>開かれた質問</td><td>当日はどう進めましたか？</td><td>事情・前提・理由を聞く</td></tr><tr><td>掘り下げ</td><td>その時刻はどこで決まりましたか？</td><td>食い違いの原因を探す</td></tr><tr><td>要約確認</td><td>つまり21時に搬出まで終える、ですね</td><td>理解の一致を確かめる</td></tr></table></div><p>聴くときは途中で遮らず、メモを取り、最後に要約して返します。相づちや視線の秒数などに決まった正解はありません。</p>
+</section>
+<section id="myth" aria-labelledby="myth-h"><h2 id="myth-h">決め付けない：性格の型と「7・38・55」</h2>
+<div class="tw"><table><tr><th>よくある使い方</th><th>問題点</th><th>代わりにすること</th></tr><tr><td>性格診断の型で相手を判断する</td><td>型は相手の状況や今回の前提を教えてくれない</td><td>目的・状況・前提を質問で確かめる</td></tr><tr><td>「言葉は7%、声38%、見た目55%」</td><td>感情と言葉が矛盾する限られた実験条件の結果で、業務の情報伝達一般の比率ではない</td><td>業務連絡は言葉（数値・期限・単位）を正確にする</td></tr><tr><td>「察してくれるはず」</td><td>前提が違えば同じ言葉でも食い違う</td><td>書面と復唱で確認する</td></tr></table></div><div class="note">メラビアンの研究は、好意・反感の感情を表す単語を、矛盾した声や表情で伝えた場合の印象を調べたもので、仕事の説明や指示に一般化できません。</div>
+</section>
+<section id="channel" aria-labelledby="channel-h"><h2 id="channel-h">手段を選ぶ</h2>
+<figure><svg viewBox="0 0 900 270" role="img" aria-label="手段の選び方"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><line x1="120" y1="240" x2="860" y2="240" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><line x1="120" y1="240" x2="120" y2="20" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><text x="860" y="262" fill="#adbed4" font-size="14" font-weight="700" text-anchor="end">記録の必要 大</text><text x="130" y="30" fill="#adbed4" font-size="14" font-weight="700" text-anchor="start">急ぎ</text><rect x="170" y="40" width="300" height="70" rx="10" fill="#ff6b5b"/><text x="320.0" y="81.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">電話・対面</text><rect x="520" y="40" width="300" height="70" rx="10" fill="#ffd166"/><text x="670.0" y="81.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">電話＋メールで残す</text><rect x="170" y="140" width="300" height="70" rx="10" fill="#6aa6ff"/><text x="320.0" y="181.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">チャット</text><rect x="520" y="140" width="300" height="70" rx="10" fill="#5fd39a"/><text x="670.0" y="181.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">メール・書面</text></svg><figcaption>図4 急ぎ×記録の必要で手段を選ぶ（運用例）。安全・緊急はまず声で伝え、後で記録する</figcaption></figure><div class="tw"><table><tr><th>状況</th><th>手段（運用例）</th><th>残すもの</th></tr><tr><td>安全・緊急</td><td>電話・対面ですぐ伝える</td><td>後でメールや記録簿に残す</td></tr><tr><td>急ぎで記録も必要</td><td>電話のあとメールで要点を送る</td><td>時刻・内容・合意者</td></tr><tr><td>急がない相談</td><td>チャット</td><td>決まったことは書面に移す</td></tr><tr><td>取り決め・変更</td><td>メール・書面</td><td>担当・期限・数値・単位</td></tr></table></div>
+</section>
+<section id="sbar" aria-labelledby="sbar-h"><h2 id="sbar-h">SBARで報告する</h2>
+<figure><svg viewBox="0 0 900 250" role="img" aria-label="SBAR"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="20" y="10" width="70" height="48" rx="10" fill="#ff6b5b"/><text x="55.0" y="40.0" fill="#0a1220" font-size="22" font-weight="800" text-anchor="middle">S</text><rect x="100" y="10" width="780" height="48" rx="8" fill="#edf4ff"/><text x="115" y="40" fill="#2b3a55" font-size="15" font-weight="700" text-anchor="start">状況</text><text x="260" y="40" fill="#0a1220" font-size="15" font-weight="700" text-anchor="start">22時の騒音で苦情2件（8階）</text><rect x="20" y="68" width="70" height="48" rx="10" fill="#6aa6ff"/><text x="55.0" y="98.0" fill="#0a1220" font-size="22" font-weight="800" text-anchor="middle">B</text><rect x="100" y="68" width="780" height="48" rx="8" fill="#edf4ff"/><text x="115" y="98" fill="#2b3a55" font-size="15" font-weight="700" text-anchor="start">背景</text><text x="260" y="98" fill="#0a1220" font-size="15" font-weight="700" text-anchor="start">作業終了時刻を書面で決めていない</text><rect x="20" y="126" width="70" height="48" rx="10" fill="#ffd166"/><text x="55.0" y="156.0" fill="#0a1220" font-size="22" font-weight="800" text-anchor="middle">A</text><rect x="100" y="126" width="780" height="48" rx="8" fill="#edf4ff"/><text x="115" y="156" fill="#2b3a55" font-size="15" font-weight="700" text-anchor="start">評価</text><text x="260" y="156" fill="#0a1220" font-size="15" font-weight="700" text-anchor="start">運営21時・施工者22時と認識が食い違っている</text><rect x="20" y="184" width="70" height="48" rx="10" fill="#5fd39a"/><text x="55.0" y="214.0" fill="#0a1220" font-size="22" font-weight="800" text-anchor="middle">R</text><rect x="100" y="184" width="780" height="48" rx="8" fill="#edf4ff"/><text x="115" y="214" fill="#2b3a55" font-size="15" font-weight="700" text-anchor="start">提案・依頼</text><text x="260" y="214" fill="#0a1220" font-size="15" font-weight="700" text-anchor="start">作業終了21時（搬出含む）を書面で合意したい</text></svg><figcaption>図5 CMの報告をSBARで組み立てた例（架空）。SBARは医療で生まれた手法で、ここでは業務連絡に応用している</figcaption></figure><p>AHRQはSBARを、Situation（状況）・Background（背景）・Assessment（評価）・Recommendation／Request（提案・依頼）の順で情報を共有する構造化された枠組みとしています <span class="k law">一次資料</span>。本レポートのCMでの使い方は、筆者による業務連絡への応用例です。</p><h3>記入済み様式：SBAR報告（架空例）</h3><div class="tw"><table><tr><th>項目</th><th>記入例</th></tr><tr><td>S 状況</td><td>11月30日22時ごろ、8階の客室から騒音の苦情が2件ありました。</td></tr><tr><td>B 背景</td><td>夜間作業の終了時刻を書面で決めていませんでした。</td></tr><tr><td>A 評価</td><td>運営は21時、施工者は22時と理解しており、時刻の認識が食い違っています。</td></tr><tr><td>R 提案・依頼</td><td>作業終了を21時（搬出含む）として、本日中に書面で合意したいと考えます。ご確認をお願いします。</td></tr></table></div>
+</section>
+<section id="loop" aria-labelledby="loop-h"><h2 id="loop-h">送る・復唱・確認（閉ループ）</h2>
+<figure><svg viewBox="0 0 900 200" role="img" aria-label="閉ループ"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="20.0" y="30" width="269.3333333333333" height="90" rx="10" fill="#edf4ff"/><text x="154.66666666666666" y="71.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">① 送る</text><text x="154.66666666666666" y="93.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">CM：作業終了は21時</text><line x1="291.3333333333333" y1="75.0" x2="313.3333333333333" y2="75.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="315.3333333333333" y="30" width="269.3333333333333" height="90" rx="10" fill="#ffd166"/><text x="450.0" y="71.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">② 復唱</text><text x="450.0" y="93.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">施工者：21時に終了ですね</text><line x1="586.6666666666666" y1="75.0" x2="608.6666666666666" y2="75.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="610.6666666666666" y="30" width="269.3333333333333" height="90" rx="10" fill="#5fd39a"/><text x="745.3333333333333" y="71.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">③ 確認</text><text x="745.3333333333333" y="93.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">CM：はい、一致しました</text><text x="450" y="165" fill="#ff8a7a" font-size="14" font-weight="700" text-anchor="middle">③は情報が一致したかの確認。追加工事の契約承認や費用の合意を意味しない</text></svg><figcaption>図6 送る・復唱・確認の閉ループ（AHRQのcheck-backの手順を業務に当てはめた例）</figcaption></figure><p>AHRQのcheck-backは、送り手が伝え、受け手が受け取って復唱し、送り手が正しく伝わったかを確かめる3段階の方法です <span class="k law">一次資料</span>。</p><div class="tw"><table><tr><th>段階</th><th>CMの例（架空）</th><th>注意</th></tr><tr><td>① 送る</td><td>「作業終了は21時、搬出まで含みます」</td><td>数値と単位を入れる</td></tr><tr><td>② 復唱</td><td>施工者「21時に搬出まで終了ですね」</td><td>受け手の言葉で言い直してもらう</td></tr><tr><td>③ 確認</td><td>CM「はい、一致しました」</td><td>一致の確認であって、契約や費用の承認ではない</td></tr></table></div><div class="note">AHRQのDESC（Describe 状況を具体的に述べる／Express 懸念を伝える／Suggest 代案を示し合意を求める／Consequences チームの目標への影響を述べる）は対立の解決の手法です。Cは「相手に選択を丸投げする」ことではありません。</div>
+</section>
+<section id="write" aria-labelledby="write-h"><h2 id="write-h">書面に入れること</h2>
+<div class="tw"><table><tr><th>項目</th><th>悪い例</th><th>良い例（架空）</th></tr><tr><td>時刻</td><td>夜間まで</td><td>21:00まで（搬出を含む）</td></tr><tr><td>範囲</td><td>客室工事</td><td>8階の客室12室</td></tr><tr><td>期間</td><td>来月前半</td><td>12月1日〜14日</td></tr><tr><td>担当</td><td>施工者</td><td>施工者の現場代理人</td></tr><tr><td>連絡</td><td>何かあれば連絡</td><td>当日の変更は運営とCMへ電話、後でメール</td></tr></table></div><h3>記入済み様式：取り決め書（架空例）</h3><div class="tw"><table><tr><th>件名</th><th>夜間作業の取り決め</th></tr><tr><td>作業終了</td><td>21:00（搬出を含む）</td></tr><tr><td>対象・期間</td><td>8階客室12室／12月1日〜14日</td></tr><tr><td>担当</td><td>施工者の現場代理人</td></tr><tr><td>合意者</td><td>運営責任者、施工者、CM</td></tr><tr><td>変更の手順</td><td>変更は前日までに運営とCMへ連絡し、変更記録に残す</td></tr></table></div>
+</section>
+<section id="log" aria-labelledby="log-h"><h2 id="log-h">変更記録と上げる手順</h2>
+<div class="tw"><table><tr><th>日付</th><th>変更内容</th><th>理由</th><th>合意者</th></tr><tr><td>12/1</td><td>作業終了21:00で合意</td><td>苦情を受けた取り決め</td><td>運営・施工者・CM</td></tr><tr><td>12/3</td><td>作業終了20:30に変更（当日のみ）</td><td>宴会の開始時刻</td><td>運営・施工者</td></tr></table></div><div class="tw"><table><tr><th>状況</th><th>上げる相手（運用例）</th><th>上げる時期（運用例）</th></tr><tr><td>回答期限を過ぎた</td><td>相手の上長・責任者</td><td>期限当日中に</td></tr><tr><td>安全に関わる未回答</td><td>施工者の責任者と運営</td><td>すぐ</td></tr><tr><td>合意事項が守られない</td><td>運営責任者とCMの上長</td><td>次の作業の前に</td></tr></table></div><p>上げる相手と時期は、プロジェクトの最初に関係者と決めておきます。表の時期は運用例です。</p>
+</section>
+<section id="talk" aria-labelledby="talk-h"><h2 id="talk-h">会話例</h2>
+<div class="case"><b>会話例（架空）</b><br><b>CM：</b>昨晩の苦情は2件、22時ごろで、8階からでした。当日はどのように進めましたか。<br><b>施工者：</b>夜間作業はOKと聞いていたので、22時までと考えていました。<br><b>CM：</b>22時までと理解されていたのですね。運営さんは21時までのつもりでした。作業終了を21時、搬出まで含む、で合意できますか。<br><b>施工者：</b>はい。21時に搬出まで終了ですね。<br><b>CM：</b>はい、一致しました。この内容をメールで送り、変更記録に残します。費用が増える場合は、別途見積もりをいただいて承認の手続きをします。</div>
+</section>
+<section id="check" aria-labelledby="check-h"><h2 id="check-h">実践チェックリスト</h2>
+<div class="tw"><table><tr><th>場面</th><th>確認すること</th><th>済</th></tr><tr><td>聞く前</td><td>事実と解釈を分けてメモしたか</td><td>□</td></tr><tr><td>聞く</td><td>開かれた質問で事情を聞き、遮らなかったか</td><td>□</td></tr><tr><td>聞いた後</td><td>要約して相手に確かめたか</td><td>□</td></tr><tr><td>伝える</td><td>急ぎと記録の必要で手段を選んだか</td><td>□</td></tr><tr><td>報告</td><td>SBARの順になっているか</td><td>□</td></tr><tr><td>取り決め</td><td>復唱と一致確認をしたか</td><td>□</td></tr><tr><td>書面</td><td>担当・期限・数値・単位が入っているか</td><td>□</td></tr><tr><td>変更</td><td>変更記録に日付・理由・合意者を残したか</td><td>□</td></tr><tr><td>未回答</td><td>上げる相手と時期を決めているか</td><td>□</td></tr></table></div>
+</section>
+<section id="limit" aria-labelledby="limit-h"><h2 id="limit-h">限界と注意</h2>
+<ul><li>時刻・件数などは説明用の <span class="k case">架空例</span> です。</li><li>TeamSTEPPSは医療の教材です。本レポートは臨床の内容を扱わず、手法の型だけを業務連絡に応用しています。</li><li>閉ループの「確認」は情報の一致の確認で、契約の変更・追加工事の承認は契約上の権限者が別途行います。</li></ul>
+</section>
+<section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://www.ahrq.gov/teamstepps-program/curriculum/communication/tools/sbar.html" target="_blank" rel="noopener">AHRQ TeamSTEPPS「Tool: SBAR」</a></li>
+<li><a href="https://www.ahrq.gov/sites/default/files/publications/files/pocketguide.pdf" target="_blank" rel="noopener">AHRQ「TeamSTEPPS Pocket Guide」(PDF)</a></li>
+<li><a href="https://www.ahrq.gov/teamstepps-program/curriculum/mutual/tools/desc.html" target="_blank" rel="noopener">AHRQ TeamSTEPPS「Tool: DESC」</a></li></ul>
+<p class="meta">手法の定義は上記の公開資料で確認したものです。資料は更新されることがあるため、利用時は最新版を確認してください。</p></section>
+<section><h2>非言語情報の数値の適用範囲</h2><p><a href="https://www.kaaj.com/psych/smorder.html" target="_blank" rel="noopener">Albert Mehrabian本人による説明</a>では、7・38・55の式は好意・反感など感情や態度を扱う実験に由来し、その他の情報伝達には適用できないとされています。CMの指示や数値の理解度をこの割合で説明しません。</p></section></main>
+<footer>※解説用に要点を簡略化しています。紹介した手法は状況に合わせて試し、運用例の数値は調整してください。実際の役割・決定権限は所属組織の規程と契約に従います。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="communication-video.html">動画解説</a></footer>
+</body>
+</html>
