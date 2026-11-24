@@ -1,509 +1,183 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
-<title>消防設備（消防用設備等）のCM実務 詳細レポート</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>消防設備のCM実務｜詳細レポート</title>
+<meta name="description" content="消防法の用途区分、ホテルのスプリンクラー等の設置要否の条件（判定単位の違い・省略部分・複合用途）、感知器・流水検知・ポンプ・発報・非常電源の因果、竣工時の試験と定期点検・報告の違いを、架空のホテル改修相談で整理します。">
 <style>
-:root{
-  --green:#25564a;--green-d:#1b4037;--green-l:#e3ece8;--green-m:#5f8a7e;
-  --cream:#f7f5ef;--paper:#fffdf8;--ink:#1f2a27;--sub:#56625e;--line:#d8d3c4;
-  --amber:#b7791f;--amber-l:#fbf1de;--red-l:#f7e6e2;
-  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
-}
+:root{color-scheme:dark;--bg:#0a1220;--panel:#142237;--panel2:#0f1b2e;--ink:#edf4ff;--sub:#adbed4;--line:#304159;--accent:#8ee1d0;--warn:#ff8a7a;--law:#6aa6ff;--spec:#8ee1d0;--case:#b79cff;--yel:#ffd166}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
-a{color:var(--green)}
-a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:8px 12px;z-index:99}
-.skip:focus{left:8px}
-.topbar{position:sticky;top:0;z-index:20;background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12)}
-.topbar .in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
-.brand{font-weight:700;letter-spacing:.04em;font-size:15px}
-.nav{display:flex;gap:6px;flex-wrap:wrap}
-.nav a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px 12px;font-size:14px}
-.nav a:hover{background:rgba(255,255,255,.15)}
-main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
-.hero{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:22px}
-.hero .badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:2px 14px;font-size:13px;letter-spacing:.06em}
-h1{color:var(--green-d);font-size:30px;line-height:1.4;margin:10px 0 8px}
-.hero p{margin:6px 0;color:var(--sub)}
-section.sec{scroll-margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 28px;margin-bottom:20px}
-h2{color:var(--green-d);font-size:23px;line-height:1.4;margin:0 0 12px;border-left:6px solid var(--green);padding-left:12px}
-h3{color:var(--green-d);font-size:18px;margin:20px 0 8px}
-p{margin:8px 0}
-ul,ol{padding-left:1.4em}
-li{margin:3px 0}
-.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 22px}
-.toc ol{margin:6px 0 0;columns:2;column-gap:32px}
-.toc li{break-inside:avoid}
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.card h4{margin:0 0 6px;color:var(--green-d);font-size:16px}
-.card p,.card ul{font-size:15px;margin:0}
-.card.a{background:var(--amber-l);border-color:#e7cf9f}
-.card.g{background:var(--green);color:#fff;border-color:var(--green)}
-.card.g h4{color:#fff}
-.callout{border-left:5px solid var(--amber);background:var(--amber-l);padding:10px 14px;border-radius:0 10px 10px 0;font-size:15px;margin:14px 0}
-.callout.g{border-color:var(--green);background:var(--green-l)}
-.tag{display:inline-block;font-size:12px;border:1px solid var(--amber);color:#7a4f10;background:var(--amber-l);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
-.small{font-size:13.5px;color:var(--sub)}
-.tbl-wrap{overflow-x:auto}
-.tbl{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;margin:10px 0}
-.tbl th,.tbl td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
-.tbl thead th{background:var(--green);color:#fff}
-.tbl tbody th{background:var(--green-l);color:var(--green-d);min-width:7em}
-.flow{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
-.flow li{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
-.flow li b{display:block;color:var(--green-d)}
-.flow li b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-size:12px;margin-right:6px}
-.check td.box{width:2.4em;text-align:center}
-.check input{width:18px;height:18px;accent-color:var(--green)}
-.srclist li{margin:6px 0}
-.srclist .d{display:block;font-size:13.5px;color:var(--sub)}
-.back{display:inline-block;margin-top:8px;font-size:14px}
-footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:var(--sub)}
-@media (max-width:820px){
-  .g2,.g3{grid-template-columns:1fr}
-  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .toc ol{columns:1}
-}
-@media (max-width:700px){
-  .topbar{position:static}
-  body{font-size:15px}
-  h1{font-size:24px}h2{font-size:20px}
-  .hero,section.sec{padding:18px 16px}
-  .flow{grid-template-columns:1fr}
-  .tbl-wrap{overflow:visible}
-  .tbl thead{display:none}
-  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
-  .tbl tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff}
-  .tbl th,.tbl td{border:none;border-bottom:1px solid var(--line)}
-  .tbl td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--green-m)}
-  .check td.box{width:100%;text-align:left}
-}
-@media print{
-  .topbar{display:none}
-  body{background:#fff}
-  section.sec,.hero{border:none;padding:0;page-break-inside:auto}
-  a{color:var(--ink)}
-}
-</style>
-<link rel="stylesheet" href="cm-visual-lessons.css">
-<script src="cm-field-cases.js" defer></script>
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 Inter,"Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:6px 10px;z-index:9}
+header.top{border-bottom:1px solid var(--line);padding:14px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;max-width:1160px;margin:auto}
+header.top a{font-weight:700;font-size:15px}
+header.top .nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1160px;margin:0 auto;padding:24px 22px 60px}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:10px 0 8px}
+.kicker{display:inline-block;background:var(--accent);color:#0a1220;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub);font-size:1.05rem}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14.5px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px;margin:20px 0}
+h2{font-size:1.35rem;border-left:6px solid var(--accent);padding-left:12px;margin:18px 0 10px}
+h3{font-size:1.08rem;margin:18px 0 6px;color:var(--accent)}
+p,li{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;background:var(--panel2)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#1c2f4d;color:var(--accent);white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#1d2b1f;border:1px solid #3f6b47;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.warn{background:#3a1f22;border:1px solid #8a3b33;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.case{background:#231d3d;border:1px solid #5c4d99;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--yel)}
+.k{display:inline-block;border-radius:999px;padding:0 9px;font-size:12px;font-weight:800;color:#0a1220;margin:0 3px;vertical-align:1px}
+.k.law{background:var(--law)}.k.spec{background:var(--spec)}.k.case{background:var(--case)}
+figure{margin:14px 0;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1160px;margin:0 auto;padding:0 22px 40px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+a:focus-visible{outline:3px solid #efbe77;outline-offset:3px}
+@media (max-width:640px){nav.toc ol{columns:1}section{padding:4px 14px 16px}}
+@media print{body{background:#fff;color:#000}section,nav.toc{background:#fff;color:#000}header.top,nav.toc{display:none}}
+:root{color-scheme:dark;--ink:#edf4ff;--sub:#b7c7dd;--line:#34465f;--accent:#ffac82;--bg:#0a1220;--blue:#8ed6ff;--green:#8ee1c4}header.top{background:#142237}nav.toc,section{background:#142237}th,.flow li{background:#223550}.note{background:#352e1d;border-color:#756137}.warn{background:#3e2529;border-color:#87505a}.case{background:#28253f;border-color:#5c568c}.meta,footer{font-size:14px}table,.note,.warn,.case,.src li{font-size:16px}.flow li{font-size:15px}.skip:focus{background:#223550;color:#fff}@media print{:root{color-scheme:light;--ink:#172133;--sub:#45546a;--line:#b5c2d2;--bg:white;--blue:#155ba1}body,section,nav.toc{background:white}.note,.warn,.case,th,.flow li{background:#eef2f7}}</style>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
-<header class="topbar">
-  <div class="in">
-    <div class="brand">CM知識一覧 ｜ 第3テーマ 消防設備</div>
-    <nav class="nav" aria-label="サイト内リンク">
-      <a href="index.html">CM知識一覧へ戻る</a>
-      <a href="animations/shobo_setsubi_animation.html">音声・図解スライド</a>
-      <a href="fire-compartment-slides.html">関連：防火区画</a>
-    </nav>
-  </div>
-</header>
-
+<header class="top"><a href="index.html">CM知識一覧 ｜ 消防設備</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="firefighting-equipment-video.html">動画解説（3分）</a></div></header>
 <main id="main">
-<div class="hero">
-  <span class="badge">詳細レポート</span>
-  <h1>消防設備（消防用設備等）のCM実務</h1>
-  <p>設置判定、消防事前協議、工事範囲と連動、届出・施工・自主試験・消防検査・引渡し、点検と報告を、CMの成果物と担当者に結び付けて整理します。スライド版は<a href="animations/shobo_setsubi_animation.html">こちら</a>です。</p>
-  <p class="small">確認範囲：e-Gov 消防法施行令（令和7年10月1日施行時点）、消防法施行規則（令和8年6月26日施行時点）、消防庁・東京消防庁・国土交通省の公表資料。条文を確認できなかった細目は断定せず「要確認」としています。個別案件は最新の法令と所管消防で確認してください。</p>
-</div>
+<span class="kicker">詳細レポート</span>
+<h1>消防設備のCM実務</h1>
+<p class="lead">消防法の用途区分、ホテルのスプリンクラー等の設置要否の条件（判定単位の違い・省略部分・複合用途）、感知器・流水検知・ポンプ・発報・非常電源の因果、竣工時の試験と定期点検・報告の違いを、架空のホテル改修相談で整理します。</p>
+<p class="meta">最終確認：2026年11月24日。登場するホテルは説明用の架空の案件です。設置要否の最終判断は所轄消防本部との協議と最新の法令・条例によります。<br>値の区別：<span class="k law">法令値</span>法令・政令の数値　<span class="k spec">告示・仕様値</span>告示・仕様書・認定の数値　<span class="k case">架空値</span>説明用の架空の数値</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#scope">1. このレポートの範囲と結論</a></li>
+<li><a href="#use">2. 用途区分（消防法施行令 別表第一）</a></li>
+<li><a href="#sp">3. ホテル（5項イ）のスプリンクラー設置条件</a></li>
+<li><a href="#other">4. ホテルに関係する主な設備（代表例）</a></li>
+<li><a href="#mech">5. 感知器・流水検知・ポンプ・発報・非常電源の因果</a></li>
+<li><a href="#proc">6. 手続き：竣工時の試験と定期点検は別</a></li>
+<li><a href="#case">7. 架空ホテルでのCMの判断（相談→引渡し）</a></li>
+<li><a href="#judge">8. 判断表</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="scope" aria-labelledby="scope-h"><h2 id="scope-h">1. このレポートの範囲と結論</h2>
 
-<nav class="toc" aria-label="目次">
-  <strong>目次</strong>
-  <ol><li><a href="#cm-visual-summary">図と比較表</a></li>
-    <li><a href="#c1">範囲と前提</a></li>
-    <li><a href="#c2">消防用設備等の分類</a></li>
-    <li><a href="#c3">全国法令と所管消防の運用</a></li>
-    <li><a href="#c4">設置判定の手順</a></li>
-    <li><a href="#c5">設備別の設置要件と改修時の確認</a></li>
-    <li><a href="#c6">排煙の条件整理（ホテル・複合用途）</a></li>
-    <li><a href="#c7">消防事前協議</a></li>
-    <li><a href="#c8">工事範囲と連動表</a></li>
-    <li><a href="#c9">届出・施工・自主試験・消防検査・引渡し</a></li>
-    <li><a href="#c10">点検周期・報告周期・資格範囲</a></li>
-    <li><a href="#c11">ホテル改修の仮想例</a></li>
-    <li><a href="#c12">稼働中改修の管理</a></li>
-    <li><a href="#c13">CMの成果物と担当者</a></li>
-    <li><a href="#c14">発注者判断のチェック表</a></li>
-    <li><a href="#c15">一次資料リンク</a></li>
-    <li><a href="#c16">個別案件で確認する事項</a></li>
-  </ol>
-</nav>
-<div style="height:20px"></div>
+<p>ホテルの改修では、天井の変更や間仕切りの追加でスプリンクラーヘッドや感知器の届かない「未警戒」部分が生じやすく、用途の追加で別表第一の区分が変わることもあります。本レポートは、消防法の用途区分、ホテルのスプリンクラー等の設置要否の条件、感知器・流水検知・ポンプ・発報・非常電源の因果、竣工時の試験と定期点検・報告の違いを整理します。</p>
+<div class="warn">結論：①設置要否は面積や階数の一つで断定せず、判定単位（建物全体・その階）と条件を分けて確認する。②湿式スプリンクラーは熱で開いたヘッドだけが放水し、警報は流水検知、ポンプは圧力低下で起動する。③竣工時の試験・設置届・消防検査と、引渡し後の機器点検6か月・総合点検1年・報告（特定1年／非特定3年）は別の制度。</div>
 
-
-<aside class="cm-visual" id="cm-visual-summary" aria-labelledby="cm-visual-report-title">
-    <h2 id="cm-visual-report-title" class="cm-visual-heading">火事を知らせ、消火と避難につなぐ</h2><div class="cm-visual-term"><p><strong>自動火災報知設備</strong> 煙や熱を感知し、受信機や警報設備を通じて火災を知らせます。</p>
-    <p><span>最初に開く資料</span> <b>消防設備の系統図</b></p></div>
-    <div class="cm-visual-with-image"><div><figure class="cm-field">
-    <div class="cm-field-drawing" aria-label="設備の系統図">
-      <div class="cm-field-geometry" aria-hidden="true"><i class="cm-shape cm-shape-room cm-shape-box" style="left:6%;top:16.666666666666664%;width:22%;height:27.083333333333332%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:39%;top:16.666666666666664%;width:22%;height:27.083333333333332%"></i><i class="cm-shape cm-shape-route cm-shape-box" style="left:72%;top:16.666666666666664%;width:22%;height:27.083333333333332%"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:28%;top:29.166666666666668%;width:11%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-route cm-shape-line cm-shape-arrow" style="left:61%;top:29.166666666666668%;width:11%;transform:rotate(0rad)"></i><i class="cm-shape cm-shape-warn cm-shape-box" style="left:15%;top:60.416666666666664%;width:29%;height:25%"></i><i class="cm-shape cm-shape-room cm-shape-box" style="left:58%;top:60.416666666666664%;width:28%;height:25%"></i><i class="cm-shape cm-shape-line cm-shape-line" style="left:50%;top:45.83333333333333%;width:4%;transform:rotate(1.5707963267948966rad)"></i></div>
-      <button type="button" class="cm-field-marker" style="--field-x:17%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="1 感知器">1</button><button type="button" class="cm-field-marker" style="--field-x:50%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="2 受信機">2</button><button type="button" class="cm-field-marker" style="--field-x:83%;--field-y:29.166666666666668%" data-point aria-pressed="false" aria-label="3 警報・放送">3</button>
-    </div>
-    <figcaption>設備の系統図（模式図） · 図は通報・避難の例です。消火設備はそれぞれ作動条件があるため、機器と連動の一覧を確認します。</figcaption>
-    <div class="cm-field-points" aria-label="図の注目箇所"><button type="button" data-point-choice aria-pressed="false"><b>1</b>感知器</button><button type="button" data-point-choice aria-pressed="false"><b>2</b>受信機</button><button type="button" data-point-choice aria-pressed="false"><b>3</b>警報・放送</button></div>
-    <div class="cm-field-notes" aria-live="polite"><p data-point-note><strong>1 感知器</strong> 火災の兆候を検知し、信号を送ります。</p><p data-point-note><strong>2 受信機</strong> 信号を受ける側。作動した場所と出力を照合します。</p><p data-point-note><strong>3 警報・放送</strong> 利用者に知らせる設備。案内と避難の流れも確認します。</p></div>
-  </figure><table class="cm-visual-table"><thead><tr><th scope="col">見るポイント</th><th scope="col">図面・現場で確かめること</th></tr></thead><tbody>
-  <tr><th scope="row">感知・通知</th><td>感知器、受信機、ベルや放送</td></tr>
-<tr><th scope="row">消火</th><td>消火器、消火栓、スプリンクラー等</td></tr>
-<tr><th scope="row">避難支援</th><td>誘導灯等で進む出口を確認</td></tr>
-  </tbody></table></div><div><figure><div class="cm-visual-media"><img src="cm-hotel-section-illustration.png" alt="架空のホテルの断面イラスト。客室、階段、設備の縦穴、屋上、斜面が見える" width="1536" height="1024" loading="lazy" decoding="async"><span class="cm-visual-spot" aria-hidden="true" style="--spot-x:47%;--spot-y:43%">●</span></div><figcaption>客室と廊下のどこに感知や消火・避難支援の機器を配置するか、設備図と照合します。 イラストは位置関係の説明用です。</figcaption></figure></div></div>
-    <div class="cm-field-case" data-answer="1">
-    <h3 class="cm-visual-heading">事例で考える</h3>
-    <p>感知器を移設した工区を再開します。どこまで確認しますか？</p>
-    <div class="cm-case-choices" aria-label="最初の対応を選ぶ">
-      <button type="button" data-case-choice aria-pressed="false"><b>A</b>感知器が新しい位置に付いたことだけを確認する</button>
-      <button type="button" data-case-choice aria-pressed="false"><b>B</b>試験計画で、受信表示から必要な連動まで確認する</button>
-    </div>
-    <p class="cm-case-result" data-case-result aria-live="polite"></p>
-    <details><summary>解説と、確認に使う資料</summary>
-      <p><strong>試験計画で、受信表示から必要な連動まで確認する</strong></p><p>移設した機器の信号が想定した位置・系統として表示され、関係する警報や連動が所定どおりかを確認します。</p>
-      <dl class="cm-case-guide">
-        <div><dt>最初に開く資料</dt><dd>消防設備の系統図</dd></div>
-        <div><dt>いつ確認するか</dt><dd>機器移設後、営業区画を再開する前</dd></div>
-        <div><dt>誰と確認するか</dt><dd>防火管理者・消防設備の担当者</dd></div>
-      </dl>
-      <p class="cm-case-docs"><strong>関連資料</strong> 消防設備図・系統図・作動試験記録</p>
-    </details>
-  </div>
-  </aside>
-<section class="sec" id="c1">
-  <h2>1. 範囲と前提</h2>
-  <p>本レポートの対象は、消防法第17条に基づき防火対象物の関係者が設置・維持する「消防用設備等」です。防火戸・防火シャッター・防火区画など建築基準法上の防火設備は、別テーマ「<a href="fire-compartment-slides.html">防火区画のCM実務</a>」で扱います。ここでは連動の取合いとしてだけ触れます。</p>
-  <div class="grid g3">
-    <div class="card"><h4>前提1　法の層を分ける</h4><p>国の法令（法・令・規則・告示）で決まることと、所管消防の条例・運用で決まることを分けて記録します。</p></div>
-    <div class="card"><h4>前提2　二つの制度を混ぜない</h4><p>建築基準法（排煙・防火設備・定期報告）と消防法（消防用設備等・点検報告）は、目的・報告先・資格者が別です。</p></div>
-    <div class="card a"><h4>前提3　条件付きで書く</h4><p>面積や期限は根拠と適用条件を確認できたものだけを書き、細目は所管消防で確定します。</p></div>
-  </div>
 </section>
+<section id="use" aria-labelledby="use-h"><h2 id="use-h">2. 用途区分（消防法施行令 別表第一）</h2>
 
-<section class="sec" id="c2">
-  <h2>2. 消防用設備等の分類</h2>
-  <p>説明には機能の分類が使いやすく、基準の当てはめには消防法施行令第7条の法令上の区分を使います。</p>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>機能</th><th>主な設備</th><th>令第7条の区分</th><th>本レポートの事例</th></tr></thead>
-    <tbody>
-      <tr><th>消火</th><td data-label="主な設備">消火器・簡易消火用具、屋内消火栓設備、スプリンクラー設備、水噴霧・泡・不活性ガス・ハロゲン化物・粉末消火設備、屋外消火栓設備、動力消防ポンプ設備</td><td data-label="令第7条の区分">消防の用に供する設備（消火設備）</td><td data-label="事例">屋内消火栓、SP</td></tr>
-      <tr><th>警報</th><td data-label="主な設備">自動火災報知設備、ガス漏れ火災警報設備、漏電火災警報器、消防機関へ通報する火災報知設備、非常警報器具・非常警報設備（非常ベル・自動式サイレン・放送設備）</td><td data-label="令第7条の区分">消防の用に供する設備（警報設備）</td><td data-label="事例">自火報、非常警報</td></tr>
-      <tr><th>避難</th><td data-label="主な設備">避難器具（滑り台・避難はしご・救助袋・緩降機・避難橋など）、誘導灯・誘導標識</td><td data-label="令第7条の区分">消防の用に供する設備（避難設備）</td><td data-label="事例">避難器具、誘導灯</td></tr>
-      <tr><th>消防活動支援</th><td data-label="主な設備">排煙設備、連結散水設備、連結送水管、非常コンセント設備、無線通信補助設備</td><td data-label="令第7条の区分">消火活動上必要な施設</td><td data-label="事例">排煙、連結送水管</td></tr>
-      <tr><th>水利</th><td data-label="主な設備">防火水槽又はこれに代わる貯水池等</td><td data-label="令第7条の区分">消防用水</td><td data-label="事例">－</td></tr>
-    </tbody>
-  </table></div>
-</section>
+<div class="tw"><table><tr><th>区分</th><th>内容</th><th>ホテル改修での注意</th></tr>
+<tr><td>（5）項イ</td><td>旅館、ホテル、宿泊所その他これらに類するもの</td><td>特定防火対象物 <span class="k law">法令値</span></td></tr>
+<tr><td>（16）項イ</td><td>特定用途を含む複合用途防火対象物</td><td>店舗・飲食店等が従属的な用途か、複合用途に該当するかを先に確認し、各部分と全体の条件を判定</td></tr>
+<tr><td>特定防火対象物</td><td>（1）〜（4）項、（5）項イ、（6）項、（9）項イ、（16）項イ、（16の2）項、（16の3）項</td><td>点検報告は1年ごと、点検は延べ1,000㎡以上で有資格者</td></tr>
+<tr><td>令8条（令8区画）</td><td>開口部のない耐火構造の床・壁等で区画された部分は別の防火対象物とみなす</td><td>建基法の防火区画（開口部に防火設備）とは別。防火区画を理由に設置単位は分けられない</td></tr></table></div>
 
-<section class="sec" id="c3">
-  <h2>3. 全国法令と所管消防の運用</h2>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>層</th><th>決めること</th><th>CMでの扱い</th></tr></thead>
-    <tbody>
-      <tr><th>消防法</th><td data-label="決めること">設置・維持の義務（第17条）、既存建物への適用の考え方、届出・検査、点検報告の枠組み</td><td data-label="CMでの扱い">義務の主体（防火対象物の関係者＝発注者側）を明確にする</td></tr>
-      <tr><th>消防法施行令</th><td data-label="決めること">設置対象（用途・面積・階・収容人員）と技術基準の骨格、検査・点検資格の対象</td><td data-label="CMでの扱い">法令判定表の根拠条文</td></tr>
-      <tr><th>消防法施行規則</th><td data-label="決めること">無窓階の定義、設置届の期限と添付書類、点検・報告の周期、点検資格者</td><td data-label="CMでの扱い">工程表と届出管理表の期限</td></tr>
-      <tr><th>消防庁告示・通知</th><td data-label="決めること">点検基準・点検要領・点検票・報告様式</td><td data-label="CMでの扱い">試験・点検の項目、引渡し書類</td></tr>
-      <tr><th>所管消防</th><td data-label="決めること">火災予防条例による付加基準（法第17条第2項）、審査・指導基準、事前相談、基準の特例（令第32条）、届出様式・受付方法、工事中の安全対策の扱い</td><td data-label="CMでの扱い">協議記録表で確定させ、判定表に反映</td></tr>
-      <tr><th>別制度</th><td data-label="決めること">建築基準法第12条の定期調査・検査（特定行政庁）</td><td data-label="CMでの扱い">年間点検計画で消防と並べて管理（報告先・資格者を分ける）</td></tr>
-    </tbody>
-  </table></div>
-  <p class="callout">所管消防の付加基準は地域で異なります。屋内消火栓や非常電源、消防活動用の設備の配置などで国の基準を上回る例があるため、国の基準で「不要」と判定した設備も、協議で条例の扱いを確認してから確定します。</p>
 </section>
+<section id="sp" aria-labelledby="sp-h"><h2 id="sp-h">3. ホテル（5項イ）のスプリンクラー設置条件</h2>
 
-<section class="sec" id="c4">
-  <h2>4. 設置判定の手順</h2>
-  <ol class="flow" aria-label="設置判定の8工程">
-    <li><b>用途</b>令別表第一の項を決める</li>
-    <li><b>複合用途</b>（16）項イ・ロと令第9条</li>
-    <li><b>規模</b>延べ面積・床面積・収容人員</li>
-    <li><b>階</b>地階・無窓階・高い階の条件</li>
-    <li><b>無窓階</b>規則第5条の5で判定</li>
-    <li><b>区画・緩和</b>令第8条・面積の読替え・有効範囲</li>
-    <li><b>既存・改修</b>現行基準の適用範囲</li>
-    <li><b>確定</b>所管消防の協議で確定</li>
-  </ol>
-  <h3>4-1 用途と複合用途</h3>
-  <ul>
-    <li>ホテル・旅館は令別表第一（5）項イ。用途部分に（1）〜（4）項、（5）項イ、（6）項、（9）項イのいずれかを含む複合用途は（16）項イ、それ以外の複合用途は（16）項ロです。</li>
-    <li>主たる用途に従属する部分は、主たる用途に含めて判断する考え方があります（令第1条の2第2項後段、別表第一備考一）。ホテル内の売店・レストランが従属か独立テナントかは、管理権原や利用形態で判断が分かれるため協議事項にします。</li>
-    <li>（16）項の用途部分は、原則としてその用途の一つの防火対象物とみなして判定します（令第9条）。設備ごとの例外は令第9条を照合し、用途部分と建物全体のどちらの条件を見るかを区分表に記録します。</li>
-  </ul>
-  <h3>4-2 無窓階</h3>
-  <p>無窓階は「避難上又は消火活動上有効な開口部を有しない階」です（規則第5条の5）。</p>
-  <ul>
-    <li>11階以上の階：直径50cm以上の円が内接できる開口部の面積の合計が床面積の1/30を超えれば普通階。</li>
-    <li>10階以下の階：上記に加え、直径1m以上の円が内接できる開口部、又は幅75cm以上・高さ1.2m以上の開口部が2以上必要。</li>
-    <li>開口部の条件：床面から下端まで1.2m以内、道又は道に通ずる幅員1m以上の通路等に面する（11階以上は除く）、格子等で避難を妨げず外部から開放又は容易に破壊して進入できる、常時良好な状態に維持。</li>
-  </ul>
-  <p class="callout">改修で窓にフィルム・面格子・固定家具・看板を設けると、無窓階に変わることがあります。無窓階になると自火報・屋内消火栓・SP・誘導灯・消防法の排煙などの要件が加わるため、内装・サイン計画の段階で確認します。</p>
-  <h3>4-3 区画・緩和・代替</h3>
-  <ul>
-    <li>開口部のない耐火構造の床又は壁で区画された部分などは、別の防火対象物とみなします（令第8条）。</li>
-    <li>屋内消火栓の面積要件は、特定主要構造部を耐火構造とし内装を難燃材料とした場合は3倍、耐火構造などの場合は2倍の数値で読みます（令第11条第2項）。</li>
-    <li>SP等を設けた場合、その有効範囲内は屋内消火栓が不要（令第11条第4項）。閉鎖型ヘッドのSP等の有効範囲内は自火報を設けないことができる規定もあります（令第21条第3項、除外される部分あり）。</li>
-    <li>消防長又は消防署長が、位置・構造・設備の状況から火災の発生・延焼のおそれが著しく少ないと認めるときは、基準によらないことができます（令第32条）。適用の有無と内容は既存資料で確認し、改修後も成り立つかを協議します。</li>
-  </ul>
-  <h3>4-4 既存・改修</h3>
-  <ul>
-    <li>消防法第17条の2の5では、基準改正時の既存設備への適用除外と例外を定めています。ホテルなどの特定用途は、設備ごとに現行基準の適用範囲を確認します。</li>
-    <li>用途にかかわらず現行基準が適用される設備として、簡易消火用具、特定用途に設ける自火報、ガス漏れ火災警報設備、漏電火災警報器、非常警報器具・非常警報設備、誘導灯・誘導標識などが列挙されています（令第34条）。</li>
-    <li>増築・改築、修繕・模様替え、用途変更の内容によって現行基準の対象範囲が変わります（消防法第17条の2の5、第17条の3、令第34条の2〜第34条の4）。既存の検査・協議資料と改修範囲を照合します。</li>
-  </ul>
-</section>
+<div class="tw"><table><tr><th>判定単位</th><th>条件</th><th>設置範囲</th></tr>
+<tr><td>建物全体（平屋建て以外）</td><td>延べ面積6,000㎡以上 <span class="k law">法令値</span></td><td>建物（省略できる部分を除く）</td></tr>
+<tr><td>地階・無窓階</td><td>その階の床面積1,000㎡以上 <span class="k law">法令値</span></td><td>その階</td></tr>
+<tr><td>4階以上10階以下の階</td><td>その階の床面積1,500㎡以上 <span class="k law">法令値</span></td><td>その階</td></tr>
+<tr><td>11階以上の階</td><td>面積によらない <span class="k law">法令値</span></td><td>その階</td></tr></table></div>
+<div class="warn">数値を混同しない：6,000㎡は建物全体の延べ面積（平屋建て以外）、1,000㎡は地階・無窓階の「その階」、1,500㎡は4〜10階の「その階」の床面積です。</div>
+<h3>条件を付けて確認すること</h3>
+<ul><li>省略できる部分：浴室・便所など、施行規則で定める部分や、区画・内装等の条件を満たす部分は、ヘッドの設置を要しない場合がある（施行規則13条ほか）。適用は所轄消防本部と協議。</li>
+<li>複合用途：（16）項イでは、5項イ部分の床面積と階による条件、建物全体の条件を別々に判定する（大阪府の資料でも表を分けて示している）。小規模特定用途複合防火対象物の10階以下の扱いなどの特例は、該当するかを個別に確認。</li>
+<li>無窓階：窓をふさぐ・看板で覆う改修で無窓階になると、1,000㎡の基準が適用される可能性がある。</li>
+<li>条例の上乗せ：所轄の火災予防条例・指導基準で上乗せがある場合がある。</li></ul>
+<div class="case">架空のRC造10階建ホテル：延べ9,000㎡（平屋建て以外）→6,000㎡以上でスプリンクラーの設置対象。各階約900㎡、地階・無窓階なし、11階以上なし。省略部分と複合用途の有無は所轄消防と確認。<span class="k case">架空値</span></div>
 
-<section class="sec" id="c5">
-  <h2>5. 設備別の設置要件と改修時の確認</h2>
-  <p class="small">ホテルと複合用途の改修で確認する項目を整理します。条文・施行規則を使い、設置範囲、除外部分、既設設備の取扱いを設備ごとに確認します。</p>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>設備</th><th>設置要件（要旨）</th><th>根拠</th><th>改修時の確認</th></tr></thead>
-    <tbody>
-      <tr><th>自動火災報知設備</th><td data-label="設置要件">用途、延べ面積、地階・無窓階・高い階などの条件で確認。ホテル用途は令第21条第1項第1号、複合用途は同条と令第9条を照合。</td><td data-label="根拠">令第21条・第9条</td><td data-label="改修時の確認">感知器の種別と位置、警戒区域（原則600㎡以下・一辺50m以下、二以上の階にわたらない）、受信機の回線、非常電源、蓄積機能の設定</td></tr>
-      <tr><th>非常警報設備</th><td data-label="設置要件">用途・収容人員・階数で、非常ベル等と放送設備の要否を確認（令第24条）。</td><td data-label="根拠">令第24条</td><td data-label="改修時の確認">放送区域、客室内スピーカー、音圧、起動装置の位置、非常電源</td></tr>
-      <tr><th>スプリンクラー設備</th><td data-label="設置要件">用途、階数、延べ面積・用途部分の面積、各階の条件で判定。除外部分と設備方式は令第12条・施行規則を照合。</td><td data-label="根拠">令第12条</td><td data-label="改修時の確認">ヘッドの種別・間隔、散水障害、天井高、制御弁の系統と水抜き範囲、送水口、非常電源</td></tr>
-      <tr><th>屋内消火栓設備</th><td data-label="設置要件">用途、延べ面積、地階・無窓階・高い階の条件を確認。構造・内装による読替えと、他の消火設備の有効範囲の扱いも確認（令第11条）。</td><td data-label="根拠">令第11条</td><td data-label="改修時の確認">ホースの到達範囲（水平距離25m又は15m、令第11条第3項）、消火栓箱前の空間、扉の開閉</td></tr>
-      <tr><th>避難器具</th><td data-label="設置要件">用途、階、収容人員、下階の用途に応じて令第25条と施行規則を確認。</td><td data-label="根拠">令第25条</td><td data-label="改修時の確認">階に適応する器具の種類、設置開口部と降下空間、器具の格納・表示。減免は規則と所管消防で確認<span class="tag">条件付き</span></td></tr>
-      <tr><th>誘導灯・誘導標識</th><td data-label="設置要件">用途・避難経路に応じて令第26条を確認。不要とできる範囲は、見通し・歩行距離など規則第28条の2の条件で判定。</td><td data-label="根拠">令第26条・規則第28条の2</td><td data-label="改修時の確認">間仕切り・什器・装飾による視認性、歩行距離、非常電源、誘導灯の区分</td></tr>
-      <tr><th>連結送水管</th><td data-label="設置要件">建物の階数・延べ面積・用途などで要否を確認（令第29条）。</td><td data-label="根拠">令第29条</td><td data-label="改修時の確認">放水口の位置と扉の開閉、送水口の前面空地、外構工事の干渉</td></tr>
-      <tr><th>排煙設備（消防法）</th><td data-label="設置要件">地下街、一定の舞台部、特定用途の地階・無窓階などが対象。用途、階、面積と除外条件を確認（令第28条）。</td><td data-label="根拠">令第28条</td><td data-label="改修時の確認">次章の条件整理による</td></tr>
-    </tbody>
-  </table></div>
-  <p class="small">このほか、ホテルでは消火器具（令第10条）、消防機関へ通報する火災報知設備、非常コンセント設備（令第29条の2）も判定対象です。</p>
 </section>
+<section id="other" aria-labelledby="other-h"><h2 id="other-h">4. ホテルに関係する主な設備（代表例）</h2>
 
-<section class="sec" id="c6">
-  <h2>6. 排煙の条件整理（ホテル・複合用途）</h2>
-  <p>ホテルの用途（（5）項イ）は消防法施行令第28条の列挙に含まれていません。そのため「ホテルだから消防法の排煙設備が必要」とは言えず、複合用途の用途部分と階・床面積の条件で判定します。建築基準法の排煙設備は別の基準で、別途判定します。</p>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>ケース</th><th>消防法（令第28条）の判定</th><th>確認すること</th></tr></thead>
-    <tbody>
-      <tr><th>ホテル単独（（5）項イ）</th><td data-label="消防法の判定">列挙外のため、令第28条の設置対象にはならない</td><td data-label="確認すること">建築基準法の排煙、所管消防の条例・指導の有無</td></tr>
-      <tr><th>複合用途で地階・無窓階に遊技場（（2）項）や物販店舗（（4）項）</th><td data-label="消防法の判定">その用途部分の地階又は無窓階の床面積が1,000㎡以上なら対象（令第9条により用途部分で判定）</td><td data-label="確認すること">用途部分の床面積の拾い方、無窓階判定、排煙上有効な開口部による不要規定（第3項）の適用</td></tr>
-      <tr><th>宴会場・劇場的用途の舞台</th><td data-label="消防法の判定">（1）項に当たる部分の舞台部が500㎡以上なら対象</td><td data-label="確認すること">宴会場が（1）項ロ（集会場）や従属用途に当たるかの判定、舞台の範囲</td></tr>
-      <tr><th>地下駐車場（（13）項）が地階にある</th><td data-label="消防法の判定">（13）項部分の地階又は無窓階で1,000㎡以上なら対象</td><td data-label="確認すること">駐車場の構造（屋外に出られる構造か）、他の消火設備（令第13条）との関係</td></tr>
-      <tr><th>地下街に接続（（16の2）項）</th><td data-label="消防法の判定">地下街として延べ1,000㎡以上なら対象。地下街と一体を成すと指定された地階の扱いにも注意（令第9条の2）</td><td data-label="確認すること">所管消防による指定の有無</td></tr>
-    </tbody>
-  </table></div>
-  <div class="grid g2">
-    <div class="card"><h4>建築基準法の排煙との違い</h4><p>建築基準法の排煙は在館者の避難が主目的で、区画・内装による緩和や定期報告（建築設備等）の扱いがあります。消防法の排煙は消火活動上必要な施設で、消防の点検報告の対象です。同じ設備が両法の要件を兼ねる場合も、根拠と点検の記録は分けて保管します。</p></div>
-    <div class="card a"><h4>改修で起きやすいこと</h4><p>テナント入替えで地階の用途が物販や遊技場に変わる、窓の改修で無窓階になる、宴会場の使い方が変わる、などで判定が変わります。用途変更・内装計画の段階で再判定します。</p></div>
-  </div>
-</section>
+<div class="tw"><table><tr><th>設備</th><th>5項イの代表的な条件</th><th>根拠</th></tr>
+<tr><td>自動火災報知設備</td><td>延べ面積によらず設置 <span class="k law">法令値</span>（特定小規模施設用の特例あり）</td><td>令21条</td></tr>
+<tr><td>消火器</td><td>延べ150㎡以上、地階・無窓階・3階以上の階で床面積50㎡以上 <span class="k law">法令値</span></td><td>令10条</td></tr>
+<tr><td>屋内消火栓</td><td>延べ700㎡以上（耐火構造＋内装難燃で3倍などの読替え） <span class="k law">法令値</span></td><td>令11条</td></tr>
+<tr><td>誘導灯</td><td>設置 <span class="k law">法令値</span></td><td>令26条</td></tr>
+<tr><td>避難器具</td><td>2階以上または地階で収容人員30人以上 <span class="k law">法令値</span></td><td>令25条</td></tr>
+<tr><td>連結送水管</td><td>地階を除く階数7以上 など <span class="k law">法令値</span></td><td>令29条</td></tr></table></div>
+<p>個別の要否は、構造・面積・階・収容人員・無窓階の判定によります。改修時は既存の消防用設備等設置届出書・検査済証を確認します。</p>
 
-<section class="sec" id="c7">
-  <h2>7. 消防事前協議</h2>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>項目</th><th>内容</th><th>担当</th><th>CM成果物</th></tr></thead>
-    <tbody>
-      <tr><th>時期</th><td data-label="内容">基本計画〜実施設計の初期。用途・レイアウト・工期・工区が変わったら再協議</td><td data-label="担当">設計者が日程調整、CMrが工程に組込み</td><td data-label="CM成果物">マスター工程表の協議マイルストーン</td></tr>
-      <tr><th>準備資料</th><td data-label="内容">用途区分表（テナント含む）、各階面積表、収容人員の算定、無窓階の検討、既存の検査済証・点検結果報告・過去の協議記録、計画図</td><td data-label="担当">設計者作成、発注者が既存資料を提供</td><td data-label="CM成果物">既存資料の収集リスト</td></tr>
-      <tr><th>論点</th><td data-label="内容">用途と従属・複合の判定、無窓階、令第8条の区画、既存の特例・令第32条の扱い、代替設備、条例の付加基準、工事中の安全対策</td><td data-label="担当">設計者・CMr・発注者で事前に合意</td><td data-label="CM成果物">論点リスト</td></tr>
-      <tr><th>記録</th><td data-label="内容">質問・回答・根拠・回答者の部署・日付・宿題・回答期限</td><td data-label="担当">CMrが作成し設計者が内容確認、発注者に報告</td><td data-label="CM成果物">協議記録表、未決事項一覧</td></tr>
-      <tr><th>反映</th><td data-label="内容">設計図書・数量・工程・費用への反映</td><td data-label="担当">設計者 → 施工者</td><td data-label="CM成果物">法令判定表の改訂、増減額・工程影響の整理</td></tr>
-    </tbody>
-  </table></div>
 </section>
+<section id="mech" aria-labelledby="mech-h"><h2 id="mech-h">5. 感知器・流水検知・ポンプ・発報・非常電源の因果</h2>
 
-<section class="sec" id="c8">
-  <h2>8. 工事範囲と連動表</h2>
-  <h3>8-1 工事区分表の例</h3>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>範囲</th><th>建築</th><th>電気（防災）</th><th>機械（消火）</th><th>発注者・施設</th><th>漏れやすい取合い</th></tr></thead>
-    <tbody>
-      <tr><th>天井開口・点検口</th><td data-label="建築">施工</td><td data-label="電気">位置指示</td><td data-label="機械">位置指示</td><td data-label="発注者">意匠承認</td><td data-label="取合い">感知器・ヘッドと照明・吹出口・梁の干渉</td></tr>
-      <tr><th>感知器・受信機・中継器</th><td data-label="建築">－</td><td data-label="電気">施工・試験</td><td data-label="機械">－</td><td data-label="発注者">停止承認</td><td data-label="取合い">既存受信機の回線余裕、機種の互換、表示の更新</td></tr>
-      <tr><th>SP配管・ヘッド</th><td data-label="建築">天井復旧</td><td data-label="電気">流水検知の信号</td><td data-label="機械">施工・試験</td><td data-label="発注者">停止承認</td><td data-label="取合い">水抜き範囲・復旧時刻・漏水養生</td></tr>
-      <tr><th>放送・誘導灯</th><td data-label="建築">取付下地</td><td data-label="電気">施工・試験</td><td data-label="機械">－</td><td data-label="発注者">放送文案</td><td data-label="取合い">客室内スピーカー、非常電源、視認性</td></tr>
-      <tr><th>防火戸・シャッター連動</th><td data-label="建築">建具</td><td data-label="電気">連動制御</td><td data-label="機械">－</td><td data-label="発注者">運用確認</td><td data-label="取合い">連動制御器の改修範囲（防火区画テーマ参照）</td></tr>
-      <tr><th>排煙口・排煙機</th><td data-label="建築">開口・手動開放装置</td><td data-label="電気">起動回路</td><td data-label="機械">ダクト・機器</td><td data-label="発注者">－</td><td data-label="取合い">建築基準法と消防法のどちらの排煙かの区別</td></tr>
-      <tr><th>カーテン・じゅうたん等</th><td data-label="建築">内装</td><td data-label="電気">－</td><td data-label="機械">－</td><td data-label="発注者">調達</td><td data-label="取合い">防炎物品の指定（令第4条の3）と防炎表示</td></tr>
-    </tbody>
-  </table></div>
-  <h3>8-2 連動表の例</h3>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>出力 ＼ 入力</th><th>感知器作動</th><th>SP流水検知</th><th>手動起動（発信機・手動開放装置）</th><th>試験時の確認</th></tr></thead>
-    <tbody>
-      <tr><th>地区音響・放送</th><td data-label="感知器作動">●</td><td data-label="SP流水検知">●</td><td data-label="手動起動">●</td><td data-label="試験時の確認">全館・区分鳴動の設定、客室内の聞こえ</td></tr>
-      <tr><th>防火戸・シャッター閉鎖</th><td data-label="感知器作動">●</td><td data-label="SP流水検知">設計による</td><td data-label="手動起動">設計による</td><td data-label="試験時の確認">閉鎖障害物、危害防止装置</td></tr>
-      <tr><th>排煙口開放・排煙機起動</th><td data-label="感知器作動">●</td><td data-label="SP流水検知">設計による</td><td data-label="手動起動">●</td><td data-label="試験時の確認">起動順序、非常電源での作動</td></tr>
-      <tr><th>空調停止・ダンパー</th><td data-label="感知器作動">●</td><td data-label="SP流水検知">設計による</td><td data-label="手動起動">－</td><td data-label="試験時の確認">停止範囲と復帰手順</td></tr>
-      <tr><th>エレベーター管制</th><td data-label="感知器作動">設計による</td><td data-label="SP流水検知">設計による</td><td data-label="手動起動">－</td><td data-label="試験時の確認">昇降機業者の立会い</td></tr>
-      <tr><th>消防機関へ通報</th><td data-label="感知器作動">設計による</td><td data-label="SP流水検知">設計による</td><td data-label="手動起動">●</td><td data-label="試験時の確認">試験時の事前連絡</td></tr>
-    </tbody>
-  </table></div>
-  <p class="small">●は一般的な例です。実際の連動は設計図書と所管消防の指導によります。連動表は設計者が作成し、CMrが工事区分表・自主試験計画・消防検査の確認項目と照合します。</p>
-</section>
+<figure><svg viewBox="0 0 900 300" role="img" aria-label="湿式スプリンクラーの作動の因果">
+<rect width="900" height="300" fill="#0f1b2e"/>
+<rect x="40" y="40" width="820" height="12" fill="#5f88c9"/>
+<g fill="#ff9f43"><circle cx="140" cy="66" r="7"/><circle cx="300" cy="66" r="7"/><circle cx="620" cy="66" r="7"/><circle cx="780" cy="66" r="7"/></g>
+<circle cx="460" cy="66" r="8" fill="#ff6b5b"/><text x="460" y="100" fill="#ff6b5b" font-size="15" text-anchor="middle">熱でこのヘッドだけ開放</text>
+<path d="M440 150 q20 -40 40 0 z" fill="#ff7a2f"/><text x="640" y="100" fill="#adbed4" font-size="14">他のヘッドは閉じたまま</text>
+<g font-size="15" font-weight="700" text-anchor="middle">
+<rect x="40" y="180" width="180" height="56" rx="10" fill="#edf4ff"/><text x="130" y="213" fill="#0a1220">① 水が流れる</text>
+<rect x="250" y="180" width="200" height="56" rx="10" fill="#ffd166"/><text x="350" y="213" fill="#0a1220">流水検知装置→警報</text>
+<rect x="480" y="180" width="160" height="56" rx="10" fill="#ffd166"/><text x="560" y="213" fill="#0a1220">受信機に区域表示</text>
+<rect x="40" y="250" width="180" height="40" rx="10" fill="#edf4ff"/><text x="130" y="276" fill="#0a1220">② 配管の圧力低下</text>
+<rect x="250" y="250" width="390" height="40" rx="10" fill="#8ee1d0"/><text x="445" y="276" fill="#0a1220">起動用の圧力検知装置 → ポンプ自動起動</text>
+<rect x="670" y="180" width="190" height="110" rx="10" fill="#b79cff"/><text x="765" y="225" fill="#0a1220">非常電源</text><text x="765" y="250" fill="#0a1220" font-size="13">（ポンプ：自家発電等）</text></g>
+</svg><figcaption>図1 湿式（閉鎖型）スプリンクラー：ヘッドは熱で個別に開放する。煙感知器で全ヘッドが一斉に放水する仕組みではない（開放型や予作動式の作動条件は別途確認）。警報（流水検知）とポンプ起動（圧力低下）は別の系統。</figcaption></figure>
+<div class="tw"><table><tr><th>設備</th><th>起点</th><th>結果</th><th>非常電源</th></tr>
+<tr><td>湿式スプリンクラー</td><td>火の熱でヘッドが個別に開放</td><td>放水に伴って流水検知装置が警報を出し、受信機に区域を表示。別の系統で圧力低下を検知しポンプを起動する例（実際の方式を確認）</td><td>ポンプ：自家発電設備・非常電源専用受電設備など（基準による）</td></tr>
+<tr><td>自動火災報知設備</td><td>感知器（熱・煙）、発信機</td><td>受信機に表示 → 地区音響装置で警報（防災センター・フロントで確認）</td><td>蓄電池設備</td></tr>
+<tr><td>防火設備・排煙等の連動</td><td>感知器の信号</td><td>防火戸・シャッターの閉鎖、排煙口の開放など</td><td>各設備の基準による</td></tr></table></div>
 
-<section class="sec" id="c9">
-  <h2>9. 届出・施工・自主試験・消防検査・引渡し</h2>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>手続き</th><th>時期</th><th>届出者・担当</th><th>適用の確認</th><th>CM成果物</th></tr></thead>
-    <tbody>
-      <tr><th>着工届</th><td data-label="時期">対象工事の着手の10日前まで</td><td data-label="届出者・担当">甲種消防設備士（施工者側）</td><td data-label="適用の確認">甲種消防設備士が行う工事整備対象設備等の工事が対象。全工事ではない。消防設備士の工事対象は令第36条の2に列挙（屋内消火栓、SP、自火報、消防機関へ通報する火災報知設備、固定式の金属製避難はしご、救助袋、緩降機など）。誘導灯・非常警報設備・排煙設備・連結送水管は列挙外<span class="tag">様式は所管消防</span></td><td data-label="CM成果物">届出管理表（対象設備・届出者・期限・控え）</td></tr>
-      <tr><th>施工</th><td data-label="時期">着工〜完了</td><td data-label="届出者・担当">施工者、施設の防火管理者</td><td data-label="適用の確認">稼働中は停止管理と代替措置（12章）</td><td data-label="CM成果物">設備停止計画の承認記録</td></tr>
-      <tr><th>自主試験</th><td data-label="時期">完了時、消防検査前</td><td data-label="届出者・担当">消防設備士（施工者側）、設計監理者が確認</td><td data-label="適用の確認">消防用設備等試験結果報告書の様式は消防庁長官が定める（規則第31条の3第5項）</td><td data-label="CM成果物">試験計画と連動表の照合結果</td></tr>
-      <tr><th>設置届</th><td data-label="時期">工事が完了した日から4日以内</td><td data-label="届出者・担当">防火対象物の関係者（発注者側。書類作成は施工者が代行することが多い）</td><td data-label="適用の確認">検査を受ける防火対象物（令第35条）が対象。ホテル（（5）項イ）は面積にかかわらず該当し、（16）項イでホテル等の部分があるものも該当。簡易消火用具・非常警報器具は除く（令第35条第2項）。添付：平面図、配管・配線の系統図、試験結果報告書（規則第31条の3第1項）</td><td data-label="CM成果物">届出管理表、添付図書の確認</td></tr>
-      <tr><th>消防検査</th><td data-label="時期">届出後、遅滞なく</td><td data-label="届出者・担当">消防長又は消防署長。施工者・設計監理者・CMr・施設が立会い</td><td data-label="適用の確認">設備等技術基準への適合を検査（規則第31条の3第2項）</td><td data-label="CM成果物">指摘事項の是正記録</td></tr>
-      <tr><th>検査済証</th><td data-label="時期">適合と認められたとき</td><td data-label="届出者・担当">関係者が受領</td><td data-label="適用の確認">規則第31条の3第4項</td><td data-label="CM成果物">引渡し書類リストに登録</td></tr>
-      <tr><th>引渡し</th><td data-label="時期">検査後</td><td data-label="届出者・担当">施工者 → 発注者・施設管理</td><td data-label="適用の確認">維持台帳（届出書類の写し、検査済証、点検報告の写し、工事・整備の経過一覧等）に編冊（規則第31条の6第3項）</td><td data-label="CM成果物">引渡し書類リスト、維持台帳への編冊確認</td></tr>
-    </tbody>
-  </table></div>
 </section>
+<section id="proc" aria-labelledby="proc-h"><h2 id="proc-h">6. 手続き：竣工時の試験と定期点検は別</h2>
 
-<section class="sec" id="c10">
-  <h2>10. 点検周期・報告周期・資格範囲</h2>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>区分</th><th>内容</th><th>根拠</th><th>注意</th></tr></thead>
-    <tbody>
-      <tr><th>機器点検</th><td data-label="内容">6か月に1回</td><td data-label="根拠">消防庁 点検報告パンフレット</td><td data-label="注意">規則第31条の6第1項は「種類及び点検内容に応じて、1年以内で消防庁長官が定める期間」。設備別の期間は告示で確認<span class="tag">設備別</span></td></tr>
-      <tr><th>総合点検</th><td data-label="内容">1年に1回</td><td data-label="根拠">同上</td><td data-label="注意">同上</td></tr>
-      <tr><th>報告（特定用途）</th><td data-label="内容">1年に1回、消防長又は消防署長へ</td><td data-label="根拠">規則第31条の6第3項第1号</td><td data-label="注意">（1）〜（4）項、（5）項イ、（6）項、（9）項イ、（16）項イ、（16の2）項、（16の3）項</td></tr>
-      <tr><th>報告（非特定用途）</th><td data-label="内容">3年に1回</td><td data-label="根拠">規則第31条の6第3項第2号</td><td data-label="注意">（5）項ロ、（7）項、（8）項、（9）項ロ、（10）〜（15）項、（16）項ロ、（17）項、（18）項</td></tr>
-      <tr><th>点検者</th><td data-label="内容">消防設備士又は消防設備点検資格者に点検させる防火対象物</td><td data-label="根拠">令第36条第2項</td><td data-label="注意">特定用途で延べ1,000㎡以上、非特定用途で延べ1,000㎡以上のうち消防長等が指定したもの、特定用途が避難階以外にあり直通階段が2未満のものなど。それ以外は関係者が自ら点検できる場合がある<span class="tag">条件付き</span></td></tr>
-      <tr><th>資格の範囲</th><td data-label="内容">資格者が点検できる設備の種類</td><td data-label="根拠">規則第31条の6第6項・第7項</td><td data-label="注意">種類は消防庁長官が定める。消防設備点検資格者は登録講習機関の講習修了者で、定期的な再講習が必要<span class="tag">設備別</span></td></tr>
-      <tr><th>特殊消防用設備等</th><td data-label="内容">設備等設置維持計画に定める期間</td><td data-label="根拠">規則第31条の6第2項・第3項ただし書</td><td data-label="注意">計画に従う<span class="tag">計画による</span></td></tr>
-    </tbody>
-  </table></div>
-  <h3>建築基準法第12条の定期報告との違い</h3>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>項目</th><th>消防法の点検報告</th><th>建築基準法第12条の定期報告</th></tr></thead>
-    <tbody>
-      <tr><th>対象</th><td data-label="消防法">消防用設備等（消火・警報・避難の設備、消火活動上必要な施設など）</td><td data-label="建築基準法">特定建築物、防火設備、建築設備（換気・排煙・非常用照明など）、昇降機等</td></tr>
-      <tr><th>報告先</th><td data-label="消防法">消防長又は消防署長</td><td data-label="建築基準法">特定行政庁</td></tr>
-      <tr><th>周期</th><td data-label="消防法">点検は告示の期間、報告は特定用途1年・非特定3年</td><td data-label="建築基準法">特定行政庁が定める（国土交通省の制度説明を参照）</td></tr>
-      <tr><th>資格者</th><td data-label="消防法">消防設備士、消防設備点検資格者</td><td data-label="建築基準法">一級・二級建築士、各調査員・検査員</td></tr>
-    </tbody>
-  </table></div>
-  <p class="callout g">年間計画表は一つにまとめ、「根拠法」「報告先」「資格者」「次回期限」の列を分けます。点検記録が整っていることは、事故時に維持管理義務を果たしていたことを示す記録にもなります。</p>
-<p class="small">方式の比較では、初期費用に加え、設備別の点検・報告費用、点検時の立入り制約、更新部品の費用を見積もります。排煙設備が両方の法令に該当するときは、制度ごとの対象範囲を確認して費用と工程を見積もります。</p>
-</section>
+<div class="tw"><table><tr><th>比較</th><th>工事・竣工時</th><th>引渡し後の定期点検</th></tr>
+<tr><td>手続き</td><td>着工届：甲種消防設備士が工事着手の10日前まで（法17条の14） <span class="k law">法令値</span><br>設置届：工事完了の日から4日以内（法17条の3の2、規則31条の3） <span class="k law">法令値</span> → 消防の検査</td><td>点検：機器点検6か月に1回、総合点検1年に1回（平成16年消防庁告示第9号） <span class="k spec">告示・仕様値</span><br>報告：特定防火対象物1年に1回、非特定3年に1回（規則31条の6） <span class="k law">法令値</span></td></tr>
+<tr><td>目的</td><td>設置した設備が基準どおりに動くか</td><td>性能を保っているか</td></tr>
+<tr><td>実施者</td><td>工事施工者（消防設備士）、立会い</td><td>延べ1,000㎡以上の特定防火対象物などは消防設備士・消防設備点検資格者（令36条2項）</td></tr>
+<tr><td>内容の例</td><td>末端試験弁で放水→流水検知の警報→ポンプ起動→受信機表示、感知器の加熱・加煙試験、連動確認</td><td>機器の外観・簡易操作、全体を作動させた総合的な機能確認、非常電源</td></tr></table></div>
+<div class="note">建築基準法12条の防火設備・建築設備の定期検査（特定行政庁へ報告）は、消防法の点検報告とは別の制度です。</div>
 
-<section class="sec" id="c11">
-  <h2>11. ホテル改修の仮想例</h2>
-  <p class="small">以下はすべて説明用の仮想条件です。実在の施設を示すものではありません。</p>
-  <div class="grid g2">
-    <div class="card"><h4>建物（仮想）</h4><ul>
-      <li>地上9階・地下1階、延べ約11,000㎡、特定主要構造部は耐火構造</li>
-      <li>1階：ロビー・宴会場・レストラン（ホテル直営）</li>
-      <li>2〜9階：客室</li>
-      <li>地下1階：テナントの飲食店・物販 約600㎡、機械室。テナントは独立用途とする想定</li>
-    </ul></div>
-    <div class="card a"><h4>工事（仮想）</h4><ul>
-      <li>5・6階客室の天井・照明・内装の更新</li>
-      <li>感知器・SPヘッド・スピーカー・誘導灯の移設</li>
-      <li>営業は継続。1フロアずつ工区を分ける</li>
-    </ul></div>
-  </div>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>設備</th><th>確認すること</th><th>根拠</th><th>協議・確認事項</th></tr></thead>
-    <tbody>
-      <tr><th>自火報</th><td data-label="判定例">感知器の配置、受信機の回線と改修後の警戒区域を照合</td><td data-label="根拠">令第21条・第9条</td><td data-label="協議・確認事項">移設後の感知区域、警戒区域図の更新</td></tr>
-      <tr><th>非常警報</th><td data-label="判定例">用途ごとの収容人員と、放送区域・客室での聞こえ方を確認</td><td data-label="根拠">令第24条</td><td data-label="協議・確認事項">収容人員の算定、客室内の音圧</td></tr>
-      <tr><th>SP</th><td data-label="判定例">用途部分・階別の面積、除外範囲、既設ヘッドの散水障害を確認</td><td data-label="根拠">令第12条</td><td data-label="協議・確認事項">総務省令で除く部分の扱い、既存の設置範囲との整合</td></tr>
-      <tr><th>屋内消火栓</th><td data-label="判定例">屋内消火栓の要否と、他の消火設備の有効範囲を図面で照合</td><td data-label="根拠">令第11条</td><td data-label="協議・確認事項">SPの有効範囲外の部分の有無</td></tr>
-      <tr><th>避難器具</th><td data-label="判定例">客室階ごとの収容人員、下階用途、避難器具の配置を確認</td><td data-label="根拠">令第25条</td><td data-label="協議・確認事項">下階に飲食店等がある階の10人基準、減免の可否</td></tr>
-      <tr><th>誘導灯</th><td data-label="判定例">改修後の見通し、歩行距離、非常電源を確認</td><td data-label="根拠">令第26条</td><td data-label="協議・確認事項">改修後の見通し・歩行距離（規則第28条の2）</td></tr>
-      <tr><th>連結送水管</th><td data-label="判定例">設置要件を照合し、既設放水口・送水口と改修範囲の干渉を確認</td><td data-label="根拠">令第29条</td><td data-label="協議・確認事項">放水口周りの改修干渉</td></tr>
-      <tr><th>排煙（消防法）</th><td data-label="判定例">地下の用途部分と床面積で照合。建築基準法の排煙も確認</td><td data-label="根拠">令第28条・第9条</td><td data-label="協議・確認事項">無窓階判定、建築基準法の排煙は別途</td></tr>
-    </tbody>
-  </table></div>
-  <p class="callout">結論は「総務省令で除く部分」「収容人員の算定」「条例の付加基準」「既存の特例・令第32条の扱い」で変わります。用途区分表と適用根拠を所管消防との協議記録に残します。</p>
 </section>
+<section id="case" aria-labelledby="case-h"><h2 id="case-h">7. 架空ホテルでのCMの判断（相談→引渡し）</h2>
 
-<section class="sec" id="c12">
-  <h2>12. 稼働中改修の管理（責任者・代替措置・復旧試験と記録）</h2>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>段階</th><th>責任者</th><th>実施内容</th><th>残す記録</th></tr></thead>
-    <tbody>
-      <tr><th>計画</th><td data-label="責任者">発注者（施設の防火管理者を含む）、設計監理者、CMr</td><td data-label="実施内容">工区・停止範囲（警戒区域・SP系統・放送区域）と時間帯を最小化する工程を組む。所管消防へ工事中の安全対策の相談・届出の要否を確認</td><td data-label="残す記録">設備停止計画書、協議記録</td></tr>
-      <tr><th>停止前</th><td data-label="責任者">防火管理者、施工者の現場責任者、消防設備士</td><td data-label="実施内容">停止範囲の現地確認、宿泊客・従業員・テナントへの周知、防災センターとの連絡手順</td><td data-label="残す記録">周知文、停止承認書</td></tr>
-      <tr><th>停止中</th><td data-label="責任者">防火管理者、防災センター、施工者</td><td data-label="実施内容">巡回の強化、消火器の増設、仮設の警報・連絡手段、火気作業の許可制、可燃物の管理、復旧予定を管理し、遅れは施設責任者に報告</td><td data-label="残す記録">巡回記録、火気作業許可、停止・復旧記録簿（時刻・範囲・確認者）</td></tr>
-      <tr><th>復旧時</th><td data-label="責任者">消防設備士（試験）、設計監理者（立会い）、CMr（記録確認）</td><td data-label="実施内容">感知器の作動試験、受信機の表示、SPの末端試験・流水検知と警報、放送・防火戸・排煙・空調停止の連動試験</td><td data-label="残す記録">復旧試験記録・写真、試験結果報告書</td></tr>
-      <tr><th>引渡し後</th><td data-label="責任者">施設管理</td><td data-label="実施内容">維持台帳へ編冊、警戒区域図・連動表の更新、次回点検で移設部を重点確認</td><td data-label="残す記録">維持台帳、点検計画</td></tr>
-    </tbody>
-  </table></div>
-  <p class="callout g">停止前に施設側が停止範囲・時間・代替措置・復旧確認手順を承認します。復旧後に試験結果と確認者を記録し、施設管理者が通常運用への復帰を確認します。</p>
-</section>
+<div class="case"><b>架空のRC造10階建ホテル</b>：客室階の天井改装と間仕切り変更。延べ9,000㎡、各階約900㎡、全館スプリンクラーと自動火災報知設備あり。<span class="k case">架空値</span></div>
+<div class="tw"><table><tr><th>段階</th><th>判断・確認</th><th>証拠</th></tr>
+<tr><td>相談</td><td>既存の設置届・図面を入手。用途構成（5項イか16項イか）を確認</td><td>設置届出書、検査済証</td></tr>
+<tr><td>根拠・適用条件</td><td>延べ6,000㎡以上（平屋以外）・地階無窓階1,000㎡・4〜10階1,500㎡・11階以上を単位別に判定。省略部分・複合用途は所轄と協議</td><td>判定表</td></tr>
+<tr><td>設計</td><td>天井高さ・間仕切り変更後の散水・感知範囲を図で確認し、未警戒部分を解消</td><td>改修設備図</td></tr>
+<tr><td>発注</td><td>ヘッド・感知器・配管の移設範囲、着工届、竣工試験と記録提出、営業中の誤作動防止（作業時の感知器養生と解除の手順）を仕様書へ</td><td>特記仕様書</td></tr>
+<tr><td>施工</td><td>感知器の養生・解除を日報で管理。天井を閉じる前に配管・ヘッド位置を確認</td><td>日報・写真</td></tr>
+<tr><td>竣工時の試験</td><td>放水→流水検知警報→ポンプ起動→受信機表示、感知器試験を記録。設置届（4日以内）→消防検査</td><td>試験記録、検査結果</td></tr>
+<tr><td>引渡し</td><td>設置届の控え、試験記録、改修図を所有者へ。点検計画（6か月・1年）と報告（1年）へ引継ぎ</td><td>引渡し書類</td></tr></table></div>
+<h3>竣工時の試験記録の例 <span class="k case">架空値</span></h3>
+<div class="tw"><table><tr><th>項目</th><th>結果</th><th>時刻</th></tr>
+<tr><td>末端試験弁の放水・流水検知の警報</td><td>○</td><td>14:05:10</td></tr>
+<tr><td>ポンプの起動（圧力低下）</td><td>○</td><td>14:05:22</td></tr>
+<tr><td>受信機の区域表示・感知器試験</td><td>○</td><td>14:20:40</td></tr></table></div>
 
-<section class="sec" id="c13">
-  <h2>13. CMの成果物と担当者</h2>
-  <div class="tbl-wrap"><table class="tbl">
-    <thead><tr><th>成果物</th><th>作成</th><th>確認・承認</th><th>使う場面</th></tr></thead>
-    <tbody>
-      <tr><th>法令判定表</th><td data-label="作成">設計者（CMrが論点を整理）</td><td data-label="確認・承認">CMr確認、発注者承認</td><td data-label="使う場面">企画・設計、予算化、協議</td></tr>
-      <tr><th>既存資料の収集リスト</th><td data-label="作成">CMr</td><td data-label="確認・承認">施設管理が提供</td><td data-label="使う場面">現況の適合確認、特例の有無</td></tr>
-      <tr><th>協議記録表・未決事項一覧</th><td data-label="作成">CMr</td><td data-label="確認・承認">設計者が内容確認、発注者に報告</td><td data-label="使う場面">事前協議〜検査</td></tr>
-      <tr><th>工事区分表</th><td data-label="作成">設計者</td><td data-label="確認・承認">CMrが見積もり範囲と照合</td><td data-label="使う場面">発注・見積もり査定</td></tr>
-      <tr><th>連動表</th><td data-label="作成">設計者（電気・機械）</td><td data-label="確認・承認">CMrが試験計画と照合</td><td data-label="使う場面">施工・自主試験・消防検査</td></tr>
-      <tr><th>設備停止計画書</th><td data-label="作成">施工者</td><td data-label="確認・承認">設計監理者・CMr確認、発注者（防火管理者）承認</td><td data-label="使う場面">稼働中改修</td></tr>
-      <tr><th>届出管理表</th><td data-label="作成">CMr</td><td data-label="確認・承認">施工者・設計者</td><td data-label="使う場面">着工届・設置届・検査</td></tr>
-      <tr><th>試験結果報告書</th><td data-label="作成">消防設備士（施工者側）</td><td data-label="確認・承認">設計監理者</td><td data-label="使う場面">設置届の添付、検査</td></tr>
-      <tr><th>引渡し書類リスト</th><td data-label="作成">CMr</td><td data-label="確認・承認">施設管理が受領</td><td data-label="使う場面">維持台帳への編冊</td></tr>
-      <tr><th>年間点検・報告計画</th><td data-label="作成">施設管理（CMrが雛形を提供）</td><td data-label="確認・承認">発注者</td><td data-label="使う場面">運用段階</td></tr>
-    </tbody>
-  </table></div>
 </section>
+<section id="judge" aria-labelledby="judge-h"><h2 id="judge-h">8. 判断表</h2>
 
-<section class="sec" id="c14">
-  <h2>14. 発注者判断のチェック表</h2>
-  <p class="small">チェック欄は画面上の確認用です（保存はされません）。印刷して会議資料としても使えます。</p>
-  <div class="tbl-wrap"><table class="tbl check">
-    <thead><tr><th>確認</th><th>段階</th><th>発注者が判断すること</th><th>判断材料（CM成果物）</th></tr></thead>
-    <tbody>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認1"></td><td data-label="段階">企画</td><td data-label="判断すること">用途（従属か独立テナントか）と複合用途の判定を採用するか</td><td data-label="判断材料">法令判定表、用途区分表</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認2"></td><td data-label="段階">企画</td><td data-label="判断すること">現況の適合状況と過去の特例の扱いを、予算前に調査するか</td><td data-label="判断材料">既存資料の収集リスト、検査済証・点検報告</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認3"></td><td data-label="段階">企画</td><td data-label="判断すること">増改築・大規模修繕の規模が現行基準の適用範囲に入るか、範囲を調整するか</td><td data-label="判断材料">令第34条の2・3の判定</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認4"></td><td data-label="段階">設計</td><td data-label="判断すること">窓・サイン・家具の計画が無窓階判定を変えないか、変える場合に設備増を受け入れるか</td><td data-label="判断材料">無窓階の検討書</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認5"></td><td data-label="段階">設計</td><td data-label="判断すること">消防協議の論点と、条例の付加基準による増額・工程影響を承認するか</td><td data-label="判断材料">論点リスト、協議記録表</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認6"></td><td data-label="段階">設計</td><td data-label="判断すること">建築基準法と消防法の排煙・防火設備を分けて判定できているか</td><td data-label="判断材料">法令判定表（根拠法の列）</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認7"></td><td data-label="段階">発注</td><td data-label="判断すること">工事区分（建築・電気・機械・既存保守業者）と連動試験の担当を確定するか</td><td data-label="判断材料">工事区分表、連動表</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認8"></td><td data-label="段階">発注</td><td data-label="判断すること">既存受信機・制御盤の更新範囲（部分改修か更新か）</td><td data-label="判断材料">回線余裕・互換の調査結果、見積もり比較</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認9"></td><td data-label="段階">着工前</td><td data-label="判断すること">稼働中の設備停止の範囲・時間・代替措置を承認するか</td><td data-label="判断材料">設備停止計画書</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認10"></td><td data-label="段階">着工前</td><td data-label="判断すること">着工届・設置届の対象と届出者、所管消防の様式を確認したか</td><td data-label="判断材料">届出管理表</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認11"></td><td data-label="段階">施工</td><td data-label="判断すること">毎回の停止・復旧が記録どおり行われているか</td><td data-label="判断材料">停止・復旧記録簿、巡回記録</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認12"></td><td data-label="段階">完了</td><td data-label="判断すること">自主試験の結果と連動表の照合で、消防検査に進めるか</td><td data-label="判断材料">試験結果報告書、照合結果</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認13"></td><td data-label="段階">引渡し</td><td data-label="判断すること">検査済証・維持台帳・警戒区域図・連動表の更新を受領するか</td><td data-label="判断材料">引渡し書類リスト</td></tr>
-      <tr><td class="box" data-label="確認"><input type="checkbox" aria-label="確認14"></td><td data-label="段階">運用</td><td data-label="判断すること">消防の点検報告と建築基準法の定期報告を一つの年間計画で管理するか</td><td data-label="判断材料">年間点検・報告計画</td></tr>
-    </tbody>
-  </table></div>
-</section>
+<div class="tw"><table><tr><th>状況</th><th>判断</th><th>次の行動</th></tr>
+<tr><td>ホテル単独・延べ6,000㎡以上（平屋以外）</td><td>スプリンクラー設置対象</td><td>省略部分の条件を確認</td></tr>
+<tr><td>延べ6,000㎡未満</td><td>階ごとの条件を判定</td><td>地階・無窓階1,000㎡、4〜10階1,500㎡、11階以上</td></tr>
+<tr><td>店舗等を併設</td><td>16項イとして判定</td><td>部分と全体の条件を分けて確認</td></tr>
+<tr><td>窓をふさぐ改修</td><td>無窓階になる可能性</td><td>無窓階判定をやり直す</td></tr>
+<tr><td>間仕切りの追加</td><td>未警戒の発生</td><td>ヘッド・感知器の追加・移設</td></tr>
+<tr><td>工事完了</td><td>設置届・消防検査</td><td>4日以内に届出</td></tr>
+<tr><td>引渡し後</td><td>定期点検・報告</td><td>機器6か月・総合1年、報告1年（ホテル）</td></tr></table></div>
 
-<section class="sec" id="c15">
-  <h2>15. 一次資料リンク</h2>
-  <ul class="srclist">
-    <li><a href="https://laws.e-gov.go.jp/law/323AC1000000186" target="_blank" rel="noopener">消防法（e-Gov法令検索）</a><span class="d">設置・維持義務、既存建物への適用、届出・検査、点検報告の枠組み</span></li>
-    <li><a href="https://laws.e-gov.go.jp/law/336CO0000000037" target="_blank" rel="noopener">消防法施行令（e-Gov法令検索）</a><span class="d">令第7条（種類）、第8条・第9条（区画・複合用途）、第11条・第12条・第21条・第24条〜第26条・第28条・第29条（設置要件）、第34条〜第34条の4（既存・増改築）、第35条・第36条（検査・点検資格）、第36条の2（消防設備士の工事）</span></li>
-    <li><a href="https://laws.e-gov.go.jp/law/336M50000008006" target="_blank" rel="noopener">消防法施行規則（e-Gov法令検索）</a><span class="d">第5条の5（無窓階）、第28条の2（誘導灯の免除）、第31条の3（設置届・検査）、第31条の6（点検・報告・資格者）</span></li>
-    <li><a href="https://www.fdma.go.jp/mission/prevention/post-1.html" target="_blank" rel="noopener">消防庁「消防用設備等の点検報告制度」関連ページ</a><span class="d">点検結果報告書の様式、点検基準・点検要領・点検票</span></li>
-    <li><a href="https://www.fdma.go.jp/mission/prevention/items/prevention001_18_tenken_pamphlet.pdf" target="_blank" rel="noopener">消防庁 点検報告制度のパンフレット（PDF）</a><span class="d">機器点検6か月・総合点検1年、報告は特定用途1年・非特定用途3年</span></li>
-    <li><a href="https://www.tfd.metro.tokyo.lg.jp/content/000100803.pdf" target="_blank" rel="noopener">東京消防庁 届出に関する資料（PDF）</a><span class="d">着工届は対象工事の着手10日前、設置届は工事完了後4日以内（東京消防庁管内の運用説明）</span></li>
-    <li><a href="https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000039.html" target="_blank" rel="noopener">国土交通省 建築基準法に基づく定期報告制度</a><span class="d">特定建築物・防火設備・建築設備・昇降機等の定期調査・検査（消防とは別制度）</span></li>
-      <li><a href="https://www.tfd.metro.tokyo.lg.jp/content/000000988.pdf" target="_blank" rel="noopener">東京消防庁 工事中の消防計画（PDF）</a><span class="d">機能停止の範囲・期間と代替措置の検討例。運用は所管消防に確認。</span></li>
-  </ul>
 </section>
-
-<section class="sec" id="c16">
-  <h2>16. 個別案件で確認する事項</h2>
-  <ul>
-    <li>着工届の根拠条文の細目と様式・提出方法は、所管消防の資料で確認する。</li>
-    <li>設備ごとの点検期間（告示）と、資格ごとに点検できる設備の範囲は、消防庁の告示・定めで確認する。</li>
-    <li>SP・自火報等の「総務省令で定める部分」の除外、避難器具の減免、排煙の不要規定の細目は、施行規則の該当条で確認する。</li>
-    <li>収容人員の算定方法は施行規則で確認する（非常警報・避難器具の判定に影響）。</li>
-    <li>工事中の安全対策について所管消防への届出・相談が必要かは、所管消防ごとに確認する。</li>
-    <li>建築基準法第12条の定期報告の周期・対象は、特定行政庁が定めるところによる。</li>
-  </ul>
-  <a class="back" href="#main">ページの先頭へ</a>
-</section>
+<section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://laws.e-gov.go.jp/law/323AC1000000186" target="_blank" rel="noopener">e-Gov法令検索：消防法</a> — 17条、17条の2の5、17条の3の2、17条の3の3、17条の14</li>
+<li><a href="https://laws.e-gov.go.jp/law/336CO0000000037" target="_blank" rel="noopener">e-Gov法令検索：消防法施行令</a> — 別表第一、8条、10〜12条、21条、25条、26条、29条、36条</li>
+<li><a href="https://laws.e-gov.go.jp/law/336M50000008006" target="_blank" rel="noopener">e-Gov法令検索：消防法施行規則</a> — 13条、31条の3、31条の6</li>
+<li><a href="https://www.pref.osaka.lg.jp/documents/34853/shobo.pdf" target="_blank" rel="noopener">大阪府：外国人滞在施設の消防法令への適合（資料）</a> — 5項イのスプリンクラー条件、複合用途の表</li>
+<li><a href="https://www.tfd.metro.tokyo.lg.jp/lfe/office_adv/tenken_houkoku/index.html" target="_blank" rel="noopener">東京消防庁：消防用設備等点検報告制度</a> — 機器点検6か月・総合点検1年、報告周期</li>
+<li><a href="https://www.fdma.go.jp/mission/prevention/suisin/items/h30_betten03.pdf" target="_blank" rel="noopener">消防庁：消防用設備等点検報告制度の概要</a> — 告示第9号、令36条2項、規則31条の6第3項</li>
+<li><a href="https://www.city.sakai.lg.jp/kurashi/bosai/shobo/jigyosha/kasaiyobou/shoboyosetsubi/setsubitenken.html" target="_blank" rel="noopener">堺市：消防用設備等・特殊消防用設備等定期点検報告について</a> — 自治体の案内例</li></ul>
+<p class="meta">数値・条項番号は上記の一次資料で確認したものです。法令・通知・仕様書は改正されることがあるため、利用時は最新版を確認してください。</p></section>
 </main>
-<footer>
-  <p>このレポートは公的資料をもとに整理した学習用資料です。法令の適用は個別の条件で変わるため、案件ごとに最新の法令と所管消防・特定行政庁で確認してください。　<a href="index.html">CM知識一覧へ戻る</a>｜<a href="animations/shobo_setsubi_animation.html">スライド版</a></p>
-</footer>
+<footer>※解説用に要点を簡略化しています。個別の判断は、特定行政庁・所管行政庁・労働基準監督署・都道府県等、および契約図書（特記仕様書）を優先してください。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="firefighting-equipment-video.html">動画解説</a></footer>
 </body>
 </html>
