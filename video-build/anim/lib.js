@@ -139,6 +139,37 @@
         foot(ft, t - (n * 1.8 + .8)); headline(head, t);
       };
     },
+    term(word, desc, notes) {               // 用語の説明
+      return t => {
+        plain('#eef3f7'); pill('ことば', W / 2, 150, t, {align: 'center', bg: ACC, size: 24});
+        const s = eb((t - .3) / .5); if (s > 0) { ctx.save(); ctx.translate(W / 2, 255); ctx.scale(s, s); ctx.font = f(900, 76); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.lineWidth = 10; ctx.strokeStyle = '#fff'; ctx.strokeText(word, 0, 0); ctx.fillStyle = ACC; ctx.fillText(word, 0, 0); ctx.restore(); }
+        if (t > 1.2) box(140, 330, 1000, 110, [[desc, desc.length > 30 ? 26 : 30, 800, INK]], t - 1.2);
+        (notes || []).forEach((n, i) => pill(n, W / 2, 500 + i * 62, t - 3 - i * 1.4, {align: 'center', bg: DARK, size: 22}));
+      };
+    },
+    quiz(q, opts, correct, expl) {          // 事例で考える（A／B）
+      return t => {
+        plain(); pill('事例で考える', W / 2, 60, t, {align: 'center', bg: ACC, size: 26});
+        box(90, 105, 1100, 110, [[q, q.length > 34 ? 25 : 29, 800, INK]], t - .3);
+        const reveal = t > 7;
+        opts.forEach((o, i) => { const tt = t - 2 - i * 1.2; if (tt <= 0) return; const y = 250 + i * 120, ok = i === correct;
+          ctx.save(); ctx.globalAlpha = cl(tt / .25) * (reveal && !ok ? .45 : 1);
+          ctx.fillStyle = '#fff'; rr(150, y, 980, 96, 16); ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = reveal ? (ok ? GRN : '#c4ccd8') : '#c4ccd8'; ctx.stroke();
+          ctx.fillStyle = reveal && ok ? GRN : '#5b6474'; ctx.beginPath(); ctx.arc(205, y + 48, 28, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = f(900, 28); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('AB'[i], 205, y + 49);
+          ctx.fillStyle = INK; ctx.font = f(700, o.length > 30 ? 22 : 25); ctx.textAlign = 'left'; ctx.fillText(o, 255, y + 49); ctx.restore();
+          if (reveal && ok) check(1090, y + 46, t - 7); });
+        if (t > 8.5) pill(expl, W / 2, 530 + 120 * (opts.length - 2), t - 8.5, {align: 'center', bg: GRN, size: 21});
+      };
+    },
+    ng(head, list, ft) {                    // よくある失敗
+      return t => {
+        plain('#fbf1ef'); const cw = 560, ch = 200, x0 = 70, y0 = 170, g = 40;
+        list.forEach(([a, b], i) => card(x0 + (i % 2) * (cw + g), y0 + Math.floor(i / 2) * (ch + 22), cw, ch, '✕', a, b, t - .4 - i * 2.2, HOT));
+        foot(ft, t - (list.length * 2.2 + .6)); headline(head, t);
+      };
+    },
     summary(tiles, note) {                  // tiles: [word, body, color] ×4
       return t => {
         const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#16304f'); g.addColorStop(1, '#0b1626');
@@ -170,3 +201,9 @@
   }
   function check(x, y, t, color = GRN) { if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3); ctx.strokeStyle = color; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     ctx.beginPath(); ctx.moveTo(x - 14, y); ctx.lineTo(x - 3, y + 12); ctx.lineTo(x + 18, y - 14); ctx.stroke(); ctx.restore(); }
+  function camera(x, y, t) {                 // カメラ（写真で記録）
+    if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3); ctx.translate(x, y);
+    ctx.fillStyle = '#13285e'; rr(0, 14, 130, 86, 14); ctx.fill(); ctx.fillStyle = '#fff'; rr(42, 0, 46, 18, 4); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(65, 57, 26, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = '#f5b942'; ctx.beginPath(); ctx.arc(65, 57, 9, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
