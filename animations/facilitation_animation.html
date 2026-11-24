@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ファシリテーション｜アニメーション解説</title>
+<style>
+  /* すべて .hs- で名前空間化（既存サイトのCSSと衝突しないように） */
+  .hs-player{--hs-ink:#1f2430;--hs-accent:#ef6c00;--hs-sub:#5b6474;--hs-line:#d9dee7;
+    max-width:960px;margin:24px auto;font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;color:var(--hs-ink)}
+  .hs-stage{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(20,30,50,.18);background:#0f1724}
+  .hs-stage canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;cursor:pointer}
+  .hs-cap{margin:10px 0 0;min-height:3.4em;padding:10px 14px;border-radius:10px;background:#1f2430;color:#fff;font-size:15px;line-height:1.7}
+  .hs-bar{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .hs-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--hs-accent);color:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--hs-line);background:#fff;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .hs-snd:focus-visible,.hs-btn:focus-visible,.hs-chip:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-track{position:relative;flex:1;height:10px;border-radius:5px;background:var(--hs-line);cursor:pointer}
+  .hs-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:5px;background:var(--hs-accent)}
+  .hs-tick{position:absolute;top:-3px;width:2px;height:16px;background:#fff;opacity:.9}
+  .hs-time{flex:none;font-size:13px;color:var(--hs-sub);font-variant-numeric:tabular-nums;min-width:84px;text-align:right}
+  .hs-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding:0;list-style:none}
+  .hs-chip{border:1px solid var(--hs-line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--hs-ink)}
+  .hs-chip[aria-current="true"]{background:var(--hs-ink);border-color:var(--hs-ink);color:#fff}
+  .hs-text{margin-top:14px;font-size:14px;line-height:1.8;color:var(--hs-sub)}
+  .hs-text summary{cursor:pointer;color:var(--hs-ink);font-weight:700}
+  .hs-text ol{padding-left:1.4em}
+  .hs-src{font-size:12px;color:var(--hs-sub);margin-top:8px}
+  /* hs-ext v1 */
+  .hs-bar{flex-wrap:wrap}
+  .hs-track{flex:1 1 180px}
+  .hs-bgm,.hs-fs{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;cursor:pointer;padding:0 14px}
+  .hs-fs{width:40px;padding:0;font-size:18px;display:grid;place-items:center}
+  .hs-bgm.hs-off{color:var(--hs-sub);text-decoration:line-through;background:#eef1f6}
+  .hs-rate{flex:none;height:40px;border-radius:20px;border:1px solid var(--hs-line);background:#fff;color:var(--hs-ink);font-size:14px;font-weight:700;padding:0 10px;cursor:pointer}
+  .hs-bgm:focus-visible,.hs-fs:focus-visible,.hs-rate:focus-visible{outline:3px solid #2b6cff;outline-offset:2px}
+  .hs-player:fullscreen,.hs-player.hs-full{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player:-webkit-full-screen{max-width:none;margin:0;padding:16px;background:#0f1724;overflow:auto;box-sizing:border-box}
+  .hs-player.hs-full{position:fixed;inset:0;z-index:2147483000}
+  .hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,
+  .hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:calc((100vh - 190px) * 16 / 9);margin-left:auto;margin-right:auto}
+  .hs-player:fullscreen .hs-chips,.hs-player:fullscreen .hs-text,.hs-player.hs-full .hs-chips,.hs-player.hs-full .hs-text{display:none}
+  .hs-player:fullscreen .hs-time,.hs-player.hs-full .hs-time{color:#cfd6e4}
+.lesson-nav{max-width:960px;margin:20px auto;display:flex;gap:24px;flex-wrap:wrap;padding:0 12px;font:600 16px/1.6 Inter,"Yu Gothic UI",Meiryo,sans-serif}.lesson-nav a{color:#96e8d5;text-underline-offset:4px}body{margin:0;padding:0 16px;background:#0a1220}.hs-player{--hs-ink:#edf4ff;--hs-sub:#b6c6da;--hs-line:#35475f}.hs-chip{color:#1f2430}.hs-voice-label{color:#b6c6da;font-size:14px}.hs-voice{max-width:240px;height:40px;border-radius:20px;border:1px solid #d9dee7;background:#fff;color:#1f2430;font:14px "Yu Gothic UI",sans-serif;padding:0 8px}.hs-cap{font-size:16px}.hs-text{font-size:16px}.hs-src{font-size:14px}.hs-player:fullscreen,.hs-player.hs-full{height:100dvh;overflow:hidden;display:flex;flex-direction:column}.hs-player:fullscreen .hs-stage,.hs-player.hs-full .hs-stage{flex:1;min-height:0;display:grid;place-items:center;width:100%;box-shadow:none}.hs-player:fullscreen canvas,.hs-player.hs-full canvas{width:100%;height:100%;object-fit:contain}.hs-player:fullscreen .hs-cap,.hs-player.hs-full .hs-cap{flex:none;min-height:0;margin-top:8px}.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-bar{flex:none;margin-top:8px}.hs-player:fullscreen .hs-stage,.hs-player:fullscreen .hs-cap,.hs-player:fullscreen .hs-bar,.hs-player.hs-full .hs-stage,.hs-player.hs-full .hs-cap,.hs-player.hs-full .hs-bar{max-width:1280px;width:100%}@media(max-width:600px){.lesson-nav{gap:16px}.hs-player{margin:12px auto}.hs-voice{max-width:190px}.hs-cap{font-size:15px}.hs-bar{gap:8px}}.hs-snd,.hs-bgm,.hs-fs,.hs-rate{color:#1f2430}.hs-chip[aria-current="true"]{background:#c4eadf;border-color:#81c8b7;color:#16392f}</style>
+</head>
+<body>
+<nav class="lesson-nav" aria-label="教材の移動"><a href="../index.html">CM知識一覧</a><a href="../facilitation-report.html">詳細レポートを読む</a></nav>
+
+<section class="hs-player" id="hs-facilitation" aria-label="ファシリテーション アニメーション解説">
+  <div class="hs-stage">
+    <canvas width="1280" height="720" role="img" aria-label="ファシリテーションを説明するアニメーション。下の「テキストで読む」に同じ内容があります。"></canvas>
+  </div>
+  <p class="hs-cap" aria-live="polite"></p>
+  <div class="hs-bar">
+    <button class="hs-btn" type="button" aria-label="再生">▶</button>
+    <button class="hs-snd" type="button" aria-label="音声をオン" aria-pressed="false">🔇</button>
+    <label class="hs-voice-label">音声 <select class="hs-voice" aria-label="ナレーションの声"><option>音声を確認中</option></select></label>
+    <div class="hs-track" role="slider" aria-label="再生位置" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="hs-fill"></div></div>
+    <div class="hs-time">0:00 / 0:00</div>
+    <button class="hs-bgm" type="button" aria-pressed="true" aria-label="BGMのオン・オフ">BGM オン</button>
+    <select class="hs-rate" aria-label="再生速度"><option value="0.75">0.75倍</option><option value="1" selected>1倍</option><option value="1.25">1.25倍</option><option value="1.5">1.5倍</option><option value="2">2倍</option></select>
+    <button class="hs-fs" type="button" aria-label="全画面">⛶</button>
+  </div>
+  <ul class="hs-chips"></ul>
+
+  <details class="hs-text">
+    <summary>テキストで読む</summary>
+    <ol>
+      <li><b>タイトル：</b>ファシリテーション。決まらない工程調整会議を、事前の確認、段階の設計、基準による比較、記録とフォローで立て直す方法を解説します。</li>
+      <li><b>ファシリテーションとは：</b>ファシリテーションは、参加しやすい場と、有用な成果をつくるための、設計と進行です。司会の巧みな話術や、全員一致の強要ではありません。国際ファシリテーターズ協会は、必要な能力を6つの領域に整理しています。</li>
+      <li><b>誤解と実際：</b>よくある誤解です。話がうまい人がやるもの、ではなく準備が中心です。全員一致が成功、ではなく、決め方を先に決めて、合意点と未合意を分けて記録します。進行役は過程を支え、決めるのは決定権者です。</li>
+      <li><b>決まらない会議：</b>営業中の架空ホテルで、客室改修の工程調整会議が3回続けて決まりません。4回目をどう立て直すかを見ていきます。</li>
+      <li><b>事前確認：</b>会議の前に、目的、到達点、役割、決定権をそろえます。到達点は、A案かB案に決め、担当と期限まで決めること。決定権は運営責任者にあることを、会議の前に本人に確認します。2案の資料は前日までに配ります。</li>
+      <li><b>決め方：</b>決め方も先に決めます。責任と権限が明確なら決定権者が決め、全員の協力が必要なら合意、影響が小さければ多数決、情報が足りなければ持ち帰り。持ち帰るときは、誰が何をいつまでに調べるかを決めます。</li>
+      <li><b>30分の設計：</b>30分を段階に分けます。目的の確認3分、事実の共有5分、発散7分、比較7分、決定5分、担当と期限の確認3分。段階ごとに、出すものを決めておきます。配分は架空の例です。</li>
+      <li><b>発散と収束：</b>発散で量を出し、似たものをまとめて整理し、基準で比べて収束させます。評価を保留するのはアイデアの良し悪しについてで、安全や法令の指摘は、発散中でも止めません。</li>
+      <li><b>事例で考える：</b>事例で考えます。発散の途中で、設計者が、2フロア同時だと避難経路が狭くなると言いました。答えはB。安全の点なので、評価を保留せず、いま確認します。</li>
+      <li><b>基準で比べる：</b>先に合意した基準で比べます。安全と法令は、満たすことが前提です。営業影響は、同時に止める客室がA案20室、B案40室でA案が有利。工期はB案が有利です。決定権者はA案に決め、B案の意見も議事録に残します。</li>
+      <li><b>難しい場面：</b>少数意見は記録して理由を聞きます。沈黙には、各自で書く時間を取ります。脱線は保留ボードに書いて本題へ戻り、対立は事実と基準に戻って、人ではなく案を比べます。</li>
+      <li><b>合意点と未合意：</b>全員一致を無理に求めず、合意点、未合意、宿題を分けます。合意できなかった宴会日の扱いも、担当と期限を付けて次回へ持ち越せば、会議は前に進みます。</li>
+      <li><b>記録とフォロー：</b>議事録には、決定、理由、担当、期限を書き、会議の後すぐに、欠席者にも共有します。期限の前に進み具合を確認し、次回の冒頭で約束の達成を確かめます。</li>
+      <li><b>議事録の例：</b>議事録の例です。決定はA案、決定者は運営責任者。理由は販売停止を20室に抑えられること。工期を短くするためにB案を推す意見も、少数意見として残します。</li>
+      <li><b>CMの立場：</b>決定権は、組織の規程や契約で決まります。CMは決定権を持たない場合が多く、進行と記録を担っても、決定を代行しません。</li>
+      <li><b>チェックリスト：</b>実践のチェックリストです。前日までに目的と到達点と決定権者を確認し、冒頭で時間配分を共有し、安全の懸念を止めず、合意した基準で比べ、決定と理由と少数意見を記録し、宿題に担当と期限を付けます。</li>
+      <li><b>まとめ：</b>まとめです。目的と到達点と決定権をそろえ、30分を段階に設計し、合意した基準で比べ、合意点と未合意と宿題を残す。以上、ファシリテーションのポイントでした。</li>
+    </ol>
+    <p class="hs-src">音声は端末のMicrosoft日本語女性音声から選択できます。字幕は消音時も表示します。音は再生ボタンか画面をタップした後から鳴ります。<br>出典：IAF「The IAF Core Competencies」ほか。時間配分・案の数値は説明用の架空例です。※解説用に要点を簡略化しています。</p>
+  </details>
+</section>
+
+<script>
+(() => {
+  const root = document.getElementById('hs-facilitation');
+  const cv = root.querySelector('canvas'), ctx = cv.getContext('2d');
+  const W = 1280, H = 720;
+  const FONT = '"Noto Sans JP","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif';
+  const INK = '#1f2430', RED = '#e8432f', YEL = '#ffd84a';
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
+
+  // ---------- utils ----------
+  const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const eo = x => 1 - Math.pow(1 - cl(x), 3);
+  const eio = x => { x = cl(x); return x * x * (3 - 2 * x); };
+  const eb = x => { x = cl(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const PUFFS = Array.from({length: 46}, () => [rnd(), rnd(), rnd()]);
+  const f = (w, s) => `${w} ${s}px ${FONT}`;
+
+  // ---------- building section ----------
+  const CEIL = 172, FLOOR = 620, LW = 80, RW = 1200;
+  function room(opts = {}) {
+    const g = ctx.createLinearGradient(0, CEIL, 0, FLOOR);
+    g.addColorStop(0, '#f4efe6'); g.addColorStop(1, '#e6dccb');
+    ctx.fillStyle = '#cfe6f2'; ctx.fillRect(0, 0, W, H);           // sky / outside
+    ctx.fillStyle = g; ctx.fillRect(LW, CEIL, RW - LW, FLOOR - CEIL);
+    ctx.fillStyle = '#8a8f99';
+    ctx.fillRect(40, CEIL - 22, W - 80, 22);                         // ceiling slab
+    ctx.fillRect(40, FLOOR, W - 80, 24);                             // floor slab
+    ctx.fillStyle = '#9aa0aa';
+    ctx.fillRect(60, CEIL - 22, LW - 60, FLOOR - CEIL + 46);         // left wall
+    if (!opts.noRightWall) ctx.fillRect(RW, CEIL - 22, 20, FLOOR - CEIL + 46);
+    ctx.fillStyle = '#6f7580'; ctx.fillRect(40, FLOOR + 24, W - 80, 40);
+    // door + exit sign on left wall
+    if (opts.door) {
+      ctx.fillStyle = '#7a8a99'; ctx.fillRect(LW, FLOOR - 190, 14, 190);
+      ctx.fillStyle = '#1e9e5a'; rr(LW + 18, FLOOR - 250, 120, 40, 6); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(800, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('非常口', LW + 78, FLOOR - 229);
+    }
+  }
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
+
+  function fire(x, t, s = 1) {
+    for (let i = 0; i < 3; i++) {
+      const fl = Math.sin(t * 12 + i * 2) * 6;
+      const hh = (70 - i * 18) * s + fl, ww = (34 - i * 9) * s;
+      ctx.fillStyle = ['#ff6a2b', '#ffa531', '#ffe27a'][i];
+      ctx.beginPath();
+      ctx.moveTo(x - ww, FLOOR);
+      ctx.quadraticCurveTo(x - ww * 0.9, FLOOR - hh * 0.5, x + Math.sin(t * 9) * 5, FLOOR - hh);
+      ctx.quadraticCurveTo(x + ww * 0.9, FLOOR - hh * 0.5, x + ww, FLOOR);
+      ctx.fill();
+    }
+    ctx.fillStyle = '#5b3a2a'; ctx.fillRect(x - 46 * s, FLOOR - 10, 92 * s, 10);
+  }
+
+  // smoke layer under ceiling: x0..x1, depth px
+  function smokeLayer(x0, x1, depth, t, a = 1) {
+    if (depth <= 1) return;
+    const g = ctx.createLinearGradient(0, CEIL, 0, CEIL + depth + 20);
+    g.addColorStop(0, `rgba(60,62,72,${0.92 * a})`); g.addColorStop(1, `rgba(110,112,124,${0.55 * a})`);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x0, CEIL);
+    for (let x = x0; x <= x1; x += 16) ctx.lineTo(x, CEIL + depth + Math.sin(x / 45 + t * 2) * 7 + Math.sin(x / 19 - t * 3) * 3);
+    ctx.lineTo(x1, CEIL); ctx.closePath(); ctx.fill();
+    // billows
+    ctx.fillStyle = `rgba(150,152,162,${0.35 * a})`;
+    for (let i = 0; i < 12; i++) {
+      const x = x0 + ((i * 97 + t * 25) % (x1 - x0));
+      const r = 18 + (i % 4) * 8;
+      ctx.beginPath(); ctx.arc(x, CEIL + depth - r * 0.3 + Math.sin(t * 2 + i) * 4, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // rising plume from fire to target y
+  function plume(x, topY, t, a = 1, rate = 0.45, n = 26) {
+    for (let i = 0; i < n; i++) {
+      const [r1, r2, r3] = PUFFS[i];
+      const ph = (t * rate + i / n) % 1;
+      const y = lerp(FLOOR - 60, topY + 20, ph);
+      const xx = x + Math.sin(ph * 6 + r1 * 6) * (10 + ph * 60) * (r2 - 0.5) * 2;
+      const r = 14 + ph * 40 * (0.6 + r3);
+      ctx.fillStyle = `rgba(90,92,102,${(0.5 - ph * 0.25) * a})`;
+      ctx.beginPath(); ctx.arc(xx, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function person(x, t, crouch = 0, dir = -1, walking = true) {
+    const y = FLOOR, s = 1 - crouch * 0.28;
+    const ph = walking ? Math.sin(t * 9) : 0;
+    ctx.strokeStyle = '#2b4c7e'; ctx.lineWidth = 10; ctx.lineCap = 'round';
+    const hip = [x, y - 62 * s], neck = [x + dir * crouch * 22, y - 118 * s];
+    ctx.beginPath(); ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] + ph * 16, y - 4);
+    ctx.moveTo(hip[0], hip[1]); ctx.lineTo(hip[0] - ph * 16, y - 4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(...hip); ctx.lineTo(...neck); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] + dir * 26, neck[1] + 30 + crouch * 10);
+    ctx.moveTo(neck[0], neck[1] + 10); ctx.lineTo(neck[0] - ph * 14, neck[1] + 46); ctx.stroke();
+    ctx.fillStyle = '#2b4c7e'; ctx.beginPath(); ctx.arc(neck[0] + dir * 4, neck[1] - 20, 15, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // ---------- text ----------
+  function segs(s) { const out = []; let cur = '', hl = false;
+    for (const ch of s) { if (ch === '[' || ch === ']') { if (cur) out.push([cur, hl]); cur = ''; hl = ch === '['; } else cur += ch; }
+    if (cur) out.push([cur, hl]); return out; }
+  function headline(text, t, y = 76, size = 38) {
+    const lines = text.split('\n');
+    ctx.font = f(900, size);
+    const ws = lines.map(l => segs(l).reduce((a, [s]) => a + ctx.measureText(s).width, 0));
+    const lh = size * 1.32, bw = Math.max(...ws) + 72, bh = lh * lines.length + 26;
+    const sc = 0.7 + 0.3 * eb(t / 0.35), al = cl(t / 0.15);
+    ctx.save(); ctx.globalAlpha = al; ctx.translate(W / 2, y); ctx.scale(sc, sc);
+    ctx.fillStyle = 'rgba(40,30,20,.25)'; rr(-bw / 2 + 5, -bh / 2 + 7, bw, bh, 22); ctx.fill();
+    ctx.fillStyle = '#fffaf0'; rr(-bw / 2, -bh / 2, bw, bh, 22); ctx.fill();
+    ctx.lineWidth = 5; ctx.strokeStyle = '#f5ae28'; ctx.stroke();
+    ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+    lines.forEach((l, i) => {
+      let x = -ws[i] / 2; const yy = -bh / 2 + 13 + lh * (i + 0.5);
+      for (const [s, hl] of segs(l)) {
+        const w = ctx.measureText(s).width;
+        if (hl) { ctx.fillStyle = YEL; ctx.fillRect(x, yy + size * 0.3, w, size * 0.22); }
+        ctx.fillStyle = hl ? RED : INK; ctx.fillText(s, x, yy); x += w;
+      }
+    });
+    ctx.restore();
+  }
+  function pill(text, x, y, t, opt = {}) {
+    if (t <= 0) return;
+    const a = eo(t / 0.3), size = opt.size || 24;
+    ctx.save(); ctx.globalAlpha = a; ctx.font = f(700, size);
+    const w = ctx.measureText(text).width + 32, h = size + 22;
+    const bx = opt.align === 'right' ? x - w : opt.align === 'center' ? x - w / 2 : x;
+    ctx.fillStyle = opt.bg || 'rgba(25,35,60,.92)'; rr(bx, y - h / 2, w, h, h / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = opt.color || '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(text, bx + 16, y + 1); ctx.restore();
+  }
+  function fx(text, x, y, size, color, t = 1, align = 'center') {
+    if (t <= 0) return;
+    const s = eb(t / 0.3);
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.font = f(900, size); ctx.textAlign = align; ctx.textBaseline = 'middle';
+    ctx.lineWidth = 8; ctx.strokeStyle = '#1f2430'; ctx.lineJoin = 'round'; ctx.strokeText(text, 0, 0);
+    ctx.fillStyle = color; ctx.fillText(text, 0, 0); ctx.restore();
+  }
+  function dimV(x, y0, y1, t, label, side = 1) {           // vertical dimension
+    if (t <= 0) return;
+    const k = eo(t / 0.4), yy = lerp(y0, y1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(x - 12, y0); ctx.lineTo(x + 12, y0); ctx.moveTo(x, y0); ctx.lineTo(x, yy);
+    if (k > .98) { ctx.moveTo(x - 12, y1); ctx.lineTo(x + 12, y1); } ctx.stroke();
+    if (k > .9) fx(label, x + side * 18, (y0 + y1) / 2, 26, YEL, (t - .35) * 3, side > 0 ? 'left' : 'right');
+  }
+  function dimH(x0, x1, y, t, label) {
+    if (t <= 0) return;
+    const k = eo(t / 0.5), xx = lerp(x0, x1, k);
+    ctx.strokeStyle = YEL; ctx.lineWidth = 4; ctx.setLineDash([14, 10]);
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(xx, y); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x0, y - 12); ctx.lineTo(x0, y + 12); ctx.stroke();
+    if (k > .98) { ctx.beginPath(); ctx.moveTo(x1, y - 12); ctx.lineTo(x1, y + 12); ctx.stroke(); }
+    if (k > .9) fx(label, (x0 + x1) / 2, y - 30, 28, YEL, (t - .45) * 3);
+  }
+  function card(x, y, w, h, num, title, body, t, color = RED) {
+    if (t <= 0) return;
+    const s = 0.85 + 0.15 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 10, h, [16, 0, 0, 16]); ctx.fill();
+    ctx.fillStyle = color; ctx.beginPath(); ctx.arc(52, 48, 24, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 52, 49);
+    ctx.fillStyle = INK; ctx.font = f(900, 27); ctx.textAlign = 'left'; ctx.fillText(title, 90, 49);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 22);
+    body.split('\n').forEach((l, i) => ctx.fillText(l, 34, 100 + i * 34));
+    ctx.restore();
+  }
+
+  // ---------- extra helpers ----------
+  function plain(c = '#eef1f6') { ctx.fillStyle = c; ctx.fillRect(0, 0, W, H); }
+  function cardSm(x, y, w, h, num, title, body, t, color) {
+    if (t <= 0) return;
+    const dx = (1 - eo(t / 0.4)) * 40;
+    ctx.save(); ctx.globalAlpha = cl(t / 0.25); ctx.translate(x + dx, y);
+    ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(3, 5, w, h, 14); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 14); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, 9, h, [14, 0, 0, 14]); ctx.fill();
+    ctx.beginPath(); ctx.arc(46, h / 2, 21, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(num, 46, h / 2 + 1);
+    ctx.textAlign = 'left'; ctx.fillStyle = INK; ctx.font = f(900, 25); ctx.fillText(title, 84, h * 0.33);
+    ctx.fillStyle = '#4a5262'; ctx.font = f(500, 20); ctx.fillText(body, 84, h * 0.71);
+    ctx.restore();
+  }
+  function box(x, y, w, h, lines, t) {           // lines: [text, size, weight, color]
+    if (t <= 0) return;
+    const s = 0.9 + 0.1 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.18)'; rr(4, 6, w, h, 16); ctx.fill();
+    ctx.fillStyle = '#fff'; rr(0, 0, w, h, 16); ctx.fill(); ctx.strokeStyle = '#f5ae28'; ctx.lineWidth = 4; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    let yy = 0; const tot = lines.reduce((a, l) => a + l[1] * 1.45, 0); yy = (h - tot) / 2;
+    for (const [tx, sz, wt, col] of lines) { ctx.font = f(wt || 700, sz); ctx.fillStyle = col || INK; ctx.fillText(tx, w / 2, yy + sz * 0.72); yy += sz * 1.45; }
+    ctx.restore();
+  }
+  function miniSmoke(x0, x1, y0, depth, t) {
+    if (depth <= 1) return;
+    ctx.fillStyle = 'rgba(70,72,84,.82)'; ctx.beginPath(); ctx.moveTo(x0, y0);
+    for (let x = x0; x <= x1; x += 10) ctx.lineTo(x, y0 + depth + Math.sin(x / 25 + t * 2.5) * 5);
+    ctx.lineTo(x1, y0); ctx.closePath(); ctx.fill();
+  }
+  function scaled(x, y, s, fn) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-x, -y); fn(); ctx.restore(); }
+
+  const ACC = '#ef6c00';
+  // ---------- HVAC helpers ----------
+  const BLUE = '#2b7de9', HOT = '#e8432f', GRN = '#1e9e5a', COOL = '#3aa0ff', WARM = '#ff7a3a';
+  function poly(pts, color, w = 8, dash) {
+    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    if (dash) ctx.setLineDash(dash);
+    ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); ctx.restore();
+  }
+  function polyLen(pts) { let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; }
+  function along(pts, d) {
+    for (let i = 1; i < pts.length; i++) {
+      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], l = Math.hypot(x1 - x0, y1 - y0);
+      if (d <= l) return [lerp(x0, x1, d / l), lerp(y0, y1, d / l)]; d -= l;
+    }
+    return pts[pts.length - 1];
+  }
+  function flow(pts, t, color, n = 10, speed = 90, r = 7) {   // 管の中を流れる粒
+    const L = polyLen(pts); ctx.fillStyle = color;
+    for (let i = 0; i < n; i++) { const [x, y] = along(pts, (t * speed + i * L / n) % L); ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); }
+  }
+  function arrow(x0, y0, x1, y1, color, w = 6, t = 1) {
+    if (t <= 0) return; const k = eo(t / 0.4), xe = lerp(x0, x1, k), ye = lerp(y0, y1, k), a = Math.atan2(y1 - y0, x1 - x0);
+    ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = w; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(xe - Math.cos(a) * w * 2, ye - Math.sin(a) * w * 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xe, ye); ctx.lineTo(xe - Math.cos(a - .45) * w * 3.6, ye - Math.sin(a - .45) * w * 3.6);
+    ctx.lineTo(xe - Math.cos(a + .45) * w * 3.6, ye - Math.sin(a + .45) * w * 3.6); ctx.closePath(); ctx.fill(); ctx.restore();
+  }
+  function unit(x, y, w, h, label, t = 1, opt = {}) {           // 機器の箱
+    if (t <= 0) return; const s = 0.85 + 0.15 * eb(t / 0.35);
+    ctx.save(); ctx.globalAlpha = cl(t / 0.2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.16)'; rr(3, 5, w, h, 12); ctx.fill();
+    ctx.fillStyle = opt.bg || '#fff'; rr(0, 0, w, h, 12); ctx.fill(); ctx.strokeStyle = opt.line || '#5b6474'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.fillStyle = opt.color || INK; ctx.font = f(800, opt.size || 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    label.split('\n').forEach((l, i, a) => ctx.fillText(l, w / 2, h / 2 + (i - (a.length - 1) / 2) * (opt.size || 24) * 1.3));
+    ctx.restore();
+  }
+  function fanIcon(x, y, r, t, color = '#5b6474') {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(t * 6); ctx.fillStyle = color;
+    for (let k = 0; k < 4; k++) { ctx.rotate(Math.PI / 2); ctx.beginPath(); ctx.ellipse(r * .45, 0, r * .5, r * .2, 0, 0, Math.PI * 2); ctx.fill(); }
+    ctx.restore();
+  }
+  function thermo(x, y, val, color, label, t = 1) {           // 温度の札
+    if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3);
+    ctx.fillStyle = color; rr(x - 62, y - 30, 124, 60, 14); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(900, 30); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(val, x, y + 1);
+    if (label) { ctx.fillStyle = INK; ctx.font = f(700, 20); ctx.fillText(label, x, y + 52); }
+    ctx.restore();
+  }
+  function sun(x, y, t) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(t * .4); ctx.fillStyle = '#ffb627';
+    for (let k = 0; k < 12; k++) { ctx.rotate(Math.PI / 6); ctx.fillRect(46, -4, 22, 8); }
+    ctx.beginPath(); ctx.arc(0, 0, 38, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
+  function bubble(text, x, y, t, color = HOT) {
+    if (t <= 0) return; const s = eb(t / .35); ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    ctx.font = f(900, 26); const w = ctx.measureText(text).width + 36;
+    ctx.fillStyle = '#fff'; rr(-w / 2, -28, w, 56, 28); ctx.fill(); ctx.strokeStyle = color; ctx.lineWidth = 4; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-14, 26); ctx.lineTo(-30, 50); ctx.lineTo(4, 27); ctx.fillStyle = '#fff'; ctx.fill();
+    ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 0, 1); ctx.restore();
+  }
+  function fcu(x, y, t, on = true, w = 150, h = 54) {          // 天井のファンコイル
+    ctx.fillStyle = '#dfe4ec'; rr(x, y, w, h, 8); ctx.fill(); ctx.strokeStyle = '#5b6474'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.fillStyle = INK; ctx.font = f(800, 18); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('FCU', x + w / 2, y + h / 2);
+    if (on) fanIcon(x + 22, y + h / 2, 16, t);
+  }
+
+
+  // ---------- generic scene builders ----------
+  const DARK = '#1f2430';
+  function foot(text, t, color = DARK) { if (text && t > 0) pill(text, W / 2, 660, t, {align: 'center', bg: color, size: 21}); }
+  const sc = {
+    title(big, sub, keys, label, color = ACC) {
+      return t => {
+        const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#16304f'); g.addColorStop(1, '#0b1626');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+        for (let i = 0; i < 22; i++) { const [a, b, c] = PUFFS[i], ph = (t * .1 + a) % 1;
+          ctx.fillStyle = `rgba(255,255,255,${.10 * (1 - ph)})`; ctx.beginPath(); ctx.arc(ph * W, b * H + Math.sin(t + i) * 20, 10 + c * 26, 0, Math.PI * 2); ctx.fill(); }
+        pill(label, W / 2, 205, t, {align: 'center', bg: color, size: 28});
+        const s = eb((t - .25) / .5);
+        if (s > 0) { ctx.save(); ctx.translate(W / 2, 330); ctx.scale(s, s); ctx.font = f(900, big.length > 7 ? 92 : 112);
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineWidth = 12; ctx.strokeStyle = '#fff'; ctx.strokeText(big, 0, 0);
+          ctx.fillStyle = color; ctx.fillText(big, 0, 0); ctx.restore(); }
+        if (t > .8) { ctx.globalAlpha = eo((t - .8) / .4); ctx.font = f(800, 42); ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText(sub, W / 2, 460); ctx.globalAlpha = 1; }
+        if (t > 1.4) { ctx.globalAlpha = eo((t - 1.4) / .4); ctx.font = f(500, 23); ctx.fillStyle = '#b9c2d3'; ctx.fillText(keys, W / 2, 530); ctx.globalAlpha = 1; }
+      };
+    },
+    cards(head, list, ft, fcol) {           // list: [title, body, color?] ×4
+      return t => {
+        plain(); const cw = 560, ch = 200, x0 = 70, y0 = 170, g = 40;
+        list.forEach(([a, b, c], i) => card(x0 + (i % 2) * (cw + g), y0 + Math.floor(i / 2) * (ch + 22), cw, ch, String(i + 1), a, b, t - .4 - i * 2.1, c || ACC));
+        foot(ft, t - (list.length * 2.1 + .6), fcol); headline(head, t);
+      };
+    },
+    compare(head, cols, ft) {               // cols: [label, title, items[], color]
+      return t => {
+        plain(); const n = cols.length, gap = 25, cw = (1190 - gap * (n - 1)) / n, x0 = 45, y0 = 160, h = 410;
+        cols.forEach(([lab, ttl, items, col], i) => {
+          const tt = t - .4 - i * 2.6; if (tt <= 0) return; const x = x0 + i * (cw + gap), s = .85 + .15 * eb(tt / .35);
+          ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + cw / 2, y0 + h / 2); ctx.scale(s, s); ctx.translate(-cw / 2, -h / 2);
+          ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(4, 6, cw, h, 16); ctx.fill(); ctx.fillStyle = '#fff'; rr(0, 0, cw, h, 16); ctx.fill();
+          ctx.fillStyle = col; rr(0, 0, cw, 70, [16, 16, 0, 0]); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+          if (lab) { ctx.font = f(900, 26); ctx.fillText(lab, 22, 36); }
+          ctx.font = f(800, 22); ctx.fillText(ttl, lab ? 22 + ctx.measureText(lab).width + 50 : 22, 36);
+          ctx.font = f(600, 21);
+          items.forEach((it, k) => { if (tt > .6 + k * .5) { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(28, 120 + k * 80, 7, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = INK; it.split('\n').forEach((l, j) => ctx.fillText(l, 46, 121 + k * 80 + j * 28)); } });
+          ctx.restore();
+        });
+        foot(ft, t - (n * 2.6 + 1)); headline(head, t);
+      };
+    },
+    table(head, cols, rows, ft, widths) {   // rows appear one by one
+      return t => {
+        plain(); const x0 = 90, wAll = 1100, ws = widths || cols.map(() => wAll / cols.length), y0 = 160, rh = Math.min(84, 380 / rows.length);
+        ctx.fillStyle = DARK; rr(x0, y0, wAll, 60, [14, 14, 0, 0]); ctx.fill();
+        ctx.font = f(800, 22); ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        let x = x0; cols.forEach((c, k) => { ctx.fillText(c, x + 24, y0 + 31); x += ws[k]; });
+        rows.forEach((r, i) => { const tt = t - .8 - i * 1.4; if (tt <= 0) return; const y = y0 + 60 + i * rh;
+          ctx.globalAlpha = eo(tt / .3); ctx.fillStyle = i % 2 ? '#f6f8fb' : '#fff'; ctx.fillRect(x0, y, wAll, rh);
+          let xx = x0; r.forEach((c, k) => { ctx.fillStyle = k === 0 ? INK : (k === r.length - 1 ? ACC : '#3a4252'); ctx.font = f(k === 0 ? 800 : 600, 22);
+            c.split('\n').forEach((l, j, a) => ctx.fillText(l, xx + 24, y + rh / 2 + (j - (a.length - 1) / 2) * 26)); xx += ws[k]; });
+          ctx.globalAlpha = 1; });
+        foot(ft, t - (rows.length * 1.4 + 1.2)); headline(head, t);
+      };
+    },
+    flow(head, steps, ft, color = ACC) {    // 縦に並ぶ手順
+      return t => {
+        plain(); const n = steps.length, bh = Math.min(92, (440 - (n - 1) * 22) / n), x = 230, w = 820, y0 = 160;
+        steps.forEach(([a, b], i) => { const tt = t - .5 - i * 1.8; if (tt <= 0) return; const y = y0 + i * (bh + 22), dx = (1 - eo(tt / .4)) * 50;
+          ctx.save(); ctx.globalAlpha = cl(tt / .25); ctx.translate(dx, 0);
+          ctx.fillStyle = 'rgba(0,0,0,.12)'; rr(x + 3, y + 5, w, bh, 14); ctx.fill(); ctx.fillStyle = '#fff'; rr(x, y, w, bh, 14); ctx.fill();
+          ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x + 46, y + bh / 2, 24, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = f(900, 24); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(String(i + 1), x + 46, y + bh / 2 + 1);
+          ctx.textAlign = 'left'; ctx.fillStyle = INK; ctx.font = f(900, 26); ctx.fillText(a, x + 90, y + bh / 2 - (b ? 14 : 0));
+          if (b) { ctx.fillStyle = '#4a5262'; ctx.font = f(500, 20); ctx.fillText(b, x + 90, y + bh / 2 + 18); }
+          ctx.restore();
+          if (i < n - 1 && tt > .5) arrow(x + 46, y + bh + 2, x + 46, y + bh + 20, color, 4, tt - .5);
+        });
+        foot(ft, t - (n * 1.8 + .8)); headline(head, t);
+      };
+    },
+    term(word, desc, notes) {               // 用語の説明
+      return t => {
+        plain('#eef3f7'); pill('ことば', W / 2, 150, t, {align: 'center', bg: ACC, size: 24});
+        const s = eb((t - .3) / .5); if (s > 0) { ctx.save(); ctx.translate(W / 2, 255); ctx.scale(s, s); ctx.font = f(900, 76); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.lineWidth = 10; ctx.strokeStyle = '#fff'; ctx.strokeText(word, 0, 0); ctx.fillStyle = ACC; ctx.fillText(word, 0, 0); ctx.restore(); }
+        if (t > 1.2) box(140, 330, 1000, 110, [[desc, desc.length > 30 ? 26 : 30, 800, INK]], t - 1.2);
+        (notes || []).forEach((n, i) => pill(n, W / 2, 500 + i * 62, t - 3 - i * 1.4, {align: 'center', bg: DARK, size: 22}));
+      };
+    },
+    quiz(q, opts, correct, expl) {          // 事例で考える（A／B）
+      return t => {
+        plain(); pill('事例で考える', W / 2, 60, t, {align: 'center', bg: ACC, size: 26});
+        box(90, 105, 1100, 110, [[q, q.length > 34 ? 25 : 29, 800, INK]], t - .3);
+        const reveal = t > 7;
+        opts.forEach((o, i) => { const tt = t - 2 - i * 1.2; if (tt <= 0) return; const y = 250 + i * 120, ok = i === correct;
+          ctx.save(); ctx.globalAlpha = cl(tt / .25) * (reveal && !ok ? .45 : 1);
+          ctx.fillStyle = '#fff'; rr(150, y, 980, 96, 16); ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = reveal ? (ok ? GRN : '#c4ccd8') : '#c4ccd8'; ctx.stroke();
+          ctx.fillStyle = reveal && ok ? GRN : '#5b6474'; ctx.beginPath(); ctx.arc(205, y + 48, 28, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = f(900, 28); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('AB'[i], 205, y + 49);
+          ctx.fillStyle = INK; ctx.font = f(700, o.length > 30 ? 22 : 25); ctx.textAlign = 'left'; ctx.fillText(o, 255, y + 49); ctx.restore();
+          if (reveal && ok) check(1090, y + 46, t - 7); });
+        if (t > 8.5) pill(expl, W / 2, 530 + 120 * (opts.length - 2), t - 8.5, {align: 'center', bg: GRN, size: 21});
+      };
+    },
+    ng(head, list, ft) {                    // よくある失敗
+      return t => {
+        plain('#fbf1ef'); const cw = 560, ch = 200, x0 = 70, y0 = 170, g = 40;
+        list.forEach(([a, b], i) => card(x0 + (i % 2) * (cw + g), y0 + Math.floor(i / 2) * (ch + 22), cw, ch, '✕', a, b, t - .4 - i * 2.2, HOT));
+        foot(ft, t - (list.length * 2.2 + .6)); headline(head, t);
+      };
+    },
+    summary(tiles, note) {                  // tiles: [word, body, color] ×4
+      return t => {
+        const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#16304f'); g.addColorStop(1, '#0b1626');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+        tiles.forEach(([a, b, col], i) => { const tt = t - .5 - i * .9; if (tt <= 0) return;
+          const x = 70 + i * 290, y = 190, s = .8 + .2 * eb(tt / .35);
+          ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + 130, y + 150); ctx.scale(s, s); ctx.translate(-130, -150);
+          ctx.fillStyle = '#fff'; rr(0, 0, 260, 300, 22); ctx.fill(); ctx.fillStyle = col; rr(0, 0, 260, 110, [22, 22, 0, 0]); ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = f(900, a.length > 4 ? 36 : 44); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(a, 130, 57);
+          ctx.fillStyle = INK; ctx.font = f(700, 25); b.split('\n').forEach((l, k) => ctx.fillText(l, 130, 170 + k * 42)); ctx.restore(); });
+        if (t > 4.5) { ctx.globalAlpha = eo((t - 4.5) / .5); ctx.font = f(500, 18); ctx.fillStyle = '#b9c2d3'; ctx.textAlign = 'center'; ctx.fillText(note, W / 2, 640); ctx.globalAlpha = 1; }
+        pill('まとめ', W / 2, 110, t, {align: 'center', bg: ACC, size: 30});
+      };
+    },
+  };
+  function building(x, y, w, floors, fh, t, opt = {}) {   // 階の積み重ね（上から）
+    for (let i = 0; i < floors; i++) { const yy = y + i * fh, fl = floors - i;
+      ctx.fillStyle = (opt.fill && opt.fill(fl, t)) || '#dfe6f1'; ctx.fillRect(x, yy, w, fh - 4);
+      ctx.fillStyle = INK; ctx.font = f(800, 18); ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(fl + 'F', x - 12, yy + fh / 2); }
+  }
+  function docIcon(x, y, w, h, title, t, color = ACC) {
+    if (t <= 0) return; const s = .85 + .15 * eb(t / .35);
+    ctx.save(); ctx.globalAlpha = cl(t / .2); ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s); ctx.translate(-w / 2, -h / 2);
+    ctx.fillStyle = 'rgba(0,0,0,.15)'; rr(3, 5, w, h, 10); ctx.fill(); ctx.fillStyle = '#fff'; rr(0, 0, w, h, 10); ctx.fill();
+    ctx.fillStyle = color; rr(0, 0, w, 44, [10, 10, 0, 0]); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = f(800, 20); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(title, w / 2, 23);
+    ctx.strokeStyle = '#c4ccd8'; ctx.lineWidth = 3; for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.moveTo(16, 66 + k * 22); ctx.lineTo(w - 16 - (k === 3 ? 30 : 0), 66 + k * 22); ctx.stroke(); }
+    ctx.restore();
+  }
+  function check(x, y, t, color = GRN) { if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3); ctx.strokeStyle = color; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(x - 14, y); ctx.lineTo(x - 3, y + 12); ctx.lineTo(x + 18, y - 14); ctx.stroke(); ctx.restore(); }
+  function camera(x, y, t) {                 // カメラ（写真で記録）
+    if (t <= 0) return; ctx.save(); ctx.globalAlpha = eo(t / .3); ctx.translate(x, y);
+    ctx.fillStyle = '#13285e'; rr(0, 14, 130, 86, 14); ctx.fill(); ctx.fillStyle = '#fff'; rr(42, 0, 46, 18, 4); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(65, 57, 26, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = '#f5b942'; ctx.beginPath(); ctx.arc(65, 57, 9, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
+
+  // ---------- scenes ----------
+  const S = [];
+  S.push({name: 'タイトル', d: 7, draw: sc.title('ファシリテーション', '決まる会議を設計し、記録する', '考え方 ／ 事前確認 ／ 決め方 ／ 30分の設計 ／ 発散と収束 ／ 基準で比べる ／ 難しい場面 ／ 記録とフォロー', 'CM知識一覧｜実務スキル')});
+  S.push({name: 'ファシリテーションとは', d: 13, draw: sc.term('ファシリテーション', '参加しやすい場と、有用な成果をつくるための設計と進行', ['司会の話術や、全員一致の強要ではない', 'IAFは必要な能力を6つの領域に整理している'])});
+  S.push({name: '誤解と実際', d: 15, draw: sc.table('よくある[誤解]と実際', ['誤解', '実際'], [['話がうまい人がやるもの', '準備（目的・到達点・決定権・段取り）が中心'], ['全員一致にするのが成功', '決め方を先に決め、合意点と未合意を分けて記録'], ['進行役が結論を誘導する', '進行役は過程を支え、決めるのは決定権者'], ['発散中は何でも否定禁止', '評価は保留しても、安全・法令の指摘は止めない']], '', [400, 700])});
+  S.push({name: '決まらない会議', d: 13, draw(t) {
+    plain(); [0, 1, 2].forEach(i => { const tt = t - .5 - i * 1; if (tt <= 0) return; const x = 150 + i * 260; box(x, 200, 220, 180, [['第' + (i + 1) + '回', 28, 900, INK], ['工程調整会議', 20, 600, '#4a5262']], tt); fx('決まらず', x + 110, 420, 26, HOT, tt - .5); });
+    if (t > 4) { box(930, 200, 240, 180, [['第4回', 28, 900, ACC], ['どう立て直す？', 22, 700, ACC]], t - 4); }
+    foot('営業中の架空ホテル。客室改修の工事順序が決まらない', t - 6);
+    headline('3回続けて[決まらない]会議', t);
+  }});
+  S.push({name: '事前確認', d: 15, draw: sc.table('会議の前に[目的・到達点・決定権]', ['項目', '記入例（架空）'], [['目的', '営業中フロアの客室工事の順序を決める'], ['到達点', 'A案かB案に決定し、担当と期限まで決める'], ['役割', '進行：CM／記録：CM補助／時間係：施工者'], ['決定権', '運営責任者（会議の前に本人に確認）'], ['事前資料', '2案の工期・販売停止室数・騒音条件を前日までに']], '', [260, 840])});
+  S.push({name: '決め方', d: 14, draw: sc.compare('[決め方]も先に決める', [['', '決定権者が決める', ['責任と権限が\n明確なとき', '聞いた過程と理由を\n記録'], ACC], ['', '合意', ['全員の協力が\n必要なとき', '期限を決めておく'], BLUE], ['', '多数決', ['影響が小さい\n並列の案', '少数意見と理由を\n記録'], '#5b6474'], ['', '持ち帰り', ['情報が不足', '誰が何をいつまでに\n調べるか'], '#e09a00']], '')});
+  S.push({name: '30分の設計', d: 15, draw(t) {
+    plain(); const P = [['目的', 3, '#5b6474'], ['事実', 5, BLUE], ['発散', 7, '#e09a00'], ['比較', 7, ACC], ['決定', 5, HOT], ['担当期限', 3, GRN]]; let m = 0; const X = v => 90 + v * 36.6;
+    P.forEach(([l, d, c], i) => { const tt = t - .5 - i * .8; if (tt > 0) { const k = eo(tt / .5); ctx.fillStyle = c; rr(X(m), 230, (X(m + d) - X(m)) * k - 4, 100, 10); ctx.fill();
+      if (k > .9) { ctx.fillStyle = '#fff'; ctx.font = f(900, 22); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(l, (X(m) + X(m + d)) / 2, 265); ctx.font = f(700, 20); ctx.fillText(d + '分', (X(m) + X(m + d)) / 2, 302); } } m += d; });
+    for (let v = 0; v <= 30; v += 5) { ctx.fillStyle = '#5b6474'; ctx.font = f(600, 18); ctx.textAlign = 'center'; ctx.fillText(String(v), X(v), 360); }
+    box(160, 410, 960, 160, [['段階ごとに「出すもの」を決める', 26, 900, INK], ['目的の確認→事実の共有→懸念と追加案→比較表→決定と理由→宿題の担当と期限', 20, 600, '#4a5262']], t - 6);
+    headline('30分を[段階]に分ける（架空例）', t);
+  }});
+  S.push({name: '発散と収束', d: 15, draw(t) {
+    plain();
+    for (let i = 0; i < 18; i++) { const [a, b] = PUFFS[i], tt = t - .5 - i * .08; if (tt <= 0) continue; const k = eio((t - 4) / 2); const x0 = 160 + a * 280, y0 = 190 + b * 300, x1 = 640 + (i % 3) * 40 - 40, y1 = 260 + Math.floor(i / 6) * 90;
+      ctx.globalAlpha = cl(tt / .3); ctx.fillStyle = ['#ffd84a', '#ffb08a', '#9fd3ff'][i % 3]; ctx.fillRect(lerp(x0, x1, k), lerp(y0, y1, k), 70, 44); ctx.globalAlpha = 1; }
+    fx('発散', 300, 560, 30, '#e09a00', t - .5); if (t > 4) fx('整理', 680, 560, 30, BLUE, t - 4);
+    if (t > 6.5) { arrow(820, 340, 960, 340, ACC, 8, t - 6.5); box(980, 270, 220, 140, [['収束', 28, 900, ACC], ['基準で比べる', 20, 600, '#4a5262']], t - 7); }
+    foot('評価の保留は「アイデアの良し悪し」について。安全・法令の指摘は止めない', t - 9, HOT);
+    headline('[発散]→[整理]→[収束]', t);
+  }});
+  S.push({name: '事例で考える', d: 14, draw: sc.quiz('発散の途中で、設計者が「2フロア同時だと避難経路が狭くなる」と言いました。', ['発散中なので、評価は後回しにする', '安全の点なので、いま確認する'], 1, '評価の保留はアイデアの良し悪しについて。安全・法令・誤りはその場で扱う')});
+  S.push({name: '基準で比べる', d: 16, draw: sc.table('先に合意した[基準]で比べる', ['基準', 'A案 1フロアずつ', 'B案 2フロア同時', '比較'], [['安全・法令', '満たす', '満たす', '前提'], ['営業影響', '同時停止20室', '同時停止40室', 'A有利'], ['工期', '12週', '9週', 'B有利'], ['費用', '同程度（架空）', '同程度（架空）', '—']], '決定：A案（決定権者＝運営責任者）。B案の工期短縮の意見も議事録に残す', [240, 300, 300, 260])});
+  S.push({name: '難しい場面', d: 15, draw: sc.cards('[難しい場面]への対応', [['少数意見', '記録して理由を聞く\n決定後も議事録に残す'], ['沈黙', '1〜2分、各自で書く時間\n順番に一言ずつ'], ['脱線', '保留ボードに書いて\n本題へ戻る'], ['対立', '事実と基準に戻り\n人ではなく案を比べる']], '書く時間の長さや指名の仕方は、場に合わせて選ぶ')});
+  S.push({name: '合意点と未合意', d: 15, draw(t) {
+    plain(); [['合意点', ['A案で進める', '騒音作業は日中のみ'], GRN], ['未合意', ['宴会日の作業可否', '担当：運営／次回まで'], '#e09a00'], ['宿題', ['搬入動線の図', '担当：施工者／金曜'], BLUE]].forEach(([a, items, c], i) => { const tt = t - .5 - i * 1.5; if (tt <= 0) return;
+      const x = 70 + i * 390, s = .85 + .15 * eb(tt / .35); ctx.save(); ctx.globalAlpha = cl(tt / .2); ctx.translate(x + 175, 370); ctx.scale(s, s); ctx.translate(-175, -190);
+      ctx.fillStyle = '#fff'; rr(0, 0, 350, 380, 20); ctx.fill(); ctx.fillStyle = c; rr(0, 0, 350, 90, [20, 20, 0, 0]); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = f(900, 34); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(a, 175, 47);
+      ctx.fillStyle = INK; ctx.font = f(700, 23); items.forEach((l, k) => ctx.fillText(l, 175, 160 + k * 60)); ctx.restore(); });
+    foot('全員一致を求めない。未合意にも担当と期限を付ける', t - 6);
+    headline('[合意点・未合意・宿題]を分ける', t);
+  }});
+  S.push({name: '記録とフォロー', d: 13, draw: sc.flow('[記録]して[フォロー]する', [['議事録を作る', '決定・理由・担当・期限'], ['会議後すぐ共有', '参加者と欠席者へ'], ['期限の前に確認', '進み具合を聞く'], ['次回の冒頭で確認', '約束の達成']], '')});
+  S.push({name: '議事録の例', d: 14, draw: sc.table('[議事録]の例（架空）', ['項目', '内容'], [['決定・決定者', 'A案（1フロアずつ）／運営責任者'], ['理由', '販売停止を20室に抑えられる。安全・法令は両案とも満たす'], ['少数意見', '工期短縮のためB案を推す意見（施工者）'], ['未合意・宿題', '宴会日の作業可否→運営・次回／搬入動線の図→施工者・金曜']], '', [280, 820])});
+  S.push({name: 'CMの立場', d: 11, draw(t) { plain(); box(140, 200, 1000, 300, [['CMは進行と記録を担っても', 30, 900, INK], ['決定は代行しない', 36, 900, HOT], ['決定権は組織の規程・契約で決まる', 22, 600, '#4a5262']], t - .5); headline('CMの[立場]', t); }});
+  S.push({name: 'チェックリスト', d: 15, draw: sc.table('実践[チェックリスト]', ['時期', '確認すること'], [['前日まで', '目的・到達点・決定権者の確認／比較資料の配布'], ['冒頭', '到達点と時間配分を共有'], ['発散・収束', '安全・法令の懸念を止めない／合意した基準で比べる'], ['決定', '決定者・理由・少数意見を記録'], ['終了時・会議後', '未合意と宿題に担当と期限／議事録を共有し期限前に確認']], '', [260, 840])});
+  S.push({name: 'まとめ', d: 12, draw: sc.summary([['そろえる', '目的・到達点\n決定権', ACC], ['設計する', '30分を\n段階に', BLUE], ['比べる', '合意した\n基準で', '#9b59d0'], ['残す', '合意・未合意\n宿題', GRN]], '時間配分・案の数値は説明用の架空例です')});
+
+  if (S.length !== 17) console.error('scene/caption count mismatch', S.length, 17);
+
+  // ---------- narration ----------
+  const CAP = ["ファシリテーション。決まらない工程調整会議を、事前の確認、段階の設計、基準による比較、記録とフォローで立て直す方法を解説します。", "ファシリテーションは、参加しやすい場と、有用な成果をつくるための、設計と進行です。司会の巧みな話術や、全員一致の強要ではありません。国際ファシリテーターズ協会は、必要な能力を6つの領域に整理しています。", "よくある誤解です。話がうまい人がやるもの、ではなく準備が中心です。全員一致が成功、ではなく、決め方を先に決めて、合意点と未合意を分けて記録します。進行役は過程を支え、決めるのは決定権者です。", "営業中の架空ホテルで、客室改修の工程調整会議が3回続けて決まりません。4回目をどう立て直すかを見ていきます。", "会議の前に、目的、到達点、役割、決定権をそろえます。到達点は、A案かB案に決め、担当と期限まで決めること。決定権は運営責任者にあることを、会議の前に本人に確認します。2案の資料は前日までに配ります。", "決め方も先に決めます。責任と権限が明確なら決定権者が決め、全員の協力が必要なら合意、影響が小さければ多数決、情報が足りなければ持ち帰り。持ち帰るときは、誰が何をいつまでに調べるかを決めます。", "30分を段階に分けます。目的の確認3分、事実の共有5分、発散7分、比較7分、決定5分、担当と期限の確認3分。段階ごとに、出すものを決めておきます。配分は架空の例です。", "発散で量を出し、似たものをまとめて整理し、基準で比べて収束させます。評価を保留するのはアイデアの良し悪しについてで、安全や法令の指摘は、発散中でも止めません。", "事例で考えます。発散の途中で、設計者が、2フロア同時だと避難経路が狭くなると言いました。答えはB。安全の点なので、評価を保留せず、いま確認します。", "先に合意した基準で比べます。安全と法令は、満たすことが前提です。営業影響は、同時に止める客室がA案20室、B案40室でA案が有利。工期はB案が有利です。決定権者はA案に決め、B案の意見も議事録に残します。", "少数意見は記録して理由を聞きます。沈黙には、各自で書く時間を取ります。脱線は保留ボードに書いて本題へ戻り、対立は事実と基準に戻って、人ではなく案を比べます。", "全員一致を無理に求めず、合意点、未合意、宿題を分けます。合意できなかった宴会日の扱いも、担当と期限を付けて次回へ持ち越せば、会議は前に進みます。", "議事録には、決定、理由、担当、期限を書き、会議の後すぐに、欠席者にも共有します。期限の前に進み具合を確認し、次回の冒頭で約束の達成を確かめます。", "議事録の例です。決定はA案、決定者は運営責任者。理由は販売停止を20室に抑えられること。工期を短くするためにB案を推す意見も、少数意見として残します。", "決定権は、組織の規程や契約で決まります。CMは決定権を持たない場合が多く、進行と記録を担っても、決定を代行しません。", "実践のチェックリストです。前日までに目的と到達点と決定権者を確認し、冒頭で時間配分を共有し、安全の懸念を止めず、合意した基準で比べ、決定と理由と少数意見を記録し、宿題に担当と期限を付けます。", "まとめです。目的と到達点と決定権をそろえ、30分を段階に設計し、合意した基準で比べ、合意点と未合意と宿題を残す。以上、ファシリテーションのポイントでした。"];
+  const tts = s => s.replace(/IAF/g, "アイエーエフ").replace(/2フロア/g, "ふたフロア").replace(/1フロア/g, "ひとフロア").replace(/架空/g, "かくう").replace(/CM/g, "シーエム").replace(/1つ/g, "ひとつ").replace(/2つ/g, "ふたつ").replace(/3つ/g, "みっつ").replace(/4つ/g, "よっつ").replace(/㎡/g, "平方メートル");
+  const NARR = CAP.map(tts);
+  S.forEach((s, i) => { s.d = Math.max(s.d, Math.ceil(CAP[i].length / 7.2) + 2); });   // 読み上げの長さに合わせる
+  const FANI = -1;
+
+  // ---------- player ----------
+  /* hs-ext v1 */
+  let RATE = 1, bgmOn = true;   // 再生速度・BGMのオン／オフ
+  const starts = []; let total = 0; for (const s of S) { starts.push(total); total += s.d; }
+  const btn = root.querySelector('.hs-btn'), snd = root.querySelector('.hs-snd'), track = root.querySelector('.hs-track'), fill = root.querySelector('.hs-fill');
+  const time = root.querySelector('.hs-time'), chips = root.querySelector('.hs-chips'), cap = root.querySelector('.hs-cap');
+  starts.slice(1).forEach(s => { const k = document.createElement('div'); k.className = 'hs-tick'; k.style.left = (s / total * 100) + '%'; track.appendChild(k); });
+  const chipEls = S.map((s, i) => { const li = document.createElement('li'); const b = document.createElement('button');
+    b.type = 'button'; b.className = 'hs-chip'; b.textContent = `${i + 1}. ${s.name}`;
+    b.onclick = () => { unlock(); T = starts[i]; scene = -1; play(); };
+    li.appendChild(b); chips.appendChild(li); return b; });
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let T = 0, playing = false, last = 0, scene = -1;
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  const sceneAt = T => { let i = starts.findIndex((s, k) => T >= s && T < s + S[k].d); return i < 0 ? S.length - 1 : i; };
+
+  // ---------- sound (Web Audio + Web Speech, 音声ファイル不要) ----------
+  const TTS = 'speechSynthesis' in window;
+  let soundOn = false, AC = null, master, bgmGain, nextBeat = 0, beatIdx = 0, schedTimer = null, speaking = false, jaVoice = null, fanNode = null;
+  const voiceSelect = root.querySelector('.hs-voice');
+  const savedVoice = (() => { try { return localStorage.getItem('cmKnowledgeJapaneseVoice') || ''; } catch { return ''; } })();
+  function pickVoice() {
+    const japanese = TTS ? speechSynthesis.getVoices().filter(v => /^ja(?:-|$)/i.test(v.lang)) : [];
+    const voices = japanese.filter(v => /Microsoft/i.test(v.name) && /Haruka|Sayaka|Ayumi|Nanami/i.test(v.name))
+      .sort((a, b) => Number(!/Haruka/i.test(a.name)) - Number(!/Haruka/i.test(b.name)));
+    const preferred = voiceSelect.value || savedVoice;
+    voiceSelect.replaceChildren();
+    for (const voice of voices) voiceSelect.add(new Option(voice.name, voice.voiceURI));
+    jaVoice = voices.find(v => v.voiceURI === preferred) || voices[0] || null;
+    if (jaVoice) voiceSelect.value = jaVoice.voiceURI;
+    else voiceSelect.add(new Option('Microsoft日本語女性音声を利用できません', ''));
+    voiceSelect.disabled = !jaVoice;
+  }
+  voiceSelect.addEventListener('change', () => {
+    jaVoice = speechSynthesis.getVoices().find(v => v.voiceURI === voiceSelect.value) || null;
+    try { localStorage.setItem('cmKnowledgeJapaneseVoice', voiceSelect.value); } catch {}
+    if (playing && soundOn) speak(sceneAt(T));
+  });
+  if (TTS) { pickVoice(); speechSynthesis.addEventListener('voiceschanged', pickVoice); } else pickVoice();
+  function unlock() {                       // ユーザー操作の中で一度だけ音を有効化
+    if (soundOn) return;
+    soundOn = true; setSnd();
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      AC.resume();
+      if (!master) { master = AC.createGain(); master.gain.value = 0.9; master.connect(AC.destination);
+        bgmGain = AC.createGain(); bgmGain.gain.value = 0.0; bgmGain.connect(master); }
+    } catch (e) { AC = null; }
+    if (TTS) { const u = new SpeechSynthesisUtterance(''); speechSynthesis.speak(u); }   // iOSの解錠
+  }
+  function mute() { soundOn = false; setSnd(); stopSpeech(); stopBgm(); fan(false); }
+  function setSnd() { snd.textContent = soundOn ? '🔊' : '🔇'; snd.setAttribute('aria-label', soundOn ? '音声をオフ' : '音声をオン'); snd.setAttribute('aria-pressed', soundOn); }
+
+  // BGM：やわらかいアルペジオ（C–G–Am–F）
+  const CH = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]];
+  const hz = n => 440 * Math.pow(2, (n - 69) / 12);
+  function pluck(t, freq, dur, vol, dest) {
+    const o = AC.createOscillator(), o2 = AC.createOscillator(), g = AC.createGain();
+    o.type = 'triangle'; o.frequency.value = freq; o2.type = 'sine'; o2.frequency.value = freq * 2;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); o2.connect(g); g.connect(dest); o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
+  }
+  const BEAT = 60 / 92 / 2;                  // 8分音符
+  function sched() {
+    while (nextBeat < AC.currentTime + 0.3) {
+      const bar = Math.floor(beatIdx / 8), k = beatIdx % 8, ch = CH[bar % 4];
+      if (k === 0) pluck(nextBeat, hz(ch[0] - 12), 1.8, .5, bgmGain);
+      pluck(nextBeat, hz(ch[[0, 1, 2, 1, 0, 2, 1, 2][k]] + 12), .7, .22, bgmGain);
+      nextBeat += BEAT; beatIdx++;
+    }
+  }
+  function startBgm() {
+    if (!AC || !soundOn || !bgmOn || schedTimer) return;
+    nextBeat = AC.currentTime + .05; sched(); schedTimer = setInterval(sched, 100);
+    duck();
+  }
+  function stopBgm() { if (schedTimer) { clearInterval(schedTimer); schedTimer = null; } if (bgmGain) bgmGain.gain.setTargetAtTime(0, AC.currentTime, .05); }
+  function duck() { if (bgmGain && soundOn) bgmGain.gain.setTargetAtTime(speaking ? 0.05 : 0.12, AC.currentTime, .25); }
+
+  // 効果音
+  function pop() {
+    if (!AC || !soundOn) return; const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain();
+    o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(1500, t + .09);
+    g.gain.setValueAtTime(.18, t); g.gain.exponentialRampToValueAtTime(.0001, t + .12);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + .15);
+  }
+  function fan(on) {                         // 送風の場面の音
+    if (!AC) return;
+    if (on && soundOn && !fanNode) {
+      const n = AC.sampleRate * 2, buf = AC.createBuffer(1, n, AC.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500;
+      const g = AC.createGain(); g.gain.value = 0; g.gain.setTargetAtTime(.07, AC.currentTime, .4);
+      src.connect(lp); lp.connect(g); g.connect(master); src.start(); fanNode = {src, g};
+    } else if (!on && fanNode) {
+      const {src, g} = fanNode; g.gain.setTargetAtTime(0, AC.currentTime, .15); src.stop(AC.currentTime + .6); fanNode = null;
+    }
+  }
+
+  // ナレーション
+  let utt = null;
+  function speak(i) {
+    stopSpeech();
+    if (!TTS || !soundOn || !jaVoice) return;
+    const u = new SpeechSynthesisUtterance(NARR[i]);
+    u.lang = 'ja-JP'; if (jaVoice) u.voice = jaVoice; u.rate = Math.min(2, 1.12 * RATE); u.pitch = 1.0; u.volume = 1;
+    u.onstart = () => { speaking = true; duck(); };
+    u.onend = u.onerror = () => { if (utt === u) { speaking = false; utt = null; duck(); } };
+    utt = u; speaking = true; duck();
+    speechSynthesis.speak(u);
+  }
+  function stopSpeech() { if (TTS) { utt = null; speaking = false; speechSynthesis.cancel(); duck(); } }
+
+  // ---------- render & loop ----------
+  function frame(T) {
+    const i = sceneAt(T);
+    ctx.save(); ctx.clearRect(0, 0, W, H); S[i].draw(Math.min(T - starts[i], S[i].d)); ctx.restore();
+    for (let k = 0; k < S.length; k++) { ctx.fillStyle = k <= i ? '#ef6c00' : 'rgba(255,255,255,.55)';
+      ctx.beginPath(); ctx.roundRect(W - 30 - (S.length - k) * 34, 18, 26, 8, 4); ctx.fill(); }
+    if (!soundOn) {                          // 音声オフ時のヒント
+      ctx.font = f(700, 20); const tx = '🔇 タップで音声つき再生'; const w = ctx.measureText(tx).width + 28;
+      ctx.fillStyle = 'rgba(15,20,30,.72)'; rr(18, 14, w, 36, 18); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(tx, 32, 33);
+    }
+    fill.style.width = (T / total * 100) + '%'; track.setAttribute('aria-valuenow', Math.round(T / total * 100));
+    time.textContent = `${fmt(T)} / ${fmt(total)}`;
+    chipEls.forEach((c, k) => c.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    if (cap.dataset.i !== String(i)) { cap.dataset.i = i; cap.textContent = CAP[i]; }
+  }
+  function enterScene(i) {
+    scene = i; pop(); speak(i); fan(i === FANI);
+  }
+  function loop(now) {
+    if (!playing) return;
+    const dt = Math.min(.1, (now - last) / 1000); last = now;
+    const i = sceneAt(T), end = starts[i] + S[i].d;
+    // ナレーションが続いている間はシーンの最後で待つ（最大6秒）
+    const holding = soundOn && speaking && T + dt * RATE >= end - 0.02 && (holdT += dt) < 6;
+    if (!holding) { holdT = 0; T += dt * RATE; }
+    if (T >= total) { T = total - 0.001; playing = false; stopBgm(); fan(false); setBtn(); }
+    const j = sceneAt(T); if (j !== scene && playing) enterScene(j);
+    frame(T); if (playing) requestAnimationFrame(loop);
+  }
+  let holdT = 0;
+  function setBtn() { btn.textContent = playing ? '❚❚' : (T >= total - .01 ? '↻' : '▶'); btn.setAttribute('aria-label', playing ? '一時停止' : '再生'); }
+  function play() {
+    if (T >= total - .01) { T = 0; scene = -1; }
+    if (!playing) { playing = true; last = performance.now(); startBgm();
+      const i = sceneAt(T);
+      if (scene !== i || T - starts[i] < 1) enterScene(i); else fan(i === FANI);
+      requestAnimationFrame(loop); }
+    setBtn();
+  }
+  function pause() { playing = false; stopSpeech(); stopBgm(); fan(false); setBtn(); frame(T); }
+  btn.onclick = () => { unlock(); playing ? pause() : play(); };
+  cv.onclick = () => {                       // 初回タップ：音声オンにして今のシーンの頭から
+    if (!soundOn) { unlock(); const i = sceneAt(T); T = starts[i]; scene = -1; if (playing) { startBgm(); enterScene(i); } else play(); return; }
+    playing ? pause() : play();
+  };
+  snd.onclick = () => {
+    if (soundOn) { mute(); frame(T); return; }
+    unlock(); const i = sceneAt(T);
+    if (playing) { T = starts[i]; startBgm(); enterScene(i); } else frame(T);
+  };
+  const seek = e => { const r = track.getBoundingClientRect(); T = cl((e.clientX - r.left) / r.width) * total; scene = sceneAt(T); stopSpeech(); fan(playing && scene === FANI); frame(T); };
+  track.addEventListener('pointerdown', e => { seek(e); track.setPointerCapture(e.pointerId); track.onpointermove = seek; });
+  track.addEventListener('pointerup', () => track.onpointermove = null);
+  track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') T = Math.min(total - .01, T + 3); else if (e.key === 'ArrowLeft') T = Math.max(0, T - 3); else return; scene = sceneAt(T); stopSpeech(); frame(T); e.preventDefault(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
+  // 再生は利用者の操作で開始します。
+  /* hs-ext v1 */
+  const bgmBtn = root.querySelector('.hs-bgm'), rateSel = root.querySelector('.hs-rate'), fsBtn = root.querySelector('.hs-fs');
+  const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } return null; };
+  bgmOn = store('hs-bgm') !== 'off';
+  const r0 = parseFloat(store('hs-rate')); if (r0 >= .5 && r0 <= 2) RATE = r0; rateSel.value = String(RATE);
+  function setBgmBtn() { bgmBtn.textContent = bgmOn ? 'BGM オン' : 'BGM オフ'; bgmBtn.setAttribute('aria-pressed', bgmOn); bgmBtn.classList.toggle('hs-off', !bgmOn); }
+  bgmBtn.onclick = () => { bgmOn = !bgmOn; store('hs-bgm', bgmOn ? 'on' : 'off'); setBgmBtn(); if (!bgmOn) stopBgm(); else if (playing && soundOn) startBgm(); };
+  rateSel.onchange = () => { RATE = parseFloat(rateSel.value) || 1; store('hs-rate', String(RATE)); };
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+  function setFsBtn() { const on = !!fsEl() || root.classList.contains('hs-full'); fsBtn.textContent = on ? '✕' : '⛶'; fsBtn.setAttribute('aria-label', on ? '全画面を終了' : '全画面'); }
+  function fakeFull(on) { root.classList.toggle('hs-full', on); setFsBtn(); }
+  fsBtn.onclick = () => {
+    if (fsEl()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    if (root.classList.contains('hs-full')) { fakeFull(false); return; }
+    const req = root.requestFullscreen || root.webkitRequestFullscreen;
+    if (!req) { fakeFull(true); return; }
+    try { const p = req.call(root); if (p && p.catch) p.catch(() => fakeFull(true)); } catch (e) { fakeFull(true); }
+  };
+  document.addEventListener('fullscreenchange', setFsBtn); document.addEventListener('webkitfullscreenchange', setFsBtn);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && root.classList.contains('hs-full')) fakeFull(false); });
+  setBgmBtn(); setFsBtn();
+  setSnd();
+  const readyFonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  readyFonts.then(() => frame(reduce ? starts[1] + 8 : 0));
+  window.__hsfacilitation = {frame: x => { T = x; frame(x); }, total, starts};   // プレビュー用
+})();
+</script>
+</body>
+</html>
