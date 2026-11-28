@@ -25,7 +25,7 @@
     cap.hidden=!showCaptions;cc.textContent=showCaptions?'字幕 ON':'字幕 OFF';cc.setAttribute('aria-pressed',String(showCaptions));
     if(showCaptions){const cues=track?.activeCues;cap.textContent=cues?.length?[...cues].map(c=>c.text).join('\n'):(position()===0?data.chapters[0].text:'');}
   }
-  function updatePlay(){const playing=!video.paused&&!video.ended;play.textContent=playing?'❚❚':'▶';play.setAttribute('aria-label',playing?'一時停止':'再生');updateMusic();}
+  function updatePlay(){const playing=loading?resumeAfterLoad:!video.paused&&!video.ended;play.textContent=playing?'❚❚':'▶';play.setAttribute('aria-label',playing?'一時停止':'再生');updateMusic();}
   function updateSound(){video.muted=!audible;sound.textContent=audible?'🔊':'🔇';sound.setAttribute('aria-label',audible?'音声をオフ':'音声をオン');sound.setAttribute('aria-pressed',String(audible));updateMusic();}
   function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null;}if(musicGain&&context)musicGain.gain.setTargetAtTime(0,context.currentTime,.03);}
   function musicNote(){
@@ -44,7 +44,7 @@
     const start=()=>{if(!(bgmOn&&audible&&!video.paused&&!loading))return;musicGain.gain.setTargetAtTime(.06,context.currentTime,.15);if(!musicTimer){musicNote();musicTimer=setInterval(musicNote,800);}};
     if(context.state==='suspended')context.resume().then(start).catch(()=>{});else start();
   }
-  function togglePlay(){if(video.paused||video.ended){if(video.ended)video.currentTime=0;video.play().catch(()=>{status.textContent='再生ボタンを押してください。';});}else video.pause();}
+  function togglePlay(){if(loading){resumeAfterLoad=!resumeAfterLoad;updatePlay();return;}if(video.paused||video.ended){if(video.ended)video.currentTime=0;video.play().catch(()=>{status.textContent='再生ボタンを押してください。';});}else video.pause();}
   function goTo(value){const target=Math.max(0,Math.min(duration()-.01,value));lastTime=target;if(!loading&&video.readyState)video.currentTime=target;else if(!loading)video.addEventListener('loadedmetadata',()=>{video.currentTime=lastTime;},{once:true});updatePosition();}
   function isFull(){return document.fullscreenElement===root||root.classList.contains('hs-full');}
   function updateFull(){full.setAttribute('aria-label',isFull()?'全画面を終了':'全画面');full.textContent=isFull()?'✕':'⛶';}
@@ -66,7 +66,7 @@
   full.addEventListener('click',()=>{if(isFull())leaveFull();else if(root.requestFullscreen)root.requestFullscreen().catch(fallbackFull);else fallbackFull();});
   document.addEventListener('fullscreenchange',updateFull);
   root.addEventListener('keydown',event=>{if(event.key==='Escape'){leaveFull();return;}if(event.target.matches('button,input,select,a,summary'))return;if(event.code==='Space'){event.preventDefault();togglePlay();}else if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();goTo(position()+(event.key==='ArrowRight'?3:-3));}});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){resumeAfterLoad=false;video.pause();updatePlay();}});
   window.addEventListener('pagehide',()=>{video.pause();stopMusic();if(context)context.close().catch(()=>{});});
   video.addEventListener('timeupdate',updatePosition);video.addEventListener('seeked',()=>{updatePosition();updateCaptions();});
   for(const event of ['play','pause','ended'])video.addEventListener(event,updatePlay);
