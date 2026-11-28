@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>型枠工事のしくみと取外し｜詳細レポート</title>
+<meta name="description" content="側圧・支保工の荷重と、型枠・支柱を「いつ外してよいか」の決め方、検査・見積もり・引渡しの見方をCMの立場で整理します。">
+<style>
+:root{color-scheme:dark;--bg:#0a1220;--panel:#142237;--panel2:#0f1b2e;--ink:#edf4ff;--sub:#adbed4;--line:#304159;--accent:#8ee1d0;--warn:#ff8a7a;--law:#6aa6ff;--spec:#8ee1d0;--case:#b79cff;--yel:#ffd166}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 Inter,"Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:6px 10px;z-index:9}
+header.top{border-bottom:1px solid var(--line);padding:14px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;max-width:1160px;margin:auto}
+header.top a{font-weight:700;font-size:15px}
+header.top .nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1160px;margin:0 auto;padding:24px 22px 60px}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:10px 0 8px}
+.kicker{display:inline-block;background:var(--accent);color:#0a1220;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub);font-size:1.05rem}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14.5px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px;margin:20px 0}
+h2{font-size:1.35rem;border-left:6px solid var(--accent);padding-left:12px;margin:18px 0 10px}
+h3{font-size:1.08rem;margin:18px 0 6px;color:var(--accent)}
+p,li{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;background:var(--panel2)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#1c2f4d;color:var(--accent);white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#1d2b1f;border:1px solid #3f6b47;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.warn{background:#3a1f22;border:1px solid #8a3b33;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.case{background:#231d3d;border:1px solid #5c4d99;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--yel)}
+.k{display:inline-block;border-radius:999px;padding:0 9px;font-size:12px;font-weight:800;color:#0a1220;margin:0 3px;vertical-align:1px}
+.k.law{background:var(--law)}.k.spec{background:var(--spec)}.k.case{background:var(--case)}
+figure{margin:14px 0;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1160px;margin:0 auto;padding:0 22px 40px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+a:focus-visible{outline:3px solid #efbe77;outline-offset:3px}
+@media (max-width:640px){nav.toc ol{columns:1}section{padding:4px 14px 16px}}
+@media print{body{background:#fff;color:#000}section,nav.toc{background:#fff;color:#000}header.top,nav.toc{display:none}}
+table,.note,.warn,.case,.flow li,.src li,nav.toc ol{font-size:16px}figcaption{font-size:14px}td,th{font-size:16px}.meta,footer{font-size:16px}.k.pub{background:#5fd39a}
+:root{color-scheme:dark;--ink:#edf4ff;--sub:#b7c7dd;--line:#34465f;--accent:#ffac82;--bg:#0a1220;--blue:#8ed6ff;--green:#8ee1c4}header.top{background:#142237}nav.toc,section{background:#142237}th,.flow li{background:#223550}.note{background:#352e1d;border-color:#756137}.warn{background:#3e2529;border-color:#87505a}.case{background:#28253f;border-color:#5c568c}.meta,footer{font-size:14px}table,.note,.warn,.case,.src li{font-size:16px}.flow li{font-size:15px}.skip:focus{background:#223550;color:#fff}@media print{:root{color-scheme:light;--ink:#172133;--sub:#45546a;--line:#b5c2d2;--bg:white;--blue:#155ba1}body,section,nav.toc{background:white}.note,.warn,.case,th,.flow li{background:#eef2f7}}</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="top"><a href="index.html">CM知識一覧 ｜ 型枠工事</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="formwork-video.html">動画解説</a></div></header>
+<main id="main">
+<span class="kicker">詳細レポート</span>
+<h1>型枠工事のしくみと取外し</h1>
+<p class="lead">側圧・支保工の荷重と、型枠・支柱を「いつ外してよいか」の決め方、検査・見積もり・引渡しの見方をCMの立場で整理します。</p>
+<p class="meta">最終確認：2026年11月28日。登場するホテルは説明用の架空の案件です。告示第110号の取外し強度（5N/mm²、50%・85%・100%、支柱の12N/mm²＋構造計算）と盛りかえの定め、早強セメントのせき板存置日数は国土交通省の告示PDFで確認しました。その他のセメントの存置日数は数値を転載していません。安衛則第240条の設計荷重・水平荷重は条文掲載ページと労働局のチェックリストで確認しました。公共建築工事標準仕様書は法令の一律義務ではなく、契約図書で採用されたときに適用される仕様です。<br>値の区別：<span class="k law">法令</span>法律・政令・省令の基準（対象と条件つき）　<span class="k pub">公的仕様</span>国の標準仕様書・公的機関の指針　<span class="k spec">製品・設計条件</span>設計図書・特記・メーカー資料の条件　<span class="k case">架空例</span>説明用の架空の数値</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#scope">範囲と結論</a></li>
+<li><a href="#pressure">側圧と締付け</a></li>
+<li><a href="#shoring">支保工の荷重と組立図</a></li>
+<li><a href="#remove">取外しの基準</a></li>
+<li><a href="#reshore">盛りかえ</a></li>
+<li><a href="#fail">失敗例</a></li>
+<li><a href="#compare">工程を守る案の比較</a></li>
+<li><a href="#check">検査チェックリスト</a></li>
+<li><a href="#estimate">見積もりの範囲と数量</a></li>
+<li><a href="#handover">引渡しの証拠</a></li>
+<li><a href="#talk">会話例</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="scope" aria-labelledby="scope-h"><h2 id="scope-h">範囲と結論</h2>
+<p>架空のホテル宴会場増築（RC造・大スパン・高階高）で「支保工を7日で外したい」と相談された場面をもとに、側圧、支保工の荷重、取外しの基準、盛りかえ、強度の確かめ方、検査・見積もり・引渡しまでをCMの立場で整理します。</p>
+<div class="warn">結論：①取外しは日数だけで決めない。昭和46年建設省告示第110号はせき板と支柱の判定を区別する。せき板は所定日数又は所定強度、支柱の早期取外しは所定の試験強度と施工荷重に対する構造計算等で判断し、日数は部位・セメントの種類・平均気温で変わる。②必要な強度は部位で違い、梁下の支柱は設計基準強度の100%。③支柱は12N/mm²以上かつ構造計算で安全を確かめれば外せる場合がある。④盛りかえは大梁で行わず、1本ずつ順に。⑤支保工は組立図を作り、組立図どおりに組む。⑥取外しの根拠（強度記録）を残して引き渡す。</div>
+<p>本文の数値は <span class="k law">法令</span><span class="k pub">公的仕様</span><span class="k spec">製品・設計条件</span><span class="k case">架空例</span> で区別しています。</p>
+</section>
+<section id="pressure" aria-labelledby="pressure-h"><h2 id="pressure-h">側圧と締付け</h2>
+<figure><svg viewBox="0 0 900 260" role="img" aria-label="側圧"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="200" y="30" width="16" height="210" fill="#c99a5b"/><rect x="320" y="30" width="16" height="210" fill="#c99a5b"/><rect x="216" y="70" width="104" height="170" fill="#cfc8ba"/><line x1="190" y1="90" x2="196" y2="90" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="350" y1="90" x2="340" y2="90" stroke="#ff6b5b" stroke-width="3"/><line x1="160" y1="130" x2="196" y2="130" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="380" y1="130" x2="340" y2="130" stroke="#ff6b5b" stroke-width="3"/><line x1="130" y1="170" x2="196" y2="170" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="410" y1="170" x2="340" y2="170" stroke="#ff6b5b" stroke-width="3"/><line x1="100" y1="210" x2="196" y2="210" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="440" y1="210" x2="340" y2="210" stroke="#ff6b5b" stroke-width="3"/><line x1="180" y1="80" x2="356" y2="80" stroke="#adbed4" stroke-width="2"/><line x1="180" y1="140" x2="356" y2="140" stroke="#adbed4" stroke-width="2"/><line x1="180" y1="200" x2="356" y2="200" stroke="#adbed4" stroke-width="2"/><text x="268" y="60" fill="#edf4ff" font-size="14" font-weight="700" text-anchor="middle">打込み面</text><text x="470" y="60" fill="#ffd166" font-size="16" font-weight="700" text-anchor="start">側圧の大きさに効くもの</text><text x="470" y="95" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・打込み高さ（深いほど大きい）</text><text x="470" y="125" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・打込みの速さ（速いほど大きい）</text><text x="470" y="155" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・コンクリートの温度・軟らかさ</text><text x="470" y="195" fill="#8ee1d0" font-size="15" font-weight="700" text-anchor="start">セパレーター・締付け金物・端太で受ける</text><text x="470" y="225" fill="#adbed4" font-size="14" font-weight="700" text-anchor="start">打込み計画（速さ・区画）で管理する</text></svg><figcaption>図1 柱・壁の型枠にかかる側圧（模式図）</figcaption></figure><div class="tw"><table><tr><th>項目</th><th>内容</th><th>CMの確認</th></tr><tr><td>側圧</td><td>生コンが型枠を外へ押す力</td><td>打込み計画（区画・速さ）があるか</td></tr><tr><td>受け方</td><td>セパレーター・締付け金物・端太（ばた）</td><td>型枠計画図・施工要領書の有無</td></tr><tr><td>起きる不具合</td><td>はらみ・目違い・型枠の破損・漏れ</td><td>打設中の監視体制</td></tr><tr><td>側圧の算定</td><td>採用する指針・施工者の計算による<span class="k spec">製品・設計条件</span></td><td>算定の根拠が示されているか</td></tr></table></div>
+</section>
+<section id="shoring" aria-labelledby="shoring-h"><h2 id="shoring-h">支保工の荷重と組立図</h2>
+<figure><svg viewBox="0 0 900 270" role="img" aria-label="支保工の荷重"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="80" y="60" width="560" height="30" fill="#cfc8ba"/><rect x="80" y="90" width="560" height="10" fill="#c99a5b"/><rect x="116" y="100" width="8" height="130" fill="#8a93a3"/><rect x="196" y="100" width="8" height="130" fill="#8a93a3"/><rect x="276" y="100" width="8" height="130" fill="#8a93a3"/><rect x="356" y="100" width="8" height="130" fill="#8a93a3"/><rect x="436" y="100" width="8" height="130" fill="#8a93a3"/><rect x="516" y="100" width="8" height="130" fill="#8a93a3"/><rect x="596" y="100" width="8" height="130" fill="#8a93a3"/><rect x="60" y="230" width="600" height="12" fill="#6b7a94"/><line x1="130" y1="20" x2="130" y2="55" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="230" y1="20" x2="230" y2="55" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="330" y1="20" x2="330" y2="55" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="430" y1="20" x2="430" y2="55" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="530" y1="20" x2="530" y2="55" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><line x1="630" y1="20" x2="630" y2="55" stroke="#ff6b5b" stroke-width="3" marker-end="url(#a)"/><text x="360" y="15" fill="#ff6b5b" font-size="14" font-weight="700" text-anchor="middle">コンクリート・鉄筋・型枠の重さ ＋ 150kg/㎡以上</text><line x1="650" y1="110" x2="710" y2="110" stroke="#ffd166" stroke-width="3" marker-end="url(#a)"/><text x="720" y="105" fill="#ffd166" font-size="14" font-weight="700" text-anchor="start">水平荷重</text><text x="720" y="128" fill="#ffd166" font-size="13" font-weight="700" text-anchor="start">鋼管枠 2.5/100</text><text x="720" y="148" fill="#ffd166" font-size="13" font-weight="700" text-anchor="start">それ以外 5/100</text><text x="360" y="262" fill="#edf4ff" font-size="14" font-weight="700" text-anchor="middle">組立図（部材の配置・接合方法・寸法）どおりに組み立てる</text></svg><figcaption>図2 支保工の設計で考える荷重（労働安全衛生規則第240条。図は模式）</figcaption></figure><div class="tw"><table><tr><th>項目</th><th>労働安全衛生規則の定め</th><th>CMの確認</th></tr><tr><td>組立図</td><td>支柱・はり・つなぎ・筋かい等の配置、接合方法、寸法を示す（第240条）<span class="k law">法令</span></td><td>組立図と強度計算書が提出されているか</td></tr><tr><td>設計荷重</td><td>支える物の重量＋型枠1㎡につき150kg以上（第240条3項）<span class="k law">法令</span></td><td>計算の前提（スラブ厚・梁せい）が図面と一致するか</td></tr><tr><td>水平荷重</td><td>上端に設計荷重の2.5/100（鋼管枠）／5/100（それ以外）（第240条3項）<span class="k law">法令</span></td><td>筋かい・つなぎの配置</td></tr><tr><td>組み合わせた支柱</td><td>製造者の指定する最大使用荷重を超えない（第240条3項）<span class="k law">法令</span></td><td>メーカー資料の確認</td></tr><tr><td>作業主任者</td><td>型わく支保工の組立て等作業主任者の選任<span class="k law">法令</span></td><td>選任の書面</td></tr></table></div><p class="meta">支保工の倒壊は重大災害につながります。安全衛生上の措置は事業者（施工者）の義務で、CMは計画と記録の有無を確認する立場です。</p>
+</section>
+<section><h2>せき板と支柱を分けた取外し判定</h2><p>告示110号第一の一の有効材齢・温度履歴による方法は、せき板の強度確認の方法です。第一の二の支柱の早期取外しでは、同号イ・ロに定める現場養生供試体又はコア等の圧縮試験と、施工中の荷重・外力に対する構造計算が条件になります。強度85%や100%の数値だけで解体許可を出さないようにします。</p><p>普通コンクリートの12N/mm²という条件は、所定の日数前の取外しについての構造計算等と組み合わせる条件です。軽量骨材を使う場合は9N/mm²という別の条件があり、その他の前提も含め原文と設計図書を照合します。直上階に著しく大きい積載荷重がある場合も、支柱の盛りかえはできません。</p><p>本レポートの10日目26.4N/mm²の例では、普通コンクリート・Fc30のスラブ下支柱で、所定の試験、施工荷重に対する構造計算、工事監理者の確認が整ったものとして比較しています。上階作業荷重や施工計画が変わる場合は判定をやり直します。</p></section><section id="remove" aria-labelledby="remove-h"><h2 id="remove-h">取外しの基準</h2>
+<figure><svg viewBox="0 0 900 250" role="img" aria-label="取外しに必要な強度"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><text x="250" y="54" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="end">柱・壁・梁側のせき板</text><rect x="265" y="34" width="22.0" height="30" rx="6" fill="#5fd39a"/><text x="297.0" y="55" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">5 N/mm²</text><text x="250" y="106" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="end">スラブ下・梁下のせき板</text><rect x="265" y="86" width="220.00000000000003" height="30" rx="6" fill="#6aa6ff"/><text x="495.0" y="107" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">Fcの50%</text><text x="250" y="158" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="end">スラブ下の支柱</text><rect x="265" y="138" width="374.00000000000006" height="30" rx="6" fill="#ffd166"/><text x="649.0" y="159" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">Fcの85%</text><text x="250" y="210" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="end">梁下の支柱</text><rect x="265" y="190" width="440.00000000000006" height="30" rx="6" fill="#ff6b5b"/><text x="715.0" y="211" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">Fcの100%</text></svg><figcaption>図3 告示別表の圧縮強度（支柱の早期取外しは構造計算等も必要）（昭和46年建設省告示第110号の別表より。Fc＝設計基準強度。せき板（柱・壁・梁側）は5N/mm²）</figcaption></figure><figure><svg viewBox="0 0 900 150" role="img" aria-label="取外しの判断"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="20.0" y="40" width="195.5" height="80" rx="10" fill="#4a5a7a"/><text x="117.75" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">存置日数</text><text x="117.75" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">部位・セメント・平均気温</text><line x1="217.5" y1="80.0" x2="239.5" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="241.5" y="40" width="195.5" height="80" rx="10" fill="#6aa6ff"/><text x="339.25" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">または 強度</text><text x="339.25" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">供試体試験／温度記録</text><line x1="439.0" y1="80.0" x2="461.0" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="463.0" y="40" width="195.5" height="80" rx="10" fill="#5fd39a"/><text x="560.75" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">工事監理者の確認</text><text x="560.75" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">記録で判断</text><line x1="660.5" y1="80.0" x2="682.5" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="684.5" y="40" width="195.5" height="80" rx="10" fill="#ffd166"/><text x="782.25" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">取外し・盛りかえ</text><text x="782.25" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">順序と範囲を守る</text></svg><figcaption>図4 せき板の取外し判断（支柱の早期取外しは別の条件）</figcaption></figure><div class="tw"><table><tr><th>区分</th><th>部位</th><th>必要な圧縮強度</th></tr><tr><td>せき板</td><td>基礎・梁側・柱・壁</td><td>5 N/mm²</td></tr><tr><td>せき板</td><td>スラブ下・梁下</td><td>設計基準強度の50%</td></tr><tr><td>支柱</td><td>スラブ下</td><td>設計基準強度の85%</td></tr><tr><td>支柱</td><td>梁下</td><td>設計基準強度の100%</td></tr></table></div><p>存置日数はセメントの種類と存置期間中の平均気温で決まり、例えば早強ポルトランドセメントの柱・壁等のせき板は、15℃以上で2日、5℃以上15℃未満で3日、5℃未満で5日です<span class="k law">法令</span>。その他のセメントの日数は告示の別表で確認してください。</p><p>支柱は、圧縮強度が12N/mm²以上（軽量骨材使用時は9N/mm²以上）で、施工中の荷重に対して著しい変形やひび割れが生じないことを構造計算で確かめた場合、表の強度に達する前でも取り外せます<span class="k law">法令</span>。</p><div class="tw"><table><tr><th>強度の確かめ方</th><th>内容</th><th>注意</th></tr><tr><td>せき板・支柱：所定の圧縮試験</td><td>現場水中養生等の供試体をJIS A 1108で試験</td><td>養生方法・試験日を事前に決める</td></tr><tr><td>せき板：温度記録による推定</td><td>材齢と温度履歴から有効材齢を求め強度を推定（平成28年の告示改正で追加）</td><td>測定方法・係数・管理方法を事前に工事監理者と決める</td></tr></table></div>
+</section>
+<section id="reshore" aria-labelledby="reshore-h"><h2 id="reshore-h">盛りかえ</h2>
+<div class="tw"><table><tr><th>告示の定め</th><th>内容</th></tr><tr><td>大梁</td><td>支柱の盛りかえは行わない</td></tr><tr><td>直上階に大きな積載荷重がある場合</td><td>大梁以外も盛りかえない</td></tr><tr><td>方法</td><td>1本ずつ順に行い、多数を同時に行わない</td></tr><tr><td>頂部</td><td>十分な厚さと大きさの受板・角材を置く</td></tr><tr><td>振動・衝撃</td><td>養生中のコンクリートに有害な振動・衝撃を与えない</td></tr></table></div><p class="meta">出典：昭和46年建設省告示第110号 第二。<span class="k law">法令</span></p>
+</section>
+<section id="fail" aria-labelledby="fail-h"><h2 id="fail-h">失敗例</h2>
+<div class="tw"><table><tr><th>失敗</th><th>起きること</th><th>防ぎ方</th></tr><tr><td>日数だけで支柱を撤去（冬期）</td><td>スラブのたわみ・ひび割れ</td><td>強度記録で判断</td></tr><tr><td>一度に多数の支柱を盛りかえ</td><td>局所的な過大荷重</td><td>1本ずつ順に、計画書どおり</td></tr><tr><td>組立図なし・図面と違う組み方</td><td>打設中の倒壊</td><td>組立図と現場の照合</td></tr><tr><td>打込みが速すぎる</td><td>側圧増大で型枠がはらむ・破損</td><td>打込み計画と監視</td></tr><tr><td>上階の資材を下階スラブに集積</td><td>設計外の荷重</td><td>資材置場の計画と荷重の確認</td></tr><tr><td>供試体の養生条件が現場と違う</td><td>強度を過大に判断</td><td>養生方法を事前に決める</td></tr></table></div>
+</section>
+<section id="compare" aria-labelledby="compare-h"><h2 id="compare-h">工程を守る案の比較</h2>
+<div class="tw"><table><tr><th>項目</th><th>A 強度が出るまで待つ</th><th>B 材料・養生を変える</th><th>C 盛りかえ計画で先行</th></tr><tr><td>内容</td><td>内装の開始を遅らせる</td><td>早強セメント・保温養生等</td><td>構造計算と計画書で先行</td></tr><tr><td>費用</td><td>工程延長分</td><td>材料・養生の増額</td><td>計算・計画・支柱の追加</td></tr><tr><td>条件</td><td>—</td><td>設計者・工事監理者との協議</td><td>普通コンクリートの強度条件＋施工荷重の構造計算・承認。大梁支柱は盛りかえ不可</td></tr><tr><td>記録</td><td>強度記録</td><td>配合変更の承認・強度記録</td><td>計算書・盛りかえ記録・強度記録</td></tr></table></div><p class="meta">比較は説明用の架空例です。<span class="k case">架空例</span></p>
+</section>
+<section id="check" aria-labelledby="check-h"><h2 id="check-h">検査チェックリスト</h2>
+<div class="tw"><table><tr><th>時期</th><th>確認すること</th><th>済</th></tr><tr><td>計画</td><td>型枠計画図・支保工の組立図・強度計算書</td><td>□</td></tr><tr><td>計画</td><td>打込み計画（区画・速さ）と取外しの判断方法</td><td>□</td></tr><tr><td>打設前</td><td>組立図との照合、支柱の沈下・滑動防止、継手・緊結</td><td>□</td></tr><tr><td>打設前</td><td>寸法・通り・開口・埋込み金物</td><td>□</td></tr><tr><td>打設前</td><td>作業主任者の選任</td><td>□</td></tr><tr><td>打設中</td><td>はらみ・漏れ・支保工の変形の監視</td><td>□</td></tr><tr><td>取外し前</td><td>せき板は告示に定める試験又は温度履歴法。支柱の早期取外しは所定の圧縮試験と施工荷重の構造計算で確認</td><td>□</td></tr><tr><td>盛りかえ</td><td>範囲・順序・頂部の受板</td><td>□</td></tr><tr><td>取外し後</td><td>欠け・豆板・ひび割れと補修</td><td>□</td></tr></table></div><h3>記入済み様式：取外し判定記録（架空例）</h3><div class="tw"><table><tr><th>部位</th><th>必要強度</th><th>試験日</th><th>結果</th><th>判定</th></tr><tr><td>2階スラブ下支柱（Fc30）</td><td>25.5 N/mm²</td><td>7日</td><td>21.0 N/mm²</td><td>外さない</td></tr><tr><td>同</td><td>25.5 N/mm²</td><td>10日</td><td>26.4 N/mm²</td><td>計算・承認後</td></tr><tr><td>2階梁下支柱（Fc30）</td><td>30.0 N/mm²</td><td>10日</td><td>26.4 N/mm²</td><td>外さない</td></tr><tr><td>2階梁下支柱（Fc30）</td><td>30.0 N/mm²</td><td>14日</td><td>30.8 N/mm²</td><td>計算・承認後</td></tr></table></div>
+</section>
+<section id="estimate" aria-labelledby="estimate-h"><h2 id="estimate-h">見積もりの範囲と数量</h2>
+<div class="tw"><table><tr><th>項目</th><th>単位</th><th>数量の拾い方</th><th>確認ポイント</th></tr><tr><td>型枠（普通）</td><td>㎡</td><td>コンクリートに接する面積を部位別に</td><td>開口・梁の取合いの扱い</td></tr><tr><td>型枠（打放し・化粧）</td><td>㎡</td><td>仕上げ区分ごと</td><td>合板の種類・転用回数</td></tr><tr><td>支保工</td><td>㎡または空㎥</td><td>階高・スラブ厚・梁せい別</td><td>高階高・大スパンの割増</td></tr><tr><td>盛りかえ・存置延長</td><td>式／日</td><td>工程案ごと</td><td>延長期間の損料</td></tr><tr><td>型枠計画・計算</td><td>式</td><td>—</td><td>支保工の強度計算書を含むか</td></tr><tr><td>供試体・温度測定</td><td>本／式</td><td>取外し判定の回数</td><td>判定用の試験が含まれるか</td></tr></table></div><h3>架空の数量例</h3><div class="tw"><table><tr><th>項目</th><th>数量（架空）</th><th>備考</th></tr><tr><td>型枠 普通</td><td>2,400 ㎡</td><td>柱・壁・梁・スラブ</td></tr><tr><td>支保工（階高6m）</td><td>620 ㎡</td><td>宴会場スラブ下</td></tr><tr><td>判定用供試体</td><td>12 本</td><td>7・10・14日</td></tr></table></div><p class="meta">数量・単位はすべて説明用の架空例です。<span class="k case">架空例</span></p>
+</section>
+<section id="handover" aria-labelledby="handover-h"><h2 id="handover-h">引渡しの証拠</h2>
+<div class="tw"><table><tr><th>書類・記録</th><th>内容</th><th>受領</th></tr><tr><td>型枠計画図・支保工の組立図</td><td>最終版</td><td>□</td></tr><tr><td>支保工の強度計算書</td><td>設計荷重・水平荷重の検討</td><td>□</td></tr><tr><td>打設前の検査記録</td><td>寸法・通り・支保工</td><td>□</td></tr><tr><td>取外し判定記録</td><td>せき板・支柱それぞれに認められた強度確認と、必要な構造計算</td><td>□</td></tr><tr><td>盛りかえの記録</td><td>範囲・順序・日時</td><td>□</td></tr><tr><td>補修記録</td><td>欠け・豆板・ひび割れ</td><td>□</td></tr></table></div>
+</section>
+<section id="talk" aria-labelledby="talk-h"><h2 id="talk-h">会話例</h2>
+<div class="case"><b>会話例（架空）</b><br><b>運営：</b>来週から内装を入れたいので、支保工を7日で外せませんか。<br><b>CM：</b>日数だけでは決められません。部位ごとの存置条件と、早期取外しなら所定の試験強度・施工荷重の構造計算を確認します。<br><b>施工者：</b>7日目の供試体は21.0で、必要な25.5に届いていません。<br><b>CM：</b>では3案を比べます。待つ案、養生を変える案、構造計算をして盛りかえで先行する案。大梁の支柱はどの案でも残します。<br><b>工事監理者：</b>判定は10日目の試験で行います。記録を提出してください。</div>
+</section>
+<section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://www.mlit.go.jp/notice/noticedata/pdf/201703/00006613.pdf" target="_blank" rel="noopener">昭和46年建設省告示第110号 現場打コンクリートの型わく及び支柱の取りはずしに関する基準（国土交通省）</a></li>
+<li><a href="https://www.kenken.go.jp/japanese/contents/publications/data/168/all.pdf" target="_blank" rel="noopener">建築研究資料 型わくの取り外しに関する管理基準の検討（建築研究所）</a></li>
+<li><a href="https://laws.e-gov.go.jp/law/325CO0000000338" target="_blank" rel="noopener">建築基準法施行令（e-Gov法令検索）</a></li>
+<li><a href="https://jsite.mhlw.go.jp/toyama-roudoukyoku/content/contents/001239547.pdf" target="_blank" rel="noopener">型わく支保工 事前チェックリスト（富山労働局）</a></li>
+<li><a href="https://laws.e-gov.go.jp/law/347M50002000032" target="_blank" rel="noopener">労働安全衛生規則（e-Gov法令検索）</a></li>
+<li><a href="https://www.mlit.go.jp/gobuild/kenchiku_hyoushi.html" target="_blank" rel="noopener">公共建築工事標準仕様書（国土交通省 官庁営繕）</a></li></ul>
+<p class="meta">法令・指針の値は上記の一次資料で確認したものです。法令・指針は改正されることがあるため、利用時は最新版を確認してください。</p></section>
+</main>
+<footer>※解説用に要点を簡略化しています。個別の判断は、特定行政庁・所管行政庁・労働基準監督署・都道府県等、および契約図書（特記仕様書）を優先してください。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="formwork-video.html">動画解説</a></footer>
+</body>
+</html>
