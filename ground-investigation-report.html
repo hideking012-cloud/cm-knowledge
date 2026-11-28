@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>地盤調査とN値の読み方｜詳細レポート</title>
+<meta name="description" content="N値の意味と限界、地下水・液状化・圧密沈下を補う試験、調査計画と報告書の見方、見積もり・引渡しをCMの立場で整理します。">
+<style>
+:root{color-scheme:dark;--bg:#0a1220;--panel:#142237;--panel2:#0f1b2e;--ink:#edf4ff;--sub:#adbed4;--line:#304159;--accent:#8ee1d0;--warn:#ff8a7a;--law:#6aa6ff;--spec:#8ee1d0;--case:#b79cff;--yel:#ffd166}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 Inter,"Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:6px 10px;z-index:9}
+header.top{border-bottom:1px solid var(--line);padding:14px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;max-width:1160px;margin:auto}
+header.top a{font-weight:700;font-size:15px}
+header.top .nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1160px;margin:0 auto;padding:24px 22px 60px}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:10px 0 8px}
+.kicker{display:inline-block;background:var(--accent);color:#0a1220;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub);font-size:1.05rem}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14.5px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px;margin:20px 0}
+h2{font-size:1.35rem;border-left:6px solid var(--accent);padding-left:12px;margin:18px 0 10px}
+h3{font-size:1.08rem;margin:18px 0 6px;color:var(--accent)}
+p,li{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;background:var(--panel2)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#1c2f4d;color:var(--accent);white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#1d2b1f;border:1px solid #3f6b47;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.warn{background:#3a1f22;border:1px solid #8a3b33;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.case{background:#231d3d;border:1px solid #5c4d99;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--yel)}
+.k{display:inline-block;border-radius:999px;padding:0 9px;font-size:12px;font-weight:800;color:#0a1220;margin:0 3px;vertical-align:1px}
+.k.law{background:var(--law)}.k.spec{background:var(--spec)}.k.case{background:var(--case)}
+figure{margin:14px 0;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1160px;margin:0 auto;padding:0 22px 40px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+a:focus-visible{outline:3px solid #efbe77;outline-offset:3px}
+@media (max-width:640px){nav.toc ol{columns:1}section{padding:4px 14px 16px}}
+@media print{body{background:#fff;color:#000}section,nav.toc{background:#fff;color:#000}header.top,nav.toc{display:none}}
+table,.note,.warn,.case,.flow li,.src li,nav.toc ol{font-size:16px}figcaption{font-size:14px}td,th{font-size:16px}.meta,footer{font-size:16px}.k.pub{background:#5fd39a}
+:root{color-scheme:dark;--ink:#edf4ff;--sub:#b7c7dd;--line:#34465f;--accent:#ffac82;--bg:#0a1220;--blue:#8ed6ff;--green:#8ee1c4}header.top{background:#142237}nav.toc,section{background:#142237}th,.flow li{background:#223550}.note{background:#352e1d;border-color:#756137}.warn{background:#3e2529;border-color:#87505a}.case{background:#28253f;border-color:#5c568c}.meta,footer{font-size:14px}table,.note,.warn,.case,.src li{font-size:16px}.flow li{font-size:15px}.skip:focus{background:#223550;color:#fff}@media print{:root{color-scheme:light;--ink:#172133;--sub:#45546a;--line:#b5c2d2;--bg:white;--blue:#155ba1}body,section,nav.toc{background:white}.note,.warn,.case,th,.flow li{background:#eef2f7}}</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="top"><a href="index.html">CM知識一覧 ｜ 地盤調査</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="ground-investigation-video.html">動画解説</a></div></header>
+<main id="main">
+<span class="kicker">詳細レポート</span>
+<h1>地盤調査とN値の読み方</h1>
+<p class="lead">N値の意味と限界、地下水・液状化・圧密沈下を補う試験、調査計画と報告書の見方、見積もり・引渡しをCMの立場で整理します。</p>
+<p class="meta">最終確認：2026年11月28日。登場するホテルは説明用の架空の案件です。標準貫入試験のハンマー質量・落下高さ・300mmの定義はJIS A 1219（案）と国総研資料で確認しました。打撃回数の上限（打止め）は資料により50〜100回などの記載があり、本レポートでは数値を断定していません。告示第1113号は第一（調査方法）・第二（許容応力度）の構成を確認しましたが、式の詳細は転載していません。N値から強度定数・支持力を推定する式も転載していません。<br>値の区別：<span class="k law">法令</span>法律・政令・省令の基準（対象と条件つき）　<span class="k pub">公的仕様</span>国の標準仕様書・公的機関の指針　<span class="k spec">製品・設計条件</span>設計図書・特記・メーカー資料の条件　<span class="k case">架空例</span>説明用の架空の数値</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#scope">範囲と結論</a></li>
+<li><a href="#spt">標準貫入試験とN値</a></li>
+<li><a href="#soil">土の種類とN値</a></li>
+<li><a href="#risk">地下水・液状化・圧密沈下</a></li>
+<li><a href="#law">告示第1113号の位置づけ</a></li>
+<li><a href="#plan">調査の数・位置・深さ</a></li>
+<li><a href="#fail">失敗例</a></li>
+<li><a href="#compare">対応案の比較</a></li>
+<li><a href="#check">報告書・施工のチェックリスト</a></li>
+<li><a href="#estimate">見積もりの範囲と数量</a></li>
+<li><a href="#handover">引渡しの証拠</a></li>
+<li><a href="#talk">会話例</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="scope" aria-labelledby="scope-h"><h2 id="scope-h">範囲と結論</h2>
+<p>架空の郊外ホテル別棟新築で、「近くのボーリングでN値15なら直接基礎で安くできるか」と相談された場面をもとに、標準貫入試験、土の種類、地下水・液状化・圧密沈下、室内試験、調査計画、報告書の見方、見積もり、引渡しまでをCMの立場で整理します。</p>
+<div class="warn">結論：①N値は300mm打ち込むのに要した打撃回数で、土の種類とセットで読む。②N値だけで支持力を決めない。地盤の許容応力度は、土の強さ・基礎の形・地下水・液状化・沈下を踏まえて構造設計者が定める（告示第1113号）。③液状化は粒度試験、粘土の沈下は圧密試験、粘土の強さは乱さない試料の試験で補う。④調査の数・位置・深さは建物の配置と規模に合わせる。⑤報告書は数値より先に調査の範囲を確認する。</div>
+<p>本文の数値は <span class="k law">法令</span><span class="k pub">公的仕様</span><span class="k spec">製品・設計条件</span><span class="k case">架空例</span> で区別しています。</p>
+</section>
+<section id="spt" aria-labelledby="spt-h"><h2 id="spt-h">標準貫入試験とN値</h2>
+<figure><svg viewBox="0 0 900 260" role="img" aria-label="標準貫入試験"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="60" y="120" width="300" height="130" fill="#e4cf94"/><rect x="200" y="30" width="8" height="200" fill="#8a93a3"/><rect x="180" y="40" width="48" height="26" rx="4" fill="#3d4552"/><text x="204" y="58" fill="#edf4ff" font-size="11" font-weight="700" text-anchor="middle">63.5kg</text><line x1="250" y1="66" x2="250" y2="110" stroke="#ffd166" stroke-width="2"/><text x="258" y="92" fill="#ffd166" font-size="13" font-weight="700" text-anchor="start">760mm</text><rect x="196" y="215" width="16" height="30" fill="#59606b"/><text x="420" y="60" fill="#ffd166" font-size="16" font-weight="700" text-anchor="start">手順</text><text x="420" y="90" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">① 予備打ち 150mm（N値に数えない）</text><text x="420" y="120" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">② 本打ち 300mm の打撃回数 ＝ N値</text><text x="420" y="150" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">③ 打撃回数の上限に達したら貫入量を記録</text><text x="420" y="180" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">④ 採取した試料で土の種類を観察</text><text x="420" y="215" fill="#adbed4" font-size="13" font-weight="700" text-anchor="start">JIS A 1219（設計用は附属書Aの仕様）</text></svg><figcaption>図1 標準貫入試験のしくみ（模式図）</figcaption></figure><div class="tw"><table><tr><th>項目</th><th>内容</th></tr><tr><td>ハンマー</td><td>質量63.5kgを760mmの高さから落下<span class="k pub">公的仕様</span></td></tr><tr><td>N値</td><td>予備打ちの後、SPTサンプラーを300mm打ち込むのに要した打撃回数<span class="k pub">公的仕様</span></td></tr><tr><td>打撃回数の上限</td><td>上限に達した場合はその時の貫入量を記録する（上限値は採用する試験仕様による）</td></tr><tr><td>試料</td><td>採取した土で土質・色・含有物を観察する</td></tr></table></div><p class="meta">打止めの条件を「何回未満で何cm」と覚えるのは誤りのもとです。採用する試験仕様（JIS A 1219とその附属書、特記）で確認してください。</p>
+</section>
+<section id="soil" aria-labelledby="soil-h"><h2 id="soil-h">土の種類とN値</h2>
+<div class="tw"><table><tr><th>項目</th><th>砂質土</th><th>粘性土</th></tr><tr><td>支える仕組み</td><td>粒のかみ合わせ・摩擦</td><td>粘着力</td></tr><tr><td>N値の信頼性</td><td>相対密度との関係が比較的強い</td><td>試料の乱れなどでばらつきやすい</td></tr><tr><td>沈下</td><td>短期間で終わる（即時沈下）</td><td>長期間続く（圧密沈下）</td></tr><tr><td>地震時</td><td>緩い砂で地下水があると液状化のおそれ</td><td>液状化しにくいが、軟弱層は揺れが増幅しやすい</td></tr><tr><td>補う試験</td><td>粒度試験（細粒分含有率）</td><td>一軸・三軸圧縮試験、圧密試験</td></tr></table></div><p>N値から強度定数を推定する式は複数ありますが、どの式を使うかは構造設計者が採用する指針によります。本レポートでは推定式の数値を載せていません。</p>
+</section>
+<section id="risk" aria-labelledby="risk-h"><h2 id="risk-h">地下水・液状化・圧密沈下</h2>
+<figure><svg viewBox="0 0 900 240" role="img" aria-label="見えないリスク"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="40" y="70" width="560" height="70" fill="#e4cf94"/><rect x="40" y="140" width="560" height="80" fill="#9c8a74"/><rect x="40" y="100" width="560" height="120" fill="rgba(80,150,230,.3)"/><line x1="40" y1="100" x2="600" y2="100" stroke="#6aa6ff" stroke-width="2" stroke-dasharray="8 5"/><rect x="220" y="40" width="200" height="30" fill="#cfc8ba"/><text x="60" y="94" fill="#6aa6ff" font-size="13" font-weight="700" text-anchor="start">地下水位</text><text x="60" y="128" fill="#edf4ff" font-size="13" font-weight="700" text-anchor="start">緩い砂（液状化）</text><text x="60" y="190" fill="#edf4ff" font-size="13" font-weight="700" text-anchor="start">軟らかい粘土（圧密沈下）</text><text x="640" y="70" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">① 地下水位：掘削・浮力・液状化</text><text x="640" y="110" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">② 液状化：粒度試験（細粒分）で補正</text><text x="640" y="150" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">③ 圧密沈下：圧密試験で量と時間</text><text x="640" y="195" fill="#ff6b5b" font-size="15" font-weight="700" text-anchor="start">N値1つでは判断できない</text></svg><figcaption>図2 N値の裏に隠れるリスク（模式図）</figcaption></figure><div class="tw"><table><tr><th>リスク</th><th>調べ方</th><th>設計・施工への影響</th></tr><tr><td>地下水位</td><td>孔内水位の測定（季節変動に注意）</td><td>掘削時の排水、浮力、液状化</td></tr><tr><td>液状化</td><td>N値・粒度試験・地下水位から設計者が判定</td><td>地盤改良・杭・基礎形式</td></tr><tr><td>圧密沈下</td><td>乱さない試料の圧密試験</td><td>沈下量と時間、不同沈下</td></tr><tr><td>層の不連続</td><td>複数のボーリング、必要に応じて追加</td><td>基礎の不同沈下</td></tr></table></div>
+</section>
+<section id="law" aria-labelledby="law-h"><h2 id="law-h">告示第1113号の位置づけ</h2>
+<figure><svg viewBox="0 0 900 150" role="img" aria-label="支持力の決め方"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="20.0" y="40" width="195.5" height="80" rx="10" fill="#4a5a7a"/><text x="117.75" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">調査</text><text x="117.75" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">柱状図・N値</text><line x1="217.5" y1="80.0" x2="239.5" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="241.5" y="40" width="195.5" height="80" rx="10" fill="#6aa6ff"/><text x="339.25" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">試験</text><text x="339.25" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">粒度・圧密・圧縮</text><line x1="439.0" y1="80.0" x2="461.0" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="463.0" y="40" width="195.5" height="80" rx="10" fill="#5fd39a"/><text x="560.75" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">検討</text><text x="560.75" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">許容応力度・沈下・液状化</text><line x1="660.5" y1="80.0" x2="682.5" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="684.5" y="40" width="195.5" height="80" rx="10" fill="#ffd166"/><text x="782.25" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">設計</text><text x="782.25" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">基礎形式・寸法</text></svg><figcaption>図4 調査から基礎設計までの流れ</figcaption></figure><div class="tw"><table><tr><th>区分</th><th>内容</th></tr><tr><td>第一</td><td>地盤調査の方法（ボーリング調査、標準貫入試験、静的貫入試験、平板載荷試験、スクリューウエイト貫入試験など）<span class="k law">法令</span></td></tr><tr><td>第二</td><td>調査結果に基づく地盤の許容応力度の定め方（土の強さ・基礎の寸法などを用いる式等）<span class="k law">法令</span></td></tr><tr><td>基礎ぐい</td><td>基礎ぐいの許容支持力の定め方（第五以降）</td></tr></table></div><p class="meta">地盤の許容応力度は、建築基準法施行令第93条と本告示に基づいて構造設計者が定めます。告示の式・条件は原文で確認してください。</p>
+</section>
+<section id="plan" aria-labelledby="plan-h"><h2 id="plan-h">調査の数・位置・深さ</h2>
+<figure><svg viewBox="0 0 900 240" role="img" aria-label="調査の数と位置"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="40" y="60" width="820" height="160" fill="#e4cf94"/><path d="M300,60 Q450,240 600,60 Z" fill="#9c8a74"/><rect x="146" y="40" width="8" height="180" fill="#adbed4"/><text x="150" y="30" fill="#adbed4" font-size="14" font-weight="700" text-anchor="middle">B-1</text><rect x="746" y="40" width="8" height="180" fill="#adbed4"/><text x="750" y="30" fill="#adbed4" font-size="14" font-weight="700" text-anchor="middle">B-2</text><rect x="446" y="40" width="8" height="180" fill="#ff6b5b"/><text x="450" y="30" fill="#ff6b5b" font-size="14" font-weight="700" text-anchor="middle">B-3 追加</text><text x="450" y="150" fill="#edf4ff" font-size="14" font-weight="700" text-anchor="middle">2本の間に隠れた粘土層</text></svg><figcaption>図3 ボーリングの間に隠れた層（模式図・架空例）</figcaption></figure><div class="tw"><table><tr><th>決めること</th><th>考え方</th><th>CMの確認</th></tr><tr><td>数</td><td>建物の規模・形・敷地の広さ、地層の変化</td><td>建物の範囲をカバーしているか</td></tr><tr><td>位置</td><td>建物の四隅・中央、荷重の大きい所</td><td>既存資料の位置が計画建物から離れていないか</td></tr><tr><td>深さ</td><td>支持層の確認と、その下の軟弱層の有無</td><td>支持層の厚さを確認できる深さか</td></tr><tr><td>試験</td><td>土の種類に応じた室内試験</td><td>液状化・沈下の検討に必要な試験があるか</td></tr></table></div>
+</section>
+<section id="fail" aria-labelledby="fail-h"><h2 id="fail-h">失敗例</h2>
+<div class="tw"><table><tr><th>失敗</th><th>起きること</th><th>防ぎ方</th></tr><tr><td>近くの既存資料だけで判断</td><td>敷地内の軟弱層を見落とす</td><td>計画建物の位置で調査</td></tr><tr><td>支持層で調査を止める</td><td>下の軟弱層による沈下</td><td>支持層の厚さまで確認</td></tr><tr><td>粘土で室内試験なし</td><td>圧密沈下を見込めない</td><td>乱さない試料・圧密試験</td></tr><tr><td>地下水位を測らない</td><td>掘削時の湧水・液状化の見落とし</td><td>孔内水位と測定日を記録</td></tr><tr><td>N値だけで地耐力を決める</td><td>過大・過小な基礎</td><td>構造設計者が告示に基づき定める</td></tr><tr><td>床付け面を確認しない</td><td>設計と異なる地盤のまま施工</td><td>床付け時の確認と記録</td></tr></table></div>
+</section>
+<section id="compare" aria-labelledby="compare-h"><h2 id="compare-h">対応案の比較</h2>
+<div class="tw"><table><tr><th>項目</th><th>A 追加調査＋室内試験</th><th>B 平板載荷試験の追加</th><th>C 杭・地盤改良前提で設計</th></tr><tr><td>分かること</td><td>層の連続、粘土の沈下、液状化</td><td>基礎底付近の支持力</td><td>—</td></tr><tr><td>分からないこと</td><td>—</td><td>深い層の性状</td><td>実際の地盤（過大設計になりやすい）</td></tr><tr><td>費用・期間（例）</td><td>小〜中</td><td>小</td><td>調査費は減るが基礎費が増えるおそれ</td></tr><tr><td>判断</td><td>設計者と調査計画を決める</td><td>深さの限界を理解して使う</td><td>調査費と基礎費を比べる</td></tr></table></div><p class="meta">費用・期間の大小は架空の比較です。<span class="k case">架空例</span></p>
+</section>
+<section id="check" aria-labelledby="check-h"><h2 id="check-h">報告書・施工のチェックリスト</h2>
+<div class="tw"><table><tr><th>区分</th><th>確認すること</th><th>済</th></tr><tr><td>計画</td><td>調査の数・位置・深さが建物範囲をカバー</td><td>□</td></tr><tr><td>計画</td><td>必要な室内試験（粒度・圧密・圧縮）</td><td>□</td></tr><tr><td>報告書</td><td>柱状図・N値・土質・地下水位と測定日</td><td>□</td></tr><tr><td>報告書</td><td>層の連続性と軟弱層の有無</td><td>□</td></tr><tr><td>報告書</td><td>液状化の検討の有無（判定は設計者）</td><td>□</td></tr><tr><td>設計</td><td>許容応力度・沈下の検討の根拠</td><td>□</td></tr><tr><td>施工</td><td>床付け面・支持層の確認記録</td><td>□</td></tr></table></div><h3>記入済み様式：調査結果の整理（架空例）</h3><div class="tw"><table><tr><th>項目</th><th>B-1</th><th>B-2</th><th>B-3（追加）</th></tr><tr><td>盛土</td><td>GL-0〜1.2m</td><td>GL-0〜1.0m</td><td>GL-0〜1.1m</td></tr><tr><td>砂</td><td>N=8〜15</td><td>N=10〜18</td><td>N=6〜12</td></tr><tr><td>粘土</td><td>なし</td><td>なし</td><td>GL-5〜9m N=2〜4</td></tr><tr><td>地下水位</td><td>GL-1.5m</td><td>GL-1.6m</td><td>GL-1.5m</td></tr></table></div>
+</section>
+<section id="estimate" aria-labelledby="estimate-h"><h2 id="estimate-h">見積もりの範囲と数量</h2>
+<div class="tw"><table><tr><th>項目</th><th>単位</th><th>数量の拾い方</th><th>確認ポイント</th></tr><tr><td>機械ボーリング</td><td>m</td><td>本数×深さ</td><td>土質別の単価、礫・岩の扱い</td></tr><tr><td>標準貫入試験</td><td>回</td><td>1mごと等の実施間隔</td><td>実施間隔を特記で</td></tr><tr><td>乱さない試料採取</td><td>本</td><td>粘土層ごと</td><td>採取方法</td></tr><tr><td>室内土質試験</td><td>試料</td><td>試験の種類別</td><td>粒度・圧密・一軸圧縮など</td></tr><tr><td>孔内水位・現場透水試験</td><td>回／孔</td><td>必要な孔</td><td>測定日</td></tr><tr><td>平板載荷試験</td><td>箇所</td><td>基礎形式に応じて</td><td>載荷装置・反力</td></tr><tr><td>報告書</td><td>式</td><td>—</td><td>液状化検討を含むか</td></tr></table></div><h3>架空の数量例</h3><div class="tw"><table><tr><th>項目</th><th>数量（架空）</th><th>備考</th></tr><tr><td>機械ボーリング</td><td>3本×20m＝60m</td><td>B-3を追加</td></tr><tr><td>標準貫入試験</td><td>57回</td><td>1mごと</td></tr><tr><td>圧密試験</td><td>2試料</td><td>粘土層</td></tr><tr><td>粒度試験</td><td>6試料</td><td>砂層</td></tr></table></div><p class="meta">数量はすべて説明用の架空例です。<span class="k case">架空例</span></p>
+</section>
+<section id="handover" aria-labelledby="handover-h"><h2 id="handover-h">引渡しの証拠</h2>
+<div class="tw"><table><tr><th>書類・記録</th><th>内容</th><th>受領</th></tr><tr><td>地盤調査報告書</td><td>調査位置図・柱状図・N値・写真</td><td>□</td></tr><tr><td>室内土質試験結果</td><td>粒度・圧密・圧縮など</td><td>□</td></tr><tr><td>地下水位の記録</td><td>測定日・季節</td><td>□</td></tr><tr><td>基礎設計の根拠</td><td>許容応力度・沈下・液状化の検討</td><td>□</td></tr><tr><td>施工時の確認記録</td><td>床付け面・支持層・杭の到達確認</td><td>□</td></tr></table></div>
+</section>
+<section id="talk" aria-labelledby="talk-h"><h2 id="talk-h">会話例</h2>
+<div class="case"><b>会話例（架空）</b><br><b>発注者：</b>近くのボーリングでN値15だそうです。直接基礎で安くできませんか。<br><b>CM：</b>N値は土の種類とセットで見ます。その下に軟らかい粘土があると、何年もかけて沈むことがあります。<br><b>構造設計者：</b>計画建物の位置で3本、粘土があれば圧密試験も入れたいです。<br><b>CM：</b>追加調査の費用と期間を出して、基礎の費用への影響と比べて判断しましょう。<br><b>調査会社：</b>B-3でGL-5〜9mに粘土を確認しました。圧密試験を2試料行います。</div>
+</section>
+<p class="warn">杭や地盤改良に切り替えても、必要な地盤調査は省けません。方式の選定に必要な地層・地下水・強度・変形等の情報を構造設計者と整理します。比較図のNG案は採用できる代案ではありません。</p><section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://www.bcj.or.jp/publication/html/bcj_upload/product_file/183_03_chirami.pdf" target="_blank" rel="noopener">平成13年国土交通省告示第1113号の概要（建築行政情報センター 立ち読み資料）</a></li>
+<li><a href="https://www.city.kawasaki.jp/500/cmsfiles/contents/0000173/173712/10dai7.pdf" target="_blank" rel="noopener">告示第1113号の地盤調査の方法（川崎市 宅地造成技術基準 第7章）</a></li>
+<li><a href="https://www.jiban.or.jp/file/organi/bu/kijyunbu/jis_a_1219.pdf" target="_blank" rel="noopener">JIS A 1219 標準貫入試験方法（案）（地盤工学会）</a></li>
+<li><a href="https://www.nilim.go.jp/lab/bcg/siryou/rpn/rpn0076pdf/kh0076_08.pdf" target="_blank" rel="noopener">標準貫入試験の仕様の例（国土技術政策総合研究所資料）</a></li>
+<li><a href="https://laws.e-gov.go.jp/law/325CO0000000338" target="_blank" rel="noopener">建築基準法施行令（e-Gov法令検索）</a></li></ul>
+<p class="meta">法令・指針の値は上記の一次資料で確認したものです。法令・指針は改正されることがあるため、利用時は最新版を確認してください。</p></section>
+</main>
+<footer>※解説用に要点を簡略化しています。個別の判断は、特定行政庁・所管行政庁・労働基準監督署・都道府県等、および契約図書（特記仕様書）を優先してください。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="ground-investigation-video.html">動画解説</a></footer>
+</body>
+</html>
