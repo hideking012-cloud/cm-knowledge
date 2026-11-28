@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鉄骨接合のしくみと検査｜詳細レポート</title>
+<meta name="description" content="高力ボルト・溶接・柱脚の違いと、アンカーボルトのずれへの対応、検査・見積もり・引渡しの見方をCMの立場で整理します。">
+<style>
+:root{color-scheme:dark;--bg:#0a1220;--panel:#142237;--panel2:#0f1b2e;--ink:#edf4ff;--sub:#adbed4;--line:#304159;--accent:#8ee1d0;--warn:#ff8a7a;--law:#6aa6ff;--spec:#8ee1d0;--case:#b79cff;--yel:#ffd166}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 Inter,"Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:6px 10px;z-index:9}
+header.top{border-bottom:1px solid var(--line);padding:14px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;max-width:1160px;margin:auto}
+header.top a{font-weight:700;font-size:15px}
+header.top .nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1160px;margin:0 auto;padding:24px 22px 60px}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.35;margin:10px 0 8px}
+.kicker{display:inline-block;background:var(--accent);color:#0a1220;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px}
+.lead{color:var(--sub);font-size:1.05rem}
+.meta{font-size:13px;color:var(--sub)}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0}
+nav.toc ol{list-style:none;margin:6px 0 0;padding-left:0;columns:2;column-gap:28px;font-size:14.5px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px;margin:20px 0}
+h2{font-size:1.35rem;border-left:6px solid var(--accent);padding-left:12px;margin:18px 0 10px}
+h3{font-size:1.08rem;margin:18px 0 6px;color:var(--accent)}
+p,li{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;background:var(--panel2)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#1c2f4d;color:var(--accent);white-space:nowrap}
+.tw{overflow-x:auto}
+.note{background:#1d2b1f;border:1px solid #3f6b47;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.warn{background:#3a1f22;border:1px solid #8a3b33;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.case{background:#231d3d;border:1px solid #5c4d99;border-radius:12px;padding:10px 14px;font-size:14.5px;margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;padding:0;list-style:none}
+.flow li{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;flex:1 1 150px}
+.flow li b{display:block;color:var(--yel)}
+.k{display:inline-block;border-radius:999px;padding:0 9px;font-size:12px;font-weight:800;color:#0a1220;margin:0 3px;vertical-align:1px}
+.k.law{background:var(--law)}.k.spec{background:var(--spec)}.k.case{background:var(--case)}
+figure{margin:14px 0;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--sub);margin-top:6px}
+.src li{margin:4px 0;font-size:14.5px}
+footer{max-width:1160px;margin:0 auto;padding:0 22px 40px;font-size:13px;color:var(--sub);border-top:1px solid var(--line)}
+a:focus-visible{outline:3px solid #efbe77;outline-offset:3px}
+@media (max-width:640px){nav.toc ol{columns:1}section{padding:4px 14px 16px}}
+@media print{body{background:#fff;color:#000}section,nav.toc{background:#fff;color:#000}header.top,nav.toc{display:none}}
+table,.note,.warn,.case,.flow li,.src li,nav.toc ol{font-size:16px}figcaption{font-size:14px}td,th{font-size:16px}.meta,footer{font-size:16px}.k.pub{background:#5fd39a}
+:root{color-scheme:dark;--ink:#edf4ff;--sub:#b7c7dd;--line:#34465f;--accent:#ffac82;--bg:#0a1220;--blue:#8ed6ff;--green:#8ee1c4}header.top{background:#142237}nav.toc,section{background:#142237}th,.flow li{background:#223550}.note{background:#352e1d;border-color:#756137}.warn{background:#3e2529;border-color:#87505a}.case{background:#28253f;border-color:#5c568c}.meta,footer{font-size:14px}table,.note,.warn,.case,.src li{font-size:16px}.flow li{font-size:15px}.skip:focus{background:#223550;color:#fff}@media print{:root{color-scheme:light;--ink:#172133;--sub:#45546a;--line:#b5c2d2;--bg:white;--blue:#155ba1}body,section,nav.toc{background:white}.note,.warn,.case,th,.flow li{background:#eef2f7}}</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="top"><a href="index.html">CM知識一覧 ｜ 鉄骨接合</a>
+<div class="nav"><a href="index.html">CM知識一覧へ戻る</a><a href="steel-connections-video.html">動画解説</a></div></header>
+<main id="main">
+<span class="kicker">詳細レポート</span>
+<h1>鉄骨接合のしくみと検査</h1>
+<p class="lead">高力ボルト・溶接・柱脚の違いと、アンカーボルトのずれへの対応、検査・見積もり・引渡しの見方をCMの立場で整理します。</p>
+<p class="meta">最終確認：2026年11月28日。登場するホテルは説明用の架空の案件です。告示第1456号の露出・根巻き・埋込み柱脚の仕様、告示第1464号の縁端距離表は国土交通省のPDFで、突合せ継手の食い違いの許容値は日本建設業連合会の資料で確認しました。アンカーボルトの施工精度の許容差（JASS 6等）は未確認のため数値を載せていません。高力ボルトの締付け値・すべり係数・超音波探傷の合否基準も、採用する仕様書・特記で確認してください。公共建築工事標準仕様書は法令の一律義務ではなく、契約図書で採用されたときに適用される仕様です。<br>値の区別：<span class="k law">法令</span>法律・政令・省令の基準（対象と条件つき）　<span class="k pub">公的仕様</span>国の標準仕様書・公的機関の指針　<span class="k spec">製品・設計条件</span>設計図書・特記・メーカー資料の条件　<span class="k case">架空例</span>説明用の架空の数値</p>
+<nav class="toc" aria-label="目次"><b>目次</b><ol><li><a href="#scope">範囲と結論</a></li>
+<li><a href="#three">3つの接合</a></li>
+<li><a href="#bolt">高力ボルト</a></li>
+<li><a href="#weld">溶接</a></li>
+<li><a href="#base">柱脚とアンカーボルト</a></li>
+<li><a href="#daina">台直しとずれへの対応</a></li>
+<li><a href="#fail">失敗例</a></li>
+<li><a href="#check">検査チェックリスト</a></li>
+<li><a href="#estimate">見積もりの範囲と数量</a></li>
+<li><a href="#handover">引渡しの証拠</a></li>
+<li><a href="#talk">会話例</a></li><li><a href="#sources">一次資料（出典）</a></li></ol></nav>
+<section id="scope" aria-labelledby="scope-h"><h2 id="scope-h">範囲と結論</h2>
+<p>架空のホテル別棟増築（S造）で、建方の朝にアンカーボルトが8mmずれて柱が据わらない場面をもとに、ボルト・溶接・柱脚の違い、検査、見積もり、引渡しまでをCMの立場で整理します。</p>
+<div class="warn">結論：①高力ボルト・溶接・柱脚は伝える力も検査も違うので、分けて確認する。②高力ボルトは締付け管理と縁端距離。③溶接は溶け込み・食い違い（告示第1464号）と内部欠陥の検査。④露出柱脚は告示第1456号の仕様（定着20d以上、孔径d＋5mm以下、戻り止め等）。⑤ずれたアンカーボルトを曲げ・加熱で直す台直しは原則行わず、設計者・工事監理者と協議して承認を得る。⑥記録（検査報告書・締付け記録・柱脚の是正）で引き渡す。</div>
+<p>本文の数値は <span class="k law">法令</span><span class="k pub">公的仕様</span><span class="k spec">製品・設計条件</span><span class="k case">架空例</span> で区別しています。</p>
+</section>
+<section id="three" aria-labelledby="three-h"><h2 id="three-h">3つの接合</h2>
+<figure><svg viewBox="0 0 900 240" role="img" aria-label="3つの接合"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="80" y="40" width="22" height="170" fill="#8a96aa"/><rect x="520" y="40" width="22" height="170" fill="#8a96aa"/><rect x="102" y="60" width="418" height="20" fill="#8a96aa"/><rect x="40" y="210" width="560" height="14" fill="#6b7a94"/><circle cx="311" cy="70" r="22" fill="none" stroke="#6aa6ff" stroke-width="4"/><circle cx="104" cy="70" r="22" fill="none" stroke="#ffd166" stroke-width="4"/><circle cx="91" cy="212" r="22" fill="none" stroke="#ff6b5b" stroke-width="4"/><text x="640" y="60" fill="#6aa6ff" font-size="16" font-weight="700" text-anchor="start">ボルト接合（梁の継手など）</text><text x="640" y="82" fill="#adbed4" font-size="14" font-weight="700" text-anchor="start">締付け・摩擦面・縁端距離</text><text x="640" y="120" fill="#ffd166" font-size="16" font-weight="700" text-anchor="start">溶接接合（柱梁の仕口など）</text><text x="640" y="142" fill="#adbed4" font-size="14" font-weight="700" text-anchor="start">溶け込み・食い違い・内部欠陥</text><text x="640" y="180" fill="#ff6b5b" font-size="16" font-weight="700" text-anchor="start">柱脚（アンカーボルト）</text><text x="640" y="202" fill="#adbed4" font-size="14" font-weight="700" text-anchor="start">定着・孔径・戻り止め・位置</text></svg><figcaption>図1 鉄骨の3つの接合と、それぞれで確かめること（模式図）</figcaption></figure><div class="tw"><table><tr><th>項目</th><th>高力ボルト接合</th><th>溶接接合</th><th>柱脚</th></tr><tr><td>主な部位</td><td>梁の継手、ブレース</td><td>柱と梁の仕口、柱の継手</td><td>柱と基礎</td></tr><tr><td>力の伝え方</td><td>摩擦（摩擦接合の場合）</td><td>溶接金属で一体化</td><td>アンカーボルト・ベースプレート・基礎</td></tr><tr><td>主な確認</td><td>締付け・摩擦面・縁端距離</td><td>溶け込み・食い違い・内部欠陥</td><td>位置・高さ・定着・孔径・戻り止め</td></tr><tr><td>主な根拠</td><td>告示第1464号 第一<span class="k law">法令</span></td><td>告示第1464号 第二<span class="k law">法令</span></td><td>告示第1456号<span class="k law">法令</span></td></tr></table></div>
+</section>
+<section id="bolt" aria-labelledby="bolt-h"><h2 id="bolt-h">高力ボルト</h2>
+<figure><svg viewBox="0 0 900 240" role="img" aria-label="高力ボルト摩擦接合"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="80" y="90" width="420" height="30" fill="#8a96aa"/><rect x="80" y="120" width="420" height="30" fill="#8a96aa"/><rect x="190" y="66" width="200" height="24" fill="#a9b3c4"/><rect x="190" y="150" width="200" height="24" fill="#a9b3c4"/><rect x="234" y="50" width="12" height="140" fill="#2b3340"/><rect x="334" y="50" width="12" height="140" fill="#2b3340"/><line x1="30" y1="105" x2="76" y2="105" stroke="#6aa6ff" stroke-width="3" marker-end="url(#a)"/><line x1="550" y1="135" x2="504" y2="135" stroke="#6aa6ff" stroke-width="3" marker-end="url(#a)"/><text x="290" y="215" fill="#edf4ff" font-size="14" font-weight="700" text-anchor="middle">締付けで板を押し付け、接触面の摩擦で伝える</text><text x="600" y="60" fill="#ffd166" font-size="16" font-weight="700" text-anchor="start">締付け管理（例）</text><text x="600" y="90" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">① 一次締め</text><text x="600" y="115" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">② マーキング</text><text x="600" y="140" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">③ 本締め（ナット回転・トルク）</text><text x="600" y="170" fill="#8ee1d0" font-size="14" font-weight="700" text-anchor="start">トルシア形：ピンテール破断</text><text x="600" y="195" fill="#adbed4" font-size="13" font-weight="700" text-anchor="start">方法・合否は仕様書・製品条件</text></svg><figcaption>図2 高力ボルト摩擦接合のしくみ（模式図）</figcaption></figure><div class="tw"><table><tr><th>ボルト等の径</th><th>最小縁端距離：せん断縁・手動ガス切断縁</th><th>最小縁端距離：圧延縁・自動ガス切断縁・のこ引き縁・機械仕上げ縁</th></tr><tr><td>16を超え20以下</td><td>34mm</td><td>26mm</td></tr><tr><td>20を超え22以下</td><td>38mm</td><td>28mm</td></tr><tr><td>22を超え24以下</td><td>44mm</td><td>32mm</td></tr></table></div><p class="meta">出典：平成12年建設省告示第1464号 第一の表（抜粋）<span class="k law">法令</span></p><div class="tw"><table><tr><th>確認項目</th><th>内容</th></tr><tr><td>ボルトの種類・等級</td><td>設計図書の指定と検査成績書<span class="k spec">製品・設計条件</span></td></tr><tr><td>摩擦面</td><td>処理方法（すべり係数の確保）は仕様書・特記</td></tr><tr><td>締付け</td><td>一次締め→マーキング→本締め、締付け後の確認</td></tr><tr><td>トルシア形</td><td>ピンテールの破断と共回り・軸回りの有無<span class="k spec">製品・設計条件</span></td></tr></table></div>
+</section>
+<section id="weld" aria-labelledby="weld-h"><h2 id="weld-h">溶接</h2>
+<div class="tw"><table><tr><th>項目</th><th>告示第1464号の定め（抜粋）</th></tr><tr><td>突合せ継手の食い違い</td><td>板厚15mm以下：1.5mm以下／板厚15mm超：板厚の1/10以下かつ3mm以下</td></tr><tr><td>通しダイアフラムと梁フランジ</td><td>梁フランジは通しダイアフラムの厚みの内部で溶接する</td></tr><tr><td>許容値を満たさない場合</td><td>適切な補強で対応（ただし書き）</td></tr></table></div><p class="meta"><span class="k law">法令</span> 仕口のずれの許容値も告示に定めがあります。補強の方法は建築研究所監修の検査・補強マニュアル等を参照し、時期を事前に取り決めます。</p><div class="tw"><table><tr><th>検査</th><th>内容</th><th>決めるもの</th></tr><tr><td>外観検査</td><td>ビード形状・割れ・アンダーカット等</td><td>判定基準（仕様書・特記）</td></tr><tr><td>超音波探傷検査</td><td>内部欠陥</td><td>方法・抜取りの割合・合否基準・検査会社</td></tr><tr><td>技能者</td><td>溶接技能者の資格</td><td>資格の種類と確認方法</td></tr></table></div>
+</section>
+<section id="base" aria-labelledby="base-h"><h2 id="base-h">柱脚とアンカーボルト</h2>
+<figure><svg viewBox="0 0 900 260" role="img" aria-label="露出柱脚"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="80" y="150" width="440" height="100" fill="#cfc8ba"/><rect x="250" y="30" width="100" height="100" fill="#8a96aa"/><rect x="200" y="130" width="200" height="20" fill="#5a6578"/><rect x="220" y="115" width="10" height="125" fill="#2b3340"/><rect x="211" y="234" width="28" height="7" fill="#2b3340"/><rect x="370" y="115" width="10" height="125" fill="#2b3340"/><rect x="361" y="234" width="28" height="7" fill="#2b3340"/><line x1="430" y1="150" x2="430" y2="240" stroke="#ffd166" stroke-width="2"/><text x="440" y="200" fill="#ffd166" font-size="14" font-weight="700" text-anchor="start">定着 20d以上</text><text x="560" y="40" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・ボルトを柱の中心に均等に配置</text><text x="560" y="70" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・座金＋二重ナット等の戻り止め</text><text x="560" y="100" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・定着20d以上、先端フック／定着金物</text><text x="560" y="130" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・ボルト全断面積≧柱断面の20%</text><text x="560" y="160" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・ベースプレート厚≧1.3d</text><text x="560" y="190" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">・孔径≦d＋5mm</text><text x="560" y="220" fill="#edf4ff" font-size="15" font-weight="700" text-anchor="start">（構造計算で一部除外）</text></svg><figcaption>図3 露出形式柱脚の仕様（平成12年建設省告示第1456号。図は模式）</figcaption></figure><div class="tw"><table><tr><th>形式</th><th>告示第1456号の主な定め</th></tr><tr><td>露出形式</td><td>均等配置・座金と戻り止め・定着20d以上（先端フック／定着金物）・全断面積≧柱断面の20%・ベースプレート厚≧1.3d・孔径≦d＋5mm</td></tr><tr><td>根巻き形式</td><td>根巻き高さ≧柱幅の2.5倍、立上り主筋4本以上で頂部をかぎ状、帯筋の配置</td></tr><tr><td>埋込み形式</td><td>埋込み深さ≧柱幅の2倍、側柱・隅柱は径9mm以上のU字形補強筋等、かぶり≧柱幅</td></tr></table></div><p class="meta"><span class="k law">法令</span> 露出形式のイ・ニ〜ヘは、令第82条第1号〜第3号の構造計算を行った場合は適用しません。大臣認定の露出柱脚工法は、メーカーの施工要領・認定条件に従います<span class="k spec">製品・設計条件</span>。</p><h3>架空例：M24の場合</h3><div class="tw"><table><tr><th>項目</th><th>計算</th><th>値</th></tr><tr><td>定着長さ</td><td>24×20</td><td>480mm以上</td></tr><tr><td>孔径</td><td>24＋5</td><td>29mm以下</td></tr><tr><td>ベースプレート厚</td><td>24×1.3＝31.2</td><td>32mm（例）</td></tr></table></div><p class="meta"><span class="k case">架空例</span></p>
+</section>
+<section id="daina" aria-labelledby="daina-h"><h2 id="daina-h">台直しとずれへの対応</h2>
+<div class="tw"><table><tr><th>対応</th><th>内容</th><th>注意</th></tr><tr><td>曲げ・加熱で直す（台直し）</td><td>構造上のアンカーボルトでは原則行わない</td><td>強度・伸び性能への影響</td></tr><tr><td>孔を広げる</td><td>d＋5mm以下を超える場合は告示の仕様を外れる</td><td>設計者の構造計算・判断が必要</td></tr><tr><td>A ベースプレートの再製作</td><td>孔位置を合わせ工場で作り直す</td><td>工程・費用への影響</td></tr><tr><td>B アンカーの追加・植替え</td><td>設計者が方法を決め承認</td><td>基礎の補強が要る場合</td></tr><tr><td>C 構造計算で検討</td><td>設計者が検討し計算書を残す</td><td>承認記録</td></tr></table></div><p>再発防止として、基礎コンクリート打設前にテンプレートで位置・高さを確認し、打設中・打設後にも再確認します。アンカーボルトの施工精度の許容値は採用する仕様書・特記で確認してください。</p>
+</section>
+<section id="fail" aria-labelledby="fail-h"><h2 id="fail-h">失敗例</h2>
+<div class="tw"><table><tr><th>失敗</th><th>起きること</th><th>防ぎ方</th></tr><tr><td>アンカーの位置確認を打設後のみ</td><td>建方で柱が据わらない</td><td>打設前・中・後に確認</td></tr><tr><td>台直し</td><td>性能低下・責任の所在が不明</td><td>協議・承認の手順を決めておく</td></tr><tr><td>二重ナットの締付け手順が不明確</td><td>戻り止めが効かない</td><td>施工要領書で手順を決める</td></tr><tr><td>食い違いの見逃し</td><td>接合部の耐力不足</td><td>製品検査・受入検査の記録</td></tr><tr><td>摩擦面に塗装・汚れ</td><td>すべり耐力不足</td><td>摩擦面の処理と養生</td></tr><tr><td>認定柱脚の余長不足</td><td>認定条件外</td><td>メーカー確認、事前管理</td></tr></table></div>
+</section>
+<section id="check" aria-labelledby="check-h"><h2 id="check-h">検査チェックリスト</h2>
+<figure><svg viewBox="0 0 900 150" role="img" aria-label="検査の流れ"><rect width="100%" height="100%" fill="#0f1b2e"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#adbed4"/></marker></defs><rect x="20.0" y="40" width="151.2" height="80" rx="10" fill="#6aa6ff"/><text x="95.6" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">工場</text><text x="95.6" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">製品検査</text><line x1="173.2" y1="80.0" x2="195.2" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="197.2" y="40" width="151.2" height="80" rx="10" fill="#4a5a7a"/><text x="272.79999999999995" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">受入れ</text><text x="272.79999999999995" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">受入検査</text><line x1="350.4" y1="80.0" x2="372.4" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="374.4" y="40" width="151.2" height="80" rx="10" fill="#5fd39a"/><text x="450.0" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">基礎</text><text x="450.0" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">アンカー確認</text><line x1="527.5999999999999" y1="80.0" x2="549.5999999999999" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="551.5999999999999" y="40" width="151.2" height="80" rx="10" fill="#ffd166"/><text x="627.1999999999999" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">建方</text><text x="627.1999999999999" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">精度・締付け</text><line x1="704.8" y1="80.0" x2="726.8" y2="80.0" stroke="#adbed4" stroke-width="3" marker-end="url(#a)"/><rect x="728.8" y="40" width="151.2" height="80" rx="10" fill="#ff6b5b"/><text x="804.4" y="76.0" fill="#0a1220" font-size="17" font-weight="800" text-anchor="middle">完了</text><text x="804.4" y="98.0" fill="#0a1220" font-size="14" font-weight="600" text-anchor="middle">記録・承認</text></svg><figcaption>図4 工場から建方までの検査の流れ</figcaption></figure><div class="tw"><table><tr><th>段階</th><th>確認すること</th><th>済</th></tr><tr><td>製作前</td><td>施工図・溶接要領書・検査計画</td><td>□</td></tr><tr><td>工場</td><td>寸法・溶接外観・超音波探傷・食い違い</td><td>□</td></tr><tr><td>受入れ</td><td>ミルシート・検査成績書・製品検査記録</td><td>□</td></tr><tr><td>基礎</td><td>アンカーボルトの位置・高さ・定着（打設前／後）</td><td>□</td></tr><tr><td>建方</td><td>建入れ精度、ベースモルタル・グラウト</td><td>□</td></tr><tr><td>締付け</td><td>一次締め・マーキング・本締め・ピンテール</td><td>□</td></tr><tr><td>柱脚</td><td>座金・二重ナット等の戻り止め</td><td>□</td></tr><tr><td>是正</td><td>不適合の協議・承認・再検査</td><td>□</td></tr></table></div><h3>記入済み様式：柱脚確認記録（架空例）</h3><div class="tw"><table><tr><th>柱</th><th>ボルト</th><th>位置ずれ</th><th>孔径</th><th>判定</th></tr><tr><td>X2-Y1</td><td>M24×4</td><td>1mm</td><td>29mm</td><td>適</td></tr><tr><td>X3-Y1</td><td>M24×4</td><td>8mm</td><td>29mm</td><td>不適合→協議</td></tr><tr><td>X3-Y1 是正後</td><td>再製作プレート</td><td>—</td><td>29mm</td><td>適（承認済）</td></tr></table></div>
+</section>
+<section id="estimate" aria-labelledby="estimate-h"><h2 id="estimate-h">見積もりの範囲と数量</h2>
+<div class="tw"><table><tr><th>項目</th><th>単位</th><th>数量の拾い方</th><th>確認ポイント</th></tr><tr><td>鉄骨製作</td><td>t</td><td>部材別の鋼材質量</td><td>製作に溶接・検査を含むか</td></tr><tr><td>高力ボルト</td><td>本</td><td>径・長さ別</td><td>予備本数・トルシア形か</td></tr><tr><td>現場溶接</td><td>m／箇所</td><td>溶接長・箇所</td><td>検査費・技能者</td></tr><tr><td>超音波探傷</td><td>箇所</td><td>抜取りの割合で</td><td>第三者検査の有無</td></tr><tr><td>アンカーボルト・柱脚</td><td>組</td><td>形式別（認定工法は製品別）</td><td>テンプレート・グラウト材を含むか</td></tr><tr><td>建方</td><td>t／日</td><td>揚重計画</td><td>重機・仮設</td></tr></table></div><h3>架空の数量例</h3><div class="tw"><table><tr><th>項目</th><th>数量（架空）</th><th>備考</th></tr><tr><td>鉄骨</td><td>185 t</td><td>柱・梁</td></tr><tr><td>高力ボルト M20</td><td>9,800 本</td><td>トルシア形</td></tr><tr><td>超音波探傷</td><td>320 箇所</td><td>工場・現場</td></tr><tr><td>アンカーボルト M24</td><td>64 本</td><td>16組</td></tr></table></div><p class="meta">数量はすべて説明用の架空例です。<span class="k case">架空例</span></p>
+</section>
+<section id="handover" aria-labelledby="handover-h"><h2 id="handover-h">引渡しの証拠</h2>
+<div class="tw"><table><tr><th>書類・記録</th><th>内容</th><th>受領</th></tr><tr><td>ミルシート・ボルト検査成績書</td><td>鋼材・高力ボルト</td><td>□</td></tr><tr><td>溶接技能者の資格・溶接記録</td><td>工場・現場</td><td>□</td></tr><tr><td>超音波探傷等の検査報告書</td><td>方法・抜取り・合否</td><td>□</td></tr><tr><td>締付け記録</td><td>マーキング写真・確認記録</td><td>□</td></tr><tr><td>建方精度の記録</td><td>測定値</td><td>□</td></tr><tr><td>柱脚・アンカーの記録</td><td>位置・高さ・是正と承認</td><td>□</td></tr></table></div>
+</section>
+<section id="talk" aria-labelledby="talk-h"><h2 id="talk-h">会話例</h2>
+<div class="case"><b>会話例（架空）</b><br><b>鉄骨工：</b>X3-Y1のアンカーが8ミリずれてます。少し曲げれば入りますが。<br><b>CM：</b>曲げるのは待ってください。孔は29ミリ以下と決まっていて、勝手に広げることもできません。<br><b>工事監理者：</b>設計者に連絡します。プレートの再製作か、アンカーの追加かを検討します。<br><b>CM：</b>工程への影響を整理して発注者に報告します。他の柱は先に建てられますか。<br><b>施工者：</b>できます。次の基礎からは打設前と打設後に位置を測って記録します。</div>
+</section>
+<p class="note">柱脚の寸法は、告示1456号の仕様規定を使う場合の説明です。告示冒頭の構造計算による扱いと、露出形式の各項目の適用除外を区別します。均等配置、断面積割合、ベースプレート厚さ、孔径の規定は同号の構造計算条件による例外があります。定着長さの例外にも付着力・抜出し・コンクリート破壊を検討する別の条件があります。構造計算をしたという理由だけで、現場判断による曲げや孔の拡大を許容するものではありません。</p><section id="sources" aria-labelledby="sources-h"><h2 id="sources-h">一次資料（出典）</h2><ul class="src"><li><a href="https://www.mlit.go.jp/jutakukentiku/build/s20000523/n031.pdf" target="_blank" rel="noopener">平成12年建設省告示第1456号 鉄骨造の柱の脚部を基礎に緊結する構造方法の基準（国土交通省）</a></li>
+<li><a href="https://www.mlit.go.jp/jutakukentiku/build/s2004/pdf/k064.pdf" target="_blank" rel="noopener">平成12年建設省告示第1464号 鉄骨造の継手又は仕口の構造方法（国土交通省）</a></li>
+<li><a href="https://www.nikkenren.com/kenchiku/sekou/steel_frame_Q&A/A-3-12.pdf" target="_blank" rel="noopener">鉄骨工事Q&amp;A 食違い（日本建設業連合会）</a></li>
+<li><a href="https://www.nikkenren.com/kenchiku/sekou/steel_frame_Q%26A/B-1-9.pdf" target="_blank" rel="noopener">鉄骨工事Q&amp;A アンカーボルト二重ナットの締付け（日本建設業連合会）</a></li>
+<li><a href="https://laws.e-gov.go.jp/law/325CO0000000338" target="_blank" rel="noopener">建築基準法施行令（e-Gov法令検索）</a></li>
+<li><a href="https://www.mlit.go.jp/gobuild/kenchiku_hyoushi.html" target="_blank" rel="noopener">公共建築工事標準仕様書（国土交通省 官庁営繕）</a></li></ul>
+<p class="meta">法令・指針の値は上記の一次資料で確認したものです。法令・指針は改正されることがあるため、利用時は最新版を確認してください。</p></section>
+</main>
+<footer>※解説用に要点を簡略化しています。個別の判断は、特定行政庁・所管行政庁・労働基準監督署・都道府県等、および契約図書（特記仕様書）を優先してください。<br><a href="index.html">CM知識一覧へ戻る</a> ｜ <a href="steel-connections-video.html">動画解説</a></footer>
+</body>
+</html>
